@@ -31,6 +31,10 @@ namespace MiniMog
                 Console.WriteLine("text count offset " + textCountOffset);
                 Console.WriteLine("text offset " + textOffset);
 
+                stream.Seek(offset + aiOffset, SeekOrigin.Begin);
+                var aiLength = textCountOffset - aiOffset;
+                var ai = BattleScript.Load(reader.ReadBytes((int)aiLength));
+
                 stream.Seek(offset + textCountOffset, SeekOrigin.Begin);
                 var textOffsets = new List<uint>();
                 for (int i = 0; i < (textOffset - textCountOffset) / 4; i++)
