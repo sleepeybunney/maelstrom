@@ -90,51 +90,51 @@ namespace MiniMog
             this.PreCounter = new List<Instruction>();
         }
 
-        public static BattleScript Load(byte[] data)
+        public BattleScript(byte[] data)
         {
-            var result = new BattleScript();
             using (var stream = new MemoryStream(data))
+            using (var reader = new BinaryReader(stream))
             {
-                using (var reader = new BinaryReader(stream))
-                {
-                    var initOffset = reader.ReadUInt32();
-                    var executeOffset = reader.ReadUInt32();
-                    var counterOffset = reader.ReadUInt32();
-                    var deathOffset = reader.ReadUInt32();
-                    var preCounterOffset = reader.ReadUInt32();
+                var initOffset = reader.ReadUInt32();
+                var executeOffset = reader.ReadUInt32();
+                var counterOffset = reader.ReadUInt32();
+                var deathOffset = reader.ReadUInt32();
+                var preCounterOffset = reader.ReadUInt32();
 
-                    Console.WriteLine("INIT");
-                    stream.Seek(initOffset, SeekOrigin.Begin);
-                    result.Init = ReadScript(reader);
+                Console.WriteLine("INIT");
+                stream.Position = initOffset;
+                Init = ReadScript(reader, executeOffset - initOffset);
 
-                    Console.WriteLine("EXECUTE");
-                    stream.Seek(executeOffset, SeekOrigin.Begin);
-                    result.Execute = ReadScript(reader);
+                Console.WriteLine("EXECUTE");
+                stream.Position = executeOffset;
+                Execute = ReadScript(reader, counterOffset - executeOffset);
 
-                    Console.WriteLine("COUNTER");
-                    stream.Seek(counterOffset, SeekOrigin.Begin);
-                    result.Counter = ReadScript(reader);
+                Console.WriteLine("COUNTER");
+                stream.Position = counterOffset;
+                Counter = ReadScript(reader, deathOffset - counterOffset);
 
-                    Console.WriteLine("DEATH");
-                    stream.Seek(deathOffset, SeekOrigin.Begin);
-                    result.Death = ReadScript(reader);
+                Console.WriteLine("DEATH");
+                stream.Position = deathOffset;
+                Death = ReadScript(reader, preCounterOffset - deathOffset);
 
-                    Console.WriteLine("PRECOUNTER");
-                    stream.Seek(preCounterOffset, SeekOrigin.Begin);
-                    result.PreCounter = ReadScript(reader);
-                }
+                Console.WriteLine("PRECOUNTER");
+                stream.Position = preCounterOffset;
+                PreCounter = ReadScript(reader, (uint)stream.Length - preCounterOffset);
             }
-            return result;
         }
 
-        private static List<Instruction> ReadScript(BinaryReader reader)
+        private static List<Instruction> ReadScript(BinaryReader reader, uint length)
         {
             var result = new List<Instruction>();
-            byte code = 3;
+            byte code;
+            byte prevCode = byte.MaxValue;
+            var initialOffset = reader.BaseStream.Position;
 
-            while (code != 0 && reader.BaseStream.Position < reader.BaseStream.Length)
+            while (reader.BaseStream.Position < initialOffset + length)
             {
                 code = reader.ReadByte();
+
+                if (code == 0 && prevCode == 0) continue;
 
                 if (!OpCodes.ContainsKey(code))
                 {
@@ -150,6 +150,7 @@ namespace MiniMog
                     else args.Add(reader.ReadInt16());
                 }
                 result.Add(new Instruction(op, args.ToArray()));
+                prevCode = code;
 
                 var log = new StringBuilder(op.Name);
                 for (int i=0; i < args.Count; i++)

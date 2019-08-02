@@ -28,7 +28,7 @@ namespace MiniMog
 
                 stream.Position = aiOffset;
                 var aiLength = textIndexOffset - aiOffset;
-                var ai = BattleScript.Load(reader.ReadBytes((int)aiLength));
+                var ai = new BattleScript(reader.ReadBytes((int)aiLength));
 
                 stream.Position = textIndexOffset;
                 var textOffsets = new List<uint>();
