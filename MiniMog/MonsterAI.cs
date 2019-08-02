@@ -16,52 +16,50 @@ namespace MiniMog
             this.Strings = new List<string>();
         }
 
-        public static MonsterAI Load(Stream stream, uint offset)
+        public MonsterAI(byte[] data) : this()
         {
-            var result = new MonsterAI();
+            using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))
             {
-                stream.Seek(offset, SeekOrigin.Begin);
                 var subSections = reader.ReadUInt32();
                 var aiOffset = reader.ReadUInt32();
-                var textCountOffset = reader.ReadUInt32();
+                var textIndexOffset = reader.ReadUInt32();
                 var textOffset = reader.ReadUInt32();
-                Console.WriteLine(subSections + " subsections");
-                Console.WriteLine("ai offset " + aiOffset);
-                Console.WriteLine("text count offset " + textCountOffset);
-                Console.WriteLine("text offset " + textOffset);
 
-                stream.Seek(offset + aiOffset, SeekOrigin.Begin);
-                var aiLength = textCountOffset - aiOffset;
+                stream.Position = aiOffset;
+                var aiLength = textIndexOffset - aiOffset;
                 var ai = BattleScript.Load(reader.ReadBytes((int)aiLength));
 
-                stream.Seek(offset + textCountOffset, SeekOrigin.Begin);
+                stream.Position = textIndexOffset;
                 var textOffsets = new List<uint>();
-                for (int i = 0; i < (textOffset - textCountOffset) / 4; i++)
+                var textLengths = new List<uint>();
+                for (int i = 0; i < (textOffset - textIndexOffset) / 2; i++)
                 {
-                    textOffsets.Add(reader.ReadUInt16());
-                }
-                Console.WriteLine("text offsets:");
-                foreach (var o in textOffsets) Console.WriteLine(o);
-
-                foreach (var o in textOffsets)
-                {
-                    stream.Seek(offset + textOffset + o, SeekOrigin.Begin);
-                    var text = new List<byte>();
-                    int bytes = 0;
-                    byte next;
-                    while (bytes < 65536)
+                    var newOffset = reader.ReadUInt16();
+                    if (i > 0)
                     {
-                        next = reader.ReadByte();
-                        if (next == 0) break;
-                        text.Add(next);
-                        bytes++;
+                        var prevOffset = textOffsets.Last();
+                        if (newOffset < prevOffset) break;
+                        textLengths.Add(newOffset - prevOffset);
                     }
-                    result.Strings.Add(FF8String.Decode(text.ToArray()));
-                    Console.WriteLine(result.Strings.Last());
+                    textOffsets.Add(newOffset);
+                }
+
+                if (textOffsets.Count > 0)
+                {
+                    textLengths.Add((uint)stream.Length - (textOffset + textOffsets.Last()));
+                }
+
+                for (int i = 0; i < textOffsets.Count; i++)
+                {
+                    stream.Position = textOffset + textOffsets[i];
+                    var newText = reader.ReadBytes((int)textLengths[i]);
+                    this.Strings.Add(FF8String.Decode(newText));
                 }
             }
-            return result;
+
+            Console.WriteLine("TEXT");
+            foreach (var s in this.Strings) Console.WriteLine(s);
         }
     }
 }

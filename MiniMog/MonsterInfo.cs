@@ -27,53 +27,49 @@ namespace MiniMog
         {
             this.Name = name;
         }
-        // lv6 1068
 
-
-        public static MonsterInfo Load(Stream data, uint offset)
+        public MonsterInfo(byte[] data)
         {
-            var result = new MonsterInfo();
-            using (var reader = new BinaryReader(data))
+            using (var stream = new MemoryStream(data))
+            using (var reader = new BinaryReader(stream))
             {
-                data.Seek(offset, SeekOrigin.Begin);
-                result.Name = FF8String.Decode(reader.ReadBytes(24));
+                Name = FF8String.Decode(reader.ReadBytes(24));
 
-                result.Hp1 = reader.ReadByte();
-                result.Hp2 = reader.ReadByte();
-                result.Hp3 = reader.ReadByte();
-                result.Hp4 = reader.ReadByte();
+                Hp1 = reader.ReadByte();
+                Hp2 = reader.ReadByte();
+                Hp3 = reader.ReadByte();
+                Hp4 = reader.ReadByte();
 
-                result.Str1 = reader.ReadByte();
-                result.Str2 = reader.ReadByte();
-                result.Str3 = reader.ReadByte();
-                result.Str4 = reader.ReadByte();
+                Str1 = reader.ReadByte();
+                Str2 = reader.ReadByte();
+                Str3 = reader.ReadByte();
+                Str4 = reader.ReadByte();
 
-                result.Vit1 = reader.ReadByte();
-                result.Vit2 = reader.ReadByte();
-                result.Vit3 = reader.ReadByte();
-                result.Vit4 = reader.ReadByte();
+                Vit1 = reader.ReadByte();
+                Vit2 = reader.ReadByte();
+                Vit3 = reader.ReadByte();
+                Vit4 = reader.ReadByte();
 
-                result.Mag1 = reader.ReadByte();
-                result.Mag2 = reader.ReadByte();
-                result.Mag3 = reader.ReadByte();
-                result.Mag4 = reader.ReadByte();
+                Mag1 = reader.ReadByte();
+                Mag2 = reader.ReadByte();
+                Mag3 = reader.ReadByte();
+                Mag4 = reader.ReadByte();
 
-                result.Spr1 = reader.ReadByte();
-                result.Spr2 = reader.ReadByte();
-                result.Spr3 = reader.ReadByte();
-                result.Spr4 = reader.ReadByte();
+                Spr1 = reader.ReadByte();
+                Spr2 = reader.ReadByte();
+                Spr3 = reader.ReadByte();
+                Spr4 = reader.ReadByte();
 
-                result.Spd1 = reader.ReadByte();
-                result.Spd2 = reader.ReadByte();
-                result.Spd3 = reader.ReadByte();
-                result.Spd4 = reader.ReadByte();
+                Spd1 = reader.ReadByte();
+                Spd2 = reader.ReadByte();
+                Spd3 = reader.ReadByte();
+                Spd4 = reader.ReadByte();
 
-                result.Eva1 = reader.ReadByte();
-                result.Eva2 = reader.ReadByte();
-                result.Eva3 = reader.ReadByte();
-                result.Eva4 = reader.ReadByte();
+                Eva1 = reader.ReadByte();
+                Eva2 = reader.ReadByte();
+                Eva3 = reader.ReadByte();
+                Eva4 = reader.ReadByte();
             }
-            return result;
         }
 
         // hp2 & hp4 determine the lower boundary

@@ -9,64 +9,97 @@ namespace MiniMog
 {
     class Monster
     {
-        MonsterInfo Info;
-        MonsterAI AI;
+        public MonsterInfo Info;
+        public MonsterAI AI;
+        public byte[] SectionsOneToSix, SectionsNineToEleven;
 
-        public Monster(string path)
+        public static Monster FromFile(string path)
         {
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException("Monster file not found");
             }
 
-            var rawData = File.ReadAllBytes(path);
-            var sectionOffsets = GetSections(rawData);
+            return FromBytes(File.ReadAllBytes(path));
+        }
 
-            if (sectionOffsets.Length != 11)
+        public static Monster FromBytes(byte[] data)
+        {
+            var monster = new Monster();
+            var sections = GetSectionInfo(data);
+
+            if (sections.Count != 11)
             {
                 throw new InvalidDataException("Invalid monster file (or you're trying to open Ultimecia's butt which is a special case I don't handle yet)");
             }
 
-            this.Info = MonsterInfo.Load(new MemoryStream(rawData), sectionOffsets[(int)Section.Info]);
-            Console.WriteLine(this.Info.Name + " - " + this.Info.HpAtLevel(6) + "HP at level 6");
-            this.AI = MonsterAI.Load(new MemoryStream(rawData), sectionOffsets[(int)Section.AI]);
+            var oneToSixLength = (int)sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
+            monster.SectionsOneToSix = new ArraySegment<byte>(data, sections[SectionIndex.Skeleton].Offset, oneToSixLength).ToArray();
+
+            monster.Info = new MonsterInfo(new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray());
+            Console.WriteLine(monster.Info.Name + " - " + monster.Info.HpAtLevel(6) + "HP at level 6");
+
+            monster.AI = new MonsterAI(new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray());
+
+            var nineToEleventLength = (int)sections.Values.Where(s => (int)s.Type > 8).Sum(s => s.Length);
+            monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToEleventLength).ToArray();
+
+            return monster;
         }
 
-        uint[] GetSections(byte[] data)
+        static Dictionary<SectionIndex, Section> GetSectionInfo(byte[] data)
         {
-            var sections = new List<uint>();
+            var sections = new List<Section>();
 
             using (var stream = new MemoryStream(data))
+            using (var reader = new BinaryReader(stream))
             {
-                using (var reader = new BinaryReader(stream))
-                {
-                    var sectionCount = reader.ReadUInt32();
-                    if (sectionCount != 11) return new uint[] { };
+                var sectionCount = reader.ReadUInt32();
+                if (sectionCount != 11) return new Dictionary<SectionIndex, Section>();
 
-                    for (uint i = 0; i < sectionCount; i++)
+                for (int i = 1; i <= sectionCount; i++)
+                {
+                    var newSection = new Section
                     {
-                        sections.Add(reader.ReadUInt32());
-                        // Console.WriteLine(sections.Last());
+                        Type = (SectionIndex)i,
+                        Offset = (int)reader.ReadUInt32()
+                    };
+
+                    if (sections.Count > 0)
+                    {
+                        var prevSection = sections.Last();
+                        prevSection.Length = newSection.Offset - prevSection.Offset;
                     }
+
+                    sections.Add(newSection);
                 }
             }
 
-            return sections.ToArray();
+            var result = new Dictionary<SectionIndex, Section>();
+            foreach (var s in sections) result.Add(s.Type, s);
+            return result;
         }
 
-        enum Section
+        enum SectionIndex
         {
-            Skeleton = 0,
-            Mesh = 1,
-            Animation = 2,
-            Section4 = 3,
-            Section5 = 4,
-            Section6 = 5,
-            Info = 6,
-            AI = 7,
-            Sounds = 8,
-            Section10 = 9,
-            Textures = 10
+            Skeleton = 1,
+            Mesh = 2,
+            Animation = 3,
+            Section4 = 4,
+            Section5 = 5,
+            Section6 = 6,
+            Info = 7,
+            AI = 8,
+            Sounds = 9,
+            Section10 = 10,
+            Textures = 11
+        }
+
+        class Section
+        {
+            public SectionIndex Type;
+            public int Offset;
+            public int Length;
         }
     }
 }
