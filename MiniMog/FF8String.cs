@@ -8,7 +8,7 @@ namespace MiniMog
 {
     class FF8String
     {
-        private static char[] chars = new char[]
+        private static readonly char[] chars = new char[]
         {
             ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '%', '/', ':', '!', '?',
             '…', '+', '-', '=', '*', '&', '"', '"', '(', ')', '\'', '.', ',', '~', '"', '"',
@@ -20,22 +20,23 @@ namespace MiniMog
 
         public static string Decode(byte[] bytes)
         {
-            var result = new List<char>();
+            var result = "";
             foreach (var b in bytes)
             {
                 var code = (int)b;
                 if (code == 0) break;
-                code -= 0x20;
-                if (code < 0 || code >= chars.Length)
+
+                var index = code - 0x20;
+                if (index < 0 || index >= chars.Length)
                 {
-                    result.Add('?');
+                    result += "{" + code.ToString("x2") + "}";
                 }
                 else
                 {
-                    result.Add(chars[code]);
+                    result += chars[index];
                 }
             }
-            return new string(result.ToArray());
+            return result;
         }
     }
 }
