@@ -10,13 +10,20 @@ namespace MiniMog
     class MonsterInfo
     {
         public string Name;
-        public byte Hp1, Hp2, Hp3, Hp4;
-        public byte Str1, Str2, Str3, Str4;
-        public byte Mag1, Mag2, Mag3, Mag4;
-        public byte Vit1, Vit2, Vit3, Vit4;
-        public byte Spr1, Spr2, Spr3, Spr4;
-        public byte Spd1, Spd2, Spd3, Spd4;
-        public byte Eva1, Eva2, Eva3, Eva4;
+        public byte[] Hp, Str, Mag, Vit, Spr, Spd, Eva;
+        public Ability[] AbilitiesLow, AbilitiesMed, AbilitiesHigh;
+        byte MedStart, HighStart;
+        byte MysteryFlags1, MysteryFlags2;
+        byte StatusFlags1, StatusFlags2;
+        byte CardDrop, CardMorph, CardRareMorph;
+        byte DevourLow, DevourMed, DevourHigh;
+        uint Exp, ExtraExp, Ap;
+        byte[] DrawLow, DrawMed, DrawHigh;
+        HeldItem[] MugLow, MugMed, MugHigh;
+        HeldItem[] DropLow, DropMed, DropHigh;
+        byte MugRate, DropRate;
+        byte[] MysteryData;
+        byte[] ElemDef, StatusDef;
 
         public MonsterInfo()
         {
@@ -35,40 +42,129 @@ namespace MiniMog
             {
                 Name = FF8String.Decode(reader.ReadBytes(24));
 
-                Hp1 = reader.ReadByte();
-                Hp2 = reader.ReadByte();
-                Hp3 = reader.ReadByte();
-                Hp4 = reader.ReadByte();
+                Hp = reader.ReadBytes(4);
+                Str = reader.ReadBytes(4);
+                Vit = reader.ReadBytes(4);
+                Mag = reader.ReadBytes(4);
+                Spr = reader.ReadBytes(4);
+                Spd = reader.ReadBytes(4);
+                Eva = reader.ReadBytes(4);
 
-                Str1 = reader.ReadByte();
-                Str2 = reader.ReadByte();
-                Str3 = reader.ReadByte();
-                Str4 = reader.ReadByte();
+                AbilitiesLow = new Ability[16];
+                for (int i = 0; i < 16; i++) AbilitiesLow[i] = new Ability
+                {
+                    Type = reader.ReadByte(),
+                    Something = reader.ReadByte(),
+                    AbilityId = reader.ReadUInt16()
+                };
 
-                Vit1 = reader.ReadByte();
-                Vit2 = reader.ReadByte();
-                Vit3 = reader.ReadByte();
-                Vit4 = reader.ReadByte();
+                AbilitiesMed = new Ability[16];
+                for (int i = 0; i < 16; i++) AbilitiesMed[i] = new Ability
+                {
+                    Type = reader.ReadByte(),
+                    Something = reader.ReadByte(),
+                    AbilityId = reader.ReadUInt16()
+                };
 
-                Mag1 = reader.ReadByte();
-                Mag2 = reader.ReadByte();
-                Mag3 = reader.ReadByte();
-                Mag4 = reader.ReadByte();
+                AbilitiesHigh = new Ability[16];
+                for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new Ability
+                {
+                    Type = reader.ReadByte(),
+                    Something = reader.ReadByte(),
+                    AbilityId = reader.ReadUInt16()
+                };
 
-                Spr1 = reader.ReadByte();
-                Spr2 = reader.ReadByte();
-                Spr3 = reader.ReadByte();
-                Spr4 = reader.ReadByte();
+                MedStart = reader.ReadByte();
+                HighStart = reader.ReadByte();
+                MysteryFlags1 = reader.ReadByte();
+                StatusFlags1 = reader.ReadByte();
 
-                Spd1 = reader.ReadByte();
-                Spd2 = reader.ReadByte();
-                Spd3 = reader.ReadByte();
-                Spd4 = reader.ReadByte();
+                CardDrop = reader.ReadByte();
+                CardMorph = reader.ReadByte();
+                CardRareMorph = reader.ReadByte();
 
-                Eva1 = reader.ReadByte();
-                Eva2 = reader.ReadByte();
-                Eva3 = reader.ReadByte();
-                Eva4 = reader.ReadByte();
+                DevourLow = reader.ReadByte();
+                DevourMed = reader.ReadByte();
+                DevourHigh = reader.ReadByte();
+
+                StatusFlags2 = reader.ReadByte();
+                MysteryFlags2 = reader.ReadByte();
+
+                ExtraExp = reader.ReadUInt16();
+                Exp = reader.ReadUInt16();
+
+                DrawLow = new byte[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    DrawLow[i] = reader.ReadByte();
+                    reader.ReadByte(); // padding
+                }
+
+                DrawMed = new byte[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    DrawMed[i] = reader.ReadByte();
+                    reader.ReadByte(); // padding
+                }
+
+                DrawHigh = new byte[4];
+                for (int i = 0; i < 4; i++)
+                {
+                    DrawHigh[i] = reader.ReadByte();
+                    reader.ReadByte(); // padding
+                }
+
+                MugLow = new HeldItem[4];
+                for (int i = 0; i < 4; i++) MugLow[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                MugMed = new HeldItem[4];
+                for (int i = 0; i < 4; i++) MugMed[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                MugHigh = new HeldItem[4];
+                for (int i = 0; i < 4; i++) MugHigh[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                DropLow = new HeldItem[4];
+                for (int i = 0; i < 4; i++) DropLow[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                DropMed = new HeldItem[4];
+                for (int i = 0; i < 4; i++) DropMed[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                DropHigh = new HeldItem[4];
+                for (int i = 0; i < 4; i++) DropHigh[i] = new HeldItem
+                {
+                    ItemId = reader.ReadByte(),
+                    Quantity = reader.ReadByte()
+                };
+
+                MugRate = reader.ReadByte();
+                DropRate = reader.ReadByte();
+
+                reader.ReadByte(); // padding
+                Ap = reader.ReadByte();
+
+                MysteryData = reader.ReadBytes(16);
+                ElemDef = reader.ReadBytes(8);
+                StatusDef = reader.ReadBytes(20);
             }
         }
 
@@ -79,47 +175,60 @@ namespace MiniMog
         // there's no easy way to explain this in the ui is there...
         public int HpAtLevel(int level)
         {
-            return (Hp1 * level * level / 20) + (Hp1 + Hp3 * 100) * level + Hp2 * 10 + Hp4 * 1000;
+            return (Hp[0] * level * level / 20) + (Hp[0] + Hp[2] * 100) * level + Hp[1] * 10 + Hp[3] * 1000;
         }
 
-        private int OffensiveStatAtLevel(int level, byte stat1, byte stat2, byte stat3, byte stat4)
+        private int OffensiveStatAtLevel(int level, byte[] values)
         {
-            return level * stat1 / 10 + level / stat2 - level * level / 2 / (stat4 + stat3) / 4;
+            return level * values[0] / 10 + level / values[1] - level * level / 2 / (values[3] + values[2]) / 4;
         }
 
-        private int NonOffensiveStatAtLevel(int level, byte stat1, byte stat2, byte stat3, byte stat4)
+        private int NonOffensiveStatAtLevel(int level, byte[] values)
         {
-            return level / stat2 - level / stat4 + level * stat1 + stat3;
+            return level / values[1] - level / values[3] + level * values[0] + values[2];
         }
 
         public int StrAtLevel(int level)
         {
-            return OffensiveStatAtLevel(level, Str1, Str2, Str3, Str4);
+            return OffensiveStatAtLevel(level, Str);
         }
 
         public int MagAtLevel(int level)
         {
-            return OffensiveStatAtLevel(level, Mag1, Mag2, Mag3, Mag4);
+            return OffensiveStatAtLevel(level, Mag);
         }
 
         public int VitAtLevel(int level)
         {
-            return NonOffensiveStatAtLevel(level, Vit1, Vit2, Vit3, Vit4);
+            return NonOffensiveStatAtLevel(level, Vit);
         }
 
         public int SprAtLevel(int level)
         {
-            return NonOffensiveStatAtLevel(level, Spr1, Spr2, Spr3, Spr4);
+            return NonOffensiveStatAtLevel(level, Spr);
         }
 
         public int SpdAtLevel(int level)
         {
-            return NonOffensiveStatAtLevel(level, Spd1, Spd2, Spd3, Spd4);
+            return NonOffensiveStatAtLevel(level, Spd);
         }
 
         public int EvaAtLevel(int level)
         {
-            return NonOffensiveStatAtLevel(level, Eva1, Eva2, Eva3, Eva4);
+            return NonOffensiveStatAtLevel(level, Eva);
+        }
+
+        public struct Ability
+        {
+            public byte Type;
+            public byte Something;
+            public uint AbilityId;
+        }
+
+        public struct HeldItem
+        {
+            public byte ItemId;
+            public byte Quantity;
         }
     }
 }
