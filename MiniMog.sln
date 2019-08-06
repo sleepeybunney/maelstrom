@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniMog", "MiniMog\MiniMog.csproj", "{BD5A765C-0B92-465B-B151-55906EE7581F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maelstrom", "Maelstrom\Maelstrom.csproj", "{2F2C51AE-51D5-424D-A706-09992D9ACB92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{BD5A765C-0B92-465B-B151-55906EE7581F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD5A765C-0B92-465B-B151-55906EE7581F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD5A765C-0B92-465B-B151-55906EE7581F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2C51AE-51D5-424D-A706-09992D9ACB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2C51AE-51D5-424D-A706-09992D9ACB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2C51AE-51D5-424D-A706-09992D9ACB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2C51AE-51D5-424D-A706-09992D9ACB92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D1E4C9A-1F0F-4362-952E-24BB5DB4E744}
 	EndGlobalSection
 EndGlobal
