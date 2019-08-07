@@ -12,6 +12,22 @@ namespace FF8Mod.Maelstrom
         {
             Entries = new List<Entry>();
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                ReadStream(stream);
+            }
+        }
+
+        public FileIndex(byte[] data)
+        {
+            using (var stream = new MemoryStream(data))
+            {
+                ReadStream(stream);
+            }
+        }
+
+        private void ReadStream(Stream stream)
+        {
+            Entries = new List<Entry>();
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position < stream.Length - 11)

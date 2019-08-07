@@ -8,12 +8,14 @@ namespace FF8Mod.Maelstrom
         public FileList FileList;
         public FileIndex FileIndex;
         public string ArchivePath;
+        public FileSource Source;
 
         public FileSource(string archivePath, FileList fileList, FileIndex fileIndex)
         {
             FileList = fileList;
             FileIndex = fileIndex;
             ArchivePath = archivePath;
+            Source = null;
             if (!File.Exists(ArchivePath)) throw new FileNotFoundException("Archive file not found: " + ArchivePath);
             if (FileList.Files.Count != FileIndex.Entries.Count) throw new InvalidDataException("File list and index sizes don't match for archive " + ArchivePath);
         }
@@ -22,13 +24,38 @@ namespace FF8Mod.Maelstrom
 
         public FileSource(string singlePath) : this(singlePath + ".fs", singlePath + ".fl", singlePath + ".fi") { }
 
+        public FileSource(string singlePath, FileSource source)
+        {
+            FileList = new FileList(source.GetFile(singlePath + ".fl"));
+            FileIndex = new FileIndex(source.GetFile(singlePath + ".fi"));
+            ArchivePath = singlePath + ".fs";
+            Source = source;
+        }
+
         public byte[] GetFile(string path)
+        {
+            if (Source == null)
+            {
+                using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    return ReadStream(stream, path);
+                }
+            }
+            else
+            {
+                using (var stream = new MemoryStream(Source.GetFile(ArchivePath)))
+                {
+                    return ReadStream(stream, path);
+                }
+            }
+        }
+
+        private byte[] ReadStream(Stream stream, string path)
         {
             var key = GetIndex(path);
             var entry = FileIndex.Entries[key];
             if (entry.Length > int.MaxValue) throw new NotImplementedException("Unable to read large file: " + path);
 
-            using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var reader = new BinaryReader(stream))
             {
                 stream.Seek(entry.Location, SeekOrigin.Begin);
@@ -64,6 +91,8 @@ namespace FF8Mod.Maelstrom
 
         public void ReplaceFile(string path, byte[] data)
         {
+            if (Source != null) throw new NotImplementedException("Writing to nested file sources is not yet implemented");
+
             var key = GetIndex(path);
             var entry = FileIndex.Entries[key];
 
