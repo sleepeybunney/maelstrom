@@ -52,7 +52,8 @@ namespace FF8Mod.Maelstrom
 
         private byte[] ReadStream(Stream stream, string path)
         {
-            var key = GetIndex(path);
+            var key = FileList.GetIndex(path);
+            if (key == -1) throw new FileNotFoundException("Not found in archive (" + ArchivePath + "): " + path);
             var entry = FileIndex.Entries[key];
             if (entry.Length > int.MaxValue) throw new NotImplementedException("Unable to read large file: " + path);
 
@@ -64,13 +65,6 @@ namespace FF8Mod.Maelstrom
                 var length = reader.ReadUInt32();
                 return Lzss.Decompress(reader.ReadBytes((int)length));
             }
-        }
-
-        private int GetIndex(string path)
-        {
-            var key = FileList.Files.IndexOf(path);
-            if (key == -1) throw new FileNotFoundException("Not found in archive (" + ArchivePath + "): " + path);
-            return key;
         }
 
         private string IndexPath
@@ -93,7 +87,7 @@ namespace FF8Mod.Maelstrom
         {
             if (Source != null) throw new NotImplementedException("Writing to nested file sources is not yet implemented");
 
-            var key = GetIndex(path);
+            var key = FileList.GetIndex(path);
             var entry = FileIndex.Entries[key];
 
             var oldArchiveSize = new FileInfo(ArchivePath).Length;

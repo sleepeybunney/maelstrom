@@ -36,5 +36,11 @@ namespace FF8Mod.Maelstrom
                 }
             }
         }
+
+        public int GetIndex(string path)
+        {
+            var pathLower = path.ToLower();
+            return Files.FindIndex(f => f.ToLower() == pathLower);
+        }
     }
 }
