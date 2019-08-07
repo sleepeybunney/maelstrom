@@ -28,9 +28,7 @@ namespace Maelstrom
 
         public byte[] GetFile(string path)
         {
-            var key = FileList.Files.IndexOf(path);
-            if (key == -1) throw new FileNotFoundException("Not found in archive (" + ArchivePath + "): " + path);
-
+            var key = GetIndex(path);
             var entry = FileIndex.Entries[key];
             if (entry.Length > int.MaxValue) throw new NotImplementedException("Unable to read large file: " + path);
 
@@ -43,6 +41,70 @@ namespace Maelstrom
                 var length = reader.ReadUInt32();
                 return Lzss.Decompress(reader.ReadBytes((int)length));
             }
+        }
+
+        private int GetIndex(string path)
+        {
+            var key = FileList.Files.IndexOf(path);
+            if (key == -1) throw new FileNotFoundException("Not found in archive (" + ArchivePath + "): " + path);
+            return key;
+        }
+
+        private string IndexPath
+        {
+            get
+            {
+                return ArchivePath.Substring(0, ArchivePath.Length - 1) + "i";
+            }
+        }
+
+        private string ListPath
+        {
+            get
+            {
+                return ArchivePath.Substring(0, ArchivePath.Length - 1) + "l";
+            }
+        }
+
+        public void ReplaceFile(string path, byte[] data)
+        {
+            var key = GetIndex(path);
+            var entry = FileIndex.Entries[key];
+
+            var oldArchiveSize = new FileInfo(ArchivePath).Length;
+            var oldSize = oldArchiveSize - entry.Location;
+            if (key != FileIndex.Entries.Count - 1) oldSize = FileIndex.Entries[key + 1].Location - entry.Location;
+            var sizeChange = data.Length - oldSize;
+
+            FileIndex.Entries[key] = new FileIndex.Entry(entry.Location, (uint)data.Length, false);
+            for (int i = key + 1; i < FileIndex.Entries.Count; i++)
+            {
+                var currEntry = FileIndex.Entries[i];
+                FileIndex.Entries[i] = new FileIndex.Entry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compressed);
+            }
+
+            using (var stream = new FileStream(IndexPath + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var writer = new BinaryWriter(stream))
+            {
+                writer.Write(FileIndex.Encoded);
+            }
+
+            using (var newStream = new FileStream(ArchivePath + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var oldStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var writer = new BinaryWriter(newStream))
+            using (var reader = new BinaryReader(oldStream))
+            {
+                newStream.SetLength(oldStream.Length + sizeChange);
+                writer.Write(reader.ReadBytes((int)entry.Location));
+                writer.Write(data);
+                oldStream.Seek(oldSize, SeekOrigin.Current);
+                writer.Write(reader.ReadBytes((int)(oldStream.Length - oldStream.Position)));
+            }
+
+            File.Delete(ArchivePath);
+            File.Delete(IndexPath);
+            File.Move(ArchivePath + ".tmp", ArchivePath);
+            File.Move(IndexPath + ".tmp", IndexPath);
         }
     }
 }

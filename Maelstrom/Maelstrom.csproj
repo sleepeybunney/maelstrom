@@ -110,5 +110,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MiniMog\MiniMog.csproj">
+      <Project>{bd5a765c-0b92-465b-b151-55906ee7581f}</Project>
+      <Name>MiniMog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

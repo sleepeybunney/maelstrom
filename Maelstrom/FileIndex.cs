@@ -37,6 +37,36 @@ namespace Maelstrom
                 Location = BitConverter.ToUInt32(data, 4);
                 Compressed = BitConverter.ToUInt32(data, 8) == 1;
             }
+
+            public Entry(uint location, uint length, bool compressed)
+            {
+                Location = location;
+                Length = length;
+                Compressed = compressed;
+            }
+        }
+
+        public byte[] Encoded
+        {
+            get
+            {
+                var length = Entries.Count * 12;
+                var result = new byte[length];
+
+                using (var stream = new MemoryStream(result))
+                using (var writer = new BinaryWriter(stream))
+                {
+                    for (int i = 0; i < Entries.Count; i++)
+                    {
+                        writer.Write(Entries[i].Length);
+                        writer.Write(Entries[i].Location);
+                        uint compressed = (uint)(Entries[i].Compressed ? 1 : 0);
+                        writer.Write(compressed);
+                    }
+                }
+
+                return result;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Maelstrom
     /// ✓ clear a path out to the fire cave
     /// ✓ replace ifrit with something
     /// ✓ change a draw point
-    /// - work out how to patch the game a la deling
+    /// ✓ work out how to patch the game a la deling
     /// - apply above changes by patch
     /// - randomise ifrit & granaldo
     /// - try randomising normal encounters too
