@@ -7,11 +7,14 @@ using System.IO;
 
 namespace MiniMog
 {
-    class Monster
+    public class Monster
     {
         public MonsterInfo Info;
         public MonsterAI AI;
+
         public byte[] SectionsOneToSix, SectionsNineToEleven;
+        public byte[] TempInfoData, TempAIData;
+        public Dictionary<SectionIndex, Section> TempSectionInfo;
 
         public static Monster FromFile(string path)
         {
@@ -36,13 +39,16 @@ namespace MiniMog
             var oneToSixLength = (int)sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
             monster.SectionsOneToSix = new ArraySegment<byte>(data, sections[SectionIndex.Skeleton].Offset, oneToSixLength).ToArray();
 
-            monster.Info = new MonsterInfo(new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray());
-            Console.WriteLine(monster.Info.Name + " - " + monster.Info.HpAtLevel(6) + "HP at level 6");
+            monster.TempInfoData = new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray();
+            monster.Info = new MonsterInfo(monster.TempInfoData);
 
-            monster.AI = new MonsterAI(new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray());
+            monster.TempAIData = new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray();
+            monster.AI = new MonsterAI(monster.TempAIData);
 
-            var nineToEleventLength = (int)sections.Values.Where(s => (int)s.Type > 8).Sum(s => s.Length);
-            monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToEleventLength).ToArray();
+            var nineToElevenLength = data.Length - sections[(SectionIndex)9].Offset;
+            monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToElevenLength).ToArray();
+
+            monster.TempSectionInfo = sections;
 
             return monster;
         }
@@ -79,8 +85,47 @@ namespace MiniMog
             foreach (var s in sections) result.Add(s.Type, s);
             return result;
         }
+        
+        public byte[] Encoded
+        {
+            get
+            {
+                var encodedAI = AI.Encoded;
 
-        enum SectionIndex
+                uint sectionCount = 11;
+                uint sectionPosLength = sectionCount * 4;
+                uint headerLength = 4 + sectionPosLength + 4;
+                uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + TempInfoData.Length + encodedAI.Length + SectionsNineToEleven.Length);
+
+                var originalAILength = TempSectionInfo[SectionIndex.AI].Length;
+                var postAIOffset = encodedAI.Length - originalAILength;
+
+                var result = new byte[totalLength];
+                using (var stream = new MemoryStream(result))
+                using (var writer = new BinaryWriter(stream))
+                {
+                    writer.Write(sectionCount);
+                    
+                    for (int i = 1; i <= 11; i++)
+                    {
+                        var offset = TempSectionInfo[(SectionIndex)i].Offset;
+                        if (i > 8) offset += postAIOffset;
+                        writer.Write((uint)offset);
+                    }
+
+                    writer.Write(totalLength);
+
+                    writer.Write(SectionsOneToSix);
+                    writer.Write(TempInfoData);
+                    writer.Write(encodedAI);
+                    writer.Write(SectionsNineToEleven);
+                }
+
+                return result;
+            }
+        }
+
+        public enum SectionIndex
         {
             Skeleton = 1,
             Mesh = 2,
@@ -95,7 +140,7 @@ namespace MiniMog
             Textures = 11
         }
 
-        class Section
+        public class Section
         {
             public SectionIndex Type;
             public int Offset;

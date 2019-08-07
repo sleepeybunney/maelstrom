@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniMog
 {
-    partial class BattleScript
+    public partial class BattleScript
     {
         public static Dictionary<byte, OpCode> OpCodes;
         public static Dictionary<byte, string> ConditionCodes;

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace MiniMog
 {
-    partial class BattleScript
+    public partial class BattleScript
     {
         public List<Instruction> Init;
         public List<Instruction> Execute;

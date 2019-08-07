@@ -7,7 +7,7 @@ using System.IO;
 
 namespace MiniMog
 {
-    class MonsterInfo
+    public class MonsterInfo
     {
         public string Name;
         public byte[] Hp, Str, Mag, Vit, Spr, Spd, Eva;

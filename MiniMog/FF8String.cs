@@ -7,7 +7,7 @@ using System.IO;
 
 namespace MiniMog
 {
-    class FF8String
+    public class FF8String
     {
         private static readonly char[] readableChars = new char[]
         {
@@ -31,6 +31,7 @@ namespace MiniMog
                     var code = (int)reader.ReadByte();
                     if (code == 0) break;
 
+                    /*
                     switch (code)
                     {
                         case 0x02:
@@ -55,6 +56,7 @@ namespace MiniMog
                             result += "{spell " + reader.ReadByte().ToString("x2") + "}";
                             continue;
                     }
+                    */
 
                     var index = code - 0x20;
                     if (index < 0 || index >= readableChars.Length)
@@ -68,6 +70,47 @@ namespace MiniMog
                 }
             }
             return result;
+        }
+
+        public static byte[] Encode(string str)
+        {
+            var result = new List<byte>();
+
+            var leftBraces = str.Where(c => c == '{').Count();
+            var rightBraces = str.Where(c => c == '}').Count();
+            if (leftBraces != rightBraces) throw new InvalidDataException("Unopened or unclosed character code braces in string: " + str);
+
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            using (var reader = new BinaryReader(stream))
+            {
+                writer.Write(str);
+                writer.Flush();
+                stream.Position = 0;
+                while (stream.Position < stream.Length)
+                {
+                    var nextChar = reader.ReadChar();
+                    if (nextChar == '{')
+                    {
+                        var code = "";
+                        var nextInCode = reader.ReadChar();
+                        while (nextInCode != '}')
+                        {
+                            code += nextInCode;
+                            nextInCode = reader.ReadChar();
+                        }
+                        result.Add(Convert.ToByte(code, 16));
+                        continue;
+                    }
+
+                    var index = Array.IndexOf(readableChars, nextChar);
+                    if (index == -1) throw new InvalidDataException("Unrecognised character '" + nextChar + "' in string: " + str);
+                    result.Add((byte)(index + 0x20));
+                }
+
+                result.Add(0);
+                return result.ToArray();
+            }
         }
     }
 }
