@@ -32,14 +32,16 @@ namespace Maelstrom
             if (key == -1) throw new FileNotFoundException("Not found in archive (" + ArchivePath + "): " + path);
 
             var entry = FileIndex.Entries[key];
-            if (entry.Compressed) throw new NotImplementedException("Unable to open compressed file in archive " + ArchivePath);
             if (entry.Length > int.MaxValue) throw new NotImplementedException("Unable to read large file: " + path);
 
-            using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var reader = new BinaryReader(stream))
             {
                 stream.Seek(entry.Location, SeekOrigin.Begin);
-                return reader.ReadBytes((int)entry.Length);
+                if (!entry.Compressed) return reader.ReadBytes((int)entry.Length);
+
+                var length = reader.ReadUInt32();
+                return Lzss.Decompress(reader.ReadBytes((int)length));
             }
         }
     }

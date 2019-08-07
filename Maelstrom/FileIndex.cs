@@ -14,7 +14,7 @@ namespace Maelstrom
         public FileIndex(string path)
         {
             Entries = new List<Entry>();
-            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position < stream.Length - 11)
@@ -35,7 +35,7 @@ namespace Maelstrom
                 if (data.Length != 12) throw new InvalidDataException("Expected 12 bytes for a file index entry");
                 Length = BitConverter.ToUInt32(data, 0);
                 Location = BitConverter.ToUInt32(data, 4);
-                Compressed = BitConverter.ToBoolean(data, 11);
+                Compressed = BitConverter.ToUInt32(data, 8) == 1;
             }
         }
     }

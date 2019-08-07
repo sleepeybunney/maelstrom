@@ -14,8 +14,15 @@ namespace Maelstrom
         public FileList(string path)
         {
             Files = new List<string>();
-            Files.AddRange(File.ReadAllLines(path));
-            Files.RemoveAll(f => String.IsNullOrWhiteSpace(f));
+            using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (!String.IsNullOrWhiteSpace(line)) Files.Add(line);
+                }
+            }
         }
     }
 }
