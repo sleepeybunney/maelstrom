@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maelstrom.Properties
+namespace FF8Mod.Maelstrom.Properties
 {
 
 

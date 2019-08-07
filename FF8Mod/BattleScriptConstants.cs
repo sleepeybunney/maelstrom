@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace MiniMog
+namespace FF8Mod
 {
     public partial class BattleScript
     {
@@ -51,7 +47,7 @@ namespace MiniMog
                 new OpCode("add-shared", 0x13, new Argument("offset"), new Argument("value")),
                 new OpCode("add-global", 0x15, new Argument("offset"), new Argument("value")),
                 new OpCode("hp-fill", 0x16),
-                new OpCode("cannot-escape", 0x17, new Argument("switch", ArgType.Bool)),
+                new OpCode("no-escape", 0x17, new Argument("switch", ArgType.Bool)),
                 new OpCode("text-like-ability", 0x18, new Argument("textIndex")),
                 new OpCode("unknown-19", 0x19, new Argument("arg")),
                 new OpCode("talk", 0x1a, new Argument("textIndex")),
@@ -82,7 +78,7 @@ namespace MiniMog
                 new OpCode("award-card", 0x37, new Argument("cardId")),
                 new OpCode("award-item", 0x38, new Argument("itemId")),
                 new OpCode("game-over", 0x39),
-                new OpCode("targetable-at", 0x3a, new Argument("battlerIndex")),
+                new OpCode("make-targetable", 0x3a, new Argument("battlerIndex")),
                 new OpCode("friend-add-at", 0x3b, new Argument("encounterIndex"), new Argument("battlerIndex")),
                 new OpCode("hp-add", 0x3c, new Argument("value")),
                 new OpCode("award-omega", 0x3d)
