@@ -44,6 +44,8 @@
     <Compile Include="BattleScript.cs" />
     <Compile Include="BattleScriptConstants.cs" />
     <Compile Include="FF8String.cs" />
+    <Compile Include="FieldScript.cs" />
+    <Compile Include="FieldScriptConstants.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterAI.cs" />
     <Compile Include="MonsterInfo.cs" />

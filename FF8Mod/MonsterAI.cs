@@ -58,8 +58,8 @@ namespace FF8Mod
                 }
             }
 
-            Console.WriteLine("TEXT");
-            foreach (var s in this.Strings) Console.WriteLine(s);
+            //Console.WriteLine("TEXT");
+            //foreach (var s in this.Strings) Console.WriteLine(s);
         }
 
         public byte[] Encoded

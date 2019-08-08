@@ -34,23 +34,23 @@ namespace FF8Mod
                 var deathOffset = reader.ReadUInt32();
                 var preCounterOffset = reader.ReadUInt32();
 
-                Console.WriteLine("INIT:");
+                //Console.WriteLine("INIT:");
                 stream.Position = initOffset;
                 Init = ReadScript(reader, executeOffset - initOffset);
 
-                Console.WriteLine("EXECUTE:");
+                //Console.WriteLine("EXECUTE:");
                 stream.Position = executeOffset;
                 Execute = ReadScript(reader, counterOffset - executeOffset);
 
-                Console.WriteLine("COUNTER:");
+                //Console.WriteLine("COUNTER:");
                 stream.Position = counterOffset;
                 Counter = ReadScript(reader, deathOffset - counterOffset);
 
-                Console.WriteLine("DEATH:");
+                //Console.WriteLine("DEATH:");
                 stream.Position = deathOffset;
                 Death = ReadScript(reader, preCounterOffset - deathOffset);
 
-                Console.WriteLine("PRECOUNTER:");
+                //Console.WriteLine("PRECOUNTER:");
                 stream.Position = preCounterOffset;
                 PreCounter = ReadScript(reader, (uint)stream.Length - preCounterOffset);
             }
@@ -98,7 +98,7 @@ namespace FF8Mod
                     log.Append(" ");
                     log.Append(args[i]);
                 }
-                Console.WriteLine(log.ToString());
+                //Console.WriteLine(log.ToString());
             }
 
             return result;
