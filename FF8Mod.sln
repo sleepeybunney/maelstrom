@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maelstrom", "Maelstrom\Mael
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FF8Mod", "FF8Mod\FF8Mod.csproj", "{30B7DF9E-B589-40A3-A687-1D0399041FF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FF8ModTest", "FF8ModTest\FF8ModTest.csproj", "{D12ACB79-E8BA-41B4-AD74-F35D86084C42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{30B7DF9E-B589-40A3-A687-1D0399041FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B7DF9E-B589-40A3-A687-1D0399041FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B7DF9E-B589-40A3-A687-1D0399041FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12ACB79-E8BA-41B4-AD74-F35D86084C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12ACB79-E8BA-41B4-AD74-F35D86084C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12ACB79-E8BA-41B4-AD74-F35D86084C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12ACB79-E8BA-41B4-AD74-F35D86084C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
