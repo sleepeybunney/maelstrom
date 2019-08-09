@@ -27,9 +27,12 @@ namespace FF8Mod
                 while (stream.Position < stream.Length)
                 {
                     var code = (int)reader.ReadByte();
+                    
+                    // null-terminated
                     if (code == 0) break;
 
                     /*
+                    // special characters & commands
                     switch (code)
                     {
                         case 0x02:
@@ -59,6 +62,7 @@ namespace FF8Mod
                     var index = code - 0x20;
                     if (index < 0 || index >= readableChars.Length)
                     {
+                        // unreadable characters are output as hex codes like "{0a}"
                         result += "{" + code.ToString("x2") + "}";
                     }
                     else
@@ -82,12 +86,15 @@ namespace FF8Mod
             using (var writer = new StreamWriter(stream))
             using (var reader = new BinaryReader(stream))
             {
+                // stream through the string, char by char
                 writer.Write(str);
                 writer.Flush();
                 stream.Position = 0;
                 while (stream.Position < stream.Length)
                 {
                     var nextChar = reader.ReadChar();
+
+                    // handle special character codes
                     if (nextChar == '{')
                     {
                         var code = "";
@@ -106,6 +113,7 @@ namespace FF8Mod
                     result.Add((byte)(index + 0x20));
                 }
 
+                // null-terminated
                 result.Add(0);
                 return result.ToArray();
             }

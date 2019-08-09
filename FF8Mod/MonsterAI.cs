@@ -25,11 +25,13 @@ namespace FF8Mod
                 var textIndexOffset = reader.ReadUInt32();
                 var textOffset = reader.ReadUInt32();
 
+                // extract battle AI script
                 stream.Position = aiOffset;
                 var aiLength = textIndexOffset - aiOffset;
                 AI = reader.ReadBytes((int)aiLength);
                 var ai = new BattleScript(AI);
 
+                // extract text strings
                 stream.Position = textIndexOffset;
                 var textOffsets = new List<uint>();
                 var textLengths = new List<uint>();
@@ -38,6 +40,7 @@ namespace FF8Mod
                     var newOffset = reader.ReadUInt16();
                     if (i > 0)
                     {
+                        // use this string's offset to fill in how long the previous string was
                         var prevOffset = textOffsets.Last();
                         if (newOffset < prevOffset) break;
                         textLengths.Add(newOffset - prevOffset);
@@ -45,11 +48,13 @@ namespace FF8Mod
                     textOffsets.Add(newOffset);
                 }
 
+                // final string ends at EOF
                 if (textOffsets.Count > 0)
                 {
                     textLengths.Add((uint)stream.Length - (textOffset + textOffsets.Last()));
                 }
 
+                // decode strings
                 for (int i = 0; i < textOffsets.Count; i++)
                 {
                     stream.Position = textOffset + textOffsets[i];
@@ -57,9 +62,6 @@ namespace FF8Mod
                     this.Strings.Add(FF8String.Decode(newText));
                 }
             }
-
-            //Console.WriteLine("TEXT");
-            //foreach (var s in this.Strings) Console.WriteLine(s);
         }
 
         public byte[] Encoded

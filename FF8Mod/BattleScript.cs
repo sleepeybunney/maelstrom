@@ -8,11 +8,11 @@ namespace FF8Mod
 {
     public partial class BattleScript
     {
-        public List<Instruction> Init;
-        public List<Instruction> Execute;
-        public List<Instruction> Counter;
-        public List<Instruction> Death;
-        public List<Instruction> PreCounter;
+        public List<Instruction> Init;          // executes when added to the battle (usually at the start)
+        public List<Instruction> Execute;       // executes when ATB is full
+        public List<Instruction> Counter;       // executes after receiving an action (eg. being attacked)
+        public List<Instruction> Death;         // executes on death
+        public List<Instruction> PreCounter;    // executes after receiving an action, before counter
 
         public BattleScript()
         {
@@ -23,6 +23,7 @@ namespace FF8Mod
             this.PreCounter = new List<Instruction>();
         }
 
+        // construct from binary data (ie. game files)
         public BattleScript(byte[] data)
         {
             using (var stream = new MemoryStream(data))
@@ -34,28 +35,24 @@ namespace FF8Mod
                 var deathOffset = reader.ReadUInt32();
                 var preCounterOffset = reader.ReadUInt32();
 
-                //Console.WriteLine("INIT:");
                 stream.Position = initOffset;
                 Init = ReadScript(reader, executeOffset - initOffset);
 
-                //Console.WriteLine("EXECUTE:");
                 stream.Position = executeOffset;
                 Execute = ReadScript(reader, counterOffset - executeOffset);
 
-                //Console.WriteLine("COUNTER:");
                 stream.Position = counterOffset;
                 Counter = ReadScript(reader, deathOffset - counterOffset);
 
-                //Console.WriteLine("DEATH:");
                 stream.Position = deathOffset;
                 Death = ReadScript(reader, preCounterOffset - deathOffset);
 
-                //Console.WriteLine("PRECOUNTER:");
                 stream.Position = preCounterOffset;
                 PreCounter = ReadScript(reader, (uint)stream.Length - preCounterOffset);
             }
         }
 
+        // decode an individual script from a binary stream
         private static List<Instruction> ReadScript(BinaryReader reader, uint length)
         {
             var result = new List<Instruction>();
@@ -67,8 +64,10 @@ namespace FF8Mod
             {
                 code = reader.ReadByte();
 
+                // skip over multiple returns in a row (padding)
                 if (code == 0 && prevCode == 0) continue;
 
+                // something is wrong, abort
                 if (!OpCodes.ContainsKey(code))
                 {
                     Console.WriteLine("Unknown op: " + code);
@@ -77,6 +76,8 @@ namespace FF8Mod
 
                 var op = OpCodes[code];
                 var args = new List<short>();
+
+                // argument values are different lengths, depending on the op
                 foreach (var a in op.Args)
                 {
                     switch (a.Type)
@@ -91,14 +92,6 @@ namespace FF8Mod
                 }
                 result.Add(new Instruction(op, args.ToArray()));
                 prevCode = code;
-
-                var log = new StringBuilder(op.Name);
-                for (int i=0; i < args.Count; i++)
-                {
-                    log.Append(" ");
-                    log.Append(args[i]);
-                }
-                //Console.WriteLine(log.ToString());
             }
 
             return result;
