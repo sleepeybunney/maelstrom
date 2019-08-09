@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
-namespace FF8Mod.Maelstrom
+namespace FF8Mod
 {
-    class FileList
+    public class FileList
     {
         public List<string> Files;
 
@@ -41,6 +42,13 @@ namespace FF8Mod.Maelstrom
         {
             var pathLower = path.ToLower();
             return Files.FindIndex(f => f.ToLower() == pathLower);
+        }
+
+        public List<string> GetDirectory(string path)
+        {
+            var result = Files.Where(f => f.StartsWith(path.ToLower()));
+            if (result.Count() == 0) return null;
+            return result.ToList();
         }
     }
 }

@@ -46,6 +46,10 @@
     <Compile Include="FF8String.cs" />
     <Compile Include="FieldScript.cs" />
     <Compile Include="FieldScriptConstants.cs" />
+    <Compile Include="FileIndex.cs" />
+    <Compile Include="FileList.cs" />
+    <Compile Include="FileSource.cs" />
+    <Compile Include="Lzss.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterAI.cs" />
     <Compile Include="MonsterInfo.cs" />

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace FF8Mod.Maelstrom
+namespace FF8Mod
 {
-    class Lzss
+    public class Lzss
     {
         public static byte[] Decompress(byte[] data)
         {

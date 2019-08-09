@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace FF8Mod.Maelstrom
+namespace FF8Mod
 {
-    class FileIndex
+    public class FileIndex
     {
         public List<Entry> Entries;
 

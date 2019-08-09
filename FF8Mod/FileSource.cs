@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace FF8Mod.Maelstrom
+namespace FF8Mod
 {
-    class FileSource
+    public class FileSource
     {
         public FileList FileList;
         public FileIndex FileIndex;
@@ -124,6 +124,12 @@ namespace FF8Mod.Maelstrom
             File.Delete(IndexPath);
             File.Move(ArchivePath + ".tmp", ArchivePath);
             File.Move(IndexPath + ".tmp", IndexPath);
+        }
+
+        public bool PathExists(string path)
+        {
+            var dir = FileList.GetDirectory(path);
+            return dir != null;
         }
     }
 }
