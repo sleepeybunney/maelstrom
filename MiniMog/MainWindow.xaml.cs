@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace FF8Mod.MiniMog
 {
@@ -19,7 +20,20 @@ namespace FF8Mod.MiniMog
             InitializeComponent();
         }
 
-        private void OpenClick(object sender, System.Windows.RoutedEventArgs e)
+        private List<Monster> Monsters
+        {
+            get
+            {
+                return _monsters;
+            }
+            set
+            {
+                _monsters = value;
+                UpdateMonsterList();
+            }
+        }
+
+        private void OpenClick(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
             dialog.CheckFileExists = true;
@@ -66,25 +80,23 @@ namespace FF8Mod.MiniMog
             }
         }
 
+        private void SelectMonster(object sender, SelectionChangedEventArgs e)
+        {
+            var monster = Monsters[monsterList.SelectedIndex];
+            var script = new BattleScript(monster.AI.AI);
+            initEditor.Text = string.Join(Environment.NewLine, script.Init);
+            execEditor.Text = string.Join(Environment.NewLine, script.Execute);
+            counterEditor.Text = string.Join(Environment.NewLine, script.Counter);
+            deathEditor.Text = string.Join(Environment.NewLine, script.Death);
+            preCounterEditor.Text = string.Join(Environment.NewLine, script.PreCounter);
+        }
+
         private void UpdateMonsterList()
         {
             monsterList.Items.Clear();
             foreach (var m in Monsters)
             {
                 monsterList.Items.Add(m);
-            }
-        }
-
-        private List<Monster> Monsters
-        {
-            get
-            {
-                return _monsters;
-            }
-            set
-            {
-                _monsters = value;
-                UpdateMonsterList();
             }
         }
     }

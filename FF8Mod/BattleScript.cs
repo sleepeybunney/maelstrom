@@ -119,7 +119,7 @@ namespace FF8Mod
             }
         }
 
-        public struct Argument
+        public class Argument
         {
             public string Name;
             public ArgType Type;
@@ -133,7 +133,7 @@ namespace FF8Mod
             public Argument(string name) : this(name, ArgType.Byte) { }
         }
 
-        public struct Instruction
+        public class Instruction
         {
             public OpCode Op;
             public short[] Args;
@@ -142,6 +142,13 @@ namespace FF8Mod
             {
                 Op = op;
                 Args = args;
+            }
+
+            public override string ToString()
+            {
+                var result = Op.Name;
+                foreach (var a in Args) result += " " + a;
+                return result;
             }
         }
     }
