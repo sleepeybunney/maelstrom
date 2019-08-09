@@ -27,6 +27,11 @@ namespace FF8Mod
             return FromBytes(File.ReadAllBytes(path));
         }
 
+        public static Monster FromSource(FileSource source, string path)
+        {
+            return FromBytes(source.GetFile(path));
+        }
+
         public static Monster FromBytes(byte[] data)
         {
             var monster = new Monster();
@@ -134,6 +139,11 @@ namespace FF8Mod
 
                 return result;
             }
+        }
+
+        public override string ToString()
+        {
+            return Info.Name;
         }
 
         public enum SectionIndex
