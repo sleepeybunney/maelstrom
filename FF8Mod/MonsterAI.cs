@@ -7,7 +7,7 @@ namespace FF8Mod
 {
     public class MonsterAI
     {
-        public byte[] AI;
+        public BattleScript Scripts;
         public List<string> Strings;
 
         public MonsterAI()
@@ -28,8 +28,7 @@ namespace FF8Mod
                 // extract battle AI script
                 stream.Position = aiOffset;
                 var aiLength = textIndexOffset - aiOffset;
-                AI = reader.ReadBytes((int)aiLength);
-                var ai = new BattleScript(AI);
+                Scripts = new BattleScript(reader.ReadBytes((int)aiLength));
 
                 // extract text strings
                 stream.Position = textIndexOffset;
@@ -68,11 +67,12 @@ namespace FF8Mod
         {
             get
             {
+                var encodedScripts = Scripts.Encoded;
                 var encodedStrings = Strings.ConvertAll(s => FF8String.Encode(s));
 
                 uint subSections = 3;
                 uint headerLength = (subSections + 1) * 4;
-                uint aiLength = (uint)AI.Length;
+                uint aiLength = (uint)encodedScripts.Length;
                 uint textIndexLength = (uint)Strings.Count * 2;
                 uint textLength = (uint)encodedStrings.Sum(s => s.Length);
                 uint totalLength = headerLength + aiLength + textIndexLength + textLength;
@@ -89,7 +89,7 @@ namespace FF8Mod
                     writer.Write(aiOffset);
                     writer.Write(textIndexOffset);
                     writer.Write(textOffset);
-                    writer.Write(AI);
+                    writer.Write(encodedScripts);
 
                     ushort offset = 0;
                     for (int i = 0; i < encodedStrings.Count; i++)

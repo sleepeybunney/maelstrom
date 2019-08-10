@@ -16,11 +16,18 @@ namespace FF8Mod
 
         public BattleScript()
         {
-            this.Init = new List<Instruction>();
-            this.Execute = new List<Instruction>();
-            this.Counter = new List<Instruction>();
-            this.Death = new List<Instruction>();
-            this.PreCounter = new List<Instruction>();
+            Init = new List<Instruction>();
+            Execute = new List<Instruction>();
+            Counter = new List<Instruction>();
+            Death = new List<Instruction>();
+            PreCounter = new List<Instruction>();
+
+            // empty scripts still return
+            Init.Add(new Instruction(OpCodes[0]));
+            Execute.Add(new Instruction(OpCodes[0]));
+            Counter.Add(new Instruction(OpCodes[0]));
+            Death.Add(new Instruction(OpCodes[0]));
+            PreCounter.Add(new Instruction(OpCodes[0]));
         }
 
         // construct from binary data (ie. game files)
@@ -97,6 +104,65 @@ namespace FF8Mod
             return result;
         }
 
+        public byte[] Encoded
+        {
+            get
+            {
+                var init = EncodeScript(Init);
+                var exec = EncodeScript(Execute);
+                var counter = EncodeScript(Counter);
+                var death = EncodeScript(Death);
+                var precounter = EncodeScript(PreCounter);
+
+                var initOffset = 20;
+                var execOffset = initOffset + init.Length;
+                var counterOffset = execOffset + exec.Length;
+                var deathOffset = counterOffset + counter.Length;
+                var precounterOffset = deathOffset + death.Length;
+                var totalLength = precounterOffset + precounter.Length;
+
+                var result = new byte[totalLength];
+
+                using (var stream = new MemoryStream(result))
+                using (var writer = new BinaryWriter(stream))
+                {
+                    writer.Write((uint)initOffset);
+                    writer.Write((uint)execOffset);
+                    writer.Write((uint)counterOffset);
+                    writer.Write((uint)deathOffset);
+                    writer.Write((uint)precounterOffset);
+                    writer.Write(init);
+                    writer.Write(exec);
+                    writer.Write(counter);
+                    writer.Write(death);
+                    writer.Write(precounter);
+                }
+
+                return result;
+            }
+        }
+
+        private byte[] EncodeScript(List<Instruction> script)
+        {
+            var result = new List<byte>();
+            foreach (var instruction in script)
+            {
+                result.Add(instruction.Op.Code);
+                for (var i = 0; i < instruction.Op.Args.Length; i++)
+                {
+                    if (instruction.Op.Args[i].Type == ArgType.Short)
+                    {
+                        result.AddRange(BitConverter.GetBytes(instruction.Args[i]));
+                    }
+                    else
+                    {
+                        result.Add((byte)instruction.Args[i]);
+                    }
+                }
+            }
+            return result.ToArray();
+        }
+
         public class OpCode
         {
             public string Name;
@@ -143,6 +209,8 @@ namespace FF8Mod
                 Op = op;
                 Args = args;
             }
+
+            public Instruction(OpCode op) : this(op, new short[0]) { }
 
             public override string ToString()
             {

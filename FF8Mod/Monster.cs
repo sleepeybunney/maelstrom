@@ -12,10 +12,10 @@ namespace FF8Mod
 
         // save other sections as raw data to slot back in when rebuilding the file
         public byte[] SectionsOneToSix, SectionsNineToEleven;
+        public Dictionary<SectionIndex, Section> OriginalSectionInfo;
 
         // currently only able to re-encode the text subsection so save some info & AI data too, for now
-        public byte[] TempInfoData, TempAIData;
-        public Dictionary<SectionIndex, Section> TempSectionInfo;
+        public byte[] TempInfoData;
 
         public static Monster FromFile(string path)
         {
@@ -51,14 +51,13 @@ namespace FF8Mod
             monster.Info = new MonsterInfo(monster.TempInfoData);
 
             // 8
-            monster.TempAIData = new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray();
-            monster.AI = new MonsterAI(monster.TempAIData);
+            monster.AI = new MonsterAI(new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray());
 
             // 9-11
             var nineToElevenLength = data.Length - sections[(SectionIndex)9].Offset;
             monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToElevenLength).ToArray();
 
-            monster.TempSectionInfo = sections;
+            monster.OriginalSectionInfo = sections;
 
             return monster;
         }
@@ -113,7 +112,7 @@ namespace FF8Mod
                 // the rebuilt AI section may be a different size,
                 // so everything after it in the file will be displaced by some number of bytes (+/-)
                 // which needs to be accounted for in the header
-                var originalAILength = TempSectionInfo[SectionIndex.AI].Length;
+                var originalAILength = OriginalSectionInfo[SectionIndex.AI].Length;
                 var postAIOffset = encodedAI.Length - originalAILength;
 
                 var result = new byte[totalLength];
@@ -124,7 +123,7 @@ namespace FF8Mod
                     
                     for (int i = 1; i <= 11; i++)
                     {
-                        var offset = TempSectionInfo[(SectionIndex)i].Offset;
+                        var offset = OriginalSectionInfo[(SectionIndex)i].Offset;
                         if (i > 8) offset += postAIOffset;
                         writer.Write((uint)offset);
                     }

@@ -83,7 +83,7 @@ namespace FF8Mod.MiniMog
         private void SelectMonster(object sender, SelectionChangedEventArgs e)
         {
             var monster = Monsters[monsterList.SelectedIndex];
-            var script = new BattleScript(monster.AI.AI);
+            var script = monster.AI.Scripts;
             initEditor.Text = string.Join(Environment.NewLine, script.Init);
             execEditor.Text = string.Join(Environment.NewLine, script.Execute);
             counterEditor.Text = string.Join(Environment.NewLine, script.Counter);
