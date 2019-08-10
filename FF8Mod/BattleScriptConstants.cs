@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FF8Mod
 {
@@ -145,8 +147,8 @@ namespace FF8Mod
                 { 0x00, "type" },
                 { 0x01, "subject" },
                 { 0x02, "unknown-02" },
-                { 0x03, "menu-command" },
-                { 0x04, "action-id" },
+                { 0x03, "command" },
+                { 0x04, "id" },
                 { 0x05, "element" },
                 { 0xcb, "unknown-cb" },
             };
@@ -313,6 +315,27 @@ namespace FF8Mod
                 { 0x09, "90%" },
                 { 0x0a, "25%" }
             };
+        }
+
+        public static string GetConstant(Dictionary<byte, string> map, byte code, object defaultOutput)
+        {
+            if (map.Keys.Contains(code)) return map[code];
+            else return defaultOutput.ToString();
+        }
+
+        public static string GetConstant(Dictionary<byte, string> map, short code, object defaultOutput)
+        {
+            return GetConstant(map, (byte)code, defaultOutput);
+        }
+
+        public static string GetConstant(Dictionary<byte, string> map, byte code)
+        {
+            return GetConstant(map, code, code);
+        }
+
+        public static string GetConstant(Dictionary<byte, string> map, short code)
+        {
+            return GetConstant(map, (byte)code, code);
         }
     }
 }

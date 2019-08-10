@@ -147,18 +147,7 @@ namespace FF8Mod
             var result = new List<byte>();
             foreach (var instruction in script)
             {
-                result.Add(instruction.Op.Code);
-                for (var i = 0; i < instruction.Op.Args.Length; i++)
-                {
-                    if (instruction.Op.Args[i].Type == ArgType.Short)
-                    {
-                        result.AddRange(BitConverter.GetBytes(instruction.Args[i]));
-                    }
-                    else
-                    {
-                        result.Add((byte)instruction.Args[i]);
-                    }
-                }
+                result.AddRange(instruction.Encoded);
             }
             return result.ToArray();
         }
@@ -212,152 +201,176 @@ namespace FF8Mod
 
             public Instruction(OpCode op) : this(op, new short[0]) { }
 
+            public byte[] Encoded
+            {
+                get
+                {
+                    var result = new List<byte>() { Op.Code };
+                    for (var i = 0; i < Op.Args.Length; i++)
+                    {
+                        if (Op.Args[i].Type == ArgType.Short)
+                        {
+                            result.AddRange(BitConverter.GetBytes(Args[i]));
+                        }
+                        else
+                        {
+                            result.Add((byte)Args[i]);
+                        }
+                    }
+                    return result.ToArray();
+                }
+            }
+
             public override string ToString()
             {
                 var result = Op.Name;
 
-                if (Args.Length > 0 && Op.Code != 0x02) result += " (";
+                if (Args.Length > 0) result += " (";
 
                 switch (Op.Code)
                 {
+                    // if statement
                     case 0x02:
+                        
+                        // first arg gives context to the others
+                        // eg. whether we're looking at HP values or status effects etc.
                         var conditionType = (byte)Args[0];
-                        result += " " + ConditionCodes[conditionType];
+                        result += ConditionCodes[conditionType];
 
+                        // left side of the comparison may be omitted
+                        // eg. "is-alive" only needs one value (the person whose aliveness we're checking)
+                        // so that goes on the right & the left value is ignored
                         var left = (byte)Args[1];
                         if (ParameterisedConditions.Contains(conditionType))
                         {
                             result += "(";
-                            if (new byte[] { 0x00, 0x04 }.Contains(conditionType))
-                            {
-                                if (Targets.Keys.Contains(left)) result += Targets[left];
-                                else result += left;
-                            }
-                            else if (new byte[] { 0x01, 0x05, 0x06, 0x10, 0x14 }.Contains(conditionType))
-                            {
-                                if (Groups.Keys.Contains(left)) result += Groups[left];
-                                else result += left;
-                            }
-                            else result += left;
+
+                            // single target: target-hp and target-status
+                            if (conditionType == 0x00 || conditionType == 0x04) result += GetConstant(Targets, left);
+
+                            // numeric: random-number
+                            else if (conditionType == 0x02) result += left;
+
+                            // group-target: any-group-member-hp, number-in-group-alive, etc.
+                            else result += GetConstant(Groups, left);
+
                             result += ")";
                         }
 
+                        // last-action compares against a single property of the most recent action
+                        // eg. the person who did it or the element of the attack
                         if (conditionType == 0x0a)
                         {
-                            result += ".";
-                            switch (left)
-                            {
-                                case 0x00:
-                                    result += "type";
-                                    break;
-                                case 0x01:
-                                    result += "subject";
-                                    break;
-                                case 0x02:
-                                    result += "unknown2";
-                                    break;
-                                case 0x03:
-                                    result += "command";
-                                    break;
-                                case 0x04:
-                                    result += "id";
-                                    break;
-                                case 0x05:
-                                    result += "element";
-                                    break;
-                                default:
-                                    result += "unknown";
-                                    break;
-                            }
+                            result += "." + GetConstant(ActionProperties, left, "unknown");
                         }
 
+                        // comparison operator
                         var op = (byte)Args[2];
                         result += " " + Operators[op];
 
+                        // right side of the comparison may be a byte or a short, depending on what it is
                         var right = Args[3];
                         result += " ";
                         switch (conditionType)
                         {
+                            // HP is measured in increments of 10%, or 25%
                             case 0x00:
                             case 0x01:
-                                result += PercentageModifiers[(byte)right];
+                                result += GetConstant(PercentageModifiers, right);
                                 break;
+
+                            // status effects
                             case 0x04:
                             case 0x05:
                             case 0x14:
-                                result += StatusCodes[(byte)right];
+                                result += GetConstant(StatusCodes, right);
                                 break;
+
+                            // single target
                             case 0x09:
-                                if (Targets.Keys.Contains((byte)right)) result += Targets[(byte)right];
-                                else result += right;
+                                result += GetConstant(Targets, right);
                                 break;
+
+                            // last-action properties
                             case 0x0a:
                                 switch (left)
                                 {
                                     case 0x00:
-                                        result += ActionTypes[(byte)right];
+                                        result += GetConstant(ActionTypes, right);
                                         break;
                                     case 0x01:
-                                        if (Targets.Keys.Contains((byte)right)) result += Targets[(byte)right];
-                                        else result += right;
+                                        result += GetConstant(Targets, right);
                                         break;
                                     case 0x03:
-                                        result += MenuCommands[(byte)right];
+                                        result += GetConstant(MenuCommands, right);
                                         break;
                                     case 0x05:
-                                        result += Elements[(byte)right];
+                                        result += GetConstant(Elements, right);
                                         break;
                                     default:
                                         result += right;
                                         break;
                                 }
                                 break;
+
+                            // level bands (low < med < high)
                             case 0x0e:
-                                result += LevelBands[(byte)right];
+                                result += GetConstant(LevelBands, right);
                                 break;
+
+                            // genders
                             case 0x10:
-                                result += Genders[(byte)right];
+                                result += GetConstant(Genders, right);
                                 break;
+
+                            // numeric or unknown values
                             default:
                                 result += right;
                                 break;
                         }
 
+                        // offset to jump if the condition isn't met (+/-)
                         var offset = Args[4];
                         result += " [" + offset + "]";
                         break;
+
+                    // target
                     case 0x04:
-                        var target = (byte)Args[0];
-                        if (Targets.Keys.Contains(target)) result += Targets[target];
-                        else result += target;
+                        result += GetConstant(Targets, Args[0]);
                         break;
+
+                    // friend-remove
                     case 0x1d:
-                        var friend = (byte)Args[0];
-                        if (Friends.Keys.Contains(friend)) result += Targets[friend];
-                        else result += friend;
+                        result += GetConstant(Friends, Args[0]);
                         break;
+
+                    // target-random
+                    // narrowed down by group (eg. all enemies) then by status (eg. not asleep)
                     case 0x26:
                         var group = (byte)Args[1];
                         var oper = (byte)Args[2];
                         var status = (byte)Args[3];
-
-                        if (Groups.Keys.Contains(group)) result += Groups[group];
-                        else result += group;
-
-                        result += string.Format(" {0} {1}", Operators[oper], StatusCodes[status]);
+                        result += string.Format("{0} {1} {2}", GetConstant(Groups, group), GetConstant(Operators, oper), GetConstant(StatusCodes, status));
                         break;
+
+                    // permanent-status
                     case 0x27:
-                        result += string.Format("{0}, {1}", StatusCodes[(byte)Args[0]], Args[1]);
+                        result += string.Format("{0}, {1}", GetConstant(StatusCodes, Args[0]), Args[1]);
                         break;
+
+                    // elem-def-change
                     case 0x2d:
-                        result += string.Format("{0}, {1}", Elements[(byte)Args[0]], Args[1]);
+                        result += string.Format("{0}, {1}", GetConstant(Elements, Args[0]), Args[1]);
                         break;
+
+                    // numeric or unknown values
                     default:
                         result += string.Join(", ", Args);
                         break;
+
                 }
 
-                if (Args.Length > 0 && Op.Code != 0x02) result += ")";
+                if (Args.Length > 0) result += ")";
                 return result;
             }
         }
