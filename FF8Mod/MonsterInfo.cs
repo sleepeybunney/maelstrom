@@ -175,7 +175,7 @@ namespace FF8Mod
 
         private int OffensiveStatAtLevel(int level, byte[] values)
         {
-            return level * values[0] / 10 + level / values[1] - level * level / 2 / (values[3] + values[2]) / 4;
+            return (level * values[0] / 10 + level / values[1] - level * level / 2 / values[3] + values[2]) / 4;
         }
 
         private int NonOffensiveStatAtLevel(int level, byte[] values)
