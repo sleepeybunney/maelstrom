@@ -182,7 +182,7 @@ namespace FF8Mod
             StatusCodes = new Dictionary<byte, string>()
             {
                 { 0x00, "ko" },
-                { 0x01, "poison" },
+                { 0x01, "poisoned" },
                 { 0x02, "petrify" },
                 { 0x03, "darkness" },
                 { 0x04, "silence" },
@@ -289,7 +289,7 @@ namespace FF8Mod
             LevelBands = new Dictionary<byte, string>()
             {
                 { 0x00, "low" },
-                { 0x01, "med" },
+                { 0x01, "medium" },
                 { 0x02, "high" }
             };
 

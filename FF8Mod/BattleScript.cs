@@ -216,7 +216,7 @@ namespace FF8Mod
             {
                 var result = Op.Name;
 
-                if (Args.Length > 0 && Op.Code != 0x02) result += "(";
+                if (Args.Length > 0 && Op.Code != 0x02) result += " (";
 
                 switch (Op.Code)
                 {
