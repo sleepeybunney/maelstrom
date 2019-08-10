@@ -35,11 +35,13 @@ namespace FF8Mod.MiniMog
 
         private void OpenClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog();
-            dialog.CheckFileExists = true;
-            dialog.Multiselect = false;
-            dialog.Filter = "File Source (*.fs)|*.fs";
-            dialog.Title = "Open battle.fs";
+            var dialog = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                Multiselect = false,
+                Filter = "File Source (*.fs)|*.fs",
+                Title = "Open battle.fs"
+            };
 
             if (dialog.ShowDialog() == true)
             {

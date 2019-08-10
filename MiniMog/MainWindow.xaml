@@ -17,27 +17,27 @@
         <TabControl x:Name="tabControl" Height="549" Margin="195,10,10,0" VerticalAlignment="Top" RenderTransformOrigin="1.03,0.91">
             <TabItem Header="INIT">
                 <Grid>
-                    <AvalonEdit:TextEditor Name="initEditor" FontFamily="Consolas" FontSize="11pt" Padding="20,10,20,10" />
+                    <AvalonEdit:TextEditor Name="initEditor" FontFamily="Consolas" FontSize="11pt" Padding="10" ShowLineNumbers="True" />
                 </Grid>
             </TabItem>
             <TabItem Header="EXECUTE">
                 <Grid>
-                    <AvalonEdit:TextEditor Name="execEditor" FontFamily="Consolas" FontSize="11pt" Padding="20,10,20,10" />
+                    <AvalonEdit:TextEditor Name="execEditor" FontFamily="Consolas" FontSize="11pt" Padding="10" ShowLineNumbers="True" />
                 </Grid>
             </TabItem>
             <TabItem Header="COUNTER">
                 <Grid>
-                    <AvalonEdit:TextEditor Name="counterEditor" FontFamily="Consolas" FontSize="11pt" Padding="20,10,20,10" />
+                    <AvalonEdit:TextEditor Name="counterEditor" FontFamily="Consolas" FontSize="11pt" Padding="10" ShowLineNumbers="True" />
                 </Grid>
             </TabItem>
             <TabItem Header="DEATH">
                 <Grid>
-                    <AvalonEdit:TextEditor Name="deathEditor" FontFamily="Consolas" FontSize="11pt" Padding="20,10,20,10" />
+                    <AvalonEdit:TextEditor Name="deathEditor" FontFamily="Consolas" FontSize="11pt" Padding="10" ShowLineNumbers="True" />
                 </Grid>
             </TabItem>
             <TabItem Header="PRECOUNTER">
                 <Grid>
-                    <AvalonEdit:TextEditor Name="preCounterEditor" FontFamily="Consolas" FontSize="11pt" Padding="20,10,20,10" />
+                    <AvalonEdit:TextEditor Name="preCounterEditor" FontFamily="Consolas" FontSize="11pt" Padding="10" ShowLineNumbers="True" />
                 </Grid>
             </TabItem>
         </TabControl>
