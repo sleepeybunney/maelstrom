@@ -6,6 +6,7 @@ namespace FF8Mod
     {
         public static Dictionary<byte, OpCode> OpCodes;
         public static Dictionary<byte, string> ConditionCodes;
+        public static byte[] ParameterisedConditions;
         public static Dictionary<byte, string> ActionProperties;
         public static Dictionary<byte, string> Operators;
         public static Dictionary<byte, string> UnaryOperators;
@@ -132,6 +133,11 @@ namespace FF8Mod
                 { 0xe1, "var-5" },
                 { 0xe2, "var-6" },
                 { 0xe3, "var-7" }
+            };
+
+            ParameterisedConditions = new byte[]
+            {
+                0x00, 0x01, 0x02, 0x04, 0x05, 0x06, 0x10, 0x14
             };
 
             ActionProperties = new Dictionary<byte, string>()
