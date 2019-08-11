@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FF8Mod;
+﻿using FF8Mod;
 using Xunit;
 
 namespace FF8ModTest
@@ -68,13 +63,13 @@ namespace FF8ModTest
 
             Assert.Equal(0x00, minotaur.AI.Scripts.Init[0].Op.Code);
             Assert.Equal(0x00, minotaur.AI.Scripts.PreCounter[0].Op.Code);
-            Assert.Equal(22, minotaur.AI.Scripts.Execute.Count);
+            Assert.Equal(25, minotaur.AI.Scripts.Execute.Count);
             Assert.Equal(0x0c, minotaur.AI.Scripts.Execute[20].Op.Code);
             Assert.Equal(0, minotaur.AI.Scripts.Execute[20].Args[0]);
-            Assert.Equal(4, minotaur.AI.Scripts.Counter.Count);
+            Assert.Equal(9, minotaur.AI.Scripts.Counter.Count);
             Assert.Equal(0x23, minotaur.AI.Scripts.Counter[1].Op.Code);
             Assert.Equal(3, minotaur.AI.Scripts.Counter[1].Args[0]);
-            Assert.Equal(11, minotaur.AI.Scripts.Death.Count);
+            Assert.Equal(14, minotaur.AI.Scripts.Death.Count);
 
             Assert.Equal(4, minotaur.AI.Strings.Count);
             Assert.Equal("Minotaur “may we join you?”", minotaur.AI.Strings[3]);
@@ -132,13 +127,13 @@ namespace FF8ModTest
 
             Assert.Equal(0x00, minotaur.AI.Scripts.Init[0].Op.Code);
             Assert.Equal(0x00, minotaur.AI.Scripts.PreCounter[0].Op.Code);
-            Assert.Equal(22, minotaur.AI.Scripts.Execute.Count);
+            Assert.Equal(25, minotaur.AI.Scripts.Execute.Count);
             Assert.Equal(0x0c, minotaur.AI.Scripts.Execute[20].Op.Code);
             Assert.Equal(0, minotaur.AI.Scripts.Execute[20].Args[0]);
-            Assert.Equal(4, minotaur.AI.Scripts.Counter.Count);
+            Assert.Equal(9, minotaur.AI.Scripts.Counter.Count);
             Assert.Equal(0x23, minotaur.AI.Scripts.Counter[1].Op.Code);
             Assert.Equal(3, minotaur.AI.Scripts.Counter[1].Args[0]);
-            Assert.Equal(11, minotaur.AI.Scripts.Death.Count);
+            Assert.Equal(14, minotaur.AI.Scripts.Death.Count);
 
             Assert.Equal(4, minotaur.AI.Strings.Count);
             Assert.Equal("Minotaur “may we join you?”", minotaur.AI.Strings[3]);

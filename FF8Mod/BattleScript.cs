@@ -64,15 +64,11 @@ namespace FF8Mod
         {
             var result = new List<Instruction>();
             byte code;
-            byte prevCode = byte.MaxValue;
             var initialOffset = reader.BaseStream.Position;
 
             while (reader.BaseStream.Position < initialOffset + length)
             {
                 code = reader.ReadByte();
-
-                // skip over multiple returns in a row (padding)
-                if (code == 0 && prevCode == 0) continue;
 
                 // something is wrong, abort
                 if (!OpCodes.ContainsKey(code))
@@ -98,7 +94,6 @@ namespace FF8Mod
                     }
                 }
                 result.Add(new Instruction(op, args.ToArray()));
-                prevCode = code;
             }
 
             return result;
