@@ -85,16 +85,19 @@ namespace FF8Mod
 
         public void ReplaceFile(string path, byte[] data)
         {
-            if (Source != null) throw new NotImplementedException("Writing to nested file sources is not yet implemented");
-
             var key = FileList.GetIndex(path);
             var entry = FileIndex.Entries[key];
 
-            var oldArchiveSize = new FileInfo(ArchivePath).Length;
+            // calculate change in file size
+            long oldArchiveSize;
+            if (Source == null) oldArchiveSize = new FileInfo(ArchivePath).Length;
+            else oldArchiveSize = Source.GetFile(ArchivePath).LongLength;
+
             var oldSize = oldArchiveSize - entry.Location;
             if (key != FileIndex.Entries.Count - 1) oldSize = FileIndex.Entries[key + 1].Location - entry.Location;
             var sizeChange = data.Length - oldSize;
 
+            // offset all the file entries displaced by the change
             FileIndex.Entries[key] = new FileIndex.Entry(entry.Location, (uint)data.Length, false);
             for (int i = key + 1; i < FileIndex.Entries.Count; i++)
             {
@@ -102,14 +105,18 @@ namespace FF8Mod
                 FileIndex.Entries[i] = new FileIndex.Entry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compressed);
             }
 
-            using (var stream = new FileStream(IndexPath + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
+            // write new index file to temp space
+            var tempIndexPath = Path.GetTempFileName();
+            using (var stream = new FileStream(tempIndexPath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (var writer = new BinaryWriter(stream))
             {
                 writer.Write(FileIndex.Encoded);
             }
 
-            using (var newStream = new FileStream(ArchivePath + ".tmp", FileMode.Create, FileAccess.Write, FileShare.None))
-            using (var oldStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            // write new archive file to temp space
+            var tempArchivePath = Path.GetTempFileName();
+            using (var newStream = new FileStream(tempArchivePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var oldStream = ArchiveStream())
             using (var writer = new BinaryWriter(newStream))
             using (var reader = new BinaryReader(oldStream))
             {
@@ -120,10 +127,26 @@ namespace FF8Mod
                 writer.Write(reader.ReadBytes((int)(oldStream.Length - oldStream.Position)));
             }
 
-            File.Delete(ArchivePath);
-            File.Delete(IndexPath);
-            File.Move(ArchivePath + ".tmp", ArchivePath);
-            File.Move(IndexPath + ".tmp", IndexPath);
+            if (Source == null)
+            {
+                File.Delete(ArchivePath);
+                File.Delete(IndexPath);
+                File.Move(tempArchivePath, ArchivePath);
+                File.Move(tempIndexPath, IndexPath);
+            }
+            else
+            {
+                Source.ReplaceFile(ArchivePath, File.ReadAllBytes(tempArchivePath));
+                Source.ReplaceFile(IndexPath, File.ReadAllBytes(tempIndexPath));
+                File.Delete(tempArchivePath);
+                File.Delete(tempIndexPath);
+            }
+        }
+
+        private Stream ArchiveStream()
+        {
+            if (Source == null) return new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.None);
+            else return new MemoryStream(Source.GetFile(ArchivePath));
         }
 
         public bool PathExists(string path)
