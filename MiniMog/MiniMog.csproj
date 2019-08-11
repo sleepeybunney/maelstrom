@@ -7,7 +7,7 @@
     <ProjectGuid>{BD5A765C-0B92-465B-B151-55906EE7581F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MiniMog</RootNamespace>
+    <RootNamespace>FF8Mod.MiniMog</RootNamespace>
     <AssemblyName>MiniMog</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

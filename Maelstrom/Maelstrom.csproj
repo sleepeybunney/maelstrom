@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2F2C51AE-51D5-424D-A706-09992D9ACB92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Maelstrom</RootNamespace>
+    <RootNamespace>FF8Mod.Maelstrom</RootNamespace>
     <AssemblyName>Maelstrom</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
