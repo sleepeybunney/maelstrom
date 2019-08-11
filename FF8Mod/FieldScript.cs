@@ -105,6 +105,8 @@ namespace FF8Mod
                     allScripts.AddRange(e.Scripts);
                 }
 
+                allScripts = allScripts.OrderBy(s => s.Instructions[0].Param).ToList();
+
                 var entityInfoLength = Entities.Count * 2;                              // 2 bytes per entity
                 var scriptInfoLength = allScripts.Count * 2 + 2;                        // 2 bytes per script + an extra entry to denote EOF
                 var scriptDataLength = allScripts.Sum(s => s.Instructions.Count * 4);   // 4 bytes per instruction

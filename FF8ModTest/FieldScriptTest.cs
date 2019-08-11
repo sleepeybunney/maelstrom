@@ -130,5 +130,43 @@ namespace FF8ModTest
             Assert.Equal(6, script.Entities[1].Scripts[2].Instructions[1].OpCode);
             Assert.Equal(8, script.Entities[1].Scripts[2].Instructions[1].Param);
         }
+
+        [Fact]
+        public void FullTest2()
+        {
+            // load a real jsm file from the game
+            var jsmFile = File.ReadAllBytes(@"TestData\bdifrit1.jsm");
+            var script = new FieldScript(jsmFile);
+
+            // 16 entities with all the correct scripts
+            Assert.Equal(16, script.Entities.Count);
+            Assert.Single(script.Entities.Where(e => e.Type == FieldScript.EntityType.Line).ToList());
+            Assert.Empty(script.Entities.Where(e => e.Type == FieldScript.EntityType.Door).ToList());
+            Assert.Equal(4, script.Entities.Where(e => e.Type == FieldScript.EntityType.Background).Count());
+            Assert.Equal(11, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+
+            Assert.Equal(8, script.Entities[0].Scripts.Count);
+            Assert.Equal(44, script.Entities[0].Scripts[0].Instructions[0].Param);
+            Assert.Equal(2, script.Entities[1].Scripts.Count);
+            Assert.Equal(56, script.Entities[1].Scripts[0].Instructions[0].Param);
+            Assert.Equal(4, script.Entities[15].Scripts.Count);
+            Assert.Equal(52, script.Entities[15].Scripts[0].Instructions[0].Param);
+
+            // re-encode & run the same tests again
+            script = new FieldScript(script.Encoded);
+
+            Assert.Equal(16, script.Entities.Count);
+            Assert.Single(script.Entities.Where(e => e.Type == FieldScript.EntityType.Line).ToList());
+            Assert.Empty(script.Entities.Where(e => e.Type == FieldScript.EntityType.Door).ToList());
+            Assert.Equal(4, script.Entities.Where(e => e.Type == FieldScript.EntityType.Background).Count());
+            Assert.Equal(11, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+
+            Assert.Equal(8, script.Entities[0].Scripts.Count);
+            Assert.Equal(44, script.Entities[0].Scripts[0].Instructions[0].Param);
+            Assert.Equal(2, script.Entities[1].Scripts.Count);
+            Assert.Equal(56, script.Entities[1].Scripts[0].Instructions[0].Param);
+            Assert.Equal(4, script.Entities[15].Scripts.Count);
+            Assert.Equal(52, script.Entities[15].Scripts[0].Instructions[0].Param);
+        }
     }
 }
