@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="BattleScript.cs" />
     <Compile Include="BattleScriptConstants.cs" />
+    <Compile Include="Encounter.cs" />
+    <Compile Include="EncounterSlot.cs" />
     <Compile Include="FF8String.cs" />
     <Compile Include="FieldScript.cs" />
     <Compile Include="FieldScriptConstants.cs" />
