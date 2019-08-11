@@ -33,33 +33,30 @@ namespace FF8Mod
             for (int i = 0; i < 8; i++) Slots[i] = new EncounterSlot();
         }
 
-        public static Encounter FromBytes(int id, byte[] data)
+        public Encounter(byte[] data) : this()
         {
-            var result = new Encounter();
-
             using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))
             {
-                stream.Seek(id * 128, SeekOrigin.Begin);
-                result.Scene = reader.ReadByte();
+                Scene = reader.ReadByte();
 
                 var flags = reader.ReadByte();
-                result.NoEscape = (flags & 1) != 0;
-                result.NoVictorySequence = (flags & 2) != 0;
-                result.ShowTimer = (flags & 4) != 0;
-                result.NoExp = (flags & 8) != 0;
-                result.NoResults = (flags & 16) != 0;
-                result.StruckFirst = (flags & 32) != 0;
-                result.BackAttack = (flags & 64) != 0;
-                result.ScriptedBattle = (flags & 128) != 0;
+                NoEscape = (flags & 1) != 0;
+                NoVictorySequence = (flags & 2) != 0;
+                ShowTimer = (flags & 4) != 0;
+                NoExp = (flags & 8) != 0;
+                NoResults = (flags & 16) != 0;
+                StruckFirst = (flags & 32) != 0;
+                BackAttack = (flags & 64) != 0;
+                ScriptedBattle = (flags & 128) != 0;
 
                 var mainCamera = reader.ReadByte();
-                result.MainCamera = (byte)(mainCamera >> 4);
-                result.MainCameraAnimation = (byte)(mainCamera & 0x0F);
+                MainCamera = (byte)(mainCamera >> 4);
+                MainCameraAnimation = (byte)(mainCamera & 0x0F);
 
                 var secondaryCamera = reader.ReadByte();
-                result.SecondaryCamera = (byte)(secondaryCamera >> 4);
-                result.SecondaryCameraAnimation = (byte)(secondaryCamera & 0x0F);
+                SecondaryCamera = (byte)(secondaryCamera >> 4);
+                SecondaryCameraAnimation = (byte)(secondaryCamera & 0x0F);
 
                 var hidden = reader.ReadByte();
                 var unloaded = reader.ReadByte();
@@ -68,37 +65,95 @@ namespace FF8Mod
 
                 for (int i = 0; i < 8; i++)
                 {
-                    result.Slots[i].Hidden = ((hidden >> (7 - i)) & 1) != 0;
-                    result.Slots[i].Unloaded = ((unloaded >> (7 - i)) & 1) != 0;
-                    result.Slots[i].Untargetable = ((untargetable >> (7 - i)) & 1) != 0;
-                    result.Slots[i].Enabled = ((enabled >> (7 - i)) & 1) != 0;
-                    result.Slots[i].Position = new EncounterSlot.Coords(reader.ReadInt16(), reader.ReadInt16(), reader.ReadInt16());
+                    // shift right until the relevant bit is LSB & check that
+                    Slots[i].Hidden = ((hidden >> (7 - i)) & 1) != 0;
+                    Slots[i].Unloaded = ((unloaded >> (7 - i)) & 1) != 0;
+                    Slots[i].Untargetable = ((untargetable >> (7 - i)) & 1) != 0;
+                    Slots[i].Enabled = ((enabled >> (7 - i)) & 1) != 0;
+                    Slots[i].Position = new EncounterSlot.Coords(reader.ReadInt16(), reader.ReadInt16(), reader.ReadInt16());
                 }
 
-                foreach (var s in result.Slots) s.MonsterID = reader.ReadByte();
-                foreach (var s in result.Slots) s.Unknown1 = reader.ReadInt16();
-                foreach (var s in result.Slots) s.Unknown2 = reader.ReadInt16();
-                foreach (var s in result.Slots) s.Unknown3 = reader.ReadInt16();
-                foreach (var s in result.Slots) s.Unknown4 = reader.ReadByte();
-                foreach (var s in result.Slots) s.Level = reader.ReadByte();
+                foreach (var s in Slots) s.MonsterID = reader.ReadByte();
+                foreach (var s in Slots) s.Unknown1 = reader.ReadInt16();
+                foreach (var s in Slots) s.Unknown2 = reader.ReadInt16();
+                foreach (var s in Slots) s.Unknown3 = reader.ReadInt16();
+                foreach (var s in Slots) s.Unknown4 = reader.ReadByte();
+                foreach (var s in Slots) s.Level = reader.ReadByte();
             }
-
-            return result;
         }
 
-        public static Encounter FromFile(int id, string path)
+        public byte[] Encoded
         {
-            if (!File.Exists(path))
+            get
             {
-                throw new FileNotFoundException("Encounter file not found");
+                var result = new byte[128];
+
+                using (var stream = new MemoryStream(result))
+                using (var writer = new BinaryWriter(stream))
+                {
+                    writer.Write(Scene);
+
+                    byte flags = 0;
+                    if (NoEscape) flags += 1;
+                    if (NoVictorySequence) flags += 2;
+                    if (ShowTimer) flags += 4;
+                    if (NoExp) flags += 8;
+                    if (NoResults) flags += 16;
+                    if (StruckFirst) flags += 32;
+                    if (BackAttack) flags += 64;
+                    if (ScriptedBattle) flags += 128;
+                    writer.Write(flags);
+
+                    byte mainCamera = (byte)(MainCamera << 4);
+                    mainCamera += MainCameraAnimation;
+                    writer.Write(mainCamera);
+
+                    byte secondaryCamera = (byte)(SecondaryCamera << 4);
+                    secondaryCamera += SecondaryCameraAnimation;
+                    writer.Write(secondaryCamera);
+
+                    byte hidden = 0;
+                    byte unloaded = 0;
+                    byte untargetable = 0;
+                    byte enabled = 0;
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        if (Slots[i].Hidden) hidden++;
+                        if (i < 7) hidden <<= 1;
+
+                        if (Slots[i].Unloaded) unloaded++;
+                        if (i < 7) unloaded <<= 1;
+
+                        if (Slots[i].Untargetable) untargetable++;
+                        if (i < 7) untargetable <<= 1;
+
+                        if (Slots[i].Enabled) enabled++;
+                        if (i < 7) enabled <<= 1;
+                    }
+
+                    writer.Write(hidden);
+                    writer.Write(unloaded);
+                    writer.Write(untargetable);
+                    writer.Write(enabled);
+
+                    for (int i = 0; i < 8; i++)
+                    {
+                        writer.Write(Slots[i].Position.X);
+                        writer.Write(Slots[i].Position.Y);
+                        writer.Write(Slots[i].Position.Z);
+                    }
+
+                    foreach (var s in Slots) writer.Write(s.MonsterID);
+                    foreach (var s in Slots) writer.Write(s.Unknown1);
+                    foreach (var s in Slots) writer.Write(s.Unknown2);
+                    foreach (var s in Slots) writer.Write(s.Unknown3);
+                    foreach (var s in Slots) writer.Write(s.Unknown4);
+                    foreach (var s in Slots) writer.Write(s.Level);
+                }
+
+                return result;
             }
-
-            return FromBytes(id, File.ReadAllBytes(path));
-        }
-
-        public static Encounter FromSource(int id, FileSource source, string path)
-        {
-            return FromBytes(id, source.GetFile(path));
         }
     }
 }

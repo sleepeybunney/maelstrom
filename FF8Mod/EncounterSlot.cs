@@ -24,6 +24,10 @@ namespace FF8Mod
             Unloaded = false;
             Untargetable = false;
             Hidden = false;
+            Unknown1 = 0;
+            Unknown2 = 0;
+            Unknown3 = 0;
+            Unknown4 = 0;
         }
 
         public Monster GetMonster(FileSource battleSource)

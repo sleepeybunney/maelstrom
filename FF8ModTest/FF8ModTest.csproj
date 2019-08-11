@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleScriptTest.cs" />
+    <Compile Include="EncounterTest.cs" />
     <Compile Include="FieldScriptTest.cs" />
     <Compile Include="MonsterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
