@@ -9,6 +9,7 @@ namespace FF8Mod
     public partial class FieldScript
     {
         public static Dictionary<int, string> OpCodes;
+        public static Dictionary<string, int> OpCodesReverse;
 
         public enum EntityType
         {
@@ -396,8 +397,8 @@ namespace FF8Mod
                 { 0x173, "unknown173" },
                 { 0x174, "unknown174" },
                 { 0x175, "unknown175" },
-                { 0x176, "unknown176" },
-                { 0x177, "unknown177" },
+                { 0x176, "premapjump2" },
+                { 0x177, "tuto" },
                 { 0x178, "unknown178" },
                 { 0x179, "unknown179" },
                 { 0x17a, "unknown17a" },
@@ -411,6 +412,8 @@ namespace FF8Mod
                 { 0x182, "unknown182" },
                 { 0x183, "unknown183" },
             };
+
+            OpCodesReverse = OpCodes.ToDictionary(o => o.Value, o => o.Key);
         }
     }
 }

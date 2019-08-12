@@ -8,9 +8,14 @@ namespace FF8Mod
     public partial class FieldScript
     {
         public List<Entity> Entities;
-        
+
+        public FieldScript()
+        {
+            Entities = new List<Entity>();
+        }
+
         // construct from binary data (ie. game files)
-        public FieldScript(byte[] data)
+        public static FieldScript FromBytes(byte[] data)
         {
             using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))
@@ -58,7 +63,7 @@ namespace FF8Mod
                 }
 
                 // put it all together
-                Entities = new List<Entity>();
+                var result = new FieldScript();
                 for (int i = 0; i < entityInfo.Count; i++)
                 {
                     var entityScripts = new List<Script>();
@@ -68,9 +73,24 @@ namespace FF8Mod
                         var flag = scriptInfo[entityInfo[i].Label + j].Flag == 1;
                         entityScripts.Add(new Script(instructions, flag));
                     }
-                    Entities.Add(new Entity(entityInfo[i].Type, entityScripts));
+                    result.Entities.Add(new Entity(entityInfo[i].Type, entityScripts));
                 }
+                return result;
             }
+        }
+
+        // extract from field archive & construct
+        public static FieldScript FromSource(FileSource fieldSource, string fieldName)
+        {
+            var fieldPath = GetFieldPath(fieldName);
+            var innerSource = new FileSource(fieldPath, fieldSource);
+            return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + ".jsm"));
+        }
+
+        public static string GetFieldPath(string fieldName)
+        {
+            var abbrev = fieldName.Substring(0, 2);
+            return string.Format(@"c:\ff8\data\eng\field\mapdata\{0}\{1}", abbrev, fieldName);
         }
 
         // jsm output
@@ -161,6 +181,13 @@ namespace FF8Mod
             }
         }
 
+        // overwrite a script with instructions loaded from a text file
+        public void ReplaceScript(int entity, int script, string scriptFilePath)
+        {
+            var newScript = new Script(File.ReadAllText(scriptFilePath));
+            Entities[entity].Scripts[script].Instructions = newScript.Instructions;
+        }
+
         // field entity (eg. a person or an event trigger)
         public class Entity
         {
@@ -180,10 +207,47 @@ namespace FF8Mod
             public List<Instruction> Instructions;
             public bool MysteryFlag;
 
+            public Script()
+            {
+                Instructions = new List<Instruction>();
+                MysteryFlag = false;
+            }
+
             public Script(List<Instruction> instructions, bool flag)
             {
                 Instructions = instructions;
                 MysteryFlag = flag;
+            }
+
+            public Script(string instructions) : this()
+            {
+                var lines = instructions.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var line in lines)
+                {
+                    var tokens = line.Split(null, 2).Select(t => t.Trim().ToLower()).Where(t => t != "").ToList();
+                    if (!OpCodesReverse.Keys.Contains(tokens[0]))
+                    {
+                        throw new Exception("unrecognised operation in fieldscript file (" + instructions + "): " + line);
+                    }
+                    var instruction = new Instruction(OpCodesReverse[tokens[0]]);
+
+                    if (tokens.Count > 1)
+                    {
+                        if (!int.TryParse(tokens[1], out int param))
+                        {
+                            throw new Exception("invalid parameter in fieldscript file (" + instructions + "): " + line);
+                        }
+                        instruction.Param = param;
+                        instruction.HasParam = true;
+                    }
+
+                    Instructions.Add(instruction);
+                }
+            }
+
+            public override string ToString()
+            {
+                return string.Join(Environment.NewLine, Instructions);
             }
         }
 

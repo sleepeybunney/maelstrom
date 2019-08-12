@@ -92,7 +92,7 @@ namespace FF8ModTest
         {
             // load a real jsm file from the game
             var jsmFile = File.ReadAllBytes(@"TestData\gggate4.jsm");
-            var script = new FieldScript(jsmFile);
+            var script = FieldScript.FromBytes(jsmFile);
 
             // 3 entities, all "other" type
             Assert.Equal(3, script.Entities.Count);
@@ -113,7 +113,7 @@ namespace FF8ModTest
             Assert.Equal(8, script.Entities[1].Scripts[2].Instructions[1].Param);
 
             // re-encode & run the same tests again
-            script = new FieldScript(script.Encoded);
+            script = FieldScript.FromBytes(script.Encoded);
 
             Assert.Equal(3, script.Entities.Count);
             Assert.Equal(3, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
@@ -136,7 +136,7 @@ namespace FF8ModTest
         {
             // load a real jsm file from the game
             var jsmFile = File.ReadAllBytes(@"TestData\bdifrit1.jsm");
-            var script = new FieldScript(jsmFile);
+            var script = FieldScript.FromBytes(jsmFile);
 
             // 16 entities with all the correct scripts
             Assert.Equal(16, script.Entities.Count);
@@ -153,7 +153,7 @@ namespace FF8ModTest
             Assert.Equal(52, script.Entities[15].Scripts[0].Instructions[0].Param);
 
             // re-encode & run the same tests again
-            script = new FieldScript(script.Encoded);
+            script = FieldScript.FromBytes(script.Encoded);
 
             Assert.Equal(16, script.Entities.Count);
             Assert.Single(script.Entities.Where(e => e.Type == FieldScript.EntityType.Line).ToList());
