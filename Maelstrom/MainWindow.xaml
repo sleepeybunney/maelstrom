@@ -4,9 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
-        Title="Maelstrom" Height="600" Width="800">
-    <Grid>
-        
+        Title="Maelstrom" Height="300" Width="550" ResizeMode="NoResize" Closing="OnClosing">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="90" />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="gameDirLabel" Content="Game Location" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
+        <TextBox x:Name="gameDirText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameDir, Mode=TwoWay}" />
+        <Button x:Name="gameDirButton" Content="Browse..." Click="OnBrowse" Margin="0,0,10,0" Grid.Row="0" Grid.Column="2" />
+
+        <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
+        <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+        </GroupBox>
+
+        <Button x:Name="goButton" Content="Go" Click="OnGo" Margin="0,0,10,0" Grid.Row="2" Grid.Column="2" />
     </Grid>
 </Controls:MetroWindow>
