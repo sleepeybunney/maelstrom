@@ -4,7 +4,7 @@ Mods &amp; modding tools for Final Fantasy VIII PC
 ## Maelstrom - open-world randomiser
 * Shuffle the locations of bosses, GFs, draw points, and more
 * Skip the story &amp; go anywhere in any order
-* Current status: shuffles bosses, no rebalancing, English version only
+* Current status: shuffles bosses with rudimentary rebalancing, shorter intro sequence, English version only
 
 > Note: early alpha software!!
 >
