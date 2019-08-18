@@ -12,10 +12,7 @@ namespace FF8Mod
 
         // save other sections as raw data to slot back in when rebuilding the file
         public byte[] SectionsOneToSix, SectionsNineToEleven;
-        public Dictionary<SectionIndex, Section> OriginalSectionInfo;
-
-        // currently only able to re-encode the text subsection so save some info & AI data too, for now
-        public byte[] TempInfoData;
+        public Dictionary<SectionIndex, Section> SectionInfo;
 
         public static Monster FromFile(string path)
         {
@@ -58,8 +55,7 @@ namespace FF8Mod
             monster.SectionsOneToSix = new ArraySegment<byte>(data, sections[SectionIndex.Skeleton].Offset, oneToSixLength).ToArray();
 
             // 7
-            monster.TempInfoData = new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray();
-            monster.Info = new MonsterInfo(monster.TempInfoData);
+            monster.Info = new MonsterInfo(new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray());
 
             // 8
             monster.AI = new MonsterAI(new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray());
@@ -68,7 +64,7 @@ namespace FF8Mod
             var nineToElevenLength = data.Length - sections[(SectionIndex)9].Offset;
             monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToElevenLength).ToArray();
 
-            monster.OriginalSectionInfo = sections;
+            monster.SectionInfo = sections;
 
             return monster;
         }
@@ -113,36 +109,41 @@ namespace FF8Mod
         {
             get
             {
+                var encodedInfo = Info.Encoded;
                 var encodedAI = AI.Encoded;
 
                 uint sectionCount = 11;
                 uint sectionPosLength = sectionCount * 4;
                 uint headerLength = 4 + sectionPosLength + 4;
-                uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + TempInfoData.Length + encodedAI.Length + SectionsNineToEleven.Length);
+                uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + encodedInfo.Length + encodedAI.Length + SectionsNineToEleven.Length);
 
-                // the rebuilt AI section may be a different size,
-                // so everything after it in the file will be displaced by some number of bytes (+/-)
+                // the rebuilt info & AI sections may be a different size,
+                // so everything after them in the file will be displaced by some number of bytes (+/-)
                 // which needs to be accounted for in the header
-                var originalAILength = OriginalSectionInfo[SectionIndex.AI].Length;
-                var postAIOffset = encodedAI.Length - originalAILength;
+                var originalInfoLength = SectionInfo[SectionIndex.Info].Length;
+                var originalAILength = SectionInfo[SectionIndex.AI].Length;
+                var sizeDiff = encodedInfo.Length + encodedAI.Length - originalInfoLength - originalAILength;
+
+                SectionInfo[SectionIndex.Info].Length = encodedInfo.Length;
+                SectionInfo[SectionIndex.AI].Length = encodedAI.Length;
+                for (int i = 9; i <= 11; i++)
+                {
+                    SectionInfo[(SectionIndex)i].Offset += sizeDiff;
+                }
 
                 var result = new byte[totalLength];
                 using (var stream = new MemoryStream(result))
                 using (var writer = new BinaryWriter(stream))
                 {
                     writer.Write(sectionCount);
-                    
                     for (int i = 1; i <= 11; i++)
                     {
-                        var offset = OriginalSectionInfo[(SectionIndex)i].Offset;
-                        if (i > 8) offset += postAIOffset;
-                        writer.Write((uint)offset);
+                        writer.Write((uint)SectionInfo[(SectionIndex)i].Offset);
                     }
-
                     writer.Write(totalLength);
 
                     writer.Write(SectionsOneToSix);
-                    writer.Write(TempInfoData);
+                    writer.Write(encodedInfo);
                     writer.Write(encodedAI);
                     writer.Write(SectionsNineToEleven);
                 }
