@@ -24,7 +24,10 @@
 
         <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
         <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+            <StackPanel>
+                <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+            </StackPanel>
         </GroupBox>
 
         <Button x:Name="goButton" Content="Go" Click="OnGo" Margin="0,0,10,0" Grid.Row="2" Grid.Column="2" />

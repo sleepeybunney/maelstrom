@@ -46,5 +46,17 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["BossShuffle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BossRebalance {
+            get {
+                return ((bool)(this["BossRebalance"]));
+            }
+            set {
+                this["BossRebalance"] = value;
+            }
+        }
     }
 }

@@ -21,16 +21,16 @@ namespace FF8Mod.Maelstrom
 
             try
             {
-                var gameDir = Path.GetDirectoryName(gameDirText.Text);
+                var gameDir = Path.GetDirectoryName(Properties.Settings.Default.GameDir);
                 var dataPath = Path.Combine(gameDir, "data", "lang-en");
-                if (optionBossShuffle.IsChecked == true)
+                if (Properties.Settings.Default.BossShuffle)
                 {
                     var battlePath = Path.Combine(dataPath, "battle");
                     var battleSource = new FileSource(battlePath);
-                    Boss.Shuffle(battleSource);
+                    Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance);
                 }
                 MessageBox.Show("Done!", "Maelstrom");
-                
+
             }
             catch (Exception x)
             {

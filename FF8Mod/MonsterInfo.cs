@@ -307,6 +307,44 @@ namespace FF8Mod
             }
         }
 
+        public void CopyStats(MonsterInfo source)
+        {
+            Hp[0] = source.Hp[0];
+            Hp[1] = source.Hp[1];
+            Hp[2] = source.Hp[2];
+            Hp[3] = source.Hp[3];
+
+            Str[0] = source.Str[0];
+            Str[1] = source.Str[1];
+            Str[2] = source.Str[2];
+            Str[3] = source.Str[3];
+
+            Mag[0] = source.Mag[0];
+            Mag[1] = source.Mag[1];
+            Mag[2] = source.Mag[2];
+            Mag[3] = source.Mag[3];
+
+            Vit[0] = source.Vit[0];
+            Vit[1] = source.Vit[1];
+            Vit[2] = source.Vit[2];
+            Vit[3] = source.Vit[3];
+
+            Spr[0] = source.Spr[0];
+            Spr[1] = source.Spr[1];
+            Spr[2] = source.Spr[2];
+            Spr[3] = source.Spr[3];
+
+            Spd[0] = source.Spd[0];
+            Spd[1] = source.Spd[1];
+            Spd[2] = source.Spd[2];
+            Spd[3] = source.Spd[3];
+
+            Eva[0] = source.Eva[0];
+            Eva[1] = source.Eva[1];
+            Eva[2] = source.Eva[2];
+            Eva[3] = source.Eva[3];
+        }
+
         // hp2 & hp4 determine the lower boundary
         // mainly hp4 (thousands) with hp2 (tens) for fine tuning
         // hp1 & hp3 determine growth rate
