@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace FF8Mod
 {
@@ -7,30 +8,59 @@ namespace FF8Mod
         public string Name;
         public byte[] Hp, Str, Mag, Vit, Spr, Spd, Eva;
         public Ability[] AbilitiesLow, AbilitiesMed, AbilitiesHigh;
-        byte MedStart, HighStart;
-        byte MysteryFlags1, MysteryFlags2;
-        byte StatusFlags1, StatusFlags2;
-        byte CardDrop, CardMorph, CardRareMorph;
-        byte DevourLow, DevourMed, DevourHigh;
-        uint Exp, ExtraExp, Ap;
-        byte[] DrawLow, DrawMed, DrawHigh;
-        HeldItem[] MugLow, MugMed, MugHigh;
-        HeldItem[] DropLow, DropMed, DropHigh;
-        byte MugRate, DropRate;
-        byte[] MysteryData;
-        byte[] ElemDef, StatusDef;
+        public byte MedStart, HighStart;
+        public byte MysteryFlags1, MysteryFlags2;
+        public byte StatusFlags1, StatusFlags2;
+        public byte CardDrop, CardMorph, CardRareMorph;
+        public byte DevourLow, DevourMed, DevourHigh;
+        public ushort Exp, ExtraExp;
+        public byte Ap;
+        public byte[] DrawLow, DrawMed, DrawHigh;
+        public HeldItem[] MugLow, MugMed, MugHigh;
+        public HeldItem[] DropLow, DropMed, DropHigh;
+        public byte MugRate, DropRate;
+        public byte[] MysteryData;
+        public byte[] ElemDef, StatusDef;
 
         public MonsterInfo()
         {
-            this.Name = "Unnamed";
+            Name = "Unnamed";
+
+            Hp = new byte[4];
+            Str = new byte[4];
+            Mag = new byte[4];
+            Vit = new byte[4];
+            Spr = new byte[4];
+            Spd = new byte[4];
+            Eva = new byte[4];
+
+            AbilitiesLow = new Ability[16];
+            AbilitiesMed = new Ability[16];
+            AbilitiesHigh = new Ability[16];
+
+            DrawLow = new byte[4];
+            DrawMed = new byte[4];
+            DrawHigh = new byte[4];
+
+            MugLow = new HeldItem[4];
+            MugMed = new HeldItem[4];
+            MugHigh = new HeldItem[4];
+
+            DropLow = new HeldItem[4];
+            DropMed = new HeldItem[4];
+            DropHigh = new HeldItem[4];
+
+            MysteryData = new byte[16];
+            ElemDef = new byte[8];
+            StatusDef = new byte[20];
         }
 
         public MonsterInfo(string name) : this()
         {
-            this.Name = name;
+            Name = name;
         }
 
-        public MonsterInfo(byte[] data)
+        public MonsterInfo(byte[] data) : this()
         {
             using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))
@@ -45,7 +75,6 @@ namespace FF8Mod
                 Spd = reader.ReadBytes(4);
                 Eva = reader.ReadBytes(4);
 
-                AbilitiesLow = new Ability[16];
                 for (int i = 0; i < 16; i++) AbilitiesLow[i] = new Ability
                 {
                     Type = reader.ReadByte(),
@@ -53,7 +82,6 @@ namespace FF8Mod
                     AbilityId = reader.ReadUInt16()
                 };
 
-                AbilitiesMed = new Ability[16];
                 for (int i = 0; i < 16; i++) AbilitiesMed[i] = new Ability
                 {
                     Type = reader.ReadByte(),
@@ -61,7 +89,6 @@ namespace FF8Mod
                     AbilityId = reader.ReadUInt16()
                 };
 
-                AbilitiesHigh = new Ability[16];
                 for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new Ability
                 {
                     Type = reader.ReadByte(),
@@ -88,63 +115,54 @@ namespace FF8Mod
                 ExtraExp = reader.ReadUInt16();
                 Exp = reader.ReadUInt16();
 
-                DrawLow = new byte[4];
                 for (int i = 0; i < 4; i++)
                 {
                     DrawLow[i] = reader.ReadByte();
                     reader.ReadByte(); // padding
                 }
 
-                DrawMed = new byte[4];
                 for (int i = 0; i < 4; i++)
                 {
                     DrawMed[i] = reader.ReadByte();
                     reader.ReadByte(); // padding
                 }
 
-                DrawHigh = new byte[4];
                 for (int i = 0; i < 4; i++)
                 {
                     DrawHigh[i] = reader.ReadByte();
                     reader.ReadByte(); // padding
                 }
 
-                MugLow = new HeldItem[4];
                 for (int i = 0; i < 4; i++) MugLow[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
                     Quantity = reader.ReadByte()
                 };
 
-                MugMed = new HeldItem[4];
                 for (int i = 0; i < 4; i++) MugMed[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
                     Quantity = reader.ReadByte()
                 };
 
-                MugHigh = new HeldItem[4];
                 for (int i = 0; i < 4; i++) MugHigh[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
                     Quantity = reader.ReadByte()
                 };
 
-                DropLow = new HeldItem[4];
                 for (int i = 0; i < 4; i++) DropLow[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
                     Quantity = reader.ReadByte()
                 };
 
-                DropMed = new HeldItem[4];
                 for (int i = 0; i < 4; i++) DropMed[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
                     Quantity = reader.ReadByte()
                 };
 
-                DropHigh = new HeldItem[4];
                 for (int i = 0; i < 4; i++) DropHigh[i] = new HeldItem
                 {
                     ItemId = reader.ReadByte(),
@@ -217,7 +235,7 @@ namespace FF8Mod
         {
             public byte Type;
             public byte Something;
-            public uint AbilityId;
+            public ushort AbilityId;
         }
 
         public struct HeldItem

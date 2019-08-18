@@ -8,16 +8,20 @@ namespace FF8Mod
     {
         public List<Entry> Entries;
 
-        public FileIndex(string path)
+        public FileIndex()
         {
             Entries = new List<Entry>();
+        }
+
+        public FileIndex(string path) : this()
+        {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 ReadStream(stream);
             }
         }
 
-        public FileIndex(byte[] data)
+        public FileIndex(byte[] data) : this()
         {
             using (var stream = new MemoryStream(data))
             {
@@ -27,7 +31,6 @@ namespace FF8Mod
 
         private void ReadStream(Stream stream)
         {
-            Entries = new List<Entry>();
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position < stream.Length - 11)
