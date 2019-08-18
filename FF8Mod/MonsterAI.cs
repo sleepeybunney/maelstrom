@@ -75,6 +75,7 @@ namespace FF8Mod
                 uint textIndexLength = (uint)Strings.Count * 2;
                 uint textLength = (uint)encodedStrings.Sum(s => s.Length);
                 uint totalLength = headerLength + aiLength + textIndexLength + textLength;
+                totalLength += 4 - (totalLength % 4);
 
                 uint aiOffset = headerLength;
                 uint textIndexOffset = aiOffset + aiLength;

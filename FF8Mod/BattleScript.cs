@@ -114,6 +114,7 @@ namespace FF8Mod
                 var deathOffset = counterOffset + counter.Length;
                 var precounterOffset = deathOffset + death.Length;
                 var totalLength = precounterOffset + precounter.Length;
+                totalLength += 4 - (totalLength % 4);
 
                 var result = new byte[totalLength];
 
