@@ -44,6 +44,9 @@ namespace FF8Mod.Maelstrom
             {
                 var gameDir = Path.GetDirectoryName(Properties.Settings.Default.GameDir);
                 var dataPath = Path.Combine(gameDir, "data", "lang-en");
+                var af3dn = Path.Combine(gameDir, "AF3DN.P");
+
+                var introPatch = new BinaryPatch(af3dn, 0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
 
                 if (Properties.Settings.Default.BossShuffle)
                 {
@@ -59,6 +62,7 @@ namespace FF8Mod.Maelstrom
 
                     // replace liberi fatali intro with quistis walking through a door
                     ImportScript(fieldSource, "start0", 0, 1);
+                    introPatch.Apply();
 
                     // brief conversation in the infirmary, receive 2 GFs and a party member
                     ImportScript(fieldSource, "bghoke_2", 12, 1);
@@ -66,6 +70,10 @@ namespace FF8Mod.Maelstrom
 
                     // remove tutorial at the front gate
                     ImportScript(fieldSource, "bggate_1", 0, 0);
+                }
+                else
+                {
+                    introPatch.Remove();
                 }
 
                 MessageBox.Show("Done!", "Maelstrom");
