@@ -58,5 +58,17 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["BossRebalance"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StorySkip {
+            get {
+                return ((bool)(this["StorySkip"]));
+            }
+            set {
+                this["StorySkip"] = value;
+            }
+        }
     }
 }

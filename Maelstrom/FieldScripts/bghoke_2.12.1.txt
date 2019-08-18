@@ -1,0 +1,26 @@
+﻿lbl 55
+pshn_l 71
+setplace
+pshn_l 7
+popm_b 256
+pshn_l 0
+pshn_l 180
+pshn_l 127
+musicvoltrans
+pshn_l 255
+pshn_l 255
+pshn_l 255
+pshn_l 0
+pshn_l 0
+pshn_l 0
+pshn_l 180
+fcoladd
+colsync
+pshn_l 45
+wait
+mapfadeon
+pshn_l 3
+pshn_l 30
+reqew 4
+halt 0
+ret 8

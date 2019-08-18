@@ -1,0 +1,68 @@
+﻿lbl 30
+pshn_l 1
+pushradius
+pshn_l 1700
+mspeed
+pshn_l 162
+pshn_l 740
+pshn_l 0
+pshn_l 0
+move
+pshn_l 32
+animespeed
+ranimekeep 3
+pshn_l 192
+pshn_l 8
+cturnl
+pshn_l 16
+animespeed
+animekeep 4
+pshn_l 0
+pshn_l 17
+pshn_l 120
+pshn_l 25
+amesw
+pshn_l 0
+menuname
+pshn_l 3
+menuname
+pshn_l 4
+menuname
+pshn_l 3
+addmember
+pshn_l 3
+addparty
+refreshparty
+ranimekeep 5
+pshn_l 3
+pshn_l 16
+reqew 1
+animesync
+pshn_l 60
+pshn_l 1
+canimekeep 6
+pshn_l 0
+pshn_l 18
+pshn_l 120
+pshn_l 30
+amesw
+pshn_l 90
+pshn_l 60
+rcanimekeep 6
+pshn_l 0
+pshn_l 0
+pshn_l 0
+pshn_l 255
+pshn_l 255
+pshn_l 255
+pshn_l 40
+fcolsub
+pshn_l 40
+wait
+mapfadeoff
+pshn_l 179
+pshn_l 333
+pshn_l -91
+pshn_l 0
+mapjump 132
+ret 8

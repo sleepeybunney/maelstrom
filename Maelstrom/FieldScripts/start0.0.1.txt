@@ -1,0 +1,83 @@
+﻿lbl 1
+ucoff
+clear
+pshn_l 1
+popm_b 272
+pshn_l 2
+popm_b 273
+pshn_l 12
+popm_b 274
+pshn_l 14
+popm_b 275
+pshn_l 136
+popm_b 276
+pshn_l 144
+popm_b 277
+pshn_l 223
+popm_b 278
+pshn_l 192
+popm_b 279
+pshn_l 1
+popm_b 280
+pshn_l 1
+popm_b 281
+pshn_l 1
+popm_b 282
+pshn_l 1
+popm_b 283
+pshn_l 1
+popm_b 284
+pshn_l 1
+popm_b 285
+pshn_l 1
+popm_b 286
+pshn_l 1
+popm_b 287
+pshn_l 0
+popm_b 294
+pshn_l 1
+popm_b 295
+pshn_l 1
+popm_b 296
+pshn_l 0
+popm_b 297
+pshn_l 0
+popm_b 298
+pshn_l 1
+popm_b 299
+salaryoff
+pshn_l 500
+popm_w 16
+battleoff
+pshn_l 0
+popm_b 479
+mapfadeoff
+pshn_l 0
+addmember
+pshn_l 0
+addparty
+pshn_l 5
+setbattlemusic
+pshm_b 261
+pshn_l 2
+cal 13
+popm_b 261
+pshn_l 41
+popm_b 268
+pshn_l 0
+pshn_l 1
+pshn_l 1
+hold
+pshn_l 0
+phspower
+pshn_l 1
+pshn_l 1
+movieready
+movie
+mapfadeoff
+moviesync
+pshn_l 180
+pshn_l 0
+mapjumpo
+halt 0
+ret 8
