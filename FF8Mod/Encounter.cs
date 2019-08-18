@@ -73,7 +73,7 @@ namespace FF8Mod
                     Slots[i].Position = new EncounterSlot.Coords(reader.ReadInt16(), reader.ReadInt16(), reader.ReadInt16());
                 }
 
-                foreach (var s in Slots) s.MonsterID = reader.ReadByte();
+                foreach (var s in Slots) s.MonsterID = (byte)(reader.ReadByte() - 0x10);
                 foreach (var s in Slots) s.Unknown1 = reader.ReadInt16();
                 foreach (var s in Slots) s.Unknown2 = reader.ReadInt16();
                 foreach (var s in Slots) s.Unknown3 = reader.ReadInt16();
@@ -144,7 +144,7 @@ namespace FF8Mod
                         writer.Write(Slots[i].Position.Z);
                     }
 
-                    foreach (var s in Slots) writer.Write(s.MonsterID);
+                    foreach (var s in Slots) writer.Write((byte)(s.MonsterID + 0x10));
                     foreach (var s in Slots) writer.Write(s.Unknown1);
                     foreach (var s in Slots) writer.Write(s.Unknown2);
                     foreach (var s in Slots) writer.Write(s.Unknown3);

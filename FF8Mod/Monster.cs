@@ -32,6 +32,17 @@ namespace FF8Mod
             return FromBytes(source.GetFile(path));
         }
 
+        public static Monster ByID(FileSource source, int monsterID)
+        {
+            var path = GetPath(monsterID);
+            return FromSource(source, path);
+        }
+
+        public static string GetPath(int monsterID)
+        {
+            return string.Format(@"c:\ff8\data\eng\battle\c0m{0:d3}.dat", monsterID);
+        }
+
         public static Monster FromBytes(byte[] data)
         {
             var monster = new Monster();

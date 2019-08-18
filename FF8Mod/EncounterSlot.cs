@@ -17,7 +17,7 @@ namespace FF8Mod
 
         public EncounterSlot()
         {
-            MonsterID = 0x10;
+            MonsterID = 0;
             Level = 0xff;
             Position = new Coords(0, 0, -5700);
             Enabled = false;
@@ -32,7 +32,7 @@ namespace FF8Mod
 
         public Monster GetMonster(FileSource battleSource)
         {
-            return Monster.FromSource(battleSource, string.Format(@"c:\ff8\data\eng\battle\c0m{0:d3}.dat", MonsterID - 0x10));
+            return Monster.ByID(battleSource, MonsterID);
         }
 
         public class Coords

@@ -68,7 +68,7 @@ namespace FF8ModTest
             Assert.Equal(0, enc.Slots[0].Unknown4);
 
             // second slot
-            Assert.Equal(16, enc.Slots[1].MonsterID);
+            Assert.Equal(0, enc.Slots[1].MonsterID);
             Assert.Equal(255, enc.Slots[1].Level);
             Assert.Equal(0, enc.Slots[1].Position.X);
             Assert.Equal(0, enc.Slots[1].Position.Y);
@@ -83,7 +83,7 @@ namespace FF8ModTest
             Assert.Equal(0, enc.Slots[1].Unknown4);
 
             // third slot
-            Assert.Equal(16, enc.Slots[2].MonsterID);
+            Assert.Equal(0, enc.Slots[2].MonsterID);
             Assert.Equal(255, enc.Slots[2].Level);
             Assert.Equal(0, enc.Slots[2].Position.X);
             Assert.Equal(0, enc.Slots[2].Position.Y);
@@ -98,7 +98,7 @@ namespace FF8ModTest
             Assert.Equal(0, enc.Slots[2].Unknown4);
 
             // fourth slot
-            Assert.Equal(16, enc.Slots[3].MonsterID);
+            Assert.Equal(0, enc.Slots[3].MonsterID);
             Assert.Equal(255, enc.Slots[3].Level);
             Assert.Equal(0, enc.Slots[3].Position.X);
             Assert.Equal(0, enc.Slots[3].Position.Y);
