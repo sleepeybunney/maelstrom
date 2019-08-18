@@ -127,19 +127,27 @@ namespace FF8Mod
                 writer.Write(reader.ReadBytes((int)(oldStream.Length - oldStream.Position)));
             }
 
+            // copy list file to temp space
+            var tempListPath = Path.GetTempFileName();
+            File.WriteAllLines(tempListPath, FileList.Files.ToArray());
+
             if (Source == null)
             {
                 File.Delete(ArchivePath);
                 File.Delete(IndexPath);
+                File.Delete(ListPath);
                 File.Move(tempArchivePath, ArchivePath);
                 File.Move(tempIndexPath, IndexPath);
+                File.Move(tempListPath, ListPath);
             }
             else
             {
                 Source.ReplaceFile(ArchivePath, File.ReadAllBytes(tempArchivePath));
                 Source.ReplaceFile(IndexPath, File.ReadAllBytes(tempIndexPath));
+                Source.ReplaceFile(ListPath, File.ReadAllBytes(tempListPath));
                 File.Delete(tempArchivePath);
                 File.Delete(tempIndexPath);
+                File.Delete(tempListPath);
             }
         }
 
