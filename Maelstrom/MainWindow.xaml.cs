@@ -76,6 +76,15 @@ namespace FF8Mod.Maelstrom
                     introPatch.Remove();
                 }
 
+                if (Properties.Settings.Default.DrawPointShuffle)
+                {
+                    DrawPointShuffle.Patch.Apply();
+                }
+                else
+                {
+                    DrawPointShuffle.Patch.Remove();
+                }
+
                 MessageBox.Show("Done!", "Maelstrom");
 
             }

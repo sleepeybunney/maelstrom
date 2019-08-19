@@ -70,5 +70,17 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["StorySkip"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DrawPointShuffle {
+            get {
+                return ((bool)(this["DrawPointShuffle"]));
+            }
+            set {
+                this["DrawPointShuffle"] = value;
+            }
+        }
     }
 }
