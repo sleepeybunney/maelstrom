@@ -18,9 +18,9 @@
             <ColumnDefinition />
             <ColumnDefinition Width="90" />
         </Grid.ColumnDefinitions>
-        <Label x:Name="gameDirLabel" Content="Game Location" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
-        <TextBox x:Name="gameDirText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameDir, Mode=TwoWay}" />
-        <Button x:Name="gameDirButton" Content="Browse..." Click="OnBrowse" Margin="0,0,10,0" Grid.Row="0" Grid.Column="2" />
+        <Label x:Name="gameLocLabel" Content="Game Location" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
+        <TextBox x:Name="gameLocText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameLocation, Mode=TwoWay}" />
+        <Button x:Name="gameLocButton" Content="Browse..." Click="OnBrowse" Margin="0,0,10,0" Grid.Row="0" Grid.Column="2" />
 
         <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
         <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">

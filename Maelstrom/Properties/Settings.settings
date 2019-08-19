@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FF8Mod.Maelstrom.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="GameDir" Type="System.String" Scope="User">
+    <Setting Name="GameLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="BossShuffle" Type="System.Boolean" Scope="User">

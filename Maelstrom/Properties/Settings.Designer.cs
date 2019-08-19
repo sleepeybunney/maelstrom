@@ -26,12 +26,12 @@ namespace FF8Mod.Maelstrom.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string GameDir {
+        public string GameLocation {
             get {
-                return ((string)(this["GameDir"]));
+                return ((string)(this["GameLocation"]));
             }
             set {
-                this["GameDir"] = value;
+                this["GameLocation"] = value;
             }
         }
         

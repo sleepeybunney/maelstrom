@@ -42,9 +42,9 @@ namespace FF8Mod.Maelstrom
 
             try
             {
-                var gameDir = Path.GetDirectoryName(Properties.Settings.Default.GameDir);
-                var dataPath = Path.Combine(gameDir, "data", "lang-en");
-                var af3dn = Path.Combine(gameDir, "AF3DN.P");
+                var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
+                var dataPath = Path.Combine(gameLocation, "data", "lang-en");
+                var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
                 var introPatch = new BinaryPatch(af3dn, 0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
 
@@ -99,7 +99,7 @@ namespace FF8Mod.Maelstrom
 
             if (dialog.ShowDialog() == true)
             {
-                Properties.Settings.Default.GameDir = dialog.FileName;
+                Properties.Settings.Default.GameLocation = dialog.FileName;
             }
         }
 
