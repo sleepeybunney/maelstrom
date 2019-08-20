@@ -1,3 +1,0 @@
-﻿lbl 81
-lineoff
-ret 8

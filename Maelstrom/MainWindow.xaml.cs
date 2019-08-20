@@ -15,27 +15,6 @@ namespace FF8Mod.Maelstrom
             InitializeComponent();
         }
 
-        // overwrite a field script with one imported from a text file
-        private void ImportScript(FileSource fieldSource, string fieldName, int entity, int script, string importPath)
-        {
-            var field = FieldScript.FromSource(fieldSource, fieldName);
-            field.ReplaceScript(entity, script, importPath);
-            var innerSource = new FileSource(FieldScript.GetFieldPath(fieldName), fieldSource);
-            innerSource.ReplaceFile(FieldScript.GetFieldPath(fieldName) + "\\" + fieldName + ".jsm", field.Encoded);
-        }
-
-        // slightly easier import with the filename convention "fieldName.entityID.scriptID.txt"
-        private void ImportScript(FileSource fieldSource, string fieldName, int entity, int script)
-        {
-            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"FieldScripts\{0}.{1}.{2}.txt", fieldName, entity, script));
-        }
-
-        // return a field script to its original state
-        private void ResetScript(FileSource fieldSource, string fieldName, int entity, int script)
-        {
-            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"OrigFieldScripts\{0}.{1}.{2}.txt", fieldName, entity, script));
-        }
-
         private void OnGo(object sender, RoutedEventArgs e)
         {
             goButton.IsEnabled = false;
@@ -46,8 +25,7 @@ namespace FF8Mod.Maelstrom
                 var dataPath = Path.Combine(gameLocation, "data", "lang-en");
                 var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
-                var introPatch = new BinaryPatch(af3dn, 0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
-
+                // shuffle/rebalance bosses
                 if (Properties.Settings.Default.BossShuffle)
                 {
                     var battlePath = Path.Combine(dataPath, "battle");
@@ -55,35 +33,21 @@ namespace FF8Mod.Maelstrom
                     Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance);
                 }
 
+                // skip story scenes
                 if (Properties.Settings.Default.StorySkip)
                 {
                     var fieldPath = Path.Combine(dataPath, "field");
                     var fieldSource = new FileSource(fieldPath);
-
-                    // replace liberi fatali intro with quistis walking through a door
-                    ImportScript(fieldSource, "start0", 0, 1);
-                    introPatch.Apply();
-
-                    // brief conversation in the infirmary, receive 2 GFs and a party member
-                    ImportScript(fieldSource, "bghoke_2", 12, 1);
-                    ImportScript(fieldSource, "bghoke_2", 6, 4);
-
-                    // remove tutorial at the front gate
-                    ImportScript(fieldSource, "bggate_1", 0, 0);
+                    StorySkip.Apply(fieldSource, af3dn);
                 }
                 else
                 {
-                    introPatch.Remove();
+                    StorySkip.Remove(af3dn);
                 }
 
-                if (Properties.Settings.Default.DrawPointShuffle)
-                {
-                    DrawPointShuffle.Patch.Apply();
-                }
-                else
-                {
-                    DrawPointShuffle.Patch.Remove();
-                }
+                // shuffle draw points
+                if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.Patch.Apply();
+                else DrawPointShuffle.Patch.Remove();
 
                 MessageBox.Show("Done!", "Maelstrom");
 

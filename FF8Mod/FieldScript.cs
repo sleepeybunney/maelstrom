@@ -182,9 +182,9 @@ namespace FF8Mod
         }
 
         // overwrite a script with instructions loaded from a text file
-        public void ReplaceScript(int entity, int script, string scriptFilePath)
+        public void ReplaceScript(int entity, int script, string scriptText)
         {
-            var newScript = new Script(File.ReadAllText(scriptFilePath));
+            var newScript = new Script(scriptText);
             Entities[entity].Scripts[script].Instructions = newScript.Instructions;
         }
 

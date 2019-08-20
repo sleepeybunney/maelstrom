@@ -11,7 +11,22 @@ namespace FF8Mod
         public byte[] OriginalData;
         public byte[] NewData;
 
-        public BinaryPatch(string targetFile, uint offset, byte[] origData, byte[] newData)
+        public BinaryPatch()
+        {
+            TargetFile = null;
+            Offset = 0;
+            OriginalData = new byte[0];
+            NewData = new byte[0];
+        }
+
+        public BinaryPatch(uint offset, byte[] origData, byte[] newData) : this()
+        {
+            Offset = offset;
+            OriginalData = origData;
+            NewData = newData;
+        }
+
+        public BinaryPatch(string targetFile, uint offset, byte[] origData, byte[] newData) : this()
         {
             TargetFile = targetFile;
             Offset = offset;
@@ -19,7 +34,19 @@ namespace FF8Mod
             NewData = newData;
         }
 
+        public void Apply(string targetFile)
+        {
+            TargetFile = targetFile;
+            Patch(false);
+        }
+
         public void Apply() { Patch(false); }
+
+        public void Remove(string targetFile)
+        {
+            TargetFile = targetFile;
+            Patch(true);
+        }
 
         public void Remove() { Patch(true); }
 

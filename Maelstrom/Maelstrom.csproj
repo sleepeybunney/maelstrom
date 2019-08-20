@@ -83,6 +83,7 @@
     </ApplicationDefinition>
     <Compile Include="DrawPointShuffle.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="StorySkip.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,11 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FieldScripts\bghoke_2.6.4.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FieldScripts\bggate_1.0.0.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
