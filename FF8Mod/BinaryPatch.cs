@@ -6,29 +6,19 @@ namespace FF8Mod
 {
     public class BinaryPatch
     {
-        public string TargetFile;
         public uint Offset;
         public byte[] OriginalData;
         public byte[] NewData;
 
         public BinaryPatch()
         {
-            TargetFile = null;
             Offset = 0;
-            OriginalData = new byte[0];
-            NewData = new byte[0];
+            OriginalData = Array.Empty<byte>();
+            NewData = Array.Empty<byte>();
         }
 
-        public BinaryPatch(uint offset, byte[] origData, byte[] newData) : this()
+        public BinaryPatch(uint offset, byte[] origData, byte[] newData)
         {
-            Offset = offset;
-            OriginalData = origData;
-            NewData = newData;
-        }
-
-        public BinaryPatch(string targetFile, uint offset, byte[] origData, byte[] newData) : this()
-        {
-            TargetFile = targetFile;
             Offset = offset;
             OriginalData = origData;
             NewData = newData;
@@ -36,50 +26,27 @@ namespace FF8Mod
 
         public void Apply(string targetFile)
         {
-            TargetFile = targetFile;
-            Patch(false);
+            Patch(targetFile, false);
         }
-
-        public void Apply() { Patch(false); }
 
         public void Remove(string targetFile)
         {
-            TargetFile = targetFile;
-            Patch(true);
+            Patch(targetFile, true);
         }
 
-        public void Remove() { Patch(true); }
-
-        private void Patch(bool remove)
+        private void Patch(string targetFile, bool remove)
         {
-            using (var stream = new FileStream(TargetFile, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+            using (var stream = new FileStream(targetFile, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
             using (var reader = new BinaryReader(stream))
             using (var writer = new BinaryWriter(stream))
             {
-                stream.Seek(Offset, SeekOrigin.Begin);
-                var origCheck = reader.ReadBytes(OriginalData.Length);
-                if (!origCheck.SequenceEqual(OriginalData))
+                if (remove)
                 {
+                    // remove patch
                     stream.Seek(Offset, SeekOrigin.Begin);
-                    var newCheck = reader.ReadBytes(NewData.Length);
-                    if (!newCheck.SequenceEqual(NewData))
-                    {
-                        // the file is either patched or unpatched - if it looks like neither version, something is wrong
-                        throw new Exception("Binary file contents are not as expected - " + TargetFile);
-                    }
-                    else if (remove)
-                    {
-                        // remove patch
-                        stream.Seek(Offset, SeekOrigin.Begin);
-                        writer.Write(OriginalData);
-                    }
-                    else
-                    {
-                        // already applied
-                        return;
-                    }
+                    writer.Write(OriginalData);
                 }
-                else if (!remove)
+                else
                 {
                     // apply patch
                     stream.Seek(Offset, SeekOrigin.Begin);
