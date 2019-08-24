@@ -41,25 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleScript.cs" />
-    <Compile Include="Instruction.cs" />
+    <Compile Include="Battle\BattleScript.cs" />
+    <Compile Include="Battle\Instruction.cs" />
     <Compile Include="DrawPoint.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="EncounterFile.cs" />
     <Compile Include="EncounterSlot.cs" />
     <Compile Include="BinaryPatch.cs" />
     <Compile Include="FF8String.cs" />
-    <Compile Include="FieldScript.cs" />
-    <Compile Include="FieldScriptConstants.cs" />
-    <Compile Include="FileIndex.cs" />
-    <Compile Include="FileList.cs" />
-    <Compile Include="FileSource.cs" />
-    <Compile Include="IndexEntry.cs" />
+    <Compile Include="Field\FieldScript.cs" />
+    <Compile Include="Field\FieldScriptConstants.cs" />
+    <Compile Include="Archive\FileIndex.cs" />
+    <Compile Include="Archive\FileList.cs" />
+    <Compile Include="Archive\FileSource.cs" />
+    <Compile Include="Archive\IndexEntry.cs" />
     <Compile Include="Lzss.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterAI.cs" />
     <Compile Include="MonsterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
