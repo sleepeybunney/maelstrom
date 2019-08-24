@@ -1,4 +1,6 @@
-﻿namespace FF8Mod
+﻿using FF8Mod.Archive;
+
+namespace FF8Mod
 {
     public class EncounterSlot
     {
@@ -28,17 +30,17 @@
         {
             return Monster.ByID(battleSource, MonsterID);
         }
+    }
 
-        public class Coords
+    public class Coords
+    {
+        public short X, Y, Z;
+
+        public Coords(short x, short y, short z)
         {
-            public short X, Y, Z;
-
-            public Coords(short x, short y, short z)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-            }
+            X = x;
+            Y = y;
+            Z = z;
         }
     }
 }

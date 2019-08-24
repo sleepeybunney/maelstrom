@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FF8Mod.Archive;
 
 namespace FF8Mod.Maelstrom
 {
-    public class Boss
+    public static class Boss
     {
         // boss encounters, with all the individual monsters ranked by overall strength/importance
         // eg. gerogero (slot 1) ranked over the fake president (slot 0)
@@ -119,7 +120,7 @@ namespace FF8Mod.Maelstrom
                 }
             }
 
-            battleSource.ReplaceFile(encFilePath, encFile.Encoded);
+            battleSource.ReplaceFile(encFilePath, encFile.Encode());
 
             // write rebalanced stats to the monster files
             if (rebalance)
@@ -128,7 +129,7 @@ namespace FF8Mod.Maelstrom
                 {
                     var monster = Monster.ByID(battleSource, id);
                     monster.Info.CopyStats(statMap[id]);
-                    battleSource.ReplaceFile(Monster.GetPath(id), monster.Encoded);
+                    battleSource.ReplaceFile(Monster.GetPath(id), monster.Encode());
                 }
             }
         }

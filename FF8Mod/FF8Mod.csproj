@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleScript.cs" />
-    <Compile Include="BattleScriptConstants.cs" />
+    <Compile Include="Instruction.cs" />
     <Compile Include="DrawPoint.cs" />
     <Compile Include="Encounter.cs" />
     <Compile Include="EncounterFile.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="FileIndex.cs" />
     <Compile Include="FileList.cs" />
     <Compile Include="FileSource.cs" />
+    <Compile Include="IndexEntry.cs" />
     <Compile Include="Lzss.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterAI.cs" />

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace FF8Mod
 {
-    public class Lzss
+    public static class Lzss
     {
         public static byte[] Decompress(byte[] data)
         {
@@ -70,7 +70,7 @@ namespace FF8Mod
             return result;
         }
 
-        public class CircularBuffer
+        private class CircularBuffer
         {
             public byte[] Buffer;
             public int Position;

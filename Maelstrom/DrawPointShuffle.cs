@@ -21,7 +21,7 @@ namespace FF8Mod.Maelstrom
                     DrawPoint.UpdatedDrawPoints[i + 1] = drawPoint;
                 }
 
-                return new BinaryPatch(DrawPoint.DrawPointDefsLocation, DrawPoint.OriginalData, DrawPoint.CurrentData);
+                return new BinaryPatch(DrawPoint.DrawPointDefsLocation, DrawPoint.OriginalData, DrawPoint.EncodeAll());
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using FF8Mod.Archive;
 
 namespace FF8Mod
 {
@@ -43,14 +44,11 @@ namespace FF8Mod
             return FromBytes(source.GetFile(path));
         }
 
-        public byte[] Encoded
+        public byte[] Encode()
         {
-            get
-            {
-                var result = new List<byte>();
-                foreach (var e in Encounters) result.AddRange(e.Encoded);
-                return result.ToArray();
-            }
+            var result = new List<byte>();
+            foreach (var e in Encounters) result.AddRange(e.Encode());
+            return result.ToArray();
         }
     }
 }

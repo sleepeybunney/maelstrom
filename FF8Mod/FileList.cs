@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod
+namespace FF8Mod.Archive
 {
     public class FileList
     {
         public List<string> Files;
 
-        public FileList(string path)
+        public FileList()
+        {
+            Files = new List<string>();
+        }
+
+        public FileList(string path) : this()
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
@@ -17,7 +22,7 @@ namespace FF8Mod
             }
         }
 
-        public FileList(byte[] data)
+        public FileList(byte[] data) : this()
         {
             using (var stream = new MemoryStream(data))
             {
@@ -27,7 +32,6 @@ namespace FF8Mod
 
         private void ReadStream(Stream stream)
         {
-            Files = new List<string>();
             using (var reader = new StreamReader(stream))
             {
                 while (!reader.EndOfStream)

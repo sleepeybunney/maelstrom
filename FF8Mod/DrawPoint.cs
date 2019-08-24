@@ -40,15 +40,12 @@ namespace FF8Mod
             Bountiful = (code & 0x80) == 1;
         }
 
-        public byte Encoded
+        public byte Encode()
         {
-            get
-            {
-                var result = (byte)Spell;
-                if (Renewable) result += 0x40;
-                if (Bountiful) result += 0x80;
-                return result;
-            }
+            var result = (byte)Spell;
+            if (Renewable) result += 0x40;
+            if (Bountiful) result += 0x80;
+            return result;
         }
 
         public static DrawPoint ById(int id)
@@ -63,17 +60,14 @@ namespace FF8Mod
             }
         }
 
-        public static byte[] CurrentData
+        public static byte[] EncodeAll()
         {
-            get
+            var result = (byte[])OriginalData.Clone();
+            foreach (var id in UpdatedDrawPoints.Keys)
             {
-                var result = (byte[])OriginalData.Clone();
-                foreach (var id in UpdatedDrawPoints.Keys)
-                {
-                    result[id - 1] = UpdatedDrawPoints[id].Encoded;
-                }
-                return result;
+                result[id - 1] = UpdatedDrawPoints[id].Encode();
             }
+            return result;
         }
 
         public static byte[] OriginalData = new byte[DrawPointDefsLength]

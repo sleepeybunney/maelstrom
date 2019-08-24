@@ -1,23 +1,23 @@
-﻿using FF8Mod;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
+using FF8Mod.Field;
 
 namespace FF8ModTest
 {
     public class FieldScriptTest
     {
         [Theory]
-        [InlineData(FieldScript.EntityType.Line, 3, 61)]
-        [InlineData(FieldScript.EntityType.Background, 19, 0)]
-        [InlineData(FieldScript.EntityType.Other, 120, 300)]
-        public void EntityInfoTest(FieldScript.EntityType type, int count, int label)
+        [InlineData(EntityType.Line, 3, 61)]
+        [InlineData(EntityType.Background, 19, 0)]
+        [InlineData(EntityType.Other, 120, 300)]
+        public void EntityInfoTest(EntityType type, int count, int label)
         {
             // encode & decode
-            var entityInfo = new FieldScript.EntityInfo(type, count, label);
-            entityInfo = new FieldScript.EntityInfo(type, entityInfo.Encoded);
+            var entityInfo = new EntityInfo(type, count, label);
+            entityInfo = new EntityInfo(type, entityInfo.Encode());
 
             // make sure nothing's changed
             Assert.Equal(type, entityInfo.Type);
@@ -32,8 +32,8 @@ namespace FF8ModTest
         public void ScriptInfoTest(int position, int flag)
         {
             // encode & decode
-            var scriptInfo = new FieldScript.ScriptInfo(position, flag);
-            scriptInfo = new FieldScript.ScriptInfo(scriptInfo.Encoded);
+            var scriptInfo = new ScriptInfo(position, flag);
+            scriptInfo = new ScriptInfo(scriptInfo.Encode());
 
             // make sure nothing's changed
             Assert.Equal(position, scriptInfo.Position);
@@ -41,19 +41,19 @@ namespace FF8ModTest
         }
 
         [Theory]
-        [InlineData(0, FieldScript.EntityType.Door)]
-        [InlineData(47, FieldScript.EntityType.Other)]
-        [InlineData(120, FieldScript.EntityType.Line)]
-        public void EntityTest(int label, FieldScript.EntityType type)
+        [InlineData(0, EntityType.Door)]
+        [InlineData(47, EntityType.Other)]
+        [InlineData(120, EntityType.Line)]
+        public void EntityTest(int label, EntityType type)
         {
             // construct a simple entity
-            var labelInstr = new FieldScript.Instruction(5, label);
-            var script = new FieldScript.Script(new List<FieldScript.Instruction>() { labelInstr }, false);
-            var entity = new FieldScript.Entity(type, new List<FieldScript.Script>() { script });
+            var labelInstr = new Instruction(5, label);
+            var script = new Script(new List<Instruction>() { labelInstr }, false);
+            var entity = new Entity(type, new List<Script>() { script });
 
             // extract info, then encode & decode
-            var entityInfo = new FieldScript.EntityInfo(entity);
-            entityInfo = new FieldScript.EntityInfo(entity.Type, entityInfo.Encoded);
+            var entityInfo = new EntityInfo(entity);
+            entityInfo = new EntityInfo(entity.Type, entityInfo.Encode());
 
             // info reflects the original entity
             Assert.Equal(label, entityInfo.Label);
@@ -70,9 +70,9 @@ namespace FF8ModTest
         public void InstructionTest(int opcode, int param)
         {
             // encode & decode
-            var instruction = new FieldScript.Instruction(opcode, param);
-            if (param == -1) instruction = new FieldScript.Instruction(opcode);
-            instruction = new FieldScript.Instruction(BitConverter.GetBytes(instruction.Encoded));
+            var instruction = new Instruction(opcode, param);
+            if (param == -1) instruction = new Instruction(opcode);
+            instruction = new Instruction(BitConverter.GetBytes(instruction.Encode()));
 
             // make sure nothing's changed
             Assert.Equal(opcode, instruction.OpCode);
@@ -96,7 +96,7 @@ namespace FF8ModTest
 
             // 3 entities, all "other" type
             Assert.Equal(3, script.Entities.Count);
-            Assert.Equal(3, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+            Assert.Equal(3, script.Entities.Where(e => e.Type == EntityType.Other).Count());
 
             // 4 scripts each
             Assert.Equal(4, script.Entities[0].Scripts.Count);
@@ -113,10 +113,10 @@ namespace FF8ModTest
             Assert.Equal(8, script.Entities[1].Scripts[2].Instructions[1].Param);
 
             // re-encode & run the same tests again
-            script = FieldScript.FromBytes(script.Encoded);
+            script = FieldScript.FromBytes(script.Encode());
 
             Assert.Equal(3, script.Entities.Count);
-            Assert.Equal(3, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+            Assert.Equal(3, script.Entities.Where(e => e.Type == EntityType.Other).Count());
 
             Assert.Equal(4, script.Entities[0].Scripts.Count);
             Assert.Equal(4, script.Entities[1].Scripts.Count);
@@ -140,10 +140,10 @@ namespace FF8ModTest
 
             // 16 entities with all the correct scripts
             Assert.Equal(16, script.Entities.Count);
-            Assert.Single(script.Entities.Where(e => e.Type == FieldScript.EntityType.Line).ToList());
-            Assert.Empty(script.Entities.Where(e => e.Type == FieldScript.EntityType.Door).ToList());
-            Assert.Equal(4, script.Entities.Where(e => e.Type == FieldScript.EntityType.Background).Count());
-            Assert.Equal(11, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+            Assert.Single(script.Entities.Where(e => e.Type == EntityType.Line).ToList());
+            Assert.Empty(script.Entities.Where(e => e.Type == EntityType.Door).ToList());
+            Assert.Equal(4, script.Entities.Where(e => e.Type == EntityType.Background).Count());
+            Assert.Equal(11, script.Entities.Where(e => e.Type == EntityType.Other).Count());
 
             Assert.Equal(8, script.Entities[0].Scripts.Count);
             Assert.Equal(44, script.Entities[0].Scripts[0].Instructions[0].Param);
@@ -153,13 +153,13 @@ namespace FF8ModTest
             Assert.Equal(52, script.Entities[15].Scripts[0].Instructions[0].Param);
 
             // re-encode & run the same tests again
-            script = FieldScript.FromBytes(script.Encoded);
+            script = FieldScript.FromBytes(script.Encode());
 
             Assert.Equal(16, script.Entities.Count);
-            Assert.Single(script.Entities.Where(e => e.Type == FieldScript.EntityType.Line).ToList());
-            Assert.Empty(script.Entities.Where(e => e.Type == FieldScript.EntityType.Door).ToList());
-            Assert.Equal(4, script.Entities.Where(e => e.Type == FieldScript.EntityType.Background).Count());
-            Assert.Equal(11, script.Entities.Where(e => e.Type == FieldScript.EntityType.Other).Count());
+            Assert.Single(script.Entities.Where(e => e.Type == EntityType.Line).ToList());
+            Assert.Empty(script.Entities.Where(e => e.Type == EntityType.Door).ToList());
+            Assert.Equal(4, script.Entities.Where(e => e.Type == EntityType.Background).Count());
+            Assert.Equal(11, script.Entities.Where(e => e.Type == EntityType.Other).Count());
 
             Assert.Equal(8, script.Entities[0].Scripts.Count);
             Assert.Equal(44, script.Entities[0].Scripts[0].Instructions[0].Param);

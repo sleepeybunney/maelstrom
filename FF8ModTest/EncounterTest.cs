@@ -24,13 +24,13 @@ namespace FF8ModTest
             {
                 MonsterID = 77,
                 Level = 6,
-                Position = new EncounterSlot.Coords(200, 0, -2100),
+                Position = new Coords(200, 0, -2100),
                 Enabled = true,
                 Unknown2 = 209
             };
 
             // run it through the encoder & make sure everything's the same
-            enc = new Encounter(enc.Encoded);
+            enc = new Encounter(enc.Encode());
 
             Assert.Equal(31, enc.Scene);
             Assert.True(enc.NoEscape);

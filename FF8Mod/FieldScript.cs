@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FF8Mod.Archive;
 
-namespace FF8Mod
+namespace FF8Mod.Field
 {
     public partial class FieldScript
     {
@@ -94,91 +95,89 @@ namespace FF8Mod
         }
 
         // jsm output
-        public byte[] Encoded
+        public byte[] Encode()
         {
-            get
-            {
-                var doorCount = 0;
-                var lineCount = 0;
-                var backgroundCount = 0;
-                var otherCount = 0;
-                var allScripts = new List<Script>();
+            var doorCount = 0;
+            var lineCount = 0;
+            var backgroundCount = 0;
+            var otherCount = 0;
+            var allScripts = new List<Script>();
 
+            foreach (var e in Entities)
+            {
+                switch (e.Type)
+                {
+                    case EntityType.Door:
+                        doorCount++;
+                        break;
+                    case EntityType.Line:
+                        lineCount++;
+                        break;
+                    case EntityType.Background:
+                        backgroundCount++;
+                        break;
+                    default:
+                        otherCount++;
+                        break;
+                }
+
+                allScripts.AddRange(e.Scripts);
+            }
+
+            allScripts = allScripts.OrderBy(s => s.Instructions[0].Param).ToList();
+
+            var entityInfoLength = Entities.Count * 2;                              // 2 bytes per entity
+            var scriptInfoLength = allScripts.Count * 2 + 2;                        // 2 bytes per script + an extra entry to denote EOF
+            var scriptDataLength = allScripts.Sum(s => s.Instructions.Count * 4);   // 4 bytes per instruction
+            var totalLength = 8 + entityInfoLength + scriptInfoLength + scriptDataLength;
+
+            var scriptInfoOffset = entityInfoLength + 8;                            // entity counts above + these two offsets = 8 bytes
+            var scriptDataOffset = scriptInfoLength + scriptInfoOffset;
+
+            var result = new byte[totalLength];
+
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
+            {
+                writer.Write((byte)doorCount);
+                writer.Write((byte)lineCount);
+                writer.Write((byte)backgroundCount);
+                writer.Write((byte)otherCount);
+                writer.Write((short)scriptInfoOffset);
+                writer.Write((short)scriptDataOffset);
+
+                // entity info block
+                // todo: make sure everything's still in the right order (entity types -> script labels)
                 foreach (var e in Entities)
                 {
-                    switch (e.Type)
-                    {
-                        case EntityType.Door:
-                            doorCount++;
-                            break;
-                        case EntityType.Line:
-                            lineCount++;
-                            break;
-                        case EntityType.Background:
-                            backgroundCount++;
-                            break;
-                        default:
-                            otherCount++;
-                            break;
-                    }
-
-                    allScripts.AddRange(e.Scripts);
+                    writer.Write(new EntityInfo(e).Encode());
                 }
 
-                allScripts = allScripts.OrderBy(s => s.Instructions[0].Param).ToList();
-
-                var entityInfoLength = Entities.Count * 2;                              // 2 bytes per entity
-                var scriptInfoLength = allScripts.Count * 2 + 2;                        // 2 bytes per script + an extra entry to denote EOF
-                var scriptDataLength = allScripts.Sum(s => s.Instructions.Count * 4);   // 4 bytes per instruction
-                var totalLength = 8 + entityInfoLength + scriptInfoLength + scriptDataLength;
-
-                var scriptInfoOffset = entityInfoLength + 8;                            // entity counts above + these two offsets = 8 bytes
-                var scriptDataOffset = scriptInfoLength + scriptInfoOffset;
-
-                var result = new byte[totalLength];
-
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
+                // script info block (& gathering script data while we're here)
+                var scriptData = new List<int>();
+                foreach (var s in allScripts)
                 {
-                    writer.Write((byte)doorCount);
-                    writer.Write((byte)lineCount);
-                    writer.Write((byte)backgroundCount);
-                    writer.Write((byte)otherCount);
-                    writer.Write((short)scriptInfoOffset);
-                    writer.Write((short)scriptDataOffset);
+                    var info = new ScriptInfo(scriptData.Count * 4, s.MysteryFlag ? 1 : 0);
+                    writer.Write(info.Encode());
 
-                    // entity info block
-                    // todo: make sure everything's still in the right order (entity types -> script labels)
-                    foreach (var e in Entities)
+                    foreach (var i in s.Instructions)
                     {
-                        writer.Write(new EntityInfo(e).Encoded);
-                    }
-
-                    // script info block (& gathering script data while we're here)
-                    var scriptData = new List<int>();
-                    foreach (var s in allScripts)
-                    {
-                        var info = new ScriptInfo(scriptData.Count * 4, s.MysteryFlag ? 1 : 0);
-                        writer.Write(info.Encoded);
-
-                        foreach (var i in s.Instructions)
-                        {
-                            scriptData.Add(i.Encoded);
-                        }
-                    }
-
-                    // extra eof entry
-                    writer.Write(new ScriptInfo(scriptData.Count * 4, 0).Encoded);
-
-                    // script data block
-                    foreach (var s in scriptData)
-                    {
-                        writer.Write(s);
+                        scriptData.Add(i.Encode());
                     }
                 }
 
-                return result;
+                // extra eof entry
+                writer.Write(new ScriptInfo(scriptData.Count * 4, 0).Encode());
+
+                // script data block
+                foreach (var s in scriptData)
+                {
+                    writer.Write(s);
+                }
             }
+
+            return result;
+
         }
 
         // overwrite a script with instructions loaded from a text file
@@ -187,178 +186,183 @@ namespace FF8Mod
             var newScript = new Script(scriptText);
             Entities[entity].Scripts[script].Instructions = newScript.Instructions;
         }
+    }
 
-        // field entity (eg. a person or an event trigger)
-        public class Entity
+    // field entity (eg. a person or an event trigger)
+    public class Entity
+    {
+        public EntityType Type;
+        public List<Script> Scripts;
+
+        public Entity(EntityType type, List<Script> scripts)
         {
-            public EntityType Type;
-            public List<Script> Scripts;
+            Type = type;
+            Scripts = scripts;
+        }
+    }
 
-            public Entity(EntityType type, List<Script> scripts)
-            {
-                Type = type;
-                Scripts = scripts;
-            }
+    public enum EntityType
+    {
+        Line,
+        Door,
+        Background,
+        Other
+    }
+
+    // code attached to an entity
+    public class Script
+    {
+        public List<Instruction> Instructions;
+        public bool MysteryFlag;
+
+        public Script()
+        {
+            Instructions = new List<Instruction>();
+            MysteryFlag = false;
         }
 
-        // code attached to an entity
-        public class Script
+        public Script(List<Instruction> instructions, bool flag)
         {
-            public List<Instruction> Instructions;
-            public bool MysteryFlag;
+            Instructions = instructions;
+            MysteryFlag = flag;
+        }
 
-            public Script()
+        public Script(string instructions) : this()
+        {
+            var lines = instructions.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var line in lines)
             {
-                Instructions = new List<Instruction>();
-                MysteryFlag = false;
-            }
-
-            public Script(List<Instruction> instructions, bool flag)
-            {
-                Instructions = instructions;
-                MysteryFlag = flag;
-            }
-
-            public Script(string instructions) : this()
-            {
-                var lines = instructions.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (var line in lines)
+                var tokens = line.Split(null, 2).Select(t => t.Trim().ToLower()).Where(t => !string.IsNullOrEmpty(t)).ToList();
+                if (!FieldScript.OpCodesReverse.Keys.Contains(tokens[0]))
                 {
-                    var tokens = line.Split(null, 2).Select(t => t.Trim().ToLower()).Where(t => t != "").ToList();
-                    if (!OpCodesReverse.Keys.Contains(tokens[0]))
-                    {
-                        throw new Exception("unrecognised operation in fieldscript file (" + instructions + "): " + line);
-                    }
-                    var instruction = new Instruction(OpCodesReverse[tokens[0]]);
-
-                    if (tokens.Count > 1)
-                    {
-                        if (!int.TryParse(tokens[1], out int param))
-                        {
-                            throw new Exception("invalid parameter in fieldscript file (" + instructions + "): " + line);
-                        }
-                        instruction.Param = param;
-                        instruction.HasParam = true;
-                    }
-
-                    Instructions.Add(instruction);
+                    throw new Exception("unrecognised operation in fieldscript file (" + instructions + "): " + line);
                 }
-            }
+                var instruction = new Instruction(FieldScript.OpCodesReverse[tokens[0]]);
 
-            public override string ToString()
-            {
-                return string.Join(Environment.NewLine, Instructions);
-            }
-        }
+                if (tokens.Count > 1)
+                {
+                    if (!int.TryParse(tokens[1], out int param))
+                    {
+                        throw new Exception("invalid parameter in fieldscript file (" + instructions + "): " + line);
+                    }
+                    instruction.Param = param;
+                    instruction.HasParam = true;
+                }
 
-        // header data for entities in the jsm file
-        public class EntityInfo
-        {
-            public EntityType Type;
-            public int ScriptCount;
-            public int Label;
-
-            public EntityInfo(EntityType type, int scriptCount, int label)
-            {
-                Type = type;
-                ScriptCount = scriptCount;
-                Label = label;
-            }
-
-            public EntityInfo(EntityType type, ushort data)
-            {
-                Type = type;
-                ScriptCount = data & 0x7f;
-                Label = data >> 7;
-            }
-
-            public EntityInfo(Entity entity)
-            {
-                Type = entity.Type;
-                ScriptCount = entity.Scripts.Count - 1;     // entry script (the one referred to by Label) isn't counted
-                Label = entity.Scripts[0].Instructions[0].Param;
-            }
-
-            public ushort Encoded
-            {
-                get { return (ushort)((Label << 7) + ScriptCount); }
+                Instructions.Add(instruction);
             }
         }
 
-        // header data for scripts in the jsm file
-        public class ScriptInfo
+        public override string ToString()
         {
-            public int Position;
-            public int Flag;
+            return string.Join(Environment.NewLine, Instructions);
+        }
+    }
 
-            public ScriptInfo(int position, int flag)
-            {
-                Position = position;
-                Flag = flag;
-            }
+    // header data for entities in the jsm file
+    public class EntityInfo
+    {
+        public EntityType Type;
+        public int ScriptCount;
+        public int Label;
 
-            public ScriptInfo(ushort data)
-            {
-                Position = (data & 0x7fff) * 4;
-                Flag = data >> 15;
-            }
-
-            public ushort Encoded
-            {
-                get { return (ushort)((Flag << 15) + Position / 4); }
-            }
+        public EntityInfo(EntityType type, int scriptCount, int label)
+        {
+            Type = type;
+            ScriptCount = scriptCount;
+            Label = label;
         }
 
-        public class Instruction
+        public EntityInfo(EntityType type, ushort data)
         {
-            public int OpCode;
-            public int Param;
-            public bool HasParam;
+            Type = type;
+            ScriptCount = data & 0x7f;
+            Label = data >> 7;
+        }
 
-            public Instruction(int opCode, int param)
+        public EntityInfo(Entity entity)
+        {
+            Type = entity.Type;
+            ScriptCount = entity.Scripts.Count - 1;     // entry script (the one referred to by Label) isn't counted
+            Label = entity.Scripts[0].Instructions[0].Param;
+        }
+
+        public ushort Encode()
+        {
+            return (ushort)((Label << 7) + ScriptCount);
+        }
+    }
+
+    // header data for scripts in the jsm file
+    public class ScriptInfo
+    {
+        public int Position;
+        public int Flag;
+
+        public ScriptInfo(int position, int flag)
+        {
+            Position = position;
+            Flag = flag;
+        }
+
+        public ScriptInfo(ushort data)
+        {
+            Position = (data & 0x7fff) * 4;
+            Flag = data >> 15;
+        }
+
+        public ushort Encode()
+        {
+            return (ushort)((Flag << 15) + Position / 4);
+        }
+    }
+
+    public class Instruction
+    {
+        public int OpCode;
+        public int Param;
+        public bool HasParam;
+
+        public Instruction(int opCode, int param)
+        {
+            OpCode = opCode;
+            Param = param;
+            HasParam = true;
+        }
+
+        public Instruction(int opCode)
+        {
+            OpCode = opCode;
+            Param = 0;
+            HasParam = false;
+        }
+
+        public Instruction(byte[] instruction)
+        {
+            var value = BitConverter.ToInt32(instruction, 0);
+            HasParam = (value & 0xff000000) != 0;
+
+            if (HasParam)
             {
-                OpCode = opCode;
-                Param = param;
-                HasParam = true;
+                OpCode = value >> 24;
+                Param = unchecked((short)(value & 0x00ffffff));
             }
-
-            public Instruction(int opCode)
+            else
             {
-                OpCode = opCode;
+                OpCode = value;
                 Param = 0;
-                HasParam = false;
             }
+        }
 
-            public Instruction(byte[] instruction)
-            {
-                var value = BitConverter.ToInt32(instruction, 0);
-                HasParam = (value & 0xff000000) != 0;
+        public int Encode()
+        {
+            if (HasParam) return (OpCode << 24) | (Param & 0x00ffffff);
+            else return OpCode;
+        }
 
-                if (HasParam)
-                {
-                    OpCode = value >> 24;
-                    Param = unchecked((short)(value & 0x00ffffff));
-                }
-                else
-                {
-                    OpCode = value;
-                    Param = 0;
-                }
-            }
-
-            public int Encoded
-            {
-                get
-                {
-                    if (HasParam) return (OpCode << 24) | (Param & 0x00ffffff);
-                    else return OpCode;
-                }
-            }
-
-            public override string ToString()
-            {
-                return string.Format("{0}{1}", OpCodes[OpCode], HasParam ? " " + Param : "");
-            }
+        public override string ToString()
+        {
+            return string.Format("{0}{1}", FieldScript.OpCodes[OpCode], HasParam ? " " + Param : "");
         }
     }
 }

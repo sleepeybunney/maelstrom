@@ -1,4 +1,4 @@
-﻿using FF8Mod;
+﻿using FF8Mod.Battle;
 using Xunit;
 
 namespace FF8ModTest
@@ -42,8 +42,8 @@ namespace FF8ModTest
         {
             // construct a script with a populated init sub-script & run it through the encoder
             var script = new BattleScript();
-            script.Init.Insert(0, new BattleScript.Instruction(BattleScript.OpCodes[opcode], args));
-            script = new BattleScript(script.Encoded);
+            script.Init.Insert(0, new Instruction(Instruction.OpCodes[opcode], args));
+            script = new BattleScript(script.Encode());
 
             // added instruction should still be intact
             Assert.NotNull(script.Init);

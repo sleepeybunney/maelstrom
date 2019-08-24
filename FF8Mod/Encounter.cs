@@ -65,7 +65,7 @@ namespace FF8Mod
                     Slots[i].Unloaded = ((unloaded >> (7 - i)) & 1) != 0;
                     Slots[i].Untargetable = ((untargetable >> (7 - i)) & 1) != 0;
                     Slots[i].Enabled = ((enabled >> (7 - i)) & 1) != 0;
-                    Slots[i].Position = new EncounterSlot.Coords(reader.ReadInt16(), reader.ReadInt16(), reader.ReadInt16());
+                    Slots[i].Position = new Coords(reader.ReadInt16(), reader.ReadInt16(), reader.ReadInt16());
                 }
 
                 foreach (var s in Slots) s.MonsterID = (byte)(reader.ReadByte() - 0x10);
@@ -77,78 +77,75 @@ namespace FF8Mod
             }
         }
 
-        public byte[] Encoded
+        public byte[] Encode()
         {
-            get
+            var result = new byte[128];
+
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
             {
-                var result = new byte[128];
+                writer.Write(Scene);
 
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
+                byte flags = 0;
+                if (NoEscape) flags += 1;
+                if (NoVictorySequence) flags += 2;
+                if (ShowTimer) flags += 4;
+                if (NoExp) flags += 8;
+                if (NoResults) flags += 16;
+                if (StruckFirst) flags += 32;
+                if (BackAttack) flags += 64;
+                if (ScriptedBattle) flags += 128;
+                writer.Write(flags);
+
+                byte mainCamera = (byte)(MainCamera << 4);
+                mainCamera += MainCameraAnimation;
+                writer.Write(mainCamera);
+
+                byte secondaryCamera = (byte)(SecondaryCamera << 4);
+                secondaryCamera += SecondaryCameraAnimation;
+                writer.Write(secondaryCamera);
+
+                byte hidden = 0;
+                byte unloaded = 0;
+                byte untargetable = 0;
+                byte enabled = 0;
+
+                for (int i = 0; i < 8; i++)
                 {
-                    writer.Write(Scene);
+                    if (Slots[i].Hidden) hidden++;
+                    if (i < 7) hidden <<= 1;
 
-                    byte flags = 0;
-                    if (NoEscape) flags += 1;
-                    if (NoVictorySequence) flags += 2;
-                    if (ShowTimer) flags += 4;
-                    if (NoExp) flags += 8;
-                    if (NoResults) flags += 16;
-                    if (StruckFirst) flags += 32;
-                    if (BackAttack) flags += 64;
-                    if (ScriptedBattle) flags += 128;
-                    writer.Write(flags);
+                    if (Slots[i].Unloaded) unloaded++;
+                    if (i < 7) unloaded <<= 1;
 
-                    byte mainCamera = (byte)(MainCamera << 4);
-                    mainCamera += MainCameraAnimation;
-                    writer.Write(mainCamera);
+                    if (Slots[i].Untargetable) untargetable++;
+                    if (i < 7) untargetable <<= 1;
 
-                    byte secondaryCamera = (byte)(SecondaryCamera << 4);
-                    secondaryCamera += SecondaryCameraAnimation;
-                    writer.Write(secondaryCamera);
-
-                    byte hidden = 0;
-                    byte unloaded = 0;
-                    byte untargetable = 0;
-                    byte enabled = 0;
-
-                    for (int i = 0; i < 8; i++)
-                    {
-                        if (Slots[i].Hidden) hidden++;
-                        if (i < 7) hidden <<= 1;
-
-                        if (Slots[i].Unloaded) unloaded++;
-                        if (i < 7) unloaded <<= 1;
-
-                        if (Slots[i].Untargetable) untargetable++;
-                        if (i < 7) untargetable <<= 1;
-
-                        if (Slots[i].Enabled) enabled++;
-                        if (i < 7) enabled <<= 1;
-                    }
-
-                    writer.Write(hidden);
-                    writer.Write(unloaded);
-                    writer.Write(untargetable);
-                    writer.Write(enabled);
-
-                    for (int i = 0; i < 8; i++)
-                    {
-                        writer.Write(Slots[i].Position.X);
-                        writer.Write(Slots[i].Position.Y);
-                        writer.Write(Slots[i].Position.Z);
-                    }
-
-                    foreach (var s in Slots) writer.Write((byte)(s.MonsterID + 0x10));
-                    foreach (var s in Slots) writer.Write(s.Unknown1);
-                    foreach (var s in Slots) writer.Write(s.Unknown2);
-                    foreach (var s in Slots) writer.Write(s.Unknown3);
-                    foreach (var s in Slots) writer.Write(s.Unknown4);
-                    foreach (var s in Slots) writer.Write(s.Level);
+                    if (Slots[i].Enabled) enabled++;
+                    if (i < 7) enabled <<= 1;
                 }
 
-                return result;
+                writer.Write(hidden);
+                writer.Write(unloaded);
+                writer.Write(untargetable);
+                writer.Write(enabled);
+
+                for (int i = 0; i < 8; i++)
+                {
+                    writer.Write(Slots[i].Position.X);
+                    writer.Write(Slots[i].Position.Y);
+                    writer.Write(Slots[i].Position.Z);
+                }
+
+                foreach (var s in Slots) writer.Write((byte)(s.MonsterID + 0x10));
+                foreach (var s in Slots) writer.Write(s.Unknown1);
+                foreach (var s in Slots) writer.Write(s.Unknown2);
+                foreach (var s in Slots) writer.Write(s.Unknown3);
+                foreach (var s in Slots) writer.Write(s.Unknown4);
+                foreach (var s in Slots) writer.Write(s.Level);
             }
+
+            return result;
         }
     }
 }

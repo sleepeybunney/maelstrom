@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace FF8Mod
+namespace FF8Mod.Archive
 {
     public class FileSource
     {
@@ -98,11 +98,11 @@ namespace FF8Mod
             var sizeChange = data.Length - oldSize;
 
             // offset all the file entries displaced by the change
-            FileIndex.Entries[key] = new FileIndex.Entry(entry.Location, (uint)data.Length, false);
+            FileIndex.Entries[key] = new IndexEntry(entry.Location, (uint)data.Length, false);
             for (int i = key + 1; i < FileIndex.Entries.Count; i++)
             {
                 var currEntry = FileIndex.Entries[i];
-                FileIndex.Entries[i] = new FileIndex.Entry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compressed);
+                FileIndex.Entries[i] = new IndexEntry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compressed);
             }
 
             // write new index file to temp space
@@ -110,7 +110,7 @@ namespace FF8Mod
             using (var stream = new FileStream(tempIndexPath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             using (var writer = new BinaryWriter(stream))
             {
-                writer.Write(FileIndex.Encoded);
+                writer.Write(FileIndex.Encode());
             }
 
             // write new archive file to temp space

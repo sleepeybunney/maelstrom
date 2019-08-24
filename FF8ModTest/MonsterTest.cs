@@ -75,7 +75,7 @@ namespace FF8ModTest
             Assert.Equal("Minotaur “may we join you?”", minotaur.AI.Strings[3]);
 
             // run it through the encoder & check everything again
-            minotaur = Monster.FromBytes(minotaur.Encoded);
+            minotaur = Monster.FromBytes(minotaur.Encode());
             Assert.Equal("Minotaur", minotaur.Info.Name);
 
             Assert.Equal(100, minotaur.Info.Hp[0]);

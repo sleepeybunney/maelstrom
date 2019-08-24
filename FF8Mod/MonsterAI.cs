@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FF8Mod.Battle;
 
 namespace FF8Mod
 {
@@ -62,50 +63,47 @@ namespace FF8Mod
             }
         }
 
-        public byte[] Encoded
+        public byte[] Encode()
         {
-            get
+            var encodedScripts = Scripts.Encode();
+            var encodedStrings = Strings.ConvertAll(s => FF8String.Encode(s));
+
+            uint subSections = 3;
+            uint headerLength = (subSections + 1) * 4;
+            uint aiLength = (uint)encodedScripts.Length;
+            uint textIndexLength = (uint)Strings.Count * 2;
+            uint textLength = (uint)encodedStrings.Sum(s => s.Length);
+            uint totalLength = headerLength + aiLength + textIndexLength + textLength;
+            totalLength += 4 - (totalLength % 4);
+
+            uint aiOffset = headerLength;
+            uint textIndexOffset = aiOffset + aiLength;
+            uint textOffset = textIndexOffset + textIndexLength;
+
+            byte[] result = new byte[totalLength];
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
             {
-                var encodedScripts = Scripts.Encoded;
-                var encodedStrings = Strings.ConvertAll(s => FF8String.Encode(s));
+                writer.Write(subSections);
+                writer.Write(aiOffset);
+                writer.Write(textIndexOffset);
+                writer.Write(textOffset);
+                writer.Write(encodedScripts);
 
-                uint subSections = 3;
-                uint headerLength = (subSections + 1) * 4;
-                uint aiLength = (uint)encodedScripts.Length;
-                uint textIndexLength = (uint)Strings.Count * 2;
-                uint textLength = (uint)encodedStrings.Sum(s => s.Length);
-                uint totalLength = headerLength + aiLength + textIndexLength + textLength;
-                totalLength += 4 - (totalLength % 4);
-
-                uint aiOffset = headerLength;
-                uint textIndexOffset = aiOffset + aiLength;
-                uint textOffset = textIndexOffset + textIndexLength;
-
-                byte[] result = new byte[totalLength];
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
+                ushort offset = 0;
+                for (int i = 0; i < encodedStrings.Count; i++)
                 {
-                    writer.Write(subSections);
-                    writer.Write(aiOffset);
-                    writer.Write(textIndexOffset);
-                    writer.Write(textOffset);
-                    writer.Write(encodedScripts);
-
-                    ushort offset = 0;
-                    for (int i = 0; i < encodedStrings.Count; i++)
-                    {
-                        writer.Write(offset);
-                        offset += (ushort)encodedStrings[i].Length;
-                    }
-
-                    for (int i = 0; i < encodedStrings.Count; i++)
-                    {
-                        writer.Write(encodedStrings[i]);
-                    }
+                    writer.Write(offset);
+                    offset += (ushort)encodedStrings[i].Length;
                 }
 
-                return result;
+                for (int i = 0; i < encodedStrings.Count; i++)
+                {
+                    writer.Write(encodedStrings[i]);
+                }
             }
+
+            return result;
         }
     }
 }

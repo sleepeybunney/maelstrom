@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FF8Mod
 {
-    public class FF8String
+    public static class FF8String
     {
         private static readonly char[] readableChars = new char[]
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FF8Mod.Archive;
 
 namespace FF8Mod
 {
@@ -104,79 +105,76 @@ namespace FF8Mod
             foreach (var s in sections) result.Add(s.Type, s);
             return result;
         }
-        
-        public byte[] Encoded
+
+        public byte[] Encode()
         {
-            get
+            var encodedInfo = Info.Encode();
+            var encodedAI = AI.Encode();
+
+            uint sectionCount = 11;
+            uint sectionPosLength = sectionCount * 4;
+            uint headerLength = 4 + sectionPosLength + 4;
+            uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + encodedInfo.Length + encodedAI.Length + SectionsNineToEleven.Length);
+
+            // the rebuilt info & AI sections may be a different size,
+            // so everything after them in the file will be displaced by some number of bytes (+/-)
+            // which needs to be accounted for in the header
+            var originalInfoLength = SectionInfo[SectionIndex.Info].Length;
+            var originalAILength = SectionInfo[SectionIndex.AI].Length;
+            var sizeDiff = encodedInfo.Length + encodedAI.Length - originalInfoLength - originalAILength;
+
+            SectionInfo[SectionIndex.Info].Length = encodedInfo.Length;
+            SectionInfo[SectionIndex.AI].Length = encodedAI.Length;
+            for (int i = 9; i <= 11; i++)
             {
-                var encodedInfo = Info.Encoded;
-                var encodedAI = AI.Encoded;
-
-                uint sectionCount = 11;
-                uint sectionPosLength = sectionCount * 4;
-                uint headerLength = 4 + sectionPosLength + 4;
-                uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + encodedInfo.Length + encodedAI.Length + SectionsNineToEleven.Length);
-
-                // the rebuilt info & AI sections may be a different size,
-                // so everything after them in the file will be displaced by some number of bytes (+/-)
-                // which needs to be accounted for in the header
-                var originalInfoLength = SectionInfo[SectionIndex.Info].Length;
-                var originalAILength = SectionInfo[SectionIndex.AI].Length;
-                var sizeDiff = encodedInfo.Length + encodedAI.Length - originalInfoLength - originalAILength;
-
-                SectionInfo[SectionIndex.Info].Length = encodedInfo.Length;
-                SectionInfo[SectionIndex.AI].Length = encodedAI.Length;
-                for (int i = 9; i <= 11; i++)
-                {
-                    SectionInfo[(SectionIndex)i].Offset += sizeDiff;
-                }
-
-                var result = new byte[totalLength];
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
-                {
-                    writer.Write(sectionCount);
-                    for (int i = 1; i <= 11; i++)
-                    {
-                        writer.Write((uint)SectionInfo[(SectionIndex)i].Offset);
-                    }
-                    writer.Write(totalLength);
-
-                    writer.Write(SectionsOneToSix);
-                    writer.Write(encodedInfo);
-                    writer.Write(encodedAI);
-                    writer.Write(SectionsNineToEleven);
-                }
-
-                return result;
+                SectionInfo[(SectionIndex)i].Offset += sizeDiff;
             }
+
+            var result = new byte[totalLength];
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
+            {
+                writer.Write(sectionCount);
+                for (int i = 1; i <= 11; i++)
+                {
+                    writer.Write((uint)SectionInfo[(SectionIndex)i].Offset);
+                }
+                writer.Write(totalLength);
+
+                writer.Write(SectionsOneToSix);
+                writer.Write(encodedInfo);
+                writer.Write(encodedAI);
+                writer.Write(SectionsNineToEleven);
+            }
+
+            return result;
         }
 
         public override string ToString()
         {
             return Info.Name;
         }
+    }
 
-        public enum SectionIndex
-        {
-            Skeleton = 1,
-            Mesh = 2,
-            Animation = 3,
-            Section4 = 4,
-            Section5 = 5,
-            Section6 = 6,
-            Info = 7,
-            AI = 8,
-            Sounds = 9,
-            Section10 = 10,
-            Textures = 11
-        }
+    public enum SectionIndex
+    {
+        Skeleton = 1,
+        Mesh = 2,
+        Animation = 3,
+        Section4 = 4,
+        Section5 = 5,
+        Section6 = 6,
+        Info = 7,
+        AI = 8,
+        Sounds = 9,
+        Section10 = 10,
+        Textures = 11
+    }
 
-        public class Section
-        {
-            public SectionIndex Type;
-            public int Offset;
-            public int Length;
-        }
+    public class Section
+    {
+        public SectionIndex Type;
+        public int Offset;
+        public int Length;
     }
 }

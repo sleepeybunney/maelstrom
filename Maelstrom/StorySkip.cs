@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using FF8Mod.Field;
+using FF8Mod.Archive;
 
 namespace FF8Mod.Maelstrom
 {
@@ -10,24 +12,24 @@ namespace FF8Mod.Maelstrom
         public static void Apply(FileSource fieldSource, string af3dnPath)
         {
             // replace liberi fatali intro with quistis walking through a door
-            StorySkip.ImportScript(fieldSource, "start0", 0, 1);
+            ImportScript(fieldSource, "start0", 0, 1);
             IntroPatch.Apply(af3dnPath);
 
             // brief conversation in the infirmary, receive 2 GFs and a party member
-            StorySkip.ImportScript(fieldSource, "bghoke_2", 12, 1);
-            StorySkip.ImportScript(fieldSource, "bghoke_2", 6, 4);
+            ImportScript(fieldSource, "bghoke_2", 12, 1);
+            ImportScript(fieldSource, "bghoke_2", 6, 4);
 
             // tutorial at the front gate
-            StorySkip.DeleteEntity(fieldSource, "bggate_1", 0);
+            DeleteEntity(fieldSource, "bggate_1", 0);
 
             // fire cavern tutorials & dialogue with quistis
-            StorySkip.DeleteEntity(fieldSource, "bdview1", 0);
+            DeleteEntity(fieldSource, "bdview1", 0);
 
             // faculty fellas at the cave entrance
-            StorySkip.DeleteEntity(fieldSource, "bdview1", 11);
-            StorySkip.DeleteEntity(fieldSource, "bdview1", 12);
-            StorySkip.DeleteEntity(fieldSource, "bdenter1", 9);
-            StorySkip.DeleteEntity(fieldSource, "bdenter1", 10);
+            DeleteEntity(fieldSource, "bdview1", 11);
+            DeleteEntity(fieldSource, "bdview1", 12);
+            DeleteEntity(fieldSource, "bdenter1", 9);
+            DeleteEntity(fieldSource, "bdenter1", 10);
         }
 
         public static void Remove(string af3dnPath)
@@ -41,7 +43,7 @@ namespace FF8Mod.Maelstrom
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
             field.ReplaceScript(entity, script, File.ReadAllText(importPath));
-            SaveToSource(fieldSource, fieldName, field.Encoded);
+            SaveToSource(fieldSource, fieldName, field.Encode());
         }
 
         // slightly easier import with the filename convention "fieldName.entityID.scriptID.txt"
@@ -63,7 +65,7 @@ namespace FF8Mod.Maelstrom
             var label = field.Entities[entity].Scripts[0].Instructions[0].Param;
             var nullScript = string.Format("lbl {0}{1}ret 8", label, Environment.NewLine);
             field.ReplaceScript(entity, 0, nullScript);
-            SaveToSource(fieldSource, fieldName, field.Encoded);
+            SaveToSource(fieldSource, fieldName, field.Encode());
         }
 
         private static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)

@@ -181,130 +181,127 @@ namespace FF8Mod
             }
         }
 
-        public byte[] Encoded
+        public byte[] Encode()
         {
-            get
+            var result = new byte[380];
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
             {
-                var result = new byte[380];
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
+                var encodedName = FF8String.Encode(Name);
+                var resizedName = new byte[24];
+                Array.Copy(encodedName, resizedName, Math.Min(encodedName.Length, 24));
+                writer.Write(resizedName);
+
+                writer.Write(Hp);
+                writer.Write(Str);
+                writer.Write(Vit);
+                writer.Write(Mag);
+                writer.Write(Spr);
+                writer.Write(Spd);
+                writer.Write(Eva);
+
+                for (int i = 0; i < 16; i++)
                 {
-                    var encodedName = FF8String.Encode(Name);
-                    var resizedName = new byte[24];
-                    Array.Copy(encodedName, resizedName, Math.Min(encodedName.Length, 24));
-                    writer.Write(resizedName);
-
-                    writer.Write(Hp);
-                    writer.Write(Str);
-                    writer.Write(Vit);
-                    writer.Write(Mag);
-                    writer.Write(Spr);
-                    writer.Write(Spd);
-                    writer.Write(Eva);
-
-                    for (int i = 0; i < 16; i++)
-                    {
-                        writer.Write(AbilitiesLow[i].Type);
-                        writer.Write(AbilitiesLow[i].Something);
-                        writer.Write(AbilitiesLow[i].AbilityId);
-                    }
-
-                    for (int i = 0; i < 16; i++)
-                    {
-                        writer.Write(AbilitiesMed[i].Type);
-                        writer.Write(AbilitiesMed[i].Something);
-                        writer.Write(AbilitiesMed[i].AbilityId);
-                    }
-
-                    for (int i = 0; i < 16; i++)
-                    {
-                        writer.Write(AbilitiesHigh[i].Type);
-                        writer.Write(AbilitiesHigh[i].Something);
-                        writer.Write(AbilitiesHigh[i].AbilityId);
-                    }
-
-                    writer.Write(MedStart);
-                    writer.Write(HighStart);
-                    writer.Write(MysteryFlags1);
-                    writer.Write(StatusFlags1);
-
-                    writer.Write(CardDrop);
-                    writer.Write(CardMorph);
-                    writer.Write(CardRareMorph);
-
-                    writer.Write(DevourLow);
-                    writer.Write(DevourMed);
-                    writer.Write(DevourHigh);
-
-                    writer.Write(StatusFlags2);
-                    writer.Write(MysteryFlags2);
-                    writer.Write(ExtraExp);
-                    writer.Write(Exp);
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DrawLow[i]);
-                        writer.Write((byte)0);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DrawMed[i]);
-                        writer.Write((byte)0);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DrawHigh[i]);
-                        writer.Write((byte)0);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(MugLow[i].ItemId);
-                        writer.Write(MugLow[i].Quantity);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(MugMed[i].ItemId);
-                        writer.Write(MugMed[i].Quantity);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(MugHigh[i].ItemId);
-                        writer.Write(MugHigh[i].Quantity);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DropLow[i].ItemId);
-                        writer.Write(DropLow[i].Quantity);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DropMed[i].ItemId);
-                        writer.Write(DropMed[i].Quantity);
-                    }
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        writer.Write(DropHigh[i].ItemId);
-                        writer.Write(DropHigh[i].Quantity);
-                    }
-
-                    writer.Write(MugRate);
-                    writer.Write(DropRate);
-                    writer.Write((byte)0);
-                    writer.Write(Ap);
-                    writer.Write(MysteryData);
-                    writer.Write(ElemDef);
-                    writer.Write(StatusDef);
+                    writer.Write(AbilitiesLow[i].Type);
+                    writer.Write(AbilitiesLow[i].Something);
+                    writer.Write(AbilitiesLow[i].AbilityId);
                 }
-                return result;
+
+                for (int i = 0; i < 16; i++)
+                {
+                    writer.Write(AbilitiesMed[i].Type);
+                    writer.Write(AbilitiesMed[i].Something);
+                    writer.Write(AbilitiesMed[i].AbilityId);
+                }
+
+                for (int i = 0; i < 16; i++)
+                {
+                    writer.Write(AbilitiesHigh[i].Type);
+                    writer.Write(AbilitiesHigh[i].Something);
+                    writer.Write(AbilitiesHigh[i].AbilityId);
+                }
+
+                writer.Write(MedStart);
+                writer.Write(HighStart);
+                writer.Write(MysteryFlags1);
+                writer.Write(StatusFlags1);
+
+                writer.Write(CardDrop);
+                writer.Write(CardMorph);
+                writer.Write(CardRareMorph);
+
+                writer.Write(DevourLow);
+                writer.Write(DevourMed);
+                writer.Write(DevourHigh);
+
+                writer.Write(StatusFlags2);
+                writer.Write(MysteryFlags2);
+                writer.Write(ExtraExp);
+                writer.Write(Exp);
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DrawLow[i]);
+                    writer.Write((byte)0);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DrawMed[i]);
+                    writer.Write((byte)0);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DrawHigh[i]);
+                    writer.Write((byte)0);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(MugLow[i].ItemId);
+                    writer.Write(MugLow[i].Quantity);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(MugMed[i].ItemId);
+                    writer.Write(MugMed[i].Quantity);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(MugHigh[i].ItemId);
+                    writer.Write(MugHigh[i].Quantity);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DropLow[i].ItemId);
+                    writer.Write(DropLow[i].Quantity);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DropMed[i].ItemId);
+                    writer.Write(DropMed[i].Quantity);
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    writer.Write(DropHigh[i].ItemId);
+                    writer.Write(DropHigh[i].Quantity);
+                }
+
+                writer.Write(MugRate);
+                writer.Write(DropRate);
+                writer.Write((byte)0);
+                writer.Write(Ap);
+                writer.Write(MysteryData);
+                writer.Write(ElemDef);
+                writer.Write(StatusDef);
             }
+            return result;
         }
 
         public void CopyStats(MonsterInfo source)
@@ -394,18 +391,18 @@ namespace FF8Mod
         {
             return NonOffensiveStatAtLevel(level, Eva);
         }
+    }
 
-        public struct Ability
-        {
-            public byte Type;
-            public byte Something;
-            public ushort AbilityId;
-        }
+    public class Ability
+    {
+        public byte Type;
+        public byte Something;
+        public ushort AbilityId;
+    }
 
-        public struct HeldItem
-        {
-            public byte ItemId;
-            public byte Quantity;
-        }
+    public class HeldItem
+    {
+        public byte ItemId;
+        public byte Quantity;
     }
 }

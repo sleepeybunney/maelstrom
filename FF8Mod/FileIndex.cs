@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace FF8Mod
+namespace FF8Mod.Archive
 {
     public class FileIndex
     {
-        public List<Entry> Entries;
+        public List<IndexEntry> Entries;
 
         public FileIndex()
         {
-            Entries = new List<Entry>();
+            Entries = new List<IndexEntry>();
         }
 
         public FileIndex(string path) : this()
@@ -35,54 +35,29 @@ namespace FF8Mod
             {
                 while (stream.Position < stream.Length - 11)
                 {
-                    Entries.Add(new Entry(reader.ReadBytes(12)));
+                    Entries.Add(new IndexEntry(reader.ReadBytes(12)));
                 }
             }
         }
 
-        public struct Entry
+        public byte[] Encode()
         {
-            public uint Length;
-            public uint Location;
-            public bool Compressed;
+            var length = Entries.Count * 12;
+            var result = new byte[length];
 
-            public Entry(byte[] data)
+            using (var stream = new MemoryStream(result))
+            using (var writer = new BinaryWriter(stream))
             {
-                if (data.Length != 12) throw new InvalidDataException("Expected 12 bytes for a file index entry");
-                Length = BitConverter.ToUInt32(data, 0);
-                Location = BitConverter.ToUInt32(data, 4);
-                Compressed = BitConverter.ToUInt32(data, 8) == 1;
-            }
-
-            public Entry(uint location, uint length, bool compressed)
-            {
-                Location = location;
-                Length = length;
-                Compressed = compressed;
-            }
-        }
-
-        public byte[] Encoded
-        {
-            get
-            {
-                var length = Entries.Count * 12;
-                var result = new byte[length];
-
-                using (var stream = new MemoryStream(result))
-                using (var writer = new BinaryWriter(stream))
+                for (int i = 0; i < Entries.Count; i++)
                 {
-                    for (int i = 0; i < Entries.Count; i++)
-                    {
-                        writer.Write(Entries[i].Length);
-                        writer.Write(Entries[i].Location);
-                        uint compressed = (uint)(Entries[i].Compressed ? 1 : 0);
-                        writer.Write(compressed);
-                    }
+                    writer.Write(Entries[i].Length);
+                    writer.Write(Entries[i].Location);
+                    uint compressed = (uint)(Entries[i].Compressed ? 1 : 0);
+                    writer.Write(compressed);
                 }
-
-                return result;
             }
+
+            return result;
         }
     }
 }
