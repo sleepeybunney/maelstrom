@@ -58,6 +58,7 @@ namespace FF8Mod.Maelstrom
                         var battlePath = Path.Combine(dataPath, "battle");
                         var battleSource = new FileSource(battlePath);
                         Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
+                        battleSource.Encode();
                     }
                 },
 
@@ -69,6 +70,7 @@ namespace FF8Mod.Maelstrom
                         var fieldPath = Path.Combine(dataPath, "field");
                         var fieldSource = new FileSource(fieldPath);
                         StorySkip.Apply(fieldSource, af3dn, seed);
+                        fieldSource.Encode();
                     }
                     else
                     {
@@ -85,6 +87,7 @@ namespace FF8Mod.Maelstrom
 
                 this.Invoke(() =>
                 {
+                    GC.Collect();
                     goContent.Content = GoButton;
                     MessageBox.Show(this, "Done!", "Maelstrom");
                 });

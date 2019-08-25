@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace FF8Mod.Archive
 {
@@ -53,6 +54,11 @@ namespace FF8Mod.Archive
             var result = Files.Where(f => f.StartsWith(path.ToLower()));
             if (result.Count() == 0) return null;
             return result.ToList();
+        }
+
+        public byte[] Encode()
+        {
+            return Encoding.UTF8.GetBytes(string.Join(Environment.NewLine, Files));
         }
     }
 }
