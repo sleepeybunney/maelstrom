@@ -32,6 +32,8 @@
             </StackPanel>
         </GroupBox>
 
-        <Button x:Name="goButton" Content="Go" Click="OnGo" Margin="0,0,10,0" Grid.Row="2" Grid.Column="2" />
+        <Button x:Name="goButton" Click="OnGo" Margin="0,0,10,0" Grid.Row="2" Grid.Column="2">
+            <ContentControl x:Name="goContent" />
+        </Button>
     </Grid>
 </Controls:MetroWindow>

@@ -3,6 +3,9 @@ using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using FF8Mod.Archive;
+using System.Threading.Tasks;
+using MahApps.Metro.Controls;
+using System.Windows.Media;
 
 namespace FF8Mod.Maelstrom
 {
@@ -14,51 +17,69 @@ namespace FF8Mod.Maelstrom
         public MainWindow()
         {
             InitializeComponent();
+            goContent.Content = "GO";
         }
 
         private void OnGo(object sender, RoutedEventArgs e)
         {
             goButton.IsEnabled = false;
-
-            try
+            goContent.Content = new ProgressRing()
             {
-                var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
-                var dataPath = Path.Combine(gameLocation, "data", "lang-en");
-                var af3dn = Path.Combine(gameLocation, "AF3DN.P");
+                IsActive = true,
+                Width = 16,
+                Height = 16,
+                MinWidth = 16,
+                MinHeight = 16,
+                Foreground = Brushes.White
+            };
 
-                // shuffle/rebalance bosses
-                if (Properties.Settings.Default.BossShuffle)
-                {
-                    var battlePath = Path.Combine(dataPath, "battle");
-                    var battleSource = new FileSource(battlePath);
-                    Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance);
-                }
+            var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
+            var dataPath = Path.Combine(gameLocation, "data", "lang-en");
+            var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
-                // skip story scenes
-                if (Properties.Settings.Default.StorySkip)
+            Task.Run(() =>
+            {
+                Parallel.Invoke(() =>
                 {
-                    var fieldPath = Path.Combine(dataPath, "field");
-                    var fieldSource = new FileSource(fieldPath);
-                    StorySkip.Apply(fieldSource, af3dn);
-                }
-                else
-                {
-                    StorySkip.Remove(af3dn);
-                }
+                    // shuffle/rebalance bosses
+                    if (Properties.Settings.Default.BossShuffle)
+                    {
+                        var battlePath = Path.Combine(dataPath, "battle");
+                        var battleSource = new FileSource(battlePath);
+                        Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance);
+                    }
+                },
 
-                // shuffle draw points
-                if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.Patch.Apply(Properties.Settings.Default.GameLocation);
-                else DrawPointShuffle.Patch.Remove(Properties.Settings.Default.GameLocation);
+                () =>
+                {
+                    // skip story scenes
+                    if (Properties.Settings.Default.StorySkip)
+                    {
+                        var fieldPath = Path.Combine(dataPath, "field");
+                        var fieldSource = new FileSource(fieldPath);
+                        StorySkip.Apply(fieldSource, af3dn);
+                    }
+                    else
+                    {
+                        StorySkip.Remove(af3dn);
+                    }
+                },
+
+                () =>
+                {
+                    // shuffle draw points
+                    if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.Patch.Apply(Properties.Settings.Default.GameLocation);
+                    else DrawPointShuffle.Patch.Remove(Properties.Settings.Default.GameLocation);
+                });
 
                 MessageBox.Show("Done!", "Maelstrom");
 
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message, "Maelstrom - Error");
-            }
-
-            goButton.IsEnabled = true;
+                goButton.Invoke(() =>
+                {
+                    goButton.IsEnabled = true;
+                    goContent.Content = "GO";
+                });
+            });
         }
 
         private void OnBrowse(object sender, RoutedEventArgs e)
