@@ -9,7 +9,7 @@ namespace FF8Mod.Maelstrom
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
 
-        public static void Apply(FileSource fieldSource, string af3dnPath)
+        public static void Apply(FileSource fieldSource, string af3dnPath, int seed)
         {
             // replace liberi fatali intro with quistis walking through a door
             ImportScript(fieldSource, "start0", 0, 1);
@@ -18,6 +18,7 @@ namespace FF8Mod.Maelstrom
             // brief conversation in the infirmary, receive 2 GFs and a party member
             ImportScript(fieldSource, "bghoke_2", 12, 1);
             ImportScript(fieldSource, "bghoke_2", 6, 4);
+            SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} ID #" + seed.ToString()  + "...”");
 
             // tutorial at the front gate
             DeleteEntity(fieldSource, "bggate_1", 0);
@@ -83,6 +84,17 @@ namespace FF8Mod.Maelstrom
         public static void DeleteEntity(FileSource fieldSource, string fieldName, int entity)
         {
             DeleteScript(fieldSource, fieldName, entity, 0);
+        }
+
+        // change the text of a field message
+        public static void SetText(FileSource fieldSource, string fieldName, int messageId, string newText)
+        {
+            var fieldPath = FieldScript.GetFieldPath(fieldName);
+            var msdPath = Path.Combine(fieldPath, fieldName + ".msd");
+            var innerSource = new FileSource(fieldPath, fieldSource);
+            var fieldText = MessageFile.FromSource(innerSource, msdPath);
+            fieldText.Messages[messageId] = newText;
+            innerSource.ReplaceFile(msdPath, fieldText.Encode());
         }
 
         private static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)

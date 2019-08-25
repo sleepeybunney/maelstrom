@@ -59,7 +59,7 @@ namespace FF8Mod.Maelstrom
                     {
                         var fieldPath = Path.Combine(dataPath, "field");
                         var fieldSource = new FileSource(fieldPath);
-                        StorySkip.Apply(fieldSource, af3dn);
+                        StorySkip.Apply(fieldSource, af3dn, seed);
                     }
                     else
                     {
