@@ -33,6 +33,8 @@ namespace FF8Mod.Maelstrom
                 Foreground = Brushes.White
             };
 
+            var seed = Properties.Settings.Default.SeedSet ? Properties.Settings.Default.SeedValue : new Random().Next(-1, int.MaxValue) + 1;
+
             var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
             var dataPath = Path.Combine(gameLocation, "data", "lang-en");
             var af3dn = Path.Combine(gameLocation, "AF3DN.P");
@@ -46,7 +48,7 @@ namespace FF8Mod.Maelstrom
                     {
                         var battlePath = Path.Combine(dataPath, "battle");
                         var battleSource = new FileSource(battlePath);
-                        Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance);
+                        Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
                     }
                 },
 
@@ -68,8 +70,8 @@ namespace FF8Mod.Maelstrom
                 () =>
                 {
                     // shuffle draw points
-                    if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.Patch.Apply(Properties.Settings.Default.GameLocation);
-                    else DrawPointShuffle.Patch.Remove(Properties.Settings.Default.GameLocation);
+                    if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
+                    else DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
                 });
 
                 MessageBox.Show("Done!", "Maelstrom");

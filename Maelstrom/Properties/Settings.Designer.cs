@@ -82,5 +82,29 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["DrawPointShuffle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SeedSet {
+            get {
+                return ((bool)(this["SeedSet"]));
+            }
+            set {
+                this["SeedSet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SeedValue {
+            get {
+                return ((int)(this["SeedValue"]));
+            }
+            set {
+                this["SeedValue"] = value;
+            }
+        }
     }
 }

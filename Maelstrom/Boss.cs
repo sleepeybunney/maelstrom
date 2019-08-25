@@ -59,11 +59,11 @@ namespace FF8Mod.Maelstrom
                                                         // 814-819 more propagators
         };
 
-        public static void Shuffle(FileSource battleSource, bool rebalance)
+        public static void Shuffle(FileSource battleSource, bool rebalance, int seed)
         {
             var encFilePath = @"c:\ff8\data\eng\battle\scene.out";
             var encFile = EncounterFile.FromSource(battleSource, encFilePath);
-            var random = new Random();
+            var random = new Random(seed);
             var encList = Encounters.Keys.ToList();
             var matchList = Encounters.Keys.ToList();
             var monsterMap = new Dictionary<int, List<EncounterSlot>>();
