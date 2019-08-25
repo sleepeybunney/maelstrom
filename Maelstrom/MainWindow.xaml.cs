@@ -6,6 +6,7 @@ using FF8Mod.Archive;
 using System.Threading.Tasks;
 using MahApps.Metro.Controls;
 using System.Windows.Media;
+using System.Windows.Controls;
 
 namespace FF8Mod.Maelstrom
 {
@@ -17,21 +18,29 @@ namespace FF8Mod.Maelstrom
         public MainWindow()
         {
             InitializeComponent();
-            goContent.Content = "GO";
+            GoButton.Click += OnGo;
+            goContent.Content = GoButton;
         }
+
+        static Button GoButton = new Button()
+        {
+            Margin = new Thickness(0, 0, 10, 0),
+            Content = "GO"
+        };
+
+        static ProgressRing Spinner = new ProgressRing()
+        {
+            IsActive = true,
+            Width = 22,
+            Height = 22,
+            MinWidth = 22,
+            MinHeight = 22,
+            Foreground = Brushes.White
+        };
 
         private void OnGo(object sender, RoutedEventArgs e)
         {
-            goButton.IsEnabled = false;
-            goContent.Content = new ProgressRing()
-            {
-                IsActive = true,
-                Width = 16,
-                Height = 16,
-                MinWidth = 16,
-                MinHeight = 16,
-                Foreground = Brushes.White
-            };
+            goContent.Content = Spinner;
 
             var seed = Properties.Settings.Default.SeedSet ? Properties.Settings.Default.SeedValue : new Random().Next(-1, int.MaxValue) + 1;
 
@@ -74,12 +83,10 @@ namespace FF8Mod.Maelstrom
                     else DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
                 });
 
-                MessageBox.Show("Done!", "Maelstrom");
-
-                goButton.Invoke(() =>
+                this.Invoke(() =>
                 {
-                    goButton.IsEnabled = true;
-                    goContent.Content = "GO";
+                    goContent.Content = GoButton;
+                    MessageBox.Show(this, "Done!", "Maelstrom");
                 });
             });
         }

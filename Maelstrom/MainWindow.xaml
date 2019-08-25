@@ -26,22 +26,20 @@
         <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionStorySkip" Content="Skip Story" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionDrawPointShuffle" Content="Shuffle Draw Points" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses" Margin="10" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionStorySkip" Content="Skip Story" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionDrawPointShuffle" Content="Shuffle Draw Points" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="optionSeedSet" Content="Fixed Seed" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                        <TextBox x:Name="optionSeedValue" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" />
+                        <CheckBox x:Name="optionSeedSet" Content="Fixed Seed" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                        <TextBox x:Name="optionSeedValue" Margin="6" HorizontalAlignment="Left" Width="100" Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
 
-        <Button x:Name="goButton" Click="OnGo" Margin="0,0,10,0" Grid.Row="2" Grid.Column="2">
-            <ContentControl x:Name="goContent" />
-        </Button>
+        <Controls:TransitioningContentControl x:Name="goContent" Transition="Left" Grid.Row="2" Grid.Column="2" />
     </Grid>
 </Controls:MetroWindow>
