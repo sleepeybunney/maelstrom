@@ -30,6 +30,17 @@ namespace FF8Mod.Maelstrom
             DeleteEntity(fieldSource, "bdview1", 12);
             DeleteEntity(fieldSource, "bdenter1", 9);
             DeleteEntity(fieldSource, "bdenter1", 10);
+
+            // fire cavern dialogue & timers
+            DeleteScript(fieldSource, "bdin1", 11, 1);
+            DeleteScript(fieldSource, "bdin2", 11, 1);
+            DeleteScript(fieldSource, "bdin3", 11, 1);
+            DeleteScript(fieldSource, "bdin4", 12, 1);
+            DeleteScript(fieldSource, "bdin5", 15, 1);
+            DeleteEntity(fieldSource, "bdin5", 0);
+            DeleteScript(fieldSource, "bdifrit1", 15, 1);
+            ImportScript(fieldSource, "bdifrit1", 0, 5);
+            ImportScript(fieldSource, "bdifrit1", 14, 4);
         }
 
         public static void Remove(string af3dnPath)
@@ -58,14 +69,20 @@ namespace FF8Mod.Maelstrom
             ImportScript(fieldSource, fieldName, entity, script, string.Format(@"OrigFieldScripts\{0}.{1}.{2}.txt", fieldName, entity, script));
         }
 
+        // delete a single script
+        public static void DeleteScript(FileSource fieldSource, string fieldName, int entity, int script)
+        {
+            var field = FieldScript.FromSource(fieldSource, fieldName);
+            var label = field.Entities[entity].Scripts[script].Instructions[0].Param;
+            var nullScript = string.Format("lbl {0}{1}ret 8", label, Environment.NewLine);
+            field.ReplaceScript(entity, script, nullScript);
+            SaveToSource(fieldSource, fieldName, field.Encode());
+        }
+
         // remove an entity from the field by deleting its initialisation script
         public static void DeleteEntity(FileSource fieldSource, string fieldName, int entity)
         {
-            var field = FieldScript.FromSource(fieldSource, fieldName);
-            var label = field.Entities[entity].Scripts[0].Instructions[0].Param;
-            var nullScript = string.Format("lbl {0}{1}ret 8", label, Environment.NewLine);
-            field.ReplaceScript(entity, 0, nullScript);
-            SaveToSource(fieldSource, fieldName, field.Encode());
+            DeleteScript(fieldSource, fieldName, entity, 0);
         }
 
         private static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)

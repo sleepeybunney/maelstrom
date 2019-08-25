@@ -1,0 +1,11 @@
+﻿lbl 49
+ucoff
+pshn_l 13
+setbattlemusic
+pshn_l 1
+pshn_l 43
+reqew 9
+pshn_l 5
+setbattlemusic
+ucon
+ret 8
