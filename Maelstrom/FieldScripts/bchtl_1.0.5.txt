@@ -1,0 +1,11 @@
+﻿lbl 106
+ucoff
+pshn_l 13
+setbattlemusic
+pshn_l 84
+pshn_l 0
+battle
+pshn_l 5
+setbattlemusic
+ucon
+ret 8

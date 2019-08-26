@@ -49,6 +49,12 @@ namespace FF8Mod.Maelstrom
             ImportScript(fieldSource, "bgmon_1", 0, 0);
             DeleteScript(fieldSource, "bgmon_1", 0, 1);
             ImportScript(fieldSource, "bgmon_1", 0, 7);
+
+            // balamb hotel boss
+            CopyParticle(fieldSource, "fewor1", "bchtl_1");
+            ImportScript(fieldSource, "bchtl_1", 0, 0);
+            ImportScript(fieldSource, "bchtl_1", 0, 5);
+            ImportScript(fieldSource, "bchtl_1", 3, 0);
         }
 
         public static void Remove(string af3dnPath)

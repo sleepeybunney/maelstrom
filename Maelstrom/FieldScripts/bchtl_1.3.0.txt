@@ -1,0 +1,15 @@
+﻿lbl 0
+pshn_l 128
+pshn_l 128
+pshn_l 128
+polycolorall
+pshn_l 800
+pshn_l 1000
+pshn_l 0
+set3 17
+pshn_l 0
+particleon
+pshn_l 0
+particleset
+fadein
+ret 8
