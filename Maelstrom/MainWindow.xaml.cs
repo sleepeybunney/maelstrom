@@ -53,9 +53,11 @@ namespace FF8Mod.Maelstrom
                 Parallel.Invoke(() =>
                 {
                     // shuffle/rebalance bosses
+                    var battlePath = Path.Combine(dataPath, "battle");
+                    CreateOrRestoreArchiveBackup(battlePath);
+
                     if (Properties.Settings.Default.BossShuffle)
                     {
-                        var battlePath = Path.Combine(dataPath, "battle");
                         var battleSource = new FileSource(battlePath);
                         Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
                         battleSource.Encode();
@@ -65,9 +67,11 @@ namespace FF8Mod.Maelstrom
                 () =>
                 {
                     // skip story scenes
+                    var fieldPath = Path.Combine(dataPath, "field");
+                    CreateOrRestoreArchiveBackup(fieldPath);
+
                     if (Properties.Settings.Default.StorySkip)
                     {
-                        var fieldPath = Path.Combine(dataPath, "field");
                         var fieldSource = new FileSource(fieldPath);
                         StorySkip.Apply(fieldSource, af3dn, seed);
                         fieldSource.Encode();
@@ -81,8 +85,14 @@ namespace FF8Mod.Maelstrom
                 () =>
                 {
                     // shuffle draw points
-                    if (Properties.Settings.Default.DrawPointShuffle) DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
-                    else DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
+                    if (Properties.Settings.Default.DrawPointShuffle)
+                    {
+                        DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
+                    }
+                    else
+                    {
+                        DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
+                    }
                 });
 
                 this.Invoke(() =>
@@ -92,6 +102,16 @@ namespace FF8Mod.Maelstrom
                     MessageBox.Show(this, "Done!", "Maelstrom");
                 });
             });
+        }
+
+        private void CreateOrRestoreArchiveBackup(string singlePath)
+        {
+            foreach (var f in new string[] { singlePath + ".fs", singlePath + ".fi", singlePath + ".fl" })
+            {
+                var backup = f + ".bak";
+                if (!File.Exists(backup)) File.Copy(f, backup);
+                else File.Copy(backup, f, true);
+            }
         }
 
         private void OnBrowse(object sender, RoutedEventArgs e)
