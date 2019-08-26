@@ -42,6 +42,13 @@ namespace FF8Mod.Maelstrom
             DeleteScript(fieldSource, "bdifrit1", 15, 1);
             ImportScript(fieldSource, "bdifrit1", 0, 5);
             ImportScript(fieldSource, "bdifrit1", 14, 4);
+
+            // training centre boss
+            CopyParticle(fieldSource, "fewor1", "bgmon_1");
+            ImportScript(fieldSource, "bgmon_1", 16, 0);
+            ImportScript(fieldSource, "bgmon_1", 0, 0);
+            DeleteScript(fieldSource, "bgmon_1", 0, 1);
+            ImportScript(fieldSource, "bgmon_1", 0, 7);
         }
 
         public static void Remove(string af3dnPath)
@@ -95,6 +102,17 @@ namespace FF8Mod.Maelstrom
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             fieldText.Messages[messageId] = newText;
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
+        }
+
+        public static void CopyParticle(FileSource fieldSource, string srcField, string destField)
+        {
+            var srcPath = FieldScript.GetFieldPath(srcField);
+            var destPath = FieldScript.GetFieldPath(destField);
+            var srcSource = new FileSource(srcPath, fieldSource);
+            var destSource = new FileSource(destPath, fieldSource);
+            destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmd"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmd")));
+            destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmp"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmp")));
+            fieldSource.Encode();
         }
 
         private static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)

@@ -1,0 +1,15 @@
+﻿lbl 42
+setmodel 9
+pshn_l 1
+pshn_l 0
+baseanime 0
+hide
+pshn_l -1295
+pshn_l -4898
+pshn_l 94
+set3 43
+pshn_l 0
+particleon
+pshn_l 0
+particleset
+ret 8
