@@ -4,13 +4,20 @@ Mods &amp; modding tools for Final Fantasy VIII PC
 ## Maelstrom - open-world randomiser
 * Shuffle the locations of bosses, GFs, draw points, and more
 * Skip the story &amp; go anywhere in any order
-* Current status: shuffles bosses with rudimentary rebalancing, shorter intro sequence, English version only
+* Current status:
+  * Shuffled bosses with rudimentary rebalancing (some of them crash though, watch out)
+  * Draw points give random spells, including Slots-exclusives if you're lucky
+  * Shortened intro sequence - just name your characters &amp; get out
+  * No mandatory story scenes up to the end of the Fire Cavern
+  * Fixed seed option
+  * Run with all the boxes unchecked to reset everything
+  * Works with English Steam version only
 
 > Note: early alpha software!!
 >
-> The randomiser's effects are unstable and there is not yet any option to reverse them.
+> The randomiser is unfinished & its effects are unstable. You won't finish a full game of this!
 >
-> To undo this you will need to repair/reinstall the game, or restore a backup of the data/lang-en folder.
+> Don't be surprised if you have to repair your install at some point.
 
 ## MiniMog - enemy AI editor
 * View & edit battle scripts
@@ -23,3 +30,4 @@ Tools and references used:
 * [Battle script writeup](http://pingval.g1.xrea.com/psff8/research/index_en.html#enemy-ai) by pingval
 * [Deling](https://github.com/myst6re/deling) by myst6re
 * [Ifrit](https://sourceforge.net/projects/ifrit/) by gjoerulv
+* [Cactilio](http://forums.qhimm.com/index.php?topic=16275.0) by JeMaCheHi
