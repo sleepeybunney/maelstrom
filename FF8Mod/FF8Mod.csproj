@@ -56,6 +56,7 @@
     <Compile Include="Archive\FileSource.cs" />
     <Compile Include="Archive\IndexEntry.cs" />
     <Compile Include="Lzss.cs" />
+    <Compile Include="Menu\TextFile.cs" />
     <Compile Include="MessageFile.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterAI.cs" />

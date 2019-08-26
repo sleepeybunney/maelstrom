@@ -10,6 +10,7 @@ Mods &amp; modding tools for Final Fantasy VIII PC
   * Shortened intro sequence - just name your characters &amp; get out
   * No mandatory story scenes up to the end of the Fire Cavern
   * Fixed seed option
+  * Pre-fill character/GF names
   * Run with all the boxes unchecked to reset everything
   * Works with English Steam version only
 

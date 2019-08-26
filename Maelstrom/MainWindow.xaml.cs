@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MahApps.Metro.Controls;
 using System.Windows.Media;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace FF8Mod.Maelstrom
 {
@@ -84,6 +85,20 @@ namespace FF8Mod.Maelstrom
 
                 () =>
                 {
+                    // preset names
+                    var menuPath = Path.Combine(dataPath, "menu");
+                    CreateOrRestoreArchiveBackup(menuPath);
+
+                    if (Properties.Settings.Default.NameSet)
+                    {
+                        var menuSource = new FileSource(menuPath);
+                        PresetNames.Apply(menuSource);
+                        menuSource.Encode();
+                    }
+                },
+
+                () =>
+                {
                     // shuffle draw points
                     if (Properties.Settings.Default.DrawPointShuffle)
                     {
@@ -128,6 +143,11 @@ namespace FF8Mod.Maelstrom
             {
                 Properties.Settings.Default.GameLocation = dialog.FileName;
             }
+        }
+
+        private void OnSetNames(object sender, RoutedEventArgs e)
+        {
+            new NameWindow().ShowDialog();
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)

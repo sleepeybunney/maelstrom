@@ -1,0 +1,96 @@
+﻿<Controls:MetroWindow x:Class="FF8Mod.Maelstrom.NameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
+        mc:Ignorable="d"
+        Title="Maelstrom" Height="360" Width="500" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label Content="Squall" Grid.Row="0" Grid.Column="0" />
+        <TextBox x:Name="nameSquall" TextWrapping="NoWrap" Width="100" Grid.Row="0" Grid.Column="1" Text="{Binding NameSquall, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Rinoa" Grid.Row="1" Grid.Column="0" />
+        <TextBox x:Name="nameRinoa" TextWrapping="NoWrap" Width="100" Grid.Row="1" Grid.Column="1" Text="{Binding NameRinoa, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Angelo" Grid.Row="2" Grid.Column="0" />
+        <TextBox x:Name="nameAngelo" TextWrapping="NoWrap" Width="100" Grid.Row="2" Grid.Column="1" Text="{Binding NameAngelo, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Quezacotl" Grid.Row="3" Grid.Column="0" />
+        <TextBox x:Name="nameQuezacotl" TextWrapping="NoWrap" Width="100" Grid.Row="3" Grid.Column="1" Text="{Binding NameQuezacotl, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Shiva" Grid.Row="4" Grid.Column="0" />
+        <TextBox x:Name="nameShiva" TextWrapping="NoWrap" Width="100" Grid.Row="4" Grid.Column="1" Text="{Binding NameShiva, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Ifrit" Grid.Row="5" Grid.Column="0" />
+        <TextBox x:Name="nameIfrit" TextWrapping="NoWrap" Width="100" Grid.Row="5" Grid.Column="1" Text="{Binding NameIfrit, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Siren" Grid.Row="6" Grid.Column="0" />
+        <TextBox x:Name="nameSiren" TextWrapping="NoWrap" Width="100" Grid.Row="6" Grid.Column="1" Text="{Binding NameSiren, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Brothers" Grid.Row="7" Grid.Column="0" />
+        <TextBox x:Name="nameBrothers" TextWrapping="NoWrap" Width="100" Grid.Row="7" Grid.Column="1" Text="{Binding NameBrothers, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Diablos" Grid.Row="8" Grid.Column="0" />
+        <TextBox x:Name="nameDiablos" TextWrapping="NoWrap" Width="100" Grid.Row="8" Grid.Column="1" Text="{Binding NameDiablos, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Carbuncle" Grid.Row="9" Grid.Column="0" />
+        <TextBox x:Name="nameCarbuncle" TextWrapping="NoWrap" Width="100" Grid.Row="9" Grid.Column="1" Text="{Binding NameCarbuncle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Leviathan" Grid.Row="10" Grid.Column="0" />
+        <TextBox x:Name="nameLeviathan" TextWrapping="NoWrap" Width="100" Grid.Row="10" Grid.Column="1" Text="{Binding NameLeviathan, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Pandemona" Grid.Row="0" Grid.Column="2" />
+        <TextBox x:Name="namePandemona" TextWrapping="NoWrap" Width="100" Grid.Row="0" Grid.Column="3" Text="{Binding NamePandemona, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Cerberus" Grid.Row="1" Grid.Column="2" />
+        <TextBox x:Name="nameCerberus" TextWrapping="NoWrap" Width="100" Grid.Row="1" Grid.Column="3" Text="{Binding NameCerberus, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Alexander" Grid.Row="2" Grid.Column="2" />
+        <TextBox x:Name="nameAlexander" TextWrapping="NoWrap" Width="100" Grid.Row="2" Grid.Column="3" Text="{Binding NameAlexander, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Doomtrain" Grid.Row="3" Grid.Column="2" />
+        <TextBox x:Name="nameDoomtrain" TextWrapping="NoWrap" Width="100" Grid.Row="3" Grid.Column="3" Text="{Binding NameDoomtrain, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Bahamut" Grid.Row="4" Grid.Column="2" />
+        <TextBox x:Name="nameBahamut" TextWrapping="NoWrap" Width="100" Grid.Row="4" Grid.Column="3" Text="{Binding NameBahamut, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Cactuar" Grid.Row="5" Grid.Column="2" />
+        <TextBox x:Name="nameCactuar" TextWrapping="NoWrap" Width="100" Grid.Row="5" Grid.Column="3" Text="{Binding NameCactuar, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Tonberry" Grid.Row="6" Grid.Column="2" />
+        <TextBox x:Name="nameTonberry" TextWrapping="NoWrap" Width="100" Grid.Row="6" Grid.Column="3" Text="{Binding NameTonberry, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Eden" Grid.Row="7" Grid.Column="2" />
+        <TextBox x:Name="nameEden" TextWrapping="NoWrap" Width="100" Grid.Row="7" Grid.Column="3" Text="{Binding NameEden, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Boko" Grid.Row="8" Grid.Column="2" />
+        <TextBox x:Name="nameBoko" TextWrapping="NoWrap" Width="100" Grid.Row="8" Grid.Column="3" Text="{Binding NameBoko, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Label Content="Griever" Grid.Row="9" Grid.Column="2" />
+        <TextBox x:Name="nameGriever" TextWrapping="NoWrap" Width="100" Grid.Row="9" Grid.Column="3" Text="{Binding NameGriever, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+
+        <Button x:Name="closeButton" Content="Close" Click="OnClose" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Grid.Row="10" Grid.Column="3" Grid.RowSpan="2" />
+    </Grid>
+</Controls:MetroWindow>

@@ -23,5 +23,71 @@
     <Setting Name="SeedValue" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="NameSet" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="NameSquall" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Squall</Value>
+    </Setting>
+    <Setting Name="NameRinoa" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Rinoa</Value>
+    </Setting>
+    <Setting Name="NameQuezacotl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Quezacotl</Value>
+    </Setting>
+    <Setting Name="NameShiva" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Shiva</Value>
+    </Setting>
+    <Setting Name="NameIfrit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ifrit</Value>
+    </Setting>
+    <Setting Name="NameSiren" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Siren</Value>
+    </Setting>
+    <Setting Name="NameBrothers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Brothers</Value>
+    </Setting>
+    <Setting Name="NameDiablos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Diablos</Value>
+    </Setting>
+    <Setting Name="NameCarbuncle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Carbuncle</Value>
+    </Setting>
+    <Setting Name="NameLeviathan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Leviathan</Value>
+    </Setting>
+    <Setting Name="NamePandemona" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Pandemona</Value>
+    </Setting>
+    <Setting Name="NameCerberus" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Cerberus</Value>
+    </Setting>
+    <Setting Name="NameAlexander" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Alexander</Value>
+    </Setting>
+    <Setting Name="NameDoomtrain" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Doomtrain</Value>
+    </Setting>
+    <Setting Name="NameBahamut" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Bahamut</Value>
+    </Setting>
+    <Setting Name="NameCactuar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Cactuar</Value>
+    </Setting>
+    <Setting Name="NameTonberry" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tonberry</Value>
+    </Setting>
+    <Setting Name="NameEden" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Eden</Value>
+    </Setting>
+    <Setting Name="NameBoko" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Boko</Value>
+    </Setting>
+    <Setting Name="NameGriever" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Griever</Value>
+    </Setting>
+    <Setting Name="NameAngelo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Angelo</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -36,6 +36,10 @@
                         <CheckBox x:Name="optionSeedSet" Content="Fixed Seed" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                         <TextBox x:Name="optionSeedValue" Margin="6" HorizontalAlignment="Left" Width="100" Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" />
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="optionNameSet" Content="Use Preset Names" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding NameSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                        <Button x:Name="setNamesButton" Content="Set..." Margin="6" Click="OnSetNames" />
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </GroupBox>

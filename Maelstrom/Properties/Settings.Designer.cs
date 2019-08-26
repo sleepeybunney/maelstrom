@@ -106,5 +106,269 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["SeedValue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool NameSet {
+            get {
+                return ((bool)(this["NameSet"]));
+            }
+            set {
+                this["NameSet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Squall")]
+        public string NameSquall {
+            get {
+                return ((string)(this["NameSquall"]));
+            }
+            set {
+                this["NameSquall"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Rinoa")]
+        public string NameRinoa {
+            get {
+                return ((string)(this["NameRinoa"]));
+            }
+            set {
+                this["NameRinoa"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Quezacotl")]
+        public string NameQuezacotl {
+            get {
+                return ((string)(this["NameQuezacotl"]));
+            }
+            set {
+                this["NameQuezacotl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Shiva")]
+        public string NameShiva {
+            get {
+                return ((string)(this["NameShiva"]));
+            }
+            set {
+                this["NameShiva"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ifrit")]
+        public string NameIfrit {
+            get {
+                return ((string)(this["NameIfrit"]));
+            }
+            set {
+                this["NameIfrit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Siren")]
+        public string NameSiren {
+            get {
+                return ((string)(this["NameSiren"]));
+            }
+            set {
+                this["NameSiren"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Brothers")]
+        public string NameBrothers {
+            get {
+                return ((string)(this["NameBrothers"]));
+            }
+            set {
+                this["NameBrothers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Diablos")]
+        public string NameDiablos {
+            get {
+                return ((string)(this["NameDiablos"]));
+            }
+            set {
+                this["NameDiablos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Carbuncle")]
+        public string NameCarbuncle {
+            get {
+                return ((string)(this["NameCarbuncle"]));
+            }
+            set {
+                this["NameCarbuncle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Leviathan")]
+        public string NameLeviathan {
+            get {
+                return ((string)(this["NameLeviathan"]));
+            }
+            set {
+                this["NameLeviathan"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pandemona")]
+        public string NamePandemona {
+            get {
+                return ((string)(this["NamePandemona"]));
+            }
+            set {
+                this["NamePandemona"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cerberus")]
+        public string NameCerberus {
+            get {
+                return ((string)(this["NameCerberus"]));
+            }
+            set {
+                this["NameCerberus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Alexander")]
+        public string NameAlexander {
+            get {
+                return ((string)(this["NameAlexander"]));
+            }
+            set {
+                this["NameAlexander"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Doomtrain")]
+        public string NameDoomtrain {
+            get {
+                return ((string)(this["NameDoomtrain"]));
+            }
+            set {
+                this["NameDoomtrain"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Bahamut")]
+        public string NameBahamut {
+            get {
+                return ((string)(this["NameBahamut"]));
+            }
+            set {
+                this["NameBahamut"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cactuar")]
+        public string NameCactuar {
+            get {
+                return ((string)(this["NameCactuar"]));
+            }
+            set {
+                this["NameCactuar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tonberry")]
+        public string NameTonberry {
+            get {
+                return ((string)(this["NameTonberry"]));
+            }
+            set {
+                this["NameTonberry"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Eden")]
+        public string NameEden {
+            get {
+                return ((string)(this["NameEden"]));
+            }
+            set {
+                this["NameEden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Boko")]
+        public string NameBoko {
+            get {
+                return ((string)(this["NameBoko"]));
+            }
+            set {
+                this["NameBoko"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Griever")]
+        public string NameGriever {
+            get {
+                return ((string)(this["NameGriever"]));
+            }
+            set {
+                this["NameGriever"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Angelo")]
+        public string NameAngelo {
+            get {
+                return ((string)(this["NameAngelo"]));
+            }
+            set {
+                this["NameAngelo"] = value;
+            }
+        }
     }
 }
