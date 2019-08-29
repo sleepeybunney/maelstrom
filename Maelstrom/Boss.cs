@@ -59,6 +59,54 @@ namespace FF8Mod.Maelstrom
                                                         // 814-819 more propagators
         };
 
+        private static EncounterCheck[] EncounterChecks = new EncounterCheck[]
+        {
+            // bgh251f2
+            new EncounterCheck(164, 71, 0, 0),
+            new EncounterCheck(164, 72, 0, 0),
+            new EncounterCheck(164, 72, 1, 0),
+
+            // gargantua
+            new EncounterCheck(436, 39, 3, 2),
+            new EncounterCheck(436, 40, 3, 2),
+            new EncounterCheck(436, 54, 3, 2),
+
+            // sacred
+            new EncounterCheck(189, 63, 1, 10),
+            new EncounterCheck(189, 63, 3, 2),
+
+            // granaldo
+            new EncounterCheck(62, 95, 1, 3),
+            new EncounterCheck(62, 96, 1, 3),
+
+            // gim52a
+            new EncounterCheck(161, 72, 0, 4),
+
+            // raijin & soldiers
+            new EncounterCheck(83, 120, 0, 5),
+            new EncounterCheck(83, 120, 1, 0),
+            new EncounterCheck(83, 120, 3, 2),
+
+            // raijin & fujin
+            new EncounterCheck(84, 120, 2, 0),
+        };
+
+        private struct EncounterCheck
+        {
+            public int EncounterID;
+            public int MonsterID;
+            public int Script;
+            public int Instruction;
+
+            public EncounterCheck(int encID, int monID, int script, int instruction)
+            {
+                EncounterID = encID;
+                MonsterID = monID;
+                Script = script;
+                Instruction = instruction;
+            }
+        }
+
         public static void Shuffle(FileSource battleSource, bool rebalance, int seed)
         {
             var encFilePath = @"c:\ff8\data\eng\battle\scene.out";
@@ -68,6 +116,7 @@ namespace FF8Mod.Maelstrom
             var matchList = Encounters.Keys.ToList();
             var monsterMap = new Dictionary<int, List<EncounterSlot>>();
             var statMap = new Dictionary<int, MonsterInfo>();
+            var encIdMap = new Dictionary<int, int>();
 
             foreach (var e in encList)
             {
@@ -76,6 +125,7 @@ namespace FF8Mod.Maelstrom
                 matchList.Remove(matchedEncounter);
                 var monsters = encFile.Encounters[matchedEncounter].Slots.ToList();
                 monsterMap.Add(e, monsters);
+                encIdMap.Add(e, matchedEncounter);
                 
                 // calculate monster stats to match their assigned encounters
                 if (rebalance)
@@ -117,6 +167,40 @@ namespace FF8Mod.Maelstrom
                 for (int i = 0; i < 8; i++)
                 {
                     encFile.Encounters[e].Slots[i] = monsterMap[e][i];
+
+                    // update any encounter ID checks in the monster's AI scripts
+                    var monsterID = encFile.Encounters[e].Slots[i].MonsterID;
+                    foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID))
+                    {
+                        if (ec.EncounterID == encIdMap[e])
+                        {
+                            var monster = encFile.Encounters[e].Slots[i].GetMonster(battleSource);
+
+                            List<Battle.Instruction> script;
+                            switch (ec.Script)
+                            {
+                                case 0:
+                                default:
+                                    script = monster.AI.Scripts.Init;
+                                    break;
+                                case 1:
+                                    script = monster.AI.Scripts.Execute;
+                                    break;
+                                case 2:
+                                    script = monster.AI.Scripts.Counter;
+                                    break;
+                                case 3:
+                                    script = monster.AI.Scripts.Death;
+                                    break;
+                                case 4:
+                                    script = monster.AI.Scripts.PreCounter;
+                                    break;
+                            }
+
+                            script[ec.Instruction].Args[3] = (short)e;
+                            battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
+                        }
+                    }
                 }
             }
 
