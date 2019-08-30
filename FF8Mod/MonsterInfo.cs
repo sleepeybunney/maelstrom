@@ -75,26 +75,9 @@ namespace FF8Mod
                 Spd = reader.ReadBytes(4);
                 Eva = reader.ReadBytes(4);
 
-                for (int i = 0; i < 16; i++) AbilitiesLow[i] = new Ability
-                {
-                    Type = reader.ReadByte(),
-                    Something = reader.ReadByte(),
-                    AbilityId = reader.ReadUInt16()
-                };
-
-                for (int i = 0; i < 16; i++) AbilitiesMed[i] = new Ability
-                {
-                    Type = reader.ReadByte(),
-                    Something = reader.ReadByte(),
-                    AbilityId = reader.ReadUInt16()
-                };
-
-                for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new Ability
-                {
-                    Type = reader.ReadByte(),
-                    Something = reader.ReadByte(),
-                    AbilityId = reader.ReadUInt16()
-                };
+                for (int i = 0; i < 16; i++) AbilitiesLow[i] = new Ability(reader.ReadBytes(4));
+                for (int i = 0; i < 16; i++) AbilitiesMed[i] = new Ability(reader.ReadBytes(4));
+                for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new Ability(reader.ReadBytes(4));
 
                 MedStart = reader.ReadByte();
                 HighStart = reader.ReadByte();
@@ -133,41 +116,13 @@ namespace FF8Mod
                     reader.ReadByte(); // padding
                 }
 
-                for (int i = 0; i < 4; i++) MugLow[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
+                for (int i = 0; i < 4; i++) MugLow[i] = new HeldItem(reader.ReadBytes(2));
+                for (int i = 0; i < 4; i++) MugMed[i] = new HeldItem(reader.ReadBytes(2));
+                for (int i = 0; i < 4; i++) MugHigh[i] = new HeldItem(reader.ReadBytes(2));
 
-                for (int i = 0; i < 4; i++) MugMed[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
-
-                for (int i = 0; i < 4; i++) MugHigh[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
-
-                for (int i = 0; i < 4; i++) DropLow[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
-
-                for (int i = 0; i < 4; i++) DropMed[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
-
-                for (int i = 0; i < 4; i++) DropHigh[i] = new HeldItem
-                {
-                    ItemId = reader.ReadByte(),
-                    Quantity = reader.ReadByte()
-                };
+                for (int i = 0; i < 4; i++) DropLow[i] = new HeldItem(reader.ReadBytes(2));
+                for (int i = 0; i < 4; i++) DropMed[i] = new HeldItem(reader.ReadBytes(2));
+                for (int i = 0; i < 4; i++) DropHigh[i] = new HeldItem(reader.ReadBytes(2));
 
                 MugRate = reader.ReadByte();
                 DropRate = reader.ReadByte();
@@ -200,26 +155,9 @@ namespace FF8Mod
                 writer.Write(Spd);
                 writer.Write(Eva);
 
-                for (int i = 0; i < 16; i++)
-                {
-                    writer.Write(AbilitiesLow[i].Type);
-                    writer.Write(AbilitiesLow[i].Something);
-                    writer.Write(AbilitiesLow[i].AbilityId);
-                }
-
-                for (int i = 0; i < 16; i++)
-                {
-                    writer.Write(AbilitiesMed[i].Type);
-                    writer.Write(AbilitiesMed[i].Something);
-                    writer.Write(AbilitiesMed[i].AbilityId);
-                }
-
-                for (int i = 0; i < 16; i++)
-                {
-                    writer.Write(AbilitiesHigh[i].Type);
-                    writer.Write(AbilitiesHigh[i].Something);
-                    writer.Write(AbilitiesHigh[i].AbilityId);
-                }
+                for (int i = 0; i < 16; i++) writer.Write(AbilitiesLow[i].Encode());
+                for (int i = 0; i < 16; i++) writer.Write(AbilitiesMed[i].Encode());
+                for (int i = 0; i < 16; i++) writer.Write(AbilitiesHigh[i].Encode());
 
                 writer.Write(MedStart);
                 writer.Write(HighStart);
@@ -257,41 +195,13 @@ namespace FF8Mod
                     writer.Write((byte)0);
                 }
 
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(MugLow[i].ItemId);
-                    writer.Write(MugLow[i].Quantity);
-                }
+                for (int i = 0; i < 4; i++) writer.Write(MugLow[i].Encode());
+                for (int i = 0; i < 4; i++) writer.Write(MugMed[i].Encode());
+                for (int i = 0; i < 4; i++) writer.Write(MugHigh[i].Encode());
 
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(MugMed[i].ItemId);
-                    writer.Write(MugMed[i].Quantity);
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(MugHigh[i].ItemId);
-                    writer.Write(MugHigh[i].Quantity);
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(DropLow[i].ItemId);
-                    writer.Write(DropLow[i].Quantity);
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(DropMed[i].ItemId);
-                    writer.Write(DropMed[i].Quantity);
-                }
-
-                for (int i = 0; i < 4; i++)
-                {
-                    writer.Write(DropHigh[i].ItemId);
-                    writer.Write(DropHigh[i].Quantity);
-                }
+                for (int i = 0; i < 4; i++) writer.Write(DropLow[i].Encode());
+                for (int i = 0; i < 4; i++) writer.Write(DropMed[i].Encode());
+                for (int i = 0; i < 4; i++) writer.Write(DropHigh[i].Encode());
 
                 writer.Write(MugRate);
                 writer.Write(DropRate);
@@ -306,40 +216,13 @@ namespace FF8Mod
 
         public void CopyStats(MonsterInfo source)
         {
-            Hp[0] = source.Hp[0];
-            Hp[1] = source.Hp[1];
-            Hp[2] = source.Hp[2];
-            Hp[3] = source.Hp[3];
-
-            Str[0] = source.Str[0];
-            Str[1] = source.Str[1];
-            Str[2] = source.Str[2];
-            Str[3] = source.Str[3];
-
-            Mag[0] = source.Mag[0];
-            Mag[1] = source.Mag[1];
-            Mag[2] = source.Mag[2];
-            Mag[3] = source.Mag[3];
-
-            Vit[0] = source.Vit[0];
-            Vit[1] = source.Vit[1];
-            Vit[2] = source.Vit[2];
-            Vit[3] = source.Vit[3];
-
-            Spr[0] = source.Spr[0];
-            Spr[1] = source.Spr[1];
-            Spr[2] = source.Spr[2];
-            Spr[3] = source.Spr[3];
-
-            Spd[0] = source.Spd[0];
-            Spd[1] = source.Spd[1];
-            Spd[2] = source.Spd[2];
-            Spd[3] = source.Spd[3];
-
-            Eva[0] = source.Eva[0];
-            Eva[1] = source.Eva[1];
-            Eva[2] = source.Eva[2];
-            Eva[3] = source.Eva[3];
+            source.Hp.CopyTo(Hp, 0);
+            source.Str.CopyTo(Str, 0);
+            source.Mag.CopyTo(Mag, 0);
+            source.Vit.CopyTo(Vit, 0);
+            source.Spr.CopyTo(Spr, 0);
+            source.Spd.CopyTo(Spd, 0);
+            source.Eva.CopyTo(Eva, 0);
         }
 
         // hp2 & hp4 determine the lower boundary
@@ -398,11 +281,38 @@ namespace FF8Mod
         public byte Type;
         public byte Something;
         public ushort AbilityId;
+
+        public Ability(byte[] data)
+        {
+            Type = data[0];
+            Something = data[1];
+            AbilityId = BitConverter.ToUInt16(data, 2);
+        }
+
+        public byte[] Encode()
+        {
+            var result = new byte[4];
+            result[0] = Type;
+            result[1] = Something;
+            Array.Copy(BitConverter.GetBytes(AbilityId), 0, result, 2, 2);
+            return result;
+        }
     }
 
     public class HeldItem
     {
         public byte ItemId;
         public byte Quantity;
+
+        public HeldItem(byte[] data)
+        {
+            ItemId = data[0];
+            Quantity = data[1];
+        }
+
+        public byte[] Encode()
+        {
+            return new byte[2] { ItemId, Quantity };
+        }
     }
 }

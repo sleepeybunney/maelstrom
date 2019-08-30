@@ -255,7 +255,7 @@ namespace FF8Mod.Maelstrom
 
         private static byte ByteClamp(int value)
         {
-            if (value < byte.MinValue) return byte.MinValue;
+            if (value < 1) return 1;
             if (value > byte.MaxValue) return byte.MaxValue;
             return (byte)value;
         }
