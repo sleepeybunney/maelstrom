@@ -8,4 +8,5 @@ reqew 9
 pshn_l 5
 setbattlemusic
 ucon
+lineoff
 ret 8
