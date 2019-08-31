@@ -35,7 +35,5 @@ pshn_l      2
 sestop
 pshn_l      0
 particleoff
-pshn_l      5
-menuname
 hide
 ret         8
