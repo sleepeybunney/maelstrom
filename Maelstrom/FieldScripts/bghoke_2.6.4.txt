@@ -61,6 +61,10 @@ wait
 mapfadeoff
 pshn_l 255
 popm_b 256
+pshm_b 643
+pshn_l 2
+cal 13
+popm_b 643
 pshn_l 179
 pshn_l 333
 pshn_l -91
