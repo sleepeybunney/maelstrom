@@ -57,17 +57,13 @@ pshn_l 0
 addparty
 pshn_l 5
 setbattlemusic
-pshm_b 261
-pshn_l 2
-cal 13
-popm_b 261
 pshn_l 41
 popm_b 268
 pshn_l 0
 pshn_l 1
 pshn_l 1
 hold
-pshn_l 0
+pshn_l 1
 phspower
 pshn_l 1
 pshn_l 1
