@@ -1,39 +1,37 @@
-﻿lbl         43
-pshn_l      127
-pshn_l      128
-pshn_l      1
+﻿pshn_l 127
+pshn_l 128
+pshn_l 1
 effectplay2 0
-pshn_l      0
+pshn_l 0
 particleon
-pshn_l      100
+pshn_l 100
 wait
 show
-ranimekeep  0
-pshn_l      127
-pshn_l      128
-pshn_l      2
+ranimekeep 0
+pshn_l 127
+pshn_l 128
+pshn_l 2
 effectplay2 1
-pshn_l      0
-pshn_l      500
-pshn_l      300
-pshn_l      30
+pshn_l 0
+pshn_l 500
+pshn_l 300
+pshn_l 30
 coffset
 offsetsync
-pshn_l      0
-pshn_l      400
-pshn_l      150
-pshn_l      60
+pshn_l 0
+pshn_l 400
+pshn_l 150
+pshn_l 60
 coffset
-pshn_l      30
+pshn_l 30
 wait
-pshn_l      94
-pshn_l      0
+pshn_l 94
+pshn_l 0
 battle
-pshn_l      1
+pshn_l 1
 sestop
-pshn_l      2
+pshn_l 2
 sestop
-pshn_l      0
+pshn_l 0
 particleoff
 hide
-ret         8

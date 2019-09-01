@@ -1,5 +1,4 @@
-﻿lbl 49
-ucoff
+﻿ucoff
 pshn_l 13
 setbattlemusic
 pshn_l 1
@@ -9,4 +8,3 @@ pshn_l 5
 setbattlemusic
 ucon
 lineoff
-ret 8

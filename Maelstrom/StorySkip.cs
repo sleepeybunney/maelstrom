@@ -87,9 +87,7 @@ namespace FF8Mod.Maelstrom
         public static void DeleteScript(FileSource fieldSource, string fieldName, int entity, int script)
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
-            var label = field.Entities[entity].Scripts[script].Instructions[0].Param;
-            var nullScript = string.Format("lbl {0}{1}ret 8", label, Environment.NewLine);
-            field.ReplaceScript(entity, script, nullScript);
+            field.ReplaceScript(entity, script, "");
             SaveToSource(fieldSource, fieldName, field.Encode());
         }
 

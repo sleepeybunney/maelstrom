@@ -1,5 +1,4 @@
-﻿lbl 0
-pshn_l 128
+﻿pshn_l 128
 pshn_l 128
 pshn_l 128
 polycolorall
@@ -12,4 +11,3 @@ particleon
 pshn_l 0
 particleset
 fadein
-ret 8

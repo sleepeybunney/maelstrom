@@ -1,5 +1,4 @@
-﻿lbl 42
-setmodel 9
+﻿setmodel 9
 pshn_l 1
 pshn_l 0
 baseanime 0
@@ -12,4 +11,3 @@ pshn_l 0
 particleon
 pshn_l 0
 particleset
-ret 8

@@ -1,5 +1,4 @@
-﻿lbl 1
-ucoff
+﻿ucoff
 clear
 pshn_l 1
 popm_b 272
@@ -80,4 +79,3 @@ pshn_l 180
 pshn_l 0
 mapjumpo
 halt 0
-ret 8

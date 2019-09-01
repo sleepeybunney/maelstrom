@@ -1,5 +1,4 @@
-﻿lbl 55
-pshn_l 71
+﻿pshn_l 71
 setplace
 pshn_l 7
 popm_b 256
@@ -23,4 +22,3 @@ pshn_l 3
 pshn_l 30
 reqew 4
 halt 0
-ret 8

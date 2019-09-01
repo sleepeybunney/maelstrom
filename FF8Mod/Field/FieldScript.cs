@@ -180,10 +180,13 @@ namespace FF8Mod.Field
 
         }
 
-        // overwrite a script with instructions loaded from a text file
+        // overwrite a script with interpreted instructions
         public void ReplaceScript(int entity, int script, string scriptText)
         {
+            var label = Entities[entity].Scripts[script].Instructions[0].Param;
             var newScript = new Script(scriptText);
+            newScript.Instructions.Insert(0, new Instruction(FieldScript.OpCodesReverse["lbl"], label));
+            newScript.Instructions.Add(new Instruction(FieldScript.OpCodesReverse["ret"], 8));
             Entities[entity].Scripts[script].Instructions = newScript.Instructions;
         }
     }

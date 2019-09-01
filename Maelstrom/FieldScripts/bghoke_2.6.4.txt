@@ -1,5 +1,4 @@
-﻿lbl 30
-pshn_l 1
+﻿pshn_l 1
 pushradius
 pshn_l 1700
 mspeed
@@ -65,4 +64,3 @@ pshn_l 333
 pshn_l -91
 pshn_l 0
 mapjump 132
-ret 8

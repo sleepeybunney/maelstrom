@@ -1,9 +1,7 @@
-﻿lbl 71
-pshn_l -1600
+﻿pshn_l -1600
 pshn_l -5000
 pshn_l 94
 pshn_l -1100
 pshn_l -4950
 pshn_l 0
 setline
-ret 8
