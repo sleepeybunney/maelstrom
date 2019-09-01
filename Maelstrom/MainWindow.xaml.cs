@@ -55,13 +55,30 @@ namespace FF8Mod.Maelstrom
                 {
                     // shuffle/rebalance bosses
                     var battlePath = Path.Combine(dataPath, "battle");
-                    CreateOrRestoreArchiveBackup(battlePath);
 
-                    if (Properties.Settings.Default.BossShuffle)
+                    while (true)
                     {
-                        var battleSource = new FileSource(battlePath);
-                        Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
-                        battleSource.Encode();
+                        try
+                        {
+                            CreateOrRestoreArchiveBackup(battlePath);
+
+                            if (Properties.Settings.Default.BossShuffle)
+                            {
+                                var battleSource = new FileSource(battlePath);
+                                Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
+                                battleSource.Encode();
+                            }
+
+                            break;
+                        }
+                        catch (Exception x)
+                        {
+                            if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                            {
+                                if (HandleFileException(battlePath) == false) break;
+                            }
+                            else throw;
+                        }
                     }
                 },
 
@@ -69,17 +86,34 @@ namespace FF8Mod.Maelstrom
                 {
                     // skip story scenes
                     var fieldPath = Path.Combine(dataPath, "field");
-                    CreateOrRestoreArchiveBackup(fieldPath);
 
-                    if (Properties.Settings.Default.StorySkip)
+                    while (true)
                     {
-                        var fieldSource = new FileSource(fieldPath);
-                        StorySkip.Apply(fieldSource, af3dn, seed);
-                        fieldSource.Encode();
-                    }
-                    else
-                    {
-                        StorySkip.Remove(af3dn);
+                        try
+                        {
+                            CreateOrRestoreArchiveBackup(fieldPath);
+
+                            if (Properties.Settings.Default.StorySkip)
+                            {
+                                var fieldSource = new FileSource(fieldPath);
+                                StorySkip.Apply(fieldSource, af3dn, seed);
+                                fieldSource.Encode();
+                            }
+                            else
+                            {
+                                StorySkip.Remove(af3dn);
+                            }
+
+                            break;
+                        }
+                        catch (Exception x)
+                        {
+                            if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                            {
+                                if (HandleFileException(fieldPath) == false) break;
+                            }
+                            else throw;
+                        }
                     }
                 },
 
@@ -87,26 +121,59 @@ namespace FF8Mod.Maelstrom
                 {
                     // preset names
                     var menuPath = Path.Combine(dataPath, "menu");
-                    CreateOrRestoreArchiveBackup(menuPath);
 
-                    if (Properties.Settings.Default.NameSet)
+                    while (true)
                     {
-                        var menuSource = new FileSource(menuPath);
-                        PresetNames.Apply(menuSource);
-                        menuSource.Encode();
+                        try
+                        {
+                            CreateOrRestoreArchiveBackup(menuPath);
+
+                            if (Properties.Settings.Default.NameSet)
+                            {
+                                var menuSource = new FileSource(menuPath);
+                                PresetNames.Apply(menuSource);
+                                menuSource.Encode();
+                            }
+
+                            break;
+                        }
+                        catch (Exception x)
+                        {
+                            if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                            {
+                                if (HandleFileException(menuPath) == false) break;
+                            }
+                            else throw;
+                        }
                     }
                 },
 
                 () =>
                 {
                     // shuffle draw points
-                    if (Properties.Settings.Default.DrawPointShuffle)
+                    while (true)
                     {
-                        DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
-                    }
-                    else
-                    {
-                        DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
+                        try
+                        {
+                            if (Properties.Settings.Default.DrawPointShuffle)
+                            {
+                                DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
+                            }
+                            else
+                            {
+                                DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
+                            }
+
+                            break;
+                        }
+                        catch (Exception x)
+                        {
+                            if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                            {
+                                if (HandleFileException(Properties.Settings.Default.GameLocation) == false) break;
+                            }
+                            else throw;
+                        }
                     }
                 });
 
@@ -127,6 +194,13 @@ namespace FF8Mod.Maelstrom
                 if (!File.Exists(backup)) File.Copy(f, backup);
                 else File.Copy(backup, f, true);
             }
+        }
+
+        private bool HandleFileException(string filePath)
+        {
+            var message = string.Format("Could not write to file: {0}{1}Make sure it exists and is not open in another program.{1}Click OK to retry. Cancelling this operation may leave your game in an unplayable state.", filePath, Environment.NewLine);
+            var result = MessageBox.Show(message, "Maelstrom - Error", MessageBoxButton.OKCancel);
+            return result == MessageBoxResult.OK;
         }
 
         private void OnBrowse(object sender, RoutedEventArgs e)
