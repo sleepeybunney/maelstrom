@@ -7,6 +7,11 @@
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
         Title="Maelstrom" Height="300" Width="550" ResizeMode="NoResize" Closing="OnClosing">
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
