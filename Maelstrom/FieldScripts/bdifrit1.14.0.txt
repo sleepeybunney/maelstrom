@@ -1,0 +1,11 @@
+setmodel 9
+pshn_l 0
+pshn_l 0
+baseanime 0
+pshn_l 29
+pshn_l -387
+pshn_l -1
+set3 14
+pshn_l 0
+dir
+hide

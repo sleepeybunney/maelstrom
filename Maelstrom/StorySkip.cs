@@ -41,6 +41,7 @@ namespace FF8Mod.Maelstrom
             DeleteEntity(fieldSource, "bdin5", 0);
             DeleteScript(fieldSource, "bdifrit1", 15, 1);
             ImportScript(fieldSource, "bdifrit1", 0, 5);
+            ImportScript(fieldSource, "bdifrit1", 14, 0);
             ImportScript(fieldSource, "bdifrit1", 14, 4);
 
             // training centre boss
