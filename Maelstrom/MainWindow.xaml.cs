@@ -43,7 +43,8 @@ namespace FF8Mod.Maelstrom
         {
             goContent.Content = Spinner;
 
-            var seed = Properties.Settings.Default.SeedSet ? Properties.Settings.Default.SeedValue : new Random().Next(-1, int.MaxValue) + 1;
+            if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = new Random().Next(-1, int.MaxValue) + 1;
+            var seed = Properties.Settings.Default.SeedValue;
 
             var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
             var dataPath = Path.Combine(gameLocation, "data", "lang-en");
