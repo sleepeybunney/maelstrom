@@ -304,6 +304,12 @@ namespace FF8Mod
         public byte ItemId;
         public byte Quantity;
 
+        public HeldItem()
+        {
+            ItemId = 0;
+            Quantity = 0;
+        }
+
         public HeldItem(byte[] data)
         {
             ItemId = data[0];

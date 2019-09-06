@@ -86,6 +86,7 @@
       <DependentUpon>NameWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="PresetNames.cs" />
+    <Compile Include="Reward.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StorySkip.cs" />
     <Page Include="MainWindow.xaml">

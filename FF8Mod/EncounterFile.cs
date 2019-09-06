@@ -6,6 +6,8 @@ namespace FF8Mod
 {
     public class EncounterFile
     {
+        public static string Path = @"c:\ff8\data\eng\battle\scene.out";
+
         public List<Encounter> Encounters;
 
         public EncounterFile()
@@ -42,6 +44,11 @@ namespace FF8Mod
         public static EncounterFile FromSource(FileSource source, string path)
         {
             return FromBytes(source.GetFile(path));
+        }
+
+        public static EncounterFile FromSource(FileSource source)
+        {
+            return FromSource(source, Path);
         }
 
         public byte[] Encode()

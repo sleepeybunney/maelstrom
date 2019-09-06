@@ -48,6 +48,7 @@ namespace FF8Mod.Maelstrom
 
             var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
             var dataPath = Path.Combine(gameLocation, "data", "lang-en");
+            var battlePath = Path.Combine(dataPath, "battle");
             var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
             Task.Run(() =>
@@ -55,8 +56,6 @@ namespace FF8Mod.Maelstrom
                 Parallel.Invoke(() =>
                 {
                     // shuffle/rebalance bosses
-                    var battlePath = Path.Combine(dataPath, "battle");
-
                     while (true)
                     {
                         try
@@ -177,6 +176,28 @@ namespace FF8Mod.Maelstrom
                         }
                     }
                 });
+
+                while (true)
+                {
+                    try
+                    {
+                        if (Properties.Settings.Default.StorySkip)
+                        {
+                            var battleSource = new FileSource(battlePath);
+                            Reward.SetRewards(battleSource, seed);
+                            battleSource.Encode();
+                        }
+                        break;
+                    }
+                    catch (Exception x)
+                    {
+                        if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                        {
+                            if (HandleFileException(battlePath) == false) break;
+                        }
+                        else throw;
+                    }
+                }
 
                 this.Invoke(() =>
                 {

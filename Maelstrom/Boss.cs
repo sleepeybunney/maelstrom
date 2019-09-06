@@ -109,7 +109,7 @@ namespace FF8Mod.Maelstrom
 
         public static void Shuffle(FileSource battleSource, bool rebalance, int seed)
         {
-            var encFilePath = @"c:\ff8\data\eng\battle\scene.out";
+            var encFilePath = EncounterFile.Path;
             var encFile = EncounterFile.FromSource(battleSource, encFilePath);
             var random = new Random(seed);
             var encList = Encounters.Keys.ToList();
