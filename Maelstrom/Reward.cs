@@ -19,9 +19,9 @@ namespace FF8Mod.Maelstrom
             new Reward("selphie", RewardType.Character, 5),
             new Reward("seifer", RewardType.Character, 6),
             new Reward("edea", RewardType.Character, 7),
-            new Reward("laguna", RewardType.Character, 8),
-            new Reward("kiros", RewardType.Character, 9),
-            new Reward("ward", RewardType.Character, 10),
+            //new Reward("laguna", RewardType.Character, 8),
+            //new Reward("kiros", RewardType.Character, 9),
+            //new Reward("ward", RewardType.Character, 10),
 
             new Reward("quezacotl", RewardType.GF, 3),
             new Reward("shiva", RewardType.GF, 4),
@@ -125,10 +125,10 @@ namespace FF8Mod.Maelstrom
 
         public string Name;
         public RewardType Type;
-        public int ID;
+        public short ID;
         public int Quantity;
 
-        public Reward(string name, RewardType type, int id = -1, int quantity = 1)
+        public Reward(string name, RewardType type, short id = -1, int quantity = 1)
         {
             Name = name;
             Type = type;
@@ -136,12 +136,22 @@ namespace FF8Mod.Maelstrom
             Quantity = quantity;
         }
 
-        public static void GiveItem(FileSource battleSource, int encounterID, int itemID)
+        public static void GiveGF(FileSource battleSource, int encounterID, short gfID)
+        {
+            GiveBattleReward(battleSource, encounterID, "award-gf", gfID);
+        }
+
+        public static void GiveItem(FileSource battleSource, int encounterID, short itemID)
+        {
+            GiveBattleReward(battleSource, encounterID, "award-item", itemID);
+        }
+
+        private static void GiveBattleReward(FileSource battleSource, int encounterID, string rewardOp, short rewardID)
         {
             var encounter = EncounterFile.FromSource(battleSource).Encounters[encounterID];
             var slot = encounter.Slots[Boss.Encounters[encounterID][0]];
             var monster = slot.GetMonster(battleSource);
-            var awardInstruction = new Battle.Instruction(Battle.Instruction.OpCodes[0x38], new short[] { (short)itemID });
+            var awardInstruction = new Battle.Instruction(Battle.Instruction.OpCodesReverse[rewardOp], new short[] { rewardID });
             monster.AI.Scripts.Init.Insert(0, awardInstruction);
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
@@ -174,6 +184,9 @@ namespace FF8Mod.Maelstrom
                 
                 switch (major[majorIndex].Type)
                 {
+                    case RewardType.GF:
+                        GiveGF(battleSource, enc, major[majorIndex].ID);
+                        break;
                     case RewardType.Item:
                         GiveItem(battleSource, enc, major[majorIndex].ID);
                         break;

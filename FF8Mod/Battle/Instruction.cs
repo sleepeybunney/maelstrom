@@ -256,6 +256,7 @@ namespace FF8Mod.Battle
         }
 
         public static Dictionary<byte, OpCode> OpCodes = BuildOpCodeDictionary();
+        public static Dictionary<string, OpCode> OpCodesReverse = OpCodes.ToDictionary(o => o.Value.Name, o => o.Value);
 
         public static Dictionary<byte, string> ConditionCodes = new Dictionary<byte, string>()
         {
