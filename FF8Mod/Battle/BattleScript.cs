@@ -7,14 +7,47 @@ namespace FF8Mod.Battle
 {
     public partial class BattleScript
     {
-        public List<Instruction> Init;          // executes when added to the battle (usually at the start)
-        public List<Instruction> Execute;       // executes when ATB is full
-        public List<Instruction> Counter;       // executes after receiving an action (eg. being attacked)
-        public List<Instruction> Death;         // executes on death
-        public List<Instruction> PreCounter;    // executes after receiving an action, before counter
+        public List<Instruction>[] EventScripts;
+
+        // executes when added to the battle (usually at the start)
+        public List<Instruction> Init
+        {
+            get { return EventScripts[0]; }
+            set { EventScripts[0] = value; }
+        }
+
+        // executes when ATB is full
+        public List<Instruction> Execute
+        {
+            get { return EventScripts[1]; }
+            set { EventScripts[1] = value; }
+        }
+
+        // executes after receiving an action (eg. being attacked)
+        public List<Instruction> Counter
+        {
+            get { return EventScripts[2]; }
+            set { EventScripts[2] = value; }
+        }
+
+        // executes on death
+        public List<Instruction> Death
+        {
+            get { return EventScripts[3]; }
+            set { EventScripts[3] = value; }
+        }
+
+        // executes after receiving an action, before counter
+        public List<Instruction> PreCounter
+        {
+            get { return EventScripts[4]; }
+            set { EventScripts[4] = value; }
+        }
 
         public BattleScript()
         {
+            EventScripts = new List<Instruction>[5];
+
             Init = new List<Instruction>();
             Execute = new List<Instruction>();
             Counter = new List<Instruction>();
@@ -30,7 +63,7 @@ namespace FF8Mod.Battle
         }
 
         // construct from binary data (ie. game files)
-        public BattleScript(byte[] data)
+        public BattleScript(byte[] data) : this()
         {
             using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))

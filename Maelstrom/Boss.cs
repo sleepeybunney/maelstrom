@@ -202,28 +202,7 @@ namespace FF8Mod.Maelstrom
                         if (ec.EncounterID == encIdMap[e])
                         {
                             var monster = encFile.Encounters[e].Slots[i].GetMonster(battleSource);
-
-                            List<Battle.Instruction> script;
-                            switch (ec.Script)
-                            {
-                                case 0:
-                                default:
-                                    script = monster.AI.Scripts.Init;
-                                    break;
-                                case 1:
-                                    script = monster.AI.Scripts.Execute;
-                                    break;
-                                case 2:
-                                    script = monster.AI.Scripts.Counter;
-                                    break;
-                                case 3:
-                                    script = monster.AI.Scripts.Death;
-                                    break;
-                                case 4:
-                                    script = monster.AI.Scripts.PreCounter;
-                                    break;
-                            }
-
+                            var script = monster.AI.Scripts.EventScripts[ec.Script];
                             script[ec.Instruction].Args[3] = (short)e;
                             battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
                         }
