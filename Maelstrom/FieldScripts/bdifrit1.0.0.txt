@@ -1,0 +1,15 @@
+﻿pshn_l 86
+cal 5
+pshn_l 787
+cal 5
+pshn_l 46
+pshn_l 89
+pshn_l 777
+cal 5
+pshn_l 46
+setline
+pshm_b 346
+pshn_l 1
+cal 12
+jpf 2
+lineoff

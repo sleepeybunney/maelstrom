@@ -44,6 +44,18 @@ pshn_l 0
 popm_b 298
 pshn_l 1
 popm_b 299
+pshn_l 0
+popm_b 346
+pshn_l 0
+popm_b 347
+pshn_l 0
+popm_b 348
+pshn_l 0
+popm_b 349
+pshn_l 0
+popm_b 350
+pshn_l 0
+popm_b 351
 salaryoff
 pshn_l 500
 popm_w 16

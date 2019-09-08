@@ -40,6 +40,7 @@ namespace FF8Mod.Maelstrom
             DeleteScript(fieldSource, "bdin5", 15, 1);
             DeleteEntity(fieldSource, "bdin5", 0);
             DeleteScript(fieldSource, "bdifrit1", 15, 1);
+            ImportScript(fieldSource, "bdifrit1", 0, 0);
             ImportScript(fieldSource, "bdifrit1", 0, 5);
             ImportScript(fieldSource, "bdifrit1", 14, 0);
             ImportScript(fieldSource, "bdifrit1", 14, 4);

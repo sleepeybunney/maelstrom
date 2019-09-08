@@ -28,6 +28,10 @@ wait
 pshn_l 94
 pshn_l 0
 battle
+pshm_b 346
+pshn_l 1
+cal 13
+popm_b 346
 pshn_l 1
 sestop
 pshn_l 2
