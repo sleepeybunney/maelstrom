@@ -4,6 +4,10 @@ setbattlemusic
 pshn_l 62
 pshn_l 0
 battle
+pshm_b 346
+pshn_l 2
+cal 13
+popm_b 346
 pshn_l 5
 setbattlemusic
 ucon
