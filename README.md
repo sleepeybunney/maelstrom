@@ -5,14 +5,14 @@ Mods &amp; modding tools for Final Fantasy VIII PC
 * Shuffle the locations of bosses, GFs, draw points, and more
 * Skip the story &amp; go anywhere in any order
 * Current status:
-  * Shuffled bosses with rudimentary rebalancing (some of them crash though, watch out)
+  * Free roam around Balamb
+  * Shuffled bosses (3 available now) with rudimentary rebalancing
   * Draw points give random spells, including Slots-exclusives if you're lucky
   * Shortened intro sequence - just name your characters &amp; get out
-  * No mandatory story scenes up to the end of the Fire Cavern
   * Fixed seed option
   * Pre-fill character/GF names
   * Run with all the boxes unchecked to reset everything
-  * Works with English Steam version only
+  * Works with English Steam version only (original, not Remastered)
 
 > Note: early alpha software!!
 >
