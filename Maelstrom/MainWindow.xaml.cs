@@ -49,6 +49,7 @@ namespace FF8Mod.Maelstrom
             var gameLocation = Path.GetDirectoryName(Properties.Settings.Default.GameLocation);
             var dataPath = Path.Combine(gameLocation, "data", "lang-en");
             var battlePath = Path.Combine(dataPath, "battle");
+            var fieldPath = Path.Combine(dataPath, "field");
             var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
             Task.Run(() =>
@@ -85,8 +86,6 @@ namespace FF8Mod.Maelstrom
                 () =>
                 {
                     // skip story scenes
-                    var fieldPath = Path.Combine(dataPath, "field");
-
                     while (true)
                     {
                         try
@@ -184,8 +183,10 @@ namespace FF8Mod.Maelstrom
                         if (Properties.Settings.Default.StorySkip)
                         {
                             var battleSource = new FileSource(battlePath);
-                            Reward.SetRewards(battleSource, seed);
+                            var fieldSource = new FileSource(fieldPath);
+                            Reward.SetRewards(battleSource, fieldSource, seed);
                             battleSource.Encode();
+                            fieldSource.Encode();
                         }
                         break;
                     }

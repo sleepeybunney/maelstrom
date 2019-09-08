@@ -40,8 +40,8 @@ namespace FF8Mod.Maelstrom
             new Reward("tonberry", RewardType.GF, 17),
             new Reward("eden", RewardType.GF, 18),
 
-            new Reward("odin", RewardType.Special, 127),
-            new Reward("angel wing", RewardType.Special, 126),
+            new Reward("odin", RewardType.Special, 295),
+            new Reward("angel wing", RewardType.Special, 294),
 
             new Reward("item", RewardType.Seal, 1),
             new Reward("magic", RewardType.Seal, 2),
@@ -136,68 +136,147 @@ namespace FF8Mod.Maelstrom
             Quantity = quantity;
         }
 
-        public static void GiveGF(FileSource battleSource, int encounterID, short gfID)
+        public static void GiveCharacter(FileSource fieldSource, int encounterID, int characterID)
         {
-            GiveBattleReward(battleSource, encounterID, "award-gf", gfID);
+            GiveFieldReward(fieldSource, encounterID, Field.FieldScript.OpCodesReverse["addmember"], new int[] { characterID });
         }
 
-        public static void GiveItem(FileSource battleSource, int encounterID, short itemID)
+        public static void GiveGF(FileSource battleSource, EncounterFile encFile, int encounterID, short gfID)
         {
-            GiveBattleReward(battleSource, encounterID, "award-item", itemID);
+            GiveBattleReward(battleSource, encFile, encounterID, "award-gf", gfID);
         }
 
-        private static void GiveBattleReward(FileSource battleSource, int encounterID, string rewardOp, short rewardID)
+        public static void GiveSpecial(FileSource fieldSource, int encounterID, int opCode)
         {
-            var encounter = EncounterFile.FromSource(battleSource).Encounters[encounterID];
-            var slot = encounter.Slots[Boss.Encounters[encounterID][0]];
+            var args = opCode == 294 ? new int[] { 1 } : new int[] { };
+            GiveFieldReward(fieldSource, encounterID, opCode, args);
+        }
+
+        public static void GiveItem(FileSource battleSource, EncounterFile encFile, int encounterID, short itemID)
+        {
+            GiveBattleReward(battleSource, encFile, encounterID, "award-item", itemID);
+        }
+
+        private static void GiveBattleReward(FileSource battleSource, EncounterFile encFile, int encounterID, string rewardOp, short rewardID)
+        {
+            var encounter = encFile.Encounters[encounterID];
+            var slot = encounter.Slots[Boss.Encounters[encounterID].SlotRanks[0]];
             var monster = slot.GetMonster(battleSource);
             var awardInstruction = new Battle.Instruction(Battle.Instruction.OpCodesReverse[rewardOp], new short[] { rewardID });
             monster.AI.Scripts.Init.Insert(0, awardInstruction);
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
 
-        public static void SetRewards(FileSource battleSource, int seed)
+        private static void GiveFieldReward(FileSource fieldSource, int encounterID, int opCode, int[] args)
+        {
+            var boss = Boss.Encounters[encounterID];
+            var field = Field.FieldScript.FromSource(fieldSource, boss.FieldName);
+            var script = field.Entities[boss.FieldEntity].Scripts[boss.FieldScript];
+            var index = script.Instructions.FindLastIndex(i => i.OpCode == Field.FieldScript.OpCodesReverse["battle"]) + 1;
+
+            var awardInstructions = new List<Field.Instruction>();
+            foreach (var a in args)
+            {
+                awardInstructions.Add(new Field.Instruction(Field.FieldScript.OpCodesReverse["pshn_l"], a));
+            }
+            awardInstructions.Add(new Field.Instruction(opCode));
+            script.Instructions.InsertRange(index, awardInstructions);
+
+            var innerSource = new FileSource(Field.FieldScript.GetFieldPath(boss.FieldName), fieldSource);
+            innerSource.ReplaceFile(Field.FieldScript.GetFieldPath(boss.FieldName) + "\\" + boss.FieldName + ".jsm", field.Encode());
+        }
+
+        public static void SetRewards(FileSource battleSource, FileSource fieldSource, int seed)
         {
             var random = new Random(seed);
             var major = new List<Reward>(Major);
             var minor = new List<Reward>(Minor);
-            var rewardMap = new Dictionary<int, Reward>();
             var encounterFile = EncounterFile.FromSource(battleSource);
 
-            foreach (var enc in Boss.Encounters.Keys)
+            // bosses with no fixed location are assigned rewards that don't require field scripting
+            foreach (var boss in Boss.Bosses.Where(b => !b.FixedField))
             {
-                // clear existing item drops
-                foreach (var slot in encounterFile.Encounters[enc].Slots)
-                {
-                    var monster = slot.GetMonster(battleSource);
-                    for (int i = 0; i < 4; i++)
-                    {
-                        monster.Info.DropLow[i] = new HeldItem();
-                        monster.Info.DropMed[i] = new HeldItem();
-                        monster.Info.DropHigh[i] = new HeldItem();
-                    }
-                    battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
-                }
-
-                var majorIndex = random.Next(0, major.Count);
+                var battleOnlyMajor = major.Where(r => r.Type == RewardType.GF || r.Type == RewardType.Item).ToList();
+                var majorIndex = random.Next(0, battleOnlyMajor.Count);
                 var minorIndex = random.Next(0, minor.Count);
-                
-                switch (major[majorIndex].Type)
+
+                // remove any existing item drops
+                ClearDrops(battleSource, encounterFile, boss.EncounterID);
+
+                switch (battleOnlyMajor[majorIndex].Type)
                 {
                     case RewardType.GF:
-                        GiveGF(battleSource, enc, major[majorIndex].ID);
+                        Console.WriteLine("awarding gf {0} for battle-only encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveGF(battleSource, encounterFile, boss.EncounterID, battleOnlyMajor[majorIndex].ID);
                         break;
                     case RewardType.Item:
-                        GiveItem(battleSource, enc, major[majorIndex].ID);
+                        Console.WriteLine("awarding item {0} for battle-only encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveItem(battleSource, encounterFile, boss.EncounterID, battleOnlyMajor[majorIndex].ID);
                         break;
                 }
 
                 // minor rewards are all items
-                GiveItem(battleSource, enc, minor[minorIndex].ID);
+                GiveItem(battleSource, encounterFile, boss.EncounterID, minor[minorIndex].ID);
+
+                // remove rewards from the pool
+                major.Remove(battleOnlyMajor[majorIndex]);
+                battleOnlyMajor.RemoveAt(majorIndex);
+                minor.RemoveAt(minorIndex);
+            }
+
+            // the rest of the bosses can be assigned anything
+            foreach (var boss in Boss.Bosses.Where(b => b.FixedField))
+            {
+                var majorIndex = random.Next(0, major.Count);
+                var minorIndex = random.Next(0, minor.Count);
+
+                // remove any existing item drops
+                ClearDrops(battleSource, encounterFile, boss.EncounterID);
+
+                switch (major[majorIndex].Type)
+                {
+                    case RewardType.Character:
+                        Console.WriteLine("awarding character {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex].ID);
+                        break;
+                    case RewardType.GF:
+                        Console.WriteLine("awarding gf {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveGF(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
+                        break;
+                    case RewardType.Special:
+                        Console.WriteLine("awarding special {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex].ID);
+                        break;
+                    case RewardType.Seal:
+                        Console.WriteLine("awarding seal {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        break;
+                    case RewardType.Item:
+                        Console.WriteLine("awarding item {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
+                        GiveItem(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
+                        break;
+                }
+
+                // minor rewards are all items
+                GiveItem(battleSource, encounterFile, boss.EncounterID, minor[minorIndex].ID);
 
                 // remove rewards from the pool
                 major.RemoveAt(majorIndex);
                 minor.RemoveAt(minorIndex);
+            }
+        }
+
+        private static void ClearDrops(FileSource battleSource, EncounterFile encFile, int encounterID)
+        {
+            foreach (var slot in encFile.Encounters[encounterID].Slots)
+            {
+                var monster = slot.GetMonster(battleSource);
+                for (int i = 0; i < 4; i++)
+                {
+                    monster.Info.DropLow[i] = new HeldItem();
+                    monster.Info.DropMed[i] = new HeldItem();
+                    monster.Info.DropHigh[i] = new HeldItem();
+                }
+                battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
             }
         }
     }

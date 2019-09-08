@@ -5,60 +5,87 @@ using FF8Mod.Archive;
 
 namespace FF8Mod.Maelstrom
 {
-    public static class Boss
+    public class Boss
     {
+        public int EncounterID;
+        public string FieldName;
+        public int FieldEntity;
+        public int FieldScript;
+        public bool FixedField;
+        public int[] SlotRanks;
+
+        public Boss(int encounterID, string fieldName, int fieldEntity, int fieldScript, bool fixedField, params int[] slotRanks)
+        {
+            EncounterID = encounterID;
+            FieldName = fieldName;
+            FieldEntity = fieldEntity;
+            FieldScript = fieldScript;
+            FixedField = fixedField;
+            SlotRanks = slotRanks;
+        }
+
         // boss encounters, with all the individual monsters ranked by overall strength/importance
         // eg. gerogero (slot 1) ranked over the fake president (slot 0)
         // so whoever takes their place gets scaled to match the actual boss & not some other thing
-        public static Dictionary<int, List<int>> Encounters = new Dictionary<int, List<int>>()
+        public static List<Boss> Bosses = new List<Boss>()
         {
-            { 28, new List<int>() { 0 } },              // x-atm092
-            { 29, new List<int>() { 2, 0, 1 } },        // elvoret + biggs + wedge
-            { 62, new List<int>() { 0, 1, 2, 3 } },     // granaldo + raldo x3
-            { 63, new List<int>() { 3, 0, 1, 2 } },     // norg + pod + left/right orbs
-            { 79, new List<int>() { 0, 1 } },           // oilboyle x2
-            { 83, new List<int>() { 1, 0, 2 } },        // raijin + g-soldier x2
-            { 84, new List<int>() { 0, 1 } },           // raijin + fujin (balamb)
-            { 86, new List<int>() { 0 } },              // propagator (red)
-            { 94, new List<int>() { 0 } },              // ifrit
-            { 104, new List<int>() { 1, 0 } },          // gerogero + fake president
-            { 118, new List<int>() { 0 } },             // cerberus
-            { 119, new List<int>() { 0, 1 } },          // seifer + gunblade (g-garden)
-            { 120, new List<int>() { 2, 0, 1 } },       // edea + seifer + gunblade (g-garden)
-            { 136, new List<int>() { 0 } },             // edea (parade) [crash warning]
-            { 147, new List<int>() { 0, 1 } },          // iguion x2
-            { 151, new List<int>() { 1, 0 } },          // biggs + wedge
-            { 161, new List<int>() { 0, 1, 2 } },       // gim52a x2 + elite soldier
-            { 164, new List<int>() { 0, 2, 1, 3 } },    // bgh251f2 (missile base) + elite soldier + g-soldier x2
-            { 189, new List<int>() { 0 } },             // sacred
-            { 190, new List<int>() { 0, 1 } },          // minotaur + sacred
-            { 194, new List<int>() { 0 } },             // bgh251f2 (fh)
-            { 195, new List<int>() { 0, 1 } },          // seifer + gunblade (parade)
-            { 216, new List<int>() { 0, 1 } },          // abadon + shitty abadon
-                                                        // 236-238 centra tonberries w/ hidden tonberry king
-            { 317, new List<int>() { 0 } },             // odin [instakill warning]
-            { 326, new List<int>() { 0 } },             // bahamut
-            { 354, new List<int>() { 0 } },             // ultima weapon
-            { 363, new List<int>() { 1, 0, 4, 3, 2 } }, // sphinxara + sphinxaur + tri-face + forbidden + jelleye
-            { 372, new List<int>() { 0 } },             // krysta [finisher warning]
-            { 377, new List<int>() { 0 } },             // tri-point
-            { 410, new List<int>() { 0 } },             // catoblepas [finisher warning]
-            { 431, new List<int>() { 1, 0, 2 } },       // trauma + droma x2
-            { 436, new List<int>() { 3, 0, 1, 2 } },    // gargantua + vysage + lefty + righty
-            { 441, new List<int>() { 0 } },             // red giant
-            { 462, new List<int>() { 0 } },             // omega weapon
-            { 483, new List<int>() { 0 } },             // tiamat
-                                                        // 511 ultimecia
-            { 712, new List<int>() { 0 } },             // jumbo cactuar
-            { 794, new List<int>() { 0, 1, 2 } },       // mobile type 8 + left/right probes
-            { 795, new List<int>() { 0, 1 } },          // seifer + gunblade (lunatic pandora)
-            { 796, new List<int>() { 0, 1 } },          // adel + rinoa
-            { 810, new List<int>() { 0, 1 } },          // raijin + fujin (lunatic pandora)
-            { 811, new List<int>() { 0 } },             // diablos
-            { 813, new List<int>() { 4, 1, 2, 0, 3 } }, // sorceress x5
-                                                        // 814-819 more propagators
+            new Boss(28, "domt2_1", 18, 5, false, 0),               // x-atm092 (also in domt3_2/10.4 + several instances of enc 27)
+            new Boss(29, "doani4_2", 10, 4, true, 2, 0, 1),         // elvoret + biggs + wedge
+            new Boss(62, "bgmon_1", 0, 7, true, 0, 1, 2, 3),        // granaldo + raldo x3
+            new Boss(63, "bgmast_1", 13, 14, true, 3, 0, 1, 2),     // norg + pod + left/right orbs
+            new Boss(79, "bgmd3_1", 11, 4, true, 0, 1),             // oilboyle x2
+            new Boss(83, "bcsaka1a", 6, 6, true, 1, 0, 2),          // raijin + g-soldier x2 (also in script 0.7)
+            new Boss(84, "bchtl_1", 0, 5, true, 0, 1),              // raijin + fujin (balamb)
+            new Boss(85, "rgroad2", 10, 1, true, 0),                // propagator (red) (also in rgroad3/8.1)
+            new Boss(94, "bdifrit1", 14, 4, true, 0),               // ifrit
+            new Boss(104, "titrain1", 9, 1, true, 1, 0),            // gerogero + fake president
+            new Boss(118, "gghall1", 14, 2, true, 0),               // cerberus
+            new Boss(119, "ggwitch2", 11, 1, true, 0, 1),           // seifer + gunblade (g-garden)
+            new Boss(120, "ggkodo2", 8, 4, true, 2, 0, 1),          // edea + seifer + gunblade (g-garden)
+            new Boss(136, "glyagu1", 2, 4, true, 0),                // edea (parade) [crash warning]
+            new Boss(147, "glwitch1", 12, 1, true, 0, 1),           // iguion x2
+            new Boss(151, "gpbigin3", 12, 4, true, 1, 0),           // biggs + wedge
+            new Boss(161, "gpexit1", 9, 1, true, 0, 1, 2),          // gim52a x2 + elite soldier
+            new Boss(164, "gmpark2", 0, 7, true, 0, 2, 1, 3),       // bgh251f2 (missile base) + elite soldier + g-soldier x2 (also in 1.7)
+            new Boss(189, "gnroom1", 13, 4, true, 0),               // sacred
+            new Boss(190, "gnroom4", 0, 7, true, 0, 1),             // minotaur + sacred
+            new Boss(194, "fhtown23", 0, 9, true, 0),               // bgh251f2 (fh)
+            new Boss(195, "glyagu1", 2, 4, true, 0, 1),             // seifer + gunblade (parade)
+            new Boss(216, "elstop1", 8, 4, true, 0, 1),             // abadon + shitty abadon
+                                                                    // 236-238 centra tonberries w/ hidden tonberry king
+            new Boss(317, "crodin1", 7, 3, true, 0),                // odin [instakill warning]
+            new Boss(326, "sdcore1", 1, 5, true, 0),                // bahamut
+            new Boss(354, "ddruins6", 17, 1, true, 0),              // ultima weapon
+            new Boss(363, "fehall2", 9, 3, true, 1, 0, 4, 3, 2),    // sphinxara + sphinxaur + tri-face + forbidden + jelleye
+            new Boss(372, "feteras1", 9, 3, true, 0),               // krysta [finisher warning]
+            new Boss(377, "fewine1", 7, 3, true, 0),                // tri-point
+            new Boss(410, "fetre1", 22, 3, true, 0),                // catoblepas [finisher warning]
+            new Boss(431, "feart1f1", 17, 3, true, 1, 0, 2),        // trauma + droma x2
+            new Boss(436, "febarac1", 8, 3, true, 3, 0, 1, 2),      // gargantua + vysage + lefty + righty
+            new Boss(441, "fejail1", 14, 2, true, 0),               // red giant (also in 14.4)
+            new Boss(462, "fewor1", 7, 3, true, 0),                 // omega weapon
+            new Boss(483, "feclock3", 8, 3, true, 0),               // tiamat
+                                                                    // 511 ultimecia (felast1/10.1)
+            new Boss(712, "", 0, 0, false, 0),                      // jumbo cactuar
+            new Boss(794, "ebinhi1a", 18, 1, true, 0, 1, 2),        // mobile type 8 + left/right probes
+            new Boss(795, "ebcont1", 12, 1, true, 0, 1),            // seifer + gunblade (lunatic pandora)
+            new Boss(796, "ebadele3", 4, 1, true, 0, 1),            // adel + rinoa
+            new Boss(810, "ebinto1", 0, 7, true, 0, 1),             // raijin + fujin (lunatic pandora)
+            new Boss(811, "", 0, 0, false, 0),                      // diablos
+            new Boss(813, "glwitch3", 10, 4, true, 4, 1, 2, 0, 3),  // sorceress x5
+                                                                    // 814-819 more propagators
         };
 
+        public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
+
+        private static Dictionary<int, Boss> PopulateEncounterDictionary()
+        {
+            var result = new Dictionary<int, Boss>();
+            foreach (var b in Bosses) result.Add(b.EncounterID, b);
+            return result;
+        }
+
+        // registry of boss monster battle scripts that check the current encounter ID
         private static EncounterCheck[] EncounterChecks = new EncounterCheck[]
         {
             // bgh251f2
@@ -130,14 +157,14 @@ namespace FF8Mod.Maelstrom
                 // calculate monster stats to match their assigned encounters
                 if (rebalance)
                 {
-                    var origSlots = Encounters[e];
-                    var newSlots = Encounters[matchedEncounter];
+                    var origSlots = Encounters[e].SlotRanks;
+                    var newSlots = Encounters[matchedEncounter].SlotRanks;
                     var origMainID = encFile.Encounters[e].Slots[origSlots[0]].MonsterID;
                     var newMainID = encFile.Encounters[matchedEncounter].Slots[newSlots[0]].MonsterID;
                     var origMainInfo = Monster.ByID(battleSource, origMainID).Info;
                     var newMainInfo = Monster.ByID(battleSource, newMainID).Info;
 
-                    for (int i = 0; i < newSlots.Count; i++)
+                    for (int i = 0; i < newSlots.Length; i++)
                     {
                         var newMonsterID = encFile.Encounters[matchedEncounter].Slots[newSlots[i]].MonsterID;
                         var newMonsterInfo = Monster.ByID(battleSource, newMonsterID).Info;
