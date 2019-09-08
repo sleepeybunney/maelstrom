@@ -17,6 +17,7 @@ namespace FF8Mod
         public static MessageFile FromBytes(byte[] data)
         {
             var result = new MessageFile();
+            if (data.Length == 0) return result;
 
             using (var stream = new MemoryStream(data))
             using (var reader = new BinaryReader(stream))

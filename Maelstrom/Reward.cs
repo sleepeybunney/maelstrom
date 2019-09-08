@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,14 @@ namespace FF8Mod.Maelstrom
     {
         public static List<Reward> Major = new List<Reward>()
         {
-            new Reward("squall", RewardType.Character, 0),
-            new Reward("zell", RewardType.Character, 1),
-            new Reward("irvine", RewardType.Character, 2),
-            new Reward("quistis", RewardType.Character, 3),
-            new Reward("rinoa", RewardType.Character, 4),
-            new Reward("selphie", RewardType.Character, 5),
-            new Reward("seifer", RewardType.Character, 6),
-            new Reward("edea", RewardType.Character, 7),
+            //new Reward("Squall", RewardType.Character, 0),
+            new Reward("Zell", RewardType.Character, 1),
+            new Reward("Irvine", RewardType.Character, 2),
+            //new Reward("Quistis", RewardType.Character, 3),
+            new Reward("Rinoa", RewardType.Character, 4),
+            new Reward("Selphie", RewardType.Character, 5),
+            new Reward("Seifer", RewardType.Character, 6),
+            new Reward("Edea", RewardType.Character, 7),
             //new Reward("laguna", RewardType.Character, 8),
             //new Reward("kiros", RewardType.Character, 9),
             //new Reward("ward", RewardType.Character, 10),
@@ -40,8 +41,8 @@ namespace FF8Mod.Maelstrom
             new Reward("tonberry", RewardType.GF, 17),
             new Reward("eden", RewardType.GF, 18),
 
-            new Reward("odin", RewardType.Special, 295),
-            new Reward("angel wing", RewardType.Special, 294),
+            new Reward("Odin", RewardType.Special, 295),
+            new Reward("Angel Wing", RewardType.Special, 294),
 
             new Reward("item", RewardType.Seal, 1),
             new Reward("magic", RewardType.Seal, 2),
@@ -136,9 +137,9 @@ namespace FF8Mod.Maelstrom
             Quantity = quantity;
         }
 
-        public static void GiveCharacter(FileSource fieldSource, int encounterID, int characterID)
+        public static void GiveCharacter(FileSource fieldSource, int encounterID, Reward reward)
         {
-            GiveFieldReward(fieldSource, encounterID, Field.FieldScript.OpCodesReverse["addmember"], new int[] { characterID });
+            GiveFieldReward(fieldSource, encounterID, Field.FieldScript.OpCodesReverse["addmember"], new int[] { reward.ID }, reward.Name + " joined the party!");
         }
 
         public static void GiveGF(FileSource battleSource, EncounterFile encFile, int encounterID, short gfID)
@@ -146,10 +147,10 @@ namespace FF8Mod.Maelstrom
             GiveBattleReward(battleSource, encFile, encounterID, "award-gf", gfID);
         }
 
-        public static void GiveSpecial(FileSource fieldSource, int encounterID, int opCode)
+        public static void GiveSpecial(FileSource fieldSource, int encounterID, Reward reward)
         {
-            var args = opCode == 294 ? new int[] { 1 } : Array.Empty<int>();
-            GiveFieldReward(fieldSource, encounterID, opCode, args);
+            var args = reward.Name == "angel wing" ? new int[] { 1 } : Array.Empty<int>();
+            GiveFieldReward(fieldSource, encounterID, reward.ID, args, reward.Name + " unlocked!");
         }
 
         public static void GiveItem(FileSource battleSource, EncounterFile encFile, int encounterID, short itemID)
@@ -167,22 +168,41 @@ namespace FF8Mod.Maelstrom
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
 
-        private static void GiveFieldReward(FileSource fieldSource, int encounterID, int opCode, int[] args)
+        private static void GiveFieldReward(FileSource fieldSource, int encounterID, int opCode, int[] args, string message)
         {
             var boss = Boss.Encounters[encounterID];
+            var fieldPath = Field.FieldScript.GetFieldPath(boss.FieldName);
+            var innerSource = new FileSource(fieldPath, fieldSource);
+
+            // add message
+            var msdPath = Path.Combine(fieldPath, boss.FieldName + ".msd");
+            var fieldText = MessageFile.FromSource(innerSource, msdPath);
+            var msgID = fieldText.Messages.Count;
+            fieldText.Messages.Add(message);
+
+            // give reward
             var field = Field.FieldScript.FromSource(fieldSource, boss.FieldName);
             var script = field.Entities[boss.FieldEntity].Scripts[boss.FieldScript];
             var index = script.Instructions.FindLastIndex(i => i.OpCode == Field.FieldScript.OpCodesReverse["battle"]) + 1;
 
             var awardInstructions = new List<Field.Instruction>();
+            var push = Field.FieldScript.OpCodesReverse["pshn_l"];
             foreach (var a in args)
             {
-                awardInstructions.Add(new Field.Instruction(Field.FieldScript.OpCodesReverse["pshn_l"], a));
+                awardInstructions.Add(new Field.Instruction(push, a));
             }
             awardInstructions.Add(new Field.Instruction(opCode));
-            script.Instructions.InsertRange(index, awardInstructions);
 
-            var innerSource = new FileSource(Field.FieldScript.GetFieldPath(boss.FieldName), fieldSource);
+            // show message
+            awardInstructions.Add(new Field.Instruction(push, 0));
+            awardInstructions.Add(new Field.Instruction(push, msgID));
+            awardInstructions.Add(new Field.Instruction(push, 70));
+            awardInstructions.Add(new Field.Instruction(push, 70));
+            awardInstructions.Add(new Field.Instruction(Field.FieldScript.OpCodesReverse["amesw"]));
+
+            // apply changes
+            script.Instructions.InsertRange(index, awardInstructions);
+            innerSource.ReplaceFile(msdPath, fieldText.Encode());
             innerSource.ReplaceFile(Field.FieldScript.GetFieldPath(boss.FieldName) + "\\" + boss.FieldName + ".jsm", field.Encode());
         }
 
@@ -237,7 +257,7 @@ namespace FF8Mod.Maelstrom
                 {
                     case RewardType.Character:
                         Console.WriteLine("awarding character {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
-                        GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex].ID);
+                        GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex]);
                         break;
                     case RewardType.GF:
                         Console.WriteLine("awarding gf {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
@@ -245,7 +265,7 @@ namespace FF8Mod.Maelstrom
                         break;
                     case RewardType.Special:
                         Console.WriteLine("awarding special {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
-                        GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex].ID);
+                        GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex]);
                         break;
                     case RewardType.Seal:
                         Console.WriteLine("awarding seal {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
@@ -265,6 +285,7 @@ namespace FF8Mod.Maelstrom
             }
         }
 
+        // remove existing rewards from an encounter
         private static void ClearDrops(FileSource battleSource, EncounterFile encFile, int encounterID)
         {
             foreach (var slot in encFile.Encounters[encounterID].Slots)
