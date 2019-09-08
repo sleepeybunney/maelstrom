@@ -24,8 +24,8 @@ namespace FF8Mod.Maelstrom
             //new Reward("kiros", RewardType.Character, 9),
             //new Reward("ward", RewardType.Character, 10),
 
-            new Reward("quezacotl", RewardType.GF, 3),
-            new Reward("shiva", RewardType.GF, 4),
+            //new Reward("quezacotl", RewardType.GF, 3),
+            //new Reward("shiva", RewardType.GF, 4),
             new Reward("ifrit", RewardType.GF, 5),
             new Reward("siren", RewardType.GF, 6),
             new Reward("brothers", RewardType.GF, 7),
@@ -64,6 +64,8 @@ namespace FF8Mod.Maelstrom
             new Reward("phoenix pinion", RewardType.Item, 31),
             new Reward("holy war", RewardType.Item, 21),
             new Reward("hero", RewardType.Item, 19),
+            new Reward("rosetta stone", RewardType.Item, 54),
+            new Reward("hungry cookpot", RewardType.Item, 64),
         };
 
         public static List<Reward> Minor = new List<Reward>()
@@ -100,8 +102,6 @@ namespace FF8Mod.Maelstrom
             new Reward("rocket engine", RewardType.Item, 90),
             new Reward("three stars", RewardType.Item, 99),
             new Reward("gambler spirit", RewardType.Item, 59),
-            new Reward("rosetta stone", RewardType.Item, 54),
-            new Reward("hungry cookpot", RewardType.Item, 64),
             new Reward("friendship", RewardType.Item, 32),
             new Reward("mog's amulet", RewardType.Item, 65),
             new Reward("weapons mon 1st", RewardType.Item, 177),
