@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using FF8Mod.Field;
 using FF8Mod.Archive;
 
@@ -8,6 +9,7 @@ namespace FF8Mod.Maelstrom
     public static class StorySkip
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
+        private static Assembly assembly = Assembly.GetExecutingAssembly();
 
         public static void Apply(FileSource fieldSource, string af3dnPath, int seed)
         {
@@ -65,24 +67,22 @@ namespace FF8Mod.Maelstrom
             IntroPatch.Remove(af3dnPath);
         }
 
-        // overwrite a field script with one imported from a text file
+        // overwrite a field script with one imported from an embedded text file
         public static void ImportScript(FileSource fieldSource, string fieldName, int entity, int script, string importPath)
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
-            field.ReplaceScript(entity, script, File.ReadAllText(importPath));
+            var stream = assembly.GetManifestResourceStream(importPath);
+            using (var reader = new StreamReader(stream))
+            {
+                field.ReplaceScript(entity, script, reader.ReadToEnd());
+            }
             SaveToSource(fieldSource, fieldName, field.Encode());
         }
 
         // slightly easier import with the filename convention "fieldName.entityID.scriptID.txt"
         public static void ImportScript(FileSource fieldSource, string fieldName, int entity, int script)
         {
-            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"FieldScripts\{0}.{1}.{2}.txt", fieldName, entity, script));
-        }
-
-        // return a field script to its original state
-        public static void ResetScript(FileSource fieldSource, string fieldName, int entity, int script)
-        {
-            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"OrigFieldScripts\{0}.{1}.{2}.txt", fieldName, entity, script));
+            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"FF8Mod.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", fieldName, entity, script));
         }
 
         // delete a single script

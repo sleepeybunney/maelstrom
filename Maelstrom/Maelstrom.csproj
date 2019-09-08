@@ -156,69 +156,43 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\start0.0.1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\start0.0.1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bghoke_2.12.1.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bghoke_2.12.1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bghoke_2.6.4.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bghoke_2.6.4.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bdifrit1.0.5.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bdifrit1.0.5.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bdifrit1.14.4.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bdifrit1.14.4.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bgmon_1.16.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bgmon_1.16.0.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bgmon_1.0.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bgmon_1.0.0.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bgmon_1.0.7.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bgmon_1.0.7.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bchtl_1.3.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bchtl_1.3.0.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bchtl_1.0.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bchtl_1.0.0.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bchtl_1.0.5.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bchtl_1.0.5.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bdifrit1.14.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bdifrit1.14.0.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FieldScripts\bdifrit1.0.0.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="FieldScripts\bdifrit1.0.0.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="maelstrom.ico" />
