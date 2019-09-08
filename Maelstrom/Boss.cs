@@ -86,7 +86,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // registry of boss monster battle scripts that check the current encounter ID
-        private static EncounterCheck[] EncounterChecks = new EncounterCheck[]
+        private readonly static EncounterCheck[] EncounterChecks = new EncounterCheck[]
         {
             // bgh251f2
             new EncounterCheck(164, 71, 0, 0),

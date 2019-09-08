@@ -148,7 +148,7 @@ namespace FF8Mod.Maelstrom
 
         public static void GiveSpecial(FileSource fieldSource, int encounterID, int opCode)
         {
-            var args = opCode == 294 ? new int[] { 1 } : new int[] { };
+            var args = opCode == 294 ? new int[] { 1 } : Array.Empty<int>();
             GiveFieldReward(fieldSource, encounterID, opCode, args);
         }
 
