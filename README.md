@@ -1,18 +1,17 @@
-# ff8-mod
-Mods &amp; modding tools for Final Fantasy VIII PC
+## Maelstrom - open-world randomiser for Final Fantasy VIII
 
-## Maelstrom - open-world randomiser
 * Shuffle the locations of bosses, GFs, draw points, and more
 * Skip the story &amp; go anywhere in any order
 * Current status:
   * Free roam around Balamb
+  * Limited access to Galbadia
   * Shuffled bosses (3 available now) with rudimentary rebalancing
   * Draw points give random spells, including Slots-exclusives if you're lucky
   * Shortened intro sequence - just name your characters &amp; get out
   * Fixed seed option
   * Pre-fill character/GF names
   * Run with all the boxes unchecked to reset everything
-  * Works with English Steam version only (original, not Remastered)
+  * **Only works with un-modded &amp; un-remastered English Steam version for now**
 
 > Note: early alpha software!!
 >
@@ -20,7 +19,10 @@ Mods &amp; modding tools for Final Fantasy VIII PC
 >
 > Don't be surprised if you have to repair your install at some point.
 
-## MiniMog - enemy AI editor
+## FF8Mod
+Maelstrom's core can be used as a DLL module to support further FF8 modding projects, such as:
+
+### MiniMog - enemy AI editor
 * View & edit battle scripts
 * Current status: read-only output, working on making the scripting language more readable
 
