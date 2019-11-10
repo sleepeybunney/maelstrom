@@ -89,5 +89,8 @@
     <Setting Name="NameAngelo" Type="System.String" Scope="User">
       <Value Profile="(Default)">Angelo</Value>
     </Setting>
+    <Setting Name="ShopShuffle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

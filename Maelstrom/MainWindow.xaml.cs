@@ -126,11 +126,17 @@ namespace FF8Mod.Maelstrom
                         try
                         {
                             CreateOrRestoreArchiveBackup(menuPath);
+                            var menuSource = new FileSource(menuPath);
 
                             if (Properties.Settings.Default.NameSet)
                             {
-                                var menuSource = new FileSource(menuPath);
                                 PresetNames.Apply(menuSource);
+                                menuSource.Encode();
+                            }
+
+                            if (Properties.Settings.Default.ShopShuffle)
+                            {
+                                ShopShuffle.Apply(menuSource, seed);
                                 menuSource.Encode();
                             }
 

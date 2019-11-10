@@ -62,7 +62,7 @@
     <Compile Include="MonsterAI.cs" />
     <Compile Include="MonsterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopItem.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

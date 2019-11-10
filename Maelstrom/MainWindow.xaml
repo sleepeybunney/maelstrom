@@ -45,6 +45,7 @@
                         <CheckBox x:Name="optionNameSet" Content="Use Preset Names" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding NameSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                         <Button x:Name="setNamesButton" Content="Set..." Margin="6" Click="OnSetNames" />
                     </StackPanel>
+                    <CheckBox x:Name="optionShopShuffle" Content="Random Shops" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding ShopShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>
