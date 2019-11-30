@@ -1,0 +1,28 @@
+name: .NET Core
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.0.100'
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+    - name: Upload Maelstrom
+      uses: actions/upload-artifact@v1
+      with:
+        name: maelstrom
+        path: ./Maelstrom/bin/Release/netcoreapp3.0
+    - name: Upload MiniMog
+      uses: actions/upload-artifact@v1
+      with:
+        name: minimog
+        path: ./MiniMog/bin/Release/netcoreapp3.0
