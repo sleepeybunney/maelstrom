@@ -22,9 +22,9 @@ namespace FF8Mod.MiniMog
         public MainWindow()
         {
             InitializeComponent();
+
             using (var reader = new XmlTextReader("BattleScript.xshd"))
             {
-                
                 initEditor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
                 execEditor.SyntaxHighlighting = initEditor.SyntaxHighlighting;
                 counterEditor.SyntaxHighlighting = initEditor.SyntaxHighlighting;
@@ -97,13 +97,31 @@ namespace FF8Mod.MiniMog
 
         private void SelectMonster(object sender, SelectionChangedEventArgs e)
         {
-            var monster = Monsters[monsterList.SelectedIndex];
-            var script = monster.AI.Scripts;
-            initEditor.Text = string.Join(Environment.NewLine, script.Init);
-            execEditor.Text = string.Join(Environment.NewLine, script.Execute);
-            counterEditor.Text = string.Join(Environment.NewLine, script.Counter);
-            deathEditor.Text = string.Join(Environment.NewLine, script.Death);
-            preCounterEditor.Text = string.Join(Environment.NewLine, script.PreCounter);
+            if (monsterList.SelectedIndex < 0)
+            {
+                ClearEditors();
+                return;
+            }
+
+            var scripts = Monsters[monsterList.SelectedIndex].AI.Scripts;
+            PopulateEditor(initEditor, scripts.Init);
+            PopulateEditor(execEditor, scripts.Execute);
+            PopulateEditor(counterEditor, scripts.Counter);
+            PopulateEditor(deathEditor, scripts.Death);
+            PopulateEditor(preCounterEditor, scripts.PreCounter);
+        }
+
+        private void PopulateEditor(Editor editor, List<Battle.Instruction> script)
+        {
+            editor.Text = string.Join(Environment.NewLine, script);
+        }
+
+        private void ClearEditors()
+        {
+            foreach (var editor in new Editor[] { initEditor, execEditor, counterEditor, deathEditor, preCounterEditor })
+            {
+                PopulateEditor(editor, new List<Battle.Instruction>());
+            }
         }
 
         private void UpdateMonsterList()
