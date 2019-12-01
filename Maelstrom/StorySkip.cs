@@ -9,7 +9,6 @@ namespace FF8Mod.Maelstrom
     public static class StorySkip
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
-        private static Assembly assembly = Assembly.GetExecutingAssembly();
 
         public static void Apply(FileSource fieldSource, string af3dnPath, int seed)
         {
@@ -79,11 +78,7 @@ namespace FF8Mod.Maelstrom
         public static void ImportScript(FileSource fieldSource, string fieldName, int entity, int script, string importPath)
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
-            var stream = assembly.GetManifestResourceStream(importPath);
-            using (var reader = new StreamReader(stream))
-            {
-                field.ReplaceScript(entity, script, reader.ReadToEnd());
-            }
+            field.ReplaceScript(entity, script, App.ReadEmbeddedFile(importPath));
             SaveToSource(fieldSource, fieldName, field.Encode());
         }
 

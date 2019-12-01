@@ -1,0 +1,422 @@
+[
+    {
+        "EncounterID": 28,
+        "EncounterName": "X-ATM092",
+        "FieldID": "domt2_1",
+        "FieldName": "Dollet - Mountain Hideout",
+        "FieldEntity": 18,
+        "FieldScript": 5,
+        "FixedField": false,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 29,
+        "EncounterName": "Biggs, Wedge & Elvoret",
+        "FieldID": "doani4_2",
+        "FieldName": "Dollet - Comm Tower",
+        "FieldEntity": 10,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [2,0,1]
+    },
+    {
+        "EncounterID": 62,
+        "EncounterName": "Raldo & Granaldo",
+        "FieldID": "bgmon_1",
+        "FieldName": "B-Garden - Training Center",
+        "FieldEntity": 0,
+        "FieldScript": 7,
+        "FixedField": true,
+        "SlotRanks": [0,1,2,3]
+    },
+    {
+        "EncounterID": 63,
+        "EncounterName": "NORG",
+        "FieldID": "bgmast_1",
+        "FieldName": "B-Garden - Master Room",
+        "FieldEntity": 13,
+        "FieldScript": 14,
+        "FixedField": true,
+        "SlotRanks": [3,0,1,2]
+    },
+    {
+        "EncounterID": 79,
+        "EncounterName": "Oilboyles",
+        "FieldID": "bgmd3_1",
+        "FieldName": "B-Garden - MD Level",
+        "FieldEntity": 11,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 83,
+        "EncounterName": "Raijin",
+        "FieldID": "bcsaka1a",
+        "FieldName": "Balamb - Town Square",
+        "FieldEntity": 6,
+        "FieldScript": 6,
+        "FixedField": true,
+        "SlotRanks": [1,0,2]
+    },
+    {
+        "EncounterID": 84,
+        "EncounterName": "Fujin & Raijin (1st)",
+        "FieldID": "bchtl_1",
+        "FieldName": "Balamb - Hotel",
+        "FieldEntity": 0,
+        "FieldScript": 5,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 85,
+        "EncounterName": "Propagator (Red)",
+        "FieldID": "rgroad2",
+        "FieldName": "Ragnarok - Aisle",
+        "FieldEntity": 10,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 94,
+        "EncounterName": "Ifrit",
+        "FieldID": "bdifrit1",
+        "FieldName": "Balamb - Fire Cavern",
+        "FieldEntity": 14,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 104,
+        "EncounterName": "Gerogero",
+        "FieldID": "titrain1",
+        "FieldName": "Timber - Forest Owls' Base",
+        "FieldEntity": 9,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [1,0]
+    },
+    {
+        "EncounterID": 118,
+        "EncounterName": "Cerberus",
+        "FieldID": "gghall1",
+        "FieldName": "G-Garden - Hall",
+        "FieldEntity": 14,
+        "FieldScript": 2,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 119,
+        "EncounterName": "Seifer (2nd)",
+        "FieldID": "ggwitch2",
+        "FieldName": "G-Garden - Master Room",
+        "FieldEntity": 11,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 120,
+        "EncounterName": "Edea (2nd)",
+        "FieldID": "ggkodo2",
+        "FieldName": "G-Garden - Auditorium",
+        "FieldEntity": 8,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [2,0,1]
+    },
+    {
+        "EncounterID": 136,
+        "EncounterName": "Edea (1st)",
+        "FieldID": "glyagu1",
+        "FieldName": "Deling City - Parade",
+        "FieldEntity": 2,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 147,
+        "EncounterName": "Iguions",
+        "FieldID": "glwitch1",
+        "FieldName": "Deling City - Presidential Residence",
+        "FieldEntity": 12,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 151,
+        "EncounterName": "Biggs & Wedge",
+        "FieldID": "gpbigin3",
+        "FieldName": "D-District Prison - Cell",
+        "FieldEntity": 12,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [1,0]
+    },
+    {
+        "EncounterID": 161,
+        "EncounterName": "GIM52A",
+        "FieldID": "gpexit1",
+        "FieldName": "D-District Prison - Bridge",
+        "FieldEntity": 9,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1,2]
+    },
+    {
+        "EncounterID": 164,
+        "EncounterName": "BGH251F2 (1st)",
+        "FieldID": "gmpark2",
+        "FieldName": "Missile Base - Surface",
+        "FieldEntity": 0,
+        "FieldScript": 7,
+        "FixedField": true,
+        "SlotRanks": [0,2,1,3]
+    },
+    {
+        "EncounterID": 189,
+        "EncounterName": "Sacred",
+        "FieldID": "gnroom1",
+        "FieldName": "Tomb of the Unknown King - Statue",
+        "FieldEntity": 13,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 190,
+        "EncounterName": "Sacred & Minotaur",
+        "FieldID": "gnroom4",
+        "FieldName": "Tomb of the Unknown King - Main Chamber",
+        "FieldEntity": 0,
+        "FieldScript": 7,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 194,
+        "EncounterName": "BGH251F2 (2nd)",
+        "FieldID": "fhtown23",
+        "FieldName": "Fisherman's Horizon - Residential Area",
+        "FieldEntity": 0,
+        "FieldScript": 9,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 195,
+        "EncounterName": "Seifer (1st)",
+        "FieldID": "glyagu1",
+        "FieldName": "Deling City - Parade",
+        "FieldEntity": 2,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 216,
+        "EncounterName": "Abadon",
+        "FieldID": "elstop1",
+        "FieldName": "Esthar - Great Salt Lake",
+        "FieldEntity": 8,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 317,
+        "EncounterName": "Odin",
+        "FieldID": "crodin1",
+        "FieldName": "Centra Ruins - Odin's Chamber",
+        "FieldEntity": 7,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 326,
+        "EncounterName": "Bahamut",
+        "FieldID": "sdcore1",
+        "FieldName": "Deep Sea Research Center",
+        "FieldEntity": 1,
+        "FieldScript": 5,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 354,
+        "EncounterName": "Ultima Weapon",
+        "FieldID": "ddruins6",
+        "FieldName": "Deep Sea Deposit",
+        "FieldEntity": 17,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 363,
+        "EncounterName": "Sphinxara",
+        "FieldID": "fehall2",
+        "FieldName": "Ultimecia Castle - Hall",
+        "FieldEntity": 9,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [1,0,4,3,2]
+    },
+    {
+        "EncounterID": 372,
+        "EncounterName": "Krysta",
+        "FieldID": "feteras1",
+        "FieldName": "Ultimecia Castle - Terrace",
+        "FieldEntity": 9,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 377,
+        "EncounterName": "Tri-Point",
+        "FieldID": "fewine1",
+        "FieldName": "Ultimecia Castle - Wine Cellar",
+        "FieldEntity": 7,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 410,
+        "EncounterName": "Catoblepas",
+        "FieldID": "fetre1",
+        "FieldName": "Ultimecia Castle - Treasure Room",
+        "FieldEntity": 22,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 431,
+        "EncounterName": "Trauma",
+        "FieldID": "feart1f1",
+        "FieldName": "Ultimecia Castle - Art Gallery",
+        "FieldEntity": 17,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [1,0,2]
+    },
+    {
+        "EncounterID": 436,
+        "EncounterName": "Gargantua",
+        "FieldID": "febarac1",
+        "FieldName": "Ultimecia Castle - Armory",
+        "FieldEntity": 8,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [3,0,1,2]
+    },
+    {
+        "EncounterID": 441,
+        "EncounterName": "Red Giant",
+        "FieldID": "fejail1",
+        "FieldName": "Ultimecia Castle - Prison Cell",
+        "FieldEntity": 14,
+        "FieldScript": 2,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 462,
+        "EncounterName": "Omega Weapon",
+        "FieldID": "fewor1",
+        "FieldName": "Ultimecia Castle - Chapel",
+        "FieldEntity": 7,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 483,
+        "EncounterName": "Tiamat",
+        "FieldID": "feclock3",
+        "FieldName": "Ultimecia Castle - Clock Tower",
+        "FieldEntity": 8,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 712,
+        "EncounterName": "Jumbo Cactuar",
+        "FieldID": "",
+        "FieldName": "Esthar - Cactuar Island",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 794,
+        "EncounterName": "Mobile Type 8",
+        "FieldID": "ebinhi1a",
+        "FieldName": "Lunatic Pandora - Hallway",
+        "FieldEntity": 18,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1,2]
+    },
+    {
+        "EncounterID": 795,
+        "EncounterName": "Seifer (3rd)",
+        "FieldID": "ebcont1",
+        "FieldName": "Lunatic Pandora - Bridge",
+        "FieldEntity": 12,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 796,
+        "EncounterName": "Adel",
+        "FieldID": "ebadele3",
+        "FieldName": "Lunatic Pandora - Adel's Chamber",
+        "FieldEntity": 4,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 810,
+        "EncounterName": "Fujin & Raijin (2nd)",
+        "FieldID": "ebinto1",
+        "FieldName": "Lunatic Pandora - Landing Site",
+        "FieldEntity": 0,
+        "FieldScript": 7,
+        "FixedField": true,
+        "SlotRanks": [0,1]
+    },
+    {
+        "EncounterID": 811,
+        "EncounterName": "Diablos",
+        "FieldID": "",
+        "FieldName": "Magical Lamp",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
+        "SlotRanks": [0]
+    },
+    {
+        "EncounterID": 813,
+        "EncounterName": "Sorceresses",
+        "FieldID": "glwitch3",
+        "FieldName": "Commencement Room",
+        "FieldEntity": 10,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [4,1,2,0,3]
+    }
+]

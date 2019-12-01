@@ -29,6 +29,9 @@
     <EmbeddedResource Include="FieldScripts\*.txt" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Bosses.json" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="maelstrom.ico" />
   </ItemGroup>
   <ItemGroup>
