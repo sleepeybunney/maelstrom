@@ -226,11 +226,9 @@ namespace FF8Mod.Maelstrom
                 switch (battleOnlyMajor[majorIndex].Type)
                 {
                     case RewardType.GF:
-                        Console.WriteLine("awarding gf {0} for battle-only encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveGF(battleSource, encounterFile, boss.EncounterID, battleOnlyMajor[majorIndex].ID);
                         break;
                     case RewardType.Item:
-                        Console.WriteLine("awarding item {0} for battle-only encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveItem(battleSource, encounterFile, boss.EncounterID, battleOnlyMajor[majorIndex].ID);
                         break;
                 }
@@ -256,22 +254,17 @@ namespace FF8Mod.Maelstrom
                 switch (major[majorIndex].Type)
                 {
                     case RewardType.Character:
-                        Console.WriteLine("awarding character {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex]);
                         break;
                     case RewardType.GF:
-                        Console.WriteLine("awarding gf {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveGF(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
                         break;
                     case RewardType.Special:
-                        Console.WriteLine("awarding special {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex]);
                         break;
                     case RewardType.Seal:
-                        Console.WriteLine("awarding seal {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         break;
                     case RewardType.Item:
-                        Console.WriteLine("awarding item {0} for encounter {1}", major[majorIndex].ID, boss.EncounterID);
                         GiveItem(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
                         break;
                 }

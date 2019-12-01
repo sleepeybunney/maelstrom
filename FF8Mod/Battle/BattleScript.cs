@@ -103,11 +103,7 @@ namespace FF8Mod.Battle
                 code = reader.ReadByte();
 
                 // something is wrong, abort
-                if (!Instruction.OpCodes.ContainsKey(code))
-                {
-                    Console.WriteLine("Unknown op: " + code);
-                    break;
-                }
+                if (!Instruction.OpCodes.ContainsKey(code)) break;
 
                 var op = Instruction.OpCodes[code];
                 var args = new List<short>();
