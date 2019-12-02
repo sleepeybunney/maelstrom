@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using MahApps.Metro.Controls;
 using System.Windows.Media;
 using System.Windows.Controls;
-using System.Linq;
 
 namespace FF8Mod.Maelstrom
 {
@@ -52,6 +51,8 @@ namespace FF8Mod.Maelstrom
             var fieldPath = Path.Combine(dataPath, "field");
             var af3dn = Path.Combine(gameLocation, "AF3DN.P");
 
+            var spoilerFile = new SpoilerFile();
+
             Task.Run(() =>
             {
                 Parallel.Invoke(() =>
@@ -66,7 +67,8 @@ namespace FF8Mod.Maelstrom
                             if (Properties.Settings.Default.BossShuffle)
                             {
                                 var battleSource = new FileSource(battlePath);
-                                Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
+                                var shuffle = Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
+                                if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddBosses(shuffle);
                                 battleSource.Encode();
                             }
 
@@ -208,6 +210,11 @@ namespace FF8Mod.Maelstrom
 
                 this.Invoke(() =>
                 {
+                    if (Properties.Settings.Default.SpoilerFile)
+                    {
+                        File.WriteAllText("spoilers." + seed.ToString() + ".txt", spoilerFile.ToString());
+                    }
+
                     GC.Collect();
                     goContent.Content = GoButton;
                     MessageBox.Show(this, "Done!", "Maelstrom");

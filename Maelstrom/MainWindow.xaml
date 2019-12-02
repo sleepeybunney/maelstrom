@@ -46,6 +46,7 @@
                         <Button x:Name="setNamesButton" Content="Set..." Margin="6" Click="OnSetNames" />
                     </StackPanel>
                     <CheckBox x:Name="optionShopShuffle" Content="Random Shops" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding ShopShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionSpoilerFile" Content="Generate Spoiler File" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding SpoilerFile, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>

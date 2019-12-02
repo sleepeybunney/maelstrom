@@ -76,7 +76,7 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        public static void Shuffle(FileSource battleSource, bool rebalance, int seed)
+        public static Dictionary<int, int> Shuffle(FileSource battleSource, bool rebalance, int seed)
         {
             var encFilePath = EncounterFile.Path;
             var encFile = EncounterFile.FromSource(battleSource, encFilePath);
@@ -164,6 +164,8 @@ namespace FF8Mod.Maelstrom
                     battleSource.ReplaceFile(Monster.GetPath(id), monster.Encode());
                 }
             }
+
+            return encIdMap;
         }
 
         // scale the stats of a monster against another, relative to the main boss of its encounter
