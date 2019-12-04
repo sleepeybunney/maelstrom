@@ -69,7 +69,7 @@
     },
     {
         "ID": 18,
-        "Name": "Hero trial"
+        "Name": "Hero-trial"
     },
     {
         "ID": 19,
@@ -77,7 +77,7 @@
     },
     {
         "ID": 20,
-        "Name": "Holy War trial"
+        "Name": "Holy War-trial"
     },
     {
         "ID": 21,
@@ -141,19 +141,19 @@
     },
     {
         "ID": 36,
-        "Name": "G Potion"
+        "Name": "G-Potion"
     },
     {
         "ID": 37,
-        "Name": "G Hi Potion"
+        "Name": "G-Hi-Potion"
     },
     {
         "ID": 38,
-        "Name": "G Mega Potion"
+        "Name": "G-Mega-Potion"
     },
     {
         "ID": 39,
-        "Name": "G Returner"
+        "Name": "G-Returner"
     },
     {
         "ID": 40,
@@ -165,31 +165,31 @@
     },
     {
         "ID": 42,
-        "Name": "HP Junction scroll"
+        "Name": "HP-J Scroll"
     },
     {
         "ID": 43,
-        "Name": "Strength Junction Scroll"
+        "Name": "Str-J Scroll"
     },
     {
         "ID": 44,
-        "Name": "Vitality Junction Scroll"
+        "Name": "Vit-J Scroll"
     },
     {
         "ID": 45,
-        "Name": "Magic Junction Scroll"
+        "Name": "Mag-J Scroll"
     },
     {
         "ID": 46,
-        "Name": "Spirit Junction Scroll"
+        "Name": "Spr-J Scroll"
     },
     {
         "ID": 47,
-        "Name": "Speed Junction Scroll"
+        "Name": "Spd-J Scroll"
     },
     {
         "ID": 48,
-        "Name": "Luck Junction Scroll"
+        "Name": "Luck-J Scroll"
     },
     {
         "ID": 49,
@@ -481,7 +481,7 @@
     },
     {
         "ID": 121,
-        "Name": "Vampite Fang"
+        "Name": "Vampire Fang"
     },
     {
         "ID": 122,
@@ -705,90 +705,90 @@
     },
     {
         "ID": 177,
-        "Name": "Weapons Monthly 1"
+        "Name": "Weapons Mon 1st"
     },
     {
         "ID": 178,
-        "Name": "Weapons Monthly Mar"
+        "Name": "Weapons Mon Mar"
     },
     {
         "ID": 179,
-        "Name": "Weapons Monthly Apr"
+        "Name": "Weapons Mon Apr"
     },
     {
         "ID": 180,
-        "Name": "Weapons Monthly May"
+        "Name": "Weapons Mon May"
     },
     {
         "ID": 181,
-        "Name": "Weapons Monthly Jun"
+        "Name": "Weapons Mon Jun"
     },
     {
         "ID": 182,
-        "Name": "Weapons Monthly Jul"
+        "Name": "Weapons Mon Jul"
     },
     {
         "ID": 183,
-        "Name": "Weapons Monthly Aug"
+        "Name": "Weapons Mon Aug"
     },
     {
         "ID": 184,
-        "Name": "Combat King 1"
+        "Name": "Combat King 001"
     },
     {
         "ID": 185,
-        "Name": "Combat King 2"
+        "Name": "Combat King 002"
     },
     {
         "ID": 186,
-        "Name": "Combat King 3"
+        "Name": "Combat King 003"
     },
     {
         "ID": 187,
-        "Name": "Combat King 4"
+        "Name": "Combat King 004"
     },
     {
         "ID": 188,
-        "Name": "Combat King 5"
+        "Name": "Combat King 005"
     },
     {
         "ID": 189,
-        "Name": "Pet Pals 1"
+        "Name": "Pet Pals Vol. 1"
     },
     {
         "ID": 190,
-        "Name": "Pet Pals 2"
+        "Name": "Pet Pals Vol. 2"
     },
     {
         "ID": 191,
-        "Name": "Pet Pals 3"
+        "Name": "Pet Pals Vol. 3"
     },
     {
         "ID": 192,
-        "Name": "Pet Pals 4"
+        "Name": "Pet Pals Vol. 4"
     },
     {
         "ID": 193,
-        "Name": "Pet Pals 5"
+        "Name": "Pet Pals Vol. 5"
     },
     {
         "ID": 194,
-        "Name": "Pet Pals 6"
+        "Name": "Pet Pals Vol. 6"
     },
     {
         "ID": 195,
-        "Name": "Occult Fan 1"
+        "Name": "Occult Fan I"
     },
     {
         "ID": 196,
-        "Name": "Occult Fan 2"
+        "Name": "Occult Fan II"
     },
     {
         "ID": 197,
-        "Name": "Occult Fan 3"
+        "Name": "Occult Fan III"
     },
     {
         "ID": 198,
-        "Name": "Occult Fan 4"
+        "Name": "Occult Fan IV"
     }
 ]

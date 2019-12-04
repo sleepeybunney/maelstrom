@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FF8Mod.Maelstrom
 {
@@ -32,8 +33,8 @@ namespace FF8Mod.Maelstrom
                 var origBoss = Boss.Encounters[origId];
                 var newBoss = Boss.Encounters[encounterMap[origId]];
                 Bosses.Bullet(newBoss.EncounterName, "");
-                Bosses.Bullet("Replaces", origBoss.EncounterName, 1);
                 Bosses.Bullet("Location", origBoss.FieldName, 1);
+                Bosses.Bullet("Replacing", origBoss.EncounterName, 1);
                 Bosses.NewLine();
             }
         }
@@ -43,11 +44,18 @@ namespace FF8Mod.Maelstrom
             DrawPoints = new Section();
             DrawPoints.Heading("Draw Points");
 
-            foreach (var dp in DrawPointShuffle.DrawPoints)
+            string last = "";
+            foreach (var dp in DrawPointShuffle.DrawPoints.OrderBy(x => x.Location))
             {
                 if (spellMap.ContainsKey(dp.Offset))
                 {
-                    DrawPoints.Bullet(dp.Location, Enum.GetName(typeof(DrawPoint.Magic), spellMap[dp.Offset]));
+                    if (dp.Location != last)
+                    {
+                        if (last != "") DrawPoints.NewLine();
+                        DrawPoints.Bullet(dp.Location, "");
+                    }
+                    DrawPoints.Bullet(Enum.GetName(typeof(DrawPoint.Magic), spellMap[dp.Offset]), 1);
+                    last = dp.Location;
                 }
             }
         }
@@ -64,6 +72,7 @@ namespace FF8Mod.Maelstrom
                 {
                     Shops.Bullet(ShopShuffle.Items[i.ItemCode].Name + (i.Hidden ? " (Familiar)" : ""), 1);
                 }
+                Shops.NewLine();
             }
         }
 
