@@ -165,6 +165,7 @@ namespace FF8Mod.Maelstrom
                             if (Properties.Settings.Default.DrawPointShuffle)
                             {
                                 var shuffle = DrawPointShuffle.Randomise(seed);
+                                if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
                                 DrawPointShuffle.GeneratePatch(shuffle).Apply(Properties.Settings.Default.GameLocation);
                             }
                             else

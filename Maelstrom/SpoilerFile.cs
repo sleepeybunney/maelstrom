@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FF8Mod.Maelstrom
 {
@@ -36,6 +35,20 @@ namespace FF8Mod.Maelstrom
                 Bosses.Bullet("Replaces", origBoss.EncounterName, 1);
                 Bosses.Bullet("Location", origBoss.FieldName, 1);
                 Bosses.NewLine();
+            }
+        }
+
+        public void AddDrawPoints(Dictionary<int, int> spellMap)
+        {
+            DrawPoints = new Section();
+            DrawPoints.Heading("Draw Points");
+
+            foreach (var dp in DrawPointShuffle.DrawPoints)
+            {
+                if (spellMap.ContainsKey(dp.Offset))
+                {
+                    DrawPoints.Bullet(dp.Location, Enum.GetName(typeof(DrawPoint.Magic), spellMap[dp.Offset]));
+                }
             }
         }
 
