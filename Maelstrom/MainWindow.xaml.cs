@@ -164,11 +164,12 @@ namespace FF8Mod.Maelstrom
                         {
                             if (Properties.Settings.Default.DrawPointShuffle)
                             {
-                                DrawPointShuffle.GeneratePatch(seed).Apply(Properties.Settings.Default.GameLocation);
+                                var shuffle = DrawPointShuffle.Randomise(seed);
+                                DrawPointShuffle.GeneratePatch(shuffle).Apply(Properties.Settings.Default.GameLocation);
                             }
                             else
                             {
-                                DrawPointShuffle.GeneratePatch(seed).Remove(Properties.Settings.Default.GameLocation);
+                                DrawPointShuffle.RemovePatch(Properties.Settings.Default.GameLocation);
                             }
 
                             break;

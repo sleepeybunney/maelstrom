@@ -40,16 +40,16 @@ namespace FF8Mod
             using (var reader = new BinaryReader(stream))
             using (var writer = new BinaryWriter(stream))
             {
+                stream.Seek(Offset, SeekOrigin.Begin);
+
                 if (remove)
                 {
                     // remove patch
-                    stream.Seek(Offset, SeekOrigin.Begin);
                     writer.Write(OriginalData);
                 }
                 else
                 {
                     // apply patch
-                    stream.Seek(Offset, SeekOrigin.Begin);
                     writer.Write(NewData);
                 }
             }

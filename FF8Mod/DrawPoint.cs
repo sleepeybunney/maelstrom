@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FF8Mod
 {
@@ -13,9 +10,11 @@ namespace FF8Mod
 
         public static Dictionary<int, DrawPoint> UpdatedDrawPoints = new Dictionary<int, DrawPoint>();
 
-        public Magic Spell;
-        public bool Renewable;
-        public bool Bountiful;
+        public int Offset { get; set; }
+        public string Location { get; set; }
+        public Magic Spell { get; set; }
+        public bool Renewable { get; set; }
+        public bool Bountiful { get; set; }
 
         public DrawPoint()
         {
@@ -24,11 +23,11 @@ namespace FF8Mod
             Bountiful = false;
         }
 
-        public DrawPoint(Magic spell, bool refillable, bool generous)
+        public DrawPoint(Magic spell, bool renewable, bool bountiful)
         {
             Spell = spell;
-            Renewable = refillable;
-            Bountiful = generous;
+            Renewable = renewable;
+            Bountiful = bountiful;
         }
 
         public DrawPoint(byte code)
