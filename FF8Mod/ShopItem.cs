@@ -8,8 +8,10 @@ namespace FF8Mod
 {
     public class ShopItem
     {
-        public byte ItemCode;
-        public bool Hidden;
+        public byte ItemCode { get; set; }
+        public bool Hidden { get; set; }
+
+        public ShopItem() { }
 
         public ShopItem(byte item, bool hidden = false)
         {

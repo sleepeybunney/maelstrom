@@ -31,6 +31,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Bosses.json" />
     <EmbeddedResource Include="DrawPoints.json" />
+    <EmbeddedResource Include="Items.json" />
+    <EmbeddedResource Include="Shops.json" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="maelstrom.ico" />

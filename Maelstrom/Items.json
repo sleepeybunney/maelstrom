@@ -1,0 +1,794 @@
+[
+    {
+        "ID": 1,
+        "Name": "Potion"
+    },
+    {
+        "ID": 2,
+        "Name": "Potion+"
+    },
+    {
+        "ID": 3,
+        "Name": "Hi Potion"
+    },
+    {
+        "ID": 4,
+        "Name": "Hi Potion+"
+    },
+    {
+        "ID": 5,
+        "Name": "X Potion"
+    },
+    {
+        "ID": 6,
+        "Name": "Mega Potion"
+    },
+    {
+        "ID": 7,
+        "Name": "Phoenix Down"
+    },
+    {
+        "ID": 8,
+        "Name": "Mega Phoenix"
+    },
+    {
+        "ID": 9,
+        "Name": "Elixir"
+    },
+    {
+        "ID": 10,
+        "Name": "Megalixir"
+    },
+    {
+        "ID": 11,
+        "Name": "Antidote"
+    },
+    {
+        "ID": 12,
+        "Name": "Soft"
+    },
+    {
+        "ID": 13,
+        "Name": "Eye Drops"
+    },
+    {
+        "ID": 14,
+        "Name": "Echo Screen"
+    },
+    {
+        "ID": 15,
+        "Name": "Holy Water"
+    },
+    {
+        "ID": 16,
+        "Name": "Remedy"
+    },
+    {
+        "ID": 17,
+        "Name": "Remedy+"
+    },
+    {
+        "ID": 18,
+        "Name": "Hero trial"
+    },
+    {
+        "ID": 19,
+        "Name": "Hero"
+    },
+    {
+        "ID": 20,
+        "Name": "Holy War trial"
+    },
+    {
+        "ID": 21,
+        "Name": "Holy War"
+    },
+    {
+        "ID": 22,
+        "Name": "Shell stone"
+    },
+    {
+        "ID": 23,
+        "Name": "Protect stone"
+    },
+    {
+        "ID": 24,
+        "Name": "Aura stone"
+    },
+    {
+        "ID": 25,
+        "Name": "Death stone"
+    },
+    {
+        "ID": 26,
+        "Name": "Holy stone"
+    },
+    {
+        "ID": 27,
+        "Name": "Flare stone"
+    },
+    {
+        "ID": 28,
+        "Name": "Meteor Stone"
+    },
+    {
+        "ID": 29,
+        "Name": "Ultima Stone"
+    },
+    {
+        "ID": 30,
+        "Name": "Gysahl Greens"
+    },
+    {
+        "ID": 31,
+        "Name": "Phoenix Pinion"
+    },
+    {
+        "ID": 32,
+        "Name": "Friendship"
+    },
+    {
+        "ID": 33,
+        "Name": "Tent"
+    },
+    {
+        "ID": 34,
+        "Name": "Pethouse"
+    },
+    {
+        "ID": 35,
+        "Name": "Cottage"
+    },
+    {
+        "ID": 36,
+        "Name": "G Potion"
+    },
+    {
+        "ID": 37,
+        "Name": "G Hi Potion"
+    },
+    {
+        "ID": 38,
+        "Name": "G Mega Potion"
+    },
+    {
+        "ID": 39,
+        "Name": "G Returner"
+    },
+    {
+        "ID": 40,
+        "Name": "Rename Card"
+    },
+    {
+        "ID": 41,
+        "Name": "Amnesia Greens"
+    },
+    {
+        "ID": 42,
+        "Name": "HP Junction scroll"
+    },
+    {
+        "ID": 43,
+        "Name": "Strength Junction Scroll"
+    },
+    {
+        "ID": 44,
+        "Name": "Vitality Junction Scroll"
+    },
+    {
+        "ID": 45,
+        "Name": "Magic Junction Scroll"
+    },
+    {
+        "ID": 46,
+        "Name": "Spirit Junction Scroll"
+    },
+    {
+        "ID": 47,
+        "Name": "Speed Junction Scroll"
+    },
+    {
+        "ID": 48,
+        "Name": "Luck Junction Scroll"
+    },
+    {
+        "ID": 49,
+        "Name": "Aegis Amulet"
+    },
+    {
+        "ID": 50,
+        "Name": "Elem Atk"
+    },
+    {
+        "ID": 51,
+        "Name": "Elem Guard"
+    },
+    {
+        "ID": 52,
+        "Name": "Status Atk"
+    },
+    {
+        "ID": 53,
+        "Name": "Status Guard"
+    },
+    {
+        "ID": 54,
+        "Name": "Rosetta Stone"
+    },
+    {
+        "ID": 55,
+        "Name": "Magic Scroll"
+    },
+    {
+        "ID": 56,
+        "Name": "GF Scroll"
+    },
+    {
+        "ID": 57,
+        "Name": "Draw Scroll"
+    },
+    {
+        "ID": 58,
+        "Name": "Item Scroll"
+    },
+    {
+        "ID": 59,
+        "Name": "Gambler Spirit"
+    },
+    {
+        "ID": 60,
+        "Name": "Healing Ring"
+    },
+    {
+        "ID": 61,
+        "Name": "Phoenix Spirit"
+    },
+    {
+        "ID": 62,
+        "Name": "Med Kit"
+    },
+    {
+        "ID": 63,
+        "Name": "Bomb Spirit"
+    },
+    {
+        "ID": 64,
+        "Name": "Hungry Cookpot"
+    },
+    {
+        "ID": 65,
+        "Name": "Mog's Amulet"
+    },
+    {
+        "ID": 66,
+        "Name": "Steel Pipe"
+    },
+    {
+        "ID": 67,
+        "Name": "Star Fragment"
+    },
+    {
+        "ID": 68,
+        "Name": "Energy Crystal"
+    },
+    {
+        "ID": 69,
+        "Name": "Samantha Soul"
+    },
+    {
+        "ID": 70,
+        "Name": "Healing Mail"
+    },
+    {
+        "ID": 71,
+        "Name": "Silver Mail"
+    },
+    {
+        "ID": 72,
+        "Name": "Gold Armor"
+    },
+    {
+        "ID": 73,
+        "Name": "Diamond Armor"
+    },
+    {
+        "ID": 74,
+        "Name": "Regen Ring"
+    },
+    {
+        "ID": 75,
+        "Name": "Giant's Ring"
+    },
+    {
+        "ID": 76,
+        "Name": "Gaea's Ring"
+    },
+    {
+        "ID": 77,
+        "Name": "Strength Love"
+    },
+    {
+        "ID": 78,
+        "Name": "Power Wrist"
+    },
+    {
+        "ID": 79,
+        "Name": "Hyper Wrist"
+    },
+    {
+        "ID": 80,
+        "Name": "Turtle Shell"
+    },
+    {
+        "ID": 81,
+        "Name": "Orihalcon"
+    },
+    {
+        "ID": 82,
+        "Name": "Adamantine"
+    },
+    {
+        "ID": 83,
+        "Name": "Rune Armlet"
+    },
+    {
+        "ID": 84,
+        "Name": "Force Armlet"
+    },
+    {
+        "ID": 85,
+        "Name": "Magic Armlet"
+    },
+    {
+        "ID": 86,
+        "Name": "Circlet"
+    },
+    {
+        "ID": 87,
+        "Name": "Hypno Crown"
+    },
+    {
+        "ID": 88,
+        "Name": "Royal Crown"
+    },
+    {
+        "ID": 89,
+        "Name": "Jet Engine"
+    },
+    {
+        "ID": 90,
+        "Name": "Rocket Engine"
+    },
+    {
+        "ID": 91,
+        "Name": "Moon Curtain"
+    },
+    {
+        "ID": 92,
+        "Name": "Steel Curtain"
+    },
+    {
+        "ID": 93,
+        "Name": "Glow Curtain"
+    },
+    {
+        "ID": 94,
+        "Name": "Accelerator"
+    },
+    {
+        "ID": 95,
+        "Name": "Monk's Code"
+    },
+    {
+        "ID": 96,
+        "Name": "Knight's Code"
+    },
+    {
+        "ID": 97,
+        "Name": "Doc's Code"
+    },
+    {
+        "ID": 98,
+        "Name": "Hundred Needles"
+    },
+    {
+        "ID": 99,
+        "Name": "Three Stars"
+    },
+    {
+        "ID": 100,
+        "Name": "Ribbon"
+    },
+    {
+        "ID": 101,
+        "Name": "Normal Ammo"
+    },
+    {
+        "ID": 102,
+        "Name": "Shotgun Ammo"
+    },
+    {
+        "ID": 103,
+        "Name": "Dark Ammo"
+    },
+    {
+        "ID": 104,
+        "Name": "Fire Ammo"
+    },
+    {
+        "ID": 105,
+        "Name": "Demolition Ammo"
+    },
+    {
+        "ID": 106,
+        "Name": "Fast Ammo"
+    },
+    {
+        "ID": 107,
+        "Name": "AP Ammo"
+    },
+    {
+        "ID": 108,
+        "Name": "Pulse Ammo"
+    },
+    {
+        "ID": 109,
+        "Name": "M-Stone Piece"
+    },
+    {
+        "ID": 110,
+        "Name": "Magic Stone"
+    },
+    {
+        "ID": 111,
+        "Name": "Wizard Stone"
+    },
+    {
+        "ID": 112,
+        "Name": "Ochu Tentacle"
+    },
+    {
+        "ID": 113,
+        "Name": "Healing Water"
+    },
+    {
+        "ID": 114,
+        "Name": "Cockatrice Pinion"
+    },
+    {
+        "ID": 115,
+        "Name": "Zombie Powder"
+    },
+    {
+        "ID": 116,
+        "Name": "Lightweight"
+    },
+    {
+        "ID": 117,
+        "Name": "Sharp Spike"
+    },
+    {
+        "ID": 118,
+        "Name": "Screw"
+    },
+    {
+        "ID": 119,
+        "Name": "Saw Blade"
+    },
+    {
+        "ID": 120,
+        "Name": "Mesmerize Blade"
+    },
+    {
+        "ID": 121,
+        "Name": "Vampite Fang"
+    },
+    {
+        "ID": 122,
+        "Name": "Fury Fragment"
+    },
+    {
+        "ID": 123,
+        "Name": "Betrayal Sword"
+    },
+    {
+        "ID": 124,
+        "Name": "Sleep Powder"
+    },
+    {
+        "ID": 125,
+        "Name": "Life Ring"
+    },
+    {
+        "ID": 126,
+        "Name": "Dragon Ring"
+    },
+    {
+        "ID": 127,
+        "Name": "Spider Web"
+    },
+    {
+        "ID": 128,
+        "Name": "Coral Fragment"
+    },
+    {
+        "ID": 129,
+        "Name": "Curse Spike"
+    },
+    {
+        "ID": 130,
+        "Name": "Black Hole"
+    },
+    {
+        "ID": 131,
+        "Name": "Water Crystal"
+    },
+    {
+        "ID": 132,
+        "Name": "Missile"
+    },
+    {
+        "ID": 133,
+        "Name": "Mystery Fluid"
+    },
+    {
+        "ID": 134,
+        "Name": "Running Fire"
+    },
+    {
+        "ID": 135,
+        "Name": "Inferno Fang"
+    },
+    {
+        "ID": 136,
+        "Name": "Malboro Tentacle"
+    },
+    {
+        "ID": 137,
+        "Name": "Whisper"
+    },
+    {
+        "ID": 138,
+        "Name": "Laser Cannon"
+    },
+    {
+        "ID": 139,
+        "Name": "Barrier"
+    },
+    {
+        "ID": 140,
+        "Name": "Power Generator"
+    },
+    {
+        "ID": 141,
+        "Name": "Dark Matter"
+    },
+    {
+        "ID": 142,
+        "Name": "Bomb Fragment"
+    },
+    {
+        "ID": 143,
+        "Name": "Red Fang"
+    },
+    {
+        "ID": 144,
+        "Name": "Arctic Wind"
+    },
+    {
+        "ID": 145,
+        "Name": "North Wind"
+    },
+    {
+        "ID": 146,
+        "Name": "Dynamo Stone"
+    },
+    {
+        "ID": 147,
+        "Name": "Sheer Feather"
+    },
+    {
+        "ID": 148,
+        "Name": "Venom Fang"
+    },
+    {
+        "ID": 149,
+        "Name": "Steel Orb"
+    },
+    {
+        "ID": 150,
+        "Name": "Moon Stone"
+    },
+    {
+        "ID": 151,
+        "Name": "Dino Bone"
+    },
+    {
+        "ID": 152,
+        "Name": "Windmill"
+    },
+    {
+        "ID": 153,
+        "Name": "Dragon Skin"
+    },
+    {
+        "ID": 154,
+        "Name": "Fish Skin"
+    },
+    {
+        "ID": 155,
+        "Name": "Dragon Fin"
+    },
+    {
+        "ID": 156,
+        "Name": "Silence Powder"
+    },
+    {
+        "ID": 157,
+        "Name": "Poison Powder"
+    },
+    {
+        "ID": 158,
+        "Name": "Dread Spirit"
+    },
+    {
+        "ID": 159,
+        "Name": "Chef's Knife"
+    },
+    {
+        "ID": 160,
+        "Name": "Cactus Thorn"
+    },
+    {
+        "ID": 161,
+        "Name": "Shaman Stone"
+    },
+    {
+        "ID": 162,
+        "Name": "Fuel"
+    },
+    {
+        "ID": 163,
+        "Name": "Girl Next Door"
+    },
+    {
+        "ID": 164,
+        "Name": "Sorceress' Letter"
+    },
+    {
+        "ID": 165,
+        "Name": "Chocobo's Tag"
+    },
+    {
+        "ID": 166,
+        "Name": "Pet Nametag"
+    },
+    {
+        "ID": 167,
+        "Name": "Solomon Ring"
+    },
+    {
+        "ID": 168,
+        "Name": "Magical Lamp"
+    },
+    {
+        "ID": 169,
+        "Name": "HP Up"
+    },
+    {
+        "ID": 170,
+        "Name": "Str Up"
+    },
+    {
+        "ID": 171,
+        "Name": "Vit Up"
+    },
+    {
+        "ID": 172,
+        "Name": "Mag Up"
+    },
+    {
+        "ID": 173,
+        "Name": "Spr Up"
+    },
+    {
+        "ID": 174,
+        "Name": "Spd Up"
+    },
+    {
+        "ID": 175,
+        "Name": "Luck Up"
+    },
+    {
+        "ID": 176,
+        "Name": "LuvLuv G"
+    },
+    {
+        "ID": 177,
+        "Name": "Weapons Monthly 1"
+    },
+    {
+        "ID": 178,
+        "Name": "Weapons Monthly Mar"
+    },
+    {
+        "ID": 179,
+        "Name": "Weapons Monthly Apr"
+    },
+    {
+        "ID": 180,
+        "Name": "Weapons Monthly May"
+    },
+    {
+        "ID": 181,
+        "Name": "Weapons Monthly Jun"
+    },
+    {
+        "ID": 182,
+        "Name": "Weapons Monthly Jul"
+    },
+    {
+        "ID": 183,
+        "Name": "Weapons Monthly Aug"
+    },
+    {
+        "ID": 184,
+        "Name": "Combat King 1"
+    },
+    {
+        "ID": 185,
+        "Name": "Combat King 2"
+    },
+    {
+        "ID": 186,
+        "Name": "Combat King 3"
+    },
+    {
+        "ID": 187,
+        "Name": "Combat King 4"
+    },
+    {
+        "ID": 188,
+        "Name": "Combat King 5"
+    },
+    {
+        "ID": 189,
+        "Name": "Pet Pals 1"
+    },
+    {
+        "ID": 190,
+        "Name": "Pet Pals 2"
+    },
+    {
+        "ID": 191,
+        "Name": "Pet Pals 3"
+    },
+    {
+        "ID": 192,
+        "Name": "Pet Pals 4"
+    },
+    {
+        "ID": 193,
+        "Name": "Pet Pals 5"
+    },
+    {
+        "ID": 194,
+        "Name": "Pet Pals 6"
+    },
+    {
+        "ID": 195,
+        "Name": "Occult Fan 1"
+    },
+    {
+        "ID": 196,
+        "Name": "Occult Fan 2"
+    },
+    {
+        "ID": 197,
+        "Name": "Occult Fan 3"
+    },
+    {
+        "ID": 198,
+        "Name": "Occult Fan 4"
+    }
+]

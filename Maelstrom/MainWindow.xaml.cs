@@ -138,7 +138,9 @@ namespace FF8Mod.Maelstrom
 
                             if (Properties.Settings.Default.ShopShuffle)
                             {
-                                ShopShuffle.Apply(menuSource, seed);
+                                var shuffle = ShopShuffle.Randomise(seed);
+                                if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddShops(shuffle);
+                                ShopShuffle.Apply(menuSource, shuffle);
                                 menuSource.Encode();
                             }
 

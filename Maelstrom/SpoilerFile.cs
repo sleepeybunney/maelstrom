@@ -52,6 +52,21 @@ namespace FF8Mod.Maelstrom
             }
         }
 
+        public void AddShops(List<Shop> shops)
+        {
+            Shops = new Section();
+            Shops.Heading("Shops");
+
+            foreach (var s in shops)
+            {
+                Shops.Bullet(s.Name, "");
+                foreach (var i in s.Items)
+                {
+                    Shops.Bullet(ShopShuffle.Items[i.ItemCode].Name + (i.Hidden ? " (Familiar)" : ""), 1);
+                }
+            }
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -106,6 +121,11 @@ namespace FF8Mod.Maelstrom
             public void Bullet(string title, string text, int indent = 0)
             {
                 Lines.Add(string.Format("{0}* {1}: {2}", new string(' ', indent * 4), title, text));
+            }
+
+            public void Bullet(string text, int indent = 0)
+            {
+                Lines.Add(string.Format("{0}* {1}", new string(' ', indent * 4), text));
             }
 
             // extra spacing

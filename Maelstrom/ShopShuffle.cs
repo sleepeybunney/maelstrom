@@ -2,34 +2,50 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.Json;
 
 namespace FF8Mod.Maelstrom
 {
     class ShopShuffle
     {
-        public static void Apply(FileSource menuSource, int seed)
+        public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Shops.json"));
+        public static Dictionary<int, Item> Items = JsonSerializer.Deserialize<List<Item>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Items.json")).ToDictionary(i => i.ID);
+
+        public static List<Shop> Randomise(int seed)
+        {
+            var result = new List<Shop>(Shops);
+            var random = new Random(seed);
+            foreach (var s in result)
+            {
+                s.Items = GenerateShop(random);
+            }
+            return result;
+        }
+
+        private static List<ShopItem> GenerateShop(Random random)
+        {
+            var result = new List<ShopItem>();
+            var items = Enumerable.Range(1, 198).ToList();
+
+            for (int i = 0; i < 16; i++)
+            {
+                var itemIndex = random.Next(1, items.Count);
+                result.Add(new ShopItem((byte)items[itemIndex], i < 5));
+                items.RemoveAt(itemIndex);
+            }
+
+            return result.OrderBy(item => item.ItemCode).ToList();
+        }
+
+        public static void Apply(FileSource menuSource, List<Shop> shops)
         {
             var shopBinPath = @"c:\ff8\data\eng\menu\shop.bin";
-            var data = menuSource.GetFile(shopBinPath);
             var newData = new List<byte>();
-            var items = new List<ShopItem>();
-            var random = new Random(seed);
-
-            using (var stream = new MemoryStream(data))
-            using (var reader = new BinaryReader(stream))
+            foreach (var s in shops)
             {
-                while (stream.Length - stream.Position > 1)
-                {
-                    items.Add(new ShopItem(reader.ReadByte(), reader.ReadByte() == 0x00));
-                }
+                newData.AddRange(s.Encode());
             }
-
-            for (int i = 0; i < items.Count; i++)
-            {
-                items[i].ItemCode = (byte)random.Next(1, 199);
-                newData.AddRange(items[i].Encode());
-            }
-
             menuSource.ReplaceFile(shopBinPath, newData.ToArray());
         }
     }

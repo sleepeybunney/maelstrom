@@ -1,0 +1,1382 @@
+[
+    {
+        "Name": "Timber Pet Shop",
+        "Items": [
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 34,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 55,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 56,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 57,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 58,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 41,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 42,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 43,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 44,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 45,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 46,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 191,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 192,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Balamb Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Dollet Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Timber Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Deling City Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Winhill Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Fisherman's Horizon Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Trabia Shop",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Esthar Shop",
+        "Items": [
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 103,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 104,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 105,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 106,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Balamb Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Dollet Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Timber Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Deling City Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Winhill Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Fisherman's Horizon Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Trabia Shop (Laguna)",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Man From Garden",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 162,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 101,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 102,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            }
+        ]
+    },
+    {
+        "Name": "Esthar Pet Shop",
+        "Items": [
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 37,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 39,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 34,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 41,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 42,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 43,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 44,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 45,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 46,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 193,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 194,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 75,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 78,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 84,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 87,
+                "Hidden": true
+            }
+        ]
+    },
+    {
+        "Name": "Esthar Book Store",
+        "Items": [
+            {
+                "ItemCode": 177,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 178,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 179,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 180,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 181,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 182,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 183,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 184,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 185,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 186,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 187,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 188,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 189,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 190,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 195,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 196,
+                "Hidden": true
+            }
+        ]
+    },
+    {
+        "Name": "Esthar Shop!!",
+        "Items": [
+            {
+                "ItemCode": 1,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 3,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 5,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 6,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 7,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 8,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 9,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 11,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 12,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 13,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 14,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 15,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 16,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 33,
+                "Hidden": false
+            },
+            {
+                "ItemCode": 35,
+                "Hidden": true
+            },
+            {
+                "ItemCode": 36,
+                "Hidden": false
+            }
+        ]
+    }
+]
