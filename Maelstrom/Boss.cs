@@ -137,6 +137,18 @@ namespace FF8Mod.Maelstrom
                 {
                     encFile.Encounters[e].Slots[i] = monsterMap[e][i];
 
+                    // force the nameless sorceresses to fight in the commencement room
+                    // so they can do the melty background thing without crashing the game
+                    if (encFile.Encounters[e].Slots[i].MonsterID == 117)
+                    {
+                        var sorceressEncounter = encFile.Encounters[813];
+                        encFile.Encounters[e].Scene = sorceressEncounter.Scene;
+                        encFile.Encounters[e].MainCamera = sorceressEncounter.MainCamera;
+                        encFile.Encounters[e].MainCameraAnimation = sorceressEncounter.MainCameraAnimation;
+                        encFile.Encounters[e].SecondaryCamera = sorceressEncounter.SecondaryCamera;
+                        encFile.Encounters[e].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
+                    }
+
                     // update any encounter ID checks in the monster's AI scripts
                     var monsterID = encFile.Encounters[e].Slots[i].MonsterID;
                     foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID))
