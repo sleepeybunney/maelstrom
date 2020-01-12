@@ -78,148 +78,64 @@ namespace FF8Mod.Maelstrom
 
         public static Dictionary<int, int> Shuffle(FileSource battleSource, bool rebalance, int seed)
         {
-            var encFilePath = EncounterFile.Path;
-            var encFile = EncounterFile.FromSource(battleSource, encFilePath);
             var random = new Random(seed);
-            var encList = Encounters.Keys.ToList();
-            var matchList = Encounters.Keys.ToList();
-            var monsterMap = new Dictionary<int, List<EncounterSlot>>();
-            var statMap = new Dictionary<int, MonsterInfo>();
+
+            var encFilePath = EncounterFile.Path;
+            var sourceFile = EncounterFile.FromSource(battleSource, encFilePath);
+            var newFile = EncounterFile.FromSource(battleSource, encFilePath);
+
+            var bossEncounterIds = Encounters.Keys.ToList();
+            var matchIdPool = Encounters.Keys.ToList();
+
             var encIdMap = new Dictionary<int, int>();
 
-            foreach (var e in encList)
+            foreach (var encId in bossEncounterIds)
             {
-                // assign boss monsters to encounters
-                var matchedEncounter = matchList[random.Next(matchList.Count)];
-                matchList.Remove(matchedEncounter);
-                var monsters = encFile.Encounters[matchedEncounter].Slots.ToList();
-                monsterMap.Add(e, monsters);
-                encIdMap.Add(e, matchedEncounter);
-                
-                // calculate monster stats to match their assigned encounters
-                if (rebalance)
-                {
-                    var origSlots = Encounters[e].SlotRanks;
-                    var newSlots = Encounters[matchedEncounter].SlotRanks;
-                    var origMainID = encFile.Encounters[e].Slots[origSlots[0]].MonsterID;
-                    var newMainID = encFile.Encounters[matchedEncounter].Slots[newSlots[0]].MonsterID;
-                    var origMainInfo = Monster.ByID(battleSource, origMainID).Info;
-                    var newMainInfo = Monster.ByID(battleSource, newMainID).Info;
+                // pick an encounter from the pool
+                var matchedId = matchIdPool[random.Next(matchIdPool.Count)];
+                matchIdPool.Remove(matchedId);
+                encIdMap.Add(encId, matchedId);
 
-                    for (int i = 0; i < newSlots.Length; i++)
-                    {
-                        var newMonsterID = encFile.Encounters[matchedEncounter].Slots[newSlots[i]].MonsterID;
-                        var newMonsterInfo = Monster.ByID(battleSource, newMonsterID).Info;
-
-                        if (!statMap.Keys.Contains(newMonsterID))
-                        {
-                            var newNewMonsterInfo = new MonsterInfo();
-                            newNewMonsterInfo.CopyStats(newMonsterInfo);
-
-                            newNewMonsterInfo.Hp = ScaleStat(newNewMonsterInfo.Hp, newMainInfo.Hp, origMainInfo.Hp);
-                            newNewMonsterInfo.Str = ScaleStat(newNewMonsterInfo.Str, newMainInfo.Str, origMainInfo.Str);
-                            newNewMonsterInfo.Mag = ScaleStat(newNewMonsterInfo.Mag, newMainInfo.Mag, origMainInfo.Mag);
-                            newNewMonsterInfo.Vit = ScaleStat(newNewMonsterInfo.Vit, newMainInfo.Vit, origMainInfo.Vit);
-                            newNewMonsterInfo.Spr = ScaleStat(newNewMonsterInfo.Spr, newMainInfo.Spr, origMainInfo.Spr);
-                            newNewMonsterInfo.Spd = ScaleStat(newNewMonsterInfo.Spd, newMainInfo.Spd, origMainInfo.Spd);
-                            newNewMonsterInfo.Eva = ScaleStat(newNewMonsterInfo.Eva, newMainInfo.Eva, origMainInfo.Eva);
-
-                            statMap.Add(newMonsterID, newNewMonsterInfo);
-                        }
-                    }
-                }
-            }
-
-            // write shuffled bosses to the encounter file
-            foreach (var e in encList)
-            {
+                // copy the monster slots from the other encounter
                 for (int i = 0; i < 8; i++)
                 {
-                    encFile.Encounters[e].Slots[i] = monsterMap[e][i];
+                    var monsterId = sourceFile.Encounters[matchedId].Slots[i].MonsterID;
 
-                    // force the nameless sorceresses to fight in the commencement room
-                    // so they can do the melty background thing without crashing the game
-                    if (encFile.Encounters[e].Slots[i].MonsterID == 117)
+                    newFile.Encounters[encId].Slots[i] = sourceFile.Encounters[matchedId].Slots[i];
+
+                    if (rebalance)
                     {
-                        var sorceressEncounter = encFile.Encounters[813];
-                        encFile.Encounters[e].Scene = sorceressEncounter.Scene;
-                        encFile.Encounters[e].MainCamera = sorceressEncounter.MainCamera;
-                        encFile.Encounters[e].MainCameraAnimation = sorceressEncounter.MainCameraAnimation;
-                        encFile.Encounters[e].SecondaryCamera = sorceressEncounter.SecondaryCamera;
-                        encFile.Encounters[e].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
+                        // retain level
+                        newFile.Encounters[encId].Slots[i].Level = sourceFile.Encounters[encId].Slots[i].Level;
                     }
 
                     // update any encounter ID checks in the monster's AI scripts
-                    var monsterID = encFile.Encounters[e].Slots[i].MonsterID;
-                    foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID))
+                    foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterId && ec.EncounterID == matchedId))
                     {
-                        if (ec.EncounterID == encIdMap[e])
-                        {
-                            var monster = encFile.Encounters[e].Slots[i].GetMonster(battleSource);
-                            var script = monster.AI.Scripts.EventScripts[ec.Script];
-                            script[ec.Instruction].Args[3] = (short)e;
-                            battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
-                        }
+                        var monster = sourceFile.Encounters[matchedId].Slots[i].GetMonster(battleSource);
+                        var script = monster.AI.Scripts.EventScripts[ec.Script];
+                        script[ec.Instruction].Args[3] = (short)encId;
+                        battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
                     }
                 }
-            }
 
-            battleSource.ReplaceFile(encFilePath, encFile.Encode());
-
-            // write rebalanced stats to the monster files
-            if (rebalance)
-            {
-                foreach (var id in statMap.Keys)
+                // force the nameless sorceresses to fight in the commencement room
+                // so they can do the melty background thing without crashing the game
+                if (matchedId == 813)
                 {
-                    var monster = Monster.ByID(battleSource, id);
-                    monster.Info.CopyStats(statMap[id]);
-                    battleSource.ReplaceFile(Monster.GetPath(id), monster.Encode());
+                    var sorceressEncounter = sourceFile.Encounters[813];
+                    newFile.Encounters[encId].Scene = sorceressEncounter.Scene;
+                    newFile.Encounters[encId].MainCamera = sorceressEncounter.MainCamera;
+                    newFile.Encounters[encId].MainCameraAnimation = sorceressEncounter.MainCameraAnimation;
+                    newFile.Encounters[encId].SecondaryCamera = sorceressEncounter.SecondaryCamera;
+                    newFile.Encounters[encId].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
                 }
             }
 
+            // save new encounter file
+            battleSource.ReplaceFile(encFilePath, newFile.Encode());
+
             return encIdMap;
-        }
-
-        // scale the stats of a monster against another, relative to the main boss of its encounter
-        // eg. swapping ifrit with adel/rinoa
-        // --> ifrit & adel (designated the "main" bosses) swap stats directly
-        // --> rinoa, without a counterpart, scales to whatever % weaker than adel she was before
-        public static MonsterInfo ScaleMonster(MonsterInfo current, MonsterInfo main, MonsterInfo scaleTo)
-        {
-            var result = new MonsterInfo();
-            result.CopyStats(current);
-
-            result.Hp = ScaleStat(result.Hp, main.Hp, scaleTo.Hp);
-            result.Str = ScaleStat(result.Str, main.Str, scaleTo.Str);
-            result.Mag = ScaleStat(result.Mag, main.Mag, scaleTo.Mag);
-            result.Vit = ScaleStat(result.Vit, main.Vit, scaleTo.Vit);
-            result.Spr = ScaleStat(result.Spr, main.Spr, scaleTo.Spr);
-            result.Spd = ScaleStat(result.Spd, main.Spd, scaleTo.Spd);
-            result.Eva = ScaleStat(result.Eva, main.Eva, scaleTo.Eva);
-
-            return result;
-        }
-
-        public static byte[] ScaleStat(byte[] current, byte[] main, byte[] scaleTo)
-        {
-            if (current.SequenceEqual(main)) return scaleTo;
-
-            var result = new byte[4];
-            for (int i = 0; i < 4; i++)
-            {
-                var fractionOfMain = ((float)current[i] + 1) / ((float)main[i] + 1);
-                result[i] = ByteClamp((int)(fractionOfMain + Math.Log10(fractionOfMain) * scaleTo[i]));
-            }
-
-            if (result.All(x => x == 0)) result[1] = 1;
-            return result;
-        }
-
-        private static byte ByteClamp(int value)
-        {
-            if (value < 1) return 1;
-            if (value > byte.MaxValue) return byte.MaxValue;
-            return (byte)value;
         }
     }
 }
