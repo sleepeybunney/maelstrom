@@ -124,7 +124,7 @@ namespace FF8Mod.Maelstrom
             fieldSource.Encode();
         }
 
-        private static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)
+        public static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)
         {
             var innerSource = new FileSource(FieldScript.GetFieldPath(fieldName), fieldSource);
             innerSource.ReplaceFile(FieldScript.GetFieldPath(fieldName) + "\\" + fieldName + ".jsm", fieldCode);

@@ -1,0 +1,7 @@
+﻿setmodel    0
+pshn_l      0
+pshn_l      0
+baseanime   0
+pshn_l      0
+setpc
+hide

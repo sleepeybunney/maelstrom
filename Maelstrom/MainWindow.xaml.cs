@@ -93,16 +93,25 @@ namespace FF8Mod.Maelstrom
                         try
                         {
                             CreateOrRestoreArchiveBackup(fieldPath);
+                            var fieldSource = new FileSource(fieldPath);
 
                             if (Properties.Settings.Default.StorySkip)
                             {
-                                var fieldSource = new FileSource(fieldPath);
                                 StorySkip.Apply(fieldSource, af3dn, seed);
-                                fieldSource.Encode();
                             }
                             else
                             {
                                 StorySkip.Remove(af3dn);
+                            }
+
+                            if (Properties.Settings.Default.CardShuffle)
+                            {
+                                CardShuffle.Shuffle(fieldSource, seed);
+                            }
+
+                            if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardShuffle)
+                            {
+                                fieldSource.Encode();
                             }
 
                             break;

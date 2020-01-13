@@ -394,5 +394,17 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["SpoilerFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CardShuffle {
+            get {
+                return ((bool)(this["CardShuffle"]));
+            }
+            set {
+                this["CardShuffle"] = value;
+            }
+        }
     }
 }

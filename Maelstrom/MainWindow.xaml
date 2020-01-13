@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
-        Title="Maelstrom" Height="300" Width="550" ResizeMode="NoResize" Closing="OnClosing">
+        Title="Maelstrom" Height="323" Width="550" ResizeMode="NoResize" Closing="OnClosing">
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White" />
@@ -35,6 +35,7 @@
                     <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses" Margin="10" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionStorySkip" Content="Skip Story" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionDrawPointShuffle" Content="Random Draw Points" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionCardShuffle" Content="Shuffle Card Locations" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding CardShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">

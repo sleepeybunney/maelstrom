@@ -1,0 +1,1994 @@
+[
+    {
+        "DeckID": 0,
+        "FieldID": "test",
+        "FieldName": "Debug - Moriya's Room",
+        "EntityName": "menuchan",
+        "EntityDescription": "",
+        "Enabled": false
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "bcsta_1",
+        "FieldName": "Balamb - Town Square",
+        "EntityName": "queen_bal",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "dopub_2",
+        "FieldName": "Dollet - Pub",
+        "EntityName": "queen_dol",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "eapod1",
+        "FieldName": "Esthar - Crash Site",
+        "EntityName": "queen",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "ephall1",
+        "FieldName": "Esthar - Predidential Palace",
+        "EntityName": "queen_est",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "escouse1",
+        "FieldName": "Lunar Gate - Concourse",
+        "EntityName": "queen_spa",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "escouse2",
+        "FieldName": "Lunar Gate - Concourse",
+        "EntityName": "queen_spa",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "fhedge2",
+        "FieldName": "Fisherman's Horizon",
+        "EntityName": "queen_fsh",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "gfhtl1a",
+        "FieldName": "Winhill - Hotel",
+        "EntityName": "queen_cen",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "glhtl1",
+        "FieldName": "Winhill - Hotel",
+        "EntityName": "queen_gal",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "test6",
+        "FieldName": "Debug - Kitase's Room",
+        "EntityName": "queen_*",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": false
+    },
+    {
+        "DeckID": 1,
+        "FieldID": "tmhtl1",
+        "FieldName": "Shumi Village - Hotel",
+        "EntityName": "queen_tra",
+        "EntityDescription": "Queen of Cards",
+        "Enabled": true
+    },
+    {
+        "DeckID": 10,
+        "FieldID": "ggroom2",
+        "FieldName": "G-Garden - Classroom",
+        "EntityName": "gsm0",
+        "EntityDescription": "dark-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 10,
+        "FieldID": "ggroom7",
+        "FieldName": "G-Garden - Dormitory",
+        "EntityName": "gsl0",
+        "EntityDescription": "dark-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 10,
+        "FieldID": "ggview1",
+        "FieldName": "G-Garden - Front Gate",
+        "EntityName": "g_hei0",
+        "EntityDescription": "one of the staff men?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 11,
+        "FieldID": "ggroom2",
+        "FieldName": "G-Garden - Classroom",
+        "EntityName": "gsm1",
+        "EntityDescription": "brown-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 11,
+        "FieldID": "ggroom2",
+        "FieldName": "G-Garden - Classroom",
+        "EntityName": "gsl1",
+        "EntityDescription": "brown-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 11,
+        "FieldID": "ggview1",
+        "FieldName": "G-Garden - Front Gate",
+        "EntityName": "g_hei1",
+        "EntityDescription": "the other staff man?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 12,
+        "FieldID": "gggate3",
+        "FieldName": "G-Garden - Front Gate",
+        "EntityName": "gsl1",
+        "EntityDescription": "one of the female students?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 12,
+        "FieldID": "ggview1",
+        "FieldName": "G-Garden - Front Gate",
+        "EntityName": "stuwoman0",
+        "EntityDescription": "female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 13,
+        "FieldID": "gggym2",
+        "FieldName": "G-Garden - Gymnasium",
+        "EntityName": "teacher",
+        "EntityDescription": "hockey coach",
+        "Enabled": true
+    },
+    {
+        "DeckID": 14,
+        "FieldID": "gggate1",
+        "FieldName": "G-Garden - Front Gate",
+        "EntityName": "gsm0",
+        "EntityDescription": "dark-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 15,
+        "FieldID": "ggroom2",
+        "FieldName": "G-Garden - Classroom",
+        "EntityName": "gsl0",
+        "EntityDescription": "female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 15,
+        "FieldID": "ggroom6",
+        "FieldName": "G-Garden - Classroom",
+        "EntityName": "gsl0",
+        "EntityDescription": "female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 16,
+        "FieldID": "ggroad1",
+        "FieldName": "G-Garden - Hallway",
+        "EntityName": "stuboy0",
+        "EntityDescription": "light-haired student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 17,
+        "FieldID": "ggroom3",
+        "FieldName": "G-Garden - Locker Room",
+        "EntityName": "stu0",
+        "EntityDescription": "staff man",
+        "Enabled": true
+    },
+    {
+        "DeckID": 18,
+        "FieldID": "glform1",
+        "FieldName": "Deling City - Station Yard",
+        "EntityName": "ekiin0",
+        "EntityDescription": "one of the conductors?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 19,
+        "FieldID": "glgate1",
+        "FieldName": "Deling City - Gateway",
+        "EntityName": "woman0",
+        "EntityDescription": "woman in brown",
+        "Enabled": true
+    },
+    {
+        "DeckID": 20,
+        "FieldID": "glgate3",
+        "FieldName": "Deling City - Gateway",
+        "EntityName": "oldman0",
+        "EntityDescription": "old man in white/blue",
+        "Enabled": true
+    },
+    {
+        "DeckID": 21,
+        "FieldID": "glgate3",
+        "FieldName": "Deling City - Gateway",
+        "EntityName": "oldman1",
+        "EntityDescription": "old man in purple",
+        "Enabled": true
+    },
+    {
+        "DeckID": 22,
+        "FieldID": "glmall1",
+        "FieldName": "Deling City - City Square",
+        "EntityName": "dummy2",
+        "EntityDescription": "one of the conductors?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 23,
+        "FieldID": "glmall2",
+        "FieldName": "Deling City - City Square",
+        "EntityName": "dummy2",
+        "EntityDescription": "one of the conductors?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 24,
+        "FieldID": "glmall2",
+        "FieldName": "Deling City - City Square",
+        "EntityName": "dummy7",
+        "EntityDescription": "another conductor?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 25,
+        "FieldID": "fhwisef2",
+        "FieldName": "FH - Mayor's Residence",
+        "EntityName": "furo",
+        "EntityDescription": "Flo",
+        "Enabled": true
+    },
+    {
+        "DeckID": 28,
+        "FieldID": "eapod1",
+        "FieldName": "Esthar - Crash Site",
+        "EntityName": "man1",
+        "EntityDescription": "Medical Crew",
+        "Enabled": true
+    },
+    {
+        "DeckID": 28,
+        "FieldID": "ssblock1",
+        "FieldName": "Lunar Base - Dock",
+        "EntityName": "man1",
+        "EntityDescription": "Medical Crew",
+        "Enabled": true
+    },
+    {
+        "DeckID": 28,
+        "FieldID": "ssmedi1",
+        "FieldName": "Lunar Base - Medical Room",
+        "EntityName": "man1",
+        "EntityDescription": "Medical Crew",
+        "Enabled": true
+    },
+    {
+        "DeckID": 28,
+        "FieldID": "ssmedi2",
+        "FieldName": "Lunar Base - Medical Room",
+        "EntityName": "man1",
+        "EntityDescription": "Medical Crew",
+        "Enabled": true
+    },
+    {
+        "DeckID": 29,
+        "FieldID": "escouse2",
+        "FieldName": "Lunar Gate - Concourse",
+        "EntityName": "woman0",
+        "EntityDescription": "former operator",
+        "Enabled": true
+    },
+    {
+        "DeckID": 29,
+        "FieldID": "sscont1",
+        "FieldName": "Lunar Base - Control Room",
+        "EntityName": "woman0",
+        "EntityDescription": "female operator",
+        "Enabled": true
+    },
+    {
+        "DeckID": 30,
+        "FieldID": "bgsido_5",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "s1",
+        "EntityDescription": "student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 31,
+        "FieldID": "bghall_1",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seito6",
+        "EntityDescription": "woman in brown",
+        "Enabled": true
+    },
+    {
+        "DeckID": 31,
+        "FieldID": "bghall_2",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "cardjosi",
+        "EntityDescription": "woman in brown",
+        "Enabled": true
+    },
+    {
+        "DeckID": 32,
+        "FieldID": "bg2f_2",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi10",
+        "EntityDescription": "dark-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 32,
+        "FieldID": "bg2f_22",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "walkman",
+        "EntityDescription": "walking student?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 33,
+        "FieldID": "bggate_5",
+        "FieldName": "B-Garden - Front Gate",
+        "EntityName": "s1",
+        "EntityDescription": "student in yellow",
+        "Enabled": true
+    },
+    {
+        "DeckID": 33,
+        "FieldID": "fhdeck3",
+        "FieldName": "B-Garden - Deck",
+        "EntityName": "s1",
+        "EntityDescription": "student in yellow",
+        "Enabled": true
+    },
+    {
+        "DeckID": 34,
+        "FieldID": "bghall_2",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "s1",
+        "EntityDescription": "one of the female students? (mornin')",
+        "Enabled": true
+    },
+    {
+        "DeckID": 34,
+        "FieldID": "bgroad_7",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s5",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 35,
+        "FieldID": "bghoke_1",
+        "FieldName": "B-Garden - Infirmary",
+        "EntityName": "kadowaki",
+        "EntityDescription": "Dr. Kadowaki",
+        "Enabled": true
+    },
+    {
+        "DeckID": 36,
+        "FieldID": "bggate_6",
+        "FieldName": "B-Garden - Front Gate",
+        "EntityName": "oyaji",
+        "EntityDescription": "Gatekeeper",
+        "Enabled": true
+    },
+    {
+        "DeckID": 37,
+        "FieldID": "bg2f_22",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "blackman",
+        "EntityDescription": "black student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 37,
+        "FieldID": "bgroad_7",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s4",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bghall_5",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "s3",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bghall_5",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "kasimasi02",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bghall_5",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "kasimasi03",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bgroad_5",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bgroad_5",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 38,
+        "FieldID": "bgroad_5",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s3",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 39,
+        "FieldID": "bghall_3",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "s1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 39,
+        "FieldID": "bghall3a",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "zunou",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 40,
+        "FieldID": "bghall3a",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "zell",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 40,
+        "FieldID": "bghall3a",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "zells",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 40,
+        "FieldID": "gpbigin6",
+        "FieldName": "D-District Prison - Cell",
+        "EntityName": "hito01",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 41,
+        "FieldID": "bg2f_1",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi2",
+        "EntityDescription": "Member No. 109",
+        "Enabled": true
+    },
+    {
+        "DeckID": 41,
+        "FieldID": "gpbigin6",
+        "FieldName": "D-District Prison - Cell",
+        "EntityName": "hito02",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 42,
+        "FieldID": "gpbigin6",
+        "FieldName": "D-District Prison - Cell",
+        "EntityName": "hito03",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 43,
+        "FieldID": "bgeat_1",
+        "FieldName": "B-Garden - Cafeteria",
+        "EntityName": "obahandummy3",
+        "EntityDescription": "Cafeteria Lady",
+        "Enabled": true
+    },
+    {
+        "DeckID": 43,
+        "FieldID": "bgeat_1",
+        "FieldName": "B-Garden - Cafeteria",
+        "EntityName": "son",
+        "EntityDescription": "Cafeteria Lady's Son",
+        "Enabled": true
+    },
+    {
+        "DeckID": 45,
+        "FieldID": "bgeat_2",
+        "FieldName": "B-Garden - Cafeteria",
+        "EntityName": "student7",
+        "EntityDescription": "Friend of Trepe Groupie #1",
+        "Enabled": true
+    },
+    {
+        "DeckID": 47,
+        "FieldID": "fhtown21",
+        "FieldName": "FH - Residential Area",
+        "EntityName": "people_2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 47,
+        "FieldID": "fhtown22",
+        "FieldName": "FH - Residential Area",
+        "EntityName": "people3",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 48,
+        "FieldID": "esview1",
+        "FieldName": "Lunar Gate",
+        "EntityName": "esterarmy2",
+        "EntityDescription": "one of the soldiers?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 48,
+        "FieldID": "esview2",
+        "FieldName": "Lunar Gate",
+        "EntityName": "esterarmy2",
+        "EntityDescription": "one of the soldiers?",
+        "Enabled": true
+    },
+    {
+        "DeckID": 50,
+        "FieldID": "bgbook_1",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p040",
+        "EntityDescription": "brown-haired male cadet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 50,
+        "FieldID": "bgbook1b",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p040",
+        "EntityDescription": "brown-haired male cadet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 51,
+        "FieldID": "bgbook_1",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p148",
+        "EntityDescription": "pigtail girl",
+        "Enabled": true
+    },
+    {
+        "DeckID": 51,
+        "FieldID": "bgbook_2",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p148",
+        "EntityDescription": "pigtail girl",
+        "Enabled": true
+    },
+    {
+        "DeckID": 51,
+        "FieldID": "bgbook1b",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p148",
+        "EntityDescription": "pigtail girl",
+        "Enabled": true
+    },
+    {
+        "DeckID": 52,
+        "FieldID": "bgbook_2",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p050",
+        "EntityDescription": "student in brown/black",
+        "Enabled": true
+    },
+    {
+        "DeckID": 53,
+        "FieldID": "bgbook_3",
+        "FieldName": "B-Garden - Library",
+        "EntityName": "p043",
+        "EntityDescription": "brown-haired female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 54,
+        "FieldID": "bcform_1",
+        "FieldName": "Balamb - Station Yard",
+        "EntityName": "p065",
+        "EntityDescription": "girl in red",
+        "Enabled": true
+    },
+    {
+        "DeckID": 54,
+        "FieldID": "bcgate_1",
+        "FieldName": "Balamb - Town Square",
+        "EntityName": "p065",
+        "EntityDescription": "girl in red",
+        "Enabled": true
+    },
+    {
+        "DeckID": 54,
+        "FieldID": "bcsta_1",
+        "FieldName": "",
+        "EntityName": "p065",
+        "EntityDescription": "girl in red",
+        "Enabled": true
+    },
+    {
+        "DeckID": 55,
+        "FieldID": "bcmin2_3",
+        "FieldName": "Balamb - The Dinchts'",
+        "EntityName": "p094",
+        "EntityDescription": "Big Bad Rascal",
+        "Enabled": true
+    },
+    {
+        "DeckID": 57,
+        "FieldID": "bcsta_1",
+        "FieldName": "",
+        "EntityName": "p129",
+        "EntityDescription": "conductor",
+        "Enabled": true
+    },
+    {
+        "DeckID": 58,
+        "FieldID": "bcport1a",
+        "FieldName": "Balamb - Harbor",
+        "EntityName": "p050",
+        "EntityDescription": "garden student in brown/black",
+        "Enabled": true
+    },
+    {
+        "DeckID": 59,
+        "FieldID": "bcport1a",
+        "FieldName": "Balamb - Harbor",
+        "EntityName": "p067",
+        "EntityDescription": "denim jacket girl with dog",
+        "Enabled": true
+    },
+    {
+        "DeckID": 60,
+        "FieldID": "bcport_2",
+        "FieldName": "Balamb - Harbor",
+        "EntityName": "p092",
+        "EntityDescription": "zell's mom",
+        "Enabled": true
+    },
+    {
+        "DeckID": 61,
+        "FieldID": "tgcourt5",
+        "FieldName": "T-Garden - Athletic Ground",
+        "EntityName": "p089",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 62,
+        "FieldID": "tggate1",
+        "FieldName": "T-Garden - Front Gate",
+        "EntityName": "p133",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 63,
+        "FieldID": "tgroom2",
+        "FieldName": "T-Garden - Classroom",
+        "EntityName": "p088",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 64,
+        "FieldID": "tggara1",
+        "FieldName": "T-Garden - Garage",
+        "EntityName": "p062",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 65,
+        "FieldID": "tgstage1",
+        "FieldName": "T-Garden - Festival Stage",
+        "EntityName": "p050",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 66,
+        "FieldID": "tgstage1",
+        "FieldName": "T-Garden - Festival Stage",
+        "EntityName": "p200",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 67,
+        "FieldID": "tgfront1",
+        "FieldName": "T-Garden - Front Gate",
+        "EntityName": "p062",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 68,
+        "FieldID": "tgcourt5",
+        "FieldName": "T-Garden - Athletic Ground",
+        "EntityName": "p204",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 69,
+        "FieldID": "dopub_2",
+        "FieldName": "Dollet - Pub",
+        "EntityName": "man2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 70,
+        "FieldID": "doopen1a",
+        "FieldName": "Dollet - Town Square",
+        "EntityName": "jichan",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 71,
+        "FieldID": "dopub_1",
+        "FieldName": "Dollet - Pub",
+        "EntityName": "pubmaster",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 72,
+        "FieldID": "domin2_1",
+        "FieldName": "Dollet - Residence",
+        "EntityName": "boy1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 73,
+        "FieldID": "dogate1a",
+        "FieldName": "Dollet - Town Square",
+        "EntityName": "man1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 74,
+        "FieldID": "dogate_2",
+        "FieldName": "Dollet - Town Square",
+        "EntityName": "girl",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 75,
+        "FieldID": "titown51",
+        "FieldName": "Timber - City Square",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 76,
+        "FieldID": "tipub1",
+        "FieldName": "Timber - Pub",
+        "EntityName": "cardtanto",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 77,
+        "FieldID": "tihtl1",
+        "FieldName": "Timber - Hotel",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 78,
+        "FieldID": "titown7",
+        "FieldName": "Timber - City Square",
+        "EntityName": "boy1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 79,
+        "FieldID": "tiback1",
+        "FieldName": "Timber - City Square",
+        "EntityName": "pubman",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 80,
+        "FieldID": "titown4",
+        "FieldName": "Timber - City Square",
+        "EntityName": "obaasan",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 81,
+        "FieldID": "titown1",
+        "FieldName": "Timber - City Square",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 82,
+        "FieldID": "tigate1",
+        "FieldName": "Timber - City Square",
+        "EntityName": "keibihei1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 83,
+        "FieldID": "titown52",
+        "FieldName": "Timber - City Square",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 84,
+        "FieldID": "glclub1",
+        "FieldName": "Deling City - Club",
+        "EntityName": "onee",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 89,
+        "FieldID": "gfview1a",
+        "FieldName": "Winhill - Village",
+        "EntityName": "eventline1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 90,
+        "FieldID": "gfvill24",
+        "FieldName": "Winhill - Village",
+        "EntityName": "p071",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 91,
+        "FieldID": "gfrich1a",
+        "FieldName": "Winhill - Mansion",
+        "EntityName": "p159",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 92,
+        "FieldID": "gflain2a",
+        "FieldName": "Winhill - Pub",
+        "EntityName": "p068",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 93,
+        "FieldID": "gfhtl1a",
+        "FieldName": "Winhill - Hotel",
+        "EntityName": "p099",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 94,
+        "FieldID": "gfmin1a",
+        "FieldName": "Winhill - Residence",
+        "EntityName": "p096",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 95,
+        "FieldID": "gfview1a",
+        "FieldName": "Winhill - Village",
+        "EntityName": "p040",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 97,
+        "FieldID": "fhwater1",
+        "FieldName": "FH - Residential Area",
+        "EntityName": "turi_jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 98,
+        "FieldID": "fhbrdg1",
+        "FieldName": "FH - Factory",
+        "EntityName": "kazu",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 99,
+        "FieldID": "fhmin1",
+        "FieldName": "FH - Residence",
+        "EntityName": "genba",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 100,
+        "FieldID": "fhfish1",
+        "FieldName": "FH - Factory",
+        "EntityName": "turi_jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 100,
+        "FieldID": "tmmura2",
+        "FieldName": "Shumi Village - Village",
+        "EntityName": "turi_jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 101,
+        "FieldID": "tmkobo2",
+        "FieldName": "Shumi Village - Studio",
+        "EntityName": "shou",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 102,
+        "FieldID": "tmkobo1",
+        "FieldName": "Shumi Village - Studio",
+        "EntityName": "shou",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 103,
+        "FieldID": "tmmin1",
+        "FieldName": "Shumi Village - Residence",
+        "EntityName": "shou",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 104,
+        "FieldID": "tmelder1",
+        "FieldName": "Shumi Village - Residence",
+        "EntityName": "tyuu",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 104,
+        "FieldID": "tmsand1",
+        "FieldName": "Shumi Village - Desert Village",
+        "EntityName": "shou2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 105,
+        "FieldID": "tmelder1",
+        "FieldName": "Shumi Village - Residence",
+        "EntityName": "shou",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 107,
+        "FieldID": "tmgate1",
+        "FieldName": "Shumi Village - Village",
+        "EntityName": "shou2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 108,
+        "FieldID": "tmsand1",
+        "FieldName": "Shumi Village - Desert Village",
+        "EntityName": "shou21",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 109,
+        "FieldID": "tmsand1",
+        "FieldName": "Shumi Village - Desert Village",
+        "EntityName": "shou22",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 110,
+        "FieldID": "ecpway1",
+        "FieldName": "Esthar - City",
+        "EntityName": "taisi",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 110,
+        "FieldID": "epmeet1",
+        "FieldName": "Esthar - Presidential Palace",
+        "EntityName": "taisi",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 111,
+        "FieldID": "ecoway2",
+        "FieldName": "Esthar - City",
+        "EntityName": "jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 112,
+        "FieldID": "eproad2",
+        "FieldName": "Esthar - Presidential Palace",
+        "EntityName": "soldier2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 113,
+        "FieldID": "ecopen2",
+        "FieldName": "Esthar - City",
+        "EntityName": "jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 114,
+        "FieldID": "ecmway1",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 115,
+        "FieldID": "ecmview1",
+        "FieldName": "Esthar - Odine's Laboratory",
+        "EntityName": "kenkyuin",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 115,
+        "FieldID": "emlabo1",
+        "FieldName": "Dr. Odine's Laboratory",
+        "EntityName": "kenkyuin",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 115,
+        "FieldID": "emlabo1",
+        "FieldName": "Dr. Odine's Laboratory",
+        "EntityName": "kenkyuin2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 116,
+        "FieldID": "eccway21",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 117,
+        "FieldID": "ecenter3",
+        "FieldName": "Esthar - City",
+        "EntityName": "taore",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 117,
+        "FieldID": "eccway11",
+        "FieldName": "Esthar - City",
+        "EntityName": "woman",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 118,
+        "FieldID": "ecmall1",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 119,
+        "FieldID": "ecopen1",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 120,
+        "FieldID": "etsta1",
+        "FieldName": "FH - Seaside Station",
+        "EntityName": "roujin",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 120,
+        "FieldID": "etsta2",
+        "FieldName": "FH - Seaside Station",
+        "EntityName": "roujin",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 121,
+        "FieldID": "fhparar1",
+        "FieldName": "FH - Sun Panel",
+        "EntityName": "bogu",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 130,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "s12",
+        "EntityDescription": "CC Jack",
+        "Enabled": true
+    },
+    {
+        "DeckID": 130,
+        "FieldID": "rgroad21",
+        "FieldName": "Ragnarok - Aisle",
+        "EntityName": "jack",
+        "EntityDescription": "CC Jack",
+        "Enabled": true
+    },
+    {
+        "DeckID": 131,
+        "FieldID": "bghall_1",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seito8",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 131,
+        "FieldID": "bghall_1",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seito10",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 131,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seed01",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 131,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seed02",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 132,
+        "FieldID": "bg2f_2",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi12",
+        "EntityDescription": "brown-haired female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 132,
+        "FieldID": "bg2f_2",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi14",
+        "EntityDescription": "brown-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 132,
+        "FieldID": "bg2f_22",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "niisan",
+        "EntityDescription": "brown-haired male student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 132,
+        "FieldID": "bg2f_22",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "imouto",
+        "EntityDescription": "brown-haired female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 133,
+        "FieldID": "bghall_5",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seed",
+        "EntityDescription": "CC Club",
+        "Enabled": true
+    },
+    {
+        "DeckID": 133,
+        "FieldID": "rgroad31",
+        "FieldName": "Ragnarok - Aisle",
+        "EntityName": "club",
+        "EntityDescription": "CC Club",
+        "Enabled": true
+    },
+    {
+        "DeckID": 134,
+        "FieldID": "bg2f_1",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi1",
+        "EntityDescription": "CC Spade",
+        "Enabled": true
+    },
+    {
+        "DeckID": 134,
+        "FieldID": "rghang2",
+        "FieldName": "Ragnarok - Hangar",
+        "EntityName": "spade",
+        "EntityDescription": "CC Spade",
+        "Enabled": true
+    },
+    {
+        "DeckID": 135,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "daia01",
+        "EntityDescription": "CC Diamond",
+        "Enabled": true
+    },
+    {
+        "DeckID": 135,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "daia02",
+        "EntityDescription": "CC Diamond",
+        "Enabled": true
+    },
+    {
+        "DeckID": 135,
+        "FieldID": "rghang11",
+        "FieldName": "Ragnarok - Hangar",
+        "EntityName": "daia01",
+        "EntityDescription": "CC Diamond",
+        "Enabled": true
+    },
+    {
+        "DeckID": 135,
+        "FieldID": "rghang11",
+        "FieldName": "Ragnarok - Hangar",
+        "EntityName": "daia02",
+        "EntityDescription": "CC Diamond",
+        "Enabled": true
+    },
+    {
+        "DeckID": 136,
+        "FieldID": "bg2f_2",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "panpi11",
+        "EntityDescription": "dark-haired female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 136,
+        "FieldID": "bg2f_22",
+        "FieldName": "B-Garden - 2F Hallway",
+        "EntityName": "pony",
+        "EntityDescription": "dark-haired female student",
+        "Enabled": true
+    },
+    {
+        "DeckID": 138,
+        "FieldID": "bgroad_4",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "sd2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 138,
+        "FieldID": "bgsido_7",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "nida",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 139,
+        "FieldID": "bghall_2",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "boy",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 139,
+        "FieldID": "bgroad_4",
+        "FieldName": "B-Garden - Hallway",
+        "EntityName": "s6",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 150,
+        "FieldID": "bgmast_3",
+        "FieldName": "B-Garden - Master Room",
+        "EntityName": "shumi2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 151,
+        "FieldID": "tggara1",
+        "FieldName": "T-Garden - Garage",
+        "EntityName": "p209",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 152,
+        "FieldID": "tgroom1",
+        "FieldName": "T-Garden - Classroom",
+        "EntityName": "p210",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 153,
+        "FieldID": "gfvill24",
+        "FieldName": "Winhill - Village",
+        "EntityName": "p085",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 154,
+        "FieldID": "bcport1b",
+        "FieldName": "Balamb - Harbor",
+        "EntityName": "ghei1",
+        "EntityDescription": "G-Soldier",
+        "Enabled": true
+    },
+    {
+        "DeckID": 160,
+        "FieldID": "timin1",
+        "FieldName": "Timber - Residence",
+        "EntityName": "girl2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 161,
+        "FieldID": "titown3",
+        "FieldName": "Timber - City Square",
+        "EntityName": "boy1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 162,
+        "FieldID": "titown2",
+        "FieldName": "Timber - City Square",
+        "EntityName": "boy1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 163,
+        "FieldID": "titvout1",
+        "FieldName": "Timber - TV Station",
+        "EntityName": "keibihei1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 164,
+        "FieldID": "titown8",
+        "FieldName": "Timber - City Square",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 165,
+        "FieldID": "dohtl_1",
+        "FieldName": "Dollet - Hotel",
+        "EntityName": "hottlewoman2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 166,
+        "FieldID": "dosea_1",
+        "FieldName": "Dollet - Lapin Beach",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 167,
+        "FieldID": "dotown2a",
+        "FieldName": "Dollet - Town Square",
+        "EntityName": "woman1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 168,
+        "FieldID": "dotown3a",
+        "FieldName": "Dollet - Town Square",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 169,
+        "FieldID": "doport_1",
+        "FieldName": "Dollet - Harbor",
+        "EntityName": "girl1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 169,
+        "FieldID": "doport_1",
+        "FieldName": "Dollet - Harbor",
+        "EntityName": "boy2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 180,
+        "FieldID": "cwwood6",
+        "FieldName": "Centra - Chocobo Forest",
+        "EntityName": "chocoboy",
+        "EntityDescription": "Chocoboy",
+        "Enabled": true
+    },
+    {
+        "DeckID": 181,
+        "FieldID": "ecopen4a",
+        "FieldName": "Esthar - Presidential Palace",
+        "EntityName": "taore2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 190,
+        "FieldID": "eccway31",
+        "FieldName": "Esthar - City",
+        "EntityName": "man",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 191,
+        "FieldID": "ecenter1",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 191,
+        "FieldID": "ecopen1a",
+        "FieldName": "Esthar - City",
+        "EntityName": "taore2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 192,
+        "FieldID": "eciway11",
+        "FieldName": "Esthar - City",
+        "EntityName": "jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 193,
+        "FieldID": "ecopen1a",
+        "FieldName": "Esthar - City",
+        "EntityName": "taore",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 193,
+        "FieldID": "ecpview1",
+        "FieldName": "Esthar - Airstation",
+        "EntityName": "soldier2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 193,
+        "FieldID": "ecpview1",
+        "FieldName": "Esthar - Airstation",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 194,
+        "FieldID": "ecopen3",
+        "FieldName": "Esthar - City",
+        "EntityName": "baba",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 195,
+        "FieldID": "eccway12",
+        "FieldName": "Esthar - City",
+        "EntityName": "man",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 196,
+        "FieldID": "eccway41",
+        "FieldName": "Esthar - City",
+        "EntityName": "soldier1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 197,
+        "FieldID": "ecoway3",
+        "FieldName": "Esthar - City",
+        "EntityName": "kirospeople2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 198,
+        "FieldID": "ecopen1",
+        "FieldName": "Esthar - City",
+        "EntityName": "mother",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 199,
+        "FieldID": "ecoway1",
+        "FieldName": "Esthar - City",
+        "EntityName": "jiji",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 201,
+        "FieldID": "seback1",
+        "FieldName": "White SeeD Ship",
+        "EntityName": "wattu",
+        "EntityDescription": "Watts",
+        "Enabled": true
+    },
+    {
+        "DeckID": 201,
+        "FieldID": "test2",
+        "FieldName": "Debug - Iriguchi's Room",
+        "EntityName": "zell",
+        "EntityDescription": "chocobo?",
+        "Enabled": false
+    },
+    {
+        "DeckID": 201,
+        "FieldID": "test2",
+        "FieldName": "Debug - Iriguchi's Room",
+        "EntityName": "dog",
+        "EntityDescription": "dog",
+        "Enabled": false
+    },
+    {
+        "DeckID": 201,
+        "FieldID": "tiagit1",
+        "FieldName": "Timber - Forest Owls' Base",
+        "EntityName": "wattu",
+        "EntityDescription": "Watts",
+        "Enabled": true
+    },
+    {
+        "DeckID": 202,
+        "FieldID": "bgryo2_2",
+        "FieldName": "B-Garden - Dormitory",
+        "EntityName": "quistiss",
+        "EntityDescription": "Quistis",
+        "Enabled": true
+    },
+    {
+        "DeckID": 202,
+        "FieldID": "bgsido_7",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "quistis",
+        "EntityDescription": "Quistis",
+        "Enabled": true
+    },
+    {
+        "DeckID": 202,
+        "FieldID": "rgair2",
+        "FieldName": "Ragnarok - Airlock",
+        "EntityName": "quistis",
+        "EntityDescription": "Quistis",
+        "Enabled": true
+    },
+    {
+        "DeckID": 203,
+        "FieldID": "bghall_1",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "seito7",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 203,
+        "FieldID": "bghall_5",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "s4",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 203,
+        "FieldID": "bghall1b",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "runchild",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 203,
+        "FieldID": "bghall3a",
+        "FieldName": "B-Garden - Hall",
+        "EntityName": "kodomo01",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 205,
+        "FieldID": "fhwisef2",
+        "FieldName": "FH - Mayor's Residence",
+        "EntityName": "dobe",
+        "EntityDescription": "Mayor Dobe",
+        "Enabled": true
+    },
+    {
+        "DeckID": 208,
+        "FieldID": "dopub_2",
+        "FieldName": "Dollet - Pub",
+        "EntityName": "man1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 208,
+        "FieldID": "dopub_3",
+        "FieldName": "Dollet - Pub",
+        "EntityName": "man1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 211,
+        "FieldID": "bgsido_7",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "shu",
+        "EntityDescription": "Xu",
+        "Enabled": true
+    },
+    {
+        "DeckID": 211,
+        "FieldID": "rgexit2",
+        "FieldName": "Ragnarok - Entrance",
+        "EntityName": "shu",
+        "EntityDescription": "Xu",
+        "Enabled": true
+    },
+    {
+        "DeckID": 213,
+        "FieldID": "bgmon_4",
+        "FieldName": "B-Garden - Training Center",
+        "EntityName": "joker",
+        "EntityDescription": "CC Joker",
+        "Enabled": true
+    },
+    {
+        "DeckID": 213,
+        "FieldID": "rgroad11",
+        "FieldName": "Ragnarok - Aisle",
+        "EntityName": "joker",
+        "EntityDescription": "CC Joker",
+        "Enabled": true
+    },
+    {
+        "DeckID": 215,
+        "FieldID": "bcmin1_1",
+        "FieldName": "Balamb - Residence",
+        "EntityName": "p077",
+        "EntityDescription": "girl in pink",
+        "Enabled": true
+    },
+    {
+        "DeckID": 215,
+        "FieldID": "bcmin11a",
+        "FieldName": "Balamb - Residence",
+        "EntityName": "p077",
+        "EntityDescription": "girl in pink",
+        "Enabled": true
+    },
+    {
+        "DeckID": 215,
+        "FieldID": "bcsaka_1",
+        "FieldName": "Balamb - Town Square",
+        "EntityName": "p082",
+        "EntityDescription": "hotel owner",
+        "Enabled": true
+    },
+    {
+        "DeckID": 217,
+        "FieldID": "eapod1",
+        "FieldName": "Esthar - Crash Site",
+        "EntityName": "piet",
+        "EntityDescription": "Piet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 217,
+        "FieldID": "ssblock1",
+        "FieldName": "Lunar Base - Dock",
+        "EntityName": "man0",
+        "EntityDescription": "Piet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 217,
+        "FieldID": "sscont1",
+        "FieldName": "Lunar Base - Control Room",
+        "EntityName": "piet",
+        "EntityDescription": "Piet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 217,
+        "FieldID": "ssmedi1",
+        "FieldName": "Lunar Base - Medical Room",
+        "EntityName": "man0",
+        "EntityDescription": "Piet",
+        "Enabled": true
+    },
+    {
+        "DeckID": 222,
+        "FieldID": "emlabo1",
+        "FieldName": "Dr. Odine's Laboratory",
+        "EntityName": "odyne",
+        "EntityDescription": "Dr. Odine",
+        "Enabled": true
+    },
+    {
+        "DeckID": 222,
+        "FieldID": "epmeet1",
+        "FieldName": "Esthar - Presidential Palace",
+        "EntityName": "odyne",
+        "EntityDescription": "Dr. Odine",
+        "Enabled": true
+    },
+    {
+        "DeckID": 224,
+        "FieldID": "sscont1",
+        "FieldName": "Lunar Base - Control Room",
+        "EntityName": "elone",
+        "EntityDescription": "Ellone",
+        "Enabled": true
+    },
+    {
+        "DeckID": 224,
+        "FieldID": "sselone1",
+        "FieldName": "Lunar Base - Residential Zone",
+        "EntityName": "elone",
+        "EntityDescription": "Ellone",
+        "Enabled": true
+    },
+    {
+        "DeckID": 225,
+        "FieldID": "tggate1",
+        "FieldName": "T-Garden - Front Gate",
+        "EntityName": "p053",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 226,
+        "FieldID": "bgeat_2",
+        "FieldName": "B-Garden - Cafeteria",
+        "EntityName": "student6",
+        "EntityDescription": "Trepe Groupie #1",
+        "Enabled": true
+    },
+    {
+        "DeckID": 226,
+        "FieldID": "bgroom_1",
+        "FieldName": "B-Garden - Classroom",
+        "EntityName": "student1",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 226,
+        "FieldID": "bgroom_1",
+        "FieldName": "B-Garden - Classroom",
+        "EntityName": "student2",
+        "EntityDescription": "",
+        "Enabled": true
+    },
+    {
+        "DeckID": 228,
+        "FieldID": "bcmin2_1",
+        "FieldName": "Balamb - The Dinchts'",
+        "EntityName": "mam",
+        "EntityDescription": "Ma Dincht",
+        "Enabled": true
+    },
+    {
+        "DeckID": 228,
+        "FieldID": "bcmin21a",
+        "FieldName": "Balamb - The Dinchts'",
+        "EntityName": "mam",
+        "EntityDescription": "Ma Dincht",
+        "Enabled": true
+    },
+    {
+        "DeckID": 228,
+        "FieldID": "bcmin23a",
+        "FieldName": "Balamb - The Dinchts'",
+        "EntityName": "mam",
+        "EntityDescription": "Big Bad Rascal",
+        "Enabled": true
+    },
+    {
+        "DeckID": 229,
+        "FieldID": "glfurin1",
+        "FieldName": "Deling City - Caraway's Mansion",
+        "EntityName": "fury",
+        "EntityDescription": "General Caraway",
+        "Enabled": true
+    },
+    {
+        "DeckID": 230,
+        "FieldID": "ehback2",
+        "FieldName": "Edea's House - Backyard",
+        "EntityName": "edea",
+        "EntityDescription": "Edea",
+        "Enabled": true
+    },
+    {
+        "DeckID": 231,
+        "FieldID": "bgsido_8",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "cid",
+        "EntityDescription": "Headmaster Cid",
+        "Enabled": true
+    },
+    {
+        "DeckID": 231,
+        "FieldID": "bgsido_2",
+        "FieldName": "B-Garden - Headmaster's Office",
+        "EntityName": "cid",
+        "EntityDescription": "Headmaster Cid",
+        "Enabled": true
+    },
+    {
+        "DeckID": 231,
+        "FieldID": "ehback2",
+        "FieldName": "Edea's House - Backyard",
+        "EntityName": "cid",
+        "EntityDescription": "Headmaster Cid",
+        "Enabled": true
+    },
+    {
+        "DeckID": 232,
+        "FieldID": "epwork3",
+        "FieldName": "Esthar - Presidential Palace",
+        "EntityName": "laguna",
+        "EntityDescription": "Laguna",
+        "Enabled": true
+    },
+    {
+        "DeckID": 232,
+        "FieldID": "rgguest4",
+        "FieldName": "Ragnarok - Passenger Seats",
+        "EntityName": "laguna",
+        "EntityDescription": "Laguna",
+        "Enabled": true
+    }
+]
