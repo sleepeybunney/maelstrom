@@ -9,8 +9,8 @@ namespace FF8Mod.Maelstrom
 {
     class ShopShuffle
     {
-        public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Shops.json"));
-        public static Dictionary<int, Item> Items = JsonSerializer.Deserialize<List<Item>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Items.json")).ToDictionary(i => i.ID);
+        public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Shops.json"));
+        public static Dictionary<int, Item> Items = JsonSerializer.Deserialize<List<Item>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Items.json")).ToDictionary(i => i.ID);
 
         public static List<Shop> Randomise(int seed)
         {

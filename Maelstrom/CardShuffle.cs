@@ -10,8 +10,8 @@ namespace FF8Mod.Maelstrom
 {
     class CardShuffle
     {
-        public static List<Deck> Decks = JsonSerializer.Deserialize<List<Deck>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Decks.json"));
-        public static List<Card> Cards = JsonSerializer.Deserialize<List<Card>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Cards.json"));
+        public static List<Deck> Decks = JsonSerializer.Deserialize<List<Deck>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Decks.json"));
+        public static List<Card> Cards = JsonSerializer.Deserialize<List<Card>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Cards.json"));
 
         public static Dictionary<int, int> Shuffle(int seed)
         {

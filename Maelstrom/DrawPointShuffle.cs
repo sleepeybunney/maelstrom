@@ -6,7 +6,7 @@ namespace FF8Mod.Maelstrom
 {
     public static class DrawPointShuffle
     {
-        public static List<DrawPoint> DrawPoints = JsonSerializer.Deserialize<List<DrawPoint>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.DrawPoints.json"));
+        public static List<DrawPoint> DrawPoints = JsonSerializer.Deserialize<List<DrawPoint>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.DrawPoints.json"));
 
         // assign random spells to each draw point, retaining their other properties
         public static Dictionary<int, int> Randomise(int seed)

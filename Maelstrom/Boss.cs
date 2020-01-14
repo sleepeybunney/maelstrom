@@ -17,7 +17,7 @@ namespace FF8Mod.Maelstrom
         public bool FixedField { get; set; }
         public int[] SlotRanks { get; set; }
 
-        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Bosses.json"));
+        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Bosses.json"));
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
 
         private static Dictionary<int, Boss> PopulateEncounterDictionary()

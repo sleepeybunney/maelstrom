@@ -29,12 +29,7 @@
     <EmbeddedResource Include="FieldScripts\*.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Bosses.json" />
-    <EmbeddedResource Include="Cards.json" />
-    <EmbeddedResource Include="Decks.json" />
-    <EmbeddedResource Include="DrawPoints.json" />
-    <EmbeddedResource Include="Items.json" />
-    <EmbeddedResource Include="Shops.json" />
+    <EmbeddedResource Include="Data\*.json" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="maelstrom.ico" />
