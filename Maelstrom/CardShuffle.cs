@@ -11,27 +11,40 @@ namespace FF8Mod.Maelstrom
     class CardShuffle
     {
         public static List<Deck> Decks = JsonSerializer.Deserialize<List<Deck>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Decks.json"));
+        public static List<Card> Cards = JsonSerializer.Deserialize<List<Card>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Cards.json"));
 
-        public static void Shuffle(FileSource fieldSource, int seed)
+        public static Dictionary<int, int> Shuffle(int seed)
         {
             var random = new Random(seed);
 
+            // get a list of valid decks to put cards in (no npcs in debug rooms etc)
+            var availableDecks = Decks.Where(d => d.Enabled).Select(d => d.DeckID).Distinct().ToList();
+
+            // assign rare cards to random decks
+            var result = new Dictionary<int, int>();
+            foreach (var card in Cards.Select(c => c.CardID))
+            {
+                result.Add(card, availableDecks[random.Next(0, availableDecks.Count)]);
+            }
+
+            return result;
+        }
+
+        public static void Apply(FileSource fieldSource, Dictionary<int, int> shuffle)
+        {
             // take a script from the start field
             var scriptField = "start0";
             var scriptEntity = 0;
             var scriptId = 0;
             var script = App.ReadEmbeddedFile(string.Format("FF8Mod.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", scriptField, scriptEntity, scriptId));
 
-            // get a list of valid decks to put cards in (no npcs in debug rooms etc)
-            var availableDecks = Decks.Where(d => d.Enabled).Select(d => d.DeckID).Distinct().ToList();
-
-            // assign rare cards to random decks
-            for (var i = 77; i <= 109; i++)
+            // move cards to their assigned decks
+            foreach (var card in shuffle.Keys)
             {
-                // if you getcard before you setcard, it tells you the location in the card menu
+                // if you getcard before you setcard, it reveals the location in the card menu
                 // script += Environment.NewLine + GetCard(i);
 
-                script += Environment.NewLine + SetCard(availableDecks[random.Next(0, availableDecks.Count)], i);
+                script += Environment.NewLine + SetCard(shuffle[card], card);
             }
 
             // save the script

@@ -106,7 +106,9 @@ namespace FF8Mod.Maelstrom
 
                             if (Properties.Settings.Default.CardShuffle)
                             {
-                                CardShuffle.Shuffle(fieldSource, seed);
+                                var shuffle = CardShuffle.Shuffle(seed);
+                                if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddCards(shuffle);
+                                CardShuffle.Apply(fieldSource, shuffle);
                             }
 
                             if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardShuffle)

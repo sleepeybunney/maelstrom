@@ -12,5 +12,15 @@ namespace FF8Mod
         public string EntityName { get; set; }
         public string EntityDescription { get; set; }
         public bool Enabled { get; set; }
+
+        public string LocationString
+        {
+            get
+            {
+                var result = FieldName;
+                if (!string.IsNullOrWhiteSpace(EntityDescription)) result += string.Format(" ({0})", EntityDescription);
+                return result;
+            }
+        }
     }
 }

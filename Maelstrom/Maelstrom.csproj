@@ -30,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Bosses.json" />
+    <EmbeddedResource Include="Cards.json" />
     <EmbeddedResource Include="Decks.json" />
     <EmbeddedResource Include="DrawPoints.json" />
     <EmbeddedResource Include="Items.json" />

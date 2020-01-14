@@ -10,7 +10,7 @@
     {
         "DeckID": 1,
         "FieldID": "bcsta_1",
-        "FieldName": "Balamb - Town Square",
+        "FieldName": "Balamb - Station",
         "EntityName": "queen_bal",
         "EntityDescription": "Queen of Cards",
         "Enabled": true
@@ -98,7 +98,7 @@
     {
         "DeckID": 10,
         "FieldID": "ggroom2",
-        "FieldName": "G-Garden - Classroom",
+        "FieldName": "Galbadia Garden - Classroom",
         "EntityName": "gsm0",
         "EntityDescription": "dark-haired male student",
         "Enabled": true
@@ -106,7 +106,7 @@
     {
         "DeckID": 10,
         "FieldID": "ggroom7",
-        "FieldName": "G-Garden - Dormitory",
+        "FieldName": "Galbadia Garden - Dormitory",
         "EntityName": "gsl0",
         "EntityDescription": "dark-haired male student",
         "Enabled": true
@@ -114,7 +114,7 @@
     {
         "DeckID": 10,
         "FieldID": "ggview1",
-        "FieldName": "G-Garden - Front Gate",
+        "FieldName": "Galbadia Garden - Front Gate",
         "EntityName": "g_hei0",
         "EntityDescription": "one of the staff men?",
         "Enabled": true
@@ -122,7 +122,7 @@
     {
         "DeckID": 11,
         "FieldID": "ggroom2",
-        "FieldName": "G-Garden - Classroom",
+        "FieldName": "Galbadia Garden - Classroom",
         "EntityName": "gsm1",
         "EntityDescription": "brown-haired male student",
         "Enabled": true
@@ -130,7 +130,7 @@
     {
         "DeckID": 11,
         "FieldID": "ggroom2",
-        "FieldName": "G-Garden - Classroom",
+        "FieldName": "Galbadia Garden - Classroom",
         "EntityName": "gsl1",
         "EntityDescription": "brown-haired male student",
         "Enabled": true
@@ -138,7 +138,7 @@
     {
         "DeckID": 11,
         "FieldID": "ggview1",
-        "FieldName": "G-Garden - Front Gate",
+        "FieldName": "Galbadia Garden - Front Gate",
         "EntityName": "g_hei1",
         "EntityDescription": "the other staff man?",
         "Enabled": true
@@ -146,7 +146,7 @@
     {
         "DeckID": 12,
         "FieldID": "gggate3",
-        "FieldName": "G-Garden - Front Gate",
+        "FieldName": "Galbadia Garden - Front Gate",
         "EntityName": "gsl1",
         "EntityDescription": "one of the female students?",
         "Enabled": true
@@ -154,7 +154,7 @@
     {
         "DeckID": 12,
         "FieldID": "ggview1",
-        "FieldName": "G-Garden - Front Gate",
+        "FieldName": "Galbadia Garden - Front Gate",
         "EntityName": "stuwoman0",
         "EntityDescription": "female student",
         "Enabled": true
@@ -162,7 +162,7 @@
     {
         "DeckID": 13,
         "FieldID": "gggym2",
-        "FieldName": "G-Garden - Gymnasium",
+        "FieldName": "Galbadia Garden - Gymnasium",
         "EntityName": "teacher",
         "EntityDescription": "hockey coach",
         "Enabled": true
@@ -170,7 +170,7 @@
     {
         "DeckID": 14,
         "FieldID": "gggate1",
-        "FieldName": "G-Garden - Front Gate",
+        "FieldName": "Galbadia Garden - Front Gate",
         "EntityName": "gsm0",
         "EntityDescription": "dark-haired male student",
         "Enabled": true
@@ -178,7 +178,7 @@
     {
         "DeckID": 15,
         "FieldID": "ggroom2",
-        "FieldName": "G-Garden - Classroom",
+        "FieldName": "Galbadia Garden - Classroom",
         "EntityName": "gsl0",
         "EntityDescription": "female student",
         "Enabled": true
@@ -186,7 +186,7 @@
     {
         "DeckID": 15,
         "FieldID": "ggroom6",
-        "FieldName": "G-Garden - Classroom",
+        "FieldName": "Galbadia Garden - Classroom",
         "EntityName": "gsl0",
         "EntityDescription": "female student",
         "Enabled": true
@@ -194,7 +194,7 @@
     {
         "DeckID": 16,
         "FieldID": "ggroad1",
-        "FieldName": "G-Garden - Hallway",
+        "FieldName": "Galbadia Garden - Hallway",
         "EntityName": "stuboy0",
         "EntityDescription": "light-haired student",
         "Enabled": true
@@ -202,7 +202,7 @@
     {
         "DeckID": 17,
         "FieldID": "ggroom3",
-        "FieldName": "G-Garden - Locker Room",
+        "FieldName": "Galbadia Garden - Locker Room",
         "EntityName": "stu0",
         "EntityDescription": "staff man",
         "Enabled": true
@@ -266,7 +266,7 @@
     {
         "DeckID": 25,
         "FieldID": "fhwisef2",
-        "FieldName": "FH - Mayor's Residence",
+        "FieldName": "Fisherman's Horizon - Mayor's Residence",
         "EntityName": "furo",
         "EntityDescription": "Flo",
         "Enabled": true
@@ -322,7 +322,7 @@
     {
         "DeckID": 30,
         "FieldID": "bgsido_5",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "s1",
         "EntityDescription": "student",
         "Enabled": true
@@ -330,7 +330,7 @@
     {
         "DeckID": 31,
         "FieldID": "bghall_1",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seito6",
         "EntityDescription": "woman in brown",
         "Enabled": true
@@ -338,7 +338,7 @@
     {
         "DeckID": 31,
         "FieldID": "bghall_2",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - West Hall",
         "EntityName": "cardjosi",
         "EntityDescription": "woman in brown",
         "Enabled": true
@@ -346,7 +346,7 @@
     {
         "DeckID": 32,
         "FieldID": "bg2f_2",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi10",
         "EntityDescription": "dark-haired male student",
         "Enabled": true
@@ -354,7 +354,7 @@
     {
         "DeckID": 32,
         "FieldID": "bg2f_22",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "walkman",
         "EntityDescription": "walking student?",
         "Enabled": true
@@ -362,7 +362,7 @@
     {
         "DeckID": 33,
         "FieldID": "bggate_5",
-        "FieldName": "B-Garden - Front Gate",
+        "FieldName": "Balamb Garden - Front Gate",
         "EntityName": "s1",
         "EntityDescription": "student in yellow",
         "Enabled": true
@@ -370,7 +370,7 @@
     {
         "DeckID": 33,
         "FieldID": "fhdeck3",
-        "FieldName": "B-Garden - Deck",
+        "FieldName": "Balamb Garden - Deck",
         "EntityName": "s1",
         "EntityDescription": "student in yellow",
         "Enabled": true
@@ -378,7 +378,7 @@
     {
         "DeckID": 34,
         "FieldID": "bghall_2",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - West Hall",
         "EntityName": "s1",
         "EntityDescription": "one of the female students? (mornin')",
         "Enabled": true
@@ -386,7 +386,7 @@
     {
         "DeckID": 34,
         "FieldID": "bgroad_7",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s5",
         "EntityDescription": "",
         "Enabled": true
@@ -394,7 +394,7 @@
     {
         "DeckID": 35,
         "FieldID": "bghoke_1",
-        "FieldName": "B-Garden - Infirmary",
+        "FieldName": "Balamb Garden - Infirmary",
         "EntityName": "kadowaki",
         "EntityDescription": "Dr. Kadowaki",
         "Enabled": true
@@ -402,7 +402,7 @@
     {
         "DeckID": 36,
         "FieldID": "bggate_6",
-        "FieldName": "B-Garden - Front Gate",
+        "FieldName": "Balamb Garden - Front Gate",
         "EntityName": "oyaji",
         "EntityDescription": "Gatekeeper",
         "Enabled": true
@@ -410,7 +410,7 @@
     {
         "DeckID": 37,
         "FieldID": "bg2f_22",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "blackman",
         "EntityDescription": "black student",
         "Enabled": true
@@ -418,7 +418,7 @@
     {
         "DeckID": 37,
         "FieldID": "bgroad_7",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s4",
         "EntityDescription": "",
         "Enabled": true
@@ -426,7 +426,7 @@
     {
         "DeckID": 38,
         "FieldID": "bghall_5",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - North Hall",
         "EntityName": "s3",
         "EntityDescription": "",
         "Enabled": true
@@ -434,7 +434,7 @@
     {
         "DeckID": 38,
         "FieldID": "bghall_5",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - North Hall",
         "EntityName": "kasimasi02",
         "EntityDescription": "",
         "Enabled": true
@@ -442,7 +442,7 @@
     {
         "DeckID": 38,
         "FieldID": "bghall_5",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - North Hall",
         "EntityName": "kasimasi03",
         "EntityDescription": "",
         "Enabled": true
@@ -450,7 +450,7 @@
     {
         "DeckID": 38,
         "FieldID": "bgroad_5",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s1",
         "EntityDescription": "",
         "Enabled": true
@@ -458,7 +458,7 @@
     {
         "DeckID": 38,
         "FieldID": "bgroad_5",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s2",
         "EntityDescription": "",
         "Enabled": true
@@ -466,7 +466,7 @@
     {
         "DeckID": 38,
         "FieldID": "bgroad_5",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s3",
         "EntityDescription": "",
         "Enabled": true
@@ -474,7 +474,7 @@
     {
         "DeckID": 39,
         "FieldID": "bghall_3",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - East Hall",
         "EntityName": "s1",
         "EntityDescription": "",
         "Enabled": true
@@ -482,7 +482,7 @@
     {
         "DeckID": 39,
         "FieldID": "bghall3a",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - East Hall",
         "EntityName": "zunou",
         "EntityDescription": "",
         "Enabled": true
@@ -490,7 +490,7 @@
     {
         "DeckID": 40,
         "FieldID": "bghall3a",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - East Hall",
         "EntityName": "zell",
         "EntityDescription": "",
         "Enabled": true
@@ -498,7 +498,7 @@
     {
         "DeckID": 40,
         "FieldID": "bghall3a",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - East Hall",
         "EntityName": "zells",
         "EntityDescription": "",
         "Enabled": true
@@ -514,7 +514,7 @@
     {
         "DeckID": 41,
         "FieldID": "bg2f_1",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi2",
         "EntityDescription": "Member No. 109",
         "Enabled": true
@@ -538,7 +538,7 @@
     {
         "DeckID": 43,
         "FieldID": "bgeat_1",
-        "FieldName": "B-Garden - Cafeteria",
+        "FieldName": "Balamb Garden - Cafeteria",
         "EntityName": "obahandummy3",
         "EntityDescription": "Cafeteria Lady",
         "Enabled": true
@@ -546,7 +546,7 @@
     {
         "DeckID": 43,
         "FieldID": "bgeat_1",
-        "FieldName": "B-Garden - Cafeteria",
+        "FieldName": "Balamb Garden - Cafeteria",
         "EntityName": "son",
         "EntityDescription": "Cafeteria Lady's Son",
         "Enabled": true
@@ -554,7 +554,7 @@
     {
         "DeckID": 45,
         "FieldID": "bgeat_2",
-        "FieldName": "B-Garden - Cafeteria",
+        "FieldName": "Balamb Garden - Cafeteria",
         "EntityName": "student7",
         "EntityDescription": "Friend of Trepe Groupie #1",
         "Enabled": true
@@ -562,7 +562,7 @@
     {
         "DeckID": 47,
         "FieldID": "fhtown21",
-        "FieldName": "FH - Residential Area",
+        "FieldName": "Fisherman's Horizon - Residential Area",
         "EntityName": "people_2",
         "EntityDescription": "",
         "Enabled": true
@@ -570,7 +570,7 @@
     {
         "DeckID": 47,
         "FieldID": "fhtown22",
-        "FieldName": "FH - Residential Area",
+        "FieldName": "Fisherman's Horizon - Residential Area",
         "EntityName": "people3",
         "EntityDescription": "",
         "Enabled": true
@@ -594,7 +594,7 @@
     {
         "DeckID": 50,
         "FieldID": "bgbook_1",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p040",
         "EntityDescription": "brown-haired male cadet",
         "Enabled": true
@@ -602,7 +602,7 @@
     {
         "DeckID": 50,
         "FieldID": "bgbook1b",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p040",
         "EntityDescription": "brown-haired male cadet",
         "Enabled": true
@@ -610,7 +610,7 @@
     {
         "DeckID": 51,
         "FieldID": "bgbook_1",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p148",
         "EntityDescription": "pigtail girl",
         "Enabled": true
@@ -618,7 +618,7 @@
     {
         "DeckID": 51,
         "FieldID": "bgbook_2",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p148",
         "EntityDescription": "pigtail girl",
         "Enabled": true
@@ -626,7 +626,7 @@
     {
         "DeckID": 51,
         "FieldID": "bgbook1b",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p148",
         "EntityDescription": "pigtail girl",
         "Enabled": true
@@ -634,7 +634,7 @@
     {
         "DeckID": 52,
         "FieldID": "bgbook_2",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p050",
         "EntityDescription": "student in brown/black",
         "Enabled": true
@@ -642,7 +642,7 @@
     {
         "DeckID": 53,
         "FieldID": "bgbook_3",
-        "FieldName": "B-Garden - Library",
+        "FieldName": "Balamb Garden - Library",
         "EntityName": "p043",
         "EntityDescription": "brown-haired female student",
         "Enabled": true
@@ -666,7 +666,7 @@
     {
         "DeckID": 54,
         "FieldID": "bcsta_1",
-        "FieldName": "",
+        "FieldName": "Balamb - Station",
         "EntityName": "p065",
         "EntityDescription": "girl in red",
         "Enabled": true
@@ -682,7 +682,7 @@
     {
         "DeckID": 57,
         "FieldID": "bcsta_1",
-        "FieldName": "",
+        "FieldName": "Balamb - Station",
         "EntityName": "p129",
         "EntityDescription": "conductor",
         "Enabled": true
@@ -714,7 +714,7 @@
     {
         "DeckID": 61,
         "FieldID": "tgcourt5",
-        "FieldName": "T-Garden - Athletic Ground",
+        "FieldName": "Trabia Garden - Athletic Ground",
         "EntityName": "p089",
         "EntityDescription": "",
         "Enabled": true
@@ -722,7 +722,7 @@
     {
         "DeckID": 62,
         "FieldID": "tggate1",
-        "FieldName": "T-Garden - Front Gate",
+        "FieldName": "Trabia Garden - Front Gate",
         "EntityName": "p133",
         "EntityDescription": "",
         "Enabled": true
@@ -730,7 +730,7 @@
     {
         "DeckID": 63,
         "FieldID": "tgroom2",
-        "FieldName": "T-Garden - Classroom",
+        "FieldName": "Trabia Garden - Classroom",
         "EntityName": "p088",
         "EntityDescription": "",
         "Enabled": true
@@ -738,7 +738,7 @@
     {
         "DeckID": 64,
         "FieldID": "tggara1",
-        "FieldName": "T-Garden - Garage",
+        "FieldName": "Trabia Garden - Garage",
         "EntityName": "p062",
         "EntityDescription": "",
         "Enabled": true
@@ -746,7 +746,7 @@
     {
         "DeckID": 65,
         "FieldID": "tgstage1",
-        "FieldName": "T-Garden - Festival Stage",
+        "FieldName": "Trabia Garden - Festival Stage",
         "EntityName": "p050",
         "EntityDescription": "",
         "Enabled": true
@@ -754,7 +754,7 @@
     {
         "DeckID": 66,
         "FieldID": "tgstage1",
-        "FieldName": "T-Garden - Festival Stage",
+        "FieldName": "Trabia Garden - Festival Stage",
         "EntityName": "p200",
         "EntityDescription": "",
         "Enabled": true
@@ -762,7 +762,7 @@
     {
         "DeckID": 67,
         "FieldID": "tgfront1",
-        "FieldName": "T-Garden - Front Gate",
+        "FieldName": "Trabia Garden - Front Gate",
         "EntityName": "p062",
         "EntityDescription": "",
         "Enabled": true
@@ -770,7 +770,7 @@
     {
         "DeckID": 68,
         "FieldID": "tgcourt5",
-        "FieldName": "T-Garden - Athletic Ground",
+        "FieldName": "Trabia Garden - Athletic Ground",
         "EntityName": "p204",
         "EntityDescription": "",
         "Enabled": true
@@ -962,7 +962,7 @@
     {
         "DeckID": 97,
         "FieldID": "fhwater1",
-        "FieldName": "FH - Residential Area",
+        "FieldName": "Fisherman's Horizon - Residential Area",
         "EntityName": "turi_jiji",
         "EntityDescription": "",
         "Enabled": true
@@ -970,7 +970,7 @@
     {
         "DeckID": 98,
         "FieldID": "fhbrdg1",
-        "FieldName": "FH - Factory",
+        "FieldName": "Fisherman's Horizon - Factory",
         "EntityName": "kazu",
         "EntityDescription": "",
         "Enabled": true
@@ -978,7 +978,7 @@
     {
         "DeckID": 99,
         "FieldID": "fhmin1",
-        "FieldName": "FH - Residence",
+        "FieldName": "Fisherman's Horizon - Residence",
         "EntityName": "genba",
         "EntityDescription": "",
         "Enabled": true
@@ -986,7 +986,7 @@
     {
         "DeckID": 100,
         "FieldID": "fhfish1",
-        "FieldName": "FH - Factory",
+        "FieldName": "Fisherman's Horizon - Factory",
         "EntityName": "turi_jiji",
         "EntityDescription": "",
         "Enabled": true
@@ -1186,7 +1186,7 @@
     {
         "DeckID": 120,
         "FieldID": "etsta1",
-        "FieldName": "FH - Seaside Station",
+        "FieldName": "Fisherman's Horizon - Seaside Station",
         "EntityName": "roujin",
         "EntityDescription": "",
         "Enabled": true
@@ -1194,7 +1194,7 @@
     {
         "DeckID": 120,
         "FieldID": "etsta2",
-        "FieldName": "FH - Seaside Station",
+        "FieldName": "Fisherman's Horizon - Seaside Station",
         "EntityName": "roujin",
         "EntityDescription": "",
         "Enabled": true
@@ -1202,7 +1202,7 @@
     {
         "DeckID": 121,
         "FieldID": "fhparar1",
-        "FieldName": "FH - Sun Panel",
+        "FieldName": "Fisherman's Horizon - Sun Panel",
         "EntityName": "bogu",
         "EntityDescription": "",
         "Enabled": true
@@ -1210,7 +1210,7 @@
     {
         "DeckID": 130,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "s12",
         "EntityDescription": "CC Jack",
         "Enabled": true
@@ -1226,7 +1226,7 @@
     {
         "DeckID": 131,
         "FieldID": "bghall_1",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seito8",
         "EntityDescription": "",
         "Enabled": true
@@ -1234,7 +1234,7 @@
     {
         "DeckID": 131,
         "FieldID": "bghall_1",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seito10",
         "EntityDescription": "",
         "Enabled": true
@@ -1242,7 +1242,7 @@
     {
         "DeckID": 131,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seed01",
         "EntityDescription": "",
         "Enabled": true
@@ -1250,7 +1250,7 @@
     {
         "DeckID": 131,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seed02",
         "EntityDescription": "",
         "Enabled": true
@@ -1258,7 +1258,7 @@
     {
         "DeckID": 132,
         "FieldID": "bg2f_2",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi12",
         "EntityDescription": "brown-haired female student",
         "Enabled": true
@@ -1266,7 +1266,7 @@
     {
         "DeckID": 132,
         "FieldID": "bg2f_2",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi14",
         "EntityDescription": "brown-haired male student",
         "Enabled": true
@@ -1274,7 +1274,7 @@
     {
         "DeckID": 132,
         "FieldID": "bg2f_22",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "niisan",
         "EntityDescription": "brown-haired male student",
         "Enabled": true
@@ -1282,7 +1282,7 @@
     {
         "DeckID": 132,
         "FieldID": "bg2f_22",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "imouto",
         "EntityDescription": "brown-haired female student",
         "Enabled": true
@@ -1290,7 +1290,7 @@
     {
         "DeckID": 133,
         "FieldID": "bghall_5",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - North Hall",
         "EntityName": "seed",
         "EntityDescription": "CC Club",
         "Enabled": true
@@ -1306,7 +1306,7 @@
     {
         "DeckID": 134,
         "FieldID": "bg2f_1",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi1",
         "EntityDescription": "CC Spade",
         "Enabled": true
@@ -1322,7 +1322,7 @@
     {
         "DeckID": 135,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "daia01",
         "EntityDescription": "CC Diamond",
         "Enabled": true
@@ -1330,7 +1330,7 @@
     {
         "DeckID": 135,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "daia02",
         "EntityDescription": "CC Diamond",
         "Enabled": true
@@ -1354,7 +1354,7 @@
     {
         "DeckID": 136,
         "FieldID": "bg2f_2",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "panpi11",
         "EntityDescription": "dark-haired female student",
         "Enabled": true
@@ -1362,7 +1362,7 @@
     {
         "DeckID": 136,
         "FieldID": "bg2f_22",
-        "FieldName": "B-Garden - 2F Hallway",
+        "FieldName": "Balamb Garden - 2F Hallway",
         "EntityName": "pony",
         "EntityDescription": "dark-haired female student",
         "Enabled": true
@@ -1370,7 +1370,7 @@
     {
         "DeckID": 138,
         "FieldID": "bgroad_4",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "sd2",
         "EntityDescription": "",
         "Enabled": true
@@ -1378,7 +1378,7 @@
     {
         "DeckID": 138,
         "FieldID": "bgsido_7",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "nida",
         "EntityDescription": "",
         "Enabled": true
@@ -1386,7 +1386,7 @@
     {
         "DeckID": 139,
         "FieldID": "bghall_2",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - West Hall",
         "EntityName": "boy",
         "EntityDescription": "",
         "Enabled": true
@@ -1394,7 +1394,7 @@
     {
         "DeckID": 139,
         "FieldID": "bgroad_4",
-        "FieldName": "B-Garden - Hallway",
+        "FieldName": "Balamb Garden - Hallway",
         "EntityName": "s6",
         "EntityDescription": "",
         "Enabled": true
@@ -1402,7 +1402,7 @@
     {
         "DeckID": 150,
         "FieldID": "bgmast_3",
-        "FieldName": "B-Garden - Master Room",
+        "FieldName": "Balamb Garden - Master Room",
         "EntityName": "shumi2",
         "EntityDescription": "",
         "Enabled": true
@@ -1410,7 +1410,7 @@
     {
         "DeckID": 151,
         "FieldID": "tggara1",
-        "FieldName": "T-Garden - Garage",
+        "FieldName": "Trabia Garden - Garage",
         "EntityName": "p209",
         "EntityDescription": "",
         "Enabled": true
@@ -1418,7 +1418,7 @@
     {
         "DeckID": 152,
         "FieldID": "tgroom1",
-        "FieldName": "T-Garden - Classroom",
+        "FieldName": "Trabia Garden - Classroom",
         "EntityName": "p210",
         "EntityDescription": "",
         "Enabled": true
@@ -1682,7 +1682,7 @@
     {
         "DeckID": 202,
         "FieldID": "bgryo2_2",
-        "FieldName": "B-Garden - Dormitory",
+        "FieldName": "Balamb Garden - Dormitory",
         "EntityName": "quistiss",
         "EntityDescription": "Quistis",
         "Enabled": true
@@ -1690,7 +1690,7 @@
     {
         "DeckID": 202,
         "FieldID": "bgsido_7",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "quistis",
         "EntityDescription": "Quistis",
         "Enabled": true
@@ -1706,7 +1706,7 @@
     {
         "DeckID": 203,
         "FieldID": "bghall_1",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "seito7",
         "EntityDescription": "",
         "Enabled": true
@@ -1714,7 +1714,7 @@
     {
         "DeckID": 203,
         "FieldID": "bghall_5",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - North Hall",
         "EntityName": "s4",
         "EntityDescription": "",
         "Enabled": true
@@ -1722,7 +1722,7 @@
     {
         "DeckID": 203,
         "FieldID": "bghall1b",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - Hall",
         "EntityName": "runchild",
         "EntityDescription": "",
         "Enabled": true
@@ -1730,7 +1730,7 @@
     {
         "DeckID": 203,
         "FieldID": "bghall3a",
-        "FieldName": "B-Garden - Hall",
+        "FieldName": "Balamb Garden - East Hall",
         "EntityName": "kodomo01",
         "EntityDescription": "",
         "Enabled": true
@@ -1738,7 +1738,7 @@
     {
         "DeckID": 205,
         "FieldID": "fhwisef2",
-        "FieldName": "FH - Mayor's Residence",
+        "FieldName": "Fisherman's Horizon - Mayor's Residence",
         "EntityName": "dobe",
         "EntityDescription": "Mayor Dobe",
         "Enabled": true
@@ -1762,7 +1762,7 @@
     {
         "DeckID": 211,
         "FieldID": "bgsido_7",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "shu",
         "EntityDescription": "Xu",
         "Enabled": true
@@ -1778,7 +1778,7 @@
     {
         "DeckID": 213,
         "FieldID": "bgmon_4",
-        "FieldName": "B-Garden - Training Center",
+        "FieldName": "Balamb Garden - Training Center",
         "EntityName": "joker",
         "EntityDescription": "CC Joker",
         "Enabled": true
@@ -1882,7 +1882,7 @@
     {
         "DeckID": 225,
         "FieldID": "tggate1",
-        "FieldName": "T-Garden - Front Gate",
+        "FieldName": "Trabia Garden - Front Gate",
         "EntityName": "p053",
         "EntityDescription": "",
         "Enabled": true
@@ -1890,7 +1890,7 @@
     {
         "DeckID": 226,
         "FieldID": "bgeat_2",
-        "FieldName": "B-Garden - Cafeteria",
+        "FieldName": "Balamb Garden - Cafeteria",
         "EntityName": "student6",
         "EntityDescription": "Trepe Groupie #1",
         "Enabled": true
@@ -1898,7 +1898,7 @@
     {
         "DeckID": 226,
         "FieldID": "bgroom_1",
-        "FieldName": "B-Garden - Classroom",
+        "FieldName": "Balamb Garden - Classroom",
         "EntityName": "student1",
         "EntityDescription": "",
         "Enabled": true
@@ -1906,7 +1906,7 @@
     {
         "DeckID": 226,
         "FieldID": "bgroom_1",
-        "FieldName": "B-Garden - Classroom",
+        "FieldName": "Balamb Garden - Classroom",
         "EntityName": "student2",
         "EntityDescription": "",
         "Enabled": true
@@ -1954,7 +1954,7 @@
     {
         "DeckID": 231,
         "FieldID": "bgsido_8",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "cid",
         "EntityDescription": "Headmaster Cid",
         "Enabled": true
@@ -1962,7 +1962,7 @@
     {
         "DeckID": 231,
         "FieldID": "bgsido_2",
-        "FieldName": "B-Garden - Headmaster's Office",
+        "FieldName": "Balamb Garden - Headmaster's Office",
         "EntityName": "cid",
         "EntityDescription": "Headmaster Cid",
         "Enabled": true

@@ -1,0 +1,134 @@
+[
+    {
+        "CardID": 77,
+        "CardName": "Chubby Chocobo"
+    },
+    {
+        "CardID": 78,
+        "CardName": "Angelo"
+    },
+    {
+        "CardID": 79,
+        "CardName": "Gilgamesh"
+    },
+    {
+        "CardID": 80,
+        "CardName": "Minimog"
+    },
+    {
+        "CardID": 81,
+        "CardName": "Chicobo"
+    },
+    {
+        "CardID": 82,
+        "CardName": "Quezacotl"
+    },
+    {
+        "CardID": 83,
+        "CardName": "Shiva"
+    },
+    {
+        "CardID": 84,
+        "CardName": "Ifrit"
+    },
+    {
+        "CardID": 85,
+        "CardName": "Siren"
+    },
+    {
+        "CardID": 86,
+        "CardName": "Sacred"
+    },
+    {
+        "CardID": 87,
+        "CardName": "Minotaur"
+    },
+    {
+        "CardID": 88,
+        "CardName": "Carbuncle"
+    },
+    {
+        "CardID": 89,
+        "CardName": "Diablos"
+    },
+    {
+        "CardID": 90,
+        "CardName": "Leviathan"
+    },
+    {
+        "CardID": 91,
+        "CardName": "Odin"
+    },
+    {
+        "CardID": 92,
+        "CardName": "Pandemona"
+    },
+    {
+        "CardID": 93,
+        "CardName": "Cerberus"
+    },
+    {
+        "CardID": 94,
+        "CardName": "Alexander"
+    },
+    {
+        "CardID": 95,
+        "CardName": "Phoenix"
+    },
+    {
+        "CardID": 96,
+        "CardName": "Bahamut"
+    },
+    {
+        "CardID": 97,
+        "CardName": "Doomtrain"
+    },
+    {
+        "CardID": 98,
+        "CardName": "Eden"
+    },
+    {
+        "CardID": 99,
+        "CardName": "Ward"
+    },
+    {
+        "CardID": 100,
+        "CardName": "Kiros"
+    },
+    {
+        "CardID": 101,
+        "CardName": "Laguna"
+    },
+    {
+        "CardID": 102,
+        "CardName": "Selphie"
+    },
+    {
+        "CardID": 103,
+        "CardName": "Quistis"
+    },
+    {
+        "CardID": 104,
+        "CardName": "Irvine"
+    },
+    {
+        "CardID": 105,
+        "CardName": "Zell"
+    },
+    {
+        "CardID": 106,
+        "CardName": "Rinoa"
+    },
+    {
+        "CardID": 107,
+        "CardName": "Edea"
+    },
+    {
+        "CardID": 108,
+        "CardName": "Seifer"
+    },
+    {
+        "CardID": 109,
+        "CardName": "Squall"
+    }
+]

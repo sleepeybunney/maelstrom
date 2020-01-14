@@ -6,7 +6,7 @@ namespace FF8Mod.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops;
+        private Section Title, Options, Bosses, DrawPoints, Shops, Cards;
 
         public SpoilerFile()
         {
@@ -22,6 +22,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Bosses", BossesString(settings.BossShuffle, settings.BossRebalance));
             Options.Bullet("Draw Points", GeneralString(settings.DrawPointShuffle));
             Options.Bullet("Shops", GeneralString(settings.ShopShuffle));
+            Options.Bullet("Cards", GeneralString(settings.CardShuffle));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -76,6 +77,20 @@ namespace FF8Mod.Maelstrom
             }
         }
 
+        public void AddCards(Dictionary<int, int> cardShuffle)
+        {
+            Cards = new Section();
+            Cards.Heading("Cards");
+
+            foreach (var cardId in cardShuffle.Keys)
+            {
+                var card = CardShuffle.Cards.Where(c => c.CardID == cardId).First();
+                var deck = CardShuffle.Decks.Where(d => d.DeckID == cardShuffle[cardId]).First();
+                Cards.Bullet(card.CardName, deck.LocationString);
+            }
+            Cards.NewLine();
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -102,6 +117,7 @@ namespace FF8Mod.Maelstrom
                 if (Bosses != null) result.Add(Bosses);
                 if (DrawPoints != null) result.Add(DrawPoints);
                 if (Shops != null) result.Add(Shops);
+                if (Cards != null) result.Add(Cards);
                 return result;
             }
         }
