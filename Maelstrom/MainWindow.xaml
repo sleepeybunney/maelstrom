@@ -32,8 +32,8 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses" Margin="10" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionStorySkip" Content="Skip Story" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses (Incomplete)" Margin="10" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionStorySkip" Content="Free Roam (Incomplete)" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionDrawPointShuffle" Content="Random Draw Points" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionCardShuffle" Content="Shuffle Card Locations" Margin="10" HorizontalAlignment="Left" IsChecked="{Binding CardShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
