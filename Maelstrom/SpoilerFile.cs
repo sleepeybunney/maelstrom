@@ -98,10 +98,9 @@ namespace FF8Mod.Maelstrom
 
         private string BossesString(bool shuffleFlag, bool balanceFlag)
         {
-            var result = shuffleFlag ? "Shuffled" : "";
-            if (shuffleFlag && balanceFlag) result += ", ";
-            if (balanceFlag) result += "Rebalanced";
-            return result;
+            if (!shuffleFlag) return "Normal";
+            if (shuffleFlag && balanceFlag) return "Shuffled, Rebalanced";
+            return "Shuffled";
         }
 
         private string GeneralString(bool flag)
