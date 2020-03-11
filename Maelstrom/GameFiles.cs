@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using FF8Mod.Archive;
 
 namespace FF8Mod.Maelstrom
 {
     public static class GameFiles
     {
+        public static bool Remastered = false;  // todo
+
         public static string ExePath
         {
             get { return Properties.Settings.Default.GameLocation; }
@@ -34,12 +37,34 @@ namespace FF8Mod.Maelstrom
 
         public static string FieldPath
         {
-            get { return Path.Combine(ArchivePath, "field"); }
+            get
+            {
+                if (Remastered) return MainZzzPath + @";data\field.fs";
+                return Path.Combine(ArchivePath, "field");
+            }
         }
 
         public static string MenuPath
         {
             get { return Path.Combine(ArchivePath, "menu"); }
+        }
+
+        public static string MainZzzPath
+        {
+            get { return Path.Combine(GameDirectory, "main.zzz"); }
+        }
+
+        public static string OtherZzzPath
+        {
+            get { return Path.Combine(GameDirectory, "other.zzz"); }
+        }
+
+        public static ArchiveStream FieldArchive
+        {
+            get
+            {
+                return new ArchiveStream(FieldPath);
+            }
         }
     }
 }
