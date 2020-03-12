@@ -316,6 +316,12 @@ namespace FF8Mod
             Quantity = data[1];
         }
 
+        public HeldItem(int id, int quantity)
+        {
+            ItemId = (byte)id;
+            Quantity = (byte)quantity;
+        }
+
         public byte[] Encode()
         {
             return new byte[2] { ItemId, Quantity };

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace FF8Mod.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards;
+        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot;
 
         public SpoilerFile()
         {
@@ -23,6 +24,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Draw Points", GeneralString(settings.DrawPointShuffle));
             Options.Bullet("Shops", GeneralString(settings.ShopShuffle));
             Options.Bullet("Cards", GeneralString(settings.CardShuffle));
+            Options.Bullet("Loot", GeneralString(settings.LootShuffle));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -71,7 +73,7 @@ namespace FF8Mod.Maelstrom
                 Shops.Bullet(s.Name, "");
                 foreach (var i in s.Items)
                 {
-                    Shops.Bullet(ShopShuffle.Items[i.ItemCode].Name + (i.Hidden ? " (Familiar)" : ""), 1);
+                    Shops.Bullet(Item.Lookup[i.ItemCode].Name + (i.Hidden ? " (Familiar)" : ""), 1);
                 }
                 Shops.NewLine();
             }
@@ -91,6 +93,32 @@ namespace FF8Mod.Maelstrom
             Cards.NewLine();
         }
 
+        public void AddLoot(List<MonsterInfo> monsters)
+        {
+            Loot = new Section();
+            Loot.Heading("Loot");
+            Loot.Bullet("Format: Common / Uncommon / Rare / Very Rare");
+            Loot.NewLine();
+
+            foreach (var m in monsters)
+            {
+                var name = m.Name;
+                if (name == "{03}*") name = "Rinoa";
+                if (name == "{03}L") name = "Griever";
+                if (name == " ") name = "(Unknown)";
+
+                Loot.Bullet(name + ":");
+                Loot.Bullet(string.Format("Low-level drops: {0}", LootString(m.DropLow)), 1);
+                Loot.Bullet(string.Format("Mid-level drops: {0}", LootString(m.DropMed)), 1);
+                Loot.Bullet(string.Format("High-level drops: {0}", LootString(m.DropHigh)), 1);
+                Loot.NewLine();
+                Loot.Bullet(string.Format("Low-level steals: {0}", LootString(m.MugLow)), 1);
+                Loot.Bullet(string.Format("Mid-level steals: {0}", LootString(m.MugMed)), 1);
+                Loot.Bullet(string.Format("High-level steals: {0}", LootString(m.MugHigh)), 1);
+                Loot.NewLine();
+            }
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -108,6 +136,23 @@ namespace FF8Mod.Maelstrom
             return flag ? "Random" : "Normal";
         }
 
+        private string LootString(HeldItem[] items)
+        {
+            var result = new StringBuilder();
+            result.Append(items[0].ItemId == 0 ? "Nothing" : Item.Lookup[items[0].ItemId].Name);
+            result.Append(string.Format(" x{0}", items[0].Quantity));
+            result.Append(" / ");
+            result.Append(items[1].ItemId == 0 ? "Nothing" : Item.Lookup[items[1].ItemId].Name);
+            result.Append(string.Format(" x{0}", items[1].Quantity));
+            result.Append(" / ");
+            result.Append(items[2].ItemId == 0 ? "Nothing" : Item.Lookup[items[2].ItemId].Name);
+            result.Append(string.Format(" x{0}", items[2].Quantity));
+            result.Append(" / ");
+            result.Append(items[3].ItemId == 0 ? "Nothing" : Item.Lookup[items[3].ItemId].Name);
+            result.Append(string.Format(" x{0}", items[3].Quantity));
+            return result.ToString();
+        }
+
         private List<Section> Sections
         {
             get
@@ -117,6 +162,7 @@ namespace FF8Mod.Maelstrom
                 if (DrawPoints != null) result.Add(DrawPoints);
                 if (Shops != null) result.Add(Shops);
                 if (Cards != null) result.Add(Cards);
+                if (Loot != null) result.Add(Loot);
                 return result;
             }
         }

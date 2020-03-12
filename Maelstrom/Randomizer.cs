@@ -66,13 +66,24 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     CreateOrRestoreArchiveBackup(GameFiles.BattlePath);
+                    var battleSource = new FileSource(GameFiles.BattlePath);
 
                     // boss shuffle/rebalance
                     if (Properties.Settings.Default.BossShuffle)
                     {
-                        var battleSource = new FileSource(GameFiles.BattlePath);
                         var shuffle = Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
                         if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddBosses(shuffle);
+                    }
+
+                    // loot shuffle
+                    if (Properties.Settings.Default.LootShuffle)
+                    {
+                        var shuffle = LootShuffle.Randomise(battleSource, seed);
+                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddLoot(shuffle);
+                    }
+
+                    if (Properties.Settings.Default.BossShuffle || Properties.Settings.Default.LootShuffle)
+                    {
                         battleSource.Encode();
                     }
 
