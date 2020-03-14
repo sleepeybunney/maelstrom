@@ -28,7 +28,8 @@ namespace FF8Mod.Maelstrom
                     () => BattleOps(seed, spoilerFile),
                     () => FieldOps(seed, spoilerFile),
                     () => MenuOps(seed, spoilerFile),
-                    () => ExeOps(seed, spoilerFile)
+                    () => ExeOps(seed, spoilerFile),
+                    () => MainOps(seed, spoilerFile)
                 );
 
                 FinalOps(seed, spoilerFile);
@@ -223,6 +224,37 @@ namespace FF8Mod.Maelstrom
                 }
             }
             Debug.WriteLine("exe ops end");
+        }
+
+        private static void MainOps(int seed, SpoilerFile spoilerFile)
+        {
+            Debug.WriteLine("main ops start");
+            while (true)
+            {
+                try
+                {
+                    CreateOrRestoreArchiveBackup(GameFiles.MainPath);
+                    var mainSource = new FileSource(GameFiles.MainPath);
+
+                    // ability shuffle
+                    if (Properties.Settings.Default.AbilityShuffle)
+                    {
+                        AbilityShuffle.Randomise(mainSource, seed);
+                    }
+
+                    mainSource.Encode();
+                    break;
+                }
+                catch (Exception x)
+                {
+                    if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
+                    {
+                        if (HandleFileException(GameFiles.MainPath) == false) break;
+                    }
+                    else throw;
+                }
+            }
+            Debug.WriteLine("main ops end");
         }
 
         // update multiple files on 2nd pass

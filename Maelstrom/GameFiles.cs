@@ -49,6 +49,11 @@ namespace FF8Mod.Maelstrom
             get { return Path.Combine(ArchivePath, "menu"); }
         }
 
+        public static string MainPath
+        {
+            get { return Path.Combine(ArchivePath, "main"); }
+        }
+
         public static string MainZzzPath
         {
             get { return Path.Combine(GameDirectory, "main.zzz"); }
@@ -61,10 +66,22 @@ namespace FF8Mod.Maelstrom
 
         public static ArchiveStream FieldArchive
         {
-            get
-            {
-                return new ArchiveStream(FieldPath);
-            }
+            get { return new ArchiveStream(FieldPath); }
+        }
+
+        public static ArchiveStream MainArchive
+        {
+            get { return new ArchiveStream(MainPath); }
+        }
+
+        public static string DataPath
+        {
+            get { return @"c:\ff8\data\eng"; }
+        }
+
+        public static string KernelPath
+        {
+            get { return Path.Combine(DataPath, "kernel.bin"); }
         }
     }
 }

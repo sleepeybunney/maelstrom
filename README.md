@@ -71,3 +71,5 @@ Big thanks to **Bosshunter** for coming up with ideas, helping me figure stuff o
 * [Deling](https://github.com/myst6re/deling) by myst6re
 * [Ifrit](https://sourceforge.net/projects/ifrit/) by gjoerulv
 * [Cactilio](http://forums.qhimm.com/index.php?topic=16275.0) by JeMaCheHi
+* [zzzDeArchive](https://github.com/Sebanisu/zzzDeArchive) by Sebanisu
+* [Doomtrain](https://github.com/alexfilth/doomtrain) by alexfilth

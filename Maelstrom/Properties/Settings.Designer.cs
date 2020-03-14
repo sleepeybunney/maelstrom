@@ -418,5 +418,17 @@ namespace FF8Mod.Maelstrom.Properties {
                 this["LootShuffle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AbilityShuffle {
+            get {
+                return ((bool)(this["AbilityShuffle"]));
+            }
+            set {
+                this["AbilityShuffle"] = value;
+            }
+        }
     }
 }
