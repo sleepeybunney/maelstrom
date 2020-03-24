@@ -21,7 +21,7 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 * Final Fantasy VIII - 2013 Steam release (EN)*
 * No other mods installed (at least for now, if you just want to fix the music you can use [this](https://steamcommunity.com/app/39150/discussions/0/35221031741516824/))
-* Windows 7 or above with [.NET Core runtime](https://docs.microsoft.com/en-us/dotnet/core/install/runtime)
+* Windows 7 or above with the latest .NET Framework
 * 1GB free disk space (for backups & working files)
 
 \* Currently looking into support for the Remastered edition, as well as other regional variants of the Steam release.

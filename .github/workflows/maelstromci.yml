@@ -1,4 +1,4 @@
-name: .NET Core
+name: Maelstrom CI
 
 on: push
 
@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Setup .NET Core
+    - name: Setup dotnet
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.0.100'
@@ -20,9 +20,9 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: maelstrom
-        path: ./Maelstrom/bin/Release/netcoreapp3.0
+        path: ./Maelstrom/bin/Release/net472
     - name: Upload MiniMog
       uses: actions/upload-artifact@v1
       with:
         name: minimog
-        path: ./MiniMog/bin/Release/netcoreapp3.0
+        path: ./MiniMog/bin/Release/net472
