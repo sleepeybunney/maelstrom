@@ -20,7 +20,7 @@
     <Setting Name="SeedSet" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SeedValue" Type="System.Int32" Scope="User">
+    <Setting Name="SeedValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="NameSet" Type="System.Boolean" Scope="User">

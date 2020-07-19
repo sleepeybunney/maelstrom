@@ -9,8 +9,9 @@ namespace FF8Mod.Maelstrom
     public static class StorySkip
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
+        private static readonly int codenameLength = 16;
 
-        public static void Apply(FileSource fieldSource, string af3dnPath, int seed)
+        public static void Apply(FileSource fieldSource, string af3dnPath, string seedString, int seed)
         {
             // replace liberi fatali intro with quistis walking through a door
             ImportScript(fieldSource, "start0", 0, 1);
@@ -19,7 +20,13 @@ namespace FF8Mod.Maelstrom
             // brief conversation in the infirmary, receive 2 GFs and a party member
             ImportScript(fieldSource, "bghoke_2", 12, 1);
             ImportScript(fieldSource, "bghoke_2", 6, 4);
-            SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} ID #" + seed.ToString()  + "...”");
+
+            // show seed value, slightly different wording if numeric
+            // (numbers above int_max count as numeric here, despite actually being treated as strings for rng purposes)
+            var seedText = "ID #{0}...";
+            if (!long.TryParse(seedString, out _)) seedText = "Codename: '{0}'...";
+            var seedFinal = string.Format(seedText, seedString.Substring(0, Math.Min(codenameLength, seedString.Length)));
+            SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} " + seedFinal);
 
             // tutorial at the front gate
             DeleteEntity(fieldSource, "bggate_1", 0);

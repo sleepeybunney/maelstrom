@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FF8Mod.Archive;
 using System.Windows;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace FF8Mod.Maelstrom
 {
@@ -16,9 +17,15 @@ namespace FF8Mod.Maelstrom
             Debug.WriteLine("randomizer start");
 
             // generate new seed if not fixed
-            if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = new Random().Next(-1, int.MaxValue) + 1;
+            if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
+            var seedString = Properties.Settings.Default.SeedValue;
 
-            var seed = Properties.Settings.Default.SeedValue;
+            // use seed string's hash code as the seed (or parse if possible, for compatibility with 0.2.1 and earlier)
+            if (!int.TryParse(seedString, out int seed))
+            {
+                seed = seedString.GetHashCode();
+            }
+
             var spoilerFile = new SpoilerFile();
 
             Task.Run(() =>
@@ -26,13 +33,13 @@ namespace FF8Mod.Maelstrom
                 Parallel.Invoke
                 (
                     () => BattleOps(seed, spoilerFile),
-                    () => FieldOps(seed, spoilerFile),
+                    () => FieldOps(seed, seedString, spoilerFile),
                     () => MenuOps(seed, spoilerFile),
                     () => ExeOps(seed, spoilerFile),
                     () => MainOps(seed, spoilerFile)
                 );
 
-                FinalOps(seed, spoilerFile);
+                FinalOps(seed, seedString, spoilerFile);
                 callback.Invoke();
 
                 Debug.WriteLine("randomizer end");
@@ -103,7 +110,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update field archive (and af3dn.p)
-        private static void FieldOps(int seed, SpoilerFile spoilerFile)
+        private static void FieldOps(int seed, string seedString, SpoilerFile spoilerFile)
         {
             Debug.WriteLine("field ops start");
             while (true)
@@ -116,7 +123,7 @@ namespace FF8Mod.Maelstrom
                     // apply free roam
                     if (Properties.Settings.Default.StorySkip)
                     {
-                        StorySkip.Apply(fieldSource, GameFiles.Af3dnPath, seed);
+                        StorySkip.Apply(fieldSource, GameFiles.Af3dnPath, seedString, seed);
                     }
                     else
                     {
@@ -258,7 +265,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update multiple files on 2nd pass
-        private static void FinalOps(int seed, SpoilerFile spoilerFile)
+        private static void FinalOps(int seed, string seedString, SpoilerFile spoilerFile)
         {
             Debug.WriteLine("final ops start");
             while (true)
@@ -289,7 +296,10 @@ namespace FF8Mod.Maelstrom
             // save spoiler file
             if (Properties.Settings.Default.SpoilerFile)
             {
-                File.WriteAllText("spoilers." + seed.ToString() + ".txt", spoilerFile.ToString());
+                // strip illegal chars from filename
+                var invalidChars = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                var regex = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
+                File.WriteAllText("spoilers." + regex.Replace(seedString, "_") + ".txt", spoilerFile.ToString());
             }
             Debug.WriteLine("final ops end");
         }
