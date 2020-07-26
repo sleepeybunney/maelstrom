@@ -52,8 +52,7 @@ namespace FF8Mod.Archive
                 {
                     writer.Write(Entries[i].Length);
                     writer.Write(Entries[i].Location);
-                    uint compressed = (uint)(Entries[i].Compressed ? 1 : 0);
-                    writer.Write(compressed);
+                    writer.Write(Entries[i].Compression);
                 }
             }
 

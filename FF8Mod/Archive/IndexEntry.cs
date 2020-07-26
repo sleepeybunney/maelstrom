@@ -7,21 +7,21 @@ namespace FF8Mod.Archive
     {
         public uint Length;
         public uint Location;
-        public bool Compressed;
+        public uint Compression;
 
         public IndexEntry(byte[] data)
         {
             if (data.Length != 12) throw new InvalidDataException("Expected 12 bytes for a file index entry");
             Length = BitConverter.ToUInt32(data, 0);
             Location = BitConverter.ToUInt32(data, 4);
-            Compressed = BitConverter.ToUInt32(data, 8) == 1;
+            Compression = BitConverter.ToUInt32(data, 8);
         }
 
-        public IndexEntry(uint location, uint length, bool compressed)
+        public IndexEntry(uint location, uint length, uint compression)
         {
             Location = location;
             Length = length;
-            Compressed = compressed;
+            Compression = compression;
         }
     }
 }

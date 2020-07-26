@@ -69,10 +69,22 @@ namespace FF8Mod.Archive
             using (var reader = new BinaryReader(stream))
             {
                 stream.Seek(entry.Location, SeekOrigin.Begin);
-                if (!entry.Compressed) return reader.ReadBytes((int)entry.Length);
 
-                var length = reader.ReadUInt32();
-                return Lzss.Decompress(reader.ReadBytes((int)length));
+                if (entry.Compression == 1)
+                {
+                    var length = reader.ReadUInt32();
+                    return Lzss.Decompress(reader.ReadBytes((int)length));
+                }
+
+                if (entry.Compression == 2)
+                {
+                    var length = reader.ReadUInt32();
+                    return Lz4.Decompress(reader.ReadBytes((int)length));
+                }
+
+                return reader.ReadBytes((int)entry.Length);
+
+                
             }
         }
 
@@ -132,11 +144,11 @@ namespace FF8Mod.Archive
                     var sizeChange = UpdatedFiles[path].Length - oldSize;
 
                     // offset all the file entries displaced by the change
-                    FileIndex.Entries[key] = new IndexEntry(entry.Location, (uint)UpdatedFiles[path].Length, false);
+                    FileIndex.Entries[key] = new IndexEntry(entry.Location, (uint)UpdatedFiles[path].Length, 0);
                     for (int i = key + 1; i < FileIndex.Entries.Count; i++)
                     {
                         var currEntry = FileIndex.Entries[i];
-                        FileIndex.Entries[i] = new IndexEntry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compressed);
+                        FileIndex.Entries[i] = new IndexEntry((uint)(currEntry.Location + sizeChange), currEntry.Length, currEntry.Compression);
                     }
 
                     // write data to temp file
