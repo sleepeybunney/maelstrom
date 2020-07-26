@@ -35,6 +35,8 @@ namespace FF8Mod.Maelstrom
 
             Task.Run(() =>
             {
+                if (Globals.Remastered) UnpackOnFirstRun();
+
                 Parallel.Invoke
                 (
                     () => BattleOps(seed, spoilerFile),
@@ -45,6 +47,8 @@ namespace FF8Mod.Maelstrom
                 );
 
                 FinalOps(seed, seedString, spoilerFile);
+                if (Globals.Remastered) RepackArchive();
+
                 callback.Invoke();
 
                 Debug.WriteLine("randomizer end");
@@ -59,6 +63,61 @@ namespace FF8Mod.Maelstrom
                 var backup = f + ".bak";
                 if (!File.Exists(backup)) File.Copy(f, backup);
                 else File.Copy(backup, f, true);
+            }
+        }
+
+        private static string[] WorkspaceFiles = new string[]
+        {
+            "field.fs",
+            "field.fi",
+            "field.fl",
+            "lang-en\\battle.fs",
+            "lang-en\\battle.fi",
+            "lang-en\\battle.fl",
+            "lang-en\\menu.fs",
+            "lang-en\\menu.fi",
+            "lang-en\\menu.fl",
+            "lang-en\\main.fs",
+            "lang-en\\main.fi",
+            "lang-en\\main.fl",
+        };
+
+        private static string WorkspacePath
+        {
+            get { return Path.Combine(Path.GetDirectoryName(Globals.MainZzzPath), "Data"); }
+        }
+
+        private static void UnpackOnFirstRun()
+        {
+            Debug.WriteLine("unpack archive - " + Globals.MainZzzPath);
+            Directory.CreateDirectory(WorkspacePath);
+
+            foreach (var f in WorkspaceFiles)
+            {
+                var destPath = Path.Combine(WorkspacePath, f);
+                if (!File.Exists(destPath))
+                {
+                    using (var source = new ArchiveStream(Globals.MainZzzPath + @";data\" + f))
+                    using (var dest = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        source.CopyTo(dest);
+                    }
+                }
+            }
+        }
+
+        private static void RepackArchive()
+        {
+            Debug.WriteLine("repack archive - " + Globals.MainZzzPath);
+
+            foreach (var f in WorkspaceFiles)
+            {
+                var sourcePath = Path.Combine(WorkspacePath, f);
+                if (File.Exists(sourcePath))
+                {
+                    var source = File.ReadAllBytes(sourcePath);
+                    new Zzz(Globals.MainZzzPath).ReplaceFile(@"data\" + f, source);
+                }
             }
         }
 
@@ -208,7 +267,7 @@ namespace FF8Mod.Maelstrom
         private static void ExeOps(int seed, SpoilerFile spoilerFile)
         {
             Debug.WriteLine("exe ops start");
-            while (true)
+            while (true && !Globals.Remastered)
             {
                 try
                 {
