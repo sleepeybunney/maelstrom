@@ -13,11 +13,7 @@ namespace FF8Mod
 
         public static string LanguageCode
         {
-            get
-            {
-                if (Remastered) return "[x]";
-                else return "eng";
-            }
+            get { return "[x]"; }
         }
 
         public static string ScriptFileExtension
