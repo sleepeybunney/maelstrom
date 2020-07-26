@@ -28,7 +28,7 @@ namespace FF8Mod.Maelstrom
             // show seed value, slightly different wording if numeric
             // (note: numbers above int_max count as numeric here, despite actually being treated as strings for rng purposes)
             var seedText = "ID #{0}...";
-            if (!long.TryParse(seedString, out _)) seedText = "Codename: '{0}'...";
+            if (!long.TryParse(seedString, out _)) seedText = "Codename: '{0}`...";
             var seedFinal = string.Format(seedText, seedString.Substring(0, Math.Min(codenameLength, seedString.Length)));
             SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} " + seedFinal);
 
