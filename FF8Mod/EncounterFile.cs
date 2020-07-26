@@ -6,7 +6,7 @@ namespace FF8Mod
 {
     public class EncounterFile
     {
-        public static string Path = @"c:\ff8\data\eng\battle\scene.out";
+        public static string Path = Globals.DataPath + @"\battle\scene.out";
 
         public List<Encounter> Encounters;
 

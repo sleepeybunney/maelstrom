@@ -38,7 +38,7 @@ namespace FF8Mod
 
         public static string GetPath(int monsterID)
         {
-            return string.Format(@"c:\ff8\data\eng\battle\c0m{0:d3}.dat", monsterID);
+            return string.Format(@"{0}\battle\c0m{1:d3}.dat", Globals.DataPath, monsterID);
         }
 
         public static Monster FromBytes(byte[] data)

@@ -4,15 +4,38 @@ using System.Text;
 using System.IO;
 using FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace FF8Mod
 {
-    public static class GameFiles
+    public static class Globals
     {
-        public static bool Remastered = false;  // todo
+        public static string ExePath;
+        public static bool Remastered = false;
 
-        public static string ExePath
+        public static string LanguageCode
         {
-            get { return Properties.Settings.Default.GameLocation; }
+            get
+            {
+                if (Remastered) return "[x]";
+                else return "eng";
+            }
+        }
+
+        public static string ScriptFileExtension
+        {
+            get
+            {
+                if (Remastered) return "_en.jsm";
+                else return ".jsm";
+            }
+        }
+
+        public static string MessageFileExtension
+        {
+            get
+            {
+                if (Remastered) return "_en.msd";
+                else return ".msd";
+            }
         }
         
         public static string GameDirectory
@@ -39,8 +62,8 @@ namespace FF8Mod.Maelstrom
         {
             get
             {
-                if (Remastered) return MainZzzPath + @";data\field.fs";
-                return Path.Combine(ArchivePath, "field");
+                if (Remastered) return Path.Combine(GameDirectory, "data", "field");
+                else return Path.Combine(ArchivePath, "field");
             }
         }
 
@@ -76,7 +99,7 @@ namespace FF8Mod.Maelstrom
 
         public static string DataPath
         {
-            get { return @"c:\ff8\data\eng"; }
+            get { return @"c:\ff8\data\" + LanguageCode; }
         }
 
         public static string KernelPath

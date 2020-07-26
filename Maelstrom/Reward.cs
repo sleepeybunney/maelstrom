@@ -173,7 +173,7 @@ namespace FF8Mod.Maelstrom
             var innerSource = new FileSource(fieldPath, fieldSource);
 
             // add message
-            var msdPath = Path.Combine(fieldPath, boss.FieldID + ".msd");
+            var msdPath = Path.Combine(fieldPath, boss.FieldID + Globals.MessageFileExtension);
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             var msgID = fieldText.Messages.Count;
             fieldText.Messages.Add(message);
@@ -201,7 +201,7 @@ namespace FF8Mod.Maelstrom
             // apply changes
             script.Instructions.InsertRange(index, awardInstructions);
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
-            innerSource.ReplaceFile(Field.FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + ".jsm", field.Encode());
+            innerSource.ReplaceFile(Field.FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + Globals.ScriptFileExtension, field.Encode());
         }
 
         public static void SetRewards(FileSource battleSource, FileSource fieldSource, int seed)

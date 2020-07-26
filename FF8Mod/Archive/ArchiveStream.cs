@@ -103,7 +103,7 @@ namespace FF8Mod.Archive
         {
             using (var reader = new BinaryReader(this, Encoding.UTF8, true))
             {
-                var indexEntry = Index.Find(e => e.Path == path);
+                var indexEntry = Index.Find(e => e.Path.ToLower().Replace(@"\x\", "").Replace(@"\eng\", "") == path.ToLower().Replace(@"\[x]\", ""));
                 if (indexEntry == null) throw new FileNotFoundException(string.Format("File not found in archive - {0}", path));
                 Seek((long)indexEntry.Offset, SeekOrigin.Begin);
                 var result = new byte[indexEntry.Length];

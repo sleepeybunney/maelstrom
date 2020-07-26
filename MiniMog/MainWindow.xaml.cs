@@ -63,13 +63,13 @@ namespace FF8Mod.MiniMog
                 {
                     // open & validate file
                     var fs = new FileSource(path);
-                    if (!fs.PathExists(@"c:\ff8\data\eng\battle"))
+                    if (!fs.PathExists(Globals.DataPath + @"\battle"))
                     {
                         throw new Exception("Incorrect file - please open battle.fs");
                     }
 
                     var monsterPaths = fs.FileList.Files.Where(f =>
-                        f.StartsWith(@"c:\ff8\data\eng\battle\c0m")
+                        f.StartsWith(Globals.DataPath + @"\battle\c0m")
                         && f.EndsWith(@".dat")
                     );
 

@@ -8,7 +8,7 @@ namespace FF8Mod.Maelstrom
 {
     public class PresetNames
     {
-        public static string ArchivePath = @"c:\ff8\data\eng\menu\mngrp.bin";
+        public static string ArchivePath = Globals.DataPath + @"\menu\mngrp.bin";
         public static int FileOffset = 0x2000;
         public static int FileLength = 0x2000;
         public static int NamesPage = 5;

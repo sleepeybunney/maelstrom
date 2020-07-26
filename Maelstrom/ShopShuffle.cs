@@ -39,7 +39,7 @@ namespace FF8Mod.Maelstrom
 
         public static void Apply(FileSource menuSource, List<Shop> shops)
         {
-            var shopBinPath = @"c:\ff8\data\eng\menu\shop.bin";
+            var shopBinPath = Globals.DataPath + @"\menu\shop.bin";
             var newData = new List<byte>();
             foreach (var s in shops)
             {

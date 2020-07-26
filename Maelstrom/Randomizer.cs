@@ -15,6 +15,11 @@ namespace FF8Mod.Maelstrom
         public static void Go(Action callback)
         {
             Debug.WriteLine("randomizer start");
+            Globals.ExePath = Properties.Settings.Default.GameLocation;
+
+            // detect game version
+            if (Path.GetFileName(Globals.ExePath).ToLower() == "ffviii.exe") Globals.Remastered = true;
+            else Globals.Remastered = false;
 
             // generate new seed if not fixed
             if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
@@ -73,8 +78,8 @@ namespace FF8Mod.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(GameFiles.BattlePath);
-                    var battleSource = new FileSource(GameFiles.BattlePath);
+                    CreateOrRestoreArchiveBackup(Globals.BattlePath);
+                    var battleSource = new FileSource(Globals.BattlePath);
 
                     // boss shuffle/rebalance
                     if (Properties.Settings.Default.BossShuffle)
@@ -101,7 +106,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.BattlePath) == false) break;
+                        if (HandleFileException(Globals.BattlePath) == false) break;
                     }
                     else throw;
                 }
@@ -117,17 +122,17 @@ namespace FF8Mod.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(GameFiles.FieldPath);
-                    var fieldSource = new FileSource(GameFiles.FieldPath);
+                    CreateOrRestoreArchiveBackup(Globals.FieldPath);
+                    var fieldSource = new FileSource(Globals.FieldPath);
 
                     // apply free roam
                     if (Properties.Settings.Default.StorySkip)
                     {
-                        StorySkip.Apply(fieldSource, GameFiles.Af3dnPath, seedString, seed);
+                        StorySkip.Apply(fieldSource, seedString, seed);
                     }
                     else
                     {
-                        StorySkip.Remove(GameFiles.Af3dnPath);
+                        StorySkip.Remove();
                     }
 
                     // apply card shuffle
@@ -150,7 +155,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.FieldPath) == false) break;
+                        if (HandleFileException(Globals.FieldPath) == false) break;
                     }
                     else throw;
                 }
@@ -166,8 +171,8 @@ namespace FF8Mod.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(GameFiles.MenuPath);
-                    var menuSource = new FileSource(GameFiles.MenuPath);
+                    CreateOrRestoreArchiveBackup(Globals.MenuPath);
+                    var menuSource = new FileSource(Globals.MenuPath);
 
                     // preset names
                     if (Properties.Settings.Default.NameSet)
@@ -191,7 +196,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.MenuPath) == false) break;
+                        if (HandleFileException(Globals.MenuPath) == false) break;
                     }
                     else throw;
                 }
@@ -212,11 +217,11 @@ namespace FF8Mod.Maelstrom
                     {
                         var shuffle = DrawPointShuffle.Randomise(seed);
                         if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
-                        DrawPointShuffle.GeneratePatch(shuffle).Apply(GameFiles.ExePath);
+                        DrawPointShuffle.GeneratePatch(shuffle).Apply(Globals.ExePath);
                     }
                     else
                     {
-                        DrawPointShuffle.RemovePatch(GameFiles.ExePath);
+                        DrawPointShuffle.RemovePatch(Globals.ExePath);
                     }
 
                     break;
@@ -225,7 +230,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.ExePath) == false) break;
+                        if (HandleFileException(Globals.ExePath) == false) break;
                     }
                     else throw;
                 }
@@ -240,8 +245,8 @@ namespace FF8Mod.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(GameFiles.MainPath);
-                    var mainSource = new FileSource(GameFiles.MainPath);
+                    CreateOrRestoreArchiveBackup(Globals.MainPath);
+                    var mainSource = new FileSource(Globals.MainPath);
 
                     // ability shuffle
                     if (Properties.Settings.Default.AbilityShuffle)
@@ -256,7 +261,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.MainPath) == false) break;
+                        if (HandleFileException(Globals.MainPath) == false) break;
                     }
                     else throw;
                 }
@@ -275,8 +280,8 @@ namespace FF8Mod.Maelstrom
                     // free roam rewards
                     if (Properties.Settings.Default.StorySkip)
                     {
-                        var battleSource = new FileSource(GameFiles.BattlePath);
-                        var fieldSource = new FileSource(GameFiles.FieldPath);
+                        var battleSource = new FileSource(Globals.BattlePath);
+                        var fieldSource = new FileSource(Globals.FieldPath);
                         Reward.SetRewards(battleSource, fieldSource, seed);
                         battleSource.Encode();
                         fieldSource.Encode();
@@ -287,7 +292,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(GameFiles.BattlePath) == false) break;
+                        if (HandleFileException(Globals.BattlePath) == false) break;
                     }
                     else throw;
                 }

@@ -57,7 +57,7 @@ namespace FF8Mod.Maelstrom
             {
                 CheckFileExists = true,
                 Multiselect = false,
-                Filter = "Final Fantasy VIII Executable|ff8_en.exe",
+                Filter = "Final Fantasy VIII Executable|ff8_en.exe;ffviii.exe",
                 Title = "Select game location"
             };
 

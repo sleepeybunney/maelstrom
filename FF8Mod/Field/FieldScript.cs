@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using FF8Mod;
 using FF8Mod.Archive;
 
 namespace FF8Mod.Field
@@ -85,13 +86,13 @@ namespace FF8Mod.Field
         {
             var fieldPath = GetFieldPath(fieldName);
             var innerSource = new FileSource(fieldPath, fieldSource);
-            return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + ".jsm"));
+            return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension));
         }
 
         public static string GetFieldPath(string fieldName)
         {
             var abbrev = fieldName.Substring(0, 2);
-            return string.Format(@"c:\ff8\data\eng\field\mapdata\{0}\{1}", abbrev, fieldName);
+            return string.Format(Globals.DataPath + @"\field\mapdata\{0}\{1}", abbrev, fieldName);
         }
 
         // jsm output

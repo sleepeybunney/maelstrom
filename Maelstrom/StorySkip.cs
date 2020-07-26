@@ -11,18 +11,22 @@ namespace FF8Mod.Maelstrom
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
         private static readonly int codenameLength = 16;
 
-        public static void Apply(FileSource fieldSource, string af3dnPath, string seedString, int seed)
+        public static void Apply(FileSource fieldSource, string seedString, int seed)
         {
+            // something in the steam 2013 version tracks your progress by watching for certain movie files
+            // getting played - not sure exactly what it's for but if we change the intro movie we need to
+            // update this as well or it gets very unstable
+            if (!Globals.Remastered) IntroPatch.Apply(Globals.Af3dnPath);
+
             // replace liberi fatali intro with quistis walking through a door
             ImportScript(fieldSource, "start0", 0, 1);
-            IntroPatch.Apply(af3dnPath);
 
             // brief conversation in the infirmary, receive 2 GFs and a party member
             ImportScript(fieldSource, "bghoke_2", 12, 1);
             ImportScript(fieldSource, "bghoke_2", 6, 4);
 
             // show seed value, slightly different wording if numeric
-            // (numbers above int_max count as numeric here, despite actually being treated as strings for rng purposes)
+            // (note: numbers above int_max count as numeric here, despite actually being treated as strings for rng purposes)
             var seedText = "ID #{0}...";
             if (!long.TryParse(seedString, out _)) seedText = "Codename: '{0}'...";
             var seedFinal = string.Format(seedText, seedString.Substring(0, Math.Min(codenameLength, seedString.Length)));
@@ -75,10 +79,9 @@ namespace FF8Mod.Maelstrom
             DeleteEntity(fieldSource, "tigate1", 18);
         }
 
-        public static void Remove(string af3dnPath)
+        public static void Remove()
         {
-            // todo: reset field scripts
-            IntroPatch.Remove(af3dnPath);
+            if (!Globals.Remastered) IntroPatch.Remove(Globals.Af3dnPath);
         }
 
         // overwrite a field script with one imported from an embedded text file
@@ -113,7 +116,7 @@ namespace FF8Mod.Maelstrom
         public static void SetText(FileSource fieldSource, string fieldName, int messageId, string newText)
         {
             var fieldPath = FieldScript.GetFieldPath(fieldName);
-            var msdPath = Path.Combine(fieldPath, fieldName + ".msd");
+            var msdPath = Path.Combine(fieldPath, fieldName + Globals.MessageFileExtension);
             var innerSource = new FileSource(fieldPath, fieldSource);
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             fieldText.Messages[messageId] = newText;
@@ -133,8 +136,9 @@ namespace FF8Mod.Maelstrom
 
         public static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)
         {
-            var innerSource = new FileSource(FieldScript.GetFieldPath(fieldName), fieldSource);
-            innerSource.ReplaceFile(FieldScript.GetFieldPath(fieldName) + "\\" + fieldName + ".jsm", fieldCode);
+            var fieldPath = FieldScript.GetFieldPath(fieldName);
+            var innerSource = new FileSource(fieldPath, fieldSource);
+            innerSource.ReplaceFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension, fieldCode);
         }
     }
 }
