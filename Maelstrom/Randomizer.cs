@@ -17,9 +17,23 @@ namespace FF8Mod.Maelstrom
             Debug.WriteLine("randomizer start");
             Globals.ExePath = Properties.Settings.Default.GameLocation;
 
+            if (!File.Exists(Globals.ExePath))
+            {
+                HandleExeException(Globals.ExePath);
+                callback.Invoke();
+                return;
+            }
+
             // detect game version
-            if (Path.GetFileName(Globals.ExePath).ToLower() == "ffviii.exe") Globals.Remastered = true;
-            else Globals.Remastered = false;
+            var exeFileName = Path.GetFileName(Globals.ExePath).ToLower();
+            if (exeFileName == "ffviii.exe") Globals.Remastered = true;
+            else if (exeFileName == "ff8_en.exe") Globals.Remastered = false;
+            else
+            {
+                HandleExeException(Globals.ExePath);
+                callback.Invoke();
+                return;
+            }
 
             // generate new seed if not fixed
             if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
@@ -132,6 +146,13 @@ namespace FF8Mod.Maelstrom
             var message = string.Format("Could not write to file: {0}{1}Make sure it exists and is not open in another program.{1}Click OK to retry. Cancelling this operation may leave your game in an unplayable state.", filePath, Environment.NewLine);
             var result = MessageBox.Show(message, "Maelstrom - Error", MessageBoxButton.OKCancel);
             return result == MessageBoxResult.OK;
+        }
+
+        private static void HandleExeException(string filePath)
+        {
+            Debug.WriteLine("file exception - " + filePath);
+            var message = string.Format("Could not open file: {0}{1}Make sure the path is correct and that your version of the game is supported.", filePath, Environment.NewLine);
+            MessageBox.Show(message, "Maelstrom - Error", MessageBoxButton.OK);
         }
 
         // update battle archive
