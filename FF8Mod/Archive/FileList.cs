@@ -45,8 +45,7 @@ namespace FF8Mod.Archive
 
         public int GetIndex(string path)
         {
-            var pathLower = path.ToLower().Replace(@"\[x]\", "");
-            return Files.FindIndex(f => f.ToLower().Replace(@"\x\", "").Replace(@"\eng\", "") == pathLower);
+            return Files.FindIndex(f => WildcardPath.Match(f, path));
         }
 
         public List<string> GetDirectory(string path)
