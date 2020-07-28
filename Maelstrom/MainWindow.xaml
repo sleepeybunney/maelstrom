@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
-        Title="Maelstrom" Height="323" Width="550" ResizeMode="NoResize" Closing="OnClosing">
+        Title="Maelstrom" Height="335" Width="550" ResizeMode="NoResize" Closing="OnClosing">
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White" />
@@ -49,6 +49,7 @@
                     </StackPanel>
                     <CheckBox x:Name="optionShopShuffle" Content="Random Shops" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding ShopShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionLootShuffle" Content="Random Item Drops/Steals" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding LootShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionMusicShuffle" Content="Shuffle Music" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding MusicShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                     <CheckBox x:Name="optionSpoilerFile" Content="Generate Spoiler File" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding SpoilerFile, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                 </StackPanel>
             </StackPanel>

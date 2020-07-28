@@ -1,0 +1,6594 @@
+[
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bchtl1a",
+        "Entity": 0,
+        "Script": 1,
+        "Line": 111,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bchtl1a",
+        "Entity": 0,
+        "Script": 1,
+        "Line": 117,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 57,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 63,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 214,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 220,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 6,
+        "Script": 6,
+        "Line": 132,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bcsaka1a",
+        "Entity": 6,
+        "Script": 6,
+        "Line": 138,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bdifrit1",
+        "Entity": 0,
+        "Script": 5,
+        "Line": 7,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bdifrit1",
+        "Entity": 0,
+        "Script": 5,
+        "Line": 15,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmon_6",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 14,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmon_6",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 47,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmast_6",
+        "Entity": 1,
+        "Script": 1,
+        "Line": 2,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmast_1",
+        "Entity": 13,
+        "Script": 14,
+        "Line": 20,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmast_1",
+        "Entity": 13,
+        "Script": 14,
+        "Line": 26,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmd3_1",
+        "Entity": 11,
+        "Script": 4,
+        "Line": 59,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgmd3_1",
+        "Entity": 11,
+        "Script": 4,
+        "Line": 64,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bgsido_3",
+        "Entity": 8,
+        "Script": 1,
+        "Line": 6,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "bggate_1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 64,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "cdfield6",
+        "Entity": 4,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "cdfield1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "crodin1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 25,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "crodin1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 30,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ddruins6",
+        "Entity": 17,
+        "Script": 1,
+        "Line": 152,
+        "Arg": 59
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ddruins6",
+        "Entity": 17,
+        "Script": 1,
+        "Line": 167,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "dotown_3",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "dotown_2",
+        "Entity": 25,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "dotown_1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "dogate_1",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "doani4_2",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 2,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "doani4_2",
+        "Entity": 10,
+        "Script": 5,
+        "Line": 2,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebinhi1a",
+        "Entity": 18,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebinhi1a",
+        "Entity": 18,
+        "Script": 1,
+        "Line": 43,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebinto1",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebinto1",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 94,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebadele3",
+        "Entity": 4,
+        "Script": 1,
+        "Line": 138,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebadele3",
+        "Entity": 4,
+        "Script": 1,
+        "Line": 144,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebexit5",
+        "Entity": 0,
+        "Script": 3,
+        "Line": 3,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebcont1",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 209,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ebcont1",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 226,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ecmview1",
+        "Entity": 19,
+        "Script": 1,
+        "Line": 30,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "edview1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "edlabo1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "edmoor1",
+        "Entity": 1,
+        "Script": 3,
+        "Line": 49,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "edmoor1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "elstop1",
+        "Entity": 8,
+        "Script": 4,
+        "Line": 47,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "elstop1",
+        "Entity": 8,
+        "Script": 4,
+        "Line": 52,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "emlobby3",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "embind2",
+        "Entity": 5,
+        "Script": 1,
+        "Line": 72,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fewor1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 3,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fewor1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fetre1",
+        "Entity": 22,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fetre1",
+        "Entity": 22,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feteras1",
+        "Entity": 9,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feteras1",
+        "Entity": 9,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fejail1",
+        "Entity": 14,
+        "Script": 2,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fejail1",
+        "Entity": 14,
+        "Script": 2,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fejail1",
+        "Entity": 14,
+        "Script": 4,
+        "Line": 26,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fejail1",
+        "Entity": 14,
+        "Script": 4,
+        "Line": 31,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fehall2",
+        "Entity": 9,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fehall2",
+        "Entity": 9,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feclock3",
+        "Entity": 8,
+        "Script": 3,
+        "Line": 77,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feclock3",
+        "Entity": 8,
+        "Script": 3,
+        "Line": 82,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "febarac1",
+        "Entity": 8,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "febarac1",
+        "Entity": 8,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feart1f1",
+        "Entity": 17,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "feart1f1",
+        "Entity": 17,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fewine1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 8,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fewine1",
+        "Entity": 7,
+        "Script": 3,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fhtown24",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fhtown23",
+        "Entity": 0,
+        "Script": 9,
+        "Line": 6,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "fhtown23",
+        "Entity": 0,
+        "Script": 9,
+        "Line": 13,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gfelone2",
+        "Entity": 4,
+        "Script": 16,
+        "Line": 60,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gfelone2",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 4,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ggwitch2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 53,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "ggwitch2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 58,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gghall1",
+        "Entity": 14,
+        "Script": 2,
+        "Line": 7,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gghall1",
+        "Entity": 14,
+        "Script": 2,
+        "Line": 22,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "glhtr1a",
+        "Entity": 13,
+        "Script": 4,
+        "Line": 293,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "glwitch1",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 53,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "glwitch1",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 93,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmpark2",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 29,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmpark2",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 34,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmpark2",
+        "Entity": 1,
+        "Script": 7,
+        "Line": 29,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmpark2",
+        "Entity": 1,
+        "Script": 7,
+        "Line": 34,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmcont1",
+        "Entity": 31,
+        "Script": 4,
+        "Line": 63,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gmcont1",
+        "Entity": 31,
+        "Script": 4,
+        "Line": 70,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gnroom4",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 19,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gnroom4",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 24,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gpexit1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 118,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gpexit1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 124,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "gwenter1",
+        "Entity": 4,
+        "Script": 1,
+        "Line": 28,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "rgroad3",
+        "Entity": 6,
+        "Script": 1,
+        "Line": 59,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "rgcock1",
+        "Entity": 5,
+        "Script": 1,
+        "Line": 9,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "sdcore2",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 72,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "sdcore1",
+        "Entity": 1,
+        "Script": 5,
+        "Line": 191,
+        "Arg": 59
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "start0",
+        "Entity": 0,
+        "Script": 1,
+        "Line": 59,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 36,
+        "Arg": 93
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 205,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 230,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 255,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 280,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 303,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 326,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "testno",
+        "Entity": 1,
+        "Script": 1,
+        "Line": 2,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "titrain1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 95,
+        "Arg": 13
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "titrain1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 156,
+        "Arg": 5
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "tvglen5",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 62
+    },
+    {
+        "OpCode": "setbattlemusic",
+        "FieldName": "tvglen2",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 133,
+        "Arg": 5
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood7",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood7",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood7",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood7",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood6",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood6",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood6",
+        "Entity": 11,
+        "Script": 9,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood6",
+        "Entity": 11,
+        "Script": 9,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood5",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood5",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood5",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood5",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood4",
+        "Entity": 0,
+        "Script": 4,
+        "Line": 53,
+        "Arg": 19
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood4",
+        "Entity": 0,
+        "Script": 4,
+        "Line": 79,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood4",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood3",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood3",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood3",
+        "Entity": 14,
+        "Script": 8,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood3",
+        "Entity": 14,
+        "Script": 8,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood2",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood2",
+        "Entity": 15,
+        "Script": 8,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood1",
+        "Entity": 14,
+        "Script": 8,
+        "Line": 14,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cwwood1",
+        "Entity": 14,
+        "Script": 8,
+        "Line": 86,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin22a",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin22a",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin22a",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin22a",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 23,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport1b",
+        "Entity": 18,
+        "Script": 4,
+        "Line": 4,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bchtl1a",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bchtl1a",
+        "Entity": 0,
+        "Script": 1,
+        "Line": 120,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 169,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka1a",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka1a",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka1a",
+        "Entity": 6,
+        "Script": 6,
+        "Line": 87,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcform1a",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 205,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsta1a",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsta1a",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin21a",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcmin21a",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport1a",
+        "Entity": 18,
+        "Script": 8,
+        "Line": 4,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcgate1a",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcgate1a",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bchtr_1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bchtr_1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 29,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bchtr_1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 34,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka_1",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 65,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcsaka_1",
+        "Entity": 25,
+        "Script": 5,
+        "Line": 4,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport_2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport_2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 126,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport_2",
+        "Entity": 23,
+        "Script": 8,
+        "Line": 4,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport_1",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcport_1",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcgate_1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 40,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bcform_1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bdenter1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 41
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bdview1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 41
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bdin4",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bdin1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bdin5",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 37
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_6",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 40,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_6",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 51,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_6",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 62,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_6",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 69,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_1",
+        "Entity": 39,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_1",
+        "Entity": 39,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_1",
+        "Entity": 39,
+        "Script": 0,
+        "Line": 44,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_1",
+        "Entity": 39,
+        "Script": 0,
+        "Line": 51,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_3",
+        "Entity": 23,
+        "Script": 2,
+        "Line": 19,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_3",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 62,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_3",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 72,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_3",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 88,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_4",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_5",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 42,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 66,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 82,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_5",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_5",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 39,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_5",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 48,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_5",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 53,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmon_6",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 52,
+        "Arg": 65
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_3",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_3",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_3",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 41,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo1_7",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo1_7",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 65,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsecr_1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 25
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall3a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 30,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall3a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 44,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall3a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 60,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 50,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 80,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall2a",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall2a",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall2a",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_8",
+        "Entity": 7,
+        "Script": 6,
+        "Line": 18,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_7",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 50,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_7",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 164,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmast_6",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmast_5",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 49
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmast_4",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 54
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_4",
+        "Entity": 0,
+        "Script": 12,
+        "Line": 10,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_4",
+        "Entity": 0,
+        "Script": 14,
+        "Line": 27,
+        "Arg": 69
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_4",
+        "Entity": 14,
+        "Script": 7,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd2_8",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgrank1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgpaty_1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgpaty_1",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 139,
+        "Arg": 19
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_5",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_5",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 30,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd2_1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd3_2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmdele2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd4_2",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 83,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd4_2",
+        "Entity": 16,
+        "Script": 1,
+        "Line": 13,
+        "Arg": 87
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd3_1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_2",
+        "Entity": 1,
+        "Script": 5,
+        "Line": 289,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 32,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgsido_2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 43,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd4_1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 87
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd4_1",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 13,
+        "Arg": 87
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghoke_2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 59,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghoke_2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 72,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghoke_2",
+        "Entity": 13,
+        "Script": 4,
+        "Line": 3,
+        "Arg": 18
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bg2f_3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 43,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bg2f_3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 52,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bg2f_3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 90,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bg2f_3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 95,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgeat_3",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgmd2_3",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgbook_3",
+        "Entity": 6,
+        "Script": 1,
+        "Line": 30,
+        "Arg": 65
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgkote_3",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_6",
+        "Entity": 3,
+        "Script": 7,
+        "Line": 5,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_6",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 39
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgkote_1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgkote_1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgpaty_2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 19
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_6",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghall_6",
+        "Entity": 20,
+        "Script": 1,
+        "Line": 189,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bghoke_1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 116,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 132,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 160,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 172,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 180,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 87,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 120,
+        "Arg": 39
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 608,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 693,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 734,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 757,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo2_1",
+        "Entity": 15,
+        "Script": 1,
+        "Line": 794,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgryo1_1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_5",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 37,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_5",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 45,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bgroad_5",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 53,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_5",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 55,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_1",
+        "Entity": 16,
+        "Script": 1,
+        "Line": 14,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bggate_1",
+        "Entity": 16,
+        "Script": 1,
+        "Line": 132,
+        "Arg": 26
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_5",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 1,
+        "Script": 4,
+        "Line": 103,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 11,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 84,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 192,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 267,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_3",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 278,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_2",
+        "Entity": 2,
+        "Script": 32,
+        "Line": 7,
+        "Arg": 74
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvtr_2",
+        "Entity": 4,
+        "Script": 14,
+        "Line": 9,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvboat_2",
+        "Entity": 5,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "bvboat_1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cdfield2",
+        "Entity": 1,
+        "Script": 4,
+        "Line": 86,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cdfield1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "cdfield1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "crview1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ddruins5",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ddruins6",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 6
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ddruins6",
+        "Entity": 17,
+        "Script": 1,
+        "Line": 15,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ddruins1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ddtower1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dohtl_1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doopen1a",
+        "Entity": 21,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dopub_2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dogate1a",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dotown_1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 7
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dosea_2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 16,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt4_1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt4_1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt1_1",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt1_1",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dogate_1",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dogate_1",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dogate_1",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani4_2",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani4_1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani3_2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani3_2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani3_1",
+        "Entity": 5,
+        "Script": 1,
+        "Line": 11,
+        "Arg": 8
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani1_2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani1_2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doani1_1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doan1_2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doan1_2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 12
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doan1_1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doopen_1",
+        "Entity": 1,
+        "Script": 5,
+        "Line": 18,
+        "Arg": 6
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "doopen_1",
+        "Entity": 11,
+        "Script": 6,
+        "Line": 30,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt3_4",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt3_4",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "dogate_2",
+        "Entity": 23,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt5_1",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "domt2_1",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eaplane1",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 34
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eaplane1",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eaplane1",
+        "Entity": 1,
+        "Script": 1,
+        "Line": 160,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eaplane1",
+        "Entity": 1,
+        "Script": 1,
+        "Line": 244,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebroad9a",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinhi1a",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinhi1a",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebadele2",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebadele1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinto1",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 87,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinto1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinto1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebinto3",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebgate4",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebgate2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebroad9",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebexit4",
+        "Entity": 5,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebadele3",
+        "Entity": 4,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebgate1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebgate3",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebexit5",
+        "Entity": 0,
+        "Script": 3,
+        "Line": 30,
+        "Arg": 62
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebcont1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 63
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebcont1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ebcont1",
+        "Entity": 13,
+        "Script": 4,
+        "Line": 2,
+        "Arg": 69
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecenter2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecenter2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 34,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecenter2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 37,
+        "Arg": 85
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecpview2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecoway2a",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecoway2",
+        "Entity": 25,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 85
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecoway2",
+        "Entity": 25,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecoway2",
+        "Entity": 25,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecopen2a",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ectake1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 85
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ecmview1",
+        "Entity": 19,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edview1b",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edlabo1b",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edview2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edview1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edlabo1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "edmoor1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eeview3",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 71
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eeview2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 71
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eeview1",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 71
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "efview2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 69
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "efbig1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 73,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "efpod1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 87
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "efview1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehenter4",
+        "Entity": 5,
+        "Script": 4,
+        "Line": 137,
+        "Arg": 96
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehenter4",
+        "Entity": 7,
+        "Script": 19,
+        "Line": 2,
+        "Arg": 95
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehenter3",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 97
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehenter2",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 12,
+        "Arg": 54
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehblan1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 97,
+        "Arg": 34
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehblan1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 129,
+        "Arg": 25
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ehroom1",
+        "Entity": 20,
+        "Script": 1,
+        "Line": 11,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "elwall4",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "elwall2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "elroad2",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "elview2",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "elview2",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "emlobby3",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 7,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "emlabo1a",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 5,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "embind2",
+        "Entity": 5,
+        "Script": 1,
+        "Line": 13,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "epwork3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 85
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "epwork1",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 2,
+        "Arg": 85
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "eproad2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "esview2",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 82
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "esview1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "escont1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "etsta2",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 7,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "etsta1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ewbrdg1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 5,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ewpanel1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fewhite1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 14,
+        "Arg": 94
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "feroad1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "felast1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 19,
+        "Arg": 73
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "feclock1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fe2f1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ffhole1a",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 97
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ffhole1a",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ffhole1",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 97
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ffhole1",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ffbrdg1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 77
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck5",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 72
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck5",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 78,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhedge2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhedge2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhedge2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhparar1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown24",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 2,
+        "Line": 11,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 2,
+        "Arg": 19
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 5,
+        "Line": 2,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 6,
+        "Line": 2,
+        "Arg": 5
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 6,
+        "Line": 20,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 7,
+        "Line": 5,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 8,
+        "Line": 2,
+        "Arg": 7
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 10,
+        "Script": 8,
+        "Line": 41,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 12,
+        "Script": 13,
+        "Line": 9,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 19,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwater1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 33,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhroof1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhroof1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 26,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhroof1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 37,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhedge11",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhedge11",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown23",
+        "Entity": 4,
+        "Script": 0,
+        "Line": 23,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown23",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown23",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 5
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown22",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown22",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown22",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 26,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown22",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown22",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 41,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown21",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhhtr1",
+        "Entity": 9,
+        "Script": 4,
+        "Line": 52,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck6",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck6",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 20,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck2",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 20,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 30,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 36,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhdeck1",
+        "Entity": 7,
+        "Script": 1,
+        "Line": 132,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 23,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 37,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 40,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhtown1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 43,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhform1",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 8,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise13",
+        "Entity": 23,
+        "Script": 1,
+        "Line": 537,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 6,
+        "Script": 5,
+        "Line": 87,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 6,
+        "Script": 5,
+        "Line": 139,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 21,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 83,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 141,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 168,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 226,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 283,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 349,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 389,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 69,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 97,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 28,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 69,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 107,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 154,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 178,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 217,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 260,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 289,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 22,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 68,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 111,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 161,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 190,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 234,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 282,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 316,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 2,
+        "Line": 81,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 11,
+        "Script": 2,
+        "Line": 139,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 14,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 55,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 93,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 143,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 167,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 206,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 249,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 278,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 2,
+        "Line": 20,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhwise12",
+        "Entity": 12,
+        "Script": 2,
+        "Line": 107,
+        "Arg": 1
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhfish1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhpara11",
+        "Entity": 0,
+        "Script": 4,
+        "Line": 6,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "fhrail2",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 18
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gdsand1",
+        "Entity": 4,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gdsand3",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 11,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gdsta1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfvill24",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 7,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfelone4",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfcross2",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfvill1a",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 7,
+        "Arg": 64
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfview1a",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 48
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gfelone2",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 12,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gggate2",
+        "Entity": 3,
+        "Script": 1,
+        "Line": 38,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggkodo4",
+        "Entity": 7,
+        "Script": 4,
+        "Line": 23,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggkodo4",
+        "Entity": 7,
+        "Script": 5,
+        "Line": 12,
+        "Arg": 94
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggkodo2",
+        "Entity": 8,
+        "Script": 4,
+        "Line": 133,
+        "Arg": 73
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggwitch1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggkodo1",
+        "Entity": 8,
+        "Script": 5,
+        "Line": 11,
+        "Arg": 30
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggback1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 10,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggroad2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggroad2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggroad3",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggroad3",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gggroen2",
+        "Entity": 4,
+        "Script": 8,
+        "Line": 29,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gggroen2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gggroen2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gggroen2",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggview1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 11,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggview1",
+        "Entity": 13,
+        "Script": 1,
+        "Line": 115,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gghall1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gghall1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ggroom1",
+        "Entity": 10,
+        "Script": 10,
+        "Line": 11,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glwitch3",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 140,
+        "Arg": 73
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glwitch3",
+        "Entity": 34,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 97
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtr1a",
+        "Entity": 12,
+        "Script": 4,
+        "Line": 4,
+        "Arg": 18
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfurin5",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 2,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfurin4",
+        "Entity": 10,
+        "Script": 5,
+        "Line": 2,
+        "Arg": 54
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfurin4",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 13,
+        "Arg": 40
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup4",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glyagu1",
+        "Entity": 2,
+        "Script": 4,
+        "Line": 26,
+        "Arg": 13
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glyagu1",
+        "Entity": 2,
+        "Script": 4,
+        "Line": 71,
+        "Arg": 73
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glyagu1",
+        "Entity": 2,
+        "Script": 4,
+        "Line": 98,
+        "Arg": 66
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glyagu1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glwitch1",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 10,
+        "Arg": 63
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glkara1",
+        "Entity": 1,
+        "Script": 5,
+        "Line": 188,
+        "Arg": 7
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glpreo2",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glpreo2",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glpreo1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glpreo1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glpreo1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 20,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glgatei2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 35,
+        "Arg": 14
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 36,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 49,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 59,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 69,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glstaup1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 75,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glgate2",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 36,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glform1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glform1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glform1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glform1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 38,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glform1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 44,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtr1",
+        "Entity": 14,
+        "Script": 4,
+        "Line": 7,
+        "Arg": 18
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfury1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfury1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfury1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 35,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfury1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 45,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfury1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 54,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfurin3",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glclub1",
+        "Entity": 19,
+        "Script": 5,
+        "Line": 2,
+        "Arg": 22
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glclub1",
+        "Entity": 19,
+        "Script": 9,
+        "Line": 2,
+        "Arg": 61
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtl1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 61
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtl1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 25,
+        "Arg": 61
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtl1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 29,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glhtl1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 33,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glrent1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glrent1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glrent1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 32,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glrent1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 42,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glrent1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 48,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glwater1",
+        "Entity": 10,
+        "Script": 4,
+        "Line": 2,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glwater1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glgateb1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glgateb1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glgateb1",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfuryb1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 63
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "glfuryb1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmpark2",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 55
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmout1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmcont1",
+        "Entity": 31,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 23,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika2",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika5",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika4",
+        "Entity": 24,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika4",
+        "Entity": 24,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmhouse1",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmhouse1",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmpark1",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmpark1",
+        "Entity": 27,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika1",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gmtika1",
+        "Entity": 20,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 80
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gnroom3",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gnroom1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gnroad1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gover",
+        "Entity": 0,
+        "Script": 1,
+        "Line": 8,
+        "Arg": 0
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin6",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin6",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin6",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin6",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin5",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin5",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpgmn1a",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 35,
+        "Arg": 71
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpgmn1a",
+        "Entity": 12,
+        "Script": 1,
+        "Line": 131,
+        "Arg": 69
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin4",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin4",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin3",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin3",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig3",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig3",
+        "Entity": 11,
+        "Script": 4,
+        "Line": 7,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig2a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig2a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig2a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig2a",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 24,
+        "Script": 1,
+        "Line": 544,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 28,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 35,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 46,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 57,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbig1a",
+        "Entity": 28,
+        "Script": 0,
+        "Line": 68,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin2",
+        "Entity": 5,
+        "Script": 1,
+        "Line": 8,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin2",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gproof2",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gproof2",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gppark1",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 9,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpexit1",
+        "Entity": 0,
+        "Script": 7,
+        "Line": 69,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 18,
+        "Arg": 67
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpbigin1",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpgmn1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 26,
+        "Arg": 71
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gpgmn1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 29,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "gwroad1",
+        "Entity": 5,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 39
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgcock4",
+        "Entity": 2,
+        "Script": 8,
+        "Line": 2,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 61
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 35,
+        "Arg": 83
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 43,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair3",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 52,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgair1",
+        "Entity": 8,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgexit2",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 105,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgcock2",
+        "Entity": 3,
+        "Script": 8,
+        "Line": 11,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgguest4",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgroad3",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 83
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgroad3",
+        "Entity": 6,
+        "Script": 1,
+        "Line": 28,
+        "Arg": 83
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgguest1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 17,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgcock1",
+        "Entity": 5,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rghang2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rghang2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 83
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rghang2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rghang2",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 31,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "rgroad11",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 37,
+        "Arg": 89
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sdisle1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sdcore2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sdcore1",
+        "Entity": 1,
+        "Script": 5,
+        "Line": 146,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sdcore1",
+        "Entity": 14,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 60
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "seroom1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "seback2",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 65
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "seback1",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sefront4",
+        "Entity": 9,
+        "Script": 4,
+        "Line": 10,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sefront1",
+        "Entity": 16,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssadel2",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 8,
+        "Arg": 30
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssspace2",
+        "Entity": 1,
+        "Script": 4,
+        "Line": 388,
+        "Arg": 61
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssspace2",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssspace2",
+        "Entity": 3,
+        "Script": 0,
+        "Line": 16,
+        "Arg": 65
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssmedi2",
+        "Entity": 14,
+        "Script": 1,
+        "Line": 7,
+        "Arg": 63
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "sscont2",
+        "Entity": 9,
+        "Script": 5,
+        "Line": 24,
+        "Arg": 88
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssroad3",
+        "Entity": 20,
+        "Script": 5,
+        "Line": 9,
+        "Arg": 86
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssroad3",
+        "Entity": 21,
+        "Script": 1,
+        "Line": 50,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssmedi1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssmedi1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 63
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "ssmedi1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 27,
+        "Arg": 78
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "testbl3",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 68
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 38,
+        "Arg": 2
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test",
+        "Entity": 5,
+        "Script": 2,
+        "Line": 200,
+        "Arg": 0
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test1",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2196,
+        "Arg": 0
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 67,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 88,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 109,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 130,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 147,
+        "Arg": 17
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 202,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 227,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 252,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 277,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 300,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 323,
+        "Arg": 3
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 806,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 853,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 887,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 927,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 962,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1005,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1038,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1059,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1109,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1148,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1190,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 3,
+        "Script": 2,
+        "Line": 1236,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 627,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 649,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 671,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 693,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 719,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 8,
+        "Script": 2,
+        "Line": 648,
+        "Arg": 1029
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test2",
+        "Entity": 11,
+        "Script": 1,
+        "Line": 2,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 47,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 60,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 73,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 86,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 99,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 112,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 125,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 138,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test3",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 151,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test5",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test5",
+        "Entity": 5,
+        "Script": 2,
+        "Line": 43,
+        "Arg": 64
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test5",
+        "Entity": 5,
+        "Script": 2,
+        "Line": 56,
+        "Arg": 13
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test5",
+        "Entity": 5,
+        "Script": 2,
+        "Line": 69,
+        "Arg": 41
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test5",
+        "Entity": 5,
+        "Script": 2,
+        "Line": 82,
+        "Arg": 81
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 788,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 929,
+        "Arg": 56
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1177,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1200,
+        "Arg": 58
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1221,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1286,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1362,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1412,
+        "Arg": 9
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1450,
+        "Arg": 23
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1626,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1644,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1662,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1680,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 1785,
+        "Arg": 41
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2193,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2236,
+        "Arg": 16
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2250,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2266,
+        "Arg": 28
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2466,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 9,
+        "Script": 2,
+        "Line": 2472,
+        "Arg": 84
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test6",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 39
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "testbl6",
+        "Entity": 9,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 6,
+        "Script": 2,
+        "Line": 93,
+        "Arg": 0
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 15,
+        "Arg": 18
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 22,
+        "Arg": 22
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 29,
+        "Arg": 19
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 36,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 43,
+        "Arg": 41
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 50,
+        "Arg": 44
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 57,
+        "Arg": 25
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 64,
+        "Arg": 11
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 71,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "test14",
+        "Entity": 15,
+        "Script": 2,
+        "Line": 78,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "testno",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 9,
+        "Arg": 4
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tgcourt1",
+        "Entity": 2,
+        "Script": 1,
+        "Line": 139,
+        "Arg": 20
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tgroom1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 15,
+        "Arg": 52
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tgfront1",
+        "Entity": 1,
+        "Script": 0,
+        "Line": 26,
+        "Arg": 52
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tggate1",
+        "Entity": 0,
+        "Script": 0,
+        "Line": 17,
+        "Arg": 52
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tgview1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 52
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tgview1",
+        "Entity": 2,
+        "Script": 0,
+        "Line": 30,
+        "Arg": 52
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiyane1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titrain1",
+        "Entity": 9,
+        "Script": 1,
+        "Line": 117,
+        "Arg": 53
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tistud22",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 27
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titown8",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tistud21",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tistud21",
+        "Entity": 11,
+        "Script": 4,
+        "Line": 10,
+        "Arg": 36
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tivisi2",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 53,
+        "Arg": 59
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tivisi2",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 29
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titown7",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tivisi1",
+        "Entity": 5,
+        "Script": 4,
+        "Line": 7,
+        "Arg": 29
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tistud1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 15
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titown4",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titown3",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tigate1",
+        "Entity": 19,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit3",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit3",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit3",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 22,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit3",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 30,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit2",
+        "Entity": 24,
+        "Script": 1,
+        "Line": 20,
+        "Arg": 24
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit2",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 11,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit2",
+        "Entity": 26,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit1",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 13,
+        "Arg": 35
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiback2",
+        "Entity": 19,
+        "Script": 4,
+        "Line": 10,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit4",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiagit4",
+        "Entity": 15,
+        "Script": 5,
+        "Line": 2,
+        "Arg": 51
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tiback1",
+        "Entity": 18,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tihtl1",
+        "Entity": 22,
+        "Script": 0,
+        "Line": 2,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "titown6",
+        "Entity": 25,
+        "Script": 0,
+        "Line": 4,
+        "Arg": 57
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmhtr1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 22
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmhtr1",
+        "Entity": 13,
+        "Script": 4,
+        "Line": 22,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmhtl1",
+        "Entity": 7,
+        "Script": 0,
+        "Line": 10,
+        "Arg": 22
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmkobo1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 6,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmkobo1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 9,
+        "Arg": 42
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmkobo1",
+        "Entity": 10,
+        "Script": 1,
+        "Line": 115,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmkobo1",
+        "Entity": 15,
+        "Script": 5,
+        "Line": 31,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmsand1",
+        "Entity": 8,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmmura2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmmura2",
+        "Entity": 17,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmmura1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmmura1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmgate1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 12,
+        "Arg": 43
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmgate1",
+        "Entity": 13,
+        "Script": 0,
+        "Line": 21,
+        "Arg": 38
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmele1",
+        "Entity": 12,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 10
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmelder1",
+        "Entity": 14,
+        "Script": 2,
+        "Line": 203,
+        "Arg": 47
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tmdome1",
+        "Entity": 6,
+        "Script": 0,
+        "Line": 8,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen5",
+        "Entity": 15,
+        "Script": 0,
+        "Line": 24,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen4",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 19,
+        "Arg": 92
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen4",
+        "Entity": 11,
+        "Script": 0,
+        "Line": 26,
+        "Arg": 21
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen3",
+        "Entity": 7,
+        "Script": 6,
+        "Line": 156,
+        "Arg": 92
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen3",
+        "Entity": 12,
+        "Script": 4,
+        "Line": 34,
+        "Arg": 91
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 6,
+        "Arg": 46
+    },
+    {
+        "OpCode": "musicload",
+        "FieldName": "tvglen1",
+        "Entity": 10,
+        "Script": 0,
+        "Line": 14,
+        "Arg": 21
+    }
+]

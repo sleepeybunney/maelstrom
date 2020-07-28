@@ -207,6 +207,12 @@ namespace FF8Mod.Maelstrom
                         CardShuffle.Apply(fieldSource, shuffle);
                     }
 
+                    // apply music shuffle
+                    if (Properties.Settings.Default.MusicShuffle)
+                    {
+                        MusicShuffle.Shuffle(fieldSource, seed);
+                    }
+
                     // write to file
                     if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardShuffle)
                     {
