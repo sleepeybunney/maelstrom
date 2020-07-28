@@ -8,6 +8,7 @@ An open-world randomiser for Final Fantasy VIII
 * Buy random, potentially powerful items from shops
 * Win rare Triple Triad cards from players all over the world
 * Receive random spells from draw points, including Slots-exclusives and cut content
+* Change the battle music to something very annoying & instantly regret it
 * Pre-set your character & GF names - a little extra convenience for multiple playthroughs & speedruns
 * Generate a spoiler file containing all boss locations, shop inventories, etc. just in case you get lost
 
@@ -19,20 +20,18 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 ## Requirements
 
-* Final Fantasy VIII - 2013 Steam release (EN)*
-* No other mods installed (at least for now, if you just want to fix the music you can use [this](https://steamcommunity.com/app/39150/discussions/0/35221031741516824/))
+* Final Fantasy VIII - Remastered or the 2013 Steam release (EN)*
+* No other mods installed (some things MAY work but no testing has been done - if you just want to fix the MIDI music you can use [this](https://steamcommunity.com/app/39150/discussions/0/35221031741516824/))
 * Windows 7 or above with the latest .NET Framework
 * 1GB free disk space (for backups & working files)
 
-\* Currently looking into support for the Remastered edition, as well as other regional variants of the Steam release.
-
 ## Installation & Usage
 
-* Download the [current release](https://github.com/sleepeybunney/maelstrom/releases) (click Assets) or the latest [pre-release build](https://github.com/sleepeybunney/maelstrom/actions) (.NET Core -> Artifacts)
-* Extract all files to a folder on your hard drive & run Maelstrom.exe
-* Set "Game Location" by browsing to where the game is installed and selecting FF8_EN.exe
+* Download the [current release](https://github.com/sleepeybunney/maelstrom/releases) or the latest [pre-release build](https://github.com/sleepeybunney/maelstrom/actions)
+* Extract all files to any folder & run Maelstrom.exe
+* Set "Game Location" by browsing to where the game is installed and selecting FFVIII.exe (for Remastered) or FF8_EN.exe (for vanilla)
 * Check the boxes for the features you want to activate & click "Go" to mod the game
-* To remove any changes and restore the game to normal, uncheck all the boxes & click "Go"
+* To remove all changes and restore the game to normal, uncheck all the boxes & click "Go"
 
 ## Notes
 
@@ -46,16 +45,31 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 * Card locations in the spoiler file are currently incomplete. The field names are all there but the NPC descriptions are largely unhelpful.
 
+* The "Random Draw Points" option has no effect on the Remastered edition of the game. Hoping to get this fixed soon.
+
+* There are several known bugs around certain bosses (eg. Odin, Edea) and items (eg. Magical Lamp), so if you find yourself unable to progress and do not wish to re-roll:
+  
+  * Close the game and run Maelstrom
+
+  * Make a note of which options are checked, as well as your seed value (in the box next to "Fixed Seed")
+
+  * Uncheck everything and click "Go" to reset the game to normal
+
+  * Load the game, play past the part you are stuck on, and save
+
+  * Close it and run Maelstrom again
+
+  * Restore all your settings and fix the seed to what it was before, then click "Go"
+
 ## Planned Features
 
 * Improved UI with more configuration options & info on what they do
-* Support for Remastered & Steam EFIGS versions of the game
+* Support for Steam EFIGS versions of the game, possibly also CD-ROM and PSX versions eventually
 * More substantial rebalancing for shuffled bosses, so they are generally beatable at the point they are encountered
 * Shuffled GF locations
-* Random GF abilities
 * Random weapon upgrade requirements
 * Shuffled monster locations
-* Random spells/items from bosses & monsters
+* Random spells from bosses & monsters
 
 If you have ideas for new features or improvements, feel free to message me here or on [Twitter](https://twitter.com/sleepeybunney)!
 
