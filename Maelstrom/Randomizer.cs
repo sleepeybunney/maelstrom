@@ -110,15 +110,20 @@ namespace FF8Mod.Maelstrom
         {
             Debug.WriteLine("repack archive - " + Globals.MainZzzPath);
 
+            var filesToPack = new Dictionary<string, byte[]>();
             foreach (var f in WorkspaceFiles)
             {
                 var sourcePath = Path.Combine(WorkspacePath, f);
                 if (File.Exists(sourcePath))
                 {
+                    // todo: defer read so everything isn't in memory at once
                     var source = File.ReadAllBytes(sourcePath);
-                    new Zzz(Globals.MainZzzPath).ReplaceFile(@"data\" + f, source);
+                    filesToPack.Add(@"data\" + f, source);
                 }
             }
+
+            new Zzz(Globals.MainZzzPath).ReplaceFiles(filesToPack);
+
         }
 
         private static bool HandleFileException(string filePath)

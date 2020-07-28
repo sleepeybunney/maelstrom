@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace FF8Mod
 {
@@ -79,42 +80,61 @@ namespace FF8Mod
             return header.ToArray();
         }
 
-        public void ReplaceFile(string path, byte[] data)
+        public void ReplaceFiles(Dictionary<string, byte[]> files)
         {
-            var entry = Index.FindIndex(f => f.Path == path);
-            var oldLength = Index[entry].Length;
-            var sizeChange = (uint)data.Length - Index[entry].Length;
-            Index[entry].Length = (uint)data.Length;
-            for (int i = entry + 1; i < Index.Count; i++)
+            using (var readStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var writeStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Write, FileShare.Read))
+            using (var reader = new BinaryReader(readStream))
+            using (var writer = new BinaryWriter(writeStream))
             {
-                Index[i].Offset = Index[i].Offset + sizeChange;
-            }
+                // skip to the first changed file
+                var firstOffset = files.Keys.Min(f => Index.Find(i => i.Path == f).Offset);
+                var orderedIndex = Index.Where(i => i.Offset >= firstOffset).OrderBy(i => i.Offset);
+                readStream.Seek((long)firstOffset, SeekOrigin.Begin);
+                writeStream.Seek((long)firstOffset, SeekOrigin.Begin);
 
-            var tempArchivePath = Path.GetTempFileName();
-            using (var inStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.Read))
-            using (var outStream = new FileStream(tempArchivePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
-            using (var reader = new BinaryReader(inStream))
-            using (var writer = new BinaryWriter(outStream))
-            {
-                var header = RebuildIndex();
-                writer.Write(header);
-                inStream.Seek(header.Length, SeekOrigin.Begin);
-                for (int i = 0; i < Index.Count; i++)
+                // delete files to be replaced
+                foreach (var entry in orderedIndex)
                 {
-                    if (i == entry)
+                    if (!files.ContainsKey(entry.Path))
                     {
-                        writer.Write(data);
-                        inStream.Seek(oldLength, SeekOrigin.Current);
-                    }
-                    else
-                    {
-                        writer.Write(reader.ReadBytes((int)Index[i].Length));
+                        readStream.Seek((long)entry.Offset, SeekOrigin.Begin);
+                        Index[Index.FindIndex(i => i.Path == entry.Path)].Offset = (ulong)writeStream.Position;
+
+                        var bufferSize = 64 * 1024;
+                        var toRead = (int)entry.Length;
+                        while (toRead > 0)
+                        {
+                            var buffer = reader.ReadBytes(Math.Min(toRead, bufferSize));
+                            writer.Write(buffer);
+                            toRead -= bufferSize;
+                        }
                     }
                 }
-            }
 
-            File.Delete(ArchivePath);
-            File.Move(tempArchivePath, ArchivePath);
+                // append new files to the end
+                foreach (var path in files.Keys)
+                {
+                    var entry = Index.FindIndex(i => i.Path == path);
+                    Index[entry].Offset = (ulong)writeStream.Position;
+                    Index[entry].Length = (uint)files[path].Length;
+                    Index[entry].Compressed = false;
+                    writer.Write(files[path]);
+                }
+
+                // truncate
+                writeStream.SetLength(writeStream.Position);
+
+                // update header
+                var header = RebuildIndex();
+                writeStream.Seek(0, SeekOrigin.Begin);
+                writer.Write(header);
+            }
+        }
+
+        public void ReplaceFile(string path, byte[] data)
+        {
+            ReplaceFiles(new Dictionary<string, byte[]> { { path, data } });
         }
     }
 }
