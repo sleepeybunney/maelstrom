@@ -10,6 +10,7 @@
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White" />
+            <Setter Property="ToolTipService.ShowDuration" Value="128000" />
         </Style>
     </Window.Resources>
     <Grid Margin="10">
@@ -24,33 +25,117 @@
             <ColumnDefinition Width="90" />
         </Grid.ColumnDefinitions>
         <Label x:Name="gameLocLabel" Content="Game Location" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
-        <TextBox x:Name="gameLocText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameLocation, Mode=TwoWay}" />
-        <Button x:Name="gameLocButton" Content="Browse..." Click="OnBrowse" Margin="0,0,10,0" Grid.Row="0" Grid.Column="2" />
+        <TextBox x:Name="gameLocText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameLocation, Mode=TwoWay}" ToolTipService.ShowDuration="128000">
+            <TextBox.ToolTip>
+                <ToolTip MaxWidth="400">
+                    <TextBlock Text="Browse or enter a path to the Final Fantasy VIII exe file. Must be either the Steam 2013 edition (English), or Final Fantasy VIII Remastered (English). More versions and languages to come." TextWrapping="Wrap" />
+                </ToolTip>
+            </TextBox.ToolTip>
+        </TextBox>
+        <Button x:Name="gameLocButton" Content="Browse..." Click="OnBrowse" Margin="0,0,10,0" Grid.Row="0" Grid.Column="2" ToolTipService.ShowDuration="128000">
+            <Button.ToolTip>
+                <ToolTip MaxWidth="400">
+                    <TextBlock Text="Browse or enter a path to the Final Fantasy VIII exe file. Must be either the Steam 2013 edition (English), or Final Fantasy VIII Remastered (English). More versions and languages to come." TextWrapping="Wrap" />
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
 
         <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
         <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
-                    <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses (Incomplete)" Margin="8" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionStorySkip" Content="Free Roam (Incomplete)" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionDrawPointShuffle" Content="Random Draw Points" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionCardShuffle" Content="Shuffle Card Locations" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding CardShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionAbilityShuffle" Content="Random GF Abilities" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding AbilityShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Swap around all the boss fights. Each boss appears once (or twice if you'd normally fight them twice, etc). Note: some bosses in some locations may be bugged or unbeatable." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionBossRebalance" Content="Rebalance Bosses (Incomplete)" Margin="8" HorizontalAlignment="Left"  IsChecked="{Binding BossRebalance, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Adjust the difficulty of shuffled bosses to match where they appear in the game. Currently just applies the original boss's level scaling value (some have fixed levels or limited scaling). Does nothing if you don't also check Shuffle Bosses." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionStorySkip" Content="Free Roam (Incomplete)" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding StorySkip, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Start the game with 2 party members, 2 GFs, and all locations unlocked. No story. Defeat bosses for new characters and vehicles, and to break the seals in the final dungeon. (Note: very incomplete!! You can fight a few bosses around Balamb but if you venture out much further you'll get stuck. Consider this a proof of concept for now.)" TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionDrawPointShuffle" Content="Random Draw Points" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding DrawPointShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Fully randomise the spells you get from draw points. Includes Apocalypse, Slots-exclusives, and cut content. Note: doesn't currently work on the Remastered edition." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionCardShuffle" Content="Shuffle Card Locations" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding CardShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Give all the rare Triple Triad cards to random NPCs. There is still only one copy of each. PuPu not included." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionAbilityShuffle" Content="Random GF Abilities" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding AbilityShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Randomise the pool of abilities your GFs are able to learn. Only the basics (Magic, GF, etc.) are guaranteed to appear." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="optionSeedSet" Content="Fixed Seed" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                        <CheckBox x:Name="optionSeedSet" Content="Fixed Seed" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                            <CheckBox.ToolTip>
+                                <ToolTip MaxWidth="400">
+                                    <TextBlock Text="Seed value for the random number generator. Using the same seed multiple times will produce the same results each time. If this box is unchecked, a new number will be rolled when you start." TextWrapping="Wrap" />
+                                </ToolTip>
+                            </CheckBox.ToolTip>
+                        </CheckBox>
                         <TextBox x:Name="optionSeedValue" MaxLength="16" Margin="4" HorizontalAlignment="Left" Width="100" Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="optionNameSet" Content="Use Preset Names" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding NameSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                        <CheckBox x:Name="optionNameSet" Content="Use Preset Names" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding NameSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                            <CheckBox.ToolTip>
+                                <ToolTip MaxWidth="400">
+                                    <TextBlock Text="Click the Set button to change the default character and GF names." TextWrapping="Wrap" />
+                                </ToolTip>
+                            </CheckBox.ToolTip>
+                        </CheckBox>
                         <Button x:Name="setNamesButton" Content="Set..." Margin="4" Click="OnSetNames" />
                     </StackPanel>
-                    <CheckBox x:Name="optionShopShuffle" Content="Random Shops" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding ShopShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionLootShuffle" Content="Random Item Drops/Steals" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding LootShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionMusicShuffle" Content="Shuffle Music" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding MusicShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
-                    <CheckBox x:Name="optionSpoilerFile" Content="Generate Spoiler File" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding SpoilerFile, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                    <CheckBox x:Name="optionShopShuffle" Content="Random Shops" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding ShopShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Randomise the items available from shops. Some will be hidden until you learn the Familiar ability." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionLootShuffle" Content="Random Item Drops/Steals" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding LootShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Randomise the items held by enemies." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionMusicShuffle" Content="Shuffle Music" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding MusicShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Shuffle the music played throughout the game. Changes are consistent, eg. every random encounter will play the same song, whatever it is. The world map theme is unaffected." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <CheckBox x:Name="optionSpoilerFile" Content="Generate Spoiler File" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding SpoilerFile, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                        <CheckBox.ToolTip>
+                            <ToolTip MaxWidth="400">
+                                <TextBlock Text="Create a text file detailing all changes made to the game (ie. where everything got shuffled to). Handy if you're stuck, or just curious." TextWrapping="Wrap" />
+                            </ToolTip>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
                 </StackPanel>
             </StackPanel>
         </GroupBox>
