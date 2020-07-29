@@ -7,7 +7,7 @@ namespace FF8Mod.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot;
+        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music;
 
         public SpoilerFile()
         {
@@ -25,6 +25,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Shops", GeneralString(settings.ShopShuffle));
             Options.Bullet("Cards", GeneralString(settings.CardShuffle));
             Options.Bullet("Loot", GeneralString(settings.LootShuffle));
+            Options.Bullet("Music", GeneralString(settings.MusicShuffle));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -119,6 +120,23 @@ namespace FF8Mod.Maelstrom
             }
         }
 
+        public void AddMusic(Dictionary<int, int> tracks)
+        {
+            Music = new Section();
+            Music.Heading("Music");
+
+            var replacements = new List<string>();
+            foreach (var t in tracks.Keys)
+            {
+                var orig = MusicShuffle.MusicTracks.Find(m => m.TrackID == t).TrackName;
+                var repl = MusicShuffle.MusicTracks.Find(m => m.TrackID == tracks[t]).TrackName;
+                replacements.Add(string.Format("{0} -> {1}", orig, repl));
+            }
+
+            // sort alphabetically
+            foreach (var r in replacements.OrderBy(r => (r.StartsWith("[") ? "z" : "") + r)) Music.Bullet(r);
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -163,6 +181,7 @@ namespace FF8Mod.Maelstrom
                 if (Shops != null) result.Add(Shops);
                 if (Cards != null) result.Add(Cards);
                 if (Loot != null) result.Add(Loot);
+                if (Music != null) result.Add(Music);
                 return result;
             }
         }

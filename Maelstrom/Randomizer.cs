@@ -232,7 +232,7 @@ namespace FF8Mod.Maelstrom
                     if (Properties.Settings.Default.MusicShuffle)
                     {
                         var shuffle = MusicShuffle.Shuffle(seed);
-                        // todo: add to spoiler file
+                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddMusic(shuffle);
                         MusicShuffle.Apply(fieldSource, shuffle);
                     }
 
