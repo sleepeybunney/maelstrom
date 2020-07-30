@@ -109,6 +109,8 @@ namespace FF8Mod.Maelstrom
             foreach (var f in WorkspaceFiles)
             {
                 var destPath = Path.Combine(WorkspacePath, f);
+                Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
                 if (!File.Exists(destPath))
                 {
                     using (var source = new ArchiveStream(Globals.MainZzzPath + @";data\" + f))
