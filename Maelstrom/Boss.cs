@@ -137,5 +137,29 @@ namespace FF8Mod.Maelstrom
 
             return encIdMap;
         }
+
+        public static void ApplyEdeaFix(FileSource battleSource, FileSource fieldSource)
+        {
+            // clone encounter
+            var encFile = EncounterFile.FromSource(battleSource);
+            encFile.Encounters[845] = encFile.Encounters[136];
+            battleSource.ReplaceFile(EncounterFile.Path, encFile.Encode());
+
+            // redirect field script to clone
+            var fieldName = "glyagu1";
+            var field = Field.FieldScript.FromSource(fieldSource, fieldName);
+            var script = field.Entities[2].Scripts[4].Instructions;
+            for (int i = 0; i < script.Count - 2; i++)
+            {
+                if (script[i].OpCode == Field.FieldScript.OpCodesReverse["pshn_l"] && script[i].Param == 136)
+                {
+                    if (script[i + 2].OpCode == Field.FieldScript.OpCodesReverse["battle"])
+                    {
+                        field.Entities[2].Scripts[4].Instructions[i].Param = 845;
+                    }
+                }
+            }
+            StorySkip.SaveToSource(fieldSource, fieldName, field.Encode());
+        }
     }
 }

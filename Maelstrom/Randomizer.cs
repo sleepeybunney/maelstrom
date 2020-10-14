@@ -393,11 +393,14 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     // free roam rewards
-                    if (Properties.Settings.Default.StorySkip)
+                    if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.BossShuffle)
                     {
                         var battleSource = new FileSource(Globals.BattlePath);
                         var fieldSource = new FileSource(Globals.FieldPath);
-                        Reward.SetRewards(battleSource, fieldSource, seed);
+
+                        if (Properties.Settings.Default.StorySkip) Reward.SetRewards(battleSource, fieldSource, seed);
+                        if (Properties.Settings.Default.BossShuffle) Boss.ApplyEdeaFix(battleSource, fieldSource);
+
                         battleSource.Encode();
                         fieldSource.Encode();
                     }
