@@ -107,5 +107,8 @@
     <Setting Name="MusicShuffle" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Region" Type="System.String" Scope="User">
+      <Value Profile="(Default)">eng</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -18,6 +18,7 @@ namespace FF8Mod.Maelstrom
             InitializeComponent();
             GoButton.Click += OnGo;
             goContent.Content = GoButton;
+            OnPathChange(null, null);
         }
 
         static Button GoButton = new Button()
@@ -75,6 +76,12 @@ namespace FF8Mod.Maelstrom
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Properties.Settings.Default.Save();
+        }
+
+        private void OnPathChange(object sender, TextChangedEventArgs e)
+        {
+            Randomizer.DetectVersion(gameLocText.Text);
+            if (regionMenu != null) regionMenu.IsEnabled = Globals.Remastered;
         }
     }
 }

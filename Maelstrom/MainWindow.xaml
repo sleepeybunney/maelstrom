@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
-        Title="Maelstrom" Height="335" Width="550" ResizeMode="NoResize" Closing="OnClosing">
+        Title="Maelstrom" Height="365" Width="550" ResizeMode="NoResize" Closing="OnClosing">
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White" />
@@ -16,6 +16,7 @@
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
+            <RowDefinition Height="30" />
             <RowDefinition />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
@@ -25,10 +26,10 @@
             <ColumnDefinition Width="90" />
         </Grid.ColumnDefinitions>
         <Label x:Name="gameLocLabel" Content="Game Location" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
-        <TextBox x:Name="gameLocText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameLocation, Mode=TwoWay}" ToolTipService.ShowDuration="128000">
+        <TextBox x:Name="gameLocText" TextWrapping="NoWrap" Margin="10,0,10,0" Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Static p:Settings.Default}, Path=GameLocation, Mode=TwoWay}" ToolTipService.ShowDuration="128000" TextChanged="OnPathChange">
             <TextBox.ToolTip>
                 <ToolTip MaxWidth="400">
-                    <TextBlock Text="Browse or enter a path to the Final Fantasy VIII exe file. Must be either the Steam 2013 edition (English), or Final Fantasy VIII Remastered (English). More versions and languages to come." TextWrapping="Wrap" />
+                    <TextBlock Text="Browse or enter a path to the Final Fantasy VIII exe file. Must be either the Steam 2013 edition (English), or Final Fantasy VIII Remastered. More versions and languages to come." TextWrapping="Wrap" />
                 </ToolTip>
             </TextBox.ToolTip>
         </TextBox>
@@ -40,8 +41,23 @@
             </Button.ToolTip>
         </Button>
 
-        <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
-        <GroupBox Margin="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+        <Label x:Name="regionLabel" Content="Region" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" />
+        <ComboBox x:Name="regionMenu" Margin="10,4,10,0" Grid.Row="1" Grid.Column="1" SelectedValuePath="Tag" SelectedValue="{Binding Region, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+            <ComboBox.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Select region (Remastered edition only, must match the language setting in the game launcher)" />
+                </ToolTip>
+            </ComboBox.ToolTip>
+            <ComboBoxItem Tag="eng">English</ComboBoxItem>
+            <ComboBoxItem Tag="fre">Français</ComboBoxItem>
+            <ComboBoxItem Tag="ita">Italiano</ComboBoxItem>
+            <ComboBoxItem Tag="ger">Deutsch</ComboBoxItem>
+            <ComboBoxItem Tag="spa">Español</ComboBoxItem>
+            <ComboBoxItem Tag="jp">日本語</ComboBoxItem>
+        </ComboBox>
+
+        <Label x:Name="optionLabel" Content="Options" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" />
+        <GroupBox Margin="10,4,10,4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <StackPanel>
                     <CheckBox x:Name="optionBossShuffle" Content="Shuffle Bosses" Margin="8" HorizontalAlignment="Left" IsChecked="{Binding BossShuffle, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
@@ -140,6 +156,6 @@
             </StackPanel>
         </GroupBox>
 
-        <Controls:TransitioningContentControl x:Name="goContent" Transition="Left" Grid.Row="2" Grid.Column="2" />
+        <Controls:TransitioningContentControl x:Name="goContent" Transition="Left" Grid.Row="3" Grid.Column="2" />
     </Grid>
 </Controls:MetroWindow>

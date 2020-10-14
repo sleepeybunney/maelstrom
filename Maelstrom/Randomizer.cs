@@ -24,11 +24,8 @@ namespace FF8Mod.Maelstrom
                 return;
             }
 
-            // detect game version
-            var exeFileName = Path.GetFileName(Globals.ExePath).ToLower();
-            if (exeFileName == "ffviii.exe") Globals.Remastered = true;
-            else if (exeFileName == "ff8_en.exe") Globals.Remastered = false;
-            else
+            // update game version
+            if (!DetectVersion(Globals.ExePath))
             {
                 HandleExeException(Globals.ExePath);
                 callback.Invoke();
@@ -67,6 +64,16 @@ namespace FF8Mod.Maelstrom
 
                 Debug.WriteLine("randomizer end");
             });
+        }
+
+        // find and store the game version, returns true if successful
+        public static bool DetectVersion(string path)
+        {
+            var exeFileName = Path.GetFileName(path).ToLower();
+            if (exeFileName == "ffviii.exe") Globals.Remastered = true;
+            else if (exeFileName == "ff8_en.exe") Globals.Remastered = false;
+            else return false;
+            return true;
         }
 
         private static void CreateOrRestoreArchiveBackup(string singlePath)
