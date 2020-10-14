@@ -11,16 +11,28 @@ namespace FF8Mod
         public static string ExePath;
         public static bool Remastered = false;
 
-        public static string LanguageCode
+        public static string RegionCode = "eng";
+
+        public static Dictionary<string, string> RegionExts = new Dictionary<string, string>()
         {
-            get { return "[x]"; }
+            { "eng", "en" },
+            { "fre", "fr" },
+            { "ita", "it" },
+            { "ger", "de" },
+            { "spa", "es" },
+            { "jp", "jp" }
+        };
+
+        public static string RegionExt
+        {
+            get { return RegionExts[RegionCode]; }
         }
 
         public static string ScriptFileExtension
         {
             get
             {
-                if (Remastered) return "_en.jsm";
+                if (Remastered) return string.Format("_{0}.jsm", RegionExt);
                 else return ".jsm";
             }
         }
@@ -29,7 +41,7 @@ namespace FF8Mod
         {
             get
             {
-                if (Remastered) return "_en.msd";
+                if (Remastered) return string.Format("_{0}.msd", RegionExt);
                 else return ".msd";
             }
         }
@@ -46,7 +58,7 @@ namespace FF8Mod
 
         public static string ArchivePath
         {
-            get { return Path.Combine(GameDirectory, "data", "lang-en"); }
+            get { return Path.Combine(GameDirectory, "data", string.Format("lang-{0}", RegionExt)); }
         }
 
         public static string BattlePath
@@ -95,7 +107,7 @@ namespace FF8Mod
 
         public static string DataPath
         {
-            get { return @"c:\ff8\data\" + LanguageCode; }
+            get { return @"c:\ff8\data\" + WildcardPath.DirectoryWildcard; }
         }
 
         public static string KernelPath

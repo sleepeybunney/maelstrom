@@ -32,6 +32,9 @@ namespace FF8Mod.Maelstrom
                 return;
             }
 
+            // set region
+            Globals.RegionCode = Properties.Settings.Default.Region;
+
             // generate new seed if not fixed
             if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
             var seedString = Properties.Settings.Default.SeedValue;
@@ -87,21 +90,31 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        private static string[] WorkspaceFiles = new string[]
+        private static List<string> WorkspaceFiles
         {
-            "field.fs",
-            "field.fi",
-            "field.fl",
-            "lang-en\\battle.fs",
-            "lang-en\\battle.fi",
-            "lang-en\\battle.fl",
-            "lang-en\\menu.fs",
-            "lang-en\\menu.fi",
-            "lang-en\\menu.fl",
-            "lang-en\\main.fs",
-            "lang-en\\main.fi",
-            "lang-en\\main.fl",
-        };
+            get
+            {
+                var result = new List<string>()
+                {
+                    "field.fs",
+                    "field.fi",
+                    "field.fl",
+                };
+
+                foreach (var region in Globals.RegionExts.Values)
+                {
+                    foreach (var ext in new string[] { "fs", "fi", "fl" })
+                    {
+                        foreach (var name in new string[] { "battle", "menu", "main"})
+                        {
+                            result.Add(string.Format("lang-{0}\\{1}.{2}", region, name, ext));
+                        }
+                    }
+                }
+
+                return result;
+            }
+        }
 
         private static string WorkspacePath
         {

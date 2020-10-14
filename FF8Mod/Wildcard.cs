@@ -9,7 +9,11 @@ namespace FF8Mod
     public static class WildcardPath
     {
         public static string DirectoryWildcard = "[x]";
-        public static string[] DirectoryOptions = new string[] { "eng", "x" };
+
+        public static string[] DirectoryOptions
+        {
+            get { return new string[] { "x", Globals.RegionCode }; }
+        }
 
         public static bool Match(string path1, string path2)
         {

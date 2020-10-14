@@ -81,7 +81,12 @@ namespace FF8Mod.Maelstrom
         private void OnPathChange(object sender, TextChangedEventArgs e)
         {
             Randomizer.DetectVersion(gameLocText.Text);
-            if (regionMenu != null) regionMenu.IsEnabled = Globals.Remastered;
+
+            if (regionMenu != null)
+            {
+                regionMenu.IsEnabled = Globals.Remastered;
+                if (!Globals.Remastered) Properties.Settings.Default.Region = "eng";
+            }
         }
     }
 }
