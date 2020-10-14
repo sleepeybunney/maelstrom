@@ -3,14 +3,14 @@
         "Offset": 0,
         "Location": "B-Garden - Front Gate",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 1,
         "Location": "B-Garden - Training Center",
         "Spell": 4,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -18,14 +18,14 @@
         "Location": "B-Garden - MD Level",
         "Spell": 25,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 3,
         "Location": "B-Garden - Library",
         "Spell": 27,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 4,
@@ -38,56 +38,56 @@
         "Offset": 5,
         "Location": "B-Garden - Master Room",
         "Spell": 12,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 6,
         "Location": "Balamb - Town Square",
         "Spell": 7,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 7,
         "Location": "Balamb - Harbor",
         "Spell": 21,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 8,
         "Location": "Balamb - Fire Cavern",
         "Spell": 1,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 9,
         "Location": "Dollet - Town Square",
         "Spell": 41,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 10,
         "Location": "Dollet - Comm Tower",
         "Spell": 38,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 11,
         "Location": "Timber - City Square",
         "Spell": 50,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 12,
         "Location": "Timber - City Square / Centra - Excavation Site",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -101,29 +101,29 @@
         "Offset": 14,
         "Location": "G-Garden - Hall",
         "Spell": 35,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 15,
         "Location": "G-Garden - Clubroom",
         "Spell": 24,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 16,
         "Location": "G-Garden - Athletic Track",
         "Spell": 30,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 17,
         "Location": "G-Garden - Gymnasium",
         "Spell": 29,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 18,
@@ -137,63 +137,63 @@
         "Location": "G-Garden - Back Entrance",
         "Spell": 32,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 20,
         "Location": "Timber Forest",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 21,
         "Location": "Timber Forest",
         "Spell": 10,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 22,
         "Location": "Deling City - City Square",
         "Spell": 8,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 23,
         "Location": "Deling City - Sewer",
         "Spell": 48,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 24,
         "Location": "Deling City - Sewer",
         "Spell": 27,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 25,
         "Location": "Deling City - Sewer",
         "Spell": 12,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 26,
         "Location": null,
         "Spell": 2,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 27,
         "Location": "Galbadia - D-District Prison",
         "Spell": 46,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 28,
@@ -206,43 +206,43 @@
         "Offset": 29,
         "Location": "Galbadia - Desert",
         "Spell": 11,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 30,
         "Location": "Galbadia - Missile Base",
         "Spell": 5,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 31,
         "Location": "Galbadia - Missile Base",
         "Spell": 38,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 32,
         "Location": "Galbadia - Missile Base",
         "Spell": 25,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 33,
         "Location": "Winhill - Village",
         "Spell": 44,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 34,
         "Location": "Winhill - Village",
         "Spell": 28,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 35,
@@ -262,43 +262,43 @@
         "Offset": 37,
         "Location": "Tomb of the Unknown King",
         "Spell": 29,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 38,
         "Location": "Tomb of the Unknown King",
         "Spell": 47,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 39,
         "Location": "Tomb of the Unknown King",
         "Spell": 22,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 40,
         "Location": "Fisherman's Horizon - Station Yard",
         "Spell": 35,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 41,
         "Location": "Fisherman's Horizon - Residential Area",
         "Spell": 30,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 42,
         "Location": "Fisherman's Horizon",
         "Spell": 26,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 43,
@@ -312,14 +312,14 @@
         "Location": "Fisherman's Horizon - Mayor's Residence",
         "Spell": 19,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 45,
         "Location": "Esthar - Great Salt Lake",
         "Spell": 9,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 46,
@@ -332,36 +332,36 @@
         "Offset": 47,
         "Location": "Esthar - City",
         "Spell": 23,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 48,
         "Location": "Esthar - City",
         "Spell": 4,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 49,
         "Location": "Esthar - Odine's Laboratory",
         "Spell": 17,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 50,
         "Location": "Esthar - City",
         "Spell": 18,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 51,
         "Location": "Esthar - Odine's Lab - Lobby",
         "Spell": 33,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 52,
@@ -381,22 +381,22 @@
         "Offset": 54,
         "Location": "Esthar - Sorceress Memorial",
         "Spell": 37,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 55,
         "Location": null,
         "Spell": 37,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 56,
         "Location": "Esthar - Tears' Point",
         "Spell": 24,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 57,
@@ -409,8 +409,8 @@
         "Offset": 58,
         "Location": "Esthar - Lunatic Pandora Laboratory",
         "Spell": 43,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 59,
@@ -423,7 +423,7 @@
         "Offset": 60,
         "Location": "Centra - Excavation Site",
         "Spell": 41,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -437,42 +437,42 @@
         "Offset": 62,
         "Location": "Centra - Excavation Site",
         "Spell": 39,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 63,
         "Location": "Lunatic Pandora",
         "Spell": 42,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 64,
         "Location": "Lunatic Pandora",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 65,
         "Location": "Lunatic Pandora",
         "Spell": 23,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 66,
         "Location": null,
         "Spell": 36,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 67,
         "Location": "Edea's House - Bedroom",
         "Spell": 23,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -487,27 +487,27 @@
         "Location": null,
         "Spell": 14,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 70,
         "Location": "Centra - Excavation Site",
         "Spell": 40,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 71,
         "Location": "Centra - Excavation Site",
         "Spell": 39,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 72,
         "Location": "Centra Ruins",
         "Spell": 11,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -528,8 +528,8 @@
         "Offset": 75,
         "Location": "T-Garden - Front Gate",
         "Spell": 9,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 76,
@@ -549,49 +549,49 @@
         "Offset": 78,
         "Location": "Shumi Village - Desert Village",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 79,
         "Location": "Shumi Village - Village",
         "Spell": 6,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 80,
         "Location": "Shumi Village - Residence",
         "Spell": 3,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 81,
         "Location": null,
         "Spell": 18,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 82,
         "Location": "White SeeD Ship - Cabin",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 83,
         "Location": "Ragnarok - Aisle",
         "Spell": 22,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 84,
         "Location": "Ragnarok - Aisle",
         "Spell": 24,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -605,14 +605,14 @@
         "Offset": 86,
         "Location": "Deep Sea Research Center",
         "Spell": 28,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 87,
         "Location": "Deep Sea Research Center",
         "Spell": 27,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -620,7 +620,7 @@
         "Location": "Deep Sea Deposit",
         "Spell": 34,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 89,
@@ -633,8 +633,8 @@
         "Offset": 90,
         "Location": "Lunar Base - Pod",
         "Spell": 49,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 91,
@@ -647,50 +647,50 @@
         "Offset": 92,
         "Location": null,
         "Spell": 35,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 93,
         "Location": null,
         "Spell": 36,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 94,
         "Location": null,
         "Spell": 23,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 95,
         "Location": null,
         "Spell": 24,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 96,
         "Location": null,
         "Spell": 37,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 97,
         "Location": null,
         "Spell": 26,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 98,
         "Location": null,
         "Spell": 33,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 99,
@@ -710,56 +710,56 @@
         "Offset": 101,
         "Location": "Ultimecia Castle - Storage Room",
         "Spell": 23,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 102,
         "Location": "Ultimecia Castle - Passageway",
         "Spell": 22,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 103,
         "Location": null,
         "Spell": 50,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 104,
         "Location": null,
         "Spell": 27,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 105,
         "Location": "Ultimecia Castle - Courtyard",
         "Spell": 36,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 106,
         "Location": "Ultimecia Castle - Chapel",
         "Spell": 28,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 107,
         "Location": "Ultimecia Castle - Clock Tower",
         "Spell": 37,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 108,
         "Location": "Ultimecia Castle - Master Room",
         "Spell": 24,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -823,307 +823,307 @@
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 118,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 119,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 120,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 121,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 122,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 123,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 124,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 125,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 126,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 127,
         "Location": null,
         "Spell": 1,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 128,
         "Location": "Balamb - Alcauld Plains",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 129,
         "Location": "Balamb - Alcauld Plains",
         "Spell": 27,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 130,
         "Location": "Timber - Mandy Beach",
         "Spell": 7,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 131,
         "Location": "Timber - Lanker Plains",
         "Spell": 2,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 132,
         "Location": "Timber - Shenand Hill",
         "Spell": 8,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 133,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 5,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 134,
         "Location": "Timber - Yaulny Canyon",
         "Spell": 4,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 135,
         "Location": null,
         "Spell": 1,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 136,
         "Location": "Dollet - Hasberry Plains",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 137,
         "Location": "Dollet - Malgo Peninsula",
         "Spell": 10,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 138,
         "Location": "Dollet - Hasberry Plains",
         "Spell": 22,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 139,
         "Location": "Great Plains of Galbadia",
         "Spell": 27,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 140,
         "Location": "Galbadia - Wilburn Hill",
         "Spell": 50,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 141,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 30,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 142,
         "Location": "Galbadia - Dingo Desert",
         "Spell": 35,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 143,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 11,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 144,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 12,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 145,
         "Location": "Winhill - Winhill Bluffs",
         "Spell": 24,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 146,
         "Location": "Centra - Centra Crater",
         "Spell": 13,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 147,
         "Location": "Centra - Nectar Peninsula",
         "Spell": 29,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 148,
         "Location": "Centra - Cape of Good Hope",
         "Spell": 14,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 149,
         "Location": "Centra - Almaj Mountains",
         "Spell": 9,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 150,
         "Location": "Esthar - Shalmal Peninsula",
         "Spell": 37,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 151,
         "Location": "Esthar - Kashkabald Desert",
         "Spell": 3,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 152,
         "Location": "Trabia - Winter Island",
         "Spell": 26,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 153,
         "Location": "Trabia - Winter Island",
         "Spell": 6,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 154,
         "Location": "Trabia - Hawkwind Plains",
         "Spell": 39,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 155,
         "Location": "Trabia - Bika Snowfield",
         "Spell": 15,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 156,
         "Location": "Trabia - Bika Snowfield",
         "Spell": 28,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 157,
         "Location": "Trabia - Bika Snowfield",
         "Spell": 36,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 158,
         "Location": "Trabia - Vienne Mountains",
         "Spell": 17,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 159,
         "Location": "Esthar - West Coast",
         "Spell": 23,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 160,
         "Location": "Esthar - Nortes Mountains",
         "Spell": 18,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -1137,7 +1137,7 @@
         "Offset": 162,
         "Location": "Winhill - Humphrey Archipelago",
         "Spell": 31,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -1158,14 +1158,14 @@
         "Offset": 165,
         "Location": null,
         "Spell": 33,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 166,
         "Location": "Timber - Shenand Hill",
         "Spell": 42,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -1193,91 +1193,91 @@
         "Offset": 170,
         "Location": "Esthar - Millefeuille Archipelago",
         "Spell": 39,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 171,
         "Location": "Esthar - Grandidi Forest",
         "Spell": 38,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 172,
         "Location": "Trabia - Winter Island",
         "Spell": 17,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 173,
         "Location": "Trabia - Winter Island",
         "Spell": 40,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 174,
         "Location": "Trabia - Winter Island",
         "Spell": 41,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 175,
         "Location": "Trabia - Bika Snowfield",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 176,
         "Location": "Trabia - Albatross Archipelago",
         "Spell": 43,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 177,
         "Location": "Dollet - Holy Glory Cape",
         "Spell": 44,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 178,
         "Location": "Dollet - Hasberry Plains",
         "Spell": 45,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 179,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 46,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 180,
         "Location": "Galbadia - Wilburn Hill",
         "Spell": 47,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 181,
         "Location": "Galbadia - Rem Archipelago",
         "Spell": 48,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 182,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 49,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
@@ -1285,462 +1285,462 @@
         "Location": "Galbadia - Lallapalooza Canyon",
         "Spell": 19,
         "Renewable": false,
-        "Bountiful": false
+        "Bountiful": true
     },
     {
         "Offset": 184,
         "Location": "Island Closest to Heaven",
         "Spell": 18,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 185,
         "Location": "Island Closest to Heaven",
         "Spell": 17,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 186,
         "Location": "Island Closest to Heaven",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 187,
         "Location": "Island Closest to Heaven",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 188,
         "Location": "Island Closest to Heaven",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 189,
         "Location": "Island Closest to Heaven",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 190,
         "Location": "Island Closest to Heaven",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 191,
         "Location": "Island Closest to Heaven",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 192,
         "Location": "Island Closest to Heaven",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 193,
         "Location": "Island Closest to Heaven",
         "Spell": 18,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 194,
         "Location": "Island Closest to Heaven",
         "Spell": 17,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 195,
         "Location": "Island Closest to Heaven",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 196,
         "Location": "Island Closest to Heaven",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 197,
         "Location": "Island Closest to Heaven",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 198,
         "Location": "Island Closest to Heaven",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 199,
         "Location": "Island Closest to Heaven",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 200,
         "Location": "Island Closest to Heaven",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 201,
         "Location": "Island Closest to Heaven",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 202,
         "Location": "Island Closest to Heaven",
         "Spell": 18,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 203,
         "Location": "Island Closest to Heaven",
         "Spell": 17,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 204,
         "Location": "Island Closest to Heaven",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 205,
         "Location": "Island Closest to Heaven",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 206,
         "Location": "Island Closest to Heaven",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 207,
         "Location": "Island Closest to Heaven",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 208,
         "Location": "Island Closest to Heaven",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 209,
         "Location": "Island Closest to Heaven",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 210,
         "Location": "Island Closest to Heaven",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 211,
         "Location": "Island Closest to Heaven",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 212,
         "Location": "Island Closest to Hell",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 213,
         "Location": "Island Closest to Hell",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 214,
         "Location": "Island Closest to Hell",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 215,
         "Location": "Island Closest to Hell",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 216,
         "Location": "Island Closest to Hell",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 217,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 218,
         "Location": "Island Closest to Hell",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 219,
         "Location": "Island Closest to Hell",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 220,
         "Location": "Island Closest to Hell",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 221,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 222,
         "Location": "Island Closest to Hell",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 223,
         "Location": "Island Closest to Hell",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 224,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 225,
         "Location": "Island Closest to Hell",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 226,
         "Location": "Island Closest to Hell",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 227,
         "Location": "Island Closest to Hell",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 228,
         "Location": "Island Closest to Hell",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 229,
         "Location": "Island Closest to Hell",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 230,
         "Location": "Island Closest to Hell",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 231,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 232,
         "Location": "Island Closest to Hell",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 233,
         "Location": "Island Closest to Hell",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 234,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 235,
         "Location": "Island Closest to Hell",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 236,
         "Location": "Island Closest to Hell",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 237,
         "Location": "Island Closest to Hell",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 238,
         "Location": "Island Closest to Hell",
         "Spell": 34,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 239,
         "Location": "Island Closest to Hell",
         "Spell": 25,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 240,
         "Location": "Island Closest to Hell",
         "Spell": 16,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 241,
         "Location": "Island Closest to Hell",
         "Spell": 14,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 242,
         "Location": "Island Closest to Hell",
         "Spell": 15,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 243,
         "Location": "Island Closest to Hell",
         "Spell": 32,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 244,
         "Location": "Island Closest to Hell",
         "Spell": 19,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 245,
         "Location": "Balamb - Alcauld Plains",
         "Spell": 4,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 246,
         "Location": "Balamb - Alcauld Plains",
         "Spell": 21,
-        "Renewable": false,
+        "Renewable": true,
         "Bountiful": false
     },
     {
         "Offset": 247,
         "Location": "Galbadia - Monterosa Plateau",
         "Spell": 28,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 248,
         "Location": "Great Plains of Galbadia",
         "Spell": 39,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     },
     {
         "Offset": 249,
@@ -1788,7 +1788,7 @@
         "Offset": 255,
         "Location": null,
         "Spell": 50,
-        "Renewable": false,
-        "Bountiful": false
+        "Renewable": true,
+        "Bountiful": true
     }
 ]

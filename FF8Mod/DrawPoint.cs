@@ -35,8 +35,8 @@ namespace FF8Mod
             var spell = code & 0x3f;
             if (!Enum.IsDefined(typeof(Magic), spell)) throw new Exception("Draw point stocks an unknown spell");
             Spell = (Magic)spell;
-            Renewable = (code & 0x40) == 1;
-            Bountiful = (code & 0x80) == 1;
+            Renewable = (code & 0x40) != 0;
+            Bountiful = (code & 0x80) != 0;
         }
 
         public byte Encode()
