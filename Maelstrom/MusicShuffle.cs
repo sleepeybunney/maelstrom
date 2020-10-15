@@ -25,6 +25,9 @@ namespace FF8Mod.Maelstrom
 
             foreach (var t in trackIds) result.Add(t, trackIds[random.Next(0, trackCount)]);
 
+            // leave "julia" unshuffled to avoid problems in laguna scene
+            result[22] = 22;
+
             return result;
         }
 
