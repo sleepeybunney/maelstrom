@@ -12,15 +12,17 @@ An open-world randomiser for Final Fantasy VIII
 * Pre-set your character & GF names - a little extra convenience for multiple playthroughs & speedruns
 * Generate a spoiler file containing all boss locations, shop inventories, etc. just in case you get lost
 
-## Free Roam
+## Free Roam (pre-alpha)
 
 Inspired by [FF4: Free Enterprise](https://ff4fe.com), this mode will allow you to travel the world as you see fit, right from the start of the game. You get two party members and two GFs, and the rest is up to you. Each boss you find & defeat will grant major rewards such as new characters, new vehicles, and unsealed powers in Ultimecia Castle.
 
 Free Roam is roughly 10% complete so far. You can fight some bosses around Balamb (step into the black clouds) and reach the western continent by train, but there is still a lot of work to be done: clearing out story-related obstacles, placing new triggers for boss encounters, and so on. Hopefully there's enough to demo the concept at least. Try it out & let me know what you think!
 
+**To be clear, Maelstrom does also work as a normal randomiser.**
+
 ## Requirements
 
-* Final Fantasy VIII - Remastered or the 2013 Steam release (EN)*
+* Final Fantasy VIII - Remastered or the 2013 Steam release (EN)
 * No other mods installed (some things MAY work but no testing has been done - if you just want to fix the MIDI music you can use [this](https://steamcommunity.com/app/39150/discussions/0/35221031741516824/))
 * Windows 7 or above with the latest .NET Framework
 * 1GB free disk space (for backups & working files)
@@ -47,7 +49,7 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 * The "Random Draw Points" option has no effect on the Remastered edition of the game. Hoping to get this fixed soon.
 
-* There are several known bugs around certain bosses (eg. Odin, Edea) and items (eg. Magical Lamp), so if you find yourself unable to progress and do not wish to re-roll:
+* Efforts have been made to eliminate softlocks and crashes, but this is a work in progress and certain things may be broken or simply not yet complete. If you find yourself unable to progress and do not wish to re-roll:
   
   * Close the game and run Maelstrom
 
