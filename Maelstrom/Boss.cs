@@ -130,6 +130,32 @@ namespace FF8Mod.Maelstrom
                     newFile.Encounters[encId].SecondaryCamera = sorceressEncounter.SecondaryCamera;
                     newFile.Encounters[encId].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
                 }
+
+                // award diablos gf for defeating whoever is in the lamp to avoid softlock
+                if (encId == 811)
+                {
+                    var bossSlot = Bosses.Find(b => b.EncounterID == matchedId).SlotRanks[0];
+                    var monster = sourceFile.Encounters[matchedId].Slots[bossSlot].GetMonster(battleSource);
+                    var script = monster.AI.Scripts.Init;
+
+                    script.InsertRange(0, new List<Battle.Instruction>
+                    {
+                        // if shared-var-4 == 0
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
+
+                        // give diablos
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
+
+                        // shared-var-4 = 1
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
+
+                        // end if
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                    }); ;
+
+                    var monsterId = sourceFile.Encounters[matchedId].Slots[bossSlot].MonsterID;
+                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+                }
             }
 
             // save new encounter file
