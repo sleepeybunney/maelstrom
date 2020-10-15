@@ -135,7 +135,8 @@ namespace FF8Mod.Maelstrom
                 if (encId == 811)
                 {
                     var bossSlot = Bosses.Find(b => b.EncounterID == matchedId).SlotRanks[0];
-                    var monster = sourceFile.Encounters[matchedId].Slots[bossSlot].GetMonster(battleSource);
+                    var monsterId = sourceFile.Encounters[matchedId].Slots[bossSlot].MonsterID;
+                    var monster = Monster.ByID(battleSource, monsterId);
                     var script = monster.AI.Scripts.Init;
 
                     script.InsertRange(0, new List<Battle.Instruction>
@@ -153,7 +154,28 @@ namespace FF8Mod.Maelstrom
                         new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
                     }); ;
 
-                    var monsterId = sourceFile.Encounters[matchedId].Slots[bossSlot].MonsterID;
+                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+                }
+
+                // skip shot tutorial for iguion fight if irvine isn't present
+                if (encId == 147)
+                {
+                    var monsterId = sourceFile.Encounters[encId].Slots[0].MonsterID;
+                    var monster = Monster.ByID(battleSource, monsterId);
+                    var script = monster.AI.Scripts.Init;
+
+                    script.InsertRange(0, new List<Battle.Instruction>
+                    {
+                        // if irvine is not alive
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
+
+                        // shared-var-1 (dialogue flag) = 1
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
+
+                        // end if
+                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                    });
+
                     battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
                 }
             }
