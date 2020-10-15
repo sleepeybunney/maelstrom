@@ -259,7 +259,7 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // write to file
-                    if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardShuffle)
+                    if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardShuffle || Properties.Settings.Default.MusicShuffle)
                     {
                         fieldSource.Encode();
                     }
