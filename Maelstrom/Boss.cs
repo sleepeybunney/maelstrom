@@ -178,6 +178,16 @@ namespace FF8Mod.Maelstrom
 
                     battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
                 }
+
+                // remove odin's instakill attack
+                if (encId == 317)
+                {
+                    var monsterId = sourceFile.Encounters[encId].Slots[0].MonsterID;
+                    var monster = Monster.ByID(battleSource, monsterId);
+                    var script = monster.AI.Scripts.Execute;
+                    script.Insert(0, new Battle.Instruction(Battle.Instruction.OpCodesReverse["return"]));
+                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+                }
             }
 
             // save new encounter file
