@@ -56,7 +56,6 @@ namespace FF8Mod.Maelstrom
                     () => BattleOps(seed, spoilerFile),
                     () => FieldOps(seed, seedString, spoilerFile),
                     () => MenuOps(seed, spoilerFile),
-                    () => ExeOps(seed, spoilerFile),
                     () => MainOps(seed, spoilerFile)
                 );
 
@@ -305,6 +304,22 @@ namespace FF8Mod.Maelstrom
                         menuSource.Encode();
                     }
 
+                    // draw point shuffle
+                    if (!Globals.Remastered)
+                    {
+                        if (Properties.Settings.Default.DrawPointShuffle)
+                        {
+                            var shuffle = DrawPointShuffle.Randomise(seed);
+                            if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
+                            DrawPointShuffle.Apply(menuSource, shuffle);
+                            menuSource.Encode();
+                        }
+                        else
+                        {
+                            DrawPointShuffle.RemovePatch(Globals.ExePath);
+                        }
+                    }
+
                     break;
                 }
                 catch (Exception x)
@@ -317,40 +332,6 @@ namespace FF8Mod.Maelstrom
                 }
             }
             Debug.WriteLine("menu ops end");
-        }
-
-        // update game executable
-        private static void ExeOps(int seed, SpoilerFile spoilerFile)
-        {
-            Debug.WriteLine("exe ops start");
-            while (true && !Globals.Remastered)
-            {
-                try
-                {
-                    // draw point shuffle
-                    if (Properties.Settings.Default.DrawPointShuffle)
-                    {
-                        var shuffle = DrawPointShuffle.Randomise(seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
-                        DrawPointShuffle.GeneratePatch(shuffle).Apply(Globals.ExePath);
-                    }
-                    else
-                    {
-                        DrawPointShuffle.RemovePatch(Globals.ExePath);
-                    }
-
-                    break;
-                }
-                catch (Exception x)
-                {
-                    if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
-                    {
-                        if (HandleFileException(Globals.ExePath) == false) break;
-                    }
-                    else throw;
-                }
-            }
-            Debug.WriteLine("exe ops end");
         }
 
         private static void MainOps(int seed, SpoilerFile spoilerFile)
