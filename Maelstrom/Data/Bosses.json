@@ -197,7 +197,7 @@
         "FieldEntity": 0,
         "FieldScript": 7,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [1,0]
     },
     {
         "EncounterID": 194,
