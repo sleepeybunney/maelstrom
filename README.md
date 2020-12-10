@@ -6,6 +6,7 @@ An open-world randomiser for Final Fantasy VIII
 
 * Shuffle boss locations with optional level scaling
 * Buy random, potentially powerful items from shops
+* Teach your GF a randomised set of abilities, including item-exclusives
 * Win rare Triple Triad cards from players all over the world
 * Receive random spells from draw points, including Slots-exclusives and cut content
 * Change the battle music to something very annoying & instantly regret it
