@@ -12,7 +12,7 @@ namespace FF8Mod.Maelstrom.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -38,18 +38,6 @@ namespace FF8Mod.Maelstrom.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool BossShuffle {
-            get {
-                return ((bool)(this["BossShuffle"]));
-            }
-            set {
-                this["BossShuffle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool BossRebalance {
             get {
                 return ((bool)(this["BossRebalance"]));
@@ -68,18 +56,6 @@ namespace FF8Mod.Maelstrom.Properties {
             }
             set {
                 this["StorySkip"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DrawPointShuffle {
-            get {
-                return ((bool)(this["DrawPointShuffle"]));
-            }
-            set {
-                this["DrawPointShuffle"] = value;
             }
         }
         
@@ -374,72 +350,12 @@ namespace FF8Mod.Maelstrom.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShopShuffle {
-            get {
-                return ((bool)(this["ShopShuffle"]));
-            }
-            set {
-                this["ShopShuffle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool SpoilerFile {
             get {
                 return ((bool)(this["SpoilerFile"]));
             }
             set {
                 this["SpoilerFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CardShuffle {
-            get {
-                return ((bool)(this["CardShuffle"]));
-            }
-            set {
-                this["CardShuffle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool LootShuffle {
-            get {
-                return ((bool)(this["LootShuffle"]));
-            }
-            set {
-                this["LootShuffle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AbilityShuffle {
-            get {
-                return ((bool)(this["AbilityShuffle"]));
-            }
-            set {
-                this["AbilityShuffle"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool MusicShuffle {
-            get {
-                return ((bool)(this["MusicShuffle"]));
-            }
-            set {
-                this["MusicShuffle"] = value;
             }
         }
         
@@ -452,6 +368,102 @@ namespace FF8Mod.Maelstrom.Properties {
             }
             set {
                 this["Region"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string BossLocations {
+            get {
+                return ((string)(this["BossLocations"]));
+            }
+            set {
+                this["BossLocations"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string LootDrops {
+            get {
+                return ((string)(this["LootDrops"]));
+            }
+            set {
+                this["LootDrops"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string LootSteals {
+            get {
+                return ((string)(this["LootSteals"]));
+            }
+            set {
+                this["LootSteals"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string GfAbilities {
+            get {
+                return ((string)(this["GfAbilities"]));
+            }
+            set {
+                this["GfAbilities"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string ShopItems {
+            get {
+                return ((string)(this["ShopItems"]));
+            }
+            set {
+                this["ShopItems"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string DpSpells {
+            get {
+                return ((string)(this["DpSpells"]));
+            }
+            set {
+                this["DpSpells"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string CardLocations {
+            get {
+                return ((string)(this["CardLocations"]));
+            }
+            set {
+                this["CardLocations"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public string MusicBgm {
+            get {
+                return ((string)(this["MusicBgm"]));
+            }
+            set {
+                this["MusicBgm"] = value;
             }
         }
     }
