@@ -7,7 +7,9 @@
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         xmlns:local="clr-namespace:FF8Mod.Maelstrom"
         mc:Ignorable="d"
-        Title="Maelstrom" Height="520" Width="800" Closing="OnClosing">
+        Title="MAELSTROM v0.5" TitleCharacterCasing="Normal" WindowTitleBrush="{StaticResource MahApps.Brushes.Highlight}" TitleBarHeight="32" TitleAlignment="Center"
+        Height="560" Width="800" MinHeight="560" MinWidth="800" Closing="OnClosing">
+
     <mah:MetroWindow.Resources>
         <Style x:Key="OptionStyle" TargetType="ItemsControl">
             <Setter Property="ItemsPanel">
@@ -15,8 +17,8 @@
                     <ItemsPanelTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="180px" />
-                                <ColumnDefinition Width="240px" />
+                                <ColumnDefinition Width="160" />
+                                <ColumnDefinition Width="240" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
@@ -42,21 +44,25 @@
             <Setter Property="Margin" Value="0,0,8,0" />
             <Setter Property="Padding" Value="32,8,16,8" />
             <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Height" Value="56" />
+        </Style>
+        <Style TargetType="ScrollViewer" BasedOn="{StaticResource MahApps.Styles.ScrollViewer}">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         </Style>
     </mah:MetroWindow.Resources>
 
     <DockPanel>
-        <Border DockPanel.Dock="Bottom" Height="60px" BorderBrush="{StaticResource MahApps.Brushes.Button.Flat.Foreground}" BorderThickness="0 1 0 0" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
-            <StackPanel Margin="16px" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+        <Border DockPanel.Dock="Bottom" Height="56" BorderBrush="{StaticResource MahApps.Brushes.Button.Flat.Foreground}" BorderThickness="0 1 0 0" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
+            <StackPanel Margin="12" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <CheckBox VerticalAlignment="Center" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Set Seed</CheckBox>
-                <TextBox Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" MaxLength="16" Width="120px" Margin="16px 0px" />
-                <Button Width="48px">Go!</Button>
+                <TextBox Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" MaxLength="16" Width="120" Margin="16 0" />
+                <Button Width="48">Go!</Button>
             </StackPanel>
         </Border>
         
         <TabControl Name="MainTabs" TabStripPlacement="Left" mah:TabControlHelper.Underlined="SelectedTabItem" mah:TabControlHelper.UnderlinePlacement="Right">
             <TabItem Header="World">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Shops">
                             <StackPanel>
@@ -92,7 +98,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Battle">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Bosses">
                             <StackPanel>
@@ -135,7 +141,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="GF">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Abilities">
                             <StackPanel>
@@ -157,7 +163,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Cards">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Rare Cards">
                             <StackPanel>
@@ -179,7 +185,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Misc">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer>
                     <StackPanel>
                         <GroupBox Header="Music">
                             <StackPanel>
@@ -195,6 +201,46 @@
                                 <TextBlock>Shuffle: Background music tracks are shuffled. Changes are consistent, eg. every random encounter will play the same song, whatever it is. Some ambient noises and chanting are included.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after phase 1, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem IsEnabled="False" />
+            <TabItem Header="Presets">
+                
+            </TabItem>
+            <TabItem Header="Config">
+                <ScrollViewer>
+                    <StackPanel>
+                        <GroupBox Header="Game Settings">
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="160" />
+                                        <ColumnDefinition Width="320"/>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0">Location</Label>
+                                    <TextBox Grid.Column="1" TextWrapping="NoWrap" VerticalAlignment="Center" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                                    <Button Grid.Column="2" Margin="8 4">Browse...</Button>
+                                </Grid>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Language</Label>
+                                    <ComboBox Grid.Column="1" VerticalAlignment="Center" SelectedValuePath="Tag" SelectedValue="{Binding Region, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                        <ComboBoxItem Tag="eng">English</ComboBoxItem>
+                                        <ComboBoxItem Tag="fre">Français</ComboBoxItem>
+                                        <ComboBoxItem Tag="ita">Italiano</ComboBoxItem>
+                                        <ComboBoxItem Tag="ger">Deutsch</ComboBoxItem>
+                                        <ComboBoxItem Tag="spa">Español</ComboBoxItem>
+                                        <ComboBoxItem Tag="jp">日本語</ComboBoxItem>
+                                    </ComboBox>
+                                </ItemsControl>
+                                <Separator />
+                                <TextBlock>Browse or enter a path to the Final Fantasy VIII exe file, and select the language you will be playing in. Must be either the Steam 2013 release (English only) or Final Fantasy VIII Remastered.</TextBlock>
+                                <Separator />
+                                <TextBlock FontStyle="Italic">Some features are not yet available in the Remastered edition.</TextBlock>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
