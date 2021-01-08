@@ -7,8 +7,8 @@
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         xmlns:local="clr-namespace:FF8Mod.Maelstrom"
         mc:Ignorable="d"
-        Title="MAELSTROM v0.5" TitleCharacterCasing="Normal" WindowTitleBrush="{StaticResource MahApps.Brushes.Highlight}" TitleBarHeight="32" TitleAlignment="Center"
-        Height="560" Width="800" MinHeight="560" MinWidth="800" Closing="OnClosing">
+        Title="MAELSTROM v0.5" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Center" WindowTitleBrush="{StaticResource MahApps.Brushes.AccentBase}"
+        Height="584" Width="800" MinHeight="584" MinWidth="800" Closing="OnClosing">
 
     <mah:MetroWindow.Resources>
         <Style x:Key="OptionStyle" TargetType="ItemsControl">
@@ -49,10 +49,25 @@
         <Style TargetType="ScrollViewer" BasedOn="{StaticResource MahApps.Styles.ScrollViewer}">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource MahApps.Styles.ComboBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MahApps.Styles.TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+        </Style>
     </mah:MetroWindow.Resources>
 
     <DockPanel>
-        <Border DockPanel.Dock="Bottom" Height="56" BorderBrush="{StaticResource MahApps.Brushes.Button.Flat.Foreground}" BorderThickness="0 1 0 0" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
+        <Border DockPanel.Dock="Top" Height="32" BorderBrush="{StaticResource MahApps.Brushes.Border.NonActive}" BorderThickness="0 1 0 1" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
+            <DockPanel>
+                <TextBlock DockPanel.Dock="Left" Margin="20 4 4 4" VerticalAlignment="Center">Final Fantasy VIII Remastered (English)</TextBlock>
+                <TextBlock DockPanel.Dock="Right" Margin="4 4 20 4" VerticalAlignment="Center">Preset: Custom</TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </DockPanel>
+        </Border>
+
+        <Border DockPanel.Dock="Bottom" Height="56" BorderBrush="{StaticResource MahApps.Brushes.Border.NonActive}" BorderThickness="0 1 0 0" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
             <StackPanel Margin="12" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                 <CheckBox VerticalAlignment="Center" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Set Seed</CheckBox>
                 <TextBox Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" MaxLength="16" Width="120" Margin="16 0" />
@@ -223,12 +238,12 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0">Location</Label>
-                                    <TextBox Grid.Column="1" TextWrapping="NoWrap" VerticalAlignment="Center" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                                    <TextBox Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
                                     <Button Grid.Column="2" Margin="8 4">Browse...</Button>
                                 </Grid>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Language</Label>
-                                    <ComboBox Grid.Column="1" VerticalAlignment="Center" SelectedValuePath="Tag" SelectedValue="{Binding Region, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Tag" SelectedValue="{Binding Region, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
                                         <ComboBoxItem Tag="eng">English</ComboBoxItem>
                                         <ComboBoxItem Tag="fre">Français</ComboBoxItem>
                                         <ComboBoxItem Tag="ita">Italiano</ComboBoxItem>
