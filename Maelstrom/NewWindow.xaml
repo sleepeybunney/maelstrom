@@ -41,10 +41,10 @@
             <Setter Property="Padding" Value="4,4,4,8" />
         </Style>
         <Style TargetType="TabItem" BasedOn="{StaticResource MahApps.Styles.TabItem}">
-            <Setter Property="Margin" Value="0,0,8,0" />
-            <Setter Property="Padding" Value="32,8,16,8" />
+            <Setter Property="Margin" Value="0 0 8 0" />
+            <Setter Property="Padding" Value="32 4 16 0" />
             <Setter Property="HorizontalAlignment" Value="Right" />
-            <Setter Property="Height" Value="56" />
+            <Setter Property="Height" Value="48" />
         </Style>
         <Style TargetType="ScrollViewer" BasedOn="{StaticResource MahApps.Styles.ScrollViewer}">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
@@ -61,8 +61,8 @@
     <DockPanel>
         <Border DockPanel.Dock="Top" Height="32" BorderBrush="{StaticResource MahApps.Brushes.Border.NonActive}" BorderThickness="0 1 0 1" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
             <DockPanel>
-                <TextBlock DockPanel.Dock="Left" Margin="20 4 4 4" VerticalAlignment="Center">Final Fantasy VIII Remastered (English)</TextBlock>
-                <TextBlock DockPanel.Dock="Right" Margin="4 4 20 4" VerticalAlignment="Center">Preset: Custom</TextBlock>
+                <TextBlock DockPanel.Dock="Right" Margin="4 4 20 4" VerticalAlignment="Center">Final Fantasy VIII Remastered (English)</TextBlock>
+                <TextBlock DockPanel.Dock="Left" Margin="20 4 4 4" VerticalAlignment="Center">Preset: Custom</TextBlock>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </DockPanel>
         </Border>
