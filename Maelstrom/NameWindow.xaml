@@ -1,12 +1,18 @@
-﻿<Controls:MetroWindow x:Class="FF8Mod.Maelstrom.NameWindow"
+﻿<mah:MetroWindow x:Class="FF8Mod.Maelstrom.NameWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         mc:Ignorable="d"
+        Background="{StaticResource MahApps.Brushes.Window.Background}"
         Title="Maelstrom" Height="360" Width="500" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+        </Style>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
@@ -93,4 +99,4 @@
 
         <Button x:Name="closeButton" Content="Close" Click="OnClose" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Grid.Row="10" Grid.Column="3" Grid.RowSpan="2" />
     </Grid>
-</Controls:MetroWindow>
+</mah:MetroWindow>
