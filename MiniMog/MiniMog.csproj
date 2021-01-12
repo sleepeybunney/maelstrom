@@ -7,7 +7,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>MiniMog</AssemblyTitle>
     <Product>MiniMog</Product>
-    <Copyright>Copyright © Sleepey Bunney 2020</Copyright>
+    <Copyright>Copyright © Sleepey Bunney 2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <UseWPF>true</UseWPF>
   </PropertyGroup>

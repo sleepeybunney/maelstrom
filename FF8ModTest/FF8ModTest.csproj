@@ -3,7 +3,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>FF8ModTest</AssemblyTitle>
     <Product>FF8ModTest</Product>
-    <Copyright>Copyright © Sleepey Bunney 2020</Copyright>
+    <Copyright>Copyright © Sleepey Bunney 2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
