@@ -1,0 +1,467 @@
+[
+
+    {
+        "AbilityID": 0,
+        "AbilityName": "None"
+    },
+    {
+        "AbilityID": 1,
+        "AbilityName": "HP-J"
+    },
+    {
+        "AbilityID": 2,
+        "AbilityName": "STR-J"
+    },
+    {
+        "AbilityID": 3,
+        "AbilityName": "VIT-J"
+    },
+    {
+        "AbilityID": 4,
+        "AbilityName": "MAG-J"
+    },
+    {
+        "AbilityID": 5,
+        "AbilityName": "SPR-J"
+    },
+    {
+        "AbilityID": 6,
+        "AbilityName": "SPD-J"
+    },
+    {
+        "AbilityID": 7,
+        "AbilityName": "EVA-J"
+    },
+    {
+        "AbilityID": 8,
+        "AbilityName": "HIT-J"
+    },
+    {
+        "AbilityID": 9,
+        "AbilityName": "LUCK-J"
+    },
+    {
+        "AbilityID": 10,
+        "AbilityName": "Elem-Atk-J"
+    },
+    {
+        "AbilityID": 11,
+        "AbilityName": "ST-Atk-J"
+    },
+    {
+        "AbilityID": 12,
+        "AbilityName": "Elem-Def-J"
+    },
+    {
+        "AbilityID": 13,
+        "AbilityName": "ST-Def-J"
+    },
+    {
+        "AbilityID": 14,
+        "AbilityName": "Elem-Defx2"
+    },
+    {
+        "AbilityID": 15,
+        "AbilityName": "Elem-Defx4"
+    },
+    {
+        "AbilityID": 16,
+        "AbilityName": "ST-Def-Jx2"
+    },
+    {
+        "AbilityID": 17,
+        "AbilityName": "ST-Def-Jx4"
+    },
+    {
+        "AbilityID": 18,
+        "AbilityName": "Abilityx3"
+    },
+    {
+        "AbilityID": 19,
+        "AbilityName": "Abilityx4"
+    },
+    {
+        "AbilityID": 20,
+        "AbilityName": "Magic"
+    },
+    {
+        "AbilityID": 21,
+        "AbilityName": "GF"
+    },
+    {
+        "AbilityID": 22,
+        "AbilityName": "Draw"
+    },
+    {
+        "AbilityID": 23,
+        "AbilityName": "Item"
+    },
+    {
+        "AbilityID": 24,
+        "AbilityName": "Empty"
+    },
+    {
+        "AbilityID": 25,
+        "AbilityName": "Card"
+    },
+    {
+        "AbilityID": 26,
+        "AbilityName": "Doom"
+    },
+    {
+        "AbilityID": 27,
+        "AbilityName": "MadRush"
+    },
+    {
+        "AbilityID": 28,
+        "AbilityName": "Treatment"
+    },
+    {
+        "AbilityID": 29,
+        "AbilityName": "Defend"
+    },
+    {
+        "AbilityID": 30,
+        "AbilityName": "Darkside"
+    },
+    {
+        "AbilityID": 31,
+        "AbilityName": "Recover"
+    },
+    {
+        "AbilityID": 32,
+        "AbilityName": "Absorb"
+    },
+    {
+        "AbilityID": 33,
+        "AbilityName": "Revive"
+    },
+    {
+        "AbilityID": 34,
+        "AbilityName": "LVDown"
+    },
+    {
+        "AbilityID": 35,
+        "AbilityName": "LVUp"
+    },
+    {
+        "AbilityID": 36,
+        "AbilityName": "Kamikaze"
+    },
+    {
+        "AbilityID": 37,
+        "AbilityName": "Devour"
+    },
+    {
+        "AbilityID": 38,
+        "AbilityName": "MiniMog"
+    },
+    {
+        "AbilityID": 39,
+        "AbilityName": "HP+20%"
+    },
+    {
+        "AbilityID": 40,
+        "AbilityName": "HP+40%"
+    },
+    {
+        "AbilityID": 41,
+        "AbilityName": "HP+80%"
+    },
+    {
+        "AbilityID": 42,
+        "AbilityName": "Str+20%"
+    },
+    {
+        "AbilityID": 43,
+        "AbilityName": "Str+40%"
+    },
+    {
+        "AbilityID": 44,
+        "AbilityName": "Str+60%"
+    },
+    {
+        "AbilityID": 45,
+        "AbilityName": "Vit+20%"
+    },
+    {
+        "AbilityID": 46,
+        "AbilityName": "Vit+40%"
+    },
+    {
+        "AbilityID": 47,
+        "AbilityName": "Vit+60%"
+    },
+    {
+        "AbilityID": 48,
+        "AbilityName": "Mag+20%"
+    },
+    {
+        "AbilityID": 49,
+        "AbilityName": "Mag+40%"
+    },
+    {
+        "AbilityID": 50,
+        "AbilityName": "Mag+60%"
+    },
+    {
+        "AbilityID": 51,
+        "AbilityName": "Spr+20%"
+    },
+    {
+        "AbilityID": 52,
+        "AbilityName": "Spr+40%"
+    },
+    {
+        "AbilityID": 53,
+        "AbilityName": "Spr+60%"
+    },
+    {
+        "AbilityID": 54,
+        "AbilityName": "Spd+20%"
+    },
+    {
+        "AbilityID": 55,
+        "AbilityName": "Spd+40%"
+    },
+    {
+        "AbilityID": 56,
+        "AbilityName": "Eva+30%"
+    },
+    {
+        "AbilityID": 57,
+        "AbilityName": "Luck+50%"
+    },
+    {
+        "AbilityID": 58,
+        "AbilityName": "Mug"
+    },
+    {
+        "AbilityID": 59,
+        "AbilityName": "MedData"
+    },
+    {
+        "AbilityID": 60,
+        "AbilityName": "Counter"
+    },
+    {
+        "AbilityID": 61,
+        "AbilityName": "Return Damage"
+    },
+    {
+        "AbilityID": 62,
+        "AbilityName": "Cover"
+    },
+    {
+        "AbilityID": 63,
+        "AbilityName": "Initiative"
+    },
+    {
+        "AbilityID": 64,
+        "AbilityName": "Move-HPUp"
+    },
+    {
+        "AbilityID": 65,
+        "AbilityName": "HPBonus"
+    },
+    {
+        "AbilityID": 66,
+        "AbilityName": "StrBonus"
+    },
+    {
+        "AbilityID": 67,
+        "AbilityName": "VitBonus"
+    },
+    {
+        "AbilityID": 68,
+        "AbilityName": "MagBonus"
+    },
+    {
+        "AbilityID": 69,
+        "AbilityName": "SprBonus"
+    },
+    {
+        "AbilityID": 70,
+        "AbilityName": "Auto-Protect"
+    },
+    {
+        "AbilityID": 71,
+        "AbilityName": "Auto-Shell"
+    },
+    {
+        "AbilityID": 72,
+        "AbilityName": "Auto-Reflect"
+    },
+    {
+        "AbilityID": 73,
+        "AbilityName": "Auto-Haste"
+    },
+    {
+        "AbilityID": 74,
+        "AbilityName": "Auto Potion"
+    },
+    {
+        "AbilityID": 75,
+        "AbilityName": "Expendx2-1"
+    },
+    {
+        "AbilityID": 76,
+        "AbilityName": "Expendx3-1"
+    },
+    {
+        "AbilityID": 77,
+        "AbilityName": "Ribbon"
+    },
+    {
+        "AbilityID": 78,
+        "AbilityName": "Alert"
+    },
+    {
+        "AbilityID": 79,
+        "AbilityName": "Move-Find"
+    },
+    {
+        "AbilityID": 80,
+        "AbilityName": "Enc-Half"
+    },
+    {
+        "AbilityID": 81,
+        "AbilityName": "Enc-None"
+    },
+    {
+        "AbilityID": 82,
+        "AbilityName": "RareItem"
+    },
+    {
+        "AbilityID": 83,
+        "AbilityName": "SumMag+10%"
+    },
+    {
+        "AbilityID": 84,
+        "AbilityName": "SumMag+20%"
+    },
+    {
+        "AbilityID": 85,
+        "AbilityName": "SumMag+30%"
+    },
+    {
+        "AbilityID": 86,
+        "AbilityName": "SumMag+40%"
+    },
+    {
+        "AbilityID": 87,
+        "AbilityName": "GFHP+10%"
+    },
+    {
+        "AbilityID": 88,
+        "AbilityName": "GFHP+20%"
+    },
+    {
+        "AbilityID": 89,
+        "AbilityName": "GFHP+30%"
+    },
+    {
+        "AbilityID": 90,
+        "AbilityName": "GFHP+40%"
+    },
+    {
+        "AbilityID": 91,
+        "AbilityName": "Boost"
+    },
+    {
+        "AbilityID": 92,
+        "AbilityName": "Haggle"
+    },
+    {
+        "AbilityID": 93,
+        "AbilityName": "Sell-High"
+    },
+    {
+        "AbilityID": 94,
+        "AbilityName": "Familiar"
+    },
+    {
+        "AbilityID": 95,
+        "AbilityName": "CallShop"
+    },
+    {
+        "AbilityID": 96,
+        "AbilityName": "JunkShop"
+    },
+    {
+        "AbilityID": 97,
+        "AbilityName": "T Mag-RF"
+    },
+    {
+        "AbilityID": 98,
+        "AbilityName": "IMag-RF"
+    },
+    {
+        "AbilityID": 99,
+        "AbilityName": "FMag-RF"
+    },
+    {
+        "AbilityID": 100,
+        "AbilityName": "LMag-RF"
+    },
+    {
+        "AbilityID": 101,
+        "AbilityName": "TimeMag-RF"
+    },
+    {
+        "AbilityID": 102,
+        "AbilityName": "STMag-RF"
+    },
+    {
+        "AbilityID": 103,
+        "AbilityName": "SuptMag-RF"
+    },
+    {
+        "AbilityID": 104,
+        "AbilityName": "ForbidMag-RF"
+    },
+    {
+        "AbilityID": 105,
+        "AbilityName": "RecovMed-RF"
+    },
+    {
+        "AbilityID": 106,
+        "AbilityName": "STMed-RF"
+    },
+    {
+        "AbilityID": 107,
+        "AbilityName": "Ammo-RF"
+    },
+    {
+        "AbilityID": 108,
+        "AbilityName": "Tool-RF"
+    },
+    {
+        "AbilityID": 109,
+        "AbilityName": "ForbidMed-RF"
+    },
+    {
+        "AbilityID": 110,
+        "AbilityName": "GFRecovMed-RF"
+    },
+    {
+        "AbilityID": 111,
+        "AbilityName": "GFAblMed-RF"
+    },
+    {
+        "AbilityID": 112,
+        "AbilityName": "Mid Mag-RF"
+    },
+    {
+        "AbilityID": 113,
+        "AbilityName": "HighMag-RF"
+    },
+    {
+        "AbilityID": 114,
+        "AbilityName": "MedLVUp"
+    },
+    {
+        "AbilityID": 115,
+        "AbilityName": "Card Mod"
+    }
+]

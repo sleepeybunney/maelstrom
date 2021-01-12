@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FF8Mod.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ namespace FF8Mod.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music;
+        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities;
 
         public SpoilerFile()
         {
@@ -26,6 +27,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Cards", GeneralString(settings.CardShuffle));
             Options.Bullet("Loot", GeneralString(settings.LootShuffle));
             Options.Bullet("Music", GeneralString(settings.MusicShuffle));
+            Options.Bullet("Abilities", GeneralString(settings.AbilityShuffle));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -137,6 +139,22 @@ namespace FF8Mod.Maelstrom
             foreach (var r in replacements.OrderBy(r => (r.StartsWith("[") ? "z" : "") + r)) Music.Bullet(r);
         }
 
+        public void AddAbilities(List<JunctionableGF> gfs)
+        {
+            Abilities = new Section();
+            Abilities.Heading("Abilities");
+
+            for (var i = 0; i < gfs.Count; i++)
+            {
+                Abilities.Bullet(AbilityShuffle.GFNames.Find(gfn => gfn.GFID == i).GFName);
+                for (var j = 0; j < gfs[i].Abilities.Length; j++)
+                {
+                    Abilities.Bullet(AbilityShuffle.AbilityNames.Find(an => an.AbilityID == gfs[i].Abilities[j].Ability).AbilityName, 1);
+                }
+                Abilities.NewLine();
+            }
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -182,6 +200,7 @@ namespace FF8Mod.Maelstrom
                 if (Cards != null) result.Add(Cards);
                 if (Loot != null) result.Add(Loot);
                 if (Music != null) result.Add(Music);
+                if (Abilities != null) result.Add(Abilities);
                 return result;
             }
         }

@@ -347,7 +347,8 @@ namespace FF8Mod.Maelstrom
                     // ability shuffle
                     if (Properties.Settings.Default.AbilityShuffle)
                     {
-                        AbilityShuffle.Randomise(mainSource, seed);
+                        var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed);
+                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
                     }
 
                     mainSource.Encode();
