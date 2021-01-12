@@ -18,6 +18,7 @@ namespace FF8Mod.Maelstrom
             var random = new Random(seed);
             var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
             var result = new List<JunctionableGF>();
+
             for (int i = 0; i < 16; i++)
             {
                 for (int j = 0; j < 21; j++)
@@ -27,6 +28,13 @@ namespace FF8Mod.Maelstrom
                 }
                 result.Add(kernel.JunctionableGFs[i]);
             }
+
+            // reduce "empty" cost
+            kernel.Abilities[24].APCost = 60;
+
+            // increase "ribbon" cost
+            kernel.Abilities[77].APCost = 250;
+
             mainSource.ReplaceFile(Globals.KernelPath, kernel.Encode());
             return result;
         }
