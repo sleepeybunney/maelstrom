@@ -15,6 +15,7 @@ using System.Text.Json;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Globalization;
 
 namespace FF8Mod.Maelstrom
 {
@@ -49,6 +50,24 @@ namespace FF8Mod.Maelstrom
                 GameLocation.Text = dialog.FileName;
                 GameLocation.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
+        }
+    }
+
+    public class TitleConverter : IMultiValueConverter
+    {
+        public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var path = value[0].ToString();
+            var lang = value[1].ToString();
+
+            if (!File.Exists(path) || !Randomizer.DetectVersion(path)) return "No Game Loaded!";
+            if (Globals.Remastered) return "Final Fantasy VIII Remastered (" + lang.ToUpper() + " 2019)";
+            return "Final Fantasy VIII (" + lang.ToUpper() + " 2013)";
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -56,12 +56,20 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="TextWrapping" Value="NoWrap" />
         </Style>
+        <local:TitleConverter x:Key="TitleConverter" />
     </mah:MetroWindow.Resources>
 
     <DockPanel>
         <Border DockPanel.Dock="Top" Height="32" BorderBrush="{StaticResource MahApps.Brushes.Border.NonActive}" BorderThickness="0 1 0 1" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
             <DockPanel>
-                <TextBlock DockPanel.Dock="Right" Margin="4 4 20 4" VerticalAlignment="Center">Final Fantasy VIII Remastered (English)</TextBlock>
+                <TextBlock DockPanel.Dock="Right" Margin="4 4 20 4" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource TitleConverter}">
+                            <Binding Path="GameLocation" Mode="OneWay" Source="{x:Static local:State.Current}" />
+                            <Binding Path="Language" Mode="OneWay" Source="{x:Static local:State.Current}" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
                 <TextBlock DockPanel.Dock="Left" Margin="20 4 4 4" VerticalAlignment="Center">Preset: Custom</TextBlock>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </DockPanel>
