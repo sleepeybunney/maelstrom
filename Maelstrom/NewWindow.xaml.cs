@@ -10,8 +10,10 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using System.Text.Json;
+using System.IO;
+using System.Diagnostics;
 
 namespace FF8Mod.Maelstrom
 {
@@ -22,12 +24,13 @@ namespace FF8Mod.Maelstrom
     {
         public NewWindow()
         {
+            State.Load(App.Path + @"\settings.json");
             InitializeComponent();
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            State.Save(App.Path + @"\settings.json");
         }
     }
 }

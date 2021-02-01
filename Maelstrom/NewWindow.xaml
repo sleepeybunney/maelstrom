@@ -69,8 +69,8 @@
 
         <Border DockPanel.Dock="Bottom" Height="56" BorderBrush="{StaticResource MahApps.Brushes.Border.NonActive}" BorderThickness="0 1 0 0" Background="{StaticResource MahApps.Brushes.Button.Flat.Background}">
             <StackPanel Margin="12" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <CheckBox VerticalAlignment="Center" IsChecked="{Binding SeedSet, Mode=TwoWay, Source={x:Static p:Settings.Default}}">Set Seed</CheckBox>
-                <TextBox Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static p:Settings.Default}}" IsEnabled="{Binding SeedSet, Mode=OneWay, Source={x:Static p:Settings.Default}}" MaxLength="16" Width="120" Margin="16 0" />
+                <CheckBox VerticalAlignment="Center" IsChecked="{Binding SeedFixed, Mode=TwoWay, Source={x:Static local:State.Current}}">Set Seed</CheckBox>
+                <TextBox Text="{Binding SeedValue, Mode=TwoWay, Source={x:Static local:State.Current}}" IsEnabled="{Binding SeedFixed, Mode=OneWay, Source={x:Static local:State.Current}}" MaxLength="16" Width="120" Margin="16 0" />
                 <Button Width="48">Go!</Button>
             </StackPanel>
         </Border>
@@ -83,7 +83,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Items Sold</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding ShopItems, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding ShopItems, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
@@ -97,7 +97,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Spells</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding DpSpells, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding DrawPointSpells, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
@@ -119,7 +119,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Encounters</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding BossLocations, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding BossLocations, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Shuffle</ComboBoxItem>
                                     </ComboBox>
@@ -135,14 +135,14 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Drops</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootDrops, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootDrops, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
                                 </ItemsControl>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Steals</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootSteals, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootSteals, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
@@ -162,7 +162,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Available to Learn</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding GfAbilities, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding GfAbilities, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
@@ -184,7 +184,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Locations</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding CardLocations, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding CardLocations, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
@@ -206,7 +206,7 @@
                             <StackPanel>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">BGM</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding MusicBgm, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding Music, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Shuffle</ComboBoxItem>
                                     </ComboBox>
@@ -238,12 +238,12 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0">Location</Label>
-                                    <TextBox Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static p:Settings.Default}}" />
+                                    <TextBox Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static local:State.Current}}" />
                                     <Button Grid.Column="2" Margin="8 4">Browse...</Button>
                                 </Grid>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Language</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Tag" SelectedValue="{Binding Region, Mode=TwoWay, Source={x:Static p:Settings.Default}}">
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Tag" SelectedValue="{Binding Language, Mode=TwoWay, Source={x:Static local:State.Current}}">
                                         <ComboBoxItem Tag="eng">English</ComboBoxItem>
                                         <ComboBoxItem Tag="fre">Français</ComboBoxItem>
                                         <ComboBoxItem Tag="ita">Italiano</ComboBoxItem>

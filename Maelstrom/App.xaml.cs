@@ -19,5 +19,13 @@ namespace FF8Mod.Maelstrom
                 return reader.ReadToEnd();
             }
         }
+
+        public static string Path
+        {
+            get
+            {
+                return System.IO.Path.GetDirectoryName(assembly.Location);
+            }
+        }
     }
 }
