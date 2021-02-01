@@ -170,8 +170,6 @@
                                 <Separator />
                                 <TextBlock>Normal: GF abilities are unchanged.</TextBlock>
                                 <TextBlock>Random: Each GF has a random set of abilities to learn. Anything they would normally start the game knowing (eg. Magic, Draw) is still guaranteed.</TextBlock>
-                                <Separator />
-                                <TextBlock FontStyle="Italic">Not currently listed in the spoiler file.</TextBlock>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
