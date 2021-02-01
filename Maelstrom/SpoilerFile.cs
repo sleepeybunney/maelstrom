@@ -21,13 +21,13 @@ namespace FF8Mod.Maelstrom
             var settings = Properties.Settings.Default;
             Options.Bullet("Mode", ModeString(settings.StorySkip));
             Options.Bullet("Seed", settings.SeedValue.ToString());
-            Options.Bullet("Bosses", BossesString(settings.BossShuffle, settings.BossRebalance));
-            Options.Bullet("Draw Points", GeneralString(settings.DrawPointShuffle));
-            Options.Bullet("Shops", GeneralString(settings.ShopShuffle));
-            Options.Bullet("Cards", GeneralString(settings.CardShuffle));
-            Options.Bullet("Loot", GeneralString(settings.LootShuffle));
-            Options.Bullet("Music", GeneralString(settings.MusicShuffle));
-            Options.Bullet("Abilities", GeneralString(settings.AbilityShuffle));
+            Options.Bullet("Bosses", BossesString(settings.BossLocations, settings.BossRebalance));
+            Options.Bullet("Draw Points", settings.DpSpells);
+            Options.Bullet("Shops", settings.ShopItems);
+            Options.Bullet("Cards", settings.CardLocations);
+            Options.Bullet("Loot", settings.LootDrops);
+            Options.Bullet("Music", settings.MusicBgm);
+            Options.Bullet("Abilities", settings.GfAbilities);
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -160,16 +160,10 @@ namespace FF8Mod.Maelstrom
             return modeFlag ? "Free Roam" : "Normal Game";
         }
 
-        private string BossesString(bool shuffleFlag, bool balanceFlag)
+        private string BossesString(string shuffleFlag, bool balanceFlag)
         {
-            if (!shuffleFlag) return "Normal";
-            if (shuffleFlag && balanceFlag) return "Shuffled, Rebalanced";
-            return "Shuffled";
-        }
-
-        private string GeneralString(bool flag)
-        {
-            return flag ? "Random" : "Normal";
+            if (shuffleFlag == "Normal" && balanceFlag) return "Shuffled, Rebalanced";
+            return shuffleFlag;
         }
 
         private string LootString(HeldItem[] items)
