@@ -1,0 +1,11 @@
+{
+  "BossLocations": "Normal",
+  "LootDrops": "Normal",
+  "LootSteals": "Normal",
+  "GfAbilities": "Normal",
+  "ShopItems": "Normal",
+  "DrawPointSpells": "Normal",
+  "CardLocations": "Normal",
+  "Music": "Normal",
+  "PresetName": "Vanilla"
+}

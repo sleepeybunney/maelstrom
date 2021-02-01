@@ -40,6 +40,7 @@ namespace FF8Mod.Maelstrom
             if (DrawPointSpells != "Normal") result.AppendLine(" - " + DrawPointSpells + " Draw Points");
             if (CardLocations != "Normal") result.AppendLine(" - " + CardLocations + " Cards");
             if (Music != "Normal") result.AppendLine(" - " + Music + " Music");
+            if (result.Length == 0) result.AppendLine(" - Reset All to Normal");
             return result.ToString();
         }
 
