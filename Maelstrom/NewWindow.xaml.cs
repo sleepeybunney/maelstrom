@@ -26,13 +26,14 @@ namespace FF8Mod.Maelstrom
     {
         public NewWindow()
         {
-            State.Load(App.Path + @"\settings.json");
+            State.LoadFile(App.Path + @"\settings.json", true);
+            DataContext = State.Current;
             InitializeComponent();
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            State.Save(App.Path + @"\settings.json");
+            State.SaveFile(App.Path + @"\settings.json", true);
         }
 
         private void OnBrowse(object sender, RoutedEventArgs e)
@@ -50,6 +51,19 @@ namespace FF8Mod.Maelstrom
                 GameLocation.Text = dialog.FileName;
                 GameLocation.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
+        }
+
+        private void LoadSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadDescription.Text = PresetList.SelectedItem.ToString();
+        }
+
+        private void OnLoadPreset(object sender, RoutedEventArgs e)
+        {
+            if (PresetList.SelectedItem == null) return;
+            State.LoadState((State)PresetList.SelectedItem);
+            DataContext = null;
+            DataContext = State.Current;
         }
     }
 
