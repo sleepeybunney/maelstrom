@@ -26,7 +26,7 @@ namespace FF8Mod.Maelstrom
         public string DrawPointSpells { get; set; } = "Normal";
         public string CardLocations { get; set; } = "Normal";
         public string Music { get; set; } = "Normal";
-        public string PresetName { get; set; } = "Custom";
+        public string PresetName { get; set; } = null;
 
         public override string ToString()
         {
@@ -46,21 +46,21 @@ namespace FF8Mod.Maelstrom
 
         public static List<State> Presets { get; set; }
 
-        public static State LoadFile(string path, bool includeSettings = false)
+        public static State LoadFile(string path, bool preset = true)
         {
             try
             {
                 if (!File.Exists(path)) return new State();
-                return LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), includeSettings);
+                return LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), preset);
                 
             }
             catch (Exception) { }
             return new State();
         }
 
-        public static State LoadState(State state, bool includeSettings = false)
+        public static State LoadState(State state, bool preset = true)
         {
-            if (!includeSettings)
+            if (preset)
             {
                 state.GameLocation = Current.GameLocation;
                 state.Language = Current.Language;
@@ -70,25 +70,29 @@ namespace FF8Mod.Maelstrom
             return state;
         }
 
-        public static void SaveFile(string path, bool includeSettings = false)
+        public static void SaveFile(string path, bool preset = true)
         {
             try
             {
                 var folder = Path.GetDirectoryName(path);
                 if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-                File.WriteAllText(path, JsonSerializer.Serialize(SaveState(Current, includeSettings), options) + Environment.NewLine);
+                File.WriteAllText(path, JsonSerializer.Serialize(SaveState(Current, preset), options) + Environment.NewLine);
             }
             catch (Exception) { }
         }
 
-        public static State SaveState(State state, bool includeSettings = false)
+        public static State SaveState(State state, bool preset = true)
         {
-            if (!includeSettings)
+            if (preset)
             {
                 state.GameLocation = null;
                 state.Language = null;
                 state.SeedFixed = false;
                 state.SeedValue = null;
+            }
+            else
+            {
+                state.PresetName = null;
             }
             return state;
         }

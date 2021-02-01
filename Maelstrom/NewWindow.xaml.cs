@@ -27,7 +27,7 @@ namespace FF8Mod.Maelstrom
         public NewWindow()
         {
             // load user settings
-            State.Current = State.LoadFile(App.Path + @"\settings.json", true);
+            State.Current = State.LoadFile(App.Path + @"\settings.json", false);
             DataContext = State.Current;
 
             // load presets
@@ -44,7 +44,7 @@ namespace FF8Mod.Maelstrom
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            State.SaveFile(App.Path + @"\settings.json", true);
+            State.SaveFile(App.Path + @"\settings.json", false);
         }
 
         private void OnBrowse(object sender, RoutedEventArgs e)
