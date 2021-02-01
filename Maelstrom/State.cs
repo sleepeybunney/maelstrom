@@ -43,30 +43,21 @@ namespace FF8Mod.Maelstrom
             return result.ToString();
         }
 
-        public static List<State> Presets
-        {
-            get
-            {
-                return new List<State>()
-                {
-                    new State() { PresetName = "Default", BossLocations = "Shuffle", ShopItems = "Random" },
-                    new State() { PresetName = "Chaotic", FreeRoam = true, LootDrops = "Random", LootSteals = "Random" }
-                };
-            }
-        }
+        public static List<State> Presets { get; set; }
 
-        public static void LoadFile(string path, bool includeSettings = false)
+        public static State LoadFile(string path, bool includeSettings = false)
         {
             try
             {
-                if (!File.Exists(path)) return;
-                LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), includeSettings);
+                if (!File.Exists(path)) return new State();
+                return LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), includeSettings);
                 
             }
             catch (Exception) { }
+            return new State();
         }
 
-        public static void LoadState(State state, bool includeSettings = false)
+        public static State LoadState(State state, bool includeSettings = false)
         {
             if (!includeSettings)
             {
@@ -75,7 +66,7 @@ namespace FF8Mod.Maelstrom
                 state.SeedFixed = Current.SeedFixed;
                 state.SeedValue = Current.SeedValue;
             }
-            Current = state;
+            return state;
         }
 
         public static void SaveFile(string path, bool includeSettings = false)
@@ -84,7 +75,7 @@ namespace FF8Mod.Maelstrom
             {
                 var folder = Path.GetDirectoryName(path);
                 if (!Directory.Exists(folder)) Directory.CreateDirectory(folder);
-                File.WriteAllText(path, JsonSerializer.Serialize(SaveState(Current, includeSettings), options));
+                File.WriteAllText(path, JsonSerializer.Serialize(SaveState(Current, includeSettings), options) + Environment.NewLine);
             }
             catch (Exception) { }
         }

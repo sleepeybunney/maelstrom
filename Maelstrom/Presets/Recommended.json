@@ -1,0 +1,11 @@
+{
+    "BossLocations": "Shuffle",
+    "LootDrops": "Random",
+    "LootSteals": "Random",
+    "GfAbilities": "Normal",
+    "ShopItems": "Normal",
+    "DrawPointSpells": "Random",
+    "CardLocations": "Normal",
+    "Music": "Normal",
+    "PresetName": "Recommended"
+}

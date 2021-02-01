@@ -26,8 +26,19 @@ namespace FF8Mod.Maelstrom
     {
         public NewWindow()
         {
-            State.LoadFile(App.Path + @"\settings.json", true);
+            // load user settings
+            State.Current = State.LoadFile(App.Path + @"\settings.json", true);
             DataContext = State.Current;
+
+            // load presets
+            State.Presets = new List<State>();
+            var presetsPath = Path.Combine(App.Path, "Presets");
+            if (!Directory.Exists(presetsPath)) Directory.CreateDirectory(presetsPath);
+            foreach (var file in Directory.GetFiles(presetsPath, "*.json"))
+            {
+                State.Presets.Add(State.LoadFile(file));
+            }
+
             InitializeComponent();
         }
 
@@ -53,7 +64,7 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        private void LoadSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OnSelectPreset(object sender, SelectionChangedEventArgs e)
         {
             LoadDescription.Text = PresetList.SelectedItem.ToString();
         }
@@ -61,7 +72,9 @@ namespace FF8Mod.Maelstrom
         private void OnLoadPreset(object sender, RoutedEventArgs e)
         {
             if (PresetList.SelectedItem == null) return;
-            State.LoadState((State)PresetList.SelectedItem);
+            State.Current = State.LoadState((State)PresetList.SelectedItem);
+
+            // refresh binding
             DataContext = null;
             DataContext = State.Current;
         }

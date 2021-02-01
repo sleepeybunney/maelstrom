@@ -71,8 +71,6 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                <TextBlock DockPanel.Dock="Left" Margin="20 4 4 4" VerticalAlignment="Center" Text="Preset:" />
-                <TextBlock DockPanel.Dock="Left" Margin="4" VerticalAlignment="Center" Text="{Binding PresetName, Mode=OneWay}" />
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </DockPanel>
         </Border>
@@ -233,9 +231,9 @@
             <TabItem Header="Presets">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Load">
+                        <GroupBox Header="Load Preset">
                             <StackPanel>
-                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="LoadSelectionChanged" Margin="0 0 0 16">
+                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="OnSelectPreset" Margin="0 0 0 16">
                                     <ListBox.Resources>
                                         <Style TargetType="ListBoxItem">
                                             <Style.Triggers>
@@ -252,7 +250,7 @@
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                                 <TextBlock Name="LoadDescription" Margin="28 4 0 0" />
-                                <Button Click="OnLoadPreset">Load Settings</Button>
+                                <Button Click="OnLoadPreset">Use These Settings</Button>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
