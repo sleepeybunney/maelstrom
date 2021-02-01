@@ -14,6 +14,7 @@ using MahApps.Metro.Controls;
 using System.Text.Json;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace FF8Mod.Maelstrom
 {
@@ -31,6 +32,23 @@ namespace FF8Mod.Maelstrom
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             State.Save(App.Path + @"\settings.json");
+        }
+
+        private void OnBrowse(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                CheckFileExists = true,
+                Multiselect = false,
+                Filter = "Final Fantasy VIII Executable|ff8_en.exe;ffviii.exe",
+                Title = "Select game location"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                GameLocation.Text = dialog.FileName;
+                GameLocation.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            }
         }
     }
 }

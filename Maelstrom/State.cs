@@ -10,6 +10,8 @@ namespace FF8Mod.Maelstrom
 {
     public class State
     {
+        public static State Current = new State();
+
         public string GameLocation { get; set; } = "";
         public bool FreeRoam { get; set; } = false;
         public bool SeedFixed { get; set; } = false;
@@ -24,8 +26,6 @@ namespace FF8Mod.Maelstrom
         public string DrawPointSpells { get; set; } = "Normal";
         public string CardLocations { get; set; } = "Normal";
         public string Music { get; set; } = "Normal";
-
-        public static State Current = new State();
 
         public static void Load(string path)
         {

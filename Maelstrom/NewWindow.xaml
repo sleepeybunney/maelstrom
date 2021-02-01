@@ -236,8 +236,8 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0">Location</Label>
-                                    <TextBox Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static local:State.Current}}" />
-                                    <Button Grid.Column="2" Margin="8 4">Browse...</Button>
+                                    <TextBox Name="GameLocation" Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay, Source={x:Static local:State.Current}}" />
+                                    <Button Grid.Column="2" Margin="8 4" Click="OnBrowse">Browse...</Button>
                                 </Grid>
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Language</Label>
