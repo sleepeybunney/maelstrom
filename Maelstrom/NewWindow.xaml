@@ -254,6 +254,12 @@
                                 <Button Click="OnLoadPreset">Use These Settings</Button>
                             </StackPanel>
                         </GroupBox>
+                        <GroupBox Header="Save Preset">
+                            <StackPanel>
+                                <TextBox Name="SaveName" mah:TextBoxHelper.Watermark="Enter preset name..." Margin="0 4 0 8" />
+                                <Button Click="OnSavePreset">Save Current Settings</Button>
+                            </StackPanel>
+                        </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

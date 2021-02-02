@@ -402,11 +402,17 @@ namespace FF8Mod.Maelstrom
             if (Properties.Settings.Default.SpoilerFile)
             {
                 // strip illegal chars from filename
-                var invalidChars = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
-                var regex = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
-                File.WriteAllText("spoilers." + regex.Replace(seedString, "_") + ".txt", spoilerFile.ToString());
+                
+                File.WriteAllText("spoilers." + SanitizeFileName(seedString) + ".txt", spoilerFile.ToString());
             }
             Debug.WriteLine("final ops end");
+        }
+
+        public static string SanitizeFileName(string fileName)
+        {
+            var invalidChars = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            var regex = new Regex(string.Format("[{0}]", Regex.Escape(invalidChars)));
+            return regex.Replace(fileName, "_");
         }
     }
 }

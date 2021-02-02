@@ -83,6 +83,8 @@ namespace FF8Mod.Maelstrom
 
         public static State SaveState(State state, bool preset = true)
         {
+            state = (State)state.MemberwiseClone();
+
             if (preset)
             {
                 state.GameLocation = null;
@@ -94,6 +96,7 @@ namespace FF8Mod.Maelstrom
             {
                 state.PresetName = null;
             }
+
             return state;
         }
 

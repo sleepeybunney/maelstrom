@@ -31,15 +31,31 @@ namespace FF8Mod.Maelstrom
             DataContext = State.Current;
 
             // load presets
-            State.Presets = new List<State>();
-            var presetsPath = Path.Combine(App.Path, "Presets");
-            if (!Directory.Exists(presetsPath)) Directory.CreateDirectory(presetsPath);
-            foreach (var file in Directory.GetFiles(presetsPath, "*.json"))
-            {
-                State.Presets.Add(State.LoadFile(file));
-            }
+            State.Presets = FetchPresets();
 
             InitializeComponent();
+        }
+
+        private List<State> FetchPresets()
+        {
+            var result = new List<State>();
+            var presetsPath = Path.Combine(App.Path, "Presets");
+            if (!Directory.Exists(presetsPath)) Directory.CreateDirectory(presetsPath);
+
+            foreach (var file in Directory.GetFiles(presetsPath, "*.json"))
+            {
+                result.Add(State.LoadFile(file));
+            }
+
+            return result;
+        }
+
+        private void SaveNewPreset()
+        {
+            var presetsPath = Path.Combine(App.Path, "Presets");
+            if (!Directory.Exists(presetsPath)) Directory.CreateDirectory(presetsPath);
+            State.Current.PresetName = SaveName.Text;
+            State.SaveFile(Path.Combine(presetsPath, Randomizer.SanitizeFileName(SaveName.Text) + ".json"), true);
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -66,17 +82,30 @@ namespace FF8Mod.Maelstrom
 
         private void OnSelectPreset(object sender, SelectionChangedEventArgs e)
         {
-            LoadDescription.Text = PresetList.SelectedItem.ToString();
+            if (PresetList.SelectedItem == null) LoadDescription.Text = "";
+            else LoadDescription.Text = PresetList.SelectedItem.ToString();
         }
 
         private void OnLoadPreset(object sender, RoutedEventArgs e)
         {
             if (PresetList.SelectedItem == null) return;
-            State.Current = State.LoadState((State)PresetList.SelectedItem);
+            State.Current = State.LoadState((State)PresetList.SelectedItem, true);
 
             // refresh binding
-            DataContext = null;
             DataContext = State.Current;
+        }
+
+        private void OnSavePreset(object sender, RoutedEventArgs e)
+        {
+            if (SaveName.Text == "") return;
+            try
+            {
+                SaveNewPreset();
+                State.Presets = FetchPresets();
+                PresetList.SelectedItem = null;
+                PresetList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+            }
+            catch (Exception x) { }
         }
     }
 
@@ -84,8 +113,8 @@ namespace FF8Mod.Maelstrom
     {
         public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
         {
-            var path = value[0].ToString();
-            var lang = value[1].ToString();
+            var path = value[0] == null ? "null" : value[0].ToString();
+            var lang = value[1] == null ? "null" : value[1].ToString();
 
             if (!File.Exists(path) || !Randomizer.DetectVersion(path)) return "No Game Loaded!";
             if (Globals.Remastered) return "Final Fantasy VIII Remastered (" + lang.ToUpper() + " 2019)";
