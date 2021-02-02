@@ -233,7 +233,7 @@
                     <StackPanel>
                         <GroupBox Header="Load Preset">
                             <StackPanel>
-                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="OnSelectPreset">
+                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="OnSelectPreset" PreviewMouseWheel="HandlePreviewMouseWheel">
                                     <ListBox.Resources>
                                         <Style TargetType="ListBoxItem">
                                             <Style.Triggers>

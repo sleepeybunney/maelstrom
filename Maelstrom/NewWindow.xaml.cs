@@ -107,6 +107,19 @@ namespace FF8Mod.Maelstrom
             }
             catch (Exception x) { }
         }
+
+        private void HandlePreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (sender is ListBox && !e.Handled)
+            {
+                e.Handled = true;
+                var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
+                eventArg.RoutedEvent = UIElement.MouseWheelEvent;
+                eventArg.Source = sender;
+                var parent = ((Control)sender).Parent as UIElement;
+                parent.RaiseEvent(eventArg);
+            }
+        }
     }
 
     public class TitleConverter : IMultiValueConverter
