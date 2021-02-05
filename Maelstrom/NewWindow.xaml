@@ -304,6 +304,16 @@
                                 <TextBlock FontStyle="Italic">Some features are not yet available in the Remastered edition.</TextBlock>
                             </StackPanel>
                         </GroupBox>
+                        <GroupBox Header="Spoiler File">
+                            <StackPanel>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Generate Spoiler File</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding SpoilerFile, Mode=TwoWay}" />
+                                </ItemsControl>
+                                <Separator />
+                                <TextBlock>Create a text file logging all changes made to the game (ie. where everything got shuffled to, in case you get stuck).</TextBlock>
+                            </StackPanel>
+                        </GroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

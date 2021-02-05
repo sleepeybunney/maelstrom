@@ -65,6 +65,7 @@ namespace FF8Mod.Maelstrom
             {
                 state.GameLocation = Current.GameLocation;
                 state.Language = Current.Language;
+                state.SpoilerFile = Current.SpoilerFile;
                 state.SeedFixed = Current.SeedFixed;
                 state.SeedValue = Current.SeedValue;
                 state.History = Current.History;
@@ -91,6 +92,7 @@ namespace FF8Mod.Maelstrom
             {
                 state.GameLocation = null;
                 state.Language = null;
+                state.SpoilerFile = false;
                 state.SeedFixed = false;
                 state.SeedValue = null;
                 state.History = null;
