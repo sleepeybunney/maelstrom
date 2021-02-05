@@ -27,6 +27,7 @@ namespace FF8Mod.Maelstrom
         public string CardLocations { get; set; } = "Normal";
         public string Music { get; set; } = "Normal";
         public string PresetName { get; set; } = null;
+        public List<string> History { get; set; } = new List<string>();
 
         public override string ToString()
         {
@@ -66,6 +67,7 @@ namespace FF8Mod.Maelstrom
                 state.Language = Current.Language;
                 state.SeedFixed = Current.SeedFixed;
                 state.SeedValue = Current.SeedValue;
+                state.History = Current.History;
             }
             return state;
         }
@@ -91,6 +93,7 @@ namespace FF8Mod.Maelstrom
                 state.Language = null;
                 state.SeedFixed = false;
                 state.SeedValue = null;
+                state.History = null;
             }
             else
             {

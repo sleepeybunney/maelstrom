@@ -120,6 +120,16 @@ namespace FF8Mod.Maelstrom
                 parent.RaiseEvent(eventArg);
             }
         }
+
+        private void OnLoadHistory(object sender, RoutedEventArgs e)
+        {
+            if (HistoryList.SelectedItem == null) return;
+            State.Current.SeedValue = HistoryList.SelectedItem.ToString();
+            State.Current.SeedFixed = true;
+            SeedValueBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
+            SeedValueBox.GetBindingExpression(TextBox.IsEnabledProperty).UpdateTarget();
+            SeedFixedBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateTarget();
+        }
     }
 
     public class TitleConverter : IMultiValueConverter
