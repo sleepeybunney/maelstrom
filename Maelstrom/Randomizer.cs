@@ -200,13 +200,15 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // loot shuffle
-                    if (State.Current.LootDrops != "Normal" || State.Current.LootSteals != "Normal")
+                    var drops = (State.Current.LootDrops != "Normal");
+                    var steals = (State.Current.LootSteals != "Normal");
+                    if (drops || steals)
                     {
-                        var shuffle = LootShuffle.Randomise(battleSource, seed);
+                        var shuffle = LootShuffle.Randomise(battleSource, drops, steals, seed);
                         if (State.Current.SpoilerFile) spoilerFile.AddLoot(shuffle);
                     }
 
-                    if (State.Current.BossLocations != "Normal" || State.Current.LootDrops != "Normal" || State.Current.LootSteals != "Normal")
+                    if (State.Current.BossLocations != "Normal" || drops || steals)
                     {
                         battleSource.Encode();
                     }
