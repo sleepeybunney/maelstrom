@@ -18,15 +18,15 @@ namespace FF8Mod.Maelstrom
             Options = new Section();
             Options.Heading("Options");
 
-            var settings = Properties.Settings.Default;
-            Options.Bullet("Mode", ModeString(settings.StorySkip));
+            var settings = State.Current;
+            Options.Bullet("Mode", ModeString(settings.FreeRoam));
             Options.Bullet("Seed", settings.SeedValue.ToString());
-            Options.Bullet("Bosses", BossesString(settings.BossLocations, settings.BossRebalance));
-            Options.Bullet("Draw Points", settings.DpSpells);
+            Options.Bullet("Bosses", BossesString(settings.BossLocations, false));
+            Options.Bullet("Draw Points", settings.DrawPointSpells);
             Options.Bullet("Shops", settings.ShopItems);
             Options.Bullet("Cards", settings.CardLocations);
-            Options.Bullet("Loot", settings.LootDrops);
-            Options.Bullet("Music", settings.MusicBgm);
+            Options.Bullet("Loot", LootString(settings.LootDrops, settings.LootSteals));
+            Options.Bullet("Music", settings.Music);
             Options.Bullet("Abilities", settings.GfAbilities);
         }
 
@@ -96,7 +96,7 @@ namespace FF8Mod.Maelstrom
             Cards.NewLine();
         }
 
-        public void AddLoot(List<MonsterInfo> monsters)
+        public void AddLoot(List<MonsterInfo> monsters, bool drops, bool steals)
         {
             Loot = new Section();
             Loot.Heading("Loot");
@@ -111,14 +111,22 @@ namespace FF8Mod.Maelstrom
                 if (name == " ") name = "(Unknown)";
 
                 Loot.Bullet(name + ":");
-                Loot.Bullet(string.Format("Low-level drops: {0}", LootString(m.DropLow)), 1);
-                Loot.Bullet(string.Format("Mid-level drops: {0}", LootString(m.DropMed)), 1);
-                Loot.Bullet(string.Format("High-level drops: {0}", LootString(m.DropHigh)), 1);
-                Loot.NewLine();
-                Loot.Bullet(string.Format("Low-level steals: {0}", LootString(m.MugLow)), 1);
-                Loot.Bullet(string.Format("Mid-level steals: {0}", LootString(m.MugMed)), 1);
-                Loot.Bullet(string.Format("High-level steals: {0}", LootString(m.MugHigh)), 1);
-                Loot.NewLine();
+
+                if (drops)
+                {
+                    Loot.Bullet(string.Format("Low-level drops: {0}", LootString(m.DropLow)), 1);
+                    Loot.Bullet(string.Format("Mid-level drops: {0}", LootString(m.DropMed)), 1);
+                    Loot.Bullet(string.Format("High-level drops: {0}", LootString(m.DropHigh)), 1);
+                    Loot.NewLine();
+                }
+
+                if (steals)
+                {
+                    Loot.Bullet(string.Format("Low-level steals: {0}", LootString(m.MugLow)), 1);
+                    Loot.Bullet(string.Format("Mid-level steals: {0}", LootString(m.MugMed)), 1);
+                    Loot.Bullet(string.Format("High-level steals: {0}", LootString(m.MugHigh)), 1);
+                    Loot.NewLine();
+                }
             }
         }
 
@@ -164,6 +172,17 @@ namespace FF8Mod.Maelstrom
         {
             if (shuffleFlag == "Normal" && balanceFlag) return "Shuffled, Rebalanced";
             return shuffleFlag;
+        }
+
+        private string LootString(string dropsFlag, string stealsFlag)
+        {
+            var drops = (dropsFlag != "Normal");
+            var steals = (stealsFlag != "Normal");
+
+            if (drops && steals) return "Random (All)";
+            if (drops) return "Random (Drops)";
+            if (steals) return "Random (Steals)";
+            return "Normal";
         }
 
         private string LootString(HeldItem[] items)
