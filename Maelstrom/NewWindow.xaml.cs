@@ -34,6 +34,8 @@ namespace FF8Mod.Maelstrom
             State.Presets = FetchPresets();
 
             InitializeComponent();
+            GoButton.Click += OnGo;
+            goContent.Content = GoButton;
         }
 
         private List<State> FetchPresets()
@@ -126,10 +128,54 @@ namespace FF8Mod.Maelstrom
             if (HistoryList.SelectedItem == null) return;
             State.Current.SeedValue = HistoryList.SelectedItem.ToString();
             State.Current.SeedFixed = true;
+            RefreshSeed();
+        }
+
+        private void OnGo(object sender, RoutedEventArgs e)
+        {
+            goContent.Content = Spinner;
+            Randomizer.Go(OnComplete);
+        }
+
+        private void OnComplete()
+        {
+            this.Invoke(() =>
+            {
+                RefreshHistory();
+                RefreshSeed();
+                goContent.Content = GoButton;
+                MessageBox.Show(this, "Done!", "Maelstrom");
+            });
+        }
+
+        private void RefreshHistory()
+        {
+            var temp = new List<string>();
+            temp.AddRange(State.Current.History);
+            State.Current.History = temp;
+            HistoryList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+        }
+
+        private void RefreshSeed()
+        {
             SeedValueBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
             SeedValueBox.GetBindingExpression(TextBox.IsEnabledProperty).UpdateTarget();
             SeedFixedBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateTarget();
         }
+
+        static Button GoButton = new Button()
+        {
+            Content = "Go!"
+        };
+
+        static ProgressRing Spinner = new ProgressRing()
+        {
+            IsActive = true,
+            Width = 22,
+            Height = 22,
+            MinWidth = 22,
+            MinHeight = 22
+        };
     }
 
     public class TitleConverter : IMultiValueConverter

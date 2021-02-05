@@ -15,7 +15,7 @@ namespace FF8Mod.Maelstrom
         public static void Go(Action callback)
         {
             Debug.WriteLine("randomizer start");
-            Globals.ExePath = Properties.Settings.Default.GameLocation;
+            Globals.ExePath = State.Current.GameLocation;
 
             if (!File.Exists(Globals.ExePath))
             {
@@ -33,11 +33,16 @@ namespace FF8Mod.Maelstrom
             }
 
             // set region
-            Globals.RegionCode = Properties.Settings.Default.Region;
+            Globals.RegionCode = State.Current.Language;
 
             // generate new seed if not fixed
-            if (!Properties.Settings.Default.SeedSet) Properties.Settings.Default.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
-            var seedString = Properties.Settings.Default.SeedValue;
+            if (!State.Current.SeedFixed) State.Current.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
+            var seedString = State.Current.SeedValue;
+
+            // update seed history
+            if (State.Current.History == null) State.Current.History = new List<string>();
+            State.Current.History.RemoveAll(s => s == seedString);
+            State.Current.History.Insert(0, seedString);
 
             // use seed string's hash code as the seed (or parse if possible, for compatibility with 0.2.1 and earlier)
             if (!int.TryParse(seedString, out int seed))
@@ -188,20 +193,20 @@ namespace FF8Mod.Maelstrom
                     var battleSource = new FileSource(Globals.BattlePath);
 
                     // boss shuffle/rebalance
-                    if (Properties.Settings.Default.BossLocations != "Normal")
+                    if (State.Current.BossLocations != "Normal")
                     {
-                        var shuffle = Boss.Shuffle(battleSource, Properties.Settings.Default.BossRebalance, seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddBosses(shuffle);
+                        var shuffle = Boss.Shuffle(battleSource, false, seed);
+                        if (State.Current.SpoilerFile) spoilerFile.AddBosses(shuffle);
                     }
 
                     // loot shuffle
-                    if (Properties.Settings.Default.LootDrops != "Normal" || Properties.Settings.Default.LootSteals != "Normal")
+                    if (State.Current.LootDrops != "Normal" || State.Current.LootSteals != "Normal")
                     {
                         var shuffle = LootShuffle.Randomise(battleSource, seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddLoot(shuffle);
+                        if (State.Current.SpoilerFile) spoilerFile.AddLoot(shuffle);
                     }
 
-                    if (Properties.Settings.Default.BossLocations != "Normal" || Properties.Settings.Default.LootDrops != "Normal" || Properties.Settings.Default.LootSteals != "Normal")
+                    if (State.Current.BossLocations != "Normal" || State.Current.LootDrops != "Normal" || State.Current.LootSteals != "Normal")
                     {
                         battleSource.Encode();
                     }
@@ -232,7 +237,7 @@ namespace FF8Mod.Maelstrom
                     var fieldSource = new FileSource(Globals.FieldPath);
 
                     // apply free roam
-                    if (Properties.Settings.Default.StorySkip)
+                    if (State.Current.FreeRoam)
                     {
                         StorySkip.Apply(fieldSource, seedString, seed);
                     }
@@ -242,23 +247,23 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // apply card shuffle
-                    if (Properties.Settings.Default.CardLocations != "Normal")
+                    if (State.Current.CardLocations != "Normal")
                     {
                         var shuffle = CardShuffle.Shuffle(seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddCards(shuffle);
+                        if (State.Current.SpoilerFile) spoilerFile.AddCards(shuffle);
                         CardShuffle.Apply(fieldSource, shuffle);
                     }
 
                     // apply music shuffle
-                    if (Properties.Settings.Default.MusicBgm != "Normal")
+                    if (State.Current.Music != "Normal")
                     {
                         var shuffle = MusicShuffle.Shuffle(seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddMusic(shuffle);
+                        if (State.Current.SpoilerFile) spoilerFile.AddMusic(shuffle);
                         MusicShuffle.Apply(fieldSource, shuffle);
                     }
 
                     // write to file
-                    if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.CardLocations != "Normal" || Properties.Settings.Default.MusicBgm != "Normal")
+                    if (State.Current.FreeRoam || State.Current.CardLocations != "Normal" || State.Current.Music != "Normal")
                     {
                         fieldSource.Encode();
                     }
@@ -289,17 +294,17 @@ namespace FF8Mod.Maelstrom
                     var menuSource = new FileSource(Globals.MenuPath);
 
                     // preset names
-                    if (Properties.Settings.Default.NameSet)
-                    {
-                        PresetNames.Apply(menuSource);
-                        menuSource.Encode();
-                    }
+                    //if (State.Current.NameSet)
+                    //{
+                    //    PresetNames.Apply(menuSource);
+                    //    menuSource.Encode();
+                    //}
 
                     // shop shuffle
-                    if (Properties.Settings.Default.ShopItems != "Normal")
+                    if (State.Current.ShopItems != "Normal")
                     {
                         var shuffle = ShopShuffle.Randomise(seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddShops(shuffle);
+                        if (State.Current.SpoilerFile) spoilerFile.AddShops(shuffle);
                         ShopShuffle.Apply(menuSource, shuffle);
                         menuSource.Encode();
                     }
@@ -307,10 +312,10 @@ namespace FF8Mod.Maelstrom
                     // draw point shuffle
                     if (!Globals.Remastered)
                     {
-                        if (Properties.Settings.Default.DpSpells != "Normal")
+                        if (State.Current.DrawPointSpells != "Normal")
                         {
                             var shuffle = DrawPointShuffle.Randomise(seed);
-                            if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
+                            if (State.Current.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
                             DrawPointShuffle.Apply(menuSource, shuffle);
                             menuSource.Encode();
                         }
@@ -345,10 +350,10 @@ namespace FF8Mod.Maelstrom
                     var mainSource = new FileSource(Globals.MainPath);
 
                     // ability shuffle
-                    if (Properties.Settings.Default.GfAbilities != "Normal")
+                    if (State.Current.GfAbilities != "Normal")
                     {
                         var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed);
-                        if (Properties.Settings.Default.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
+                        if (State.Current.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
                     }
 
                     mainSource.Encode();
@@ -375,13 +380,13 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     // free roam rewards
-                    if (Properties.Settings.Default.StorySkip || Properties.Settings.Default.BossLocations != "Normal")
+                    if (State.Current.FreeRoam || State.Current.BossLocations != "Normal")
                     {
                         var battleSource = new FileSource(Globals.BattlePath);
                         var fieldSource = new FileSource(Globals.FieldPath);
 
-                        if (Properties.Settings.Default.StorySkip) Reward.SetRewards(battleSource, fieldSource, seed);
-                        if (Properties.Settings.Default.BossLocations != "Normal") Boss.ApplyEdeaFix(battleSource, fieldSource);
+                        if (State.Current.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
+                        if (State.Current.BossLocations != "Normal") Boss.ApplyEdeaFix(battleSource, fieldSource);
 
                         battleSource.Encode();
                         fieldSource.Encode();
@@ -399,7 +404,7 @@ namespace FF8Mod.Maelstrom
             }
 
             // save spoiler file
-            if (Properties.Settings.Default.SpoilerFile)
+            if (State.Current.SpoilerFile)
             {
                 // strip illegal chars from filename
                 
