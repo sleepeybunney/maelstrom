@@ -7,6 +7,7 @@ using FF8Mod.Archive;
 using System.Windows;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace FF8Mod.Maelstrom
 {
@@ -43,6 +44,7 @@ namespace FF8Mod.Maelstrom
             if (State.Current.History == null) State.Current.History = new List<string>();
             State.Current.History.RemoveAll(s => s == seedString);
             State.Current.History.Insert(0, seedString);
+            if (State.Current.History.Count > 50) State.Current.History = State.Current.History.Take(50).ToList();
 
             // use seed string's hash code as the seed (or parse if possible, for compatibility with 0.2.1 and earlier)
             if (!int.TryParse(seedString, out int seed))
