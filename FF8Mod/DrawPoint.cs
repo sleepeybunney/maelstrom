@@ -12,36 +12,27 @@ namespace FF8Mod
 
         public int Offset { get; set; }
         public string Location { get; set; }
-        public Magic Spell { get; set; }
+        public int SpellID { get; set; }
         public bool Renewable { get; set; }
         public bool Bountiful { get; set; }
 
         public DrawPoint()
         {
-            Spell = Magic.Fire;
+            SpellID = 1;
             Renewable = false;
             Bountiful = false;
         }
 
-        public DrawPoint(Magic spell, bool renewable, bool bountiful)
-        {
-            Spell = spell;
-            Renewable = renewable;
-            Bountiful = bountiful;
-        }
-
         public DrawPoint(byte code)
         {
-            var spell = code & 0x3f;
-            if (!Enum.IsDefined(typeof(Magic), spell)) throw new Exception("Draw point stocks an unknown spell");
-            Spell = (Magic)spell;
+            SpellID = code & 0x3f;
             Renewable = (code & 0x40) != 0;
             Bountiful = (code & 0x80) != 0;
         }
 
         public byte Encode()
         {
-            var result = (byte)Spell;
+            var result = (byte)SpellID;
             if (Renewable) result += 0x40;
             if (Bountiful) result += 0x80;
             return result;
@@ -94,65 +85,5 @@ namespace FF8Mod
             0xD0, 0xCE, 0xCF, 0xE0, 0xD3, 0x44, 0x55, 0xDC, 0xE7, 0x10, 0x21, 0x20,
             0x0E, 0x0F, 0x13, 0xF2
         };
-
-        public enum Magic
-        {
-            Fire = 1,
-            Fira = 2,
-            Firaga = 3,
-            Blizzard = 4,
-            Blizzara = 5,
-            Blizzaga = 6,
-            Thunder = 7,
-            Thundara = 8,
-            Thundaga = 9,
-            Water = 10,
-            Aero = 11,
-            Bio = 12,
-            Demi = 13,
-            Holy = 14,
-            Flare = 15,
-            Meteor = 16,
-            Quake = 17,
-            Tornado = 18,
-            Ultima = 19,
-            Apocalypse = 20,
-            Cure = 21,
-            Cura = 22,
-            Curaga = 23,
-            Life = 24,
-            FullLife = 25,
-            Regen = 26,
-            Esuna = 27,
-            Dispel = 28,
-            Protect = 29,
-            Shell = 30,
-            Reflect = 31,
-            Aura = 32,
-            Double = 33,
-            Triple = 34,
-            Haste = 35,
-            Slow = 36,
-            Stop = 37,
-            Blind = 38,
-            Confuse = 39,
-            Sleep = 40,
-            Silence = 41,
-            Break = 42,
-            Death = 43,
-            Drain = 44,
-            Pain = 45,
-            Berserk = 46,
-            Float = 47,
-            Zombie = 48,
-            Meltdown = 49,
-            Scan = 50,
-            FullCure = 51,
-            Wall = 52,
-            Rapture = 53,
-            Percent = 54,
-            Catastrophe = 55,
-            TheEnd = 56
-        }
     }
 }

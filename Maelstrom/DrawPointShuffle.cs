@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using FF8Mod.Archive;
 
@@ -8,19 +9,24 @@ namespace FF8Mod.Maelstrom
     public static class DrawPointShuffle
     {
         public static List<DrawPoint> DrawPoints = JsonSerializer.Deserialize<List<DrawPoint>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.DrawPoints.json"));
+        public static List<Spell> Spells = JsonSerializer.Deserialize<List<Spell>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Spells.json"));
 
         // assign random spells to each draw point, retaining their other properties
-        public static Dictionary<int, int> Randomise(int seed)
+        public static Dictionary<int, int> Randomise(bool includeApoc, bool includeSlots, bool includeCut, int seed)
         {
             var random = new Random(seed);
-            var spells = (int[])Enum.GetValues(typeof(DrawPoint.Magic));
+            var spellIDs = Spells
+                .Where(s => s.SpellID != 20 || includeApoc)
+                .Where(s => !s.SlotExclusive || includeSlots)
+                .Where(s => !s.CutContent || includeCut)
+                .Select(s => s.SpellID).ToArray();
             var result = new Dictionary<int, int>();
 
             foreach (var dp in DrawPoints)
             {
                 if (dp.Location != null)
                 {
-                    result[dp.Offset] = spells[random.Next(spells.Length)];
+                    result[dp.Offset] = spellIDs[random.Next(spellIDs.Length)];
                 }
             }
 
@@ -40,7 +46,7 @@ namespace FF8Mod.Maelstrom
                 var drawPoint = new DrawPoint(DrawPoint.OriginalData[i]);
                 if (newSpells.ContainsKey(i))
                 {
-                    drawPoint.Spell = (DrawPoint.Magic)newSpells[i];
+                    drawPoint.SpellID = newSpells[i];
                 }
                 DrawPoint.UpdatedDrawPoints[i + 1] = drawPoint;
             }

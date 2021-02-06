@@ -318,7 +318,11 @@ namespace FF8Mod.Maelstrom
                     {
                         if (State.Current.DrawPointSpells != "Normal")
                         {
-                            var shuffle = DrawPointShuffle.Randomise(seed);
+                            var apoc = State.Current.DrawPointIncludeApoc;
+                            var slot = State.Current.DrawPointIncludeSlot;
+                            var cut = State.Current.DrawPointIncludeCut;
+
+                            var shuffle = DrawPointShuffle.Randomise(apoc, slot, cut, seed);
                             if (State.Current.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
                             DrawPointShuffle.Apply(menuSource, shuffle);
                             menuSource.Encode();

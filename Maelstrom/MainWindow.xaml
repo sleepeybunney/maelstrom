@@ -121,6 +121,22 @@
                                 <TextBlock>Normal: Draw points are unchanged.</TextBlock>
                                 <TextBlock>Random: Each draw point provides a random spell.</TextBlock>
                                 <Separator />
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Include Apocalypse</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeApoc, Mode=TwoWay}" />
+                                </ItemsControl>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Include Slot Spells</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeSlot, Mode=TwoWay}" />
+                                </ItemsControl>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Include Cut Spells</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeCut, Mode=TwoWay}" />
+                                </ItemsControl>
+                                <Separator />
+                                <TextBlock>Slot spells: Wall, Full-cure, Rapture, The End</TextBlock>
+                                <TextBlock>Cut spells: Percent, Catastrophe</TextBlock>
+                                <Separator />
                                 <TextBlock FontStyle="Italic">Does not currently work on Remastered edition.</TextBlock>
                             </StackPanel>
                         </GroupBox>

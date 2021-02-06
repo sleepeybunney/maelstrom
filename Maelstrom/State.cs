@@ -24,6 +24,9 @@ namespace FF8Mod.Maelstrom
         public string GfAbilities { get; set; } = "Normal";
         public string ShopItems { get; set; } = "Normal";
         public string DrawPointSpells { get; set; } = "Normal";
+        public bool DrawPointIncludeApoc { get; set; } = false;
+        public bool DrawPointIncludeSlot { get; set; } = false;
+        public bool DrawPointIncludeCut { get; set; } = false;
         public string CardLocations { get; set; } = "Normal";
         public string Music { get; set; } = "Normal";
         public string PresetName { get; set; } = null;

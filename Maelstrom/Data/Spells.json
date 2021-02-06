@@ -1,0 +1,232 @@
+[
+    {
+        "SpellID": 1,
+        "SpellName": "Fire"
+    },
+    {
+        "SpellID": 2,
+        "SpellName": "Fira"
+    },
+    {
+        "SpellID": 3,
+        "SpellName": "Firaga"
+    },
+    {
+        "SpellID": 4,
+        "SpellName": "Blizzard"
+    },
+    {
+        "SpellID": 5,
+        "SpellName": "Blizzara"
+    },
+    {
+        "SpellID": 6,
+        "SpellName": "Blizzaga"
+    },
+    {
+        "SpellID": 7,
+        "SpellName": "Thunder"
+    },
+    {
+        "SpellID": 8,
+        "SpellName": "Thundara"
+    },
+    {
+        "SpellID": 9,
+        "SpellName": "Thundaga"
+    },
+    {
+        "SpellID": 10,
+        "SpellName": "Water"
+    },
+    {
+        "SpellID": 11,
+        "SpellName": "Aero"
+    },
+    {
+        "SpellID": 12,
+        "SpellName": "Bio"
+    },
+    {
+        "SpellID": 13,
+        "SpellName": "Demi"
+    },
+    {
+        "SpellID": 14,
+        "SpellName": "Holy"
+    },
+    {
+        "SpellID": 15,
+        "SpellName": "Flare"
+    },
+    {
+        "SpellID": 16,
+        "SpellName": "Meteor"
+    },
+    {
+        "SpellID": 17,
+        "SpellName": "Quake"
+    },
+    {
+        "SpellID": 18,
+        "SpellName": "Tornado"
+    },
+    {
+        "SpellID": 19,
+        "SpellName": "Ultima"
+    },
+    {
+        "SpellID": 20,
+        "SpellName": "Apocalypse"
+    },
+    {
+        "SpellID": 21,
+        "SpellName": "Cure"
+    },
+    {
+        "SpellID": 22,
+        "SpellName": "Cura"
+    },
+    {
+        "SpellID": 23,
+        "SpellName": "Curaga"
+    },
+    {
+        "SpellID": 24,
+        "SpellName": "Life"
+    },
+    {
+        "SpellID": 25,
+        "SpellName": "Full-life"
+    },
+    {
+        "SpellID": 26,
+        "SpellName": "Regen"
+    },
+    {
+        "SpellID": 27,
+        "SpellName": "Esuna"
+    },
+    {
+        "SpellID": 28,
+        "SpellName": "Dispel"
+    },
+    {
+        "SpellID": 29,
+        "SpellName": "Protect"
+    },
+    {
+        "SpellID": 30,
+        "SpellName": "Shell"
+    },
+    {
+        "SpellID": 31,
+        "SpellName": "Reflect"
+    },
+    {
+        "SpellID": 32,
+        "SpellName": "Aura"
+    },
+    {
+        "SpellID": 33,
+        "SpellName": "Double"
+    },
+    {
+        "SpellID": 34,
+        "SpellName": "Triple"
+    },
+    {
+        "SpellID": 35,
+        "SpellName": "Haste"
+    },
+    {
+        "SpellID": 36,
+        "SpellName": "Slow"
+    },
+    {
+        "SpellID": 37,
+        "SpellName": "Stop"
+    },
+    {
+        "SpellID": 38,
+        "SpellName": "Blind"
+    },
+    {
+        "SpellID": 39,
+        "SpellName": "Confuse"
+    },
+    {
+        "SpellID": 40,
+        "SpellName": "Sleep"
+    },
+    {
+        "SpellID": 41,
+        "SpellName": "Silence"
+    },
+    {
+        "SpellID": 42,
+        "SpellName": "Break"
+    },
+    {
+        "SpellID": 43,
+        "SpellName": "Death"
+    },
+    {
+        "SpellID": 44,
+        "SpellName": "Drain"
+    },
+    {
+        "SpellID": 45,
+        "SpellName": "Pain"
+    },
+    {
+        "SpellID": 46,
+        "SpellName": "Berserk"
+    },
+    {
+        "SpellID": 47,
+        "SpellName": "Float"
+    },
+    {
+        "SpellID": 48,
+        "SpellName": "Zombie"
+    },
+    {
+        "SpellID": 49,
+        "SpellName": "Meltdown"
+    },
+    {
+        "SpellID": 50,
+        "SpellName": "Scan"
+    },
+    {
+        "SpellID": 51,
+        "SpellName": "Full-cure",
+        "SlotExclusive": true
+    },
+    {
+        "SpellID": 52,
+        "SpellName": "Wall",
+        "SlotExclusive": true
+    },
+    {
+        "SpellID": 53,
+        "SpellName": "Rapture",
+        "SlotExclusive": true
+    },
+    {
+        "SpellID": 54,
+        "SpellName": "Percent",
+        "CutContent": true
+    },
+    {
+        "SpellID": 55,
+        "SpellName": "Catastrophe",
+        "CutContent": true
+    },
+    {
+        "SpellID": 56,
+        "SpellName": "The End",
+        "SlotExclusive": true
+    }
+]
