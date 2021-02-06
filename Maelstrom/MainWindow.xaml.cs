@@ -19,12 +19,9 @@ using System.Globalization;
 
 namespace FF8Mod.Maelstrom
 {
-    /// <summary>
-    /// Interaction logic for NewWindow.xaml
-    /// </summary>
-    public partial class NewWindow : MetroWindow
+    public partial class MainWindow : MetroWindow
     {
-        public NewWindow()
+        public MainWindow()
         {
             // load user settings
             State.Current = State.LoadFile(App.Path + @"\settings.json", false);
