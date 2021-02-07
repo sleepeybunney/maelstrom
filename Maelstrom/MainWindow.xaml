@@ -153,6 +153,7 @@
                                     <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding BossLocations, Mode=TwoWay}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
                                         <ComboBoxItem>Shuffle</ComboBoxItem>
+                                        <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
                                 </ItemsControl>
                                 <Separator />

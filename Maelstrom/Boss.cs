@@ -76,124 +76,150 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        public static Dictionary<int, int> Shuffle(FileSource battleSource, bool rebalance, int seed)
+        public static Dictionary<int, int> Shuffle(int seed)
         {
             var random = new Random(seed);
+            var encounterIDs = Encounters.Keys.ToList();
+            var unmatchedIDs = Encounters.Keys.ToList();
+            var encounterMap = new Dictionary<int, int>();
 
-            var encFilePath = EncounterFile.Path;
-            var sourceFile = EncounterFile.FromSource(battleSource, encFilePath);
-            var newFile = EncounterFile.FromSource(battleSource, encFilePath);
-
-            var bossEncounterIds = Encounters.Keys.ToList();
-            var matchIdPool = Encounters.Keys.ToList();
-
-            var encIdMap = new Dictionary<int, int>();
-
-            foreach (var encId in bossEncounterIds)
+            foreach (var encID in encounterIDs)
             {
-                // pick an encounter from the pool
-                var matchedId = matchIdPool[random.Next(matchIdPool.Count)];
-                matchIdPool.Remove(matchedId);
-                encIdMap.Add(encId, matchedId);
-
-                // copy the monster slots from the other encounter
-                for (int i = 0; i < 8; i++)
-                {
-                    var monsterId = sourceFile.Encounters[matchedId].Slots[i].MonsterID;
-
-                    newFile.Encounters[encId].Slots[i] = sourceFile.Encounters[matchedId].Slots[i];
-
-                    if (rebalance)
-                    {
-                        // retain level
-                        newFile.Encounters[encId].Slots[i].Level = sourceFile.Encounters[encId].Slots[i].Level;
-                    }
-
-                    // update any encounter ID checks in the monster's AI scripts
-                    foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterId && ec.EncounterID == matchedId))
-                    {
-                        var monster = sourceFile.Encounters[matchedId].Slots[i].GetMonster(battleSource);
-                        var script = monster.AI.Scripts.EventScripts[ec.Script];
-                        script[ec.Instruction].Args[3] = (short)encId;
-                        battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
-                    }
-                }
-
-                // force the nameless sorceresses to fight in the commencement room
-                // so they can do the melty background thing without crashing the game
-                if (matchedId == 813)
-                {
-                    var sorceressEncounter = sourceFile.Encounters[813];
-                    newFile.Encounters[encId].Scene = sorceressEncounter.Scene;
-                    newFile.Encounters[encId].MainCamera = sorceressEncounter.MainCamera;
-                    newFile.Encounters[encId].MainCameraAnimation = sorceressEncounter.MainCameraAnimation;
-                    newFile.Encounters[encId].SecondaryCamera = sorceressEncounter.SecondaryCamera;
-                    newFile.Encounters[encId].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
-                }
-
-                // award diablos gf for defeating whoever is in the lamp to avoid softlock
-                if (encId == 811)
-                {
-                    var bossSlot = Bosses.Find(b => b.EncounterID == matchedId).SlotRanks[0];
-                    var monsterId = sourceFile.Encounters[matchedId].Slots[bossSlot].MonsterID;
-                    var monster = Monster.ByID(battleSource, monsterId);
-                    var script = monster.AI.Scripts.Init;
-
-                    script.InsertRange(0, new List<Battle.Instruction>
-                    {
-                        // if shared-var-4 == 0
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
-
-                        // give diablos
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
-
-                        // shared-var-4 = 1
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
-
-                        // end if
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
-                    }); ;
-
-                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
-                }
-
-                // skip shot tutorial for iguion fight if irvine isn't present
-                if (encId == 147)
-                {
-                    var monsterId = sourceFile.Encounters[encId].Slots[0].MonsterID;
-                    var monster = Monster.ByID(battleSource, monsterId);
-                    var script = monster.AI.Scripts.Init;
-
-                    script.InsertRange(0, new List<Battle.Instruction>
-                    {
-                        // if irvine is not alive
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
-
-                        // shared-var-1 (dialogue flag) = 1
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
-
-                        // end if
-                        new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
-                    });
-
-                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
-                }
-
-                // remove odin's instakill attack
-                if (encId == 317)
-                {
-                    var monsterId = sourceFile.Encounters[encId].Slots[0].MonsterID;
-                    var monster = Monster.ByID(battleSource, monsterId);
-                    var script = monster.AI.Scripts.Execute;
-                    script.Insert(0, new Battle.Instruction(Battle.Instruction.OpCodesReverse["return"]));
-                    battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
-                }
+                var matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
+                unmatchedIDs.Remove(matchedID);
+                encounterMap.Add(encID, matchedID);
             }
 
-            // save new encounter file
-            battleSource.ReplaceFile(encFilePath, newFile.Encode());
+            return encounterMap;
+        }
 
-            return encIdMap;
+        public static Dictionary<int, int> Randomise(int seed)
+        {
+            var random = new Random(seed);
+            var encounterIDs = Encounters.Keys.ToList();
+            var encounterMap = new Dictionary<int, int>();
+
+            foreach (var encID in encounterIDs)
+            {
+                encounterMap.Add(encID, encounterIDs[random.Next(encounterIDs.Count)]);
+            }
+
+            return encounterMap;
+        }
+
+        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap)
+        {
+            var cleanEncFile = EncounterFile.FromSource(battleSource, EncounterFile.Path);
+            var newEncFile = EncounterFile.FromSource(battleSource, EncounterFile.Path);
+
+            foreach (var encID in encounterMap.Keys)
+            {
+                var matchedEncID = encounterMap[encID];
+
+                // copy monster slots from the incoming encounter
+                for (int i = 0; i < 8; i++)
+                {
+                    var newMonsterID = cleanEncFile.Encounters[matchedEncID].Slots[i].MonsterID;
+                    newEncFile.Encounters[encID].Slots[i] = cleanEncFile.Encounters[matchedEncID].Slots[i];
+
+                    // update any encounter ID checks in the monster's AI scripts
+                    FixEncounterChecks(battleSource, newMonsterID, encID, matchedEncID);
+                }
+
+                // award diablos GF for beating whoever is in the lamp to avoid softlock
+                if (encID == 811) FixDiablos(battleSource, newEncFile, matchedEncID);
+
+                // force the sorceresses to fight in their normal scene to avoid crash
+                if (matchedEncID == 813) FixSorceresses(cleanEncFile, newEncFile, encID);
+            }
+
+            // skip shot tutorial for iguion fight if irvine isn't present
+            FixIguions(battleSource, cleanEncFile);
+
+            // remove odin's instakill attack
+            FixOdin(battleSource, cleanEncFile);
+
+            // save changes
+            battleSource.ReplaceFile(EncounterFile.Path, newEncFile.Encode());
+        }
+
+        private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
+        {
+            foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID && ec.EncounterID == origEncID))
+            {
+                var monster = Monster.ByID(battleSource, monsterID);
+                var script = monster.AI.Scripts.EventScripts[ec.Script];
+                script[ec.Instruction].Args[3] = (short)encID;
+                battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
+            }
+        }
+
+        private static void FixDiablos(FileSource battleSource, EncounterFile newEncFile, int origEncID)
+        {
+            // find main boss monster of the encounter replacing diablos
+            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
+            var monsterId = newEncFile.Encounters[811].Slots[bossSlot].MonsterID;
+            var monster = Monster.ByID(battleSource, monsterId);
+
+            // add GF unlock to monster's init script
+            var script = monster.AI.Scripts.Init;
+            script.InsertRange(0, new List<Battle.Instruction>
+            {
+                // if shared-var-4 == 0
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
+
+                // give diablos
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
+
+                // shared-var-4 = 1
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
+
+                // end if
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+            }); ;
+
+            battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+        }
+
+        private static void FixSorceresses(EncounterFile cleanEncFile, EncounterFile newEncFile, int encID)
+        {
+            // copy sorceress
+            var sorceressEncounter = cleanEncFile.Encounters[813];
+            newEncFile.Encounters[encID].Scene = sorceressEncounter.Scene;
+            newEncFile.Encounters[encID].MainCamera = sorceressEncounter.MainCamera;
+            newEncFile.Encounters[encID].MainCameraAnimation = sorceressEncounter.MainCameraAnimation;
+            newEncFile.Encounters[encID].SecondaryCamera = sorceressEncounter.SecondaryCamera;
+            newEncFile.Encounters[encID].SecondaryCameraAnimation = sorceressEncounter.SecondaryCameraAnimation;
+        }
+
+        private static void FixOdin(FileSource battleSource, EncounterFile cleanEncFile)
+        {
+            var monsterId = cleanEncFile.Encounters[317].Slots[0].MonsterID;
+            var monster = Monster.ByID(battleSource, monsterId);
+            var script = monster.AI.Scripts.Execute;
+            script.Insert(0, new Battle.Instruction(Battle.Instruction.OpCodesReverse["return"]));
+            battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+        }
+
+        private static void FixIguions(FileSource battleSource, EncounterFile cleanEncFile)
+        {
+            var monsterId = cleanEncFile.Encounters[147].Slots[0].MonsterID;
+            var monster = Monster.ByID(battleSource, monsterId);
+            var script = monster.AI.Scripts.Init;
+
+            script.InsertRange(0, new List<Battle.Instruction>
+            {
+                // if irvine is not alive
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
+
+                // shared-var-1 (dialogue flag) = 1
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
+
+                // end if
+                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+            });
+
+            battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
         }
 
         public static void ApplyEdeaFix(FileSource battleSource, FileSource fieldSource)

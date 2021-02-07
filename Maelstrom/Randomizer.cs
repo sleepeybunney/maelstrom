@@ -194,11 +194,15 @@ namespace FF8Mod.Maelstrom
                     CreateOrRestoreArchiveBackup(Globals.BattlePath);
                     var battleSource = new FileSource(Globals.BattlePath);
 
-                    // boss shuffle/rebalance
+                    // boss shuffle
                     if (State.Current.BossLocations != "Normal")
                     {
-                        var shuffle = Boss.Shuffle(battleSource, false, seed);
-                        if (State.Current.SpoilerFile) spoilerFile.AddBosses(shuffle);
+                        Dictionary<int, int> bossMap;
+                        if (State.Current.BossLocations == "Shuffle") bossMap = Boss.Shuffle(seed);
+                        else bossMap = Boss.Randomise(seed);
+
+                        if (State.Current.SpoilerFile) spoilerFile.AddBosses(bossMap);
+                        Boss.Apply(battleSource, bossMap);
                     }
 
                     // loot shuffle
