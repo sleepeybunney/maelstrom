@@ -158,7 +158,8 @@
                                 </ItemsControl>
                                 <Separator />
                                 <TextBlock>Normal: Boss encounters are unchanged.</TextBlock>
-                                <TextBlock>Shuffle: Wherever you would fight a boss, it is a random boss. Every boss is still present somewhere (no duplicates).</TextBlock>
+                                <TextBlock>Shuffle: Bosses are fought in a random order.</TextBlock>
+                                <TextBlock>Random: Fully random bosses. Some may be fought more than once, others may not appear at all.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">Excluded from the shuffle for various reasons: Ultimecia/Griever, Tonberry King, non-red Propagators, possibly X-ATM092 (depending on where you're fighting it).</TextBlock>
                             </StackPanel>
