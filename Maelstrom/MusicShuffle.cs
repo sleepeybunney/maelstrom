@@ -15,15 +15,15 @@ namespace FF8Mod.Maelstrom
         public static List<MusicLoad> MusicLoads = JsonSerializer.Deserialize<List<MusicLoad>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicLoads.json"));
         public static List<MusicTrack> MusicTracks = JsonSerializer.Deserialize<List<MusicTrack>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicTracks.json"));
 
-        public static Dictionary<int, int> Shuffle(int seed)
+        public static Dictionary<int, int> Randomise(int seed, bool includeNonMusic)
         {
             var random = new Random(seed);
             var result = new Dictionary<int, int>();
 
-            var trackIds = MusicTracks.Select(t => t.TrackID).ToList();
-            var trackCount = MusicTracks.Count;
+            var trackIds = MusicTracks.Where(t => !t.NonMusic || includeNonMusic).Select(t => t.TrackID).ToList();
+            var trackCount = trackIds.Count;
 
-            foreach (var t in trackIds) result.Add(t, trackIds[random.Next(0, trackCount)]);
+            foreach (var t in trackIds) result.Add(t, trackIds[random.Next(trackCount)]);
 
             // leave "julia" unshuffled to avoid problems in laguna scene
             result[22] = 22;
@@ -83,5 +83,6 @@ namespace FF8Mod.Maelstrom
     {
         public int TrackID { get; set; }
         public string TrackName { get; set; }
+        public bool NonMusic { get; set; } = false;
     }
 }

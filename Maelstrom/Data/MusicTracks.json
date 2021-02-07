@@ -9,7 +9,8 @@
     },
     {
         "TrackID": 3,
-        "TrackName": "[War noises]"
+        "TrackName": "[War noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 4,
@@ -21,7 +22,8 @@
     },
     {
         "TrackID": 6,
-        "TrackName": "[Water noises]"
+        "TrackName": "[Water noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 7,
@@ -37,11 +39,13 @@
     },
     {
         "TrackID": 10,
-        "TrackName": "[Machine humming]"
+        "TrackName": "[Machine humming]",
+        "NonMusic": true
     },
     {
         "TrackID": 11,
-        "TrackName": "[Wind noises]"
+        "TrackName": "[Wind noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 12,
@@ -117,23 +121,28 @@
     },
     {
         "TrackID": 30,
-        "TrackName": "[Flange chorus]"
+        "TrackName": "[Flange chorus]",
+        "NonMusic": true
     },
     {
         "TrackID": 31,
-        "TrackName": "[Dub chorus]"
+        "TrackName": "[Dub chorus]",
+        "NonMusic": true
     },
     {
         "TrackID": 32,
-        "TrackName": "[Solo chorus]"
+        "TrackName": "[Solo chorus]",
+        "NonMusic": true
     },
     {
         "TrackID": 33,
-        "TrackName": "[Female chorus]"
+        "TrackName": "[Female chorus]",
+        "NonMusic": true
     },
     {
         "TrackID": 34,
-        "TrackName": "[Male chorus]"
+        "TrackName": "[Male chorus]",
+        "NonMusic": true
     },
     {
         "TrackID": 35,
@@ -145,19 +154,23 @@
     },
     {
         "TrackID": 37,
-        "TrackName": "[Wind noises 2]"
+        "TrackName": "[Wind noises 2]",
+        "NonMusic": true
     },
     {
         "TrackID": 38,
-        "TrackName": "[Bird noises]"
+        "TrackName": "[Bird noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 39,
-        "TrackName": "[Bird noises 2]"
+        "TrackName": "[Bird noises 2]",
+        "NonMusic": true
     },
     {
         "TrackID": 40,
-        "TrackName": "[Crickets]"
+        "TrackName": "[Crickets]",
+        "NonMusic": true
     },
     {
         "TrackID": 41,
@@ -169,11 +182,13 @@
     },
     {
         "TrackID": 43,
-        "TrackName": "[FH concert song]"
+        "TrackName": "[FH concert song]",
+        "NonMusic": true
     },
     {
         "TrackID": 44,
-        "TrackName": "[Seaside noises]"
+        "TrackName": "[Seaside noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 46,
@@ -285,7 +300,8 @@
     },
     {
         "TrackID": 74,
-        "TrackName": "[Train noises]"
+        "TrackName": "[Train noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 75,
@@ -337,7 +353,8 @@
     },
     {
         "TrackID": 87,
-        "TrackName": "[Machine humming 2]"
+        "TrackName": "[Machine humming 2]",
+        "NonMusic": true
     },
     {
         "TrackID": 88,
@@ -365,11 +382,13 @@
     },
     {
         "TrackID": 94,
-        "TrackName": "[Spooky noises]"
+        "TrackName": "[Spooky noises]",
+        "NonMusic": true
     },
     {
         "TrackID": 95,
-        "TrackName": "[Spooky noises 2]"
+        "TrackName": "[Spooky noises 2]",
+        "NonMusic": true
     },
     {
         "TrackID": 96,

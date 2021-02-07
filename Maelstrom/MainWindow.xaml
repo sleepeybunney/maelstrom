@@ -239,12 +239,16 @@
                                     <Label Grid.Column="0">BGM</Label>
                                     <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding Music, Mode=TwoWay}">
                                         <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Shuffle</ComboBoxItem>
+                                        <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
+                                </ItemsControl>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Include Non-Music</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
                                 </ItemsControl>
                                 <Separator />
                                 <TextBlock>Normal: Music is unchanged.</TextBlock>
-                                <TextBlock>Shuffle: Background music tracks are shuffled. Changes are consistent, eg. every random encounter will play the same song, whatever it is. Some ambient noises and chanting are included.</TextBlock>
+                                <TextBlock>Random: Background music tracks are randomized. Changes are consistent, eg. every random encounter will play the same song, whatever it is. If the box is checked, some ambient sounds and chanting are included.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after phase 1, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
                             </StackPanel>

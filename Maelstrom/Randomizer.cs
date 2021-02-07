@@ -265,7 +265,7 @@ namespace FF8Mod.Maelstrom
                     // apply music shuffle
                     if (State.Current.Music != "Normal")
                     {
-                        var shuffle = MusicShuffle.Shuffle(seed);
+                        var shuffle = MusicShuffle.Randomise(seed, State.Current.MusicIncludeNonMusic);
                         if (State.Current.SpoilerFile) spoilerFile.AddMusic(shuffle);
                         MusicShuffle.Apply(fieldSource, shuffle);
                     }

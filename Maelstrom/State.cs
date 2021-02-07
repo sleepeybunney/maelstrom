@@ -29,6 +29,7 @@ namespace FF8Mod.Maelstrom
         public bool DrawPointIncludeCut { get; set; } = false;
         public string CardLocations { get; set; } = "Normal";
         public string Music { get; set; } = "Normal";
+        public bool MusicIncludeNonMusic { get; set; } = false;
         public string PresetName { get; set; } = null;
         public List<string> History { get; set; } = new List<string>();
 
