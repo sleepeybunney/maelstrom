@@ -364,7 +364,7 @@ namespace FF8Mod.Maelstrom
                     // ability shuffle
                     if (State.Current.GfAbilities != "Normal")
                     {
-                        var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed);
+                        var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed, State.Current.GfAbilitiesIncludeItemOnly);
                         if (State.Current.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
                     }
 

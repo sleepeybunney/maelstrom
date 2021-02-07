@@ -1,9 +1,4 @@
 [
-
-    {
-        "AbilityID": 0,
-        "AbilityName": "None"
-    },
     {
         "AbilityID": 1,
         "AbilityName": "HP-J"
@@ -154,7 +149,8 @@
     },
     {
         "AbilityID": 38,
-        "AbilityName": "MiniMog"
+        "AbilityName": "MiniMog",
+        "ItemExclusive": true
     },
     {
         "AbilityID": 39,
@@ -190,7 +186,8 @@
     },
     {
         "AbilityID": 47,
-        "AbilityName": "Vit+60%"
+        "AbilityName": "Vit+60%",
+        "ItemExclusive": true
     },
     {
         "AbilityID": 48,
@@ -214,7 +211,8 @@
     },
     {
         "AbilityID": 53,
-        "AbilityName": "Spr+60%"
+        "AbilityName": "Spr+60%",
+        "ItemExclusive": true
     },
     {
         "AbilityID": 54,
@@ -246,7 +244,8 @@
     },
     {
         "AbilityID": 61,
-        "AbilityName": "Return Damage"
+        "AbilityName": "Return Damage",
+        "ItemExclusive": true
     },
     {
         "AbilityID": 62,
@@ -310,7 +309,8 @@
     },
     {
         "AbilityID": 77,
-        "AbilityName": "Ribbon"
+        "AbilityName": "Ribbon",
+        "ItemExclusive": true
     },
     {
         "AbilityID": 78,

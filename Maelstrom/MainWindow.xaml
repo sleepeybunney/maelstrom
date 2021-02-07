@@ -203,6 +203,13 @@
                                 <Separator />
                                 <TextBlock>Normal: GF abilities are unchanged.</TextBlock>
                                 <TextBlock>Random: Each GF has a random set of abilities to learn. Anything they would normally start the game knowing (eg. Magic, Draw) is still guaranteed.</TextBlock>
+                                <Separator />
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Include Item-Exclusives</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding GfAbilitiesIncludeItemOnly}" />
+                                </ItemsControl>
+                                <Separator />
+                                <TextBlock>If checked, GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon</TextBlock>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>

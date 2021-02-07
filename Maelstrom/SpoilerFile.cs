@@ -157,7 +157,8 @@ namespace FF8Mod.Maelstrom
                 Abilities.Bullet(AbilityShuffle.GFNames.Find(gfn => gfn.GFID == i).GFName);
                 for (var j = 0; j < gfs[i].Abilities.Length; j++)
                 {
-                    Abilities.Bullet(AbilityShuffle.AbilityNames.Find(an => an.AbilityID == gfs[i].Abilities[j].Ability).AbilityName, 1);
+                    var abilityID = gfs[i].Abilities[j].Ability;
+                    if (abilityID != 0) Abilities.Bullet(AbilityShuffle.Abilities.Find(an => an.AbilityID == abilityID).AbilityName, 1);
                 }
                 Abilities.NewLine();
             }

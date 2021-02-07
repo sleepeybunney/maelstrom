@@ -22,6 +22,7 @@ namespace FF8Mod.Maelstrom
         public string LootDrops { get; set; } = "Normal";
         public string LootSteals { get; set; } = "Normal";
         public string GfAbilities { get; set; } = "Normal";
+        public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public string ShopItems { get; set; } = "Normal";
         public string DrawPointSpells { get; set; } = "Normal";
         public bool DrawPointIncludeApoc { get; set; } = false;
