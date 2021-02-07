@@ -22,6 +22,7 @@ namespace FF8Mod.Maelstrom
         public string LootDrops { get; set; } = "Normal";
         public string LootSteals { get; set; } = "Normal";
         public string GfAbilities { get; set; } = "Normal";
+        public bool GfAbilitiesBasics { get; set; } = true;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public string ShopItems { get; set; } = "Normal";
         public string DrawPointSpells { get; set; } = "Normal";
@@ -116,7 +117,7 @@ namespace FF8Mod.Maelstrom
             NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,
             PropertyNameCaseInsensitive = true,
             WriteIndented = true,
-            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault
+            DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
         };
     }
 }

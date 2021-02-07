@@ -114,5 +114,10 @@ namespace FF8Mod
         {
             get { return Path.Combine(DataPath, "kernel.bin"); }
         }
+
+        public static string InitPath
+        {
+            get { return Path.Combine(DataPath, "init.out"); }
+        }
     }
 }

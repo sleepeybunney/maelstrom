@@ -200,9 +200,13 @@
                                         <ComboBoxItem>Random</ComboBoxItem>
                                     </ComboBox>
                                 </ItemsControl>
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Guarantee Basics</Label>
+                                    <CheckBox Grid.Column="1" IsChecked="{Binding GfAbilitiesBasics}" />
+                                </ItemsControl>
                                 <Separator />
                                 <TextBlock>Normal: GF abilities are unchanged.</TextBlock>
-                                <TextBlock>Random: Each GF has a random set of abilities to learn. Anything they would normally start the game knowing (eg. Magic, Draw) is still guaranteed.</TextBlock>
+                                <TextBlock>Random: Each GF has a random set of abilities to learn. If "Guarantee Basics" is checked, every GF will start with these abilities unlocked: Magic, GF, Draw, Item</TextBlock>
                                 <Separator />
                                 <ItemsControl Style="{StaticResource OptionStyle}">
                                     <Label Grid.Column="0">Include Item-Exclusives</Label>
