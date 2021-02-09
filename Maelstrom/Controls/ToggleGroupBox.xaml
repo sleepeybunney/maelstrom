@@ -24,7 +24,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <GroupBox x:Name="Box" Header="{Binding Title, RelativeSource={RelativeSource AncestorType=local:ToggleGroupBox}}">
+    <GroupBox x:Name="Box" Header="{Binding Title, RelativeSource={RelativeSource AncestorType=local:ToggleGroupBox}}" mah:HeaderedControlHelper.HeaderBackground="{StaticResource MahApps.Brushes.Accent4}" mah:HeaderedControlHelper.HeaderForeground="Black" mah:HeaderedControlHelper.HeaderFontWeight="DemiBold">
         <GroupBox.HeaderTemplate>
             <DataTemplate>
                 <StackPanel Orientation="Horizontal">
