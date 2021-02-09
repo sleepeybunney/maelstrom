@@ -18,36 +18,52 @@ namespace FF8Mod.Maelstrom
         public string SeedValue { get; set; } = "";
         public bool SpoilerFile { get; set; } = false;
         public string Language { get; set; } = "eng";
-        public string BossLocations { get; set; } = "Normal";
-        public string LootDrops { get; set; } = "Normal";
-        public string LootSteals { get; set; } = "Normal";
-        public string LootDraws { get; set; } = "Normal";
-        public string GfAbilities { get; set; } = "Normal";
+        public string PresetName { get; set; } = null;
+        public List<string> History { get; set; } = new List<string>();
+
+        // bosses
+        public bool BossEnable { get; set; } = false;
+        public bool BossRandom { get; set; } = false;
+
+        // loot
+        public bool LootDrops { get; set; } = false;
+        public bool LootSteals { get; set; } = false;
+        public bool LootDraws { get; set; } = false;
+
+        // abilities
+        public bool GfAbilitiesEnable { get; set; } = false;
         public bool GfAbilitiesBasics { get; set; } = true;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
-        public string ShopItems { get; set; } = "Normal";
-        public string DrawPointSpells { get; set; } = "Normal";
+
+        // shops
+        public bool ShopEnable { get; set; } = false;
+
+        // draw points
+        public bool DrawPointEnable { get; set; } = false;
         public bool DrawPointIncludeApoc { get; set; } = false;
         public bool DrawPointIncludeSlot { get; set; } = false;
         public bool DrawPointIncludeCut { get; set; } = false;
-        public string CardLocations { get; set; } = "Normal";
-        public string Music { get; set; } = "Normal";
+
+        // cards
+        public bool CardEnable { get; set; } = false;
+
+        // music
+        public bool MusicEnable { get; set; } = false;
         public bool MusicIncludeNonMusic { get; set; } = false;
-        public string PresetName { get; set; } = null;
-        public List<string> History { get; set; } = new List<string>();
 
         public override string ToString()
         {
             var result = new StringBuilder();
             if (FreeRoam) result.AppendLine(" - Free Roam");
-            if (BossLocations != "Normal") result.AppendLine(" - " + BossLocations + " Bosses");
-            if (LootDrops != "Normal") result.AppendLine(" - " + LootDrops + " Loot Drops");
-            if (LootSteals != "Normal") result.AppendLine(" - " + LootSteals + " Loot Steals");
-            if (GfAbilities != "Normal") result.AppendLine(" - " + GfAbilities + " GF Abilities");
-            if (ShopItems != "Normal") result.AppendLine(" - " + ShopItems + " Shops");
-            if (DrawPointSpells != "Normal") result.AppendLine(" - " + DrawPointSpells + " Draw Points");
-            if (CardLocations != "Normal") result.AppendLine(" - " + CardLocations + " Cards");
-            if (Music != "Normal") result.AppendLine(" - " + Music + " Music");
+            if (BossEnable) result.AppendLine(" - Random Bosses");
+            if (LootDrops) result.AppendLine(" - Random Drops");
+            if (LootSteals) result.AppendLine(" - Random Steals");
+            if (LootDraws) result.AppendLine(" - Random Draws");
+            if (GfAbilitiesEnable) result.AppendLine(" - Random GF Abilities");
+            if (ShopEnable) result.AppendLine(" - Random Shops");
+            if (DrawPointEnable) result.AppendLine(" - Random Draw Points");
+            if (CardEnable) result.AppendLine(" - Random Rare Cards");
+            if (MusicEnable) result.AppendLine(" - Random Music");
             if (result.Length == 0) result.AppendLine(" - Reset All to Normal");
             return result.ToString();
         }

@@ -21,13 +21,13 @@ namespace FF8Mod.Maelstrom
             var settings = State.Current;
             Options.Bullet("Mode", ModeString(settings.FreeRoam));
             Options.Bullet("Seed", settings.SeedValue.ToString());
-            Options.Bullet("Bosses", BossesString(settings.BossLocations, false));
-            Options.Bullet("Draw Points", DrawPointsString(settings.DrawPointSpells, settings.DrawPointIncludeApoc, settings.DrawPointIncludeSlot, settings.DrawPointIncludeCut));
-            Options.Bullet("Shops", settings.ShopItems);
-            Options.Bullet("Cards", settings.CardLocations);
-            Options.Bullet("Loot", LootString(settings.LootDrops, settings.LootSteals));
-            Options.Bullet("Music", settings.Music);
-            Options.Bullet("Abilities", settings.GfAbilities);
+            Options.Bullet("Bosses", GeneralString(settings.BossEnable));
+            Options.Bullet("Draw Points", DrawPointsString(settings.DrawPointEnable, settings.DrawPointIncludeApoc, settings.DrawPointIncludeSlot, settings.DrawPointIncludeCut));
+            Options.Bullet("Shops", GeneralString(settings.ShopEnable));
+            Options.Bullet("Cards", GeneralString(settings.CardEnable));
+            Options.Bullet("Loot", LootString(settings.LootDrops, settings.LootSteals, settings.LootDraws));
+            Options.Bullet("Music", GeneralString(settings.MusicEnable));
+            Options.Bullet("Abilities", GeneralString(settings.GfAbilitiesEnable));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -177,32 +177,39 @@ namespace FF8Mod.Maelstrom
             return modeFlag ? "Free Roam" : "Normal Game";
         }
 
-        private string BossesString(string shuffleFlag, bool balanceFlag)
+        private string GeneralString(bool flag)
         {
-            if (shuffleFlag == "Normal" && balanceFlag) return "Shuffled, Rebalanced";
-            return shuffleFlag;
-        }
-
-        private string DrawPointsString(string dpFlag, bool apocFlag, bool slotFlag, bool cutFlag)
-        {
-            if (dpFlag == "Normal" || (!apocFlag && !slotFlag && !cutFlag)) return dpFlag;
-
-            var flagStrings = new List<string>();
-            if (apocFlag) flagStrings.Add("+apoc");
-            if (slotFlag) flagStrings.Add("+slot");
-            if (cutFlag) flagStrings.Add("+cut");
-            return string.Format("{0} ({1})", dpFlag, string.Join(" ", flagStrings));
-        }
-
-        private string LootString(string dropsFlag, string stealsFlag)
-        {
-            var drops = (dropsFlag != "Normal");
-            var steals = (stealsFlag != "Normal");
-
-            if (drops && steals) return "Random (All)";
-            if (drops) return "Random (Drops)";
-            if (steals) return "Random (Steals)";
+            if (flag) return "Random";
             return "Normal";
+        }
+
+        private string DrawPointsString(bool enabled, bool apocFlag, bool slotFlag, bool cutFlag)
+        {
+            if (!enabled) return "Normal";
+            var flags = new Dictionary<string, bool>()
+            {
+                { "Apoc", apocFlag },
+                { "Slot", slotFlag },
+                { "Cut", cutFlag }
+            };
+            return FlagString(flags);
+        }
+
+        private string LootString(bool dropsFlag, bool stealsFlag, bool drawsFlag)
+        {
+            if (!(dropsFlag || stealsFlag || drawsFlag)) return "Normal";
+            var flags = new Dictionary<string, bool>()
+            {
+                { "Drops", dropsFlag },
+                { "Steals", stealsFlag },
+                { "Draws", drawsFlag }
+            };
+            return FlagString(flags);
+        }
+
+        private string FlagString(Dictionary<string, bool> flags)
+        {
+            return string.Format("Random ({0})", string.Join(", ", flags.Keys.Where(k => flags[k]).ToList()));
         }
 
         private string LootString(HeldItem[] items)

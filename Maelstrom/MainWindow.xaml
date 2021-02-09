@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
         xmlns:local="clr-namespace:FF8Mod.Maelstrom"
@@ -26,19 +26,27 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="GroupBox" BasedOn="{StaticResource MahApps.Styles.GroupBox}">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="8 2" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="4,4,4,8" />
+            <Setter Property="Padding" Value="4,4,4,8" />
+        </Style>
         <Style TargetType="TextBlock" BasedOn="{StaticResource MahApps.Styles.TextBlock}">
             <Setter Property="Margin" Value="8,4" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <Style TargetType="Label" BasedOn="{StaticResource MahApps.Styles.Label}">
             <Setter Property="Margin" Value="4" />
+            <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
         <Style TargetType="Separator">
             <Setter Property="Margin" Value="8" />
-        </Style>
-        <Style TargetType="GroupBox" BasedOn="{StaticResource MahApps.Styles.GroupBox}">
-            <Setter Property="Margin" Value="4,4,4,8" />
-            <Setter Property="Padding" Value="4,4,4,8" />
         </Style>
         <Style TargetType="TabItem" BasedOn="{StaticResource MahApps.Styles.TabItem}">
             <Setter Property="Margin" Value="0 0 8 0" />
@@ -51,6 +59,11 @@
         </Style>
         <Style TargetType="ComboBox" BasedOn="{StaticResource MahApps.Styles.ComboBox}">
             <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource MahApps.Styles.CheckBox}">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="4 8" />
         </Style>
         <Style TargetType="TextBox" BasedOn="{StaticResource MahApps.Styles.TextBox}">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -94,187 +107,90 @@
             <TabItem Header="World">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Shops">
+                        <local:ToggleGroupBox Title="Random Shops" Checked="{Binding ShopEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Items Sold</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding ShopItems, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>Normal: Shop inventories are unchanged.</TextBlock>
-                                <TextBlock>Random: Each shop stocks a random set of items. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                                <TextBlock>Each shop stocks a random set of 16 items, of which 5 are only visible with the "Familiar" ability. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
                             </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Draw Points">
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Draw Points" Checked="{Binding DrawPointEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Spells</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding DrawPointSpells, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
+                                <TextBlock>Each draw point provides a random spell.</TextBlock>
                                 <Separator />
-                                <TextBlock>Normal: Draw points are unchanged.</TextBlock>
-                                <TextBlock>Random: Each draw point provides a random spell.</TextBlock>
+                                <local:OptionWithDescription Title="Allow Slot Spells" Description="Spells from Selphie's limit break: Wall, Full-cure, Rapture, The End." Checked="{Binding DrawPointIncludeSlot, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Cut Spells" Description="Spells that were cut from the game: Percent, Catastrophe." Checked="{Binding DrawPointIncludeCut, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Apocalypse" Description="" Checked="{Binding DrawPointIncludeApoc, Mode=TwoWay}" />
                                 <Separator />
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Include Apocalypse</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeApoc, Mode=TwoWay}" />
-                                </ItemsControl>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Include Slot Spells</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeSlot, Mode=TwoWay}" />
-                                </ItemsControl>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Include Cut Spells</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding DrawPointIncludeCut, Mode=TwoWay}" />
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>Slot spells: Wall, Full-cure, Rapture, The End</TextBlock>
-                                <TextBlock>Cut spells: Percent, Catastrophe</TextBlock>
-                                <Separator />
-                                <TextBlock FontStyle="Italic">Does not currently work on Remastered edition.</TextBlock>
+                                <TextBlock FontStyle="Italic">This feature does not currently work on Remastered edition.</TextBlock>
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Battle">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Bosses">
+                        <local:ToggleGroupBox Title="Random Bosses" Checked="{Binding BossEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Encounters</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding BossLocations, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Shuffle</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
+                                <TextBlock>Wherever you would fight a boss, it is a random boss.</TextBlock>
                                 <Separator />
-                                <TextBlock>Normal: Boss encounters are unchanged.</TextBlock>
-                                <TextBlock>Shuffle: Bosses are fought in a random order.</TextBlock>
-                                <TextBlock>Random: Fully random bosses. Some may be fought more than once, others may not appear at all.</TextBlock>
+                                <local:OptionWithDescription Title="Allow Duplicates" Description="The same boss may appear more than once." Checked="{Binding BossRandom, Mode=TwoWay}" />
                                 <Separator />
-                                <TextBlock FontStyle="Italic">Excluded from the shuffle for various reasons: Ultimecia/Griever, Tonberry King, non-red Propagators, possibly X-ATM092 (depending on where you're fighting it).</TextBlock>
+                                <TextBlock FontStyle="Italic">Excluded from the pool for various reasons: Ultimecia/Griever, Tonberry King, non-red Propagators, possibly X-ATM092 (depending on where you're fighting it).</TextBlock>
                             </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Loot">
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Drops</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootDrops, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Steals</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootSteals, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>Normal: Loot drops/steals are unchanged.</TextBlock>
-                                <TextBlock>Random: Enemies carry random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
-                                <Separator />
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Draws</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootDraws, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>Normal: Enemy spells are unchanged.</TextBlock>
-                                <TextBlock>Random: Up to 4 random spells can be drawn from each enemy, including Slot spells and cut content, but not including GFs. If an enemy would normally carry a GF, they still do.</TextBlock>
+                                <TextBlock>Defeated enemies drop random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Steals" Checked="{Binding LootSteals, Mode=TwoWay}">
+                            <TextBlock>Enemies can be mugged for random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Draws" Checked="{Binding LootDraws, Mode=TwoWay}">
+                            <TextBlock>Up to 4 random spells can be drawn from each enemy, including Slot spells and cut content, but not including GFs. Enemies that would normally carry GFs, still do.</TextBlock>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="GF">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Abilities">
+                        <local:ToggleGroupBox Title="Random Abilities" Checked="{Binding GfAbilitiesEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Available to Learn</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding GfAbilities, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Guarantee Basics</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding GfAbilitiesBasics}" />
-                                </ItemsControl>
+                                <TextBlock>Each GF has a random set of abilities to learn.</TextBlock>
                                 <Separator />
-                                <TextBlock>Normal: GF abilities are unchanged.</TextBlock>
-                                <TextBlock>Random: Each GF has a random set of abilities to learn. If "Guarantee Basics" is checked, every GF will start with these abilities unlocked: Magic, GF, Draw, Item</TextBlock>
-                                <Separator />
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Include Item-Exclusives</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding GfAbilitiesIncludeItemOnly}" />
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>If checked, GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon</TextBlock>
+                                <local:OptionWithDescription Title="Guarantee Basics" Description="Every GF comes with these abilities already unlocked: Magic, GF, Item, Draw." Checked="{Binding GfAbilitiesBasics, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Item-Exclusives" Description="GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon." Checked="{Binding GfAbilitiesIncludeItemOnly, Mode=TwoWay}" />
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Cards">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Rare Cards">
+                        <local:ToggleGroupBox Title="Random Rare Cards" Checked="{Binding CardEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Locations</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding CardLocations, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <Separator />
-                                <TextBlock>Normal: Card locations are unchanged.</TextBlock>
-                                <TextBlock>Random: Each rare card (level 8+) is held by a random Triple Triad player somewhere in the world. If you find one by other means (eg. you fight a GF and they drop their own card) it disappears from the NPC's deck.</TextBlock>
+                                <TextBlock>Each rare card (level 8+) is held by a random Triple Triad player somewhere in the world. If you find one by other means (eg. you fight a GF and they drop their own card) it disappears from the NPC's deck.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">Player descriptions in the spoiler file are incomplete.</TextBlock>
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Misc">
                 <ScrollViewer>
                     <StackPanel>
-                        <GroupBox Header="Music">
+                        <local:ToggleGroupBox Title="Random Music" Checked="{Binding MusicEnable, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">BGM</Label>
-                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding Music, Mode=TwoWay}">
-                                        <ComboBoxItem>Normal</ComboBoxItem>
-                                        <ComboBoxItem>Random</ComboBoxItem>
-                                    </ComboBox>
-                                </ItemsControl>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Include Non-Music</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
-                                </ItemsControl>
+                                <TextBlock>Background music tracks are randomized. Changes are consistent, eg. every random encounter will play the same song, whatever it is.</TextBlock>
                                 <Separator />
-                                <TextBlock>Normal: Music is unchanged.</TextBlock>
-                                <TextBlock>Random: Background music tracks are randomized. Changes are consistent, eg. every random encounter will play the same song, whatever it is. If the box is checked, some ambient sounds and chanting are included.</TextBlock>
+                                <local:OptionWithDescription Title="Include Non-Music Tracks" Description="(Ambient sounds, chanting, etc.)" Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
                                 <Separator />
-                                <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after phase 1, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
+                                <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after a certain point, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -284,7 +200,7 @@
                     <StackPanel>
                         <GroupBox Header="Load Preset">
                             <StackPanel>
-                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="OnSelectPreset" Height="240">
+                                <ListBox Name="PresetList" ItemsSource="{Binding Presets, Source={StaticResource State}}" SelectionMode="Single" AlternationCount="2" SelectionChanged="OnSelectPreset" Height="200">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding PresetName}" />
@@ -309,7 +225,7 @@
                 <StackPanel>
                     <GroupBox Header="Seed History">
                         <StackPanel>
-                            <ListBox Name="HistoryList" ItemsSource="{Binding History}" SelectionMode="Single" AlternationCount="2" Height="240" />
+                            <ListBox Name="HistoryList" ItemsSource="{Binding History}" SelectionMode="Single" AlternationCount="2" Height="320" />
                             <Button Click="OnLoadHistory">Use This Seed</Button>
                         </StackPanel>
                     </GroupBox>
@@ -348,16 +264,11 @@
                                 <TextBlock FontStyle="Italic">Some features are not yet available in the Remastered edition.</TextBlock>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Spoiler File">
+                        <local:ToggleGroupBox Title="Spoiler File" Checked="{Binding SpoilerFile, Mode=TwoWay}">
                             <StackPanel>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
-                                    <Label Grid.Column="0">Generate Spoiler File</Label>
-                                    <CheckBox Grid.Column="1" IsChecked="{Binding SpoilerFile, Mode=TwoWay}" />
-                                </ItemsControl>
-                                <Separator />
                                 <TextBlock>Create a text file logging all changes made to the game (ie. where everything got shuffled to, in case you get stuck).</TextBlock>
                             </StackPanel>
-                        </GroupBox>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

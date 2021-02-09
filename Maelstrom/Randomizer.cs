@@ -195,10 +195,10 @@ namespace FF8Mod.Maelstrom
                     var battleSource = new FileSource(Globals.BattlePath);
 
                     // boss shuffle
-                    if (State.Current.BossLocations != "Normal")
+                    if (State.Current.BossEnable)
                     {
                         Dictionary<int, int> bossMap;
-                        if (State.Current.BossLocations == "Shuffle") bossMap = Boss.Shuffle(seed);
+                        if (!State.Current.BossRandom) bossMap = Boss.Shuffle(seed);
                         else bossMap = Boss.Randomise(seed);
 
                         if (State.Current.SpoilerFile) spoilerFile.AddBosses(bossMap);
@@ -206,9 +206,9 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // loot shuffle
-                    var drops = (State.Current.LootDrops != "Normal");
-                    var steals = (State.Current.LootSteals != "Normal");
-                    var draws = (State.Current.LootDraws != "Normal");
+                    var drops = State.Current.LootDrops;
+                    var steals = State.Current.LootSteals;
+                    var draws = State.Current.LootDraws;
 
                     if (drops || steals || draws)
                     {
@@ -216,7 +216,7 @@ namespace FF8Mod.Maelstrom
                         if (State.Current.SpoilerFile) spoilerFile.AddLoot(shuffle, drops, steals, draws);
                     }
 
-                    if (State.Current.BossLocations != "Normal" || drops || steals || draws)
+                    if (State.Current.BossEnable || drops || steals || draws)
                     {
                         battleSource.Encode();
                     }
@@ -257,7 +257,7 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // apply card shuffle
-                    if (State.Current.CardLocations != "Normal")
+                    if (State.Current.CardEnable)
                     {
                         var shuffle = CardShuffle.Shuffle(seed);
                         if (State.Current.SpoilerFile) spoilerFile.AddCards(shuffle);
@@ -265,7 +265,7 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // apply music shuffle
-                    if (State.Current.Music != "Normal")
+                    if (State.Current.MusicEnable)
                     {
                         var shuffle = MusicShuffle.Randomise(seed, State.Current.MusicIncludeNonMusic);
                         if (State.Current.SpoilerFile) spoilerFile.AddMusic(shuffle);
@@ -273,7 +273,7 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // write to file
-                    if (State.Current.FreeRoam || State.Current.CardLocations != "Normal" || State.Current.Music != "Normal")
+                    if (State.Current.FreeRoam || State.Current.CardEnable || State.Current.MusicEnable)
                     {
                         fieldSource.Encode();
                     }
@@ -311,7 +311,7 @@ namespace FF8Mod.Maelstrom
                     //}
 
                     // shop shuffle
-                    if (State.Current.ShopItems != "Normal")
+                    if (State.Current.ShopEnable)
                     {
                         var shuffle = ShopShuffle.Randomise(seed);
                         if (State.Current.SpoilerFile) spoilerFile.AddShops(shuffle);
@@ -322,7 +322,7 @@ namespace FF8Mod.Maelstrom
                     // draw point shuffle
                     if (!Globals.Remastered)
                     {
-                        if (State.Current.DrawPointSpells != "Normal")
+                        if (State.Current.DrawPointEnable)
                         {
                             var apoc = State.Current.DrawPointIncludeApoc;
                             var slot = State.Current.DrawPointIncludeSlot;
@@ -364,7 +364,7 @@ namespace FF8Mod.Maelstrom
                     var mainSource = new FileSource(Globals.MainPath);
 
                     // ability shuffle
-                    if (State.Current.GfAbilities != "Normal")
+                    if (State.Current.GfAbilitiesEnable)
                     {
                         var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed, State.Current.GfAbilitiesBasics, State.Current.GfAbilitiesIncludeItemOnly);
                         if (State.Current.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
@@ -394,13 +394,13 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     // free roam rewards
-                    if (State.Current.FreeRoam || State.Current.BossLocations != "Normal")
+                    if (State.Current.FreeRoam || State.Current.BossEnable)
                     {
                         var battleSource = new FileSource(Globals.BattlePath);
                         var fieldSource = new FileSource(Globals.FieldPath);
 
                         if (State.Current.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
-                        if (State.Current.BossLocations != "Normal") Boss.ApplyEdeaFix(battleSource, fieldSource);
+                        if (State.Current.BossEnable) Boss.ApplyEdeaFix(battleSource, fieldSource);
 
                         battleSource.Encode();
                         fieldSource.Encode();
