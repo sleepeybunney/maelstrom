@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using FF8Mod.Archive;
@@ -8,7 +9,7 @@ namespace FF8Mod.Maelstrom
 {
     public static class LootShuffle
     {
-        public static List<MonsterInfo> Randomise(FileSource battleSource, bool drops, bool steals, int seed)
+        public static List<MonsterInfo> Randomise(FileSource battleSource, bool drops, bool steals, bool draws, int seed)
         {
             var random = new Random(seed);
             var result = new List<MonsterInfo>();
@@ -19,18 +20,29 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     monster = Monster.ByID(battleSource, i);
+
                     if (steals)
                     {
                         monster.Info.MugLow = FourRandomItems(random);
                         monster.Info.MugMed = FourRandomItems(random);
                         monster.Info.MugHigh = FourRandomItems(random);
                     }
+
                     if (drops)
                     {
                         monster.Info.DropLow = FourRandomItems(random);
                         monster.Info.DropMed = FourRandomItems(random);
                         monster.Info.DropHigh = FourRandomItems(random);
                     }
+
+                    if (draws)
+                    {
+                        var gf = monster.Info.DrawLow.Where(d => d >= 64).FirstOrDefault();
+                        monster.Info.DrawLow = FourRandomSpells(random, gf);
+                        monster.Info.DrawMed = FourRandomSpells(random, gf);
+                        monster.Info.DrawHigh = FourRandomSpells(random, gf);
+                    }
+
                     battleSource.ReplaceFile(Monster.GetPath(i), monster.Encode());
                     result.Add(monster.Info);
                 }
@@ -55,6 +67,22 @@ namespace FF8Mod.Maelstrom
                 RandomItem(random),
                 RandomItem(random),
                 RandomItem(random)
+            };
+        }
+
+        private static byte RandomSpell(Random random)
+        {
+            return (byte)random.Next(1, DrawPointShuffle.Spells.Count);
+        }
+
+        private static byte[] FourRandomSpells(Random random, byte gf = 0)
+        {
+            return new byte[]
+            {
+                RandomSpell(random),
+                RandomSpell(random),
+                RandomSpell(random),
+                (gf > 0) ? gf : RandomSpell(random)
             };
         }
     }

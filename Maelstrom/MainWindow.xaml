@@ -183,6 +183,17 @@
                                 <Separator />
                                 <TextBlock>Normal: Loot drops/steals are unchanged.</TextBlock>
                                 <TextBlock>Random: Enemies carry random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                                <Separator />
+                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                    <Label Grid.Column="0">Draws</Label>
+                                    <ComboBox Grid.Column="1" SelectedValuePath="Content" SelectedValue="{Binding LootDraws, Mode=TwoWay}">
+                                        <ComboBoxItem>Normal</ComboBoxItem>
+                                        <ComboBoxItem>Random</ComboBoxItem>
+                                    </ComboBox>
+                                </ItemsControl>
+                                <Separator />
+                                <TextBlock>Normal: Enemy spells are unchanged.</TextBlock>
+                                <TextBlock>Random: Up to 4 random spells can be drawn from each enemy, including Slot spells and cut content, but not including GFs. If an enemy would normally carry a GF, they still do.</TextBlock>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>

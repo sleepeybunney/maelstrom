@@ -21,6 +21,7 @@ namespace FF8Mod.Maelstrom
         public string BossLocations { get; set; } = "Normal";
         public string LootDrops { get; set; } = "Normal";
         public string LootSteals { get; set; } = "Normal";
+        public string LootDraws { get; set; } = "Normal";
         public string GfAbilities { get; set; } = "Normal";
         public bool GfAbilitiesBasics { get; set; } = true;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;

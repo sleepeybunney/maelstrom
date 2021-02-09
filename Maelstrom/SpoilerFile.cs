@@ -96,7 +96,7 @@ namespace FF8Mod.Maelstrom
             Cards.NewLine();
         }
 
-        public void AddLoot(List<MonsterInfo> monsters, bool drops, bool steals)
+        public void AddLoot(List<MonsterInfo> monsters, bool drops, bool steals, bool draws)
         {
             Loot = new Section();
             Loot.Heading("Loot");
@@ -125,6 +125,14 @@ namespace FF8Mod.Maelstrom
                     Loot.Bullet(string.Format("Low-level steals: {0}", LootString(m.MugLow)), 1);
                     Loot.Bullet(string.Format("Mid-level steals: {0}", LootString(m.MugMed)), 1);
                     Loot.Bullet(string.Format("High-level steals: {0}", LootString(m.MugHigh)), 1);
+                    Loot.NewLine();
+                }
+
+                if (steals)
+                {
+                    Loot.Bullet(string.Format("Low-level draws: {0}", DrawString(m.DrawLow)), 1);
+                    Loot.Bullet(string.Format("Mid-level draws: {0}", DrawString(m.DrawMed)), 1);
+                    Loot.Bullet(string.Format("High-level draws: {0}", DrawString(m.DrawHigh)), 1);
                     Loot.NewLine();
                 }
             }
@@ -212,6 +220,24 @@ namespace FF8Mod.Maelstrom
             result.Append(items[3].ItemId == 0 ? "Nothing" : Item.Lookup[items[3].ItemId].Name);
             result.Append(string.Format(" x{0}", items[3].Quantity));
             return result.ToString();
+        }
+
+        private string DrawString(byte[] spells)
+        {
+            var result = new StringBuilder();
+            for (int i = 0; i < 4; i++)
+            {
+                result.Append(SpellName(spells[i]));
+                if (i < 3) result.Append(" / ");
+            }
+            return result.ToString();
+        }
+
+        private string SpellName(byte spell)
+        {
+            if (spell == 0) return "Nothing";
+            if (spell >= 64) return "GF";
+            return DrawPointShuffle.Spells.First(s => (byte)s.SpellID == spell).SpellName;
         }
 
         private List<Section> Sections
