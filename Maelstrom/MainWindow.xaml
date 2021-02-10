@@ -155,14 +155,32 @@
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">
                             <StackPanel>
-                                <TextBlock>Defeated enemies drop random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                                <TextBlock>Defeated enemies drop random items in quantities between 1 and 8.</TextBlock>
+                                <Separator />
+                                <local:OptionWithDescription Title="Allow Key Items" Description="Sorceress' Letter, Girl Next Door" Checked="{Binding LootDropsKeyItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Summon Items" Description="Magical Lamp, Solomon Ring" Checked="{Binding LootDropsSummonItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Magazines" Description="Weapons Monthly, Pet Pals, etc." Checked="{Binding LootDropsMagazines, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow PocketStation Items" Description="Friendship, Mog's Amulet, Chocobo's Tag, Ribbon" Checked="{Binding LootDropsChocoboWorld, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Steals" Checked="{Binding LootSteals, Mode=TwoWay}">
-                            <TextBlock>Enemies can be mugged for random items in quantities of 1-10. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                            <StackPanel>
+                                <TextBlock>Enemies can be mugged for random items in quantities between 1 and 8.</TextBlock>
+                                <Separator />
+                                <local:OptionWithDescription Title="Allow Key Items" Description="Sorceress' Letter, Girl Next Door" Checked="{Binding LootStealsKeyItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Summon Items" Description="Magical Lamp, Solomon Ring" Checked="{Binding LootStealsSummonItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Magazines" Description="Weapons Monthly, Pet Pals, etc." Checked="{Binding LootStealsMagazines, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow PocketStation Items" Description="Friendship, Mog's Amulet, Chocobo's Tag, Ribbon" Checked="{Binding LootStealsChocoboWorld, Mode=TwoWay}" />
+                            </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Draws" Checked="{Binding LootDraws, Mode=TwoWay}">
-                            <TextBlock>Up to 4 random spells can be drawn from each enemy, including Slot spells and cut content, but not including GFs. Enemies that would normally carry GFs, still do.</TextBlock>
+                            <StackPanel>
+                                <TextBlock>Up to 4 random spells are available to draw from each enemy. Drawn GFs are unaffected.</TextBlock>
+                                <Separator />
+                                <local:OptionWithDescription Title="Allow Slot Spells" Description="Spells from Selphie's limit break: Wall, Full-cure, Rapture, The End." Checked="{Binding LootDrawsSlot, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Cut Spells" Description="Spells that were cut from the game: Percent, Catastrophe." Checked="{Binding LootDrawsCut, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Apocalypse" Description="" Checked="{Binding LootDrawsApoc, Mode=TwoWay}" />
+                            </StackPanel>
                         </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>

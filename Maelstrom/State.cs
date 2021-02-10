@@ -25,10 +25,25 @@ namespace FF8Mod.Maelstrom
         public bool BossEnable { get; set; } = false;
         public bool BossRandom { get; set; } = false;
 
-        // loot
+        // drops
         public bool LootDrops { get; set; } = false;
+        public bool LootDropsKeyItems { get; set; } = false;
+        public bool LootDropsSummonItems { get; set; } = false;
+        public bool LootDropsMagazines { get; set; } = false;
+        public bool LootDropsChocoboWorld { get; set; } = false;
+
+        // steals
         public bool LootSteals { get; set; } = false;
+        public bool LootStealsKeyItems { get; set; } = false;
+        public bool LootStealsSummonItems { get; set; } = false;
+        public bool LootStealsMagazines { get; set; } = false;
+        public bool LootStealsChocoboWorld { get; set; } = false;
+
+        // draws
         public bool LootDraws { get; set; } = false;
+        public bool LootDrawsApoc { get; set; } = false;
+        public bool LootDrawsSlot { get; set; } = false;
+        public bool LootDrawsCut { get; set; } = false;
 
         // abilities
         public bool GfAbilitiesEnable { get; set; } = false;

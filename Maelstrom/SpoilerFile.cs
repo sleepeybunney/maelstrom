@@ -128,7 +128,7 @@ namespace FF8Mod.Maelstrom
                     Loot.NewLine();
                 }
 
-                if (steals)
+                if (draws)
                 {
                     Loot.Bullet(string.Format("Low-level draws: {0}", DrawString(m.DrawLow)), 1);
                     Loot.Bullet(string.Format("Mid-level draws: {0}", DrawString(m.DrawMed)), 1);
