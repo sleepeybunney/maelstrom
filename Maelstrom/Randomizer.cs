@@ -16,7 +16,8 @@ namespace FF8Mod.Maelstrom
         public static void Go(Action callback)
         {
             Debug.WriteLine("randomizer start");
-            Globals.ExePath = State.Current.GameLocation;
+            var settings = State.Current.Clone();
+            Globals.ExePath = settings.GameLocation;
 
             if (!File.Exists(Globals.ExePath))
             {
@@ -34,11 +35,11 @@ namespace FF8Mod.Maelstrom
             }
 
             // set region
-            Globals.RegionCode = State.Current.Language;
+            Globals.RegionCode = settings.Language;
 
             // generate new seed if not fixed
-            if (!State.Current.SeedFixed) State.Current.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
-            var seedString = State.Current.SeedValue;
+            if (!settings.SeedFixed) settings.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
+            var seedString = settings.SeedValue;
 
             // update seed history
             if (State.Current.History == null) State.Current.History = new List<string>();
@@ -46,7 +47,7 @@ namespace FF8Mod.Maelstrom
             State.Current.History.Insert(0, seedString);
             if (State.Current.History.Count > 50) State.Current.History = State.Current.History.Take(50).ToList();
 
-            // use seed string's hash code as the seed (or parse if possible, for compatibility with 0.2.1 and earlier)
+            // use seed string's hash code as the seed (or parse if possible)
             if (!int.TryParse(seedString, out int seed))
             {
                 seed = seedString.GetHashCode();
@@ -60,13 +61,13 @@ namespace FF8Mod.Maelstrom
 
                 Parallel.Invoke
                 (
-                    () => BattleOps(seed, spoilerFile),
-                    () => FieldOps(seed, seedString, spoilerFile),
-                    () => MenuOps(seed, spoilerFile),
-                    () => MainOps(seed, spoilerFile)
+                    () => BattleOps(seed, spoilerFile, settings),
+                    () => FieldOps(seed, seedString, spoilerFile, settings),
+                    () => MenuOps(seed, spoilerFile, settings),
+                    () => MainOps(seed, spoilerFile, settings)
                 );
 
-                FinalOps(seed, seedString, spoilerFile);
+                FinalOps(seed, seedString, spoilerFile, settings);
                 if (Globals.Remastered) RepackArchive();
 
                 callback.Invoke();
@@ -184,7 +185,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update battle archive
-        private static void BattleOps(int seed, SpoilerFile spoilerFile)
+        private static void BattleOps(int seed, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("battle ops start");
             while (true)
@@ -195,28 +196,25 @@ namespace FF8Mod.Maelstrom
                     var battleSource = new FileSource(Globals.BattlePath);
 
                     // boss shuffle
-                    if (State.Current.BossEnable)
+                    if (settings.BossEnable)
                     {
-                        Dictionary<int, int> bossMap;
-                        if (!State.Current.BossRandom) bossMap = Boss.Shuffle(seed);
-                        else bossMap = Boss.Randomise(seed);
-
-                        if (State.Current.SpoilerFile) spoilerFile.AddBosses(bossMap);
+                        var bossMap = Boss.Randomise(seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddBosses(bossMap);
                         Boss.Apply(battleSource, bossMap);
                     }
 
                     // loot shuffle
-                    var drops = State.Current.LootDrops;
-                    var steals = State.Current.LootSteals;
-                    var draws = State.Current.LootDraws;
+                    var drops = settings.LootDrops;
+                    var steals = settings.LootSteals;
+                    var draws = settings.LootDraws;
 
                     if (drops || steals || draws)
                     {
-                        var shuffle = LootShuffle.Randomise(battleSource, drops, steals, draws, seed);
-                        if (State.Current.SpoilerFile) spoilerFile.AddLoot(shuffle, drops, steals, draws);
+                        var shuffle = LootShuffle.Randomise(battleSource, seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddLoot(shuffle, drops, steals, draws);
                     }
 
-                    if (State.Current.BossEnable || drops || steals || draws)
+                    if (settings.BossEnable || drops || steals || draws)
                     {
                         battleSource.Encode();
                     }
@@ -236,7 +234,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update field archive (and af3dn.p)
-        private static void FieldOps(int seed, string seedString, SpoilerFile spoilerFile)
+        private static void FieldOps(int seed, string seedString, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("field ops start");
             while (true)
@@ -247,7 +245,7 @@ namespace FF8Mod.Maelstrom
                     var fieldSource = new FileSource(Globals.FieldPath);
 
                     // apply free roam
-                    if (State.Current.FreeRoam)
+                    if (settings.FreeRoam)
                     {
                         StorySkip.Apply(fieldSource, seedString, seed);
                     }
@@ -257,23 +255,23 @@ namespace FF8Mod.Maelstrom
                     }
 
                     // apply card shuffle
-                    if (State.Current.CardEnable)
+                    if (settings.CardEnable)
                     {
                         var shuffle = CardShuffle.Shuffle(seed);
-                        if (State.Current.SpoilerFile) spoilerFile.AddCards(shuffle);
+                        if (settings.SpoilerFile) spoilerFile.AddCards(shuffle);
                         CardShuffle.Apply(fieldSource, shuffle);
                     }
 
                     // apply music shuffle
-                    if (State.Current.MusicEnable)
+                    if (settings.MusicEnable)
                     {
-                        var shuffle = MusicShuffle.Randomise(seed, State.Current.MusicIncludeNonMusic);
-                        if (State.Current.SpoilerFile) spoilerFile.AddMusic(shuffle);
+                        var shuffle = MusicShuffle.Randomise(seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
                         MusicShuffle.Apply(fieldSource, shuffle);
                     }
 
                     // write to file
-                    if (State.Current.FreeRoam || State.Current.CardEnable || State.Current.MusicEnable)
+                    if (settings.FreeRoam || settings.CardEnable || settings.MusicEnable)
                     {
                         fieldSource.Encode();
                     }
@@ -293,7 +291,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update menu archive
-        private static void MenuOps(int seed, SpoilerFile spoilerFile)
+        private static void MenuOps(int seed, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("menu ops start");
             while (true)
@@ -304,44 +302,38 @@ namespace FF8Mod.Maelstrom
                     var menuSource = new FileSource(Globals.MenuPath);
 
                     // preset names
-                    //if (State.Current.NameSet)
+                    //if (settings.NameSet)
                     //{
                     //    PresetNames.Apply(menuSource);
                     //    menuSource.Encode();
                     //}
 
                     // shop shuffle
-                    if (State.Current.ShopEnable)
+                    if (settings.ShopEnable)
                     {
-                        var keyItems = State.Current.ShopKeyItems;
-                        var summonItems = State.Current.ShopSummonItems;
-                        var magazines = State.Current.ShopMagazines;
-                        var chocoboWorld = State.Current.ShopChocoboWorld;
-
-                        var shuffle = ShopShuffle.Randomise(seed, keyItems, summonItems, magazines, chocoboWorld);
-                        if (State.Current.SpoilerFile) spoilerFile.AddShops(shuffle);
+                        var shuffle = ShopShuffle.Randomise(seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddShops(shuffle);
                         ShopShuffle.Apply(menuSource, shuffle);
-                        menuSource.Encode();
                     }
 
                     // draw point shuffle
                     if (!Globals.Remastered)
                     {
-                        if (State.Current.DrawPointEnable)
+                        if (settings.DrawPointEnable)
                         {
-                            var apoc = State.Current.DrawPointIncludeApoc;
-                            var slot = State.Current.DrawPointIncludeSlot;
-                            var cut = State.Current.DrawPointIncludeCut;
-
-                            var shuffle = DrawPointShuffle.Randomise(apoc, slot, cut, seed);
-                            if (State.Current.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
+                            var shuffle = DrawPointShuffle.Randomise(seed, settings);
+                            if (settings.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
                             DrawPointShuffle.Apply(menuSource, shuffle);
-                            menuSource.Encode();
                         }
                         else
                         {
                             DrawPointShuffle.RemovePatch(Globals.ExePath);
                         }
+                    }
+
+                    if (settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
+                    {
+                        menuSource.Encode();
                     }
 
                     break;
@@ -358,7 +350,7 @@ namespace FF8Mod.Maelstrom
             Debug.WriteLine("menu ops end");
         }
 
-        private static void MainOps(int seed, SpoilerFile spoilerFile)
+        private static void MainOps(int seed, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("main ops start");
             while (true)
@@ -369,10 +361,10 @@ namespace FF8Mod.Maelstrom
                     var mainSource = new FileSource(Globals.MainPath);
 
                     // ability shuffle
-                    if (State.Current.GfAbilitiesEnable)
+                    if (settings.GfAbilitiesEnable)
                     {
-                        var abilityShuffle = AbilityShuffle.Randomise(mainSource, seed, State.Current.GfAbilitiesBasics, State.Current.GfAbilitiesIncludeItemOnly);
-                        if (State.Current.SpoilerFile) spoilerFile.AddAbilities(abilityShuffle);
+                        var shuffle = AbilityShuffle.Randomise(mainSource, seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddAbilities(shuffle);
                     }
 
                     mainSource.Encode();
@@ -391,7 +383,7 @@ namespace FF8Mod.Maelstrom
         }
 
         // update multiple files on 2nd pass
-        private static void FinalOps(int seed, string seedString, SpoilerFile spoilerFile)
+        private static void FinalOps(int seed, string seedString, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("final ops start");
             while (true)
@@ -399,13 +391,13 @@ namespace FF8Mod.Maelstrom
                 try
                 {
                     // free roam rewards
-                    if (State.Current.FreeRoam || State.Current.BossEnable)
+                    if (settings.FreeRoam || settings.BossEnable)
                     {
                         var battleSource = new FileSource(Globals.BattlePath);
                         var fieldSource = new FileSource(Globals.FieldPath);
 
-                        if (State.Current.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
-                        if (State.Current.BossEnable) Boss.ApplyEdeaFix(battleSource, fieldSource);
+                        if (settings.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
+                        if (settings.BossEnable) Boss.ApplyEdeaFix(battleSource, fieldSource);
 
                         battleSource.Encode();
                         fieldSource.Encode();
@@ -423,7 +415,7 @@ namespace FF8Mod.Maelstrom
             }
 
             // save spoiler file
-            if (State.Current.SpoilerFile)
+            if (settings.SpoilerFile)
             {
                 // strip illegal chars from filename
                 

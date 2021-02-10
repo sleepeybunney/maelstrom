@@ -72,6 +72,11 @@ namespace FF8Mod.Maelstrom
             return result.ToString();
         }
 
+        public State Clone()
+        {
+            return (State)MemberwiseClone();
+        }
+
         public static List<State> Presets { get; set; }
 
         public static State LoadFile(string path, bool preset = true)

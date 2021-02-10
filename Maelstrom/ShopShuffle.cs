@@ -11,16 +11,16 @@ namespace FF8Mod.Maelstrom
     {
         public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Shops.json"));
 
-        public static List<Shop> Randomise(int seed, bool keyItems, bool summonItems, bool magazines, bool chocoboWorld)
+        public static List<Shop> Randomise(int seed, State settings)
         {
             var result = new List<Shop>(Shops);
             var random = new Random(seed);
 
             var pool = Item.Lookup.Values
-                .Where(i => !i.KeyItem || keyItems)
-                .Where(i => !i.SummonItem || summonItems)
-                .Where(i => !i.Magazine || magazines)
-                .Where(i => !i.ChocoboWorld || chocoboWorld)
+                .Where(i => !i.KeyItem || settings.ShopKeyItems)
+                .Where(i => !i.SummonItem || settings.ShopSummonItems)
+                .Where(i => !i.Magazine || settings.ShopMagazines)
+                .Where(i => !i.ChocoboWorld || settings.ShopChocoboWorld)
                 .Select(i => i.ID).ToList();
 
             foreach (var s in result)

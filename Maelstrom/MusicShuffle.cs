@@ -15,12 +15,12 @@ namespace FF8Mod.Maelstrom
         public static List<MusicLoad> MusicLoads = JsonSerializer.Deserialize<List<MusicLoad>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicLoads.json"));
         public static List<MusicTrack> MusicTracks = JsonSerializer.Deserialize<List<MusicTrack>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicTracks.json"));
 
-        public static Dictionary<int, int> Randomise(int seed, bool includeNonMusic)
+        public static Dictionary<int, int> Randomise(int seed, State settings)
         {
             var random = new Random(seed);
             var result = new Dictionary<int, int>();
 
-            var trackIds = MusicTracks.Where(t => !t.NonMusic || includeNonMusic).Select(t => t.TrackID).ToList();
+            var trackIds = MusicTracks.Where(t => !t.NonMusic || settings.MusicIncludeNonMusic).Select(t => t.TrackID).ToList();
             var trackCount = trackIds.Count;
 
             foreach (var t in trackIds) result.Add(t, trackIds[random.Next(trackCount)]);

@@ -9,7 +9,7 @@ namespace FF8Mod.Maelstrom
 {
     public static class LootShuffle
     {
-        public static List<MonsterInfo> Randomise(FileSource battleSource, bool drops, bool steals, bool draws, int seed)
+        public static List<MonsterInfo> Randomise(FileSource battleSource, int seed, State settings)
         {
             var random = new Random(seed);
             var result = new List<MonsterInfo>();
@@ -21,21 +21,21 @@ namespace FF8Mod.Maelstrom
                 {
                     monster = Monster.ByID(battleSource, i);
 
-                    if (steals)
+                    if (settings.LootSteals)
                     {
                         monster.Info.MugLow = FourRandomItems(random);
                         monster.Info.MugMed = FourRandomItems(random);
                         monster.Info.MugHigh = FourRandomItems(random);
                     }
 
-                    if (drops)
+                    if (settings.LootDrops)
                     {
                         monster.Info.DropLow = FourRandomItems(random);
                         monster.Info.DropMed = FourRandomItems(random);
                         monster.Info.DropHigh = FourRandomItems(random);
                     }
 
-                    if (draws)
+                    if (settings.LootDraws)
                     {
                         var gf = monster.Info.DrawLow.Where(d => d >= 64).FirstOrDefault();
                         monster.Info.DrawLow = FourRandomSpells(random, gf);

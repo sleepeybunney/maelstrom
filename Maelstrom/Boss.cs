@@ -76,32 +76,28 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        public static Dictionary<int, int> Shuffle(int seed)
+        public static Dictionary<int, int> Randomise(int seed, State settings)
         {
             var random = new Random(seed);
             var encounterIDs = Encounters.Keys.ToList();
-            var unmatchedIDs = Encounters.Keys.ToList();
             var encounterMap = new Dictionary<int, int>();
 
-            foreach (var encID in encounterIDs)
+            if (settings.BossRandom)
             {
-                var matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
-                unmatchedIDs.Remove(matchedID);
-                encounterMap.Add(encID, matchedID);
+                foreach (var encID in encounterIDs)
+                {
+                    encounterMap.Add(encID, encounterIDs[random.Next(encounterIDs.Count)]);
+                }
             }
-
-            return encounterMap;
-        }
-
-        public static Dictionary<int, int> Randomise(int seed)
-        {
-            var random = new Random(seed);
-            var encounterIDs = Encounters.Keys.ToList();
-            var encounterMap = new Dictionary<int, int>();
-
-            foreach (var encID in encounterIDs)
+            else
             {
-                encounterMap.Add(encID, encounterIDs[random.Next(encounterIDs.Count)]);
+                var unmatchedIDs = Encounters.Keys.ToList();
+                foreach (var encID in encounterIDs)
+                {
+                    var matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
+                    unmatchedIDs.Remove(matchedID);
+                    encounterMap.Add(encID, matchedID);
+                }
             }
 
             return encounterMap;

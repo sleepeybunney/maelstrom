@@ -15,10 +15,10 @@ namespace FF8Mod.Maelstrom
         public static List<AbilityMeta> Abilities = JsonSerializer.Deserialize<List<AbilityMeta>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Abilities.json"));
         public static List<GFMeta> GFNames = JsonSerializer.Deserialize<List<GFMeta>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.JunctionableGFs.json"));
 
-        public static List<JunctionableGF> Randomise(FileSource mainSource, int seed, bool guaranteeBasics, bool includeItemExclusives)
+        public static List<JunctionableGF> Randomise(FileSource mainSource, int seed, State settings)
         {
             var random = new Random(seed);
-            var includedAbilities = Abilities.Where(a => !a.ItemExclusive || includeItemExclusives).ToList();
+            var includedAbilities = Abilities.Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly).ToList();
             var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
             var init = new Init(mainSource.GetFile(Globals.InitPath));
 
@@ -31,7 +31,7 @@ namespace FF8Mod.Maelstrom
                 for (int j = 0; j < 21; j++)
                 {
                     // guarantee basic commands (magic, gf, draw, item)
-                    if (j < 4 && guaranteeBasics)
+                    if (j < 4 && settings.GfAbilitiesBasics)
                     {
                         var id = j + 20;
                         kernel.JunctionableGFs[i].Abilities[j].Ability = (byte)id;

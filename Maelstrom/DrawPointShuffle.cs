@@ -12,13 +12,13 @@ namespace FF8Mod.Maelstrom
         public static List<Spell> Spells = JsonSerializer.Deserialize<List<Spell>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Spells.json"));
 
         // assign random spells to each draw point, retaining their other properties
-        public static Dictionary<int, int> Randomise(bool includeApoc, bool includeSlots, bool includeCut, int seed)
+        public static Dictionary<int, int> Randomise(int seed, State settings)
         {
             var random = new Random(seed);
             var spellIDs = Spells
-                .Where(s => s.SpellID != 20 || includeApoc)
-                .Where(s => !s.SlotExclusive || includeSlots)
-                .Where(s => !s.CutContent || includeCut)
+                .Where(s => s.SpellID != 20 || settings.DrawPointIncludeApoc)
+                .Where(s => !s.SlotExclusive || settings.DrawPointIncludeSlot)
+                .Where(s => !s.CutContent || settings.DrawPointIncludeCut)
                 .Select(s => s.SpellID).ToArray();
             var result = new Dictionary<int, int>();
 
