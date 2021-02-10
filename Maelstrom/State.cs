@@ -32,11 +32,15 @@ namespace FF8Mod.Maelstrom
 
         // abilities
         public bool GfAbilitiesEnable { get; set; } = false;
-        public bool GfAbilitiesBasics { get; set; } = true;
+        public bool GfAbilitiesBasics { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
 
         // shops
         public bool ShopEnable { get; set; } = false;
+        public bool ShopKeyItems { get; set; } = false;
+        public bool ShopMagazines { get; set; } = false;
+        public bool ShopChocoboWorld { get; set; } = false;
+        public bool ShopSummonItems { get; set; } = false;
 
         // draw points
         public bool DrawPointEnable { get; set; } = false;

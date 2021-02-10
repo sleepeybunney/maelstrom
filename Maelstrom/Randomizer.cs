@@ -313,7 +313,12 @@ namespace FF8Mod.Maelstrom
                     // shop shuffle
                     if (State.Current.ShopEnable)
                     {
-                        var shuffle = ShopShuffle.Randomise(seed);
+                        var keyItems = State.Current.ShopKeyItems;
+                        var summonItems = State.Current.ShopSummonItems;
+                        var magazines = State.Current.ShopMagazines;
+                        var chocoboWorld = State.Current.ShopChocoboWorld;
+
+                        var shuffle = ShopShuffle.Randomise(seed, keyItems, summonItems, magazines, chocoboWorld);
                         if (State.Current.SpoilerFile) spoilerFile.AddShops(shuffle);
                         ShopShuffle.Apply(menuSource, shuffle);
                         menuSource.Encode();

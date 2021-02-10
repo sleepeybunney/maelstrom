@@ -12,5 +12,9 @@ namespace FF8Mod.Maelstrom
 
         public int ID { get; set; }
         public string Name { get; set; }
+        public bool KeyItem { get; set; } = false;
+        public bool Magazine { get; set; } = false;
+        public bool SummonItem { get; set; } = false;
+        public bool ChocoboWorld { get; set; } = false;
     }
 }

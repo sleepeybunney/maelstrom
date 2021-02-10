@@ -23,7 +23,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Seed", settings.SeedValue.ToString());
             Options.Bullet("Bosses", GeneralString(settings.BossEnable));
             Options.Bullet("Draw Points", DrawPointsString(settings.DrawPointEnable, settings.DrawPointIncludeApoc, settings.DrawPointIncludeSlot, settings.DrawPointIncludeCut));
-            Options.Bullet("Shops", GeneralString(settings.ShopEnable));
+            Options.Bullet("Shops", ShopString(settings.ShopEnable, settings.ShopKeyItems, settings.ShopSummonItems, settings.ShopMagazines, settings.ShopChocoboWorld));
             Options.Bullet("Cards", GeneralString(settings.CardEnable));
             Options.Bullet("Loot", LootString(settings.LootDrops, settings.LootSteals, settings.LootDraws));
             Options.Bullet("Music", GeneralString(settings.MusicEnable));
@@ -203,6 +203,19 @@ namespace FF8Mod.Maelstrom
                 { "Drops", dropsFlag },
                 { "Steals", stealsFlag },
                 { "Draws", drawsFlag }
+            };
+            return FlagString(flags);
+        }
+
+        private string ShopString(bool enabled, bool keyItems, bool summonItems, bool magazines, bool chocoboWorld)
+        {
+            if (!enabled) return "Normal";
+            var flags = new Dictionary<string, bool>()
+            {
+                { "Key", keyItems },
+                { "Summon", summonItems },
+                { "Mag", magazines },
+                { "Pocket", chocoboWorld }
             };
             return FlagString(flags);
         }

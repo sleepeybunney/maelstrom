@@ -120,6 +120,11 @@
                         <local:ToggleGroupBox Title="Random Shops" Checked="{Binding ShopEnable, Mode=TwoWay}">
                             <StackPanel>
                                 <TextBlock>Each shop stocks a random set of 16 items, of which 5 are only visible with the "Familiar" ability. Any item may appear, including key items and Chocobo World exclusives.</TextBlock>
+                                <Separator />
+                                <local:OptionWithDescription Title="Allow Key Items" Description="Sorceress' Letter, Girl Next Door" Checked="{Binding ShopKeyItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Summon Items" Description="Magical Lamp, Solomon Ring" Checked="{Binding ShopSummonItems, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Magazines" Description="Weapons Monthly, Pet Pals, etc." Checked="{Binding ShopMagazines, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow PocketStation Items" Description="Friendship, Mog's Amulet, Chocobo's Tag, Ribbon" Checked="{Binding ShopChocoboWorld, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Draw Points" Checked="{Binding DrawPointEnable, Mode=TwoWay}">
@@ -196,7 +201,7 @@
                             <StackPanel>
                                 <TextBlock>Background music tracks are randomized. Changes are consistent, eg. every random encounter will play the same song, whatever it is.</TextBlock>
                                 <Separator />
-                                <local:OptionWithDescription Title="Include Non-Music Tracks" Description="(Ambient sounds, chanting, etc.)" Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Include Non-Music Tracks" Description="Ambient sounds, chanting, etc." Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
                                 <Separator />
                                 <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after a certain point, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
                             </StackPanel>

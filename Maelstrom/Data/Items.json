@@ -125,7 +125,8 @@
     },
     {
         "ID": 32,
-        "Name": "Friendship"
+        "Name": "Friendship",
+        "ChocoboWorld": true
     },
     {
         "ID": 33,
@@ -257,7 +258,8 @@
     },
     {
         "ID": 65,
-        "Name": "Mog's Amulet"
+        "Name": "Mog's Amulet",
+        "ChocoboWorld": true
     },
     {
         "ID": 66,
@@ -397,7 +399,8 @@
     },
     {
         "ID": 100,
-        "Name": "Ribbon"
+        "Name": "Ribbon",
+        "ChocoboWorld": true
     },
     {
         "ID": 101,
@@ -649,15 +652,18 @@
     },
     {
         "ID": 163,
-        "Name": "Girl Next Door"
+        "Name": "Girl Next Door",
+        "KeyItem": true
     },
     {
         "ID": 164,
-        "Name": "Sorceress' Letter"
+        "Name": "Sorceress' Letter",
+        "KeyItem": true
     },
     {
         "ID": 165,
-        "Name": "Chocobo's Tag"
+        "Name": "Chocobo's Tag",
+        "ChocoboWorld": true
     },
     {
         "ID": 166,
@@ -665,11 +671,13 @@
     },
     {
         "ID": 167,
-        "Name": "Solomon Ring"
+        "Name": "Solomon Ring",
+        "SummonItem": true
     },
     {
         "ID": 168,
-        "Name": "Magical Lamp"
+        "Name": "Magical Lamp",
+        "SummonItem": true
     },
     {
         "ID": 169,
@@ -705,90 +713,112 @@
     },
     {
         "ID": 177,
-        "Name": "Weapons Mon 1st"
+        "Name": "Weapons Mon 1st",
+        "Magazine": true
     },
     {
         "ID": 178,
-        "Name": "Weapons Mon Mar"
+        "Name": "Weapons Mon Mar",
+        "Magazine": true
     },
     {
         "ID": 179,
-        "Name": "Weapons Mon Apr"
+        "Name": "Weapons Mon Apr",
+        "Magazine": true
     },
     {
         "ID": 180,
-        "Name": "Weapons Mon May"
+        "Name": "Weapons Mon May",
+        "Magazine": true
     },
     {
         "ID": 181,
-        "Name": "Weapons Mon Jun"
+        "Name": "Weapons Mon Jun",
+        "Magazine": true
     },
     {
         "ID": 182,
-        "Name": "Weapons Mon Jul"
+        "Name": "Weapons Mon Jul",
+        "Magazine": true
     },
     {
         "ID": 183,
-        "Name": "Weapons Mon Aug"
+        "Name": "Weapons Mon Aug",
+        "Magazine": true
     },
     {
         "ID": 184,
-        "Name": "Combat King 001"
+        "Name": "Combat King 001",
+        "Magazine": true
     },
     {
         "ID": 185,
-        "Name": "Combat King 002"
+        "Name": "Combat King 002",
+        "Magazine": true
     },
     {
         "ID": 186,
-        "Name": "Combat King 003"
+        "Name": "Combat King 003",
+        "Magazine": true
     },
     {
         "ID": 187,
-        "Name": "Combat King 004"
+        "Name": "Combat King 004",
+        "Magazine": true
     },
     {
         "ID": 188,
-        "Name": "Combat King 005"
+        "Name": "Combat King 005",
+        "Magazine": true
     },
     {
         "ID": 189,
-        "Name": "Pet Pals Vol. 1"
+        "Name": "Pet Pals Vol. 1",
+        "Magazine": true
     },
     {
         "ID": 190,
-        "Name": "Pet Pals Vol. 2"
+        "Name": "Pet Pals Vol. 2",
+        "Magazine": true
     },
     {
         "ID": 191,
-        "Name": "Pet Pals Vol. 3"
+        "Name": "Pet Pals Vol. 3",
+        "Magazine": true
     },
     {
         "ID": 192,
-        "Name": "Pet Pals Vol. 4"
+        "Name": "Pet Pals Vol. 4",
+        "Magazine": true
     },
     {
         "ID": 193,
-        "Name": "Pet Pals Vol. 5"
+        "Name": "Pet Pals Vol. 5",
+        "Magazine": true
     },
     {
         "ID": 194,
-        "Name": "Pet Pals Vol. 6"
+        "Name": "Pet Pals Vol. 6",
+        "Magazine": true
     },
     {
         "ID": 195,
-        "Name": "Occult Fan I"
+        "Name": "Occult Fan I",
+        "Magazine": true
     },
     {
         "ID": 196,
-        "Name": "Occult Fan II"
+        "Name": "Occult Fan II",
+        "Magazine": true
     },
     {
         "ID": 197,
-        "Name": "Occult Fan III"
+        "Name": "Occult Fan III",
+        "Magazine": true
     },
     {
         "ID": 198,
-        "Name": "Occult Fan IV"
+        "Name": "Occult Fan IV",
+        "Magazine": true
     }
 ]

@@ -11,27 +11,35 @@ namespace FF8Mod.Maelstrom
     {
         public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Shops.json"));
 
-        public static List<Shop> Randomise(int seed)
+        public static List<Shop> Randomise(int seed, bool keyItems, bool summonItems, bool magazines, bool chocoboWorld)
         {
             var result = new List<Shop>(Shops);
             var random = new Random(seed);
+
+            var pool = Item.Lookup.Values
+                .Where(i => !i.KeyItem || keyItems)
+                .Where(i => !i.SummonItem || summonItems)
+                .Where(i => !i.Magazine || magazines)
+                .Where(i => !i.ChocoboWorld || chocoboWorld)
+                .Select(i => i.ID).ToList();
+
             foreach (var s in result)
             {
-                s.Items = GenerateShop(random);
+                s.Items = GenerateShop(random, pool);
             }
             return result;
         }
 
-        private static List<ShopItem> GenerateShop(Random random)
+        private static List<ShopItem> GenerateShop(Random random, List<int> itemPool)
         {
             var result = new List<ShopItem>();
-            var items = Enumerable.Range(1, 198).ToList();
+            var unusedItems = new List<int>(itemPool);
 
             for (int i = 0; i < 16; i++)
             {
-                var itemIndex = random.Next(1, items.Count);
-                result.Add(new ShopItem((byte)items[itemIndex], i < 5));
-                items.RemoveAt(itemIndex);
+                var itemIndex = random.Next(unusedItems.Count);
+                result.Add(new ShopItem((byte)unusedItems[itemIndex], i < 5));
+                unusedItems.RemoveAt(itemIndex);
             }
 
             return result.OrderBy(item => item.ItemCode).ToList();
