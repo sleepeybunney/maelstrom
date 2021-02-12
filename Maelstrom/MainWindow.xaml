@@ -138,6 +138,13 @@
                                 <TextBlock FontStyle="Italic">This feature does not currently work on Remastered edition.</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Free Roam (pre-alpha)" Checked="{Binding FreeRoam, Mode=TwoWay}">
+                            <StackPanel>
+                                <TextBlock>Start the game with 2 characters, 2 GFs, and all locations unlocked. No story. Defeat bosses for new characters and vehicles, and to unseal the final dungeon.</TextBlock>
+                                <Separator />
+                                <TextBlock FontStyle="Italic">This mode is very incomplete! You can fight a few bosses around Balamb and take the train out to Galbadia, but you'll soon get stuck. Consider it a proof of concept for now.</TextBlock>
+                            </StackPanel>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
