@@ -160,9 +160,9 @@
                             <StackPanel>
                                 <TextBlock>Wherever you would fight a boss, it is a random boss.</TextBlock>
                                 <Separator />
-                                <local:OptionWithDescription Title="Allow Duplicates" Description="The same boss may appear more than once." Checked="{Binding BossRandom, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
                                 <Separator />
-                                <TextBlock FontStyle="Italic">Excluded from the pool for various reasons: Ultimecia/Griever, Tonberry King, non-red Propagators, possibly X-ATM092 (depending on where you're fighting it).</TextBlock>
+                                <TextBlock FontStyle="Italic">Excluded from the pool for various reasons: Ultimecia/Griever, Tonberry King, possibly X-ATM092 (depending on where you're fighting it).</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">

@@ -7,7 +7,7 @@
         "FieldEntity": 18,
         "FieldScript": 5,
         "FixedField": false,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 29,
@@ -17,7 +17,7 @@
         "FieldEntity": 10,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [2,0,1]
+        "SlotRanks": [ 2, 0, 1 ]
     },
     {
         "EncounterID": 62,
@@ -27,7 +27,7 @@
         "FieldEntity": 0,
         "FieldScript": 7,
         "FixedField": true,
-        "SlotRanks": [0,1,2,3]
+        "SlotRanks": [ 0, 1, 2, 3 ]
     },
     {
         "EncounterID": 63,
@@ -37,7 +37,7 @@
         "FieldEntity": 13,
         "FieldScript": 14,
         "FixedField": true,
-        "SlotRanks": [3,0,1,2]
+        "SlotRanks": [ 3, 0, 1, 2 ]
     },
     {
         "EncounterID": 79,
@@ -47,7 +47,7 @@
         "FieldEntity": 11,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 83,
@@ -57,7 +57,7 @@
         "FieldEntity": 6,
         "FieldScript": 6,
         "FixedField": true,
-        "SlotRanks": [1,0,2]
+        "SlotRanks": [ 1, 0, 2 ]
     },
     {
         "EncounterID": 84,
@@ -67,7 +67,7 @@
         "FieldEntity": 0,
         "FieldScript": 5,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 85,
@@ -76,8 +76,19 @@
         "FieldName": "Ragnarok - Aisle",
         "FieldEntity": 10,
         "FieldScript": 1,
+        "FixedField": false,
+        "SlotRanks": [ 0 ]
+    },
+    {
+        "EncounterID": 86,
+        "EncounterName": "Propagator (Red B)",
+        "FieldID": "",
+        "FieldName": "",
+        "FieldEntity": 10,
+        "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ],
+        "Disabled": true
     },
     {
         "EncounterID": 94,
@@ -87,7 +98,7 @@
         "FieldEntity": 14,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 104,
@@ -97,7 +108,7 @@
         "FieldEntity": 9,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [1,0]
+        "SlotRanks": [ 1, 0 ]
     },
     {
         "EncounterID": 118,
@@ -107,7 +118,7 @@
         "FieldEntity": 14,
         "FieldScript": 2,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 119,
@@ -117,7 +128,7 @@
         "FieldEntity": 11,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 120,
@@ -127,7 +138,7 @@
         "FieldEntity": 8,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [2,0,1]
+        "SlotRanks": [ 2, 0, 1 ]
     },
     {
         "EncounterID": 136,
@@ -137,7 +148,7 @@
         "FieldEntity": 2,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 147,
@@ -147,7 +158,7 @@
         "FieldEntity": 12,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 151,
@@ -157,7 +168,7 @@
         "FieldEntity": 12,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [1,0]
+        "SlotRanks": [ 1, 0 ]
     },
     {
         "EncounterID": 161,
@@ -167,7 +178,7 @@
         "FieldEntity": 9,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1,2]
+        "SlotRanks": [ 0, 1, 2 ]
     },
     {
         "EncounterID": 164,
@@ -177,7 +188,7 @@
         "FieldEntity": 0,
         "FieldScript": 7,
         "FixedField": true,
-        "SlotRanks": [0,2,1,3]
+        "SlotRanks": [ 0, 2, 1, 3 ]
     },
     {
         "EncounterID": 189,
@@ -187,7 +198,7 @@
         "FieldEntity": 13,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 190,
@@ -197,7 +208,7 @@
         "FieldEntity": 0,
         "FieldScript": 7,
         "FixedField": true,
-        "SlotRanks": [1,0]
+        "SlotRanks": [ 1, 0 ]
     },
     {
         "EncounterID": 194,
@@ -207,7 +218,7 @@
         "FieldEntity": 0,
         "FieldScript": 9,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 195,
@@ -217,7 +228,7 @@
         "FieldEntity": 2,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 216,
@@ -227,7 +238,7 @@
         "FieldEntity": 8,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 317,
@@ -237,7 +248,7 @@
         "FieldEntity": 7,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 326,
@@ -247,7 +258,7 @@
         "FieldEntity": 1,
         "FieldScript": 5,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 354,
@@ -257,7 +268,7 @@
         "FieldEntity": 17,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 363,
@@ -267,7 +278,7 @@
         "FieldEntity": 9,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [1,0,4,3,2]
+        "SlotRanks": [ 1, 0, 4, 3, 2 ]
     },
     {
         "EncounterID": 372,
@@ -277,7 +288,7 @@
         "FieldEntity": 9,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 377,
@@ -287,7 +298,7 @@
         "FieldEntity": 7,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 410,
@@ -297,7 +308,7 @@
         "FieldEntity": 22,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 431,
@@ -307,7 +318,7 @@
         "FieldEntity": 17,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [1,0,2]
+        "SlotRanks": [ 1, 0, 2 ]
     },
     {
         "EncounterID": 436,
@@ -317,7 +328,7 @@
         "FieldEntity": 8,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [3,0,1,2]
+        "SlotRanks": [ 3, 0, 1, 2 ]
     },
     {
         "EncounterID": 441,
@@ -327,7 +338,7 @@
         "FieldEntity": 14,
         "FieldScript": 2,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 462,
@@ -337,7 +348,7 @@
         "FieldEntity": 7,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 483,
@@ -347,7 +358,7 @@
         "FieldEntity": 8,
         "FieldScript": 3,
         "FixedField": true,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 712,
@@ -357,7 +368,7 @@
         "FieldEntity": 0,
         "FieldScript": 0,
         "FixedField": false,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 794,
@@ -367,7 +378,7 @@
         "FieldEntity": 18,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1,2]
+        "SlotRanks": [ 0, 1, 2 ]
     },
     {
         "EncounterID": 795,
@@ -377,7 +388,7 @@
         "FieldEntity": 12,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 796,
@@ -387,7 +398,7 @@
         "FieldEntity": 4,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 810,
@@ -397,7 +408,7 @@
         "FieldEntity": 0,
         "FieldScript": 7,
         "FixedField": true,
-        "SlotRanks": [0,1]
+        "SlotRanks": [ 0, 1 ]
     },
     {
         "EncounterID": 811,
@@ -407,7 +418,7 @@
         "FieldEntity": 0,
         "FieldScript": 0,
         "FixedField": false,
-        "SlotRanks": [0]
+        "SlotRanks": [ 0 ]
     },
     {
         "EncounterID": 813,
@@ -417,6 +428,67 @@
         "FieldEntity": 10,
         "FieldScript": 4,
         "FixedField": true,
-        "SlotRanks": [4,1,2,0,3]
+        "SlotRanks": [ 4, 1, 2, 0, 3 ]
+    },
+    {
+        "EncounterID": 814,
+        "EncounterName": "Propagator (Purple)",
+        "FieldID": "rghang1",
+        "FieldName": "Ragnarok - Hangar",
+        "FieldEntity": 8,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [ 0 ]
+    },
+    {
+        "EncounterID": 815,
+        "EncounterName": "Propagator (Green)",
+        "FieldID": "rghang2",
+        "FieldName": "Ragnarok - Hangar",
+        "FieldEntity": 12,
+        "FieldScript": 1,
+        "FixedField": false,
+        "SlotRanks": [ 0 ]
+    },
+    {
+        "EncounterID": 816,
+        "EncounterName": "Propagator (Yellow)",
+        "FieldID": "rgguest2",
+        "FieldName": "Ragnarok - Passenger Seat",
+        "FieldEntity": 6,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [ 0 ]
+    },
+    {
+        "EncounterID": 817,
+        "EncounterName": "Propagator (Purple B)",
+        "FieldID": "rgexit1",
+        "FieldName": "Ragnarok - Entrance",
+        "FieldEntity": 10,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [ 0 ]
+    },
+    {
+        "EncounterID": 818,
+        "EncounterName": "Propagator (Green B)",
+        "FieldID": "",
+        "FieldName": "",
+        "FieldEntity": 10,
+        "FieldScript": 4,
+        "FixedField": true,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 819,
+        "EncounterName": "Propagator (Yellow B)",
+        "FieldID": "rgair1",
+        "FieldName": "Ragnarok - Air Room",
+        "FieldEntity": 9,
+        "FieldScript": 1,
+        "FixedField": true,
+        "SlotRanks": [ 0 ]
     }
 ]

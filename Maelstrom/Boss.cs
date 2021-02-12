@@ -16,8 +16,9 @@ namespace FF8Mod.Maelstrom
         public int FieldScript { get; set; }
         public bool FixedField { get; set; }
         public int[] SlotRanks { get; set; }
+        public bool Disabled { get; set; } = false;
 
-        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Bosses.json"));
+        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
 
         private static Dictionary<int, Boss> PopulateEncounterDictionary()
@@ -92,11 +93,22 @@ namespace FF8Mod.Maelstrom
             else
             {
                 var unmatchedIDs = Encounters.Keys.ToList();
+
+                // don't match propagator twins
+                unmatchedIDs.Remove(817);
+                unmatchedIDs.Remove(819);
+
                 foreach (var encID in encounterIDs)
                 {
+                    if (encID == 817 || encID == 819) continue;
+
                     var matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
                     unmatchedIDs.Remove(matchedID);
                     encounterMap.Add(encID, matchedID);
+
+                    // copy propagators to their twins
+                    if (encID == 814) encounterMap.Add(817, matchedID);
+                    if (encID == 816) encounterMap.Add(819, matchedID);
                 }
             }
 

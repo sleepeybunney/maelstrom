@@ -72,6 +72,10 @@ namespace FF8Mod.Maelstrom
             new Reward("mega phoenix", RewardType.Item, 8),
             new Reward("elixir", RewardType.Item, 9),
             new Reward("megalixir", RewardType.Item, 10),
+            new Reward("elixir", RewardType.Item, 9),
+            new Reward("megalixir", RewardType.Item, 10),
+            new Reward("elixir", RewardType.Item, 9),
+            new Reward("megalixir", RewardType.Item, 10),
             new Reward("aura stone", RewardType.Item, 24),
             new Reward("death stone", RewardType.Item, 25),
             new Reward("holy stone", RewardType.Item, 26),
@@ -243,35 +247,37 @@ namespace FF8Mod.Maelstrom
             // the rest of the bosses can be assigned anything
             foreach (var boss in Boss.Bosses.Where(b => b.FixedField))
             {
-                var majorIndex = random.Next(0, major.Count);
-                var minorIndex = random.Next(0, minor.Count);
-
-                // remove any existing item drops
-                ClearDrops(battleSource, encounterFile, boss.EncounterID);
-
-                switch (major[majorIndex].Type)
+                if (major.Count > 0)
                 {
-                    case RewardType.Character:
-                        GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex]);
-                        break;
-                    case RewardType.GF:
-                        GiveGF(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
-                        break;
-                    case RewardType.Special:
-                        GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex]);
-                        break;
-                    case RewardType.Seal:
-                        break;
-                    case RewardType.Item:
-                        GiveItem(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
-                        break;
+                    var majorIndex = random.Next(0, major.Count);
+
+                    // remove any existing item drops
+                    ClearDrops(battleSource, encounterFile, boss.EncounterID);
+
+                    switch (major[majorIndex].Type)
+                    {
+                        case RewardType.Character:
+                            GiveCharacter(fieldSource, boss.EncounterID, major[majorIndex]);
+                            break;
+                        case RewardType.GF:
+                            GiveGF(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
+                            break;
+                        case RewardType.Special:
+                            GiveSpecial(fieldSource, boss.EncounterID, major[majorIndex]);
+                            break;
+                        case RewardType.Seal:
+                            break;
+                        case RewardType.Item:
+                            GiveItem(battleSource, encounterFile, boss.EncounterID, major[majorIndex].ID);
+                            break;
+                    }
+
+                    major.RemoveAt(majorIndex);
                 }
 
                 // minor rewards are all items
+                var minorIndex = random.Next(0, minor.Count);
                 GiveItem(battleSource, encounterFile, boss.EncounterID, minor[minorIndex].ID);
-
-                // remove rewards from the pool
-                major.RemoveAt(majorIndex);
                 minor.RemoveAt(minorIndex);
             }
         }
