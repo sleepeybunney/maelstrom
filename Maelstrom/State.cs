@@ -70,6 +70,30 @@ namespace FF8Mod.Maelstrom
         public bool MusicEnable { get; set; } = false;
         public bool MusicIncludeNonMusic { get; set; } = false;
 
+        // names
+        public bool NameEnable { get; set; } = false;
+        public string NameSquall { get; set; } = "Squall";
+        public string NameRinoa { get; set; } = "Rinoa";
+        public string NameAngelo { get; set; } = "Angelo";
+        public string NameQuezacotl { get; set; } = "Quezacotl";
+        public string NameShiva { get; set; } = "Shiva";
+        public string NameIfrit { get; set; } = "Ifrit";
+        public string NameSiren { get; set; } = "Siren";
+        public string NameBrothers { get; set; } = "Brothers";
+        public string NameDiablos { get; set; } = "Diablos";
+        public string NameCarbuncle { get; set; } = "Carbuncle";
+        public string NameLeviathan { get; set; } = "Leviathan";
+        public string NamePandemona { get; set; } = "Pandemona";
+        public string NameCerberus { get; set; } = "Cerberus";
+        public string NameAlexander { get; set; } = "Alexander";
+        public string NameDoomtrain { get; set; } = "Doomtrain";
+        public string NameBahamut { get; set; } = "Bahamut";
+        public string NameCactuar { get; set; } = "Cactuar";
+        public string NameTonberry { get; set; } = "Tonberry";
+        public string NameEden { get; set; } = "Eden";
+        public string NameBoko { get; set; } = "Boko";
+        public string NameGriever { get; set; } = "Griever";
+
         public override string ToString()
         {
             var result = new StringBuilder();

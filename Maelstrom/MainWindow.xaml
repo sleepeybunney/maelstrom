@@ -314,6 +314,31 @@
                                 <TextBlock>Create a text file logging all changes made to the game (ie. where everything got shuffled to, in case you get stuck).</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Character Names" Checked="{Binding NameEnable, Mode=TwoWay}">
+                            <StackPanel>
+                                <TextBlock>Enter your character names here and they will be pre-filled on the name entry screen in the game.</TextBlock>
+                                <Separator />
+                                <local:DoubleInput Title="Squall" Title2="Pandemona" Text="{Binding NameSquall, Mode=TwoWay}" Text2="{Binding NamePandemona, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Rinoa" Title2="Cerberus" Text="{Binding NameRinoa, Mode=TwoWay}" Text2="{Binding NameCerberus, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Angelo" Title2="Alexander" Text="{Binding NameAngelo, Mode=TwoWay}" Text2="{Binding NameAlexander, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Quezacotl" Title2="Doomtrain" Text="{Binding NameQuezacotl, Mode=TwoWay}" Text2="{Binding NameDoomtrain, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Shiva" Title2="Bahamut" Text="{Binding NameShiva, Mode=TwoWay}" Text2="{Binding NameBahamut, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Ifrit" Title2="Cactuar" Text="{Binding NameIfrit, Mode=TwoWay}" Text2="{Binding NameCactuar, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Siren" Title2="Tonberry" Text="{Binding NameSiren, Mode=TwoWay}" Text2="{Binding NameTonberry, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Brothers" Title2="Eden" Text="{Binding NameBrothers, Mode=TwoWay}" Text2="{Binding NameEden, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Diablos" Title2="Boko" Text="{Binding NameDiablos, Mode=TwoWay}" Text2="{Binding NameBoko, Mode=TwoWay}" />
+                                <local:DoubleInput Title="Carbuncle" Title2="Griever" Text="{Binding NameCarbuncle, Mode=TwoWay}" Text2="{Binding NameGriever, Mode=TwoWay}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0">Leviathan</Label>
+                                    <TextBox Grid.Column="1" MaxLength="9" Text="{Binding NameLeviathan, Mode=TwoWay}" />
+                                </Grid>
+                            </StackPanel>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

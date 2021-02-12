@@ -297,11 +297,10 @@ namespace FF8Mod.Maelstrom
                     var menuSource = new FileSource(Globals.MenuPath);
 
                     // preset names
-                    //if (settings.NameSet)
-                    //{
-                    //    PresetNames.Apply(menuSource);
-                    //    menuSource.Encode();
-                    //}
+                    if (settings.NameEnable)
+                    {
+                        PresetNames.Apply(menuSource, settings);
+                    }
 
                     // shop shuffle
                     if (settings.ShopEnable)
@@ -326,7 +325,7 @@ namespace FF8Mod.Maelstrom
                         }
                     }
 
-                    if (settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
+                    if (settings.NameEnable || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
                     {
                         menuSource.Encode();
                     }

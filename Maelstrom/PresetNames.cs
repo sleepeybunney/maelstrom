@@ -35,7 +35,7 @@ namespace FF8Mod.Maelstrom
         public static int Boko = 51;
         public static int Griever = 52;
 
-        public static void Apply(FileSource menuSource)
+        public static void Apply(FileSource menuSource, State settings)
         {
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
@@ -43,27 +43,27 @@ namespace FF8Mod.Maelstrom
             var mes3 = TextFile.FromBytes(mes3bytes.ToArray(), true);
 
             // set names
-            mes3.Pages[NamesPage].Strings[Squall] = Properties.Settings.Default.NameSquall;
-            mes3.Pages[NamesPage].Strings[Rinoa] = Properties.Settings.Default.NameRinoa;
-            mes3.Pages[NamesPage].Strings[Angelo] = Properties.Settings.Default.NameAngelo;
-            mes3.Pages[NamesPage].Strings[Quezacotl] = Properties.Settings.Default.NameQuezacotl;
-            mes3.Pages[NamesPage].Strings[Shiva] = Properties.Settings.Default.NameShiva;
-            mes3.Pages[NamesPage].Strings[Ifrit] = Properties.Settings.Default.NameIfrit;
-            mes3.Pages[NamesPage].Strings[Siren] = Properties.Settings.Default.NameSiren;
-            mes3.Pages[NamesPage].Strings[Brothers] = Properties.Settings.Default.NameBrothers;
-            mes3.Pages[NamesPage].Strings[Diablos] = Properties.Settings.Default.NameDiablos;
-            mes3.Pages[NamesPage].Strings[Carbuncle] = Properties.Settings.Default.NameCarbuncle;
-            mes3.Pages[NamesPage].Strings[Leviathan] = Properties.Settings.Default.NameLeviathan;
-            mes3.Pages[NamesPage].Strings[Pandemona] = Properties.Settings.Default.NamePandemona;
-            mes3.Pages[NamesPage].Strings[Cerberus] = Properties.Settings.Default.NameCerberus;
-            mes3.Pages[NamesPage].Strings[Alexander] = Properties.Settings.Default.NameAlexander;
-            mes3.Pages[NamesPage].Strings[Doomtrain] = Properties.Settings.Default.NameDoomtrain;
-            mes3.Pages[NamesPage].Strings[Bahamut] = Properties.Settings.Default.NameBahamut;
-            mes3.Pages[NamesPage].Strings[Cactuar] = Properties.Settings.Default.NameCactuar;
-            mes3.Pages[NamesPage].Strings[Tonberry] = Properties.Settings.Default.NameTonberry;
-            mes3.Pages[NamesPage].Strings[Eden] = Properties.Settings.Default.NameEden;
-            mes3.Pages[NamesPage].Strings[Boko] = Properties.Settings.Default.NameBoko;
-            mes3.Pages[NamesPage].Strings[Griever] = Properties.Settings.Default.NameGriever;
+            mes3.Pages[NamesPage].Strings[Squall] = settings.NameSquall;
+            mes3.Pages[NamesPage].Strings[Rinoa] = settings.NameRinoa;
+            mes3.Pages[NamesPage].Strings[Angelo] = settings.NameAngelo;
+            mes3.Pages[NamesPage].Strings[Quezacotl] = settings.NameQuezacotl;
+            mes3.Pages[NamesPage].Strings[Shiva] = settings.NameShiva;
+            mes3.Pages[NamesPage].Strings[Ifrit] = settings.NameIfrit;
+            mes3.Pages[NamesPage].Strings[Siren] = settings.NameSiren;
+            mes3.Pages[NamesPage].Strings[Brothers] = settings.NameBrothers;
+            mes3.Pages[NamesPage].Strings[Diablos] = settings.NameDiablos;
+            mes3.Pages[NamesPage].Strings[Carbuncle] = settings.NameCarbuncle;
+            mes3.Pages[NamesPage].Strings[Leviathan] = settings.NameLeviathan;
+            mes3.Pages[NamesPage].Strings[Pandemona] = settings.NamePandemona;
+            mes3.Pages[NamesPage].Strings[Cerberus] = settings.NameCerberus;
+            mes3.Pages[NamesPage].Strings[Alexander] = settings.NameAlexander;
+            mes3.Pages[NamesPage].Strings[Doomtrain] = settings.NameDoomtrain;
+            mes3.Pages[NamesPage].Strings[Bahamut] = settings.NameBahamut;
+            mes3.Pages[NamesPage].Strings[Cactuar] = settings.NameCactuar;
+            mes3.Pages[NamesPage].Strings[Tonberry] = settings.NameTonberry;
+            mes3.Pages[NamesPage].Strings[Eden] = settings.NameEden;
+            mes3.Pages[NamesPage].Strings[Boko] = settings.NameBoko;
+            mes3.Pages[NamesPage].Strings[Griever] = settings.NameGriever;
 
             // apply changes
             Array.Copy(mes3.Encode(), 0, file, FileOffset, FileLength);
