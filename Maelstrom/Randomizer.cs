@@ -13,16 +13,16 @@ namespace FF8Mod.Maelstrom
 {
     public static class Randomizer
     {
-        public static void Go(Action callback)
+        public static void Go()
         {
             Debug.WriteLine("randomizer start");
+
             var settings = State.Current.Clone();
             Globals.ExePath = settings.GameLocation;
 
             if (!File.Exists(Globals.ExePath))
             {
                 HandleExeException(Globals.ExePath);
-                callback.Invoke();
                 return;
             }
 
@@ -30,7 +30,6 @@ namespace FF8Mod.Maelstrom
             if (!DetectVersion(Globals.ExePath))
             {
                 HandleExeException(Globals.ExePath);
-                callback.Invoke();
                 return;
             }
 
@@ -55,25 +54,20 @@ namespace FF8Mod.Maelstrom
 
             var spoilerFile = new SpoilerFile();
 
-            Task.Run(() =>
-            {
-                if (Globals.Remastered) UnpackOnFirstRun();
+            if (Globals.Remastered) UnpackOnFirstRun();
 
-                Parallel.Invoke
-                (
-                    () => BattleOps(seed, spoilerFile, settings),
-                    () => FieldOps(seed, seedString, spoilerFile, settings),
-                    () => MenuOps(seed, spoilerFile, settings),
-                    () => MainOps(seed, spoilerFile, settings)
-                );
+            Parallel.Invoke
+            (
+                () => BattleOps(seed, spoilerFile, settings),
+                () => FieldOps(seed, seedString, spoilerFile, settings),
+                () => MenuOps(seed, spoilerFile, settings),
+                () => MainOps(seed, spoilerFile, settings)
+            );
 
-                FinalOps(seed, seedString, spoilerFile, settings);
-                if (Globals.Remastered) RepackArchive();
+            FinalOps(seed, seedString, spoilerFile, settings);
+            if (Globals.Remastered) RepackArchive();
 
-                callback.Invoke();
-
-                Debug.WriteLine("randomizer end");
-            });
+            Debug.WriteLine("randomizer end");
         }
 
         // find and store the game version, returns true if successful

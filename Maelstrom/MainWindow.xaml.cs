@@ -16,6 +16,7 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Globalization;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace FF8Mod.Maelstrom
 {
@@ -23,16 +24,12 @@ namespace FF8Mod.Maelstrom
     {
         public MainWindow()
         {
-            // load user settings
+            // load user settings & presets
             State.Current = State.LoadFile(App.Path + @"\settings.json", false);
             DataContext = State.Current;
-
-            // load presets
             State.Presets = FetchPresets();
 
             InitializeComponent();
-            GoButton.Click += OnGo;
-            goContent.Content = GoButton;
         }
 
         private List<State> FetchPresets()
@@ -104,20 +101,7 @@ namespace FF8Mod.Maelstrom
                 PresetList.SelectedItem = null;
                 PresetList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
             }
-            catch (Exception x) { }
-        }
-
-        private void HandlePreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if (sender is ListBox && !e.Handled)
-            {
-                e.Handled = true;
-                var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
-                eventArg.RoutedEvent = UIElement.MouseWheelEvent;
-                eventArg.Source = sender;
-                var parent = ((Control)sender).Parent as UIElement;
-                parent.RaiseEvent(eventArg);
-            }
+            catch (Exception) { }
         }
 
         private void OnLoadHistory(object sender, RoutedEventArgs e)
@@ -128,29 +112,15 @@ namespace FF8Mod.Maelstrom
             RefreshSeed();
         }
 
-        private void OnGo(object sender, RoutedEventArgs e)
+        private async void OnGo(object sender, RoutedEventArgs e)
         {
-            goContent.Content = Spinner;
-            Randomizer.Go(OnComplete);
-        }
+            var dialog = await this.ShowProgressAsync(Environment.NewLine + "Saving data", "Do not remove the Controller," + Environment.NewLine + "MEMORY CARDs, or open disc cover.");
+            dialog.SetIndeterminate();
+            await Task.Run(Randomizer.Go);
 
-        private void OnComplete()
-        {
-            this.Invoke(() =>
-            {
-                RefreshHistory();
-                RefreshSeed();
-                goContent.Content = GoButton;
-                MessageBox.Show(this, "Done!", "Maelstrom");
-            });
-        }
-
-        private void RefreshHistory()
-        {
-            var temp = new List<string>();
-            temp.AddRange(State.Current.History);
-            State.Current.History = temp;
-            HistoryList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+            HistoryList.Items.Refresh();
+            RefreshSeed();
+            await dialog.CloseAsync();
         }
 
         private void RefreshSeed()
@@ -159,20 +129,6 @@ namespace FF8Mod.Maelstrom
             SeedValueBox.GetBindingExpression(TextBox.IsEnabledProperty).UpdateTarget();
             SeedFixedBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateTarget();
         }
-
-        static Button GoButton = new Button()
-        {
-            Content = "Go!"
-        };
-
-        static ProgressRing Spinner = new ProgressRing()
-        {
-            IsActive = true,
-            Width = 22,
-            Height = 22,
-            MinWidth = 22,
-            MinHeight = 22
-        };
     }
 
     public class TitleConverter : IMultiValueConverter

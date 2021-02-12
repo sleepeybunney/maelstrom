@@ -103,7 +103,7 @@
                 <StackPanel DockPanel.Dock="Right" Margin="16 8" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <CheckBox Name="SeedFixedBox" VerticalAlignment="Center" IsChecked="{Binding SeedFixed, Mode=TwoWay}">Set Seed</CheckBox>
                     <TextBox Name="SeedValueBox" Text="{Binding SeedValue, Mode=TwoWay}" IsEnabled="{Binding SeedFixed, Mode=OneWay}" MaxLength="16" Width="120" Margin="16 0" />
-                    <mah:TransitioningContentControl x:Name="goContent" Transition="Left" Width="48" />
+                    <Button Click="OnGo" Width="48">Go!</Button>
                 </StackPanel>
             </DockPanel>
         </Border>
