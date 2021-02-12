@@ -83,10 +83,10 @@
         "EncounterID": 86,
         "EncounterName": "Propagator (Red B)",
         "FieldID": "",
-        "FieldName": "",
-        "FieldEntity": 10,
-        "FieldScript": 1,
-        "FixedField": true,
+        "FieldName": "Ragnarok",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
         "SlotRanks": [ 0 ],
         "Disabled": true
     },
@@ -239,6 +239,38 @@
         "FieldScript": 4,
         "FixedField": true,
         "SlotRanks": [ 0, 1 ]
+    },
+    {
+        "EncounterID": 236,
+        "EncounterName": "Tonberry King",
+        "FieldID": "",
+        "FieldName": "Centra Ruins",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
+        "SlotRanks": [ 0, 1 ]
+    },
+    {
+        "EncounterID": 237,
+        "EncounterName": "Tonberry King",
+        "FieldID": "",
+        "FieldName": "Centra Ruins",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
+        "SlotRanks": [ 0, 1 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 238,
+        "EncounterName": "Tonberry King",
+        "FieldID": "",
+        "FieldName": "Centra Ruins",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
+        "SlotRanks": [ 0, 1 ],
+        "Disabled": true
     },
     {
         "EncounterID": 317,
@@ -474,10 +506,10 @@
         "EncounterID": 818,
         "EncounterName": "Propagator (Green B)",
         "FieldID": "",
-        "FieldName": "",
-        "FieldEntity": 10,
-        "FieldScript": 4,
-        "FixedField": true,
+        "FieldName": "Ragnarok",
+        "FieldEntity": 0,
+        "FieldScript": 0,
+        "FixedField": false,
         "SlotRanks": [ 0 ],
         "Disabled": true
     },

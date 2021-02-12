@@ -93,16 +93,26 @@ namespace FF8Mod.Maelstrom
             else
             {
                 var unmatchedIDs = Encounters.Keys.ToList();
+                int matchedID;
 
-                // don't match propagator twins
-                unmatchedIDs.Remove(817);
-                unmatchedIDs.Remove(819);
+                // don't match these special cases
+                var ignoredIDs = new List<int>() { 237, 238, 817, 819 };
+                ignoredIDs.ForEach(d => unmatchedIDs.Remove(d));
 
+                // only match tonberry king with other solo bosses
+                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Length == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
+                matchedID = singlesOnly[random.Next(singlesOnly.Count)];
+                unmatchedIDs.Remove(matchedID);
+                encounterIDs.Remove(236);
+                encounterMap.Add(236, matchedID);
+                encounterMap.Add(237, matchedID);
+                encounterMap.Add(238, matchedID);
+                
                 foreach (var encID in encounterIDs)
                 {
-                    if (encID == 817 || encID == 819) continue;
+                    if (ignoredIDs.Contains(encID)) continue;
 
-                    var matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
+                    matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
                     unmatchedIDs.Remove(matchedID);
                     encounterMap.Add(encID, matchedID);
 
@@ -132,6 +142,35 @@ namespace FF8Mod.Maelstrom
 
                     // update any encounter ID checks in the monster's AI scripts
                     FixEncounterChecks(battleSource, newMonsterID, encID, matchedEncID);
+
+                    // tonberry king
+                    var tonberryIDs = new List<int>() { 236, 237, 238 };
+                    if (tonberryIDs.Contains(matchedEncID))
+                    {
+                        if (i == 0)
+                        {
+                            // enable tonberry king
+                            newEncFile.Encounters[encID].Slots[i].Enabled = true;
+                            newEncFile.Encounters[encID].Slots[i].Hidden = false;
+                            newEncFile.Encounters[encID].Slots[i].Unloaded = false;
+                            newEncFile.Encounters[encID].Slots[i].Untargetable = false;
+                        }
+                        else
+                        {
+                            // disable everything else
+                            newEncFile.Encounters[encID].Slots[i].Enabled = false;
+                            newEncFile.Encounters[encID].Slots[i].Hidden = true;
+                            newEncFile.Encounters[encID].Slots[i].Unloaded = true;
+                            newEncFile.Encounters[encID].Slots[i].Untargetable = true;
+                        }
+                    }
+
+                    if (tonberryIDs.Contains(encID))
+                    {
+                        // disable tonberry king's replacement, to be summoned by tonberry
+                        newEncFile.Encounters[encID].Slots[i].Enabled = false;
+                        break;
+                    }
                 }
 
                 // award diablos GF for beating whoever is in the lamp to avoid softlock

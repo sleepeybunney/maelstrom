@@ -36,6 +36,7 @@ namespace FF8Mod.Maelstrom
             Bosses.Heading("Bosses");
             foreach (var origId in encounterMap.Keys)
             {
+                if (!Boss.Encounters.ContainsKey(origId)) continue;
                 var origBoss = Boss.Encounters[origId];
                 var newBoss = Boss.Encounters[encounterMap[origId]];
                 Bosses.Bullet(newBoss.EncounterName, "");
