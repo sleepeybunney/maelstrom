@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace FF8Mod.Maelstrom
 {
@@ -13,10 +14,23 @@ namespace FF8Mod.Maelstrom
 
         public static string ReadEmbeddedFile(string path)
         {
-            var stream = assembly.GetManifestResourceStream(path);
+            using (var stream = assembly.GetManifestResourceStream(path))
             using (var reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
+            }
+        }
+
+        public static BitmapImage GetEmbeddedImage(string path)
+        {
+            using (var stream = assembly.GetManifestResourceStream(path))
+            {
+                var result = new BitmapImage();
+                result.BeginInit();
+                result.CacheOption = BitmapCacheOption.OnLoad;
+                result.StreamSource = stream;
+                result.EndInit();
+                return result;
             }
         }
 

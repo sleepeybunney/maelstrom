@@ -61,6 +61,7 @@
   <ItemGroup>
     <EmbeddedResource Include="FieldScripts\*.txt" />
     <EmbeddedResource Include="Data\*.json" />
+    <EmbeddedResource Include="Images\*.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="maelstrom.ico" />
@@ -77,13 +78,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Presets\Full Random.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Presets\Recommended.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Presets\Vanilla.json">
+    <None Update="Presets\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">

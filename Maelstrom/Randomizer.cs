@@ -73,6 +73,7 @@ namespace FF8Mod.Maelstrom
         // find and store the game version, returns true if successful
         public static bool DetectVersion(string path)
         {
+            if (!File.Exists(path)) return false;
             var exeFileName = Path.GetFileName(path).ToLower();
             if (exeFileName == "ffviii.exe") Globals.Remastered = true;
             else if (exeFileName == "ff8_en.exe") Globals.Remastered = false;

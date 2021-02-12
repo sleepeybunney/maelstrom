@@ -148,4 +148,36 @@ namespace FF8Mod.Maelstrom
             throw new NotImplementedException();
         }
     }
+
+    public class IconConverter : IValueConverter
+    {
+        public static BitmapImage SteamIcon = App.GetEmbeddedImage("FF8Mod.Maelstrom.Images.icon_steam.jpg");
+        public static BitmapImage RemasteredIcon = App.GetEmbeddedImage("FF8Mod.Maelstrom.Images.icon_remastered.jpg");
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!Randomizer.DetectVersion((string)value)) return null;
+            else if (Globals.Remastered) return RemasteredIcon;
+            return SteamIcon;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IconVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!Randomizer.DetectVersion((string)value)) return Visibility.Collapsed;
+            return Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
