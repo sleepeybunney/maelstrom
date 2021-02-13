@@ -508,6 +508,16 @@
         "SlotRanks": [ 0 ]
     },
     {
+        "EncounterID": 812,
+        "EncounterName": "Ruby Dragon",
+        "FieldID": "tvglen5",
+        "FieldName": "Trabia Canyon",
+        "FieldEntity": 10,
+        "FieldScript": 3,
+        "FixedField": true,
+        "SlotRanks": [ 0 ]
+    },
+    {
         "EncounterID": 813,
         "EncounterName": "Sorceresses",
         "FieldID": "glwitch3",
