@@ -17,7 +17,7 @@ namespace FF8Mod.Maelstrom
 
         public static List<JunctionableGF> Randomise(FileSource mainSource, int seed, State settings)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 1);
             var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
             var init = new Init(mainSource.GetFile(Globals.InitPath));
 

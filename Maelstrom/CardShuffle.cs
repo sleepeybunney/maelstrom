@@ -15,7 +15,7 @@ namespace FF8Mod.Maelstrom
 
         public static Dictionary<int, int> Shuffle(int seed)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 3);
 
             // get a list of valid decks to put cards in (no npcs in debug rooms etc)
             var availableDecks = Decks.Where(d => d.Enabled).Select(d => d.DeckID).Distinct().ToList();

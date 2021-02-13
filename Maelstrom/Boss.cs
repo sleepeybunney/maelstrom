@@ -79,7 +79,7 @@ namespace FF8Mod.Maelstrom
 
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 2);
             var encounterIDs = Encounters.Keys.ToList();
             var encounterMap = new Dictionary<int, int>();
 

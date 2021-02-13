@@ -13,7 +13,7 @@ namespace FF8Mod.Maelstrom
         public static List<WeaponUpgrade> Randomise(int seed, State settings)
         {
             var result = new List<WeaponUpgrade>();
-            var random = new Random(seed);
+            var random = new Random(seed + 9);
 
             for (int i = 0; i < 33; i++)
             {

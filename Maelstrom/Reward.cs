@@ -210,7 +210,7 @@ namespace FF8Mod.Maelstrom
 
         public static void SetRewards(FileSource battleSource, FileSource fieldSource, int seed)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 11);
             var major = new List<Reward>(Major);
             var minor = new List<Reward>(Minor);
             var encounterFile = EncounterFile.FromSource(battleSource);

@@ -17,7 +17,7 @@ namespace FF8Mod.Maelstrom
 
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 10);
             var result = new Dictionary<int, int>();
 
             var trackIds = MusicTracks.Where(t => !t.NonMusic || settings.MusicIncludeNonMusic).Select(t => t.TrackID).ToList();

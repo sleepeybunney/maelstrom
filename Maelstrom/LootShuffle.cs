@@ -11,7 +11,9 @@ namespace FF8Mod.Maelstrom
     {
         public static List<MonsterInfo> Randomise(FileSource battleSource, int seed, State settings)
         {
-            var random = new Random(seed);
+            var dropRandom = new Random(seed + 5);
+            var stealRandom = new Random(seed + 6);
+            var drawRandom = new Random(seed + 7);
             var result = new List<MonsterInfo>();
 
             for (int i = 0; i < 144; i++)
@@ -31,9 +33,9 @@ namespace FF8Mod.Maelstrom
                             .Where(item => !item.ChocoboWorld || settings.LootStealsChocoboWorld)
                             .Select(item => item.ID).ToList();
 
-                        monster.Info.MugLow = FourRandomItems(random, mugPool);
-                        monster.Info.MugMed = FourRandomItems(random, mugPool);
-                        monster.Info.MugHigh = FourRandomItems(random, mugPool);
+                        monster.Info.MugLow = FourRandomItems(stealRandom, mugPool);
+                        monster.Info.MugMed = FourRandomItems(stealRandom, mugPool);
+                        monster.Info.MugHigh = FourRandomItems(stealRandom, mugPool);
                     }
 
                     // items dropped
@@ -46,9 +48,9 @@ namespace FF8Mod.Maelstrom
                             .Where(item => !item.ChocoboWorld || settings.LootDropsChocoboWorld)
                             .Select(item => item.ID).ToList();
 
-                        monster.Info.DropLow = FourRandomItems(random, dropPool);
-                        monster.Info.DropMed = FourRandomItems(random, dropPool);
-                        monster.Info.DropHigh = FourRandomItems(random, dropPool);
+                        monster.Info.DropLow = FourRandomItems(dropRandom, dropPool);
+                        monster.Info.DropMed = FourRandomItems(dropRandom, dropPool);
+                        monster.Info.DropHigh = FourRandomItems(dropRandom, dropPool);
                     }
 
                     // spells to draw
@@ -63,9 +65,9 @@ namespace FF8Mod.Maelstrom
                         var gf = monster.Info.DrawLow.Where(d => d >= 64).FirstOrDefault();
                         var slots = Math.Max(1, Math.Min(4, settings.LootDrawsAmount));
 
-                        monster.Info.DrawLow = FourRandomSpells(random, drawPool, slots, gf);
-                        monster.Info.DrawMed = FourRandomSpells(random, drawPool, slots, gf);
-                        monster.Info.DrawHigh = FourRandomSpells(random, drawPool, slots, gf);
+                        monster.Info.DrawLow = FourRandomSpells(drawRandom, drawPool, slots, gf);
+                        monster.Info.DrawMed = FourRandomSpells(drawRandom, drawPool, slots, gf);
+                        monster.Info.DrawHigh = FourRandomSpells(drawRandom, drawPool, slots, gf);
                     }
 
                     battleSource.ReplaceFile(Monster.GetPath(i), monster.Encode());

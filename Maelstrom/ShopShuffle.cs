@@ -14,7 +14,7 @@ namespace FF8Mod.Maelstrom
         public static List<Shop> Randomise(int seed, State settings)
         {
             var result = new List<Shop>(Shops);
-            var random = new Random(seed);
+            var random = new Random(seed + 8);
 
             var pool = Item.Lookup.Values
                 .Where(i => !i.KeyItem || settings.ShopKeyItems)

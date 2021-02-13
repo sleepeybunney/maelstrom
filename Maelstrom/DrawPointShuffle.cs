@@ -14,7 +14,7 @@ namespace FF8Mod.Maelstrom
         // assign random spells to each draw point, retaining their other properties
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
-            var random = new Random(seed);
+            var random = new Random(seed + 4);
             var spellIDs = Spells
                 .Where(s => s.SpellID != 20 || settings.DrawPointIncludeApoc)
                 .Where(s => !s.SlotExclusive || settings.DrawPointIncludeSlot)
