@@ -114,6 +114,13 @@ namespace FF8Mod.Maelstrom
 
         private async void OnGo(object sender, RoutedEventArgs e)
         {
+            // clear seed value if not fixed
+            if (SeedFixedBox.IsChecked != true)
+            {
+                SeedValueBox.Text = "";
+                SeedValueBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            }
+
             var dialog = await this.ShowProgressAsync(Environment.NewLine + "Saving data", "Do not remove the Controller," + Environment.NewLine + "MEMORY CARDs, or open disc cover.");
             dialog.SetIndeterminate();
             await Task.Run(Randomizer.Go);
