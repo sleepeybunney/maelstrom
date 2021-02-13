@@ -119,5 +119,10 @@ namespace FF8Mod
         {
             get { return Path.Combine(DataPath, "init.out"); }
         }
+
+        public static string WeaponUpgradePath
+        {
+            get { return Path.Combine(DataPath, @"menu\mwepon.bin"); }
+        }
     }
 }

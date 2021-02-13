@@ -133,6 +133,11 @@
                                 <local:OptionWithDescription Title="Allow PocketStation Items" Description="Friendship, Mog's Amulet, Chocobo's Tag, Ribbon" Checked="{Binding ShopChocoboWorld, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Junk Shops" Checked="{Binding UpgradeEnable, Mode=TwoWay}">
+                            <StackPanel>
+                                <TextBlock>Weapon upgrades at junk shops require random amounts of money and items. The maximum cost is 2,500g and 20 of each item. Key items, summon items, magazines and PocketStation items are excluded.</TextBlock>
+                            </StackPanel>
+                        </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Draw Points" Checked="{Binding DrawPointEnable, Mode=TwoWay}">
                             <StackPanel>
                                 <TextBlock>Each draw point provides a random spell.</TextBlock>

@@ -1,14 +1,16 @@
-﻿using FF8Mod.Main;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FF8Mod.Main;
+using FF8Mod.Menu;
+using FF8Mod.Archive;
 
 namespace FF8Mod.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities;
+        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
 
         public SpoilerFile()
         {
@@ -28,6 +30,7 @@ namespace FF8Mod.Maelstrom
             Options.Bullet("Loot", LootString(settings.LootDrops, settings.LootSteals, settings.LootDraws));
             Options.Bullet("Music", GeneralString(settings.MusicEnable));
             Options.Bullet("Abilities", GeneralString(settings.GfAbilitiesEnable));
+            Options.Bullet("Weapons", GeneralString(settings.UpgradeEnable));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -173,6 +176,24 @@ namespace FF8Mod.Maelstrom
             }
         }
 
+        public void AddWeapons(FileSource mainSource, List<WeaponUpgrade> upgrades)
+        {
+            Weapons = new Section();
+            Weapons.Heading("Weapons");
+
+            var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
+
+            for (var i = 0; i < upgrades.Count; i++)
+            {
+                Weapons.Bullet(string.Format("{0} - {1}0g", kernel.Weapons[i].Name, upgrades[i].Price));
+                Weapons.Bullet(string.Format("{0} x{1}", Item.Lookup[upgrades[i].Item1].Name, upgrades[i].Item1Quantity), 1);
+                if (upgrades[i].Item2 != 0) Weapons.Bullet(string.Format("{0} x{1}", Item.Lookup[upgrades[i].Item2].Name, upgrades[i].Item2Quantity), 1);
+                if (upgrades[i].Item3 != 0) Weapons.Bullet(string.Format("{0} x{1}", Item.Lookup[upgrades[i].Item3].Name, upgrades[i].Item3Quantity), 1);
+                if (upgrades[i].Item4 != 0) Weapons.Bullet(string.Format("{0} x{1}", Item.Lookup[upgrades[i].Item4].Name, upgrades[i].Item4Quantity), 1);
+                Weapons.NewLine();
+            }
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -273,6 +294,7 @@ namespace FF8Mod.Maelstrom
                 if (Loot != null) result.Add(Loot);
                 if (Music != null) result.Add(Music);
                 if (Abilities != null) result.Add(Abilities);
+                if (Weapons != null) result.Add(Weapons);
                 return result;
             }
         }

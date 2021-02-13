@@ -384,6 +384,19 @@ namespace FF8Mod.Maelstrom
             {
                 try
                 {
+                    // weapon shuffle
+                    if (settings.UpgradeEnable)
+                    {
+                        var mainSource = new FileSource(Globals.MainPath);
+                        var menuSource = new FileSource(Globals.MenuPath);
+
+                        var shuffle = WeaponShuffle.Randomise(seed, settings);
+                        if (settings.SpoilerFile) spoilerFile.AddWeapons(mainSource, shuffle);
+                        WeaponShuffle.Apply(menuSource, shuffle);
+
+                        menuSource.Encode();
+                    }
+
                     // free roam rewards
                     if (settings.FreeRoam || settings.BossEnable)
                     {

@@ -59,6 +59,9 @@ namespace FF8Mod.Maelstrom
         public bool ShopChocoboWorld { get; set; } = false;
         public bool ShopSummonItems { get; set; } = false;
 
+        // upgrades
+        public bool UpgradeEnable { get; set; } = false;
+
         // draw points
         public bool DrawPointEnable { get; set; } = false;
         public bool DrawPointIncludeApoc { get; set; } = false;
