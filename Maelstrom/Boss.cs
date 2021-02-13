@@ -95,10 +95,6 @@ namespace FF8Mod.Maelstrom
                 var unmatchedIDs = Encounters.Keys.ToList();
                 int matchedID;
 
-                // don't match these special cases
-                var ignoredIDs = new List<int>() { 237, 238, 817, 819 };
-                ignoredIDs.ForEach(d => unmatchedIDs.Remove(d));
-
                 // only match tonberry king with other solo bosses
                 var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Length == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
                 matchedID = singlesOnly[random.Next(singlesOnly.Count)];
@@ -110,8 +106,6 @@ namespace FF8Mod.Maelstrom
                 
                 foreach (var encID in encounterIDs)
                 {
-                    if (ignoredIDs.Contains(encID)) continue;
-
                     matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
                     unmatchedIDs.Remove(matchedID);
                     encounterMap.Add(encID, matchedID);
@@ -119,6 +113,16 @@ namespace FF8Mod.Maelstrom
                     // copy propagators to their twins
                     if (encID == 814) encounterMap.Add(817, matchedID);
                     if (encID == 816) encounterMap.Add(819, matchedID);
+
+                    // copy x-atm092 all over dollet
+                    if (encID == 28)
+                    {
+                        encounterMap.Add(9, matchedID);
+                        encounterMap.Add(10, matchedID);
+                        encounterMap.Add(13, matchedID);
+                        encounterMap.Add(26, matchedID);
+                        encounterMap.Add(27, matchedID);
+                    }
                 }
             }
 

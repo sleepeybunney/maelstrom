@@ -1,5 +1,60 @@
 [
     {
+        "EncounterID": 9,
+        "EncounterName": "X-ATM092",
+        "FieldID": "doopen_2",
+        "FieldName": "Dollet - Town Square",
+        "FieldEntity": 13,
+        "FieldScript": 4,
+        "FixedField": false,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 10,
+        "EncounterName": "X-ATM092",
+        "FieldID": "dotown_2",
+        "FieldName": "Dollet - Town Square",
+        "FieldEntity": 2,
+        "FieldScript": 4,
+        "FixedField": false,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 13,
+        "EncounterName": "X-ATM092",
+        "FieldID": "domt1_1",
+        "FieldName": "Dollet - Town Square",
+        "FieldEntity": 18,
+        "FieldScript": 4,
+        "FixedField": false,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 26,
+        "EncounterName": "X-ATM092",
+        "FieldID": "doan1_2",
+        "FieldName": "Dollet - Comm Tower",
+        "FieldEntity": 0,
+        "FieldScript": 5,
+        "FixedField": false,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
+        "EncounterID": 27,
+        "EncounterName": "X-ATM092",
+        "FieldID": "domt4_1",
+        "FieldName": "Dollet - Mountain Hideout",
+        "FieldEntity": 9,
+        "FieldScript": 7,
+        "FixedField": false,
+        "SlotRanks": [ 0 ],
+        "Disabled": true
+    },
+    {
         "EncounterID": 28,
         "EncounterName": "X-ATM092",
         "FieldID": "domt2_1",
@@ -500,7 +555,8 @@
         "FieldEntity": 10,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [ 0 ]
+        "SlotRanks": [ 0 ],
+        "Disabled": true
     },
     {
         "EncounterID": 818,
@@ -521,6 +577,7 @@
         "FieldEntity": 9,
         "FieldScript": 1,
         "FixedField": true,
-        "SlotRanks": [ 0 ]
+        "SlotRanks": [ 0 ],
+        "Disabled": true
     }
 ]
