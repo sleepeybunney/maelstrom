@@ -145,6 +145,28 @@ namespace FF8Mod.Maelstrom
                 state.SeedFixed = Current.SeedFixed;
                 state.SeedValue = Current.SeedValue;
                 state.History = Current.History;
+                state.NameEnable = Current.NameEnable;
+                state.NameSquall = Current.NameSquall;
+                state.NameRinoa = Current.NameRinoa;
+                state.NameAngelo = Current.NameAngelo;
+                state.NameQuezacotl = Current.NameQuezacotl;
+                state.NameShiva = Current.NameShiva;
+                state.NameIfrit = Current.NameIfrit;
+                state.NameSiren = Current.NameSiren;
+                state.NameBrothers = Current.NameBrothers;
+                state.NameDiablos = Current.NameDiablos;
+                state.NameCarbuncle = Current.NameCarbuncle;
+                state.NameLeviathan = Current.NameLeviathan;
+                state.NamePandemona = Current.NamePandemona;
+                state.NameCerberus = Current.NameCerberus;
+                state.NameAlexander = Current.NameAlexander;
+                state.NameDoomtrain = Current.NameDoomtrain;
+                state.NameBahamut = Current.NameBahamut;
+                state.NameCactuar = Current.NameCactuar;
+                state.NameTonberry = Current.NameTonberry;
+                state.NameEden = Current.NameEden;
+                state.NameBoko = Current.NameBoko;
+                state.NameGriever = Current.NameGriever;
             }
             return state;
         }
@@ -172,6 +194,28 @@ namespace FF8Mod.Maelstrom
                 state.SeedFixed = false;
                 state.SeedValue = null;
                 state.History = null;
+                state.NameEnable = false;
+                state.NameSquall = null;
+                state.NameRinoa = null;
+                state.NameAngelo = null;
+                state.NameQuezacotl = null;
+                state.NameShiva = null;
+                state.NameIfrit = null;
+                state.NameSiren = null;
+                state.NameBrothers = null;
+                state.NameDiablos = null;
+                state.NameCarbuncle = null;
+                state.NameLeviathan = null;
+                state.NamePandemona = null;
+                state.NameCerberus = null;
+                state.NameAlexander = null;
+                state.NameDoomtrain = null;
+                state.NameBahamut = null;
+                state.NameCactuar = null;
+                state.NameTonberry = null;
+                state.NameEden = null;
+                state.NameBoko = null;
+                state.NameGriever = null;
             }
             else
             {
