@@ -88,6 +88,7 @@
         <local:TitleConverter x:Key="TitleConverter" />
         <local:IconConverter x:Key="IconConverter" />
         <local:IconVisibilityConverter x:Key="IconVisibilityConverter" />
+        <local:ComboBoxNumberConverter x:Key="ComboBoxNumberConverter" />
         <local:State x:Key="State" />
     </mah:MetroWindow.Resources>
 
@@ -188,6 +189,23 @@
                         <local:ToggleGroupBox Title="Random Draws" Checked="{Binding LootDraws, Mode=TwoWay}">
                             <StackPanel>
                                 <TextBlock>Up to 4 random spells are available to draw from each enemy. Drawn GFs are unaffected.</TextBlock>
+                                <Separator />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="160" />
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="1">Spells Per Enemy</Label>
+                                    <ComboBox Grid.Column="3" Margin="8 0" SelectedValuePath="Content" SelectedValue="{Binding LootDrawsAmount, Mode=TwoWay, Converter={StaticResource ComboBoxNumberConverter}}">
+                                        <ComboBoxItem>1</ComboBoxItem>
+                                        <ComboBoxItem>2</ComboBoxItem>
+                                        <ComboBoxItem>3</ComboBoxItem>
+                                        <ComboBoxItem>4</ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
                                 <Separator />
                                 <local:OptionWithDescription Title="Allow Slot Spells" Description="Spells from Selphie's limit break: Wall, Full-cure, Rapture, The End." Checked="{Binding LootDrawsSlot, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Cut Spells" Description="Spells that were cut from the game: Percent, Catastrophe." Checked="{Binding LootDrawsCut, Mode=TwoWay}" />

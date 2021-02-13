@@ -21,6 +21,7 @@ namespace FF8Mod.Maelstrom
                 {
                     monster = Monster.ByID(battleSource, i);
 
+                    // items to steal
                     if (settings.LootSteals)
                     {
                         var mugPool = Item.Lookup.Values
@@ -35,6 +36,7 @@ namespace FF8Mod.Maelstrom
                         monster.Info.MugHigh = FourRandomItems(random, mugPool);
                     }
 
+                    // items dropped
                     if (settings.LootDrops)
                     {
                         var dropPool = Item.Lookup.Values
@@ -49,6 +51,7 @@ namespace FF8Mod.Maelstrom
                         monster.Info.DropHigh = FourRandomItems(random, dropPool);
                     }
 
+                    // spells to draw
                     if (settings.LootDraws)
                     {
                         var drawPool = DrawPointShuffle.Spells
@@ -58,9 +61,11 @@ namespace FF8Mod.Maelstrom
                             .Select(spell => spell.SpellID).ToList();
 
                         var gf = monster.Info.DrawLow.Where(d => d >= 64).FirstOrDefault();
-                        monster.Info.DrawLow = FourRandomSpells(random, drawPool, gf);
-                        monster.Info.DrawMed = FourRandomSpells(random, drawPool, gf);
-                        monster.Info.DrawHigh = FourRandomSpells(random, drawPool, gf);
+                        var slots = Math.Max(1, Math.Min(4, settings.LootDrawsAmount));
+
+                        monster.Info.DrawLow = FourRandomSpells(random, drawPool, slots, gf);
+                        monster.Info.DrawMed = FourRandomSpells(random, drawPool, slots, gf);
+                        monster.Info.DrawHigh = FourRandomSpells(random, drawPool, slots, gf);
                     }
 
                     battleSource.ReplaceFile(Monster.GetPath(i), monster.Encode());
@@ -98,15 +103,22 @@ namespace FF8Mod.Maelstrom
             return (byte)spellPool[random.Next(spellPool.Count)];
         }
 
-        private static byte[] FourRandomSpells(Random random, List<int> spellPool, byte gf = 0)
+        private static byte[] FourRandomSpells(Random random, List<int> spellPool, int slots, byte gf = 0)
         {
-            return new byte[]
+            var result = new List<byte>();
+
+            for (int i = 0; i < 4; i++)
             {
-                RandomSpell(random, spellPool),
-                RandomSpell(random, spellPool),
-                RandomSpell(random, spellPool),
-                (gf > 0) ? gf : RandomSpell(random, spellPool)
-            };
+                byte spell = 0;
+
+                // if there's a gf it takes the last slot
+                if (i == slots - 1 && gf > 0) spell = gf;
+                else if (i < slots) spell = RandomSpell(random, spellPool);
+
+                result.Add(spell);
+            }
+
+            return result.ToArray();
         }
     }
 }

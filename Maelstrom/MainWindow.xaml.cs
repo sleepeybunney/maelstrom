@@ -180,4 +180,18 @@ namespace FF8Mod.Maelstrom
             throw new NotImplementedException();
         }
     }
+
+    public class ComboBoxNumberConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value.ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int.TryParse((string)value, out int result);
+            return result;
+        }
+    }
 }

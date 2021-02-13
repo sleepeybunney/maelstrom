@@ -41,6 +41,7 @@ namespace FF8Mod.Maelstrom
 
         // draws
         public bool LootDraws { get; set; } = false;
+        public int LootDrawsAmount { get; set; } = 4;
         public bool LootDrawsApoc { get; set; } = false;
         public bool LootDrawsSlot { get; set; } = false;
         public bool LootDrawsCut { get; set; } = false;
