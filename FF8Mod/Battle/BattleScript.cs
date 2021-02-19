@@ -162,7 +162,7 @@ namespace Sleepey.FF8Mod.Battle
             return result;
         }
 
-        private byte[] EncodeScript(List<Instruction> script)
+        private static byte[] EncodeScript(List<Instruction> script)
         {
             var result = new List<byte>();
             foreach (var instruction in script)

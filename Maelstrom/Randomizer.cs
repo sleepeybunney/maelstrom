@@ -243,7 +243,7 @@ namespace Sleepey.Maelstrom
                     // apply free roam
                     if (settings.FreeRoam)
                     {
-                        StorySkip.Apply(fieldSource, seedString, seed);
+                        StorySkip.Apply(fieldSource, seedString);
                     }
                     else
                     {
@@ -391,7 +391,7 @@ namespace Sleepey.Maelstrom
                         var mainSource = new FileSource(Globals.MainPath);
                         var menuSource = new FileSource(Globals.MenuPath);
 
-                        var shuffle = WeaponShuffle.Randomise(seed, settings);
+                        var shuffle = WeaponShuffle.Randomise(seed);
                         if (settings.SpoilerFile) spoilerFile.AddWeapons(mainSource, shuffle);
                         WeaponShuffle.Apply(menuSource, shuffle);
 

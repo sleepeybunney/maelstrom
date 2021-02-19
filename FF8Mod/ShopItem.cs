@@ -21,7 +21,7 @@ namespace Sleepey.FF8Mod
 
         public byte[] Encode()
         {
-            return new byte[] { ItemCode, Hidden ? 0x00 : 0xff };
+            return new byte[] { ItemCode, (byte)(Hidden ? 0x00 : 0xff) };
         }
     }
 }

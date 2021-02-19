@@ -14,7 +14,7 @@ namespace Sleepey.FF8Mod.Main
         public Ability[] Abilities;
         public byte[] WeaponText;
 
-        private byte[] PreGFData, PostGFData, PostWeaponData, PostAbilityData, PostWeaponTextData;
+        private readonly byte[] PreGFData, PostGFData, PostWeaponData, PostAbilityData, PostWeaponTextData;
 
         public Kernel(Stream stream)
         {

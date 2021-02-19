@@ -94,7 +94,7 @@ namespace Sleepey.Maelstrom
 
         private void OnSavePreset(object sender, RoutedEventArgs e)
         {
-            if (SaveName.Text == "") return;
+            if (string.IsNullOrEmpty(SaveName.Text)) return;
             try
             {
                 SaveNewPreset();

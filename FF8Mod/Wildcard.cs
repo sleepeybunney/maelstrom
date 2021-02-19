@@ -10,9 +10,9 @@ namespace Sleepey.FF8Mod
     {
         public static string DirectoryWildcard = "[x]";
 
-        public static string[] DirectoryOptions
+        public static List<string> DirectoryOptions
         {
-            get { return new string[] { "x", Globals.RegionCode }; }
+            get { return new List<string> { "x", Globals.RegionCode }; }
         }
 
         public static bool Match(string path1, string path2)

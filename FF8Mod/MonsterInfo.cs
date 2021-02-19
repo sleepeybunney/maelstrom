@@ -235,12 +235,12 @@ namespace Sleepey.FF8Mod
             return (Hp[0] * level * level / 20) + (Hp[0] + Hp[2] * 100) * level + Hp[1] * 10 + Hp[3] * 1000;
         }
 
-        private int OffensiveStatAtLevel(int level, byte[] values)
+        private static int OffensiveStatAtLevel(int level, byte[] values)
         {
             return (level * values[0] / 10 + level / values[1] - level * level / 2 / values[3] + values[2]) / 4;
         }
 
-        private int NonOffensiveStatAtLevel(int level, byte[] values)
+        private static int NonOffensiveStatAtLevel(int level, byte[] values)
         {
             return level / values[1] - level / values[3] + level * values[0] + values[2];
         }

@@ -7,7 +7,7 @@ using Sleepey.FF8Mod.Menu;
 
 namespace Sleepey.Maelstrom
 {
-    public class PresetNames
+    public static class PresetNames
     {
         public static string ArchivePath = Globals.DataPath + @"\menu\mngrp.bin";
         public static int FileOffset = 0x2000;

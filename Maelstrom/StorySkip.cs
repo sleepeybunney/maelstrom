@@ -10,9 +10,9 @@ namespace Sleepey.Maelstrom
     public static class StorySkip
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
-        private static readonly int codenameLength = 16;
+        private const int codenameLength = 16;
 
-        public static void Apply(FileSource fieldSource, string seedString, int seed)
+        public static void Apply(FileSource fieldSource, string seedString)
         {
             // something in the steam 2013 version tracks your progress by watching for certain movie files
             // getting played - not sure exactly what it's for but if we change the intro movie we need to

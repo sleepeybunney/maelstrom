@@ -17,7 +17,7 @@ namespace Sleepey.Maelstrom
         public int FieldEntity { get; set; }
         public int FieldScript { get; set; }
         public bool FixedField { get; set; }
-        public int[] SlotRanks { get; set; }
+        public List<int> SlotRanks { get; set; }
         public bool Disabled { get; set; } = false;
 
         public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
@@ -98,7 +98,7 @@ namespace Sleepey.Maelstrom
                 int matchedID;
 
                 // only match tonberry king with other solo bosses
-                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Length == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
+                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
                 matchedID = singlesOnly[random.Next(singlesOnly.Count)];
                 unmatchedIDs.Remove(matchedID);
                 encounterIDs.Remove(236);

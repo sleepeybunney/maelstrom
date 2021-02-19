@@ -11,7 +11,8 @@ namespace Sleepey.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
+        private readonly Section Title, Options;
+        private Section Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
 
         public SpoilerFile()
         {
@@ -62,7 +63,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (dp.Location != last)
                     {
-                        if (last != "") DrawPoints.NewLine();
+                        if (last.Length > 0) DrawPoints.NewLine();
                         DrawPoints.Bullet(dp.Location, "");
                     }
                     DrawPoints.Bullet(DrawPointShuffle.Spells.Find(s => s.SpellID == spellMap[dp.Offset]).SpellName, 1);
@@ -243,12 +244,12 @@ namespace Sleepey.Maelstrom
             return FlagString(flags);
         }
 
-        private string FlagString(Dictionary<string, bool> flags)
+        private static string FlagString(Dictionary<string, bool> flags)
         {
             return string.Format("Random ({0})", string.Join(", ", flags.Keys.Where(k => flags[k]).ToList()));
         }
 
-        private string LootString(HeldItem[] items)
+        private static string LootString(HeldItem[] items)
         {
             var result = new StringBuilder();
             result.Append(items[0].ItemId == 0 ? "Nothing" : Item.Lookup[items[0].ItemId].Name);
@@ -265,7 +266,7 @@ namespace Sleepey.Maelstrom
             return result.ToString();
         }
 
-        private string DrawString(byte[] spells)
+        private static string DrawString(byte[] spells)
         {
             var result = new StringBuilder();
             for (int i = 0; i < 4; i++)
@@ -276,7 +277,7 @@ namespace Sleepey.Maelstrom
             return result.ToString();
         }
 
-        private string SpellName(byte spell)
+        private static string SpellName(byte spell)
         {
             if (spell == 0) return "Nothing";
             if (spell >= 64) return "GF";

@@ -42,9 +42,6 @@ namespace Sleepey.Maelstrom
             // move cards to their assigned decks
             foreach (var card in shuffle.Keys)
             {
-                // if you getcard before you setcard, it reveals the location in the card menu
-                // script += Environment.NewLine + GetCard(i);
-
                 script += Environment.NewLine + SetCard(shuffle[card], card);
             }
 
@@ -52,11 +49,6 @@ namespace Sleepey.Maelstrom
             var field = FieldScript.FromSource(fieldSource, scriptField);
             field.ReplaceScript(scriptEntity, scriptId, script);
             StorySkip.SaveToSource(fieldSource, scriptField, field.Encode()); // todo: put this somewhere more sensible
-        }
-
-        private static string GetCard(int card)
-        {
-            return string.Format("pshn_l {0}{1}getcard", card, Environment.NewLine);
         }
 
         private static string SetCard(int deck, int card)

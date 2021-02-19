@@ -225,7 +225,7 @@ namespace Sleepey.Maelstrom
             return state;
         }
 
-        private static JsonSerializerOptions options = new JsonSerializerOptions()
+        private readonly static JsonSerializerOptions options = new JsonSerializerOptions()
         {
             AllowTrailingCommas = true,
             NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,

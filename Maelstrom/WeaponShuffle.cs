@@ -9,9 +9,9 @@ using Sleepey.FF8Mod.Archive;
 
 namespace Sleepey.Maelstrom
 {
-    public class WeaponShuffle
+    public static class WeaponShuffle
     {
-        public static List<WeaponUpgrade> Randomise(int seed, State settings)
+        public static List<WeaponUpgrade> Randomise(int seed)
         {
             var result = new List<WeaponUpgrade>();
             var random = new Random(seed + 9);
