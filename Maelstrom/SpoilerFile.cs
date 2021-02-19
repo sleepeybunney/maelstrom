@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FF8Mod.Main;
-using FF8Mod.Menu;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Main;
+using Sleepey.FF8Mod.Menu;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     class SpoilerFile
     {

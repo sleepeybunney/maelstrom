@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     /// <summary>
     /// Interaction logic for ToggleGroupBox.xaml

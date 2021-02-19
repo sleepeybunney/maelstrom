@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod.Battle
+namespace Sleepey.FF8Mod.Battle
 {
     public partial class BattleScript
     {

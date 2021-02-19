@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public static class Lzss
     {
@@ -44,7 +44,7 @@ namespace FF8Mod
                         var reference = reader.ReadBytes(2);
                         var refLength = (reference[1] & 0x0F) + 3;
                         var refOffset = reference[0] + ((reference[1] & 0xF0) << 4);
-                        
+
                         for (int j = 0; j < refLength; j++)
                         {
                             var b = buffer.Get(refOffset + j);

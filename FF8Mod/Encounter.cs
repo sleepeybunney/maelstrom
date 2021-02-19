@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class Encounter
     {

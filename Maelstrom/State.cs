@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.IO;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class State
     {
@@ -129,7 +129,7 @@ namespace FF8Mod.Maelstrom
             {
                 if (!File.Exists(path)) return new State();
                 return LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), preset);
-                
+
             }
             catch (Exception) { }
             return new State();

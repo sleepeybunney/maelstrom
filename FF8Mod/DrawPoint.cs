@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class DrawPoint
     {

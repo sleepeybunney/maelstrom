@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public static class Globals
     {
@@ -45,7 +45,7 @@ namespace FF8Mod
                 else return ".msd";
             }
         }
-        
+
         public static string GameDirectory
         {
             get { return Path.GetDirectoryName(ExePath); }

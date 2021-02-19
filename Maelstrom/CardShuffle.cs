@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Linq;
-using FF8Mod.Archive;
-using FF8Mod.Field;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Field;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     class CardShuffle
     {
-        public static List<Deck> Decks = JsonSerializer.Deserialize<List<Deck>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Decks.json"));
-        public static List<Card> Cards = JsonSerializer.Deserialize<List<Card>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Cards.json"));
+        public static List<Deck> Decks = JsonSerializer.Deserialize<List<Deck>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Decks.json"));
+        public static List<Card> Cards = JsonSerializer.Deserialize<List<Card>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Cards.json"));
 
         public static Dictionary<int, int> Shuffle(int seed)
         {
@@ -36,7 +37,7 @@ namespace FF8Mod.Maelstrom
             var scriptField = "start0";
             var scriptEntity = 0;
             var scriptId = 0;
-            var script = App.ReadEmbeddedFile(string.Format("FF8Mod.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", scriptField, scriptEntity, scriptId));
+            var script = App.ReadEmbeddedFile(string.Format("Sleepey.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", scriptField, scriptEntity, scriptId));
 
             // move cards to their assigned decks
             foreach (var card in shuffle.Keys)
@@ -57,7 +58,7 @@ namespace FF8Mod.Maelstrom
         {
             return string.Format("pshn_l {0}{1}getcard", card, Environment.NewLine);
         }
-        
+
         private static string SetCard(int deck, int card)
         {
             return string.Format("pshn_l {0}{2}pshn_l {1}{2}setcard", deck, card, Environment.NewLine);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class ShopItem
     {
@@ -21,7 +21,7 @@ namespace FF8Mod
 
         public byte[] Encode()
         {
-            return new byte[] { ItemCode, Hidden ? (byte)0x00 : (byte)0xff };
+            return new byte[] { ItemCode, Hidden ? 0x00 : 0xff };
         }
     }
 }

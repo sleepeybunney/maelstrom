@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class GFAbility
     {

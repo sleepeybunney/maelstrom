@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class Spell
     {

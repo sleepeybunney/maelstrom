@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FF8Mod.Battle;
+using Sleepey.FF8Mod.Battle;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class MonsterAI
     {

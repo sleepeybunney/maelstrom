@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace FF8Mod.Archive
+namespace Sleepey.FF8Mod.Archive
 {
     public class IndexEntry
     {

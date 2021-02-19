@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using FF8Mod.Field;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Field;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class StorySkip
     {
@@ -95,7 +96,7 @@ namespace FF8Mod.Maelstrom
         // slightly easier import with the filename convention "fieldName.entityID.scriptID.txt"
         public static void ImportScript(FileSource fieldSource, string fieldName, int entity, int script)
         {
-            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"FF8Mod.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", fieldName, entity, script));
+            ImportScript(fieldSource, fieldName, entity, script, string.Format(@"Sleepey.Maelstrom.FieldScripts.{0}.{1}.{2}.txt", fieldName, entity, script));
         }
 
         // delete a single script

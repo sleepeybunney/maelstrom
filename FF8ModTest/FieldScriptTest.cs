@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
-using FF8Mod.Field;
+using Sleepey.FF8Mod.Field;
 
-namespace FF8ModTest
+namespace Sleepey.FF8ModTest
 {
     public class FieldScriptTest
     {

@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class Zzz
     {

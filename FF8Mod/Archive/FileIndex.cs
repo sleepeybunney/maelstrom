@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace FF8Mod.Archive
+namespace Sleepey.FF8Mod.Archive
 {
     public class FileIndex
     {

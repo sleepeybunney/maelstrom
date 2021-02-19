@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace FF8Mod.Field
+namespace Sleepey.FF8Mod.Field
 {
     public partial class FieldScript
     {

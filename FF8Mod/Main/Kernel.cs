@@ -5,7 +5,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Linq;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class Kernel
     {

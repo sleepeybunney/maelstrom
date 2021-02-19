@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FF8Mod.Archive;
-using FF8Mod.Menu;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Menu;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class PresetNames
     {

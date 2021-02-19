@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FF8Mod.Archive
+namespace Sleepey.FF8Mod.Archive
 {
     public class FileList
     {

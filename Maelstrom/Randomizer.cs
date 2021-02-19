@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
-using FF8Mod.Archive;
 using System.Windows;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Linq;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class Randomizer
     {
@@ -107,7 +108,7 @@ namespace FF8Mod.Maelstrom
                 {
                     foreach (var ext in new string[] { "fs", "fi", "fl" })
                     {
-                        foreach (var name in new string[] { "battle", "menu", "main"})
+                        foreach (var name in new string[] { "battle", "menu", "main" })
                         {
                             result.Add(string.Format("lang-{0}\\{1}.{2}", region, name, ext));
                         }
@@ -425,7 +426,7 @@ namespace FF8Mod.Maelstrom
             if (settings.SpoilerFile)
             {
                 // strip illegal chars from filename
-                
+
                 File.WriteAllText("spoilers." + SanitizeFileName(seedString) + ".txt", spoilerFile.ToString());
             }
             Debug.WriteLine("final ops end");

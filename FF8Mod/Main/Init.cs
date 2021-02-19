@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class Init
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public static class FF8String
     {
@@ -27,7 +27,7 @@ namespace FF8Mod
                 while (stream.Position < stream.Length)
                 {
                     var code = (int)reader.ReadByte();
-                    
+
                     // null-terminated
                     if (code == 0) break;
 

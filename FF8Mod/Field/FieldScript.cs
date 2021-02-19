@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FF8Mod;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Field
+namespace Sleepey.FF8Mod.Field
 {
     public partial class FieldScript
     {

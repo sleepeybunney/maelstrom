@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FF8Mod.Archive
+namespace Sleepey.FF8Mod.Archive
 {
     public class FileSource
     {
@@ -84,7 +84,7 @@ namespace FF8Mod.Archive
 
                 return reader.ReadBytes((int)entry.Length);
 
-                
+
             }
         }
 

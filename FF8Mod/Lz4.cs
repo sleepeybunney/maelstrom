@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using lz4;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public static class Lz4
     {

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Field;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class Reward
     {
@@ -141,7 +143,7 @@ namespace FF8Mod.Maelstrom
 
         public static void GiveCharacter(FileSource fieldSource, int encounterID, Reward reward)
         {
-            GiveFieldReward(fieldSource, encounterID, Field.FieldScript.OpCodesReverse["addmember"], new int[] { reward.ID }, reward.Name + " joined the party!");
+            GiveFieldReward(fieldSource, encounterID, FieldScript.OpCodesReverse["addmember"], new int[] { reward.ID }, reward.Name + " joined the party!");
         }
 
         public static void GiveGF(FileSource battleSource, EncounterFile encFile, int encounterID, short gfID)
@@ -165,7 +167,7 @@ namespace FF8Mod.Maelstrom
             var encounter = encFile.Encounters[encounterID];
             var slot = encounter.Slots[Boss.Encounters[encounterID].SlotRanks[0]];
             var monster = slot.GetMonster(battleSource);
-            var awardInstruction = new Battle.Instruction(Battle.Instruction.OpCodesReverse[rewardOp], new short[] { rewardID });
+            var awardInstruction = new FF8Mod.Battle.Instruction(FF8Mod.Battle.Instruction.OpCodesReverse[rewardOp], new short[] { rewardID });
             monster.AI.Scripts.Init.Insert(0, awardInstruction);
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
@@ -173,7 +175,7 @@ namespace FF8Mod.Maelstrom
         private static void GiveFieldReward(FileSource fieldSource, int encounterID, int opCode, int[] args, string message)
         {
             var boss = Boss.Encounters[encounterID];
-            var fieldPath = Field.FieldScript.GetFieldPath(boss.FieldID);
+            var fieldPath = FieldScript.GetFieldPath(boss.FieldID);
             var innerSource = new FileSource(fieldPath, fieldSource);
 
             // add message
@@ -183,29 +185,29 @@ namespace FF8Mod.Maelstrom
             fieldText.Messages.Add(message);
 
             // give reward
-            var field = Field.FieldScript.FromSource(fieldSource, boss.FieldID);
+            var field = FieldScript.FromSource(fieldSource, boss.FieldID);
             var script = field.Entities[boss.FieldEntity].Scripts[boss.FieldScript];
-            var index = script.Instructions.FindLastIndex(i => i.OpCode == Field.FieldScript.OpCodesReverse["battle"]) + 1;
+            var index = script.Instructions.FindLastIndex(i => i.OpCode == FieldScript.OpCodesReverse["battle"]) + 1;
 
-            var awardInstructions = new List<Field.Instruction>();
-            var push = Field.FieldScript.OpCodesReverse["pshn_l"];
+            var awardInstructions = new List<Instruction>();
+            var push = FieldScript.OpCodesReverse["pshn_l"];
             foreach (var a in args)
             {
-                awardInstructions.Add(new Field.Instruction(push, a));
+                awardInstructions.Add(new Instruction(push, a));
             }
-            awardInstructions.Add(new Field.Instruction(opCode));
+            awardInstructions.Add(new Instruction(opCode));
 
             // show message
-            awardInstructions.Add(new Field.Instruction(push, 0));
-            awardInstructions.Add(new Field.Instruction(push, msgID));
-            awardInstructions.Add(new Field.Instruction(push, 70));
-            awardInstructions.Add(new Field.Instruction(push, 70));
-            awardInstructions.Add(new Field.Instruction(Field.FieldScript.OpCodesReverse["amesw"]));
+            awardInstructions.Add(new Instruction(push, 0));
+            awardInstructions.Add(new Instruction(push, msgID));
+            awardInstructions.Add(new Instruction(push, 70));
+            awardInstructions.Add(new Instruction(push, 70));
+            awardInstructions.Add(new Instruction(FieldScript.OpCodesReverse["amesw"]));
 
             // apply changes
             script.Instructions.InsertRange(index, awardInstructions);
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
-            innerSource.ReplaceFile(Field.FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + Globals.ScriptFileExtension, field.Encode());
+            innerSource.ReplaceFile(FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + Globals.ScriptFileExtension, field.Encode());
         }
 
         public static void SetRewards(FileSource battleSource, FileSource fieldSource, int seed)

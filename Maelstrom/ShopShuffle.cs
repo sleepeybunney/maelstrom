@@ -1,15 +1,16 @@
-﻿using FF8Mod.Archive;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     class ShopShuffle
     {
-        public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Shops.json"));
+        public static List<Shop> Shops = JsonSerializer.Deserialize<List<Shop>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Shops.json"));
 
         public static List<Shop> Randomise(int seed, State settings)
         {

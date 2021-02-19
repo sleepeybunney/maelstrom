@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class Monster
     {
@@ -52,7 +52,7 @@ namespace FF8Mod
             }
 
             // 1-6
-            var oneToSixLength = (int)sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
+            var oneToSixLength = sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
             monster.SectionsOneToSix = new ArraySegment<byte>(data, sections[SectionIndex.Skeleton].Offset, oneToSixLength).ToArray();
 
             // 7

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class InitGF
     {
@@ -66,7 +66,7 @@ namespace FF8Mod.Main
             var forgotten = new byte[3];
             ForgottenAbilities.CopyTo(forgotten, 0);
             result.AddRange(forgotten);
-            
+
             return result.ToArray();
         }
     }

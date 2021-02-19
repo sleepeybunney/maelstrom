@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class Card
     {

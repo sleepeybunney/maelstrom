@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Menu
+namespace Sleepey.FF8Mod.Menu
 {
     public class WeaponUpgrade
     {

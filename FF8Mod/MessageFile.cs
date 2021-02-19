@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public class MessageFile
     {

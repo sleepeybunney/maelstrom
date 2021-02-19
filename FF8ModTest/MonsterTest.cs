@@ -1,7 +1,7 @@
-﻿using FF8Mod;
+﻿using Sleepey.FF8Mod;
 using Xunit;
 
-namespace FF8ModTest
+namespace Sleepey.FF8ModTest
 {
     public class MonsterTest
     {

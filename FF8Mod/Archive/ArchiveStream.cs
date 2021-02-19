@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod.Archive
+namespace Sleepey.FF8Mod.Archive
 {
     public class ArchiveStream : Stream
     {

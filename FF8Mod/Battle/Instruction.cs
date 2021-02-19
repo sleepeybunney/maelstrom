@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FF8Mod.Battle
+namespace Sleepey.FF8Mod.Battle
 {
     public class Instruction
     {

@@ -10,15 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MahApps.Metro.Controls;
 using System.Text.Json;
 using System.IO;
 using System.Diagnostics;
-using Microsoft.Win32;
 using System.Globalization;
+using Microsoft.Win32;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Sleepey.FF8Mod;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public partial class MainWindow : MetroWindow
     {
@@ -158,8 +159,8 @@ namespace FF8Mod.Maelstrom
 
     public class IconConverter : IValueConverter
     {
-        public static BitmapImage SteamIcon = App.GetEmbeddedImage("FF8Mod.Maelstrom.Images.icon_steam.jpg");
-        public static BitmapImage RemasteredIcon = App.GetEmbeddedImage("FF8Mod.Maelstrom.Images.icon_remastered.jpg");
+        public static BitmapImage SteamIcon = App.GetEmbeddedImage("Sleepey.Maelstrom.Images.icon_steam.jpg");
+        public static BitmapImage RemasteredIcon = App.GetEmbeddedImage("Sleepey.Maelstrom.Images.icon_remastered.jpg");
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

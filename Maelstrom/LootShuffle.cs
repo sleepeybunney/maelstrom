@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class LootShuffle
     {

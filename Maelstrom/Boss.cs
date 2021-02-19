@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class Boss
     {
@@ -18,7 +20,7 @@ namespace FF8Mod.Maelstrom
         public int[] SlotRanks { get; set; }
         public bool Disabled { get; set; } = false;
 
-        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
+        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
 
         private static Dictionary<int, Boss> PopulateEncounterDictionary()
@@ -103,7 +105,7 @@ namespace FF8Mod.Maelstrom
                 encounterMap.Add(236, matchedID);
                 encounterMap.Add(237, matchedID);
                 encounterMap.Add(238, matchedID);
-                
+
                 foreach (var encID in encounterIDs)
                 {
                     matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
@@ -214,19 +216,19 @@ namespace FF8Mod.Maelstrom
 
             // add GF unlock to monster's init script
             var script = monster.AI.Scripts.Init;
-            script.InsertRange(0, new List<Battle.Instruction>
+            script.InsertRange(0, new List<Instruction>
             {
                 // if shared-var-4 == 0
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
+                new Instruction(Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
 
                 // give diablos
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
+                new Instruction(Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
 
                 // shared-var-4 = 1
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
+                new Instruction(Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
 
                 // end if
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new Instruction(Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
             }); ;
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
@@ -248,7 +250,7 @@ namespace FF8Mod.Maelstrom
             var monsterId = cleanEncFile.Encounters[317].Slots[0].MonsterID;
             var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Execute;
-            script.Insert(0, new Battle.Instruction(Battle.Instruction.OpCodesReverse["return"]));
+            script.Insert(0, new Instruction(Instruction.OpCodesReverse["return"]));
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
         }
 
@@ -258,16 +260,16 @@ namespace FF8Mod.Maelstrom
             var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Init;
 
-            script.InsertRange(0, new List<Battle.Instruction>
+            script.InsertRange(0, new List<Instruction>
             {
                 // if irvine is not alive
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
+                new Instruction(Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
 
                 // shared-var-1 (dialogue flag) = 1
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
+                new Instruction(Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
 
                 // end if
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new Instruction(Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
             });
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
@@ -282,13 +284,13 @@ namespace FF8Mod.Maelstrom
 
             // redirect field script to clone
             var fieldName = "glyagu1";
-            var field = Field.FieldScript.FromSource(fieldSource, fieldName);
+            var field = FF8Mod.Field.FieldScript.FromSource(fieldSource, fieldName);
             var script = field.Entities[2].Scripts[4].Instructions;
             for (int i = 0; i < script.Count - 2; i++)
             {
-                if (script[i].OpCode == Field.FieldScript.OpCodesReverse["pshn_l"] && script[i].Param == 136)
+                if (script[i].OpCode == FF8Mod.Field.FieldScript.OpCodesReverse["pshn_l"] && script[i].Param == 136)
                 {
-                    if (script[i + 2].OpCode == Field.FieldScript.OpCodesReverse["battle"])
+                    if (script[i + 2].OpCode == FF8Mod.Field.FieldScript.OpCodesReverse["battle"])
                     {
                         field.Entities[2].Scripts[4].Instructions[i].Param = 845;
                     }

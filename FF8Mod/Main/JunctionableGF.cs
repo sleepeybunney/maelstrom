@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class JunctionableGF
     {
