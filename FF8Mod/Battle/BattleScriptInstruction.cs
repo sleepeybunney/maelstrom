@@ -4,25 +4,19 @@ using System.Linq;
 
 namespace Sleepey.FF8Mod.Battle
 {
-    public class Instruction
+    public class BattleScriptInstruction
     {
-        public OpCode Op;
-        public short[] Args;
+        public OpCode Op { get; set; } = OpCodes[0];
+        public List<short> Args { get; set; } = new List<short>();
 
-        public Instruction(OpCode op, short[] args)
-        {
-            Op = op;
-            Args = args;
-        }
+        public BattleScriptInstruction() { }
+        public BattleScriptInstruction(OpCode op) { Op = op; }
+        public BattleScriptInstruction(OpCode op, IEnumerable<short> args) : this(op) { Args = args.ToList(); }
 
-        public Instruction(OpCode op) : this(op, Array.Empty<short>()) { }
-
-        public Instruction() : this(OpCodes[0]) { }
-
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>() { Op.Code };
-            for (var i = 0; i < Op.Args.Length; i++)
+            for (var i = 0; i < Op.Args.Count; i++)
             {
                 if (Op.Args[i].Type == ArgType.Short)
                 {
@@ -33,14 +27,14 @@ namespace Sleepey.FF8Mod.Battle
                     result.Add((byte)Args[i]);
                 }
             }
-            return result.ToArray();
+            return result;
         }
 
         public override string ToString()
         {
             var result = Op.Name;
 
-            if (Args.Length > 0) result += " (";
+            if (Args.Count > 0) result += " (";
 
             switch (Op.Code)
             {
@@ -185,7 +179,7 @@ namespace Sleepey.FF8Mod.Battle
 
             }
 
-            if (Args.Length > 0) result += ")";
+            if (Args.Count > 0) result += ")";
             return result;
         }
 
@@ -255,10 +249,10 @@ namespace Sleepey.FF8Mod.Battle
             return result;
         }
 
-        public static Dictionary<byte, OpCode> OpCodes = BuildOpCodeDictionary();
-        public static Dictionary<string, OpCode> OpCodesReverse = OpCodes.ToDictionary(o => o.Value.Name, o => o.Value);
+        public static Dictionary<byte, OpCode> OpCodes { get; } = BuildOpCodeDictionary();
+        public static Dictionary<string, OpCode> OpCodesReverse { get; } = OpCodes.ToDictionary(o => o.Value.Name, o => o.Value);
 
-        public static Dictionary<byte, string> ConditionCodes = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> ConditionCodes { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "target-hp" },
             { 0x01, "any-group-member-hp" },
@@ -302,12 +296,12 @@ namespace Sleepey.FF8Mod.Battle
             { 0xe3, "var-7" }
         };
 
-        public static byte[] ParameterisedConditions = new byte[]
+        public static List<byte> ParameterisedConditions { get; } = new List<byte>()
         {
             0x00, 0x01, 0x02, 0x04, 0x05, 0x06, 0x10, 0x14
         };
 
-        public static Dictionary<byte, string> ActionProperties = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> ActionProperties { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "type" },
             { 0x01, "subject" },
@@ -318,7 +312,7 @@ namespace Sleepey.FF8Mod.Battle
             { 0xcb, "unknown-cb" },
         };
 
-        public static Dictionary<byte, string> Operators = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Operators { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "==" },
             { 0x01, "<" },
@@ -328,13 +322,13 @@ namespace Sleepey.FF8Mod.Battle
             { 0x05, ">=" },
         };
 
-        public static Dictionary<byte, string> UnaryOperators = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> UnaryOperators { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "==" },
             { 0x03, "!=" }
         };
 
-        public static Dictionary<byte, string> Elements = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Elements { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "fire" },
             { 0x01, "ice" },
@@ -346,7 +340,7 @@ namespace Sleepey.FF8Mod.Battle
             { 0x07, "holy" },
         };
 
-        public static Dictionary<byte, string> StatusCodes = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> StatusCodes { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "ko" },
             { 0x01, "poisoned" },
@@ -399,7 +393,7 @@ namespace Sleepey.FF8Mod.Battle
             { 0xec, "holy-def-min" },
         };
 
-        public static Dictionary<byte, string> Targets = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Targets { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "squall" },
             { 0x01, "zell" },
@@ -425,26 +419,26 @@ namespace Sleepey.FF8Mod.Battle
             // 0xdc-0xe3 = var + 0xdc
         };
 
-        public static Dictionary<byte, string> Groups = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Groups { get; } = new Dictionary<byte, string>()
         {
             // 0x10-0x9e = enemy-id + 0x10
             { 0xc8, "enemies" },
             { 0xc9, "friends" }
         };
 
-        public static Dictionary<byte, string> Friends = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Friends { get; } = new Dictionary<byte, string>()
         {
             // 0x00-0x07 = friend-index
             { 0xc8, "self" }
         };
 
-        public static Dictionary<byte, string> ActionTypes = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> ActionTypes { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "physical" },
             { 0x01, "magic" }
         };
 
-        public static Dictionary<byte, string> MenuCommands = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> MenuCommands { get; } = new Dictionary<byte, string>()
         {
             { 0x01, "attack" },
             { 0x02, "magic" },
@@ -453,20 +447,20 @@ namespace Sleepey.FF8Mod.Battle
             { 0xfe, "gf" }
         };
 
-        public static Dictionary<byte, string> LevelBands = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> LevelBands { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "low" },
             { 0x01, "medium" },
             { 0x02, "high" }
         };
 
-        public static Dictionary<byte, string> Genders = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> Genders { get; } = new Dictionary<byte, string>()
         {
             { 0xca, "male" },
             { 0xcb, "female" }
         };
 
-        public static Dictionary<byte, string> PercentageModifiers = new Dictionary<byte, string>()
+        public static Dictionary<byte, string> PercentageModifiers { get; } = new Dictionary<byte, string>()
         {
             { 0x00, "0%" },
             { 0x01, "10%" },

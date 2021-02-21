@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
 using Sleepey.FF8Mod.Main;
@@ -68,7 +67,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // sort abilities
-                    kernel.JunctionableGFs[i].Abilities = kernel.JunctionableGFs[i].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToArray();
+                    kernel.JunctionableGFs[i].Abilities = kernel.JunctionableGFs[i].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToList();
 
                     // clear ability being learned
                     init.GFs[i].CurrentAbility = 0;

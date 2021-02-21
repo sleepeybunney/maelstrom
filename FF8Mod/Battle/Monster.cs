@@ -4,16 +4,17 @@ using System.IO;
 using System.Linq;
 using Sleepey.FF8Mod.Archive;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Battle
 {
     public class Monster
     {
-        public MonsterInfo Info;
-        public MonsterAI AI;
+        public MonsterInfo Info { get; set; }
+        public MonsterAI AI { get; set; }
 
         // save other sections as raw data to slot back in when rebuilding the file
-        public byte[] SectionsOneToSix, SectionsNineToEleven;
-        public Dictionary<SectionIndex, Section> SectionInfo;
+        public IEnumerable<byte> SectionsOneToSix { get; set; }
+        public IEnumerable<byte> SectionsNineToEleven { get; set; }
+        public Dictionary<MonsterSectionIndex, MonsterSection> SectionInfo { get; set; }
 
         public static Monster FromFile(string path)
         {
@@ -41,7 +42,7 @@ namespace Sleepey.FF8Mod
             return string.Format(@"{0}\battle\c0m{1:d3}.dat", Globals.DataPath, monsterID);
         }
 
-        public static Monster FromBytes(byte[] data)
+        public static Monster FromBytes(IEnumerable<byte> data)
         {
             var monster = new Monster();
             var sections = GetSectionInfo(data);    // offsets & sizes of each section
@@ -53,39 +54,39 @@ namespace Sleepey.FF8Mod
 
             // 1-6
             var oneToSixLength = sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
-            monster.SectionsOneToSix = new ArraySegment<byte>(data, sections[SectionIndex.Skeleton].Offset, oneToSixLength).ToArray();
+            monster.SectionsOneToSix = data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(oneToSixLength);
 
             // 7
-            monster.Info = new MonsterInfo(new ArraySegment<byte>(data, sections[SectionIndex.Info].Offset, sections[SectionIndex.Info].Length).ToArray());
+            monster.Info = new MonsterInfo(data.Skip(sections[MonsterSectionIndex.Info].Offset).Take(sections[MonsterSectionIndex.Info].Length));
 
             // 8
-            monster.AI = new MonsterAI(new ArraySegment<byte>(data, sections[SectionIndex.AI].Offset, sections[SectionIndex.AI].Length).ToArray());
+            monster.AI = new MonsterAI(data.Skip(sections[MonsterSectionIndex.AI].Offset).Take(sections[MonsterSectionIndex.AI].Length));
 
             // 9-11
-            var nineToElevenLength = data.Length - sections[(SectionIndex)9].Offset;
-            monster.SectionsNineToEleven = new ArraySegment<byte>(data, sections[SectionIndex.Sounds].Offset, nineToElevenLength).ToArray();
+            var nineToElevenLength = data.Count() - sections[(MonsterSectionIndex)9].Offset;
+            monster.SectionsNineToEleven = data.Skip(sections[MonsterSectionIndex.Sounds].Offset).Take(nineToElevenLength);
 
             monster.SectionInfo = sections;
 
             return monster;
         }
 
-        static Dictionary<SectionIndex, Section> GetSectionInfo(byte[] data)
+        static Dictionary<MonsterSectionIndex, MonsterSection> GetSectionInfo(IEnumerable<byte> data)
         {
-            var sections = new List<Section>();
+            var sections = new List<MonsterSection>();
 
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 // don't bother reading past the header if there aren't exactly 11 sections
                 var sectionCount = reader.ReadUInt32();
-                if (sectionCount != 11) return new Dictionary<SectionIndex, Section>();
+                if (sectionCount != 11) return new Dictionary<MonsterSectionIndex, MonsterSection>();
 
                 for (int i = 1; i <= sectionCount; i++)
                 {
-                    var newSection = new Section
+                    var newSection = new MonsterSection
                     {
-                        Type = (SectionIndex)i,
+                        Type = (MonsterSectionIndex)i,
                         Offset = (int)reader.ReadUInt32()
                     };
 
@@ -101,12 +102,12 @@ namespace Sleepey.FF8Mod
             }
 
             // index by section number
-            var result = new Dictionary<SectionIndex, Section>();
+            var result = new Dictionary<MonsterSectionIndex, MonsterSection>();
             foreach (var s in sections) result.Add(s.Type, s);
             return result;
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var encodedInfo = Info.Encode();
             var encodedAI = AI.Encode();
@@ -114,20 +115,20 @@ namespace Sleepey.FF8Mod
             uint sectionCount = 11;
             uint sectionPosLength = sectionCount * 4;
             uint headerLength = 4 + sectionPosLength + 4;
-            uint totalLength = (uint)(headerLength + SectionsOneToSix.Length + encodedInfo.Length + encodedAI.Length + SectionsNineToEleven.Length);
+            uint totalLength = (uint)(headerLength + SectionsOneToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
 
             // the rebuilt info & AI sections may be a different size,
             // so everything after them in the file will be displaced by some number of bytes (+/-)
             // which needs to be accounted for in the header
-            var originalInfoLength = SectionInfo[SectionIndex.Info].Length;
-            var originalAILength = SectionInfo[SectionIndex.AI].Length;
-            var sizeDiff = encodedInfo.Length + encodedAI.Length - originalInfoLength - originalAILength;
+            var originalInfoLength = SectionInfo[MonsterSectionIndex.Info].Length;
+            var originalAILength = SectionInfo[MonsterSectionIndex.AI].Length;
+            var sizeDiff = encodedInfo.Length + encodedAI.Count() - originalInfoLength - originalAILength;
 
-            SectionInfo[SectionIndex.Info].Length = encodedInfo.Length;
-            SectionInfo[SectionIndex.AI].Length = encodedAI.Length;
+            SectionInfo[MonsterSectionIndex.Info].Length = encodedInfo.Length;
+            SectionInfo[MonsterSectionIndex.AI].Length = encodedAI.Count();
             for (int i = 9; i <= 11; i++)
             {
-                SectionInfo[(SectionIndex)i].Offset += sizeDiff;
+                SectionInfo[(MonsterSectionIndex)i].Offset += sizeDiff;
             }
 
             var result = new byte[totalLength];
@@ -137,7 +138,7 @@ namespace Sleepey.FF8Mod
                 writer.Write(sectionCount);
                 for (int i = 1; i <= 11; i++)
                 {
-                    writer.Write((uint)SectionInfo[(SectionIndex)i].Offset);
+                    writer.Write((uint)SectionInfo[(MonsterSectionIndex)i].Offset);
                 }
                 writer.Write(totalLength);
 
@@ -154,27 +155,5 @@ namespace Sleepey.FF8Mod
         {
             return Info.Name;
         }
-    }
-
-    public enum SectionIndex
-    {
-        Skeleton = 1,
-        Mesh = 2,
-        Animation = 3,
-        Section4 = 4,
-        Section5 = 5,
-        Section6 = 6,
-        Info = 7,
-        AI = 8,
-        Sounds = 9,
-        Section10 = 10,
-        Textures = 11
-    }
-
-    public class Section
-    {
-        public SectionIndex Type;
-        public int Offset;
-        public int Length;
     }
 }

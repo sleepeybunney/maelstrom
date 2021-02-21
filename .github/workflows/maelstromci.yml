@@ -21,8 +21,3 @@ jobs:
       with:
         name: maelstrom
         path: ./Maelstrom/bin/Release/net472
-    - name: Upload MiniMog
-      uses: actions/upload-artifact@v1
-      with:
-        name: minimog
-        path: ./MiniMog/bin/Release/net472

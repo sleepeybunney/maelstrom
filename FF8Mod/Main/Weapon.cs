@@ -1,30 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Sleepey.FF8Mod.Main
 {
     public class Weapon
     {
-        public ushort NameOffset;
-        public byte RenzokukenFinishers;
-        public byte Unknown;
-        public byte CharacterID;
-        public byte AttackType;
-        public byte AttackPower;
-        public byte AttackParameter;
-        public byte StrBonus;
-        public byte WeaponTier;
-        public byte CritBonus;
-        public byte Melee;
-        public string Name;
+        public ushort NameOffset { get; set; }
+        public byte RenzokukenFinishers { get; set; }
+        public byte Unknown { get; set; }
+        public byte CharacterID { get; set; }
+        public byte AttackType { get; set; }
+        public byte AttackPower { get; set; }
+        public byte AttackParameter { get; set; }
+        public byte StrBonus { get; set; }
+        public byte WeaponTier { get; set; }
+        public byte CritBonus { get; set; }
+        public byte Melee { get; set; }
+        public string Name { get; set; }
 
-        public Weapon(byte[] data)
+        public Weapon(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 NameOffset = reader.ReadUInt16();
@@ -41,7 +39,7 @@ namespace Sleepey.FF8Mod.Main
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             result.AddRange(BitConverter.GetBytes(NameOffset));
@@ -55,7 +53,7 @@ namespace Sleepey.FF8Mod.Main
             result.Add(WeaponTier);
             result.Add(CritBonus);
             result.Add(Melee);
-            return result.ToArray();
+            return result;
         }
     }
 }

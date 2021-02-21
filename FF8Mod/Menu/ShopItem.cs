@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Menu
 {
     public class ShopItem
     {
@@ -19,7 +17,7 @@ namespace Sleepey.FF8Mod
             Hidden = hidden;
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             return new byte[] { ItemCode, (byte)(Hidden ? 0x00 : 0xff) };
         }

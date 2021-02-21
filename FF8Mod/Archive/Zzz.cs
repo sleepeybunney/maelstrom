@@ -4,20 +4,18 @@ using System.Text;
 using System.IO;
 using System.Linq;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Archive
 {
     public class Zzz
     {
-        public string ArchivePath;
-        public List<ArchiveIndexEntry> Index;
+        public string ArchivePath { get; set; }
+        public List<ArchiveIndexEntry> Index { get; set; } = new List<ArchiveIndexEntry>();
 
         public Zzz(string archivePath)
         {
             if (!File.Exists(archivePath)) throw new FileNotFoundException("ZZZ file not found: " + archivePath);
 
             ArchivePath = archivePath;
-            Index = new List<ArchiveIndexEntry>();
-
             using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 Index = ReadIndex(stream);
@@ -46,7 +44,7 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public byte[] GetFile(string path)
+        public IEnumerable<byte> GetFile(string path)
         {
             var entry = GetEntry(path);
             using (var stream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -64,10 +62,11 @@ namespace Sleepey.FF8Mod
             return entry;
         }
 
-        public byte[] RebuildIndex()
+        public List<byte> RebuildIndex()
         {
             var header = new List<byte>();
             header.AddRange(BitConverter.GetBytes((uint)Index.Count));
+
             for (int i = 0; i < Index.Count; i++)
             {
                 var path = Encoding.UTF8.GetBytes(Index[i].Path);
@@ -77,10 +76,10 @@ namespace Sleepey.FF8Mod
                 header.AddRange(BitConverter.GetBytes(Index[i].Length));
             }
 
-            return header.ToArray();
+            return header;
         }
 
-        public void ReplaceFiles(Dictionary<string, byte[]> files)
+        public void ReplaceFiles(Dictionary<string, IEnumerable<byte>> files)
         {
             using (var readStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             using (var writeStream = new FileStream(ArchivePath, FileMode.Open, FileAccess.Write, FileShare.Read))
@@ -117,7 +116,7 @@ namespace Sleepey.FF8Mod
                 {
                     var entry = Index.FindIndex(i => i.Path == path);
                     Index[entry].Offset = (ulong)writeStream.Position;
-                    Index[entry].Length = (uint)files[path].Length;
+                    Index[entry].Length = (uint)files[path].Count();
                     Index[entry].Compressed = false;
                     writer.Write(files[path]);
                 }
@@ -132,9 +131,9 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public void ReplaceFile(string path, byte[] data)
+        public void ReplaceFile(string path, IEnumerable<byte> data)
         {
-            ReplaceFiles(new Dictionary<string, byte[]> { { path, data } });
+            ReplaceFiles(new Dictionary<string, IEnumerable<byte>> { { path, data } });
         }
     }
 }

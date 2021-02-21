@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using Sleepey.FF8Mod.Archive;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Field
 {
     public class MessageFile
     {
-        public List<string> Messages;
+        public List<string> Messages { get; set; } = new List<string>();
 
-        public MessageFile()
-        {
-            Messages = new List<string>();
-        }
+        public MessageFile() { }
 
-        public static MessageFile FromBytes(byte[] data)
+        public static MessageFile FromBytes(IEnumerable<byte> data)
         {
             var result = new MessageFile();
-            if (data.Length == 0) return result;
+            if (data.Count() == 0) return result;
 
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 // strings are variable length so the header contains offsets for each
@@ -48,10 +46,10 @@ namespace Sleepey.FF8Mod
             return FromBytes(source.GetFile(path));
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             // encode
-            var encodedMessages = new List<byte[]>();
+            var encodedMessages = new List<IEnumerable<byte>>();
             foreach (var m in Messages) encodedMessages.Add(FF8String.Encode(m));
 
             // write header
@@ -60,7 +58,7 @@ namespace Sleepey.FF8Mod
             foreach (var e in encodedMessages)
             {
                 result.AddRange(BitConverter.GetBytes(position));
-                position += e.Length;
+                position += e.Count();
             }
 
             // write messages
@@ -69,7 +67,7 @@ namespace Sleepey.FF8Mod
                 result.AddRange(e);
             }
 
-            return result.ToArray();
+            return result;
         }
     }
 }

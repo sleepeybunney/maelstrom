@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Exe
 {
     public class DrawPoint
     {
         public const int DrawPointDefsLocation = 0x792328;
         public const int DrawPointDefsLength = 0x100;
 
-        public static Dictionary<int, DrawPoint> UpdatedDrawPoints = new Dictionary<int, DrawPoint>();
+        public static Dictionary<int, DrawPoint> UpdatedDrawPoints { get; set; } = new Dictionary<int, DrawPoint>();
 
         public int Offset { get; set; }
         public string Location { get; set; }
-        public int SpellID { get; set; }
+        public int SpellID { get; set; } = 1;
         public bool Renewable { get; set; }
         public bool Bountiful { get; set; }
 
-        public DrawPoint()
-        {
-            SpellID = 1;
-            Renewable = false;
-            Bountiful = false;
-        }
+        public DrawPoint() { }
 
         public DrawPoint(byte code)
         {
@@ -50,9 +45,9 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public static byte[] EncodeAll()
+        public static IEnumerable<byte> EncodeAll()
         {
-            var result = (byte[])OriginalData.Clone();
+            var result = new List<byte>(OriginalData);
             foreach (var id in UpdatedDrawPoints.Keys)
             {
                 result[id - 1] = UpdatedDrawPoints[id].Encode();

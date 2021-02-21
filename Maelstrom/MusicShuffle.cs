@@ -48,6 +48,7 @@ namespace Sleepey.Maelstrom
             foreach (var fieldName in scripts.Select(s => s.Item1).Distinct())
             {
                 var field = FieldScript.FromSource(fieldSource, fieldName);
+
                 foreach (var s in scripts.Where(s => s.Item1 == fieldName))
                 {
                     var script = field.Entities[s.Item2].Scripts[s.Item3];
@@ -64,7 +65,8 @@ namespace Sleepey.Maelstrom
                         }
                     }
                 }
-                StorySkip.SaveToSource(fieldSource, fieldName, field.Encode()); // todo: this still needs moving
+
+                field.SaveToSource(fieldSource, fieldName);
             }
         }
     }

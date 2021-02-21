@@ -1,36 +1,32 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Battle
 {
     public class Encounter
     {
-        public byte Scene;
-        public bool NoEscape, NoVictorySequence, ShowTimer, NoExp, NoResults, StruckFirst, BackAttack, ScriptedBattle;
-        public byte MainCamera, MainCameraAnimation, SecondaryCamera, SecondaryCameraAnimation;
-        public EncounterSlot[] Slots;
+        public byte Scene { get; set; }
+        public bool NoEscape { get; set; }
+        public bool NoVictorySequence { get; set; }
+        public bool ShowTimer { get; set; }
+        public bool NoExp { get; set; }
+        public bool NoResults { get; set; }
+        public bool StruckFirst { get; set; }
+        public bool BackAttack { get; set; }
+        public bool ScriptedBattle { get; set; }
+        public byte MainCamera { get; set; }
+        public byte MainCameraAnimation { get; set; }
+        public byte SecondaryCamera { get; set; }
+        public byte SecondaryCameraAnimation { get; set; }
+        public List<EncounterSlot> Slots { get; } = new List<EncounterSlot>(Enumerable.Range(0, 8).Select(i => new EncounterSlot()));
 
-        public Encounter()
-        {
-            Scene = 0;
-            NoEscape = false;
-            NoVictorySequence = false;
-            ShowTimer = false;
-            NoExp = false;
-            NoResults = false;
-            StruckFirst = false;
-            BackAttack = false;
-            ScriptedBattle = false;
-            MainCamera = 0;
-            MainCameraAnimation = 0;
-            SecondaryCamera = 0;
-            SecondaryCameraAnimation = 0;
-            Slots = new EncounterSlot[8];
-            for (int i = 0; i < 8; i++) Slots[i] = new EncounterSlot();
-        }
+        public Encounter() { }
 
-        public Encounter(byte[] data) : this()
+        public Encounter(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 Scene = reader.ReadByte();
@@ -77,7 +73,7 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new byte[128];
 

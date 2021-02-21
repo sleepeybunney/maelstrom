@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.Json;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Menu;
 
 namespace Sleepey.Maelstrom
 {

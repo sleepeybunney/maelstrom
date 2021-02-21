@@ -8,14 +8,11 @@ namespace Sleepey.FF8Mod.Archive
 {
     public class FileList
     {
-        public List<string> Files;
+        public List<string> Files { get; set; } = new List<string>();
 
-        public FileList()
-        {
-            Files = new List<string>();
-        }
+        public FileList() { }
 
-        public FileList(string path) : this()
+        public FileList(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
@@ -23,9 +20,9 @@ namespace Sleepey.FF8Mod.Archive
             }
         }
 
-        public FileList(byte[] data) : this()
+        public FileList(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             {
                 ReadStream(stream);
             }
@@ -38,26 +35,20 @@ namespace Sleepey.FF8Mod.Archive
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (!String.IsNullOrWhiteSpace(line)) Files.Add(line);
+                    if (!string.IsNullOrWhiteSpace(line)) Files.Add(line);
                 }
             }
         }
 
-        public int GetIndex(string path)
-        {
-            return Files.FindIndex(f => WildcardPath.Match(f, path));
-        }
-
-        public List<string> GetDirectory(string path)
+        public IEnumerable<string> GetDirectory(string path)
         {
             var result = Files.Where(f => f.StartsWith(path.ToLower()));
             if (result.Count() == 0) return null;
-            return result.ToList();
+            return result;
         }
 
-        public byte[] Encode()
-        {
-            return Encoding.UTF8.GetBytes(string.Join(Environment.NewLine, Files));
-        }
+        public int GetIndex(string path) => Files.FindIndex(f => WildcardPath.Match(f, path));
+
+        public IEnumerable<byte> Encode() => Encoding.UTF8.GetBytes(string.Join(Environment.NewLine, Files));
     }
 }

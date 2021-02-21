@@ -6,6 +6,7 @@ using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Main;
 using Sleepey.FF8Mod.Menu;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 
 namespace Sleepey.Maelstrom
 {
@@ -169,7 +170,7 @@ namespace Sleepey.Maelstrom
             for (var i = 0; i < gfs.Count; i++)
             {
                 Abilities.Bullet(AbilityShuffle.GFNames.Find(gfn => gfn.GFID == i).GFName);
-                for (var j = 0; j < gfs[i].Abilities.Length; j++)
+                for (var j = 0; j < gfs[i].Abilities.Count; j++)
                 {
                     var abilityID = gfs[i].Abilities[j].Ability;
                     if (abilityID != 0) Abilities.Bullet(AbilityShuffle.Abilities.Find(an => an.AbilityID == abilityID).AbilityName, 1);
@@ -249,7 +250,7 @@ namespace Sleepey.Maelstrom
             return string.Format("Random ({0})", string.Join(", ", flags.Keys.Where(k => flags[k]).ToList()));
         }
 
-        private static string LootString(HeldItem[] items)
+        private static string LootString(IList<HeldItem> items)
         {
             var result = new StringBuilder();
             result.Append(items[0].ItemId == 0 ? "Nothing" : Item.Lookup[items[0].ItemId].Name);
@@ -266,7 +267,7 @@ namespace Sleepey.Maelstrom
             return result.ToString();
         }
 
-        private static string DrawString(byte[] spells)
+        private static string DrawString(IList<byte> spells)
         {
             var result = new StringBuilder();
             for (int i = 0; i < 4; i++)

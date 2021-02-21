@@ -1,22 +1,24 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Archive
 {
     public static class Lzss
     {
-        public static byte[] Decompress(byte[] data)
+        public static IEnumerable<byte> Decompress(IEnumerable<byte> data)
         {
             var output = new List<byte>();
             var buffer = new CircularBuffer(4096, 0xfee);
 
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position < stream.Length)
                 {
-                    var control = ReadControl(reader.ReadByte());
+                    var control = new BitArray(reader.ReadBytes(1));
                     var blockLength = 0;
                     var blockCount = 0;
                     var remainingStream = stream.Length - stream.Position;
@@ -55,30 +57,17 @@ namespace Sleepey.FF8Mod
                 }
             }
 
-            return output.ToArray();
-        }
-
-        public static bool[] ReadControl(byte control)
-        {
-            var result = new bool[8];
-            for (int i = 0; i < 8; i++)
-            {
-                var bit = (byte)Math.Pow(2, i);
-                int isSet = control & bit;
-                result[i] = isSet == bit;
-            }
-            return result;
+            return output;
         }
 
         private class CircularBuffer
         {
-            public byte[] Buffer;
-            public int Position;
+            public List<byte> Buffer { get; set; }
+            public int Position { get; set; }
 
             public CircularBuffer(int length, int pos)
             {
-                Buffer = new byte[length];
-                for (int i = 0; i < length; i++) Buffer[i] = 0;
+                Buffer = Enumerable.Repeat<byte>(0, length).ToList();
                 Position = pos;
                 while (Position >= length) Position -= length;
             }
@@ -87,13 +76,13 @@ namespace Sleepey.FF8Mod
             {
                 Buffer[Position] = value;
                 Position++;
-                if (Position == Buffer.Length) Position = 0;
+                if (Position == Buffer.Count) Position = 0;
             }
 
             public byte Get(int index)
             {
-                while (index < 0) index += Buffer.Length;
-                while (index >= Buffer.Length) index -= Buffer.Length;
+                while (index < 0) index += Buffer.Count;
+                while (index >= Buffer.Count) index -= Buffer.Count;
                 return Buffer[index];
             }
         }

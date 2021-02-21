@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -149,7 +148,7 @@ namespace Sleepey.Maelstrom
         {
             Debug.WriteLine("repack archive - " + Globals.MainZzzPath);
 
-            var filesToPack = new Dictionary<string, byte[]>();
+            var filesToPack = new Dictionary<string, IEnumerable<byte>>();
             foreach (var f in WorkspaceFiles)
             {
                 var sourcePath = Path.Combine(WorkspacePath, f);
@@ -243,11 +242,11 @@ namespace Sleepey.Maelstrom
                     // apply free roam
                     if (settings.FreeRoam)
                     {
-                        StorySkip.Apply(fieldSource, seedString);
+                        FreeRoam.Apply(fieldSource, seedString);
                     }
                     else
                     {
-                        StorySkip.Remove();
+                        FreeRoam.Remove();
                     }
 
                     // apply card shuffle

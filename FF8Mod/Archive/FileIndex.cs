@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Sleepey.FF8Mod.Archive
 {
     public class FileIndex
     {
-        public List<IndexEntry> Entries;
+        public List<IndexEntry> Entries { get; set; } = new List<IndexEntry>();
 
-        public FileIndex()
-        {
-            Entries = new List<IndexEntry>();
-        }
+        public FileIndex() { }
 
-        public FileIndex(string path) : this()
+        public FileIndex(string path)
         {
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
@@ -21,9 +19,9 @@ namespace Sleepey.FF8Mod.Archive
             }
         }
 
-        public FileIndex(byte[] data) : this()
+        public FileIndex(IEnumerable<byte> data) : this()
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             {
                 ReadStream(stream);
             }
@@ -40,7 +38,7 @@ namespace Sleepey.FF8Mod.Archive
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var length = Entries.Count * 12;
             var result = new byte[length];

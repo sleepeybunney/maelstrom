@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Archive
 {
     public static class WildcardPath
     {
-        public static string DirectoryWildcard = "[x]";
+        public static string DirectoryWildcard { get; } = "[x]";
 
-        public static List<string> DirectoryOptions
-        {
-            get { return new List<string> { "x", Globals.RegionCode }; }
-        }
+        public static List<string> DirectoryOptions { get; } = new List<string>() { "x", Globals.RegionCode };
 
         public static bool Match(string path1, string path2)
         {

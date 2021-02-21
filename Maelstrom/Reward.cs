@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 using Sleepey.FF8Mod.Field;
 
 namespace Sleepey.Maelstrom
@@ -167,7 +168,7 @@ namespace Sleepey.Maelstrom
             var encounter = encFile.Encounters[encounterID];
             var slot = encounter.Slots[Boss.Encounters[encounterID].SlotRanks[0]];
             var monster = slot.GetMonster(battleSource);
-            var awardInstruction = new FF8Mod.Battle.Instruction(FF8Mod.Battle.Instruction.OpCodesReverse[rewardOp], new short[] { rewardID });
+            var awardInstruction = new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse[rewardOp], new short[] { rewardID });
             monster.AI.Scripts.Init.Insert(0, awardInstruction);
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
@@ -189,20 +190,20 @@ namespace Sleepey.Maelstrom
             var script = field.Entities[boss.FieldEntity].Scripts[boss.FieldScript];
             var index = script.Instructions.FindLastIndex(i => i.OpCode == FieldScript.OpCodesReverse["battle"]) + 1;
 
-            var awardInstructions = new List<Instruction>();
+            var awardInstructions = new List<FieldScriptInstruction>();
             var push = FieldScript.OpCodesReverse["pshn_l"];
             foreach (var a in args)
             {
-                awardInstructions.Add(new Instruction(push, a));
+                awardInstructions.Add(new FieldScriptInstruction(push, a));
             }
-            awardInstructions.Add(new Instruction(opCode));
+            awardInstructions.Add(new FieldScriptInstruction(opCode));
 
             // show message
-            awardInstructions.Add(new Instruction(push, 0));
-            awardInstructions.Add(new Instruction(push, msgID));
-            awardInstructions.Add(new Instruction(push, 70));
-            awardInstructions.Add(new Instruction(push, 70));
-            awardInstructions.Add(new Instruction(FieldScript.OpCodesReverse["amesw"]));
+            awardInstructions.Add(new FieldScriptInstruction(push, 0));
+            awardInstructions.Add(new FieldScriptInstruction(push, msgID));
+            awardInstructions.Add(new FieldScriptInstruction(push, 70));
+            awardInstructions.Add(new FieldScriptInstruction(push, 70));
+            awardInstructions.Add(new FieldScriptInstruction(FieldScript.OpCodesReverse["amesw"]));
 
             // apply changes
             script.Instructions.InsertRange(index, awardInstructions);

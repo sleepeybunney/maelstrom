@@ -1,4 +1,5 @@
-﻿using Sleepey.FF8Mod.Battle;
+﻿using System;
+using Sleepey.FF8Mod.Battle;
 using Xunit;
 
 namespace Sleepey.FF8ModTest
@@ -42,14 +43,14 @@ namespace Sleepey.FF8ModTest
         {
             // construct a script with a populated init sub-script & run it through the encoder
             var script = new BattleScript();
-            script.Init.Insert(0, new Instruction(Instruction.OpCodes[opcode], args));
+            script.Init.Insert(0, new BattleScriptInstruction(BattleScriptInstruction.OpCodes[opcode], args));
             script = new BattleScript(script.Encode());
 
             // added instruction should still be intact
             Assert.NotNull(script.Init);
             Assert.NotEmpty(script.Init);
             Assert.Equal(opcode, script.Init[0].Op.Code);
-            Assert.Equal(args.Length, script.Init[0].Args.Length);
+            Assert.Equal(args.Length, script.Init[0].Args.Count);
             for (int i = 0; i < args.Length; i++)
             {
                 Assert.Equal(args[i], script.Init[0].Args[i]);

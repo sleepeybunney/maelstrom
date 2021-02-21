@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using Sleepey.FF8Mod.Archive;
 
@@ -8,12 +7,12 @@ namespace Sleepey.FF8Mod
 {
     public static class Globals
     {
-        public static string ExePath;
-        public static bool Remastered = false;
+        public static string ExePath { get; set; }
+        public static bool Remastered { get; set; }
 
-        public static string RegionCode = "eng";
+        public static string RegionCode { get; set; } = "eng";
 
-        public static Dictionary<string, string> RegionExts = new Dictionary<string, string>()
+        public static Dictionary<string, string> RegionExts { get; } = new Dictionary<string, string>()
         {
             { "eng", "en" },
             { "fre", "fr" },
@@ -23,10 +22,7 @@ namespace Sleepey.FF8Mod
             { "jp", "jp" }
         };
 
-        public static string RegionExt
-        {
-            get { return RegionExts[RegionCode]; }
-        }
+        public static string RegionExt { get => RegionExts[RegionCode]; }
 
         public static string ScriptFileExtension
         {
@@ -46,25 +42,13 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public static string GameDirectory
-        {
-            get { return Path.GetDirectoryName(ExePath); }
-        }
+        public static string GameDirectory { get => Path.GetDirectoryName(ExePath); }
 
-        public static string Af3dnPath
-        {
-            get { return Path.Combine(GameDirectory, "af3dn.p"); }
-        }
+        public static string Af3dnPath { get => Path.Combine(GameDirectory, "af3dn.p"); }
 
-        public static string ArchivePath
-        {
-            get { return Path.Combine(GameDirectory, "data", string.Format("lang-{0}", RegionExt)); }
-        }
+        public static string ArchivePath { get => Path.Combine(GameDirectory, "data", string.Format("lang-{0}", RegionExt)); }
 
-        public static string BattlePath
-        {
-            get { return Path.Combine(ArchivePath, "battle"); }
-        }
+        public static string BattlePath { get => Path.Combine(ArchivePath, "battle"); }
 
         public static string FieldPath
         {
@@ -75,54 +59,26 @@ namespace Sleepey.FF8Mod
             }
         }
 
-        public static string MenuPath
-        {
-            get { return Path.Combine(ArchivePath, "menu"); }
-        }
+        public static string MenuPath { get => Path.Combine(ArchivePath, "menu"); }
 
-        public static string MainPath
-        {
-            get { return Path.Combine(ArchivePath, "main"); }
-        }
+        public static string MainPath { get => Path.Combine(ArchivePath, "main"); }
 
-        public static string MainZzzPath
-        {
-            get { return Path.Combine(GameDirectory, "main.zzz"); }
-        }
+        public static string MainZzzPath { get => Path.Combine(GameDirectory, "main.zzz"); }
 
-        public static string OtherZzzPath
-        {
-            get { return Path.Combine(GameDirectory, "other.zzz"); }
-        }
+        public static string OtherZzzPath { get => Path.Combine(GameDirectory, "other.zzz"); }
 
-        public static ArchiveStream FieldArchive
-        {
-            get { return new ArchiveStream(FieldPath); }
-        }
+        public static ArchiveStream FieldArchive { get => new ArchiveStream(FieldPath); }
 
-        public static ArchiveStream MainArchive
-        {
-            get { return new ArchiveStream(MainPath); }
-        }
+        public static ArchiveStream MainArchive { get => new ArchiveStream(MainPath); }
 
-        public static string DataPath
-        {
-            get { return @"c:\ff8\data\" + WildcardPath.DirectoryWildcard; }
-        }
+        public static string DataPath { get => @"c:\ff8\data\" + WildcardPath.DirectoryWildcard; }
 
-        public static string KernelPath
-        {
-            get { return Path.Combine(DataPath, "kernel.bin"); }
-        }
+        public static string KernelPath { get => Path.Combine(DataPath, "kernel.bin"); }
 
-        public static string InitPath
-        {
-            get { return Path.Combine(DataPath, "init.out"); }
-        }
+        public static string InitPath { get => Path.Combine(DataPath, "init.out"); }
 
-        public static string WeaponUpgradePath
-        {
-            get { return Path.Combine(DataPath, @"menu\mwepon.bin"); }
-        }
+        public static string WeaponUpgradePath { get => Path.Combine(DataPath, @"menu\mwepon.bin"); }
+
+        public static string EncounterFilePath { get => Path.Combine(DataPath, @"battle\scene.out"); }
     }
 }

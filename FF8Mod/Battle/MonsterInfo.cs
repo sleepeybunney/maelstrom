@@ -1,68 +1,60 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Battle
 {
     public class MonsterInfo
     {
-        public string Name;
-        public byte[] Hp, Str, Mag, Vit, Spr, Spd, Eva;
-        public Ability[] AbilitiesLow, AbilitiesMed, AbilitiesHigh;
-        public byte MedStart, HighStart;
-        public byte MysteryFlags1, MysteryFlags2;
-        public byte StatusFlags1, StatusFlags2;
-        public byte CardDrop, CardMorph, CardRareMorph;
-        public byte DevourLow, DevourMed, DevourHigh;
-        public ushort Exp, ExtraExp;
-        public byte Ap;
-        public byte[] DrawLow, DrawMed, DrawHigh;
-        public HeldItem[] MugLow, MugMed, MugHigh;
-        public HeldItem[] DropLow, DropMed, DropHigh;
-        public byte MugRate, DropRate;
-        public byte[] MysteryData;
-        public byte[] ElemDef, StatusDef;
+        public string Name { get; set; } = "Unnamed";
+        public IList<byte> Hp { get; set; } = new byte[4];
+        public IList<byte> Str { get; set; } = new byte[4];
+        public IList<byte> Mag { get; set; } = new byte[4];
+        public IList<byte> Vit { get; set; } = new byte[4];
+        public IList<byte> Spr { get; set; } = new byte[4];
+        public IList<byte> Spd { get; set; } = new byte[4];
+        public IList<byte> Eva { get; set; } = new byte[4];
+        public IList<MonsterAbility> AbilitiesLow { get; set; } = new MonsterAbility[16];
+        public IList<MonsterAbility> AbilitiesMed { get; set; } = new MonsterAbility[16];
+        public IList<MonsterAbility> AbilitiesHigh { get; set; } = new MonsterAbility[16];
+        public byte MedStart { get; set; }
+        public byte HighStart { get; set; }
+        public byte MysteryFlags1 { get; set; }
+        public byte MysteryFlags2 { get; set; }
+        public byte StatusFlags1 { get; set; }
+        public byte StatusFlags2 { get; set; }
+        public byte CardDrop { get; set; }
+        public byte CardMorph { get; set; }
+        public byte CardRareMorph { get; set; }
+        public byte DevourLow { get; set; }
+        public byte DevourMed { get; set; }
+        public byte DevourHigh { get; set; }
+        public ushort Exp { get; set; }
+        public ushort ExtraExp { get; set; }
+        public byte Ap { get; set; }
+        public IList<byte> DrawLow { get; set; } = new byte[4];
+        public IList<byte> DrawMed { get; set; } = new byte[4];
+        public IList<byte> DrawHigh { get; set; } = new byte[4];
+        public IList<HeldItem> MugLow { get; set; } = new HeldItem[4];
+        public IList<HeldItem> MugMed { get; set; } = new HeldItem[4];
+        public IList<HeldItem> MugHigh { get; set; } = new HeldItem[4];
+        public IList<HeldItem> DropLow { get; set; } = new HeldItem[4];
+        public IList<HeldItem> DropMed { get; set; } = new HeldItem[4];
+        public IList<HeldItem> DropHigh { get; set; } = new HeldItem[4];
+        public byte MugRate { get; set; }
+        public byte DropRate { get; set; }
+        public IList<byte> MysteryData { get; set; } = new byte[16];
+        public IList<byte> ElemDef { get; set; } = new byte[8];
+        public IList<byte> StatusDef { get; set; } = new byte[20];
 
-        public MonsterInfo()
+        public MonsterInfo() { }
+
+        public MonsterInfo(string name) { Name = name; }
+
+        public MonsterInfo(IEnumerable<byte> data)
         {
-            Name = "Unnamed";
-
-            Hp = new byte[4];
-            Str = new byte[4];
-            Mag = new byte[4];
-            Vit = new byte[4];
-            Spr = new byte[4];
-            Spd = new byte[4];
-            Eva = new byte[4];
-
-            AbilitiesLow = new Ability[16];
-            AbilitiesMed = new Ability[16];
-            AbilitiesHigh = new Ability[16];
-
-            DrawLow = new byte[4];
-            DrawMed = new byte[4];
-            DrawHigh = new byte[4];
-
-            MugLow = new HeldItem[4];
-            MugMed = new HeldItem[4];
-            MugHigh = new HeldItem[4];
-
-            DropLow = new HeldItem[4];
-            DropMed = new HeldItem[4];
-            DropHigh = new HeldItem[4];
-
-            MysteryData = new byte[16];
-            ElemDef = new byte[8];
-            StatusDef = new byte[20];
-        }
-
-        public MonsterInfo(string name) : this()
-        {
-            Name = name;
-        }
-
-        public MonsterInfo(byte[] data) : this()
-        {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 Name = FF8String.Decode(reader.ReadBytes(24));
@@ -75,9 +67,9 @@ namespace Sleepey.FF8Mod
                 Spd = reader.ReadBytes(4);
                 Eva = reader.ReadBytes(4);
 
-                for (int i = 0; i < 16; i++) AbilitiesLow[i] = new Ability(reader.ReadBytes(4));
-                for (int i = 0; i < 16; i++) AbilitiesMed[i] = new Ability(reader.ReadBytes(4));
-                for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new Ability(reader.ReadBytes(4));
+                for (int i = 0; i < 16; i++) AbilitiesLow[i] = new MonsterAbility(reader.ReadBytes(4));
+                for (int i = 0; i < 16; i++) AbilitiesMed[i] = new MonsterAbility(reader.ReadBytes(4));
+                for (int i = 0; i < 16; i++) AbilitiesHigh[i] = new MonsterAbility(reader.ReadBytes(4));
 
                 MedStart = reader.ReadByte();
                 HighStart = reader.ReadByte();
@@ -142,10 +134,9 @@ namespace Sleepey.FF8Mod
             using (var stream = new MemoryStream(result))
             using (var writer = new BinaryWriter(stream))
             {
-                var encodedName = FF8String.Encode(Name);
-                var resizedName = new byte[24];
-                Array.Copy(encodedName, resizedName, Math.Min(encodedName.Length, 24));
-                writer.Write(resizedName);
+                var encodedName = FF8String.Encode(Name).Take(24).ToList();
+                writer.Write(encodedName);
+                writer.Write(Enumerable.Repeat<byte>(0, 24 - encodedName.Count));
 
                 writer.Write(Hp);
                 writer.Write(Str);
@@ -214,17 +205,6 @@ namespace Sleepey.FF8Mod
             return result;
         }
 
-        public void CopyStats(MonsterInfo source)
-        {
-            source.Hp.CopyTo(Hp, 0);
-            source.Str.CopyTo(Str, 0);
-            source.Mag.CopyTo(Mag, 0);
-            source.Vit.CopyTo(Vit, 0);
-            source.Spr.CopyTo(Spr, 0);
-            source.Spd.CopyTo(Spd, 0);
-            source.Eva.CopyTo(Eva, 0);
-        }
-
         // hp2 & hp4 determine the lower boundary
         // mainly hp4 (thousands) with hp2 (tens) for fine tuning
         // hp1 & hp3 determine growth rate
@@ -235,12 +215,12 @@ namespace Sleepey.FF8Mod
             return (Hp[0] * level * level / 20) + (Hp[0] + Hp[2] * 100) * level + Hp[1] * 10 + Hp[3] * 1000;
         }
 
-        private static int OffensiveStatAtLevel(int level, byte[] values)
+        private static int OffensiveStatAtLevel(int level, IList<byte> values)
         {
             return (level * values[0] / 10 + level / values[1] - level * level / 2 / values[3] + values[2]) / 4;
         }
 
-        private static int NonOffensiveStatAtLevel(int level, byte[] values)
+        private static int NonOffensiveStatAtLevel(int level, IList<byte> values)
         {
             return level / values[1] - level / values[3] + level * values[0] + values[2];
         }
@@ -273,58 +253,6 @@ namespace Sleepey.FF8Mod
         public int EvaAtLevel(int level)
         {
             return NonOffensiveStatAtLevel(level, Eva);
-        }
-    }
-
-    public class Ability
-    {
-        public byte Type;
-        public byte Something;
-        public ushort AbilityId;
-
-        public Ability(byte[] data)
-        {
-            Type = data[0];
-            Something = data[1];
-            AbilityId = BitConverter.ToUInt16(data, 2);
-        }
-
-        public byte[] Encode()
-        {
-            var result = new byte[4];
-            result[0] = Type;
-            result[1] = Something;
-            Array.Copy(BitConverter.GetBytes(AbilityId), 0, result, 2, 2);
-            return result;
-        }
-    }
-
-    public class HeldItem
-    {
-        public byte ItemId;
-        public byte Quantity;
-
-        public HeldItem()
-        {
-            ItemId = 0;
-            Quantity = 0;
-        }
-
-        public HeldItem(byte[] data)
-        {
-            ItemId = data[0];
-            Quantity = data[1];
-        }
-
-        public HeldItem(int id, int quantity)
-        {
-            ItemId = (byte)id;
-            Quantity = (byte)quantity;
-        }
-
-        public byte[] Encode()
-        {
-            return new byte[2] { ItemId, Quantity };
         }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Sleepey.FF8Mod.Main
 {
     public class Kernel
     {
-        public JunctionableGF[] JunctionableGFs;
-        public Weapon[] Weapons;
-        public Ability[] Abilities;
-        public byte[] WeaponText;
+        public IList<JunctionableGF> JunctionableGFs { get; set; } = new List<JunctionableGF>();
+        public IList<Weapon> Weapons { get; set; } = new List<Weapon>();
+        public IList<Ability> Abilities { get; set; } = new List<Ability>();
+        public IList<byte> WeaponText { get; set; }
 
         private readonly byte[] PreGFData, PostGFData, PostWeaponData, PostAbilityData, PostWeaponTextData;
 
@@ -32,48 +30,44 @@ namespace Sleepey.FF8Mod.Main
                 PreGFData = reader.ReadBytes((int)(sectionOffsets[2]));
 
                 // section 2 = junctionable gf
-                JunctionableGFs = new JunctionableGF[16];
                 for (int i = 0; i < 16; i++)
                 {
-                    JunctionableGFs[i] = new JunctionableGF(reader.ReadBytes(132));
+                    JunctionableGFs.Add(new JunctionableGF(reader.ReadBytes(132)));
                 }
 
                 // section 3
                 PostGFData = reader.ReadBytes((int)(sectionOffsets[4] - stream.Position));
 
                 // section 4 = weapons
-                Weapons = new Weapon[33];
                 for (int i = 0; i < 33; i++)
                 {
-                    Weapons[i] = new Weapon(reader.ReadBytes(12));
+                    Weapons.Add(new Weapon(reader.ReadBytes(12)));
                 }
 
                 //sections 5-10
                 PostWeaponData = reader.ReadBytes((int)(sectionOffsets[11] - stream.Position));
 
                 // sections 11-17 = abilities
-                var abilities = new List<Ability>();
                 while (sectionOffsets[18] - stream.Position >= 8)
                 {
-                    abilities.Add(new Ability(reader.ReadBytes(8)));
+                    Abilities.Add(new Ability(reader.ReadBytes(8)));
                 }
-                Abilities = abilities.ToArray();
 
                 // sections 18-34
                 PostAbilityData = reader.ReadBytes((int)(sectionOffsets[35] - stream.Position));
 
                 // section 35 = weapon text
                 WeaponText = reader.ReadBytes((int)(sectionOffsets[36] - stream.Position));
-                foreach (var w in Weapons) w.Name = FF8String.Decode(WeaponText.Skip(w.NameOffset).ToArray());
+                foreach (var w in Weapons) w.Name = FF8String.Decode(WeaponText.Skip(w.NameOffset));
 
                 // sections 36-55
                 PostWeaponTextData = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
         }
 
-        public Kernel(byte[] data) : this(new MemoryStream(data)) { }
+        public Kernel(IEnumerable<byte> data) : this(new MemoryStream(data.ToArray())) { }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             result.AddRange(PreGFData);
@@ -85,7 +79,7 @@ namespace Sleepey.FF8Mod.Main
             result.AddRange(PostAbilityData);
             result.AddRange(WeaponText);
             result.AddRange(PostWeaponTextData);
-            return result.ToArray();
+            return result;
         }
     }
 }

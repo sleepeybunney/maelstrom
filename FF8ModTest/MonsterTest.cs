@@ -1,4 +1,6 @@
-﻿using Sleepey.FF8Mod;
+﻿using System;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Battle;
 using Xunit;
 
 namespace Sleepey.FF8ModTest

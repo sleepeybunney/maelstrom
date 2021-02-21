@@ -5,6 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 
 namespace Sleepey.Maelstrom
 {

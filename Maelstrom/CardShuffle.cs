@@ -48,7 +48,7 @@ namespace Sleepey.Maelstrom
             // save the script
             var field = FieldScript.FromSource(fieldSource, scriptField);
             field.ReplaceScript(scriptEntity, scriptId, script);
-            StorySkip.SaveToSource(fieldSource, scriptField, field.Encode()); // todo: put this somewhere more sensible
+            field.SaveToSource(fieldSource, scriptField);
         }
 
         private static string SetCard(int deck, int card)

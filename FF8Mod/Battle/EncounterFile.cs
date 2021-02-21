@@ -1,25 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using Sleepey.FF8Mod.Archive;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Battle
 {
     public class EncounterFile
     {
-        public static string Path = Globals.DataPath + @"\battle\scene.out";
+        public List<Encounter> Encounters { get; set; } = new List<Encounter>();
 
-        public List<Encounter> Encounters;
+        public EncounterFile() { }
 
-        public EncounterFile()
-        {
-            Encounters = new List<Encounter>();
-        }
-
-        public static EncounterFile FromBytes(byte[] data)
+        public static EncounterFile FromBytes(IEnumerable<byte> data)
         {
             var result = new EncounterFile();
 
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position + 127 < stream.Length)
@@ -48,14 +45,14 @@ namespace Sleepey.FF8Mod
 
         public static EncounterFile FromSource(FileSource source)
         {
-            return FromSource(source, Path);
+            return FromSource(source, Globals.EncounterFilePath);
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             foreach (var e in Encounters) result.AddRange(e.Encode());
-            return result.ToArray();
+            return result;
         }
     }
 }

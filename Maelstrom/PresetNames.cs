@@ -40,8 +40,8 @@ namespace Sleepey.Maelstrom
         {
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
-            var mes3bytes = new ArraySegment<byte>(file, FileOffset, FileLength);
-            var mes3 = TextFile.FromBytes(mes3bytes.ToArray(), true);
+            var mes3bytes = file.Skip(FileOffset).Take(FileLength);
+            var mes3 = TextFile.FromBytes(mes3bytes, true);
 
             // set names
             mes3.Pages[NamesPage].Strings[Squall] = settings.NameSquall;
@@ -67,8 +67,10 @@ namespace Sleepey.Maelstrom
             mes3.Pages[NamesPage].Strings[Griever] = settings.NameGriever;
 
             // apply changes
-            Array.Copy(mes3.Encode(), 0, file, FileOffset, FileLength);
-            menuSource.ReplaceFile(ArchivePath, file);
+            var newFile = file.Take(FileOffset).ToList();
+            newFile.AddRange(mes3.Encode());
+            newFile.AddRange(file.Skip(FileOffset + FileLength));
+            menuSource.ReplaceFile(ArchivePath, newFile);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Sleepey.FF8Mod;
+﻿using System;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Battle;
 using Xunit;
 
 namespace Sleepey.FF8ModTest
@@ -45,7 +47,7 @@ namespace Sleepey.FF8ModTest
             Assert.Equal(0, enc.MainCameraAnimation);
             Assert.Equal(2, enc.SecondaryCamera);
             Assert.Equal(3, enc.SecondaryCameraAnimation);
-            Assert.Equal(8, enc.Slots.Length);
+            Assert.Equal(8, enc.Slots.Count);
 
             // first slot
             Assert.Equal(77, enc.Slots[0].MonsterID);

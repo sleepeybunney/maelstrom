@@ -1,23 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Exe
 {
     public class BinaryPatch
     {
-        public uint Offset;
-        public byte[] OriginalData;
-        public byte[] NewData;
+        public uint Offset { get; set; } = 0;
+        public IEnumerable<byte> OriginalData { get; set; } = new List<byte>();
+        public IEnumerable<byte> NewData { get; set; } = new List<byte>();
 
-        public BinaryPatch()
-        {
-            Offset = 0;
-            OriginalData = Array.Empty<byte>();
-            NewData = Array.Empty<byte>();
-        }
+        public BinaryPatch() { }
 
-        public BinaryPatch(uint offset, byte[] origData, byte[] newData)
+        public BinaryPatch(uint offset, IEnumerable<byte> origData, IEnumerable<byte> newData)
         {
             Offset = offset;
             OriginalData = origData;

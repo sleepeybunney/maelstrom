@@ -1,23 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Sleepey.FF8Mod.Battle;
 
-namespace Sleepey.FF8Mod
+namespace Sleepey.FF8Mod.Battle
 {
     public class MonsterAI
     {
-        public BattleScript Scripts;
-        public List<string> Strings;
+        public BattleScript Scripts { get; set; }
+        public List<string> Strings { get; set; } = new List<string>();
 
-        public MonsterAI()
-        {
-            this.Strings = new List<string>();
-        }
+        public MonsterAI() { }
 
-        public MonsterAI(byte[] data) : this()
+        public MonsterAI(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 var subSections = reader.ReadUInt32();
@@ -58,21 +55,21 @@ namespace Sleepey.FF8Mod
                 {
                     stream.Position = textOffset + textOffsets[i];
                     var newText = reader.ReadBytes((int)textLengths[i]);
-                    this.Strings.Add(FF8String.Decode(newText));
+                    Strings.Add(FF8String.Decode(newText));
                 }
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var encodedScripts = Scripts.Encode();
             var encodedStrings = Strings.ConvertAll(s => FF8String.Encode(s));
 
             uint subSections = 3;
             uint headerLength = (subSections + 1) * 4;
-            uint aiLength = (uint)encodedScripts.Length;
+            uint aiLength = (uint)encodedScripts.Count();
             uint textIndexLength = (uint)Strings.Count * 2;
-            uint textLength = (uint)encodedStrings.Sum(s => s.Length);
+            uint textLength = (uint)encodedStrings.Sum(s => s.Count());
             uint totalLength = headerLength + aiLength + textIndexLength + textLength;
             totalLength += 4 - (totalLength % 4);
 
@@ -80,7 +77,7 @@ namespace Sleepey.FF8Mod
             uint textIndexOffset = aiOffset + aiLength;
             uint textOffset = textIndexOffset + textIndexLength;
 
-            byte[] result = new byte[totalLength];
+            var result = new byte[totalLength];
             using (var stream = new MemoryStream(result))
             using (var writer = new BinaryWriter(stream))
             {
@@ -94,7 +91,7 @@ namespace Sleepey.FF8Mod
                 for (int i = 0; i < encodedStrings.Count; i++)
                 {
                     writer.Write(offset);
-                    offset += (ushort)encodedStrings[i].Length;
+                    offset += (ushort)encodedStrings[i].Count();
                 }
 
                 for (int i = 0; i < encodedStrings.Count; i++)

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Field;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Exe;
 
 namespace Sleepey.Maelstrom
 {
-    public static class StorySkip
+    public static class FreeRoam
     {
         public static BinaryPatch IntroPatch = new BinaryPatch(0x273fb, new byte[] { 0x33, 0x30 }, new byte[] { 0x30, 0x31 });
         private const int codenameLength = 16;
@@ -90,7 +90,7 @@ namespace Sleepey.Maelstrom
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
             field.ReplaceScript(entity, script, App.ReadEmbeddedFile(importPath));
-            SaveToSource(fieldSource, fieldName, field.Encode());
+            field.SaveToSource(fieldSource, fieldName);
         }
 
         // slightly easier import with the filename convention "fieldName.entityID.scriptID.txt"
@@ -104,7 +104,7 @@ namespace Sleepey.Maelstrom
         {
             var field = FieldScript.FromSource(fieldSource, fieldName);
             field.ReplaceScript(entity, script, "");
-            SaveToSource(fieldSource, fieldName, field.Encode());
+            field.SaveToSource(fieldSource, fieldName);
         }
 
         // remove an entity from the field by deleting its initialisation script
@@ -133,13 +133,6 @@ namespace Sleepey.Maelstrom
             destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmd"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmd")));
             destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmp"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmp")));
             fieldSource.Encode();
-        }
-
-        public static void SaveToSource(FileSource fieldSource, string fieldName, byte[] fieldCode)
-        {
-            var fieldPath = FieldScript.GetFieldPath(fieldName);
-            var innerSource = new FileSource(fieldPath, fieldSource);
-            innerSource.ReplaceFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension, fieldCode);
         }
     }
 }

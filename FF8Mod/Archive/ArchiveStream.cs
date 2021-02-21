@@ -8,13 +8,14 @@ namespace Sleepey.FF8Mod.Archive
 {
     public class ArchiveStream : Stream
     {
+        public IList<ArchiveIndexEntry> Index { get; set; }
+
         private Stream baseStream;
         private readonly long length;
         private readonly long offset;
         private readonly ArchiveType type;
         private readonly string path;
         private readonly bool root;
-        public List<ArchiveIndexEntry> Index;
 
         // Open an archive file (.fs or .zzz)
         // You can access archives within other archives using semicolons
@@ -40,7 +41,7 @@ namespace Sleepey.FF8Mod.Archive
             this.path = archivePath;
             baseStream = new ArchiveStream(basePath);
 
-            var entry = ((ArchiveStream)baseStream).Index.Find(e => e.Path == archivePath);
+            var entry = ((ArchiveStream)baseStream).Index.First(e => e.Path == archivePath);
             length = entry.Length;
             offset = (long)entry.Offset;
             type = GetType(archivePath);
@@ -82,7 +83,7 @@ namespace Sleepey.FF8Mod.Archive
                 var listBytes = ((ArchiveStream)baseStream).GetFile(listPath);
                 var indexBytes = ((ArchiveStream)baseStream).GetFile(indexPath);
 
-                using (var listStream = new MemoryStream(listBytes))
+                using (var listStream = new MemoryStream(listBytes.ToArray()))
                 using (var reader = new StreamReader(listStream))
                 {
                     while (!reader.EndOfStream)
@@ -91,7 +92,7 @@ namespace Sleepey.FF8Mod.Archive
                         if (!string.IsNullOrWhiteSpace(line)) list.Add(line);
                     }
                 }
-                index = new MemoryStream(indexBytes);
+                index = new MemoryStream(indexBytes.ToArray());
             }
 
             var result = FsArchive.ReadIndex(index, list);
@@ -99,11 +100,11 @@ namespace Sleepey.FF8Mod.Archive
             return result;
         }
 
-        public byte[] GetFile(string path)
+        public IEnumerable<byte> GetFile(string path)
         {
             using (var reader = new BinaryReader(this, Encoding.UTF8, true))
             {
-                var indexEntry = Index.Find(e => WildcardPath.Match(e.Path, path));
+                var indexEntry = Index.First(e => WildcardPath.Match(e.Path, path));
                 if (indexEntry == null) throw new FileNotFoundException(string.Format("File not found in archive - {0}", path));
                 Seek((long)indexEntry.Offset, SeekOrigin.Begin);
                 var result = new byte[indexEntry.Length];
@@ -112,10 +113,7 @@ namespace Sleepey.FF8Mod.Archive
             }
         }
 
-        public List<string> ListFiles()
-        {
-            return Index.Select(e => e.Path).ToList();
-        }
+        public IEnumerable<string> ListFiles() => Index.Select(e => e.Path);
 
         public override bool CanRead
         {
@@ -224,6 +222,4 @@ namespace Sleepey.FF8Mod.Archive
             if (baseStream == null) throw new ObjectDisposedException(GetType().Name);
         }
     }
-
-    public enum ArchiveType { FS, ZZZ };
 }
