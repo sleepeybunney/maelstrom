@@ -51,6 +51,7 @@ namespace FF8Mod.Maelstrom
         public bool GfAbilitiesBasics { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;
+        public String GfAbilitiesLimit { get; set; } = "21";
 
         // shops
         public bool ShopEnable { get; set; } = false;

@@ -228,8 +228,41 @@
                                 <TextBlock>Each GF has a random set of abilities to learn.</TextBlock>
                                 <Separator />
                                 <local:OptionWithDescription Title="Guarantee Basics" Description="Every GF comes with these abilities already unlocked: Magic, GF, Item, Draw." Checked="{Binding GfAbilitiesBasics, Mode=TwoWay}" />
-                                <local:OptionWithDescription Title="Allow Item-Exclusives" Description="GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon." Checked="{Binding GfAbilitiesIncludeItemOnly, Mode=TwoWay}" />
-                                <Separator />
+								<local:OptionWithDescription Title="Allow Item-Exclusives" Description="GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon." Checked="{Binding GfAbilitiesIncludeItemOnly, Mode=TwoWay}" />
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="9" />
+										<ColumnDefinition Width="40" />
+										<ColumnDefinition Width="206" />
+										<ColumnDefinition Width="*" />
+									</Grid.ColumnDefinitions>
+									<ComboBox Grid.Column="1" Margin="8 0" SelectedValuePath="Content" SelectedValue="{Binding GfAbilitiesLimit, Mode=TwoWay, Converter={StaticResource ComboBoxNumberConverter}}">
+										<ComboBoxItem>1</ComboBoxItem>
+										<ComboBoxItem>2</ComboBoxItem>
+										<ComboBoxItem>3</ComboBoxItem>
+										<ComboBoxItem>4</ComboBoxItem>
+										<ComboBoxItem>5</ComboBoxItem>
+										<ComboBoxItem>6</ComboBoxItem>
+										<ComboBoxItem>7</ComboBoxItem>
+										<ComboBoxItem>8</ComboBoxItem>
+										<ComboBoxItem>9</ComboBoxItem>
+										<ComboBoxItem>10</ComboBoxItem>
+										<ComboBoxItem>11</ComboBoxItem>
+										<ComboBoxItem>12</ComboBoxItem>
+										<ComboBoxItem>13</ComboBoxItem>
+										<ComboBoxItem>14</ComboBoxItem>
+										<ComboBoxItem>15</ComboBoxItem>
+										<ComboBoxItem>16</ComboBoxItem>
+										<ComboBoxItem>17</ComboBoxItem>
+										<ComboBoxItem>18</ComboBoxItem>
+										<ComboBoxItem>19</ComboBoxItem>
+										<ComboBoxItem>20</ComboBoxItem>
+										<ComboBoxItem>21</ComboBoxItem>
+									</ComboBox>
+									<TextBlock Grid.Column="2">Initial Ability Count</TextBlock>
+									<TextBlock Grid.Column="3">Limit the amount of abilities GFs start with</TextBlock>
+								</Grid>
+								<Separator />
                                 <local:OptionWithDescription Title="Swap Sets" Description="Instead of randomizing each individual ability, GFs have their entire ability sets swapped around. This overrides the other options above." Checked="{Binding GfAbilitiesSwapSets, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
