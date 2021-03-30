@@ -370,98 +370,122 @@
     },
     {
         "AbilityID": 92,
-        "AbilityName": "Haggle"
+        "AbilityName": "Haggle",
+        "MenuAbility":  true
     },
     {
         "AbilityID": 93,
-        "AbilityName": "Sell-High"
+        "AbilityName": "Sell-High",
+        "MenuAbility": true
     },
     {
         "AbilityID": 94,
-        "AbilityName": "Familiar"
+        "AbilityName": "Familiar",
+        "MenuAbility": true
     },
     {
         "AbilityID": 95,
-        "AbilityName": "CallShop"
+        "AbilityName": "CallShop",
+        "MenuAbility": true
     },
     {
         "AbilityID": 96,
-        "AbilityName": "JunkShop"
+        "AbilityName": "JunkShop",
+        "MenuAbility": true
     },
     {
         "AbilityID": 97,
-        "AbilityName": "T Mag-RF"
+        "AbilityName": "T Mag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 98,
-        "AbilityName": "IMag-RF"
+        "AbilityName": "IMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 99,
-        "AbilityName": "FMag-RF"
+        "AbilityName": "FMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 100,
-        "AbilityName": "LMag-RF"
+        "AbilityName": "LMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 101,
-        "AbilityName": "TimeMag-RF"
+        "AbilityName": "TimeMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 102,
-        "AbilityName": "STMag-RF"
+        "AbilityName": "STMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 103,
-        "AbilityName": "SuptMag-RF"
+        "AbilityName": "SuptMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 104,
-        "AbilityName": "ForbidMag-RF"
+        "AbilityName": "ForbidMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 105,
-        "AbilityName": "RecovMed-RF"
+        "AbilityName": "RecovMed-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 106,
-        "AbilityName": "STMed-RF"
+        "AbilityName": "STMed-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 107,
-        "AbilityName": "Ammo-RF"
+        "AbilityName": "Ammo-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 108,
-        "AbilityName": "Tool-RF"
+        "AbilityName": "Tool-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 109,
-        "AbilityName": "ForbidMed-RF"
+        "AbilityName": "ForbidMed-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 110,
-        "AbilityName": "GFRecovMed-RF"
+        "AbilityName": "GFRecovMed-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 111,
-        "AbilityName": "GFAblMed-RF"
+        "AbilityName": "GFAblMed-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 112,
-        "AbilityName": "Mid Mag-RF"
+        "AbilityName": "Mid Mag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 113,
-        "AbilityName": "HighMag-RF"
+        "AbilityName": "HighMag-RF",
+        "MenuAbility": true
     },
     {
         "AbilityID": 114,
-        "AbilityName": "MedLVUp"
+        "AbilityName": "MedLVUp",
+        "MenuAbility": true
     },
     {
         "AbilityID": 115,
-        "AbilityName": "Card Mod"
+        "AbilityName": "Card Mod",
+        "MenuAbility": true
     }
 ]

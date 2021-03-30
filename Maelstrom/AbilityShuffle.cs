@@ -53,7 +53,16 @@ namespace FF8Mod.Maelstrom
 
         private static void GenerateRandomSets(State settings, Random random, Kernel kernel, Init init)
         {
-            var includedAbilities = Abilities.Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly).ToList();
+            var nonMenuAbilities = Abilities
+                .Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly)
+                .Where(a => !a.MenuAbility)
+                .ToList();
+
+            var menuAbilities = Abilities
+                .Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly)
+                .Where(a => a.MenuAbility)
+                .ToList();
+
             var abilityLimit = 21;
 
             try
@@ -67,7 +76,9 @@ namespace FF8Mod.Maelstrom
                 // clear auto-unlocked abilities
                 init.GFs[gfId].Abilities = new BitArray(init.GFs[gfId].Abilities.Length, false);
 
-                var unusedAbilities = includedAbilities.Select(a => a.AbilityID).ToList();
+                List<int> unusedAbilities = nonMenuAbilities.Select(a => a.AbilityID)
+                    .Concat(menuAbilities.Select(a => a.AbilityID)).ToList();
+
                 for (int learnSlotIndex = 0; learnSlotIndex < abilityLimit; learnSlotIndex++)
                 {
                     if (learnSlotIndex < 4 && settings.GfAbilitiesBasics)
@@ -78,7 +89,7 @@ namespace FF8Mod.Maelstrom
                     }
                     else
                     {
-                        AddRandomAbility(random, kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], unusedAbilities);
+                        AddRandomAbility(settings, random, kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], unusedAbilities, menuAbilities);
                     }
                 }
 
@@ -132,7 +143,7 @@ namespace FF8Mod.Maelstrom
             initGF.Abilities[abilityId] = learned;
         }
 
-        private static void AddRandomAbility(Random random, GFAbility[] abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities)
+        private static void AddRandomAbility(State settings, Random random, GFAbility[] abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities, List<AbilityMeta> menuAbilities)
         {
             var ability = (byte)unusedAbilities[random.Next(unusedAbilities.Count)];
 
@@ -140,6 +151,12 @@ namespace FF8Mod.Maelstrom
 
             initGF.Abilities[ability] = (ability >= 20 && ability <= 23);
             unusedAbilities.Remove(ability);
+
+            if (settings.GFAbilitiesNoMenuDuplicates)
+            {
+                AbilityMeta menuAbility = menuAbilities.Find(a => a.AbilityID == ability);
+                menuAbilities.Remove(menuAbility);
+            }
         }
     }
 }
