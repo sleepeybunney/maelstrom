@@ -52,7 +52,6 @@ namespace Sleepey.Maelstrom
         public bool GFAbilitiesNoMenuDuplicates { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;
-        public int GfAbilitiesLimit { get; set; } = 21;
 
         // shops
         public bool ShopEnable { get; set; } = false;

@@ -72,7 +72,7 @@ namespace Sleepey.Maelstrom
                 List<int> unusedAbilities = nonMenuAbilities.Select(a => a.AbilityID)
                     .Concat(menuAbilities.Select(a => a.AbilityID)).ToList();
 
-                for (int learnSlotIndex = 0; learnSlotIndex < settings.GfAbilitiesLimit; learnSlotIndex++)
+                for (int learnSlotIndex = 0; learnSlotIndex < 21; learnSlotIndex++)
                 {
                     if (learnSlotIndex < 4 && settings.GfAbilitiesBasics)
                     {
@@ -82,16 +82,8 @@ namespace Sleepey.Maelstrom
                     }
                     else
                     {
-                        AddRandomAbility(settings, random, kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], unusedAbilities, menuAbilities);
+                        AddRandomAbility(random, kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], unusedAbilities, menuAbilities, settings.GFAbilitiesNoMenuDuplicates);
                     }
-                }
-
-                //This duplicates the first ability for the remaining slots. It's hacky, but it works.
-                for (int abilityIndex = settings.GfAbilitiesLimit; abilityIndex < 21; abilityIndex++)
-                {
-                    var firstAbility = kernel.JunctionableGFs[gfId].Abilities[0].Ability;
-                    var firstLearned = init.GFs[gfId].Abilities[firstAbility];
-                    AddAbility(kernel.JunctionableGFs[gfId].Abilities, abilityIndex, init.GFs[gfId], firstAbility, firstLearned);
                 }
 
                 // sort abilities
@@ -139,7 +131,7 @@ namespace Sleepey.Maelstrom
             initGF.Abilities[abilityId] = learned;
         }
 
-        private static void AddRandomAbility(State settings, Random random, IList<GFAbility> abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities, List<AbilityMeta> menuAbilities)
+        private static void AddRandomAbility(Random random, IList<GFAbility> abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities, List<AbilityMeta> menuAbilities, bool noMenuDuplicates)
         {
             var ability = (byte)unusedAbilities[random.Next(unusedAbilities.Count)];
 
@@ -148,7 +140,7 @@ namespace Sleepey.Maelstrom
             initGF.Abilities[ability] = (ability >= 20 && ability <= 23);
             unusedAbilities.Remove(ability);
 
-            if (settings.GFAbilitiesNoMenuDuplicates)
+            if (noMenuDuplicates)
             {
                 AbilityMeta menuAbility = menuAbilities.Find(a => a.AbilityID == ability);
                 menuAbilities.Remove(menuAbility);
