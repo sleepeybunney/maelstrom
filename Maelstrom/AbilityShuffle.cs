@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using FF8Mod;
 using FF8Mod.Archive;
 using FF8Mod.Main;
 using System.Text.Json;
 using System.Linq;
 using System.Collections;
+using Sleepey.Maelstrom;
 
 namespace FF8Mod.Maelstrom
 {
@@ -54,13 +54,6 @@ namespace FF8Mod.Maelstrom
         private static void GenerateRandomSets(State settings, Random random, Kernel kernel, Init init)
         {
             var includedAbilities = Abilities.Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly).ToList();
-            var abilityLimit = 21;
-
-            try
-            {
-                abilityLimit = Int32.Parse(settings.GfAbilitiesLimit);
-            } catch (Exception)
-            { }
 
             for (int gfId = 0; gfId < 16; gfId++)
             {
@@ -68,7 +61,7 @@ namespace FF8Mod.Maelstrom
                 init.GFs[gfId].Abilities = new BitArray(init.GFs[gfId].Abilities.Length, false);
 
                 var unusedAbilities = includedAbilities.Select(a => a.AbilityID).ToList();
-                for (int learnSlotIndex = 0; learnSlotIndex < abilityLimit; learnSlotIndex++)
+                for (int learnSlotIndex = 0; learnSlotIndex < settings.GfAbilitiesLimit; learnSlotIndex++)
                 {
                     if (learnSlotIndex < 4 && settings.GfAbilitiesBasics)
                     {
@@ -83,12 +76,15 @@ namespace FF8Mod.Maelstrom
                 }
 
                 //This duplicates the first ability for the remaining slots. It's hacky, but it works.
-                for (int abilityIndex = abilityLimit; abilityIndex < 21; abilityIndex++)
+                for (int abilityIndex = settings.GfAbilitiesLimit; abilityIndex < 21; abilityIndex++)
                 {
                     var firstAbility = kernel.JunctionableGFs[gfId].Abilities[0].Ability;
                     var firstLearned = init.GFs[gfId].Abilities[firstAbility];
                     AddAbility(kernel.JunctionableGFs[gfId].Abilities, abilityIndex, init.GFs[gfId], firstAbility, firstLearned);
                 }
+
+                // sort abilities
+                kernel.JunctionableGFs[gfId].Abilities = kernel.JunctionableGFs[gfId].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToArray();
 
                 // clear ability being learned
                 init.GFs[gfId].CurrentAbility = 0;

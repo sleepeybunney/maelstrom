@@ -1,4 +1,4 @@
-﻿namespace FF8Mod.Maelstrom
+﻿namespace Sleepey.Maelstrom
 {
     public class GFMeta
     {
