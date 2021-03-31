@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using FF8Mod.Archive;
-using FF8Mod.Main;
 using System.Text.Json;
 using System.Linq;
 using System.Collections;
-using Sleepey.Maelstrom;
+using Sleepey.FF8Mod.Main;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod;
 
 namespace Sleepey.Maelstrom
 {
@@ -84,14 +83,14 @@ namespace Sleepey.Maelstrom
                 }
 
                 // sort abilities
-                kernel.JunctionableGFs[gfId].Abilities = kernel.JunctionableGFs[gfId].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToArray();
+                kernel.JunctionableGFs[gfId].Abilities = kernel.JunctionableGFs[gfId].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToList();
 
                 // clear ability being learned
                 init.GFs[gfId].CurrentAbility = 0;
             }
         }
 
-        private static void AddBasicAbilities(GFAbility[] abilities, Init init, int gfId, List<int> unusedAbilities)
+        private static void AddBasicAbilities(IList<GFAbility> abilities, Init init, int gfId, List<int> unusedAbilities)
         {
             var initGF = init.GFs[gfId];
 
@@ -122,13 +121,13 @@ namespace Sleepey.Maelstrom
             }
         }
 
-        private static void AddAbility(GFAbility[] abilities, int abilityIndex, InitGF initGF, byte abilityId, bool learned = false)
+        private static void AddAbility(IList<GFAbility> abilities, int abilityIndex, InitGF initGF, byte abilityId, bool learned = false)
         {
             abilities[abilityIndex] = new GFAbility(1, 255, abilityId, 0);
             initGF.Abilities[abilityId] = learned;
         }
 
-        private static void AddRandomAbility(Random random, GFAbility[] abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities)
+        private static void AddRandomAbility(Random random, IList<GFAbility> abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities)
         {
             var ability = (byte)unusedAbilities[random.Next(unusedAbilities.Count)];
 
