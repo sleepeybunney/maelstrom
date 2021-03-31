@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FF8Mod.Archive;
-using FF8Mod.Menu;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Menu;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
-    public class PresetNames
+    public static class PresetNames
     {
         public static string ArchivePath = Globals.DataPath + @"\menu\mngrp.bin";
         public static int FileOffset = 0x2000;
@@ -39,8 +40,8 @@ namespace FF8Mod.Maelstrom
         {
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
-            var mes3bytes = new ArraySegment<byte>(file, FileOffset, FileLength);
-            var mes3 = TextFile.FromBytes(mes3bytes.ToArray(), true);
+            var mes3bytes = file.Skip(FileOffset).Take(FileLength);
+            var mes3 = TextFile.FromBytes(mes3bytes, true);
 
             // set names
             mes3.Pages[NamesPage].Strings[Squall] = settings.NameSquall;
@@ -66,8 +67,10 @@ namespace FF8Mod.Maelstrom
             mes3.Pages[NamesPage].Strings[Griever] = settings.NameGriever;
 
             // apply changes
-            Array.Copy(mes3.Encode(), 0, file, FileOffset, FileLength);
-            menuSource.ReplaceFile(ArchivePath, file);
+            var newFile = file.Take(FileOffset).ToList();
+            newFile.AddRange(mes3.Encode());
+            newFile.AddRange(file.Skip(FileOffset + FileLength));
+            menuSource.ReplaceFile(ArchivePath, newFile);
         }
     }
 }

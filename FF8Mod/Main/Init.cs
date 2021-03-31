@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class Init
     {
-        public List<InitGF> GFs;
-        public byte[] OtherData;
+        public IList<InitGF> GFs { get; set; } = new List<InitGF>();
+        public IEnumerable<byte> OtherData { get; set; }
 
-        public Init(byte[] data)
+        public Init(IEnumerable<byte> data)
         {
-            GFs = new List<InitGF>();
-
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 for (int i = 0; i < 16; i++)
@@ -28,12 +24,12 @@ namespace FF8Mod.Main
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             foreach (var gf in GFs) result.AddRange(gf.Encode());
             result.AddRange(OtherData);
-            return result.ToArray();
+            return result;
         }
     }
 }

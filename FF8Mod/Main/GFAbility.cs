@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class GFAbility
     {
-        public byte Unlocker;
-        public byte Ability;
-        public byte Unknown1, Unknown2;
+        public byte Unlocker { get; set; }
+        public byte Ability { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
 
         public GFAbility(byte unlocker, byte unknown1, byte ability, byte unknown2)
         {
@@ -18,7 +19,7 @@ namespace FF8Mod.Main
             Unknown2 = unknown2;
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             return new byte[] { Unlocker, Unknown1, Ability, Unknown2 };
         }

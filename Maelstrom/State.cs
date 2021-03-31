@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.IO;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class State
     {
@@ -52,7 +52,7 @@ namespace FF8Mod.Maelstrom
         public bool GFAbilitiesNoMenuDuplicates { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;
-        public String GfAbilitiesLimit { get; set; } = "21";
+        public int GfAbilitiesLimit { get; set; } = 21;
 
         // shops
         public bool ShopEnable { get; set; } = false;
@@ -131,7 +131,7 @@ namespace FF8Mod.Maelstrom
             {
                 if (!File.Exists(path)) return new State();
                 return LoadState(JsonSerializer.Deserialize<State>(File.ReadAllText(path), options), preset);
-                
+
             }
             catch (Exception) { }
             return new State();
@@ -227,7 +227,7 @@ namespace FF8Mod.Maelstrom
             return state;
         }
 
-        private static JsonSerializerOptions options = new JsonSerializerOptions()
+        private readonly static JsonSerializerOptions options = new JsonSerializerOptions()
         {
             AllowTrailingCommas = true,
             NumberHandling = System.Text.Json.Serialization.JsonNumberHandling.AllowReadingFromString,

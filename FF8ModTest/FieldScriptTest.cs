@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Field;
 using Xunit;
-using FF8Mod.Field;
 
-namespace FF8ModTest
+namespace Sleepey.FF8ModTest
 {
     public class FieldScriptTest
     {
@@ -47,8 +48,8 @@ namespace FF8ModTest
         public void EntityTest(int label, EntityType type)
         {
             // construct a simple entity
-            var labelInstr = new Instruction(5, label);
-            var script = new Script(new List<Instruction>() { labelInstr }, false);
+            var labelInstr = new FieldScriptInstruction(5, label);
+            var script = new Script(new List<FieldScriptInstruction>() { labelInstr }, false);
             var entity = new Entity(type, new List<Script>() { script });
 
             // extract info, then encode & decode
@@ -70,9 +71,9 @@ namespace FF8ModTest
         public void InstructionTest(int opcode, int param)
         {
             // encode & decode
-            var instruction = new Instruction(opcode, param);
-            if (param == -1) instruction = new Instruction(opcode);
-            instruction = new Instruction(BitConverter.GetBytes(instruction.Encode()));
+            var instruction = new FieldScriptInstruction(opcode, param);
+            if (param == -1) instruction = new FieldScriptInstruction(opcode);
+            instruction = new FieldScriptInstruction(BitConverter.GetBytes(instruction.Encode()));
 
             // make sure nothing's changed
             Assert.Equal(opcode, instruction.OpCode);

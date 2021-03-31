@@ -1,30 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class InitGF
     {
-        public string Name;
-        public int Exp;
-        public byte Unknown;
-        public byte Exists;
-        public short HP;
-        public BitArray Abilities;
-        public byte[] AP;
-        public short Kills;
-        public short Deaths;
-        public byte CurrentAbility;
-        public BitArray ForgottenAbilities;
+        public string Name { get; set; }
+        public int Exp { get; set; }
+        public byte Unknown { get; set; }
+        public byte Exists { get; set; }
+        public short HP { get; set; }
+        public BitArray Abilities { get; set; }
+        public List<byte> AP { get; set; }
+        public short Kills { get; set; }
+        public short Deaths { get; set; }
+        public byte CurrentAbility { get; set; }
+        public BitArray ForgottenAbilities { get; set; }
 
-        public InitGF(byte[] data)
+        public InitGF(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 Name = FF8String.Decode(reader.ReadBytes(12));
@@ -33,7 +31,7 @@ namespace FF8Mod.Main
                 Exists = reader.ReadByte();
                 HP = reader.ReadInt16();
                 Abilities = new BitArray(reader.ReadBytes(16));
-                AP = reader.ReadBytes(24);
+                AP = reader.ReadBytes(24).ToList();
                 Kills = reader.ReadInt16();
                 Deaths = reader.ReadInt16();
                 CurrentAbility = reader.ReadByte();
@@ -41,13 +39,13 @@ namespace FF8Mod.Main
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
 
-            var name = FF8String.Encode(Name).ToList();
-            while (name.Count < 12) name.Add(0);
-            result.AddRange(name);
+            var encodedName = FF8String.Encode(Name).Take(12).ToList();
+            result.AddRange(encodedName);
+            result.AddRange(Enumerable.Repeat<byte>(0, 12 - encodedName.Count));
 
             result.AddRange(BitConverter.GetBytes(Exp));
             result.Add(Unknown);
@@ -66,8 +64,8 @@ namespace FF8Mod.Main
             var forgotten = new byte[3];
             ForgottenAbilities.CopyTo(forgotten, 0);
             result.AddRange(forgotten);
-            
-            return result.ToArray();
+
+            return result;
         }
     }
 }

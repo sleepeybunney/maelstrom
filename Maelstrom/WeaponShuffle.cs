@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FF8Mod.Menu;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Menu;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
-    public class WeaponShuffle
+    public static class WeaponShuffle
     {
-        public static List<WeaponUpgrade> Randomise(int seed, State settings)
+        public static List<WeaponUpgrade> Randomise(int seed)
         {
             var result = new List<WeaponUpgrade>();
             var random = new Random(seed + 9);

@@ -5,6 +5,7 @@
     <Product>FF8Mod</Product>
     <Copyright>Copyright © Sleepey Bunney 2021</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
+    <RootNamespace>Sleepey.FF8Mod</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>

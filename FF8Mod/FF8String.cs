@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod
 {
     public static class FF8String
     {
@@ -17,17 +17,17 @@ namespace FF8Mod
             'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
         };
 
-        public static string Decode(byte[] bytes)
+        public static string Decode(IEnumerable<byte> bytes)
         {
-            var result = "";
+            var result = string.Empty;
 
-            using (var stream = new MemoryStream(bytes))
+            using (var stream = new MemoryStream(bytes.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 while (stream.Position < stream.Length)
                 {
                     var code = (int)reader.ReadByte();
-                    
+
                     // null-terminated
                     if (code == 0) break;
 
@@ -74,7 +74,7 @@ namespace FF8Mod
             return result;
         }
 
-        public static byte[] Encode(string str)
+        public static IEnumerable<byte> Encode(string str)
         {
             var result = new List<byte>();
 
@@ -115,7 +115,7 @@ namespace FF8Mod
 
                 // null-terminated
                 result.Add(0);
-                return result.ToArray();
+                return result;
             }
         }
     }

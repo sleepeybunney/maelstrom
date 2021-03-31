@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using FF8Mod;
-using FF8Mod.Archive;
-using FF8Mod.Main;
 using System.Text.Json;
 using System.Linq;
 using System.Collections;
+using Sleepey.FF8Mod.Main;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class AbilityShuffle
     {
-        public static List<AbilityMeta> Abilities = JsonSerializer.Deserialize<List<AbilityMeta>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Abilities.json"));
-        public static List<GFMeta> GFNames = JsonSerializer.Deserialize<List<GFMeta>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.JunctionableGFs.json"));
+        public static List<AbilityMeta> Abilities = JsonSerializer.Deserialize<List<AbilityMeta>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Abilities.json"));
+        public static List<GFMeta> GFNames = JsonSerializer.Deserialize<List<GFMeta>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.JunctionableGFs.json"));
 
         public static List<JunctionableGF> Randomise(FileSource mainSource, int seed, State settings)
         {
@@ -63,13 +62,7 @@ namespace FF8Mod.Maelstrom
                 .Where(a => a.MenuAbility)
                 .ToList();
 
-            var abilityLimit = 21;
-
-            try
-            {
-                abilityLimit = Int32.Parse(settings.GfAbilitiesLimit);
-            } catch (Exception)
-            { }
+            var includedAbilities = Abilities.Where(a => !a.ItemExclusive || settings.GfAbilitiesIncludeItemOnly).ToList();
 
             for (int gfId = 0; gfId < 16; gfId++)
             {
@@ -79,7 +72,7 @@ namespace FF8Mod.Maelstrom
                 List<int> unusedAbilities = nonMenuAbilities.Select(a => a.AbilityID)
                     .Concat(menuAbilities.Select(a => a.AbilityID)).ToList();
 
-                for (int learnSlotIndex = 0; learnSlotIndex < abilityLimit; learnSlotIndex++)
+                for (int learnSlotIndex = 0; learnSlotIndex < settings.GfAbilitiesLimit; learnSlotIndex++)
                 {
                     if (learnSlotIndex < 4 && settings.GfAbilitiesBasics)
                     {
@@ -94,19 +87,22 @@ namespace FF8Mod.Maelstrom
                 }
 
                 //This duplicates the first ability for the remaining slots. It's hacky, but it works.
-                for (int abilityIndex = abilityLimit; abilityIndex < 21; abilityIndex++)
+                for (int abilityIndex = settings.GfAbilitiesLimit; abilityIndex < 21; abilityIndex++)
                 {
                     var firstAbility = kernel.JunctionableGFs[gfId].Abilities[0].Ability;
                     var firstLearned = init.GFs[gfId].Abilities[firstAbility];
                     AddAbility(kernel.JunctionableGFs[gfId].Abilities, abilityIndex, init.GFs[gfId], firstAbility, firstLearned);
                 }
 
+                // sort abilities
+                kernel.JunctionableGFs[gfId].Abilities = kernel.JunctionableGFs[gfId].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToList();
+
                 // clear ability being learned
                 init.GFs[gfId].CurrentAbility = 0;
             }
         }
 
-        private static void AddBasicAbilities(GFAbility[] abilities, Init init, int gfId, List<int> unusedAbilities)
+        private static void AddBasicAbilities(IList<GFAbility> abilities, Init init, int gfId, List<int> unusedAbilities)
         {
             var initGF = init.GFs[gfId];
 
@@ -137,13 +133,13 @@ namespace FF8Mod.Maelstrom
             }
         }
 
-        private static void AddAbility(GFAbility[] abilities, int abilityIndex, InitGF initGF, byte abilityId, bool learned = false)
+        private static void AddAbility(IList<GFAbility> abilities, int abilityIndex, InitGF initGF, byte abilityId, bool learned = false)
         {
             abilities[abilityIndex] = new GFAbility(1, 255, abilityId, 0);
             initGF.Abilities[abilityId] = learned;
         }
 
-        private static void AddRandomAbility(State settings, Random random, GFAbility[] abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities, List<AbilityMeta> menuAbilities)
+        private static void AddRandomAbility(State settings, Random random, IList<GFAbility> abilities, int abilityIndex, InitGF initGF, List<int> unusedAbilities, List<AbilityMeta> menuAbilities)
         {
             var ability = (byte)unusedAbilities[random.Next(unusedAbilities.Count)];
 

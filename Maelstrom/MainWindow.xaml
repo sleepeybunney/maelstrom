@@ -1,11 +1,10 @@
-﻿<mah:MetroWindow x:Class="FF8Mod.Maelstrom.MainWindow"
+﻿<mah:MetroWindow x:Class="Sleepey.Maelstrom.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:p="clr-namespace:FF8Mod.Maelstrom.Properties"
-        xmlns:local="clr-namespace:FF8Mod.Maelstrom"
+        xmlns:local="clr-namespace:Sleepey.Maelstrom"
         mc:Ignorable="d"
         Title="MAELSTROM v0.5" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Left" WindowTitleBrush="{StaticResource MahApps.Brushes.Accent}"
         ShowDialogsOverTitleBar="False" Height="592" Width="800" MinHeight="584" MinWidth="800" Closing="OnClosing">
@@ -230,40 +229,7 @@
                                 <local:OptionWithDescription Title="Guarantee Basics" Description="Every GF comes with these abilities already unlocked: Magic, GF, Item, Draw." Checked="{Binding GfAbilitiesBasics, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="No Menu Duplicates" Description="Menu abilities will appear on only one GF. This does not guarantee that all menu abilities will be available." Checked="{Binding GFAbilitiesNoMenuDuplicates, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Item-Exclusives" Description="GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon." Checked="{Binding GfAbilitiesIncludeItemOnly, Mode=TwoWay}" />
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="9" />
-										<ColumnDefinition Width="40" />
-										<ColumnDefinition Width="206" />
-										<ColumnDefinition Width="*" />
-									</Grid.ColumnDefinitions>
-									<ComboBox Grid.Column="1" Margin="8 0" SelectedValuePath="Content" SelectedValue="{Binding GfAbilitiesLimit, Mode=TwoWay, Converter={StaticResource ComboBoxNumberConverter}}">
-										<ComboBoxItem>1</ComboBoxItem>
-										<ComboBoxItem>2</ComboBoxItem>
-										<ComboBoxItem>3</ComboBoxItem>
-										<ComboBoxItem>4</ComboBoxItem>
-										<ComboBoxItem>5</ComboBoxItem>
-										<ComboBoxItem>6</ComboBoxItem>
-										<ComboBoxItem>7</ComboBoxItem>
-										<ComboBoxItem>8</ComboBoxItem>
-										<ComboBoxItem>9</ComboBoxItem>
-										<ComboBoxItem>10</ComboBoxItem>
-										<ComboBoxItem>11</ComboBoxItem>
-										<ComboBoxItem>12</ComboBoxItem>
-										<ComboBoxItem>13</ComboBoxItem>
-										<ComboBoxItem>14</ComboBoxItem>
-										<ComboBoxItem>15</ComboBoxItem>
-										<ComboBoxItem>16</ComboBoxItem>
-										<ComboBoxItem>17</ComboBoxItem>
-										<ComboBoxItem>18</ComboBoxItem>
-										<ComboBoxItem>19</ComboBoxItem>
-										<ComboBoxItem>20</ComboBoxItem>
-										<ComboBoxItem>21</ComboBoxItem>
-									</ComboBox>
-									<TextBlock Grid.Column="2">Initial Ability Count</TextBlock>
-									<TextBlock Grid.Column="3">Limit the amount of abilities GFs start with</TextBlock>
-								</Grid>
-								<Separator />
+                                <Separator />
                                 <local:OptionWithDescription Title="Swap Sets" Description="Instead of randomizing each individual ability, GFs have their entire ability sets swapped around. This overrides the other options above." Checked="{Binding GfAbilitiesSwapSets, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
