@@ -1,33 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod.Archive;
 
-namespace FF8Mod.Menu
+namespace Sleepey.FF8Mod.Menu
 {
     public class WeaponUpgrade
     {
-        public byte MsgOffset { get; set; } = 0;
-        public byte Unknown1 { get; set; } = 0;
-        public byte Unknown2 { get; set; } = 0;
-        public byte Price { get; set; } = 0;
-        public byte Item1 { get; set; } = 0;
-        public byte Item1Quantity { get; set; } = 0;
-        public byte Item2 { get; set; } = 0;
-        public byte Item2Quantity { get; set; } = 0;
-        public byte Item3 { get; set; } = 0;
-        public byte Item3Quantity { get; set; } = 0;
-        public byte Item4 { get; set; } = 0;
-        public byte Item4Quantity { get; set; } = 0;
+        public byte MsgOffset { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Price { get; set; }
+        public byte Item1 { get; set; }
+        public byte Item1Quantity { get; set; }
+        public byte Item2 { get; set; }
+        public byte Item2Quantity { get; set; }
+        public byte Item3 { get; set; }
+        public byte Item3Quantity { get; set; }
+        public byte Item4 { get; set; }
+        public byte Item4Quantity { get; set; }
 
         public WeaponUpgrade() { }
 
-        public WeaponUpgrade(byte[] data)
+        public WeaponUpgrade(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 MsgOffset = reader.ReadByte();
@@ -45,7 +43,7 @@ namespace FF8Mod.Menu
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             return new byte[]
             {
@@ -68,7 +66,7 @@ namespace FF8Mod.Menu
         {
             var result = new List<WeaponUpgrade>();
 
-            using (var stream = new MemoryStream(menuSource.GetFile(Globals.WeaponUpgradePath)))
+            using (var stream = new MemoryStream(menuSource.GetFile(Globals.WeaponUpgradePath).ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 for (int i = 0; i < 33; i++)

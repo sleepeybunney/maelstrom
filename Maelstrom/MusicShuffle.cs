@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
-using FF8Mod.Archive;
-using FF8Mod.Field;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Field;
 using System.Diagnostics;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class MusicShuffle
     {
-        public static List<MusicLoad> MusicLoads = JsonSerializer.Deserialize<List<MusicLoad>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicLoads.json"));
-        public static List<MusicTrack> MusicTracks = JsonSerializer.Deserialize<List<MusicTrack>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.MusicTracks.json"));
+        public static List<MusicLoad> MusicLoads = JsonSerializer.Deserialize<List<MusicLoad>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.MusicLoads.json"));
+        public static List<MusicTrack> MusicTracks = JsonSerializer.Deserialize<List<MusicTrack>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.MusicTracks.json"));
 
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
@@ -48,6 +48,7 @@ namespace FF8Mod.Maelstrom
             foreach (var fieldName in scripts.Select(s => s.Item1).Distinct())
             {
                 var field = FieldScript.FromSource(fieldSource, fieldName);
+
                 foreach (var s in scripts.Where(s => s.Item1 == fieldName))
                 {
                     var script = field.Entities[s.Item2].Scripts[s.Item3];
@@ -64,7 +65,8 @@ namespace FF8Mod.Maelstrom
                         }
                     }
                 }
-                StorySkip.SaveToSource(fieldSource, fieldName, field.Encode()); // todo: this still needs moving
+
+                field.SaveToSource(fieldSource, fieldName);
             }
         }
     }

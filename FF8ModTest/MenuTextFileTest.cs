@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
-using FF8Mod.Menu;
+using Sleepey.FF8Mod.Menu;
 
-namespace FF8ModTest
+namespace Sleepey.FF8ModTest
 {
     public class MenuTextFileTest
     {

@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     /// <summary>
     /// Interaction logic for App.xaml

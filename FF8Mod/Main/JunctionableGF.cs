@@ -1,34 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.IO;
 
-namespace FF8Mod.Main
+namespace Sleepey.FF8Mod.Main
 {
     public class JunctionableGF
     {
-        public UInt16 AttackNameOffset;
-        public UInt16 AttackDescOffset;
-        public UInt16 MagicID;
-        public byte AttackType;
-        public byte AttackPower;
-        public UInt16 Unknown1;
-        public byte AttackFlags;
-        public UInt16 Unknown2;
-        public byte Element;
-        public byte[] StatusFlags;
-        public byte HPMod;
-        public byte[] Unknown3;
-        public byte StatusAttackEnabler;
-        public GFAbility[] Abilities;
-        public byte[] Compatibility;
-        public UInt16 Unknown4;
-        public byte PowerMod;
-        public byte LevelMod;
+        public ushort AttackNameOffset { get; set; }
+        public ushort AttackDescOffset { get; set; }
+        public ushort MagicID { get; set; }
+        public byte AttackType { get; set; }
+        public byte AttackPower { get; set; }
+        public ushort Unknown1 { get; set; }
+        public byte AttackFlags { get; set; }
+        public ushort Unknown2 { get; set; }
+        public byte Element { get; set; }
+        public List<byte> StatusFlags { get; set; }
+        public byte HPMod { get; set; }
+        public List<byte> Unknown3 { get; set; }
+        public byte StatusAttackEnabler { get; set; }
+        public List<GFAbility> Abilities { get; set; }
+        public List<byte> Compatibility { get; set; }
+        public ushort Unknown4 { get; set; }
+        public byte PowerMod { get; set; }
+        public byte LevelMod { get; set; }
 
-        public JunctionableGF(byte[] data)
+        public JunctionableGF(IEnumerable<byte> data)
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 AttackNameOffset = reader.ReadUInt16();
@@ -40,30 +40,25 @@ namespace FF8Mod.Main
                 AttackFlags = reader.ReadByte();
                 Unknown2 = reader.ReadUInt16();
                 Element = reader.ReadByte();
-                StatusFlags = reader.ReadBytes(6);
+                StatusFlags = reader.ReadBytes(6).ToList();
                 HPMod = reader.ReadByte();
-                Unknown3 = reader.ReadBytes(6);
+                Unknown3 = reader.ReadBytes(6).ToList();
                 StatusAttackEnabler = reader.ReadByte();
 
-                Abilities = new GFAbility[21];
+                Abilities = new List<GFAbility>();
                 for (int i = 0; i < 21; i++)
                 {
-                    Abilities[i] = new GFAbility(reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte());
+                    Abilities.Add(new GFAbility(reader.ReadByte(), reader.ReadByte(), reader.ReadByte(), reader.ReadByte()));
                 }
 
-                Compatibility = new byte[16];
-                for (int i = 0; i < 16; i++)
-                {
-                    Compatibility[i] = reader.ReadByte();
-                }
-
+                Compatibility = reader.ReadBytes(16).ToList();
                 Unknown4 = reader.ReadUInt16();
                 PowerMod = reader.ReadByte();
                 LevelMod = reader.ReadByte();
             }
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             result.AddRange(BitConverter.GetBytes(AttackNameOffset));
@@ -84,7 +79,7 @@ namespace FF8Mod.Main
             result.AddRange(BitConverter.GetBytes(Unknown4));
             result.Add(PowerMod);
             result.Add(LevelMod);
-            return result.ToArray();
+            return result;
         }
     }
 }

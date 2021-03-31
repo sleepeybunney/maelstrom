@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Exe;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public static class DrawPointShuffle
     {
-        public static List<DrawPoint> DrawPoints = JsonSerializer.Deserialize<List<DrawPoint>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.DrawPoints.json"));
-        public static List<Spell> Spells = JsonSerializer.Deserialize<List<Spell>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Spells.json"));
+        public static List<DrawPoint> DrawPoints = JsonSerializer.Deserialize<List<DrawPoint>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.DrawPoints.json"));
+        public static List<Spell> Spells = JsonSerializer.Deserialize<List<Spell>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Spells.json"));
 
         // assign random spells to each draw point, retaining their other properties
         public static Dictionary<int, int> Randomise(int seed, State settings)

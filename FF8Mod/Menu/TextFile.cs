@@ -1,31 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using FF8Mod.Archive;
 
-namespace FF8Mod.Menu
+namespace Sleepey.FF8Mod.Menu
 {
     public class TextFile
     {
-        public List<MenuTextPage> Pages;
-        public int FixedLength;
+        public List<MenuTextPage> Pages { get; set; } = new List<MenuTextPage>();
+        public int FixedLength { get; set; } = -1;
 
-        public TextFile()
-        {
-            Pages = new List<MenuTextPage>();
-            FixedLength = -1;
-        }
+        public TextFile() { }
 
-        public static TextFile FromBytes(byte[] data, bool fixedLength)
+        public static TextFile FromBytes(IEnumerable<byte> data, bool fixedLength)
         {
             var result = new TextFile();
 
-            if (fixedLength) result.FixedLength = data.Length;
+            if (fixedLength) result.FixedLength = data.Count();
 
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 // enumerate pages
@@ -64,21 +57,21 @@ namespace FF8Mod.Menu
                             stringBytes.Add(nextByte);
                         }
 
-                        page.Strings.Add(FF8String.Decode(stringBytes.ToArray()));
+                        page.Strings.Add(FF8String.Decode(stringBytes));
                     }
                 }
             }
 
             return result;
         }
-        
-        public byte[] Encode()
+
+        public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
             result.AddRange(BitConverter.GetBytes((short)Pages.Count));
 
             var headerSize = Pages.Count * 2 + 2;
-            var encodedPages = new List<byte[]>();
+            var encodedPages = new List<IEnumerable<byte>>();
             var firstLocation = 0;
 
             foreach (var p in Pages)
@@ -92,7 +85,7 @@ namespace FF8Mod.Menu
                 }
 
                 // calculate location
-                var newLocation = headerSize + encodedPages.Sum(ep => ep.Length);
+                var newLocation = headerSize + encodedPages.Sum(ep => ep.Count());
                 if (firstLocation == 0) firstLocation = newLocation;
                 result.AddRange(BitConverter.GetBytes((short)newLocation));
 
@@ -113,62 +106,7 @@ namespace FF8Mod.Menu
                 result = result.GetRange(0, FixedLength);
             }
 
-            return result.ToArray();
-        }
-        
-    }
-
-    public class MenuTextPage
-    {
-        public short Location;
-        public List<short> Offsets;
-        public List<string> Strings;
-
-        public MenuTextPage(short location)
-        {
-            Location = location;
-            Offsets = new List<short>();
-            Strings = new List<string>();
-        }
-
-        public byte[] Encode()
-        {
-            var result = new List<byte>();
-            result.AddRange(BitConverter.GetBytes((short)Offsets.Count));
-
-            var headerSize = Offsets.Count * 2 + 2;
-            var encodedStrings = new List<byte[]>();
-            var firstOffset = 0;
-            var offsetEnum = Offsets.GetEnumerator();
-            offsetEnum.MoveNext();
-
-            foreach (var s in Strings)
-            {
-                // fake offsets
-                while (offsetEnum.Current == 0)
-                {
-                    result.Add(0);
-                    result.Add(0);
-                    offsetEnum.MoveNext();
-                }
-
-                // calculate offset
-                var newOffset = headerSize + encodedStrings.Sum(es => es.Length);
-                if (firstOffset == 0) firstOffset = newOffset;
-                result.AddRange(BitConverter.GetBytes((short)newOffset));
-                offsetEnum.MoveNext();
-
-                // put the actual data aside until the header is done
-                encodedStrings.Add(FF8String.Encode(s));
-            }
-
-            // pad header as required (eg. fake offsets after the last real one)
-            while (result.Count < firstOffset) result.Add(0);
-
-            // write text data
-            foreach (var es in encodedStrings) result.AddRange(es);
-
-            return result.ToArray();
+            return result;
         }
     }
 }

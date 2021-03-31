@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FF8Mod
+namespace Sleepey.FF8Mod.Archive
 {
     public class ArchiveIndexEntry
     {
-        public string Path;
-        public ulong Offset;
-        public uint Length;
-        public bool Compressed;
+        public string Path { get; set; }
+        public ulong Offset { get; set; }
+        public uint Length { get; set; }
+        public bool Compressed { get; set; }
 
         public ArchiveIndexEntry(string path, ulong offset, uint length, bool compressed)
         {

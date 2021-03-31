@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     public class Boss
     {
@@ -15,10 +17,10 @@ namespace FF8Mod.Maelstrom
         public int FieldEntity { get; set; }
         public int FieldScript { get; set; }
         public bool FixedField { get; set; }
-        public int[] SlotRanks { get; set; }
+        public List<int> SlotRanks { get; set; }
         public bool Disabled { get; set; } = false;
 
-        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("FF8Mod.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
+        public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
 
         private static Dictionary<int, Boss> PopulateEncounterDictionary()
@@ -96,14 +98,14 @@ namespace FF8Mod.Maelstrom
                 int matchedID;
 
                 // only match tonberry king with other solo bosses
-                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Length == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
+                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
                 matchedID = singlesOnly[random.Next(singlesOnly.Count)];
                 unmatchedIDs.Remove(matchedID);
                 encounterIDs.Remove(236);
                 encounterMap.Add(236, matchedID);
                 encounterMap.Add(237, matchedID);
                 encounterMap.Add(238, matchedID);
-                
+
                 foreach (var encID in encounterIDs)
                 {
                     matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
@@ -131,8 +133,8 @@ namespace FF8Mod.Maelstrom
 
         public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap)
         {
-            var cleanEncFile = EncounterFile.FromSource(battleSource, EncounterFile.Path);
-            var newEncFile = EncounterFile.FromSource(battleSource, EncounterFile.Path);
+            var cleanEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
+            var newEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
 
             foreach (var encID in encounterMap.Keys)
             {
@@ -191,7 +193,7 @@ namespace FF8Mod.Maelstrom
             FixOdin(battleSource, cleanEncFile);
 
             // save changes
-            battleSource.ReplaceFile(EncounterFile.Path, newEncFile.Encode());
+            battleSource.ReplaceFile(Globals.EncounterFilePath, newEncFile.Encode());
         }
 
         private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
@@ -214,19 +216,19 @@ namespace FF8Mod.Maelstrom
 
             // add GF unlock to monster's init script
             var script = monster.AI.Scripts.Init;
-            script.InsertRange(0, new List<Battle.Instruction>
+            script.InsertRange(0, new List<BattleScriptInstruction>
             {
                 // if shared-var-4 == 0
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
 
                 // give diablos
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
 
                 // shared-var-4 = 1
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
 
                 // end if
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
             }); ;
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
@@ -248,7 +250,7 @@ namespace FF8Mod.Maelstrom
             var monsterId = cleanEncFile.Encounters[317].Slots[0].MonsterID;
             var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Execute;
-            script.Insert(0, new Battle.Instruction(Battle.Instruction.OpCodesReverse["return"]));
+            script.Insert(0, new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["return"]));
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
         }
 
@@ -258,16 +260,16 @@ namespace FF8Mod.Maelstrom
             var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Init;
 
-            script.InsertRange(0, new List<Battle.Instruction>
+            script.InsertRange(0, new List<BattleScriptInstruction>
             {
                 // if irvine is not alive
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
 
                 // shared-var-1 (dialogue flag) = 1
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
 
                 // end if
-                new Battle.Instruction(Battle.Instruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
             });
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
@@ -278,23 +280,24 @@ namespace FF8Mod.Maelstrom
             // clone encounter
             var encFile = EncounterFile.FromSource(battleSource);
             encFile.Encounters[845] = encFile.Encounters[136];
-            battleSource.ReplaceFile(EncounterFile.Path, encFile.Encode());
+            battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
 
             // redirect field script to clone
             var fieldName = "glyagu1";
-            var field = Field.FieldScript.FromSource(fieldSource, fieldName);
+            var field = FF8Mod.Field.FieldScript.FromSource(fieldSource, fieldName);
             var script = field.Entities[2].Scripts[4].Instructions;
             for (int i = 0; i < script.Count - 2; i++)
             {
-                if (script[i].OpCode == Field.FieldScript.OpCodesReverse["pshn_l"] && script[i].Param == 136)
+                if (script[i].OpCode == FF8Mod.Field.FieldScript.OpCodesReverse["pshn_l"] && script[i].Param == 136)
                 {
-                    if (script[i + 2].OpCode == Field.FieldScript.OpCodesReverse["battle"])
+                    if (script[i + 2].OpCode == FF8Mod.Field.FieldScript.OpCodesReverse["battle"])
                     {
                         field.Entities[2].Scripts[4].Instructions[i].Param = 845;
                     }
                 }
             }
-            StorySkip.SaveToSource(fieldSource, fieldName, field.Encode());
+
+            field.SaveToSource(fieldSource, fieldName);
         }
     }
 }

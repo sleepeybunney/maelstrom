@@ -3,42 +3,42 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace FF8Mod.Battle
+namespace Sleepey.FF8Mod.Battle
 {
     public partial class BattleScript
     {
-        public List<Instruction>[] EventScripts;
+        public List<Script> EventScripts { get; } = new List<Script>(Enumerable.Range(0, 5).Select(i => new Script()));
 
         // executes when added to the battle (usually at the start)
-        public List<Instruction> Init
+        public Script Init
         {
             get { return EventScripts[0]; }
             set { EventScripts[0] = value; }
         }
 
         // executes when ATB is full
-        public List<Instruction> Execute
+        public Script Execute
         {
             get { return EventScripts[1]; }
             set { EventScripts[1] = value; }
         }
 
         // executes after receiving an action (eg. being attacked)
-        public List<Instruction> Counter
+        public Script Counter
         {
             get { return EventScripts[2]; }
             set { EventScripts[2] = value; }
         }
 
         // executes on death
-        public List<Instruction> Death
+        public Script Death
         {
             get { return EventScripts[3]; }
             set { EventScripts[3] = value; }
         }
 
         // executes after receiving an action, before counter
-        public List<Instruction> PreCounter
+        public Script PreCounter
         {
             get { return EventScripts[4]; }
             set { EventScripts[4] = value; }
@@ -46,26 +46,18 @@ namespace FF8Mod.Battle
 
         public BattleScript()
         {
-            EventScripts = new List<Instruction>[5];
-
-            Init = new List<Instruction>();
-            Execute = new List<Instruction>();
-            Counter = new List<Instruction>();
-            Death = new List<Instruction>();
-            PreCounter = new List<Instruction>();
-
             // empty scripts aren't empty, they still return
-            Init.Add(new Instruction());
-            Execute.Add(new Instruction());
-            Counter.Add(new Instruction());
-            Death.Add(new Instruction());
-            PreCounter.Add(new Instruction());
+            Init.Add(new BattleScriptInstruction());
+            Execute.Add(new BattleScriptInstruction());
+            Counter.Add(new BattleScriptInstruction());
+            Death.Add(new BattleScriptInstruction());
+            PreCounter.Add(new BattleScriptInstruction());
         }
 
         // construct from binary data (ie. game files)
-        public BattleScript(byte[] data) : this()
+        public BattleScript(IEnumerable<byte> data) : this()
         {
-            using (var stream = new MemoryStream(data))
+            using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 var initOffset = reader.ReadUInt32();
@@ -92,9 +84,9 @@ namespace FF8Mod.Battle
         }
 
         // decode an individual script from a binary stream
-        private static List<Instruction> ReadScript(BinaryReader reader, uint length)
+        private static Script ReadScript(BinaryReader reader, uint length)
         {
-            var result = new List<Instruction>();
+            var result = new Script();
             byte code;
             var initialOffset = reader.BaseStream.Position;
 
@@ -103,9 +95,9 @@ namespace FF8Mod.Battle
                 code = reader.ReadByte();
 
                 // something is wrong, abort
-                if (!Instruction.OpCodes.ContainsKey(code)) break;
+                if (!BattleScriptInstruction.OpCodes.ContainsKey(code)) break;
 
-                var op = Instruction.OpCodes[code];
+                var op = BattleScriptInstruction.OpCodes[code];
                 var args = new List<short>();
 
                 // argument values are different lengths, depending on the op
@@ -121,13 +113,13 @@ namespace FF8Mod.Battle
                             break;
                     }
                 }
-                result.Add(new Instruction(op, args.ToArray()));
+                result.Add(new BattleScriptInstruction(op, args.ToArray()));
             }
 
             return result;
         }
 
-        public byte[] Encode()
+        public IEnumerable<byte> Encode()
         {
             var init = EncodeScript(Init);
             var exec = EncodeScript(Execute);
@@ -162,7 +154,7 @@ namespace FF8Mod.Battle
             return result;
         }
 
-        private byte[] EncodeScript(List<Instruction> script)
+        private static byte[] EncodeScript(Script script)
         {
             var result = new List<byte>();
             foreach (var instruction in script)
@@ -171,48 +163,5 @@ namespace FF8Mod.Battle
             }
             return result.ToArray();
         }
-    }
-
-    public class OpCode
-    {
-        public string Name;
-        public byte Code;
-        public Argument[] Args;
-
-        public OpCode(string name, byte code, params Argument[] args)
-        {
-            Name = name;
-            Code = code;
-            Args = args;
-        }
-
-        public int Length
-        {
-            get
-            {
-                return Args.Sum(a => a.Type == ArgType.Short ? 2 : 1) + 1;
-            }
-        }
-    }
-
-    public class Argument
-    {
-        public string Name;
-        public ArgType Type;
-
-        public Argument(string name, ArgType type)
-        {
-            Name = name;
-            Type = type;
-        }
-
-        public Argument(string name) : this(name, ArgType.Byte) { }
-    }
-
-    public enum ArgType
-    {
-        Byte,
-        Short,
-        Bool
     }
 }

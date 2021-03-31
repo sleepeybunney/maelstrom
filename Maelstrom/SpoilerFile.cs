@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FF8Mod.Main;
-using FF8Mod.Menu;
-using FF8Mod.Archive;
+using Sleepey.FF8Mod;
+using Sleepey.FF8Mod.Main;
+using Sleepey.FF8Mod.Menu;
+using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Battle;
 
-namespace FF8Mod.Maelstrom
+namespace Sleepey.Maelstrom
 {
     class SpoilerFile
     {
-        private Section Title, Options, Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
+        private readonly Section Title, Options;
+        private Section Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
 
         public SpoilerFile()
         {
@@ -61,7 +64,7 @@ namespace FF8Mod.Maelstrom
                 {
                     if (dp.Location != last)
                     {
-                        if (last != "") DrawPoints.NewLine();
+                        if (last.Length > 0) DrawPoints.NewLine();
                         DrawPoints.Bullet(dp.Location, "");
                     }
                     DrawPoints.Bullet(DrawPointShuffle.Spells.Find(s => s.SpellID == spellMap[dp.Offset]).SpellName, 1);
@@ -167,7 +170,7 @@ namespace FF8Mod.Maelstrom
             for (var i = 0; i < gfs.Count; i++)
             {
                 Abilities.Bullet(AbilityShuffle.GFNames.Find(gfn => gfn.GFID == i).GFName);
-                for (var j = 0; j < gfs[i].Abilities.Length; j++)
+                for (var j = 0; j < gfs[i].Abilities.Count; j++)
                 {
                     var abilityID = gfs[i].Abilities[j].Ability;
                     if (abilityID != 0) Abilities.Bullet(AbilityShuffle.Abilities.Find(an => an.AbilityID == abilityID).AbilityName, 1);
@@ -242,12 +245,12 @@ namespace FF8Mod.Maelstrom
             return FlagString(flags);
         }
 
-        private string FlagString(Dictionary<string, bool> flags)
+        private static string FlagString(Dictionary<string, bool> flags)
         {
             return string.Format("Random ({0})", string.Join(", ", flags.Keys.Where(k => flags[k]).ToList()));
         }
 
-        private string LootString(HeldItem[] items)
+        private static string LootString(IList<HeldItem> items)
         {
             var result = new StringBuilder();
             result.Append(items[0].ItemId == 0 ? "Nothing" : Item.Lookup[items[0].ItemId].Name);
@@ -264,7 +267,7 @@ namespace FF8Mod.Maelstrom
             return result.ToString();
         }
 
-        private string DrawString(byte[] spells)
+        private static string DrawString(IList<byte> spells)
         {
             var result = new StringBuilder();
             for (int i = 0; i < 4; i++)
@@ -275,7 +278,7 @@ namespace FF8Mod.Maelstrom
             return result.ToString();
         }
 
-        private string SpellName(byte spell)
+        private static string SpellName(byte spell)
         {
             if (spell == 0) return "Nothing";
             if (spell >= 64) return "GF";
