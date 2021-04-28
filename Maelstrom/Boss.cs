@@ -212,9 +212,15 @@ namespace Sleepey.Maelstrom
             // find main boss monster of the encounter replacing diablos
             var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
             var monsterId = newEncFile.Encounters[811].Slots[bossSlot].MonsterID;
-            var monster = Monster.ByID(battleSource, monsterId);
+            if (monsterId == 66) return;
+
+            // remove GF unlock from diablos
+            var diablos = Monster.ByID(battleSource, 66);
+            diablos.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["award-gf"] && i.Args.Count > 0 && i.Args[0] == 5);
+            battleSource.ReplaceFile(Monster.GetPath(66), diablos.Encode());
 
             // add GF unlock to monster's init script
+            var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Init;
             script.InsertRange(0, new List<BattleScriptInstruction>
             {
@@ -229,7 +235,7 @@ namespace Sleepey.Maelstrom
 
                 // end if
                 new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
-            }); ;
+            });
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
         }
