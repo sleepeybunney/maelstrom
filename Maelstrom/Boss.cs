@@ -179,6 +179,9 @@ namespace Sleepey.Maelstrom
                     }
                 }
 
+                // award cactuar GF for beating jumbo's replacement to avoid despawning the cactus early
+                if (encID == 712) FixJumboCactuar(battleSource, newEncFile, matchedEncID);
+
                 // award diablos GF for beating whoever is in the lamp to avoid softlock
                 if (encID == 811) FixDiablos(battleSource, newEncFile, matchedEncID);
 
@@ -207,28 +210,23 @@ namespace Sleepey.Maelstrom
             }
         }
 
-        private static void FixDiablos(FileSource battleSource, EncounterFile newEncFile, int origEncID)
+        private static void MoveGF(FileSource battleSource, EncounterFile newEncFile, int sourceMonsterID, int targetMonsterID, short gfID)
         {
-            // find main boss monster of the encounter replacing diablos
-            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
-            var monsterId = newEncFile.Encounters[811].Slots[bossSlot].MonsterID;
-            if (monsterId == 66) return;
+            if (sourceMonsterID == targetMonsterID) return;
 
-            // remove GF unlock from diablos
-            var diablos = Monster.ByID(battleSource, 66);
-            diablos.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["award-gf"] && i.Args.Count > 0 && i.Args[0] == 5);
-            battleSource.ReplaceFile(Monster.GetPath(66), diablos.Encode());
+            // remove GF unlock from source
+            var source = Monster.ByID(battleSource, sourceMonsterID);
+            source.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["award-gf"] && i.Args.Count > 0 && i.Args[0] == gfID);
 
-            // add GF unlock to monster's init script
-            var monster = Monster.ByID(battleSource, monsterId);
-            var script = monster.AI.Scripts.Init;
-            script.InsertRange(0, new List<BattleScriptInstruction>
+            // add GF unlock to target
+            var target = Monster.ByID(battleSource, targetMonsterID);
+            target.AI.Scripts.Init.InsertRange(0, new List<BattleScriptInstruction>
             {
                 // if shared-var-4 == 0
                 new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
 
-                // give diablos
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["award-gf"], new short[] { 0x05 }),
+                // give gf
+                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["award-gf"], new short[] { gfID }),
 
                 // shared-var-4 = 1
                 new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
@@ -237,7 +235,24 @@ namespace Sleepey.Maelstrom
                 new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
             });
 
-            battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+            battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
+            battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
+        }
+
+        private static void FixJumboCactuar(FileSource battleSource, EncounterFile newEncFile, int origEncID)
+        {
+            // find main boss monster of the encounter replacing jumbo cactuar
+            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
+            var monsterID = newEncFile.Encounters[712].Slots[bossSlot].MonsterID;
+            MoveGF(battleSource, newEncFile, 84, monsterID, 13);
+        }
+
+        private static void FixDiablos(FileSource battleSource, EncounterFile newEncFile, int origEncID)
+        {
+            // find main boss monster of the encounter replacing diablos
+            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
+            var monsterID = newEncFile.Encounters[811].Slots[bossSlot].MonsterID;
+            MoveGF(battleSource, newEncFile, 66, monsterID, 5);
         }
 
         private static void FixSorceresses(EncounterFile cleanEncFile, EncounterFile newEncFile, int encID)
