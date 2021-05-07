@@ -20,6 +20,7 @@ namespace Sleepey.Maelstrom
             { "ita", 0x2800 },
             { "ger", 0x2000 },
             { "spa", 0x2800 },
+            { "jp", 0x2000 }
         };
 
         public static int Squall = 8;

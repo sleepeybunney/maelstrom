@@ -259,7 +259,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // apply music shuffle
-                    if (settings.MusicEnable)
+                    if (settings.MusicEnable && Globals.RegionCode != "jp")
                     {
                         var shuffle = MusicShuffle.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
@@ -267,7 +267,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // write to file
-                    if (settings.FreeRoam || settings.CardEnable || settings.MusicEnable)
+                    if (settings.FreeRoam || settings.CardEnable || (settings.MusicEnable && Globals.RegionCode != "jp"))
                     {
                         fieldSource.Encode();
                     }
@@ -298,7 +298,7 @@ namespace Sleepey.Maelstrom
                     var menuSource = new FileSource(Globals.MenuPath);
 
                     // preset names
-                    if (settings.NameEnable)
+                    if (settings.NameEnable && Globals.RegionCode != "jp")
                     {
                         PresetNames.Apply(menuSource, settings);
                     }
@@ -331,7 +331,7 @@ namespace Sleepey.Maelstrom
                         MagicSortFix.Apply(menuSource);
                     }
 
-                    if (settings.NameEnable || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
+                    if ((settings.NameEnable && Globals.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
                     {
                         menuSource.Encode();
                     }

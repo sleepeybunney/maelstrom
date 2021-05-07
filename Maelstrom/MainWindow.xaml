@@ -259,6 +259,8 @@
                                 <local:OptionWithDescription Title="Include Non-Music Tracks" Description="Ambient sounds, chanting, etc." Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
                                 <Separator />
                                 <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after a certain point, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
+                                <Separator />
+                                <TextBlock FontStyle="Italic">This has no effect when the language is set to Japanese.</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
                     </StackPanel>
@@ -362,6 +364,8 @@
                                     <Label Grid.Column="0">Leviathan</Label>
                                     <TextBox Grid.Column="1" MaxLength="9" Text="{Binding NameLeviathan, Mode=TwoWay}" />
                                 </Grid>
+                                <Separator />
+                                <TextBlock FontStyle="Italic">This has no effect when the language is set to Japanese.</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
                     </StackPanel>
