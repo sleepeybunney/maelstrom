@@ -74,9 +74,10 @@ namespace Sleepey.Maelstrom
         public static bool DetectVersion(string path)
         {
             if (!File.Exists(path)) return false;
+            var steamNames = new string[] { "ff8_en.exe", "ff8_fr.exe", "ff8_it.exe", "ff8_de.exe", "ff8_es.exe" };
             var exeFileName = Path.GetFileName(path).ToLower();
             if (exeFileName == "ffviii.exe") Globals.Remastered = true;
-            else if (exeFileName == "ff8_en.exe") Globals.Remastered = false;
+            else if (steamNames.Contains(exeFileName)) Globals.Remastered = false;
             else return false;
             return true;
         }
@@ -317,7 +318,7 @@ namespace Sleepey.Maelstrom
                         {
                             var shuffle = DrawPointShuffle.Randomise(seed, settings);
                             if (settings.SpoilerFile) spoilerFile.AddDrawPoints(shuffle);
-                            DrawPointShuffle.Apply(menuSource, shuffle);
+                            DrawPointShuffle.Apply(shuffle);
                         }
                         else
                         {

@@ -35,7 +35,7 @@ namespace Sleepey.Maelstrom
             return result;
         }
 
-        public static void Apply(FileSource menuSource, Dictionary<int, int> newSpells)
+        public static void Apply(Dictionary<int, int> newSpells)
         {
             GeneratePatch(newSpells).Apply(Globals.ExePath);
         }
@@ -52,12 +52,12 @@ namespace Sleepey.Maelstrom
                 DrawPoint.UpdatedDrawPoints[i + 1] = drawPoint;
             }
 
-            return new BinaryPatch(DrawPoint.DrawPointDefsLocation, DrawPoint.OriginalData, DrawPoint.EncodeAll());
+            return new BinaryPatch(DrawPoint.DrawPointDefsLocations[Globals.RegionCode], DrawPoint.OriginalData, DrawPoint.EncodeAll());
         }
 
         public static void RemovePatch(string gameLocation)
         {
-            new BinaryPatch(DrawPoint.DrawPointDefsLocation, DrawPoint.OriginalData, DrawPoint.OriginalData).Remove(gameLocation);
+            new BinaryPatch(DrawPoint.DrawPointDefsLocations[Globals.RegionCode], DrawPoint.OriginalData, DrawPoint.OriginalData).Remove(gameLocation);
         }
     }
 }

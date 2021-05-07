@@ -10,9 +10,17 @@ namespace Sleepey.Maelstrom
     public static class PresetNames
     {
         public static string ArchivePath = Globals.DataPath + @"\menu\mngrp.bin";
-        public static int FileOffset = 0x2000;
         public static int FileLength = 0x2000;
         public static int NamesPage = 5;
+
+        public static Dictionary<string, int> NameFileOffsets = new Dictionary<string, int>()
+        {
+            { "eng", 0x2000 },
+            { "fre", 0x2000 },
+            { "ita", 0x2800 },
+            { "ger", 0x2000 },
+            { "spa", 0x2800 },
+        };
 
         public static int Squall = 8;
         public static int Rinoa = 9;
@@ -40,7 +48,7 @@ namespace Sleepey.Maelstrom
         {
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
-            var mes3bytes = file.Skip(FileOffset).Take(FileLength);
+            var mes3bytes = file.Skip(NameFileOffsets[Globals.RegionCode]).Take(FileLength);
             var mes3 = TextFile.FromBytes(mes3bytes, true);
 
             // set names
@@ -67,9 +75,9 @@ namespace Sleepey.Maelstrom
             mes3.Pages[NamesPage].Strings[Griever] = settings.NameGriever;
 
             // apply changes
-            var newFile = file.Take(FileOffset).ToList();
+            var newFile = file.Take(NameFileOffsets[Globals.RegionCode]).ToList();
             newFile.AddRange(mes3.Encode());
-            newFile.AddRange(file.Skip(FileOffset + FileLength));
+            newFile.AddRange(file.Skip(NameFileOffsets[Globals.RegionCode] + FileLength));
             menuSource.ReplaceFile(ArchivePath, newFile);
         }
     }

@@ -5,7 +5,15 @@ namespace Sleepey.FF8Mod.Exe
 {
     public class DrawPoint
     {
-        public const int DrawPointDefsLocation = 0x792328;
+        public static Dictionary<string, uint> DrawPointDefsLocations = new Dictionary<string, uint>()
+        {
+            { "eng", 0x792328 },
+            { "fre", 0x792490 },
+            { "ita", 0x79245c },
+            { "ger", 0x792468 },
+            { "spa", 0x7924b8 }
+        };
+
         public const int DrawPointDefsLength = 0x100;
 
         public static Dictionary<int, DrawPoint> UpdatedDrawPoints { get; set; } = new Dictionary<int, DrawPoint>();

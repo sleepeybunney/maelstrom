@@ -66,7 +66,7 @@ namespace Sleepey.Maelstrom
             {
                 CheckFileExists = true,
                 Multiselect = false,
-                Filter = "Final Fantasy VIII Executable|ff8_en.exe;ffviii.exe",
+                Filter = "Final Fantasy VIII Executable|ffviii.exe;ff8_en.exe;ff8_fr.exe;ff8_it.exe;ff8_de.exe;ff8_es.exe",
                 Title = "Select game location"
             };
 
@@ -141,17 +141,17 @@ namespace Sleepey.Maelstrom
 
     public class TitleConverter : IMultiValueConverter
     {
-        public object Convert(object[] value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var path = value[0] == null ? "null" : value[0].ToString();
-            var lang = value[1] == null ? "null" : value[1].ToString();
+            var path = values[0] == null ? "null" : values[0].ToString();
+            var lang = values[1] == null ? "null" : values[1].ToString();
 
             if (!File.Exists(path) || !Randomizer.DetectVersion(path)) return "No Game Loaded!";
             if (Globals.Remastered) return "Final Fantasy VIII Remastered (" + lang.ToUpper() + " 2019)";
             return "Final Fantasy VIII (" + lang.ToUpper() + " 2013)";
         }
 
-        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
