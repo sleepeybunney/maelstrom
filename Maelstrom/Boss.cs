@@ -39,9 +39,9 @@ namespace Sleepey.Maelstrom
             new EncounterCheck(164, 72, 1, 0),
 
             // gargantua
-            new EncounterCheck(436, 39, 3, 2),
-            new EncounterCheck(436, 40, 3, 2),
-            new EncounterCheck(436, 54, 3, 2),
+            new EncounterCheck(436, 39, 3, 2, 0),
+            new EncounterCheck(436, 40, 3, 2, 0),
+            new EncounterCheck(436, 54, 3, 2, 0),
 
             // sacred
             new EncounterCheck(189, 63, 1, 10),
@@ -69,13 +69,15 @@ namespace Sleepey.Maelstrom
             public int MonsterID;
             public int Script;
             public int Instruction;
+            public int InstructionJP;
 
-            public EncounterCheck(int encID, int monID, int script, int instruction)
+            public EncounterCheck(int encID, int monID, int script, int instruction, int instructionJP = -1)
             {
                 EncounterID = encID;
                 MonsterID = monID;
                 Script = script;
                 Instruction = instruction;
+                InstructionJP = instructionJP;
             }
         }
 
@@ -205,7 +207,8 @@ namespace Sleepey.Maelstrom
             {
                 var monster = Monster.ByID(battleSource, monsterID);
                 var script = monster.AI.Scripts.EventScripts[ec.Script];
-                script[ec.Instruction].Args[3] = (short)encID;
+                var instruction = (ec.InstructionJP == -1 || Globals.RegionCode != "jp") ? ec.Instruction : ec.InstructionJP;
+                script[instruction].Args[3] = (short)encID;
                 battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
             }
         }
