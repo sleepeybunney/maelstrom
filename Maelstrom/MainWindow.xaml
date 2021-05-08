@@ -335,7 +335,7 @@
                                     </ComboBox>
                                 </ItemsControl>
                                 <Separator />
-                                <TextBlock>Browse or enter a path to the Final Fantasy VIII exe file, and select the language you will be playing in. Must be either the Steam 2013 release or Final Fantasy VIII Remastered.</TextBlock>
+                                <TextBlock>Browse or enter a path to the exe file for either Final Fantasy VIII (Steam 2013 release) or Final Fantasy VIII Remastered. If playing the remaster, make sure the language selected here matches the one in the game launcher.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">Some features are not yet available in the Remastered edition.</TextBlock>
                             </StackPanel>

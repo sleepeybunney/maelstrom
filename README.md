@@ -4,7 +4,7 @@ An open-world randomiser for Final Fantasy VIII
 
 ## Features
 
-* Shuffle boss locations with optional level scaling
+* Shuffle boss locations, with or without duplicates
 * Buy random, potentially powerful items from shops
 * Teach your GF a randomised set of abilities, including item-exclusives
 * Win rare Triple Triad cards from players all over the world
@@ -19,22 +19,21 @@ Inspired by [FF4: Free Enterprise](https://ff4fe.com), this mode will allow you 
 
 Free Roam is roughly 10% complete so far. You can fight some bosses around Balamb (step into the black clouds) and reach the western continent by train, but there is still a lot of work to be done: clearing out story-related obstacles, placing new triggers for boss encounters, and so on. Hopefully there's enough to demo the concept at least. Try it out & let me know what you think!
 
-**To be clear, Maelstrom does also work as a normal randomiser.**
-
 ## Requirements
 
-* Final Fantasy VIII - Remastered or the 2013 Steam release (EN)
+* Final Fantasy VIII - Remastered or the 2013 Steam release
 * No other mods installed (some things MAY work but no testing has been done - if you just want to fix the MIDI music you can use [this](https://steamcommunity.com/app/39150/discussions/0/35221031741516824/))
 * Windows 7 or above with the latest .NET Framework
-* 1GB free disk space (for backups & working files)
+* 2GB free disk space (for backups & working files)
 
 ## Installation & Usage
 
 * Download the [current release](https://github.com/sleepeybunney/maelstrom/releases) or the latest [pre-release build](https://github.com/sleepeybunney/maelstrom/actions)
 * Extract all files to any folder & run Maelstrom.exe
-* Set "Game Location" by browsing to where the game is installed and selecting FFVIII.exe (for Remastered) or FF8_EN.exe (for vanilla)
-* Check the boxes for the features you want to activate & click "Go" to mod the game
-* To remove all changes and restore the game to normal, uncheck all the boxes & click "Go"
+* On the "Config" tab browse to where your game is installed and select FFVIII.exe (for Remastered) or FF8_xx.exe (for vanilla, where 'xx' represents your game's language code, such as EN for English)
+* Check the boxes on each tab for the features you want to activate, or select a pre-configured game from the "Presets" list
+* Click "Go" to mod the game - this may take a few minutes depending on your PC & chosen settings
+* To remove all changes and restore the game to normal, select the "Vanilla" preset & click "Go"
 
 ## Notes
 
@@ -44,7 +43,7 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 * The first time you run the randomiser it will make backups (.bak) of various files in the FF8 folder tree -- don't touch those!! If they get lost or corrupted you will need to restore/reinstall the game through Steam before running Maelstrom again.
 
-* If "Fixed Seed" is unchecked, a new seed number will be generated for each run. Checking the box allows you to use the most recent one again, or enter your own. (There are many explanations online for what an RNG "seed" is, but basically if you use the same number twice you will get the same results from the randomiser both times)
+* If "Set Seed" is unchecked, a new seed number will be generated for each run. Checking the box will allow you to enter your own. You can find a list of your most recent seeds on the "History" tab. (There are many explanations online for what an RNG "seed" is, but basically if you use the same number twice with the same settings, you will get the same results from the randomiser both times)
 
 * Card locations in the spoiler file are currently incomplete. The field names are all there but the NPC descriptions are largely unhelpful.
 
@@ -54,25 +53,22 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
   
   * Close the game and run Maelstrom
 
-  * Make a note of which options are checked, as well as your seed value (in the box next to "Fixed Seed")
+  * Save your settings on the "Presets" tab
 
-  * Uncheck everything and click "Go" to reset the game to normal
+  * Load the "Vanilla" preset and click "Go" to reset the game to normal
 
-  * Load the game, play past the part you are stuck on, and save
+  * Run the game, play past the part you are stuck on, and save
 
   * Close it and run Maelstrom again
 
-  * Restore all your settings and fix the seed to what it was before, then click "Go"
+  * Restore your settings ("Presets" tab) and seed number ("History" tab), then click "Go"
 
 ## Planned Features
 
-* Improved UI with more configuration options & info on what they do
-* Support for Steam EFIGS versions of the game, possibly also CD-ROM and PSX versions eventually
+* Support for more versions of the game, such as PSX, PC CD-ROM, & Switch
 * More substantial rebalancing for shuffled bosses, so they are generally beatable at the point they are encountered
 * Shuffled GF locations
-* Random weapon upgrade requirements
 * Shuffled monster locations
-* Random spells from bosses & monsters
 
 If you have ideas for new features or improvements, feel free to message me here or on [Twitter](https://twitter.com/sleepeybunney)!
 
