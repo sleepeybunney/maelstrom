@@ -264,6 +264,9 @@
                                 <TextBlock FontStyle="Italic">This has no effect when the language is set to Japanese.</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="&quot;Get Out of Jail Free&quot; Card" Checked="{Binding EmergencySpell, Mode=TwoWay}">
+                            <TextBlock>Start the game with 1 "The End" spell in your inventory.</TextBlock>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

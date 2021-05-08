@@ -368,7 +368,17 @@ namespace Sleepey.Maelstrom
                         if (settings.SpoilerFile) spoilerFile.AddAbilities(shuffle);
                     }
 
-                    mainSource.Encode();
+                    // emergency spell
+                    if (settings.EmergencySpell)
+                    {
+                        EmergencySpell.Apply(mainSource);
+                    }
+
+                    if (settings.GfAbilitiesEnable || settings.EmergencySpell)
+                    {
+                        mainSource.Encode();
+                    }
+
                     break;
                 }
                 catch (Exception x)
