@@ -148,7 +148,7 @@ namespace Sleepey.Maelstrom
 
             if (!File.Exists(path) || !Randomizer.DetectVersion(path)) return "No Game Loaded!";
             if (Globals.Remastered) return "Final Fantasy VIII Remastered (" + lang.ToUpper() + " 2019)";
-            return "Final Fantasy VIII (" + lang.ToUpper() + " 2013)";
+            return "Final Fantasy VIII (" + Globals.RegionCodeFromPath(path).ToUpper() + " 2013)";
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
@@ -200,6 +200,21 @@ namespace Sleepey.Maelstrom
         {
             int.TryParse((string)value, out int result);
             return result;
+        }
+    }
+
+    public class LanguageVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var path = value.ToString().ToLower();
+            if (path.EndsWith("ffviii.exe")) return Visibility.Visible;
+            return Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

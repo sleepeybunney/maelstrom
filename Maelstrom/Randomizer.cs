@@ -34,6 +34,7 @@ namespace Sleepey.Maelstrom
             }
 
             // set region
+            if (!Globals.Remastered) settings.Language = Globals.RegionCodeFromPath(Globals.ExePath);
             Globals.RegionCode = settings.Language;
 
             // generate new seed if not fixed

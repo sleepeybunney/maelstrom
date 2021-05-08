@@ -88,6 +88,7 @@
         <local:IconConverter x:Key="IconConverter" />
         <local:IconVisibilityConverter x:Key="IconVisibilityConverter" />
         <local:ComboBoxNumberConverter x:Key="ComboBoxNumberConverter" />
+        <local:LanguageVisibilityConverter x:Key="LanguageVisibilityConverter" />
         <local:State x:Key="State" />
     </mah:MetroWindow.Resources>
 
@@ -319,7 +320,7 @@
                                     <TextBox Name="GameLocation" Grid.Column="1" Text="{Binding GameLocation, Mode=TwoWay}" />
                                     <Button Grid.Column="2" Margin="8 4" Click="OnBrowse">Browse...</Button>
                                 </Grid>
-                                <ItemsControl Style="{StaticResource OptionStyle}">
+                                <ItemsControl Style="{StaticResource OptionStyle}" Visibility="{Binding GameLocation, Mode=OneWay, Converter={StaticResource LanguageVisibilityConverter}}">
                                     <Label Grid.Column="0">Language</Label>
                                     <ComboBox Grid.Column="1" SelectedValuePath="Tag" SelectedValue="{Binding Language, Mode=TwoWay}">
                                         <ComboBoxItem Tag="eng">English</ComboBoxItem>

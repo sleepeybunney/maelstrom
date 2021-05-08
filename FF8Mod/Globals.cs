@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Sleepey.FF8Mod.Archive;
 
 namespace Sleepey.FF8Mod
@@ -21,6 +22,14 @@ namespace Sleepey.FF8Mod
             { "spa", "es" },
             { "jp", "jp" }
         };
+
+        public static string RegionCodeFromPath(string path)
+        {
+            if (path.Length < 6) return "eng";
+            var ext = path.Substring(path.Length - 6, 2).ToLower();
+            if (!RegionExts.Values.Contains(ext)) return "eng";
+            return RegionExts.First(x => x.Value == ext).Key;
+        }
 
         public static string RegionExt { get => RegionExts[RegionCode]; }
 
