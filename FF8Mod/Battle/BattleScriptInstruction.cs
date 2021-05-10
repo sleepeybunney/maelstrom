@@ -10,8 +10,14 @@ namespace Sleepey.FF8Mod.Battle
         public List<short> Args { get; set; } = new List<short>();
 
         public BattleScriptInstruction() { }
-        public BattleScriptInstruction(OpCode op) { Op = op; }
-        public BattleScriptInstruction(OpCode op, IEnumerable<short> args) : this(op) { Args = args.ToList(); }
+
+        public BattleScriptInstruction(OpCode op, IEnumerable<short> args)
+        {
+            Op = op;
+            Args = args.ToList();
+        }
+
+        public BattleScriptInstruction(string op, params short[] args) : this(OpCodesReverse[op], args) { }
 
         public IEnumerable<byte> Encode()
         {

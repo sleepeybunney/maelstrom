@@ -216,16 +216,16 @@ namespace Sleepey.Maelstrom
             target.AI.Scripts.Init.InsertRange(0, new List<BattleScriptInstruction>
             {
                 // if shared-var-4 == 0
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["if"], new short[] { 0x64, 0xc8, 0x00, 0x00, 0x08 }),
+                new BattleScriptInstruction("if", 0x64, 0xc8, 0x00, 0x00, 0x08),
 
                 // give gf
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["award-gf"], new short[] { gfID }),
+                new BattleScriptInstruction("award-gf", gfID),
 
                 // shared-var-4 = 1
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["set-shared"], new short[] { 0x64, 0x01 }),
+                new BattleScriptInstruction("set-shared", 0x64, 0x01),
 
                 // end if
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new BattleScriptInstruction("jmp", 0x00),
             });
 
             battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
@@ -264,7 +264,7 @@ namespace Sleepey.Maelstrom
             var monsterId = cleanEncFile.Encounters[317].Slots[0].MonsterID;
             var monster = Monster.ByID(battleSource, monsterId);
             var script = monster.AI.Scripts.Execute;
-            script.Insert(0, new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["return"]));
+            script.Insert(0, new BattleScriptInstruction("return"));
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
         }
 
@@ -277,13 +277,13 @@ namespace Sleepey.Maelstrom
             script.InsertRange(0, new List<BattleScriptInstruction>
             {
                 // if irvine is not alive
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["if"], new short[] { 0x09, 0xc8, 0x03, 0x02, 0x06 }),
+                new BattleScriptInstruction("if", 0x09, 0xc8, 0x03, 0x02, 0x06),
 
                 // shared-var-1 (dialogue flag) = 1
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["set-shared"], new short[] { 0x61, 0x01 }),
+                new BattleScriptInstruction("set-shared", 0x61, 0x01),
 
                 // end if
-                new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse["jmp"], new short[] { 0x00 })
+                new BattleScriptInstruction("jmp", 0x00)
             });
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());

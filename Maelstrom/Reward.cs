@@ -168,7 +168,7 @@ namespace Sleepey.Maelstrom
             var encounter = encFile.Encounters[encounterID];
             var slot = encounter.Slots[Boss.Encounters[encounterID].SlotRanks[0]];
             var monster = slot.GetMonster(battleSource);
-            var awardInstruction = new BattleScriptInstruction(BattleScriptInstruction.OpCodesReverse[rewardOp], new short[] { rewardID });
+            var awardInstruction = new BattleScriptInstruction(rewardOp, rewardID);
             monster.AI.Scripts.Init.Insert(0, awardInstruction);
             battleSource.ReplaceFile(Monster.GetPath(slot.MonsterID), monster.Encode());
         }
