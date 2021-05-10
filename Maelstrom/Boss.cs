@@ -172,10 +172,10 @@ namespace Sleepey.Maelstrom
                 }
 
                 // award cactuar GF for beating jumbo's replacement to avoid despawning the cactus early
-                if (encID == 712) FixJumboCactuar(battleSource, newEncFile, matchedEncID);
+                if (encID == 712) MoveGF(battleSource, newEncFile, 84, matchedEncID, 712, 13);
 
                 // award diablos GF for beating whoever is in the lamp to avoid softlock
-                if (encID == 811) FixDiablos(battleSource, newEncFile, matchedEncID);
+                if (encID == 811) MoveGF(battleSource, newEncFile, 66, matchedEncID, 811, 5);
 
                 // force the sorceresses to fight in their normal scene to avoid crash
                 if (matchedEncID == 813) FixSorceresses(cleanEncFile, newEncFile, encID);
@@ -203,18 +203,31 @@ namespace Sleepey.Maelstrom
             }
         }
 
-        private static void MoveGF(FileSource battleSource, EncounterFile newEncFile, int sourceMonsterID, int targetMonsterID, short gfID)
+        private static void MoveGF(FileSource battleSource, EncounterFile newEncFile, int sourceMonsterID, int origEncounterID, int targetEncounterID, short gfID)
         {
+            var bossSlot = Bosses.Find(b => b.EncounterID == origEncounterID).SlotRanks[0];
+            var targetMonsterID = newEncFile.Encounters[targetEncounterID].Slots[bossSlot].MonsterID;
+
             if (sourceMonsterID == targetMonsterID) return;
 
-            // remove GF unlock from source
+            // remove GF unlock from source (replace with another 2-byte op to avoid breaking jumps)
             var source = Monster.ByID(battleSource, sourceMonsterID);
-            source.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["award-gf"] && i.Args.Count > 0 && i.Args[0] == gfID);
+            var sourceDeath = source.AI.Scripts.Death;
+            for (int i = 0; i < sourceDeath.Count; i++)
+            {
+                if (sourceDeath[i].Op == BattleScriptInstruction.OpCodesReverse["award-gf"])
+                {
+                    sourceDeath[i] = new BattleScriptInstruction("wait-all", 0x00);
+                }
+            }
 
             // add GF unlock to target
             var target = Monster.ByID(battleSource, targetMonsterID);
             target.AI.Scripts.Init.InsertRange(0, new List<BattleScriptInstruction>
             {
+                // if boss encounter
+                new BattleScriptInstruction("if", 0x03, 0x00, 0x00, (short)targetEncounterID, 0x13),
+
                 // if shared-var-4 == 0
                 new BattleScriptInstruction("if", 0x64, 0xc8, 0x00, 0x00, 0x08),
 
@@ -226,26 +239,13 @@ namespace Sleepey.Maelstrom
 
                 // end if
                 new BattleScriptInstruction("jmp", 0x00),
+
+                // end if
+                new BattleScriptInstruction("jmp", 0x00)
             });
 
             battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
             battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
-        }
-
-        private static void FixJumboCactuar(FileSource battleSource, EncounterFile newEncFile, int origEncID)
-        {
-            // find main boss monster of the encounter replacing jumbo cactuar
-            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
-            var monsterID = newEncFile.Encounters[712].Slots[bossSlot].MonsterID;
-            MoveGF(battleSource, newEncFile, 84, monsterID, 13);
-        }
-
-        private static void FixDiablos(FileSource battleSource, EncounterFile newEncFile, int origEncID)
-        {
-            // find main boss monster of the encounter replacing diablos
-            var bossSlot = Bosses.Find(b => b.EncounterID == origEncID).SlotRanks[0];
-            var monsterID = newEncFile.Encounters[811].Slots[bossSlot].MonsterID;
-            MoveGF(battleSource, newEncFile, 66, monsterID, 5);
         }
 
         private static void FixSorceresses(EncounterFile cleanEncFile, EncounterFile newEncFile, int encID)
