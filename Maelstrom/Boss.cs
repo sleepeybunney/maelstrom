@@ -86,47 +86,37 @@ namespace Sleepey.Maelstrom
             var random = new Random(seed + 2);
             var encounterIDs = Encounters.Keys.ToList();
             var encounterMap = new Dictionary<int, int>();
+            var availableReplacements = Encounters.Keys.ToList();
+            int replacementID;
 
-            if (settings.BossRandom)
+            // only match tonberry king with other solo bosses
+            var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && availableReplacements.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
+            replacementID = singlesOnly[random.Next(singlesOnly.Count)];
+
+            if (!settings.BossRandom) availableReplacements.Remove(replacementID);
+            encounterIDs.Remove(236);
+            encounterMap.Add(236, replacementID);
+            encounterMap.Add(237, replacementID);
+            encounterMap.Add(238, replacementID);
+
+            foreach (var encID in encounterIDs)
             {
-                foreach (var encID in encounterIDs)
+                replacementID = availableReplacements[random.Next(availableReplacements.Count)];
+                if (!settings.BossRandom) availableReplacements.Remove(replacementID);
+                encounterMap.Add(encID, replacementID);
+
+                // copy propagators to their twins
+                if (encID == 814) encounterMap.Add(817, replacementID);
+                if (encID == 816) encounterMap.Add(819, replacementID);
+
+                // copy x-atm092 all over dollet
+                if (encID == 28)
                 {
-                    encounterMap.Add(encID, encounterIDs[random.Next(encounterIDs.Count)]);
-                }
-            }
-            else
-            {
-                var unmatchedIDs = Encounters.Keys.ToList();
-                int matchedID;
-
-                // only match tonberry king with other solo bosses
-                var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && unmatchedIDs.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
-                matchedID = singlesOnly[random.Next(singlesOnly.Count)];
-                unmatchedIDs.Remove(matchedID);
-                encounterIDs.Remove(236);
-                encounterMap.Add(236, matchedID);
-                encounterMap.Add(237, matchedID);
-                encounterMap.Add(238, matchedID);
-
-                foreach (var encID in encounterIDs)
-                {
-                    matchedID = unmatchedIDs[random.Next(unmatchedIDs.Count)];
-                    unmatchedIDs.Remove(matchedID);
-                    encounterMap.Add(encID, matchedID);
-
-                    // copy propagators to their twins
-                    if (encID == 814) encounterMap.Add(817, matchedID);
-                    if (encID == 816) encounterMap.Add(819, matchedID);
-
-                    // copy x-atm092 all over dollet
-                    if (encID == 28)
-                    {
-                        encounterMap.Add(9, matchedID);
-                        encounterMap.Add(10, matchedID);
-                        encounterMap.Add(13, matchedID);
-                        encounterMap.Add(26, matchedID);
-                        encounterMap.Add(27, matchedID);
-                    }
+                    encounterMap.Add(9, replacementID);
+                    encounterMap.Add(10, replacementID);
+                    encounterMap.Add(13, replacementID);
+                    encounterMap.Add(26, replacementID);
+                    encounterMap.Add(27, replacementID);
                 }
             }
 
