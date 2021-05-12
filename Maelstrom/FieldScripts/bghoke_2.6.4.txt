@@ -59,8 +59,8 @@ fcolsub
 pshn_l 40
 wait
 mapfadeoff
-pshn_l 255
-popm_b 256
+pshn_l 3800
+popm_w 256
 pshm_b 643
 pshn_l 2
 cal 13
