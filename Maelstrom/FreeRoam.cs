@@ -33,6 +33,10 @@ namespace Sleepey.Maelstrom
             var seedFinal = string.Format(seedText, seedString.Substring(0, Math.Min(codenameLength, seedString.Length)));
             SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} " + seedFinal);
 
+            // open garden gate
+            ImportScript(fieldSource, "bggate_6", 3, 7);
+            ImportScript(fieldSource, "bggate_6", 4, 7);
+
             // tutorial at the front gate
             DeleteEntity(fieldSource, "bggate_1", 0);
 
