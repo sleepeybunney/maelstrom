@@ -327,7 +327,7 @@ namespace Sleepey.Maelstrom
                         }
                     }
 
-                    if ((!Globals.Remastered && settings.DrawPointEnable) || settings.LootDraws)
+                    if ((!Globals.Remastered && settings.DrawPointEnable) || settings.LootDraws || settings.EmergencySpell)
                     {
                         MagicSortFix.Apply(menuSource);
                     }
