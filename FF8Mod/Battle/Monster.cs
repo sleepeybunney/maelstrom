@@ -8,11 +8,14 @@ namespace Sleepey.FF8Mod.Battle
 {
     public class Monster
     {
+        public MonsterAnimationData Animation { get; set; }
         public MonsterInfo Info { get; set; }
         public MonsterAI AI { get; set; }
 
         // save other sections as raw data to slot back in when rebuilding the file
-        public IEnumerable<byte> SectionsOneToSix { get; set; }
+        public IEnumerable<byte> SectionOne { get; set; }
+        public IEnumerable<byte> SectionTwo { get; set; }
+        public IEnumerable<byte> SectionsFourToSix { get; set; }
         public IEnumerable<byte> SectionsNineToEleven { get; set; }
         public Dictionary<MonsterSectionIndex, MonsterSection> SectionInfo { get; set; }
 
@@ -52,14 +55,17 @@ namespace Sleepey.FF8Mod.Battle
                 throw new InvalidDataException("Invalid monster file (or you're trying to open Ultimecia's butt which is a special case I don't handle yet)");
             }
 
-            // 1-6
-            var oneToSixLength = sections.Values.Where(s => (int)s.Type < 7).Sum(s => s.Length);
-            monster.SectionsOneToSix = data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(oneToSixLength);
+            // 1-3
+            monster.SectionOne = data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(sections[MonsterSectionIndex.Skeleton].Length);
+            monster.SectionTwo = data.Skip(sections[MonsterSectionIndex.Mesh].Offset).Take(sections[MonsterSectionIndex.Mesh].Length);
+            monster.Animation = new MonsterAnimationData(data.Skip(sections[MonsterSectionIndex.Animation].Offset).Take(sections[MonsterSectionIndex.Animation].Length));
 
-            // 7
+            // 4-6
+            var fourToSixLength = sections[MonsterSectionIndex.Info].Offset - sections[MonsterSectionIndex.Section4].Offset;
+            monster.SectionsFourToSix = data.Skip(sections[MonsterSectionIndex.Section4].Offset).Take(fourToSixLength);
+
+            // 7-8
             monster.Info = new MonsterInfo(data.Skip(sections[MonsterSectionIndex.Info].Offset).Take(sections[MonsterSectionIndex.Info].Length));
-
-            // 8
             monster.AI = new MonsterAI(data.Skip(sections[MonsterSectionIndex.AI].Offset).Take(sections[MonsterSectionIndex.AI].Length));
 
             // 9-11
@@ -109,13 +115,14 @@ namespace Sleepey.FF8Mod.Battle
 
         public IEnumerable<byte> Encode()
         {
+            var encodedAnim = Animation.Encode();
             var encodedInfo = Info.Encode();
             var encodedAI = AI.Encode();
 
             uint sectionCount = 11;
             uint sectionPosLength = sectionCount * 4;
             uint headerLength = 4 + sectionPosLength + 4;
-            uint totalLength = (uint)(headerLength + SectionsOneToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
+            uint totalLength = (uint)(headerLength + SectionOne.Count() + SectionTwo.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
 
             // the rebuilt info & AI sections may be a different size,
             // so everything after them in the file will be displaced by some number of bytes (+/-)
@@ -142,7 +149,10 @@ namespace Sleepey.FF8Mod.Battle
                 }
                 writer.Write(totalLength);
 
-                writer.Write(SectionsOneToSix);
+                writer.Write(SectionOne);
+                writer.Write(SectionTwo);
+                writer.Write(encodedAnim);
+                writer.Write(SectionsFourToSix);
                 writer.Write(encodedInfo);
                 writer.Write(encodedAI);
                 writer.Write(SectionsNineToEleven);

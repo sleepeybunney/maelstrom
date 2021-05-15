@@ -59,9 +59,9 @@ namespace Sleepey.FF8ModTest
             Assert.Equal(50, minotaur.Info.SpdAtLevel(90));
             Assert.Equal(8, minotaur.Info.EvaAtLevel(100));
 
-            Assert.Equal(2u, minotaur.Info.AbilitiesLow[0].AbilityId);
-            Assert.Equal(213u, minotaur.Info.AbilitiesMed[2].AbilityId);
-            Assert.Equal(220u, minotaur.Info.AbilitiesHigh[3].AbilityId);
+            Assert.Equal(2u, minotaur.Info.AbilitiesLow[0].AbilityID);
+            Assert.Equal(213u, minotaur.Info.AbilitiesMed[2].AbilityID);
+            Assert.Equal(220u, minotaur.Info.AbilitiesHigh[3].AbilityID);
 
             Assert.Equal(0x00, minotaur.AI.Scripts.Init[0].Op.Code);
             Assert.Equal(0x00, minotaur.AI.Scripts.PreCounter[0].Op.Code);
@@ -123,9 +123,9 @@ namespace Sleepey.FF8ModTest
             Assert.Equal(50, minotaur.Info.SpdAtLevel(90));
             Assert.Equal(8, minotaur.Info.EvaAtLevel(100));
 
-            Assert.Equal(2u, minotaur.Info.AbilitiesLow[0].AbilityId);
-            Assert.Equal(213u, minotaur.Info.AbilitiesMed[2].AbilityId);
-            Assert.Equal(220u, minotaur.Info.AbilitiesHigh[3].AbilityId);
+            Assert.Equal(2u, minotaur.Info.AbilitiesLow[0].AbilityID);
+            Assert.Equal(213u, minotaur.Info.AbilitiesMed[2].AbilityID);
+            Assert.Equal(220u, minotaur.Info.AbilitiesHigh[3].AbilityID);
 
             Assert.Equal(0x00, minotaur.AI.Scripts.Init[0].Op.Code);
             Assert.Equal(0x00, minotaur.AI.Scripts.PreCounter[0].Op.Code);

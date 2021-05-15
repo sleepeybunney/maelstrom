@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Text.Json;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
 using Sleepey.FF8Mod.Battle;
@@ -11,6 +12,8 @@ namespace Sleepey.Maelstrom
 {
     public static class LootShuffle
     {
+        public static List<MonsterMeta> Monsters = JsonSerializer.Deserialize<List<MonsterMeta>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Monsters.json")).ToList();
+
         public static List<MonsterInfo> Randomise(FileSource battleSource, int seed, State settings)
         {
             var dropRandom = new Random(seed + 5);
@@ -70,6 +73,43 @@ namespace Sleepey.Maelstrom
                         monster.Info.DrawLow = FourRandomSpells(drawRandom, drawPool, slots, gf);
                         monster.Info.DrawMed = FourRandomSpells(drawRandom, drawPool, slots, gf);
                         monster.Info.DrawHigh = FourRandomSpells(drawRandom, drawPool, slots, gf);
+
+                        var meta = Monsters.First(m => m.MonsterID == i);
+                        if (settings.LootDrawsUse && meta.SpellAnimationID > 0)
+                        {
+                            var lowCount = monster.Info.AbilitiesLow.Where(a => a.Type != AbilityType.None).Count();
+                            var medCount = monster.Info.AbilitiesMed.Where(a => a.Type != AbilityType.None).Count();
+                            var highCount = monster.Info.AbilitiesHigh.Where(a => a.Type != AbilityType.None).Count();
+                            var filledSlots = Math.Max(lowCount, Math.Max(medCount, highCount));
+                            var maxAbilities = 16;
+
+                            if (filledSlots > 0 && filledSlots < maxAbilities)
+                            {
+                                monster.Info.AbilitiesLow[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawLow[0]);
+                                monster.Info.AbilitiesMed[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawMed[0]);
+                                monster.Info.AbilitiesHigh[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawHigh[0]);
+
+                                var script = new List<BattleScriptInstruction>()
+                                {
+                                    // if rand(1/16)
+                                    new BattleScriptInstruction("if", 0x02, 0x02, 0x00, 0x00, 0x08),
+
+                                    // target random opponent
+                                    new BattleScriptInstruction("target", 0xc9),
+
+                                    // cast spell
+                                    new BattleScriptInstruction("use", 15),
+
+                                    // end turn
+                                    new BattleScriptInstruction("return"),
+
+                                    // end if
+                                    new BattleScriptInstruction("jmp", 0x00)
+                                };
+
+                                monster.AI.Scripts.Execute.InsertRange(0, script);
+                            }
+                        }
                     }
 
                     battleSource.ReplaceFile(Monster.GetPath(i), monster.Encode());

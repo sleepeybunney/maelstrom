@@ -215,6 +215,8 @@
                                 <local:OptionWithDescription Title="Allow Slot Spells" Description="Spells from Selphie's limit break: Wall, Full-cure, Rapture, The End." Checked="{Binding LootDrawsSlot, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Cut Spells" Description="Spells that were cut from the game: Percent, Catastrophe." Checked="{Binding LootDrawsCut, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Apocalypse" Description="" Checked="{Binding LootDrawsApoc, Mode=TwoWay}" />
+                                <Separator />
+                                <local:OptionWithDescription Title="Fair Play" Description="Enemies can use their randomized spells against you in battle." Checked="{Binding LootDrawsUse, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
                     </StackPanel>

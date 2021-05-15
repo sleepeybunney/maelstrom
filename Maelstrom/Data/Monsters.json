@@ -1,0 +1,597 @@
+[
+    {
+        "MonsterID": 0,
+        "MonsterName": "Dummy"
+    },
+    {
+        "MonsterID": 1,
+        "MonsterName": "GIM52A"
+    },
+    {
+        "MonsterID": 2,
+        "MonsterName": "Blobra"
+    },
+    {
+        "MonsterID": 3,
+        "MonsterName": "Thrustaevis"
+    },
+    {
+        "MonsterID": 4,
+        "MonsterName": "Geezard"
+    },
+    {
+        "MonsterID": 5,
+        "MonsterName": "Belhelmel"
+    },
+    {
+        "MonsterID": 6,
+        "MonsterName": "Glacial Eye"
+    },
+    {
+        "MonsterID": 7,
+        "MonsterName": "SAM08G",
+        "SpellAnimationID": 14
+    },
+    {
+        "MonsterID": 8,
+        "MonsterName": "GIM47N"
+    },
+    {
+        "MonsterID": 9,
+        "MonsterName": "Mesmerize"
+    },
+    {
+        "MonsterID": 10,
+        "MonsterName": "Buel"
+    },
+    {
+        "MonsterID": 11,
+        "MonsterName": "Sphinxaur"
+    },
+    {
+        "MonsterID": 12,
+        "MonsterName": "Sphinxara"
+    },
+    {
+        "MonsterID": 13,
+        "MonsterName": "Snow Lion"
+    },
+    {
+        "MonsterID": 14,
+        "MonsterName": "Anacondaur"
+    },
+    {
+        "MonsterID": 15,
+        "MonsterName": "Grat"
+    },
+    {
+        "MonsterID": 16,
+        "MonsterName": "Cockatrice"
+    },
+    {
+        "MonsterID": 17,
+        "MonsterName": "Caterchipillar"
+    },
+    {
+        "MonsterID": 18,
+        "MonsterName": "Red Bat",
+        "SpellAnimationID": 14
+    },
+    {
+        "MonsterID": 19,
+        "MonsterName": "Blitz"
+    },
+    {
+        "MonsterID": 20,
+        "MonsterName": "Fastitocalon"
+    },
+    {
+        "MonsterID": 21,
+        "MonsterName": "Fastitocalon"
+    },
+    {
+        "MonsterID": 22,
+        "MonsterName": "Gesper"
+    },
+    {
+        "MonsterID": 23,
+        "MonsterName": "Creeps"
+    },
+    {
+        "MonsterID": 24,
+        "MonsterName": "Hexadragon"
+    },
+    {
+        "MonsterID": 25,
+        "MonsterName": "Blood Soul"
+    },
+    {
+        "MonsterID": 26,
+        "MonsterName": "Elastoid"
+    },
+    {
+        "MonsterID": 27,
+        "MonsterName": "Armadodo",
+        "SpellAnimationID": 14
+    },
+    {
+        "MonsterID": 28,
+        "MonsterName": "Bite Bug"
+    },
+    {
+        "MonsterID": 29,
+        "MonsterName": "Jelleye"
+    },
+    {
+        "MonsterID": 30,
+        "MonsterName": "Tri-Point"
+    },
+    {
+        "MonsterID": 31,
+        "MonsterName": "Turtapod"
+    },
+    {
+        "MonsterID": 32,
+        "MonsterName": "Wendigo",
+        "SpellAnimationID": 16
+    },
+    {
+        "MonsterID": 33,
+        "MonsterName": "Gayla"
+    },
+    {
+        "MonsterID": 34,
+        "MonsterName": "Gerogero"
+    },
+    {
+        "MonsterID": 35,
+        "MonsterName": "Death Claw"
+    },
+    {
+        "MonsterID": 36,
+        "MonsterName": "Tri-Face",
+        "SpellAnimationID": 14
+    },
+    {
+        "MonsterID": 37,
+        "MonsterName": "Grand Mantis"
+    },
+    {
+        "MonsterID": 38,
+        "MonsterName": "Krysta"
+    },
+    {
+        "MonsterID": 39,
+        "MonsterName": "Lefty"
+    },
+    {
+        "MonsterID": 40,
+        "MonsterName": "Righty",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 41,
+        "MonsterName": "Blue Dragon"
+    },
+    {
+        "MonsterID": 42,
+        "MonsterName": "Forbidden"
+    },
+    {
+        "MonsterID": 43,
+        "MonsterName": "Bomb"
+    },
+    {
+        "MonsterID": 44,
+        "MonsterName": "Abyss Worm"
+    },
+    {
+        "MonsterID": 45,
+        "MonsterName": "Ochu"
+    },
+    {
+        "MonsterID": 46,
+        "MonsterName": "Adamantoise"
+    },
+    {
+        "MonsterID": 47,
+        "MonsterName": "Chimera"
+    },
+    {
+        "MonsterID": 48,
+        "MonsterName": "Malboro"
+    },
+    {
+        "MonsterID": 49,
+        "MonsterName": "Iron Giant"
+    },
+    {
+        "MonsterID": 50,
+        "MonsterName": "Behemoth"
+    },
+    {
+        "MonsterID": 51,
+        "MonsterName": "T-Rexaur"
+    },
+    {
+        "MonsterID": 52,
+        "MonsterName": "Ruby Dragon"
+    },
+    {
+        "MonsterID": 53,
+        "MonsterName": "Grendel"
+    },
+    {
+        "MonsterID": 54,
+        "MonsterName": "Vysage"
+    },
+    {
+        "MonsterID": 55,
+        "MonsterName": "Cactuar"
+    },
+    {
+        "MonsterID": 56,
+        "MonsterName": "Tonberry"
+    },
+    {
+        "MonsterID": 57,
+        "MonsterName": "Torama"
+    },
+    {
+        "MonsterID": 58,
+        "MonsterName": "Funguar"
+    },
+    {
+        "MonsterID": 59,
+        "MonsterName": "Imp"
+    },
+    {
+        "MonsterID": 60,
+        "MonsterName": "PuPu"
+    },
+    {
+        "MonsterID": 61,
+        "MonsterName": "Ifrit"
+    },
+    {
+        "MonsterID": 62,
+        "MonsterName": "Minotaur"
+    },
+    {
+        "MonsterID": 63,
+        "MonsterName": "Sacred"
+    },
+    {
+        "MonsterID": 64,
+        "MonsterName": "Base Leader"
+    },
+    {
+        "MonsterID": 65,
+        "MonsterName": "Cerberus"
+    },
+    {
+        "MonsterID": 66,
+        "MonsterName": "Diablos"
+    },
+    {
+        "MonsterID": 67,
+        "MonsterName": "Bahamut"
+    },
+    {
+        "MonsterID": 68,
+        "MonsterName": "NORG Pod"
+    },
+    {
+        "MonsterID": 69,
+        "MonsterName": "Garden Faculty",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 70,
+        "MonsterName": "Odin",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 71,
+        "MonsterName": "G-Soldier"
+    },
+    {
+        "MonsterID": 72,
+        "MonsterName": "Elite Soldier"
+    },
+    {
+        "MonsterID": 73,
+        "MonsterName": "Wedge"
+    },
+    {
+        "MonsterID": 74,
+        "MonsterName": "Biggs"
+    },
+    {
+        "MonsterID": 75,
+        "MonsterName": "Fake President"
+    },
+    {
+        "MonsterID": 76,
+        "MonsterName": "Guard"
+    },
+    {
+        "MonsterID": 77,
+        "MonsterName": "NORG"
+    },
+    {
+        "MonsterID": 78,
+        "MonsterName": "Esthar Soldier"
+    },
+    {
+        "MonsterID": 79,
+        "MonsterName": "Esthar Soldier"
+    },
+    {
+        "MonsterID": 80,
+        "MonsterName": "Right Orb"
+    },
+    {
+        "MonsterID": 81,
+        "MonsterName": "Left Orb"
+    },
+    {
+        "MonsterID": 82,
+        "MonsterName": "Gunblade",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 83,
+        "MonsterName": "Tonberry King"
+    },
+    {
+        "MonsterID": 84,
+        "MonsterName": "Jumbo Cactuar"
+    },
+    {
+        "MonsterID": 85,
+        "MonsterName": "Seifer"
+    },
+    {
+        "MonsterID": 86,
+        "MonsterName": "Seifer"
+    },
+    {
+        "MonsterID": 87,
+        "MonsterName": "Seifer",
+        "SpellAnimationID": 45
+    },
+    {
+        "MonsterID": 88,
+        "MonsterName": "Edea"
+    },
+    {
+        "MonsterID": 89,
+        "MonsterName": "Propagator"
+    },
+    {
+        "MonsterID": 90,
+        "MonsterName": "Ultima Weapon"
+    },
+    {
+        "MonsterID": 91,
+        "MonsterName": "Elvoret"
+    },
+    {
+        "MonsterID": 92,
+        "MonsterName": "X-ATM092"
+    },
+    {
+        "MonsterID": 93,
+        "MonsterName": "Iguion"
+    },
+    {
+        "MonsterID": 94,
+        "MonsterName": "Gargantua"
+    },
+    {
+        "MonsterID": 95,
+        "MonsterName": "Granaldo"
+    },
+    {
+        "MonsterID": 96,
+        "MonsterName": "Raldo"
+    },
+    {
+        "MonsterID": 97,
+        "MonsterName": "Propagator"
+    },
+    {
+        "MonsterID": 98,
+        "MonsterName": "Propagator"
+    },
+    {
+        "MonsterID": 99,
+        "MonsterName": "Oilboyle"
+    },
+    {
+        "MonsterID": 100,
+        "MonsterName": "Edea"
+    },
+    {
+        "MonsterID": 101,
+        "MonsterName": "BGH251F2"
+    },
+    {
+        "MonsterID": 102,
+        "MonsterName": "BGH251F2"
+    },
+    {
+        "MonsterID": 103,
+        "MonsterName": "Abadon"
+    },
+    {
+        "MonsterID": 104,
+        "MonsterName": "Abadon",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 105,
+        "MonsterName": "Mobile Type 8"
+    },
+    {
+        "MonsterID": 106,
+        "MonsterName": "Left Probe"
+    },
+    {
+        "MonsterID": 107,
+        "MonsterName": "Right Probe"
+    },
+    {
+        "MonsterID": 108,
+        "MonsterName": "Paratrooper"
+    },
+    {
+        "MonsterID": 109,
+        "MonsterName": "Trauma"
+    },
+    {
+        "MonsterID": 110,
+        "MonsterName": "Droma"
+    },
+    {
+        "MonsterID": 111,
+        "MonsterName": "Propagator"
+    },
+    {
+        "MonsterID": 112,
+        "MonsterName": "Adel"
+    },
+    {
+        "MonsterID": 113,
+        "MonsterName": "{03}*",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 114,
+        "MonsterName": "Omega Weapon"
+    },
+    {
+        "MonsterID": 115,
+        "MonsterName": "\u201CSorceress\u201D"
+    },
+    {
+        "MonsterID": 116,
+        "MonsterName": "\u201CSorceress\u201D"
+    },
+    {
+        "MonsterID": 117,
+        "MonsterName": "\u201CSorceress\u201D"
+    },
+    {
+        "MonsterID": 118,
+        "MonsterName": "UFO?",
+        "SpellAnimationID": 12
+    },
+    {
+        "MonsterID": 119,
+        "MonsterName": "Fujin"
+    },
+    {
+        "MonsterID": 120,
+        "MonsterName": "Raijin"
+    },
+    {
+        "MonsterID": 121,
+        "MonsterName": "Ultimecia"
+    },
+    {
+        "MonsterID": 122,
+        "MonsterName": "{03}L"
+    },
+    {
+        "MonsterID": 123,
+        "MonsterName": " ",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 124,
+        "MonsterName": "Ultimecia"
+    },
+    {
+        "MonsterID": 125,
+        "MonsterName": "Helix"
+    },
+    {
+        "MonsterID": 126,
+        "MonsterName": "Ultimecia"
+    },
+    {
+        "MonsterID": 127,
+        "MonsterName": "Ultimecia",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 128,
+        "MonsterName": "Seifer"
+    },
+    {
+        "MonsterID": 129,
+        "MonsterName": "Slapper"
+    },
+    {
+        "MonsterID": 130,
+        "MonsterName": "Red Giant"
+    },
+    {
+        "MonsterID": 131,
+        "MonsterName": "Elnoyle"
+    },
+    {
+        "MonsterID": 132,
+        "MonsterName": "Tiamat"
+    },
+    {
+        "MonsterID": 133,
+        "MonsterName": "Catoblepas"
+    },
+    {
+        "MonsterID": 134,
+        "MonsterName": "Wedge"
+    },
+    {
+        "MonsterID": 135,
+        "MonsterName": "Biggs"
+    },
+    {
+        "MonsterID": 136,
+        "MonsterName": "Fujin"
+    },
+    {
+        "MonsterID": 137,
+        "MonsterName": "Raijin"
+    },
+    {
+        "MonsterID": 138,
+        "MonsterName": "UFO?",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 139,
+        "MonsterName": "UFO?",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 140,
+        "MonsterName": "UFO?",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 141,
+        "MonsterName": "UFO?",
+        "SpellAnimationID": 0
+    },
+    {
+        "MonsterID": 142,
+        "MonsterName": "Gunblade"
+    },
+    {
+        "MonsterID": 143,
+        "MonsterName": "Base Soldier"
+    }
+]

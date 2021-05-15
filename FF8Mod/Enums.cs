@@ -41,4 +41,11 @@ namespace Sleepey.FF8Mod
         Background,
         Other
     }
+    public enum AbilityType
+    {
+        None = 0,
+        Magic = 2,
+        Item = 4,
+        Unique = 8
+    }
 }
