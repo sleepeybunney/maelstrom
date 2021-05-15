@@ -1,0 +1,23 @@
+﻿pshn_l 1
+pshn_l 64
+req 6
+pshn_l 1
+pshn_l 71
+req 7
+ucoff
+pshn_l 1
+popm_b 1025
+idunlock 224
+idunlock 222
+pshn_l 1
+pshn_l 8
+preq 2
+pshn_l 1
+pshn_l 9
+preq 1
+pshn_l 1
+pshn_l 7
+preqew 0
+idlock 224
+idlock 222
+ucon

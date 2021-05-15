@@ -75,13 +75,9 @@ namespace Sleepey.Maelstrom
             ImportScript(fieldSource, "bchtl_1", 0, 5);
             ImportScript(fieldSource, "bchtl_1", 3, 0);
 
-            // timber gate guards
-            DeleteEntity(fieldSource, "tigate1", 0);            // lines
-            DeleteEntity(fieldSource, "tigate1", 1);
-            DeleteEntity(fieldSource, "tigate1", 2);
-            DeleteScript(fieldSource, "tigate1", 19, 1);        // exit lock
-            DeleteEntity(fieldSource, "tigate1", 17);           // g-soldiers
-            DeleteEntity(fieldSource, "tigate1", 18);
+            // deling city station escalators
+            ImportScript(fieldSource, "glsta1", 0, 7);
+            ImportScript(fieldSource, "glsta1", 1, 7);
         }
 
         public static void Remove()
