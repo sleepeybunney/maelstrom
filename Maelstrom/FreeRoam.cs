@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Field;
 using Sleepey.FF8Mod.Archive;
@@ -32,6 +34,10 @@ namespace Sleepey.Maelstrom
             if (!long.TryParse(seedString, out _)) seedText = "Codename: '{0}`...";
             var seedFinal = string.Format(seedText, seedString.Substring(0, Math.Min(codenameLength, seedString.Length)));
             SetText(fieldSource, "bghoke_2", 17, "Quistis{02}“Another random SeeD?{02} " + seedFinal);
+
+            // activate garden directory
+            CopyEntity(fieldSource, "bghall_1", 0, "bghall1b", 0);
+            ImportScript(fieldSource, "bghall_7", 1, 1);
 
             // open garden gate
             ImportScript(fieldSource, "bggate_6", 3, 7);
@@ -105,6 +111,36 @@ namespace Sleepey.Maelstrom
             var field = FieldScript.FromSource(fieldSource, fieldName);
             field.ReplaceScript(entity, script, "");
             field.SaveToSource(fieldSource, fieldName);
+        }
+
+        // overwrite an entity on one field with a copy of an entity from another
+        public static void CopyEntity(FileSource fieldSource, string srcFieldName, int srcEntity, string destFieldName, int destEntity)
+        {
+            var srcField = FieldScript.FromSource(fieldSource, srcFieldName);
+            var destField = FieldScript.FromSource(fieldSource, destFieldName);
+
+            for (int i = 0; i < destField.Entities[destEntity].Scripts.Count; i++)
+            {
+                if (i < srcField.Entities[srcEntity].Scripts.Count)
+                {
+                    var src = srcField.Entities[srcEntity].Scripts[i].Instructions;
+                    var dest = destField.Entities[destEntity].Scripts[i].Instructions;
+                    src[0] = dest[0];
+                    src[src.Count - 1] = dest[dest.Count - 1];
+                    destField.Entities[destEntity].Scripts[i].Instructions = src;
+                }
+                else
+                {
+                    destField.Entities[destEntity].Scripts[i].Instructions = new List<FieldScriptInstruction>()
+                    {
+                        destField.Entities[destEntity].Scripts[i].Instructions[0],
+                        destField.Entities[destEntity].Scripts[i].Instructions.Last()
+                    };
+                }
+            }
+
+            destField.Entities[destEntity].Type = srcField.Entities[srcEntity].Type;
+            destField.SaveToSource(fieldSource, destFieldName);
         }
 
         // remove an entity from the field by deleting its initialisation script
