@@ -98,7 +98,7 @@ namespace Sleepey.Maelstrom
                                 var script = new List<BattleScriptInstruction>()
                                 {
                                     // if rand(1/12)
-                                    new BattleScriptInstruction("if", 0x02, 0x0c, 0x00, 0x00, 0x25),
+                                    new BattleScriptInstruction("if", 0x02, 0x0c, 0x00, 0x00, 0x2d),
 
                                     // if level == low
                                     new BattleScriptInstruction("if", 0x0e, 0xc8, 0x00, 0x00, 0x05),
@@ -106,8 +106,8 @@ namespace Sleepey.Maelstrom
                                     // target for low spell
                                     new BattleScriptInstruction("target", (short)low.Target),
 
-                                    // else
-                                    new BattleScriptInstruction("jmp", 0x12),
+                                    // end if
+                                    new BattleScriptInstruction("jmp", 0x00),
 
                                     // if level == med
                                     new BattleScriptInstruction("if", 0x0e, 0xc8, 0x00, 0x01, 0x05),
@@ -115,8 +115,11 @@ namespace Sleepey.Maelstrom
                                     // target for med spell
                                     new BattleScriptInstruction("target", (short)med.Target),
 
-                                    // else
-                                    new BattleScriptInstruction("jmp", 0x05),
+                                    // end if
+                                    new BattleScriptInstruction("jmp", 0x00),
+
+                                    // if level == high
+                                    new BattleScriptInstruction("if", 0x0e, 0xc8, 0x00, 0x02, 0x05),
 
                                     // target for high spell
                                     new BattleScriptInstruction("target", (short)high.Target),
