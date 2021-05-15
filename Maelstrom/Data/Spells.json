@@ -61,51 +61,63 @@
     },
     {
         "SpellID": 16,
-        "SpellName": "Meteor"
+        "SpellName": "Meteor",
+        "Target": 208
     },
     {
         "SpellID": 17,
-        "SpellName": "Quake"
+        "SpellName": "Quake",
+        "Target": 204
     },
     {
         "SpellID": 18,
-        "SpellName": "Tornado"
+        "SpellName": "Tornado",
+        "Target": 204
     },
     {
         "SpellID": 19,
-        "SpellName": "Ultima"
+        "SpellName": "Ultima",
+        "Target": 204
     },
     {
         "SpellID": 20,
-        "SpellName": "Apocalypse"
+        "SpellName": "Apocalypse",
+        "Target": 204
     },
     {
         "SpellID": 21,
-        "SpellName": "Cure"
+        "SpellName": "Cure",
+        "Target": 202
     },
     {
         "SpellID": 22,
-        "SpellName": "Cura"
+        "SpellName": "Cura",
+        "Target": 202
     },
     {
         "SpellID": 23,
-        "SpellName": "Curaga"
+        "SpellName": "Curaga",
+        "Target": 202
     },
     {
         "SpellID": 24,
-        "SpellName": "Life"
+        "SpellName": "Life",
+        "Target": 202
     },
     {
         "SpellID": 25,
-        "SpellName": "Full-life"
+        "SpellName": "Full-life",
+        "Target": 202
     },
     {
         "SpellID": 26,
-        "SpellName": "Regen"
+        "SpellName": "Regen",
+        "Target": 202
     },
     {
         "SpellID": 27,
-        "SpellName": "Esuna"
+        "SpellName": "Esuna",
+        "Target": 202
     },
     {
         "SpellID": 28,
@@ -113,31 +125,38 @@
     },
     {
         "SpellID": 29,
-        "SpellName": "Protect"
+        "SpellName": "Protect",
+        "Target": 202
     },
     {
         "SpellID": 30,
-        "SpellName": "Shell"
+        "SpellName": "Shell",
+        "Target": 202
     },
     {
         "SpellID": 31,
-        "SpellName": "Reflect"
+        "SpellName": "Reflect",
+        "Target": 202
     },
     {
         "SpellID": 32,
-        "SpellName": "Aura"
+        "SpellName": "Aura",
+        "Target": 202
     },
     {
         "SpellID": 33,
-        "SpellName": "Double"
+        "SpellName": "Double",
+        "Target": 202
     },
     {
         "SpellID": 34,
-        "SpellName": "Triple"
+        "SpellName": "Triple",
+        "Target": 202
     },
     {
         "SpellID": 35,
-        "SpellName": "Haste"
+        "SpellName": "Haste",
+        "Target": 202
     },
     {
         "SpellID": 36,
@@ -185,7 +204,8 @@
     },
     {
         "SpellID": 47,
-        "SpellName": "Float"
+        "SpellName": "Float",
+        "Target": 202
     },
     {
         "SpellID": 48,
@@ -202,12 +222,14 @@
     {
         "SpellID": 51,
         "SpellName": "Full-cure",
-        "SlotExclusive": true
+        "SlotExclusive": true,
+        "Target": 205
     },
     {
         "SpellID": 52,
         "SpellName": "Wall",
-        "SlotExclusive": true
+        "SlotExclusive": true,
+        "Target": 205
     },
     {
         "SpellID": 53,
@@ -227,6 +249,7 @@
     {
         "SpellID": 56,
         "SpellName": "The End",
-        "SlotExclusive": true
+        "SlotExclusive": true,
+        "Target": 204
     }
 ]

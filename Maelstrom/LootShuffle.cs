@@ -7,12 +7,14 @@ using System.Text.Json;
 using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
 using Sleepey.FF8Mod.Battle;
+using Sleepey.FF8Mod.Exe;
 
 namespace Sleepey.Maelstrom
 {
     public static class LootShuffle
     {
         public static List<MonsterMeta> Monsters = JsonSerializer.Deserialize<List<MonsterMeta>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Monsters.json")).ToList();
+        public static List<Spell> Spells = JsonSerializer.Deserialize<List<Spell>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Spells.json")).ToList();
 
         public static List<MonsterInfo> Randomise(FileSource battleSource, int seed, State settings)
         {
@@ -85,17 +87,42 @@ namespace Sleepey.Maelstrom
 
                             if (filledSlots > 0 && filledSlots < maxAbilities)
                             {
-                                monster.Info.AbilitiesLow[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawLow[0]);
-                                monster.Info.AbilitiesMed[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawMed[0]);
-                                monster.Info.AbilitiesHigh[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, monster.Info.DrawHigh[0]);
+                                var low = Spells.First(s => s.SpellID == monster.Info.DrawLow[0]);
+                                var med = Spells.First(s => s.SpellID == monster.Info.DrawMed[0]);
+                                var high = Spells.First(s => s.SpellID == monster.Info.DrawHigh[0]);
+
+                                monster.Info.AbilitiesLow[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, (ushort)low.SpellID);
+                                monster.Info.AbilitiesMed[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, (ushort)med.SpellID);
+                                monster.Info.AbilitiesHigh[15] = new MonsterAbility(AbilityType.Magic, meta.SpellAnimationID, (ushort)high.SpellID);
 
                                 var script = new List<BattleScriptInstruction>()
                                 {
-                                    // if rand(1/16)
-                                    new BattleScriptInstruction("if", 0x02, 0x02, 0x00, 0x00, 0x08),
+                                    // if rand(1/12)
+                                    new BattleScriptInstruction("if", 0x02, 0x0c, 0x00, 0x00, 0x25),
 
-                                    // target random opponent
-                                    new BattleScriptInstruction("target", 0xc9),
+                                    // if level == low
+                                    new BattleScriptInstruction("if", 0x0e, 0xc8, 0x00, 0x00, 0x05),
+
+                                    // target for low spell
+                                    new BattleScriptInstruction("target", (short)low.Target),
+
+                                    // else
+                                    new BattleScriptInstruction("jmp", 0x12),
+
+                                    // if level == med
+                                    new BattleScriptInstruction("if", 0x0e, 0xc8, 0x00, 0x01, 0x05),
+
+                                    // target for med spell
+                                    new BattleScriptInstruction("target", (short)med.Target),
+
+                                    // else
+                                    new BattleScriptInstruction("jmp", 0x05),
+
+                                    // target for high spell
+                                    new BattleScriptInstruction("target", (short)high.Target),
+
+                                    // end if
+                                    new BattleScriptInstruction("jmp", 0x00),
 
                                     // cast spell
                                     new BattleScriptInstruction("use", 15),
