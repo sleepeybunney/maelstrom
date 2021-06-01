@@ -77,7 +77,7 @@ namespace Sleepey.Maelstrom
                         monster.Info.DrawHigh = FourRandomSpells(drawRandom, drawPool, slots, gf);
 
                         var meta = Monsters.First(m => m.MonsterID == i);
-                        if (settings.LootDrawsUse && meta.SpellAnimationID > 0)
+                        if (settings.LootDrawsUse && meta.SpellAnimationID > 0 && !(settings.LootDrawsAmount < 2 && gf > 0))
                         {
                             var lowCount = monster.Info.AbilitiesLow.Where(a => a.Type != AbilityType.None).Count();
                             var medCount = monster.Info.AbilitiesMed.Where(a => a.Type != AbilityType.None).Count();
