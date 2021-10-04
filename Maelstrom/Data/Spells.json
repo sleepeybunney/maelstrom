@@ -223,33 +223,39 @@
         "SpellID": 51,
         "SpellName": "Full-cure",
         "SlotExclusive": true,
-        "Target": 205
+        "Target": 205,
+        "DrawResist": 40
     },
     {
         "SpellID": 52,
         "SpellName": "Wall",
         "SlotExclusive": true,
-        "Target": 205
+        "Target": 205,
+        "DrawResist": 40
     },
     {
         "SpellID": 53,
         "SpellName": "Rapture",
-        "SlotExclusive": true
+        "SlotExclusive": true,
+        "DrawResist": 44
     },
     {
         "SpellID": 54,
         "SpellName": "Percent",
-        "CutContent": true
+        "CutContent": true,
+        "DrawResist": 44
     },
     {
         "SpellID": 55,
         "SpellName": "Catastrophe",
-        "CutContent": true
+        "CutContent": true,
+        "DrawResist": 46
     },
     {
         "SpellID": 56,
         "SpellName": "The End",
         "SlotExclusive": true,
-        "Target": 204
+        "Target": 204,
+        "DrawResist": 50
     }
 ]
