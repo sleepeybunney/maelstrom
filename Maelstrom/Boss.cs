@@ -171,6 +171,9 @@ namespace Sleepey.Maelstrom
                     }
                 }
 
+                // move tonberry king's death flag to allow the replacement boss to spawn
+                if (encID == 236) MoveTonberryFlag(battleSource, newEncFile, matchedEncID);
+
                 // award cactuar GF for beating jumbo's replacement to avoid despawning the cactus early
                 if (encID == 712) MoveGF(battleSource, newEncFile, 84, matchedEncID, 712, 13);
 
@@ -243,6 +246,31 @@ namespace Sleepey.Maelstrom
                 // end if
                 new BattleScriptInstruction("jmp", 0x00)
             });
+
+            battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
+            battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
+        }
+
+        private static void MoveTonberryFlag(FileSource battleSource, EncounterFile newEncFile, int targetEncounterID)
+        {
+            var sourceMonsterID = 83;
+            var targetMonsterID = newEncFile.Encounters[targetEncounterID].Slots[0].MonsterID;
+            if (sourceMonsterID == targetMonsterID) return;
+
+            // remove death flag from tonberry king (replace with another 3-byte op to avoid breaking jumps)
+            var source = Monster.ByID(battleSource, 83);
+            var sourceDeath = source.AI.Scripts.Death;
+            for (int i = 0; i < sourceDeath.Count; i++)
+            {
+                if (sourceDeath[i].Op == BattleScriptInstruction.OpCodesReverse["set-global"] && sourceDeath[i].Args[0] == 82)
+                {
+                    sourceDeath[i] = new BattleScriptInstruction("set", 222, 1);
+                }
+            }
+
+            // add death flag to replacement
+            var target = Monster.ByID(battleSource, targetMonsterID);
+            target.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("set-global", 82, 1));
 
             battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
             battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
