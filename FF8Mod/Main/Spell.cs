@@ -44,6 +44,7 @@ namespace Sleepey.FF8Mod.Main
         public BitArray StatusDefFlags { get; set; }
         public List<byte> Compatibility { get; set; }
         public ushort Unknown4 { get; set; }
+        public string Name { get; set; }
 
         public Spell(IEnumerable<byte> data)
         {

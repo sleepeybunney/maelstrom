@@ -374,7 +374,12 @@ namespace Sleepey.Maelstrom
                         EmergencySpell.Apply(mainSource);
                     }
 
-                    if (settings.GfAbilitiesEnable || settings.EmergencySpell)
+                    if (CutNameFix.ApplicableRegions.Contains(Globals.RegionCode))
+                    {
+                        CutNameFix.Apply(mainSource);
+                    }
+
+                    if (CutNameFix.ApplicableRegions.Contains(Globals.RegionCode) || settings.GfAbilitiesEnable || settings.EmergencySpell)
                     {
                         mainSource.Encode();
                     }

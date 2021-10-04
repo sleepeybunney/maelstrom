@@ -14,6 +14,9 @@ namespace Sleepey.FF8Mod.Main
         public IList<JunctionableGF> JunctionableGFs { get; set; } = new List<JunctionableGF>();
         public IList<Weapon> Weapons { get; set; } = new List<Weapon>();
         public IList<Ability> Abilities { get; set; } = new List<Ability>();
+        public IList<byte> MagicText { get; set; }
+        public IList<byte> JunctionableGFText { get; set; }
+        public IList<byte> EnemyAttackText { get; set; }
         public IList<byte> WeaponText { get; set; }
 
         private readonly byte[] PostGFData, PostWeaponData, PostAbilityData, PostWeaponTextData;
@@ -49,7 +52,7 @@ namespace Sleepey.FF8Mod.Main
                     JunctionableGFs.Add(new JunctionableGF(reader.ReadBytes(132)));
                 }
 
-                // section 3
+                // section 3 = enemy attacks
                 PostGFData = reader.ReadBytes((int)(SectionOffsets[4] - stream.Position));
 
                 // section 4 = weapons
@@ -67,8 +70,18 @@ namespace Sleepey.FF8Mod.Main
                     Abilities.Add(new Ability(reader.ReadBytes(8)));
                 }
 
-                // sections 18-34
-                PostAbilityData = reader.ReadBytes((int)(SectionOffsets[35] - stream.Position));
+                // sections 18-31
+                PostAbilityData = reader.ReadBytes((int)(SectionOffsets[32] - stream.Position));
+
+                // section 32 = magic text
+                MagicText = reader.ReadBytes((int)(SectionOffsets[33] - stream.Position));
+                foreach (var m in MagicData) m.Name = FF8String.Decode(MagicText.Skip(m.NameOffset));
+
+                // section 33 = junctionable gf text
+                JunctionableGFText = reader.ReadBytes((int)(SectionOffsets[34] - stream.Position));
+
+                // section 34 = enemy attack text
+                EnemyAttackText = reader.ReadBytes((int)(SectionOffsets[35] - stream.Position));
 
                 // section 35 = weapon text
                 WeaponText = reader.ReadBytes((int)(SectionOffsets[36] - stream.Position));
@@ -94,6 +107,9 @@ namespace Sleepey.FF8Mod.Main
             result.AddRange(PostWeaponData);
             foreach (var a in Abilities) result.AddRange(a.Encode());
             result.AddRange(PostAbilityData);
+            result.AddRange(MagicText);
+            result.AddRange(JunctionableGFText);
+            result.AddRange(EnemyAttackText);
             result.AddRange(WeaponText);
             result.AddRange(PostWeaponTextData);
             return result;
