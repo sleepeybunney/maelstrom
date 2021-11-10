@@ -50,7 +50,7 @@ namespace Sleepey.Maelstrom
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
             var mes3bytes = file.Skip(NameFileOffsets[Globals.RegionCode]).Take(FileLength);
-            var mes3 = TextFile.FromBytes(mes3bytes, true);
+            var mes3 = TextFile.FromBytes(mes3bytes, false, true);
 
             // set names
             mes3.Pages[NamesPage].Strings[Squall] = settings.NameSquall;

@@ -9,30 +9,39 @@ namespace Sleepey.FF8Mod.Menu
     {
         public List<MenuTextPage> Pages { get; set; } = new List<MenuTextPage>();
         public int FixedLength { get; set; } = -1;
+        public bool SinglePage { get; set; } = false;
 
         public TextFile() { }
 
-        public static TextFile FromBytes(IEnumerable<byte> data, bool fixedLength)
+        public static TextFile FromBytes(IEnumerable<byte> data, bool singlePage, bool fixedLength)
         {
             var result = new TextFile();
 
             if (fixedLength) result.FixedLength = data.Count();
+            result.SinglePage = singlePage;
 
             using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 // enumerate pages
-                var pageCount = reader.ReadInt16();
-                for (var i = 0; i < pageCount; i++)
+                if (singlePage)
                 {
-                    result.Pages.Add(new MenuTextPage(reader.ReadInt16()));
+                    result.Pages.Add(new MenuTextPage(0));
+                }
+                else
+                {
+                    var pageCount = reader.ReadInt16();
+                    for (var i = 0; i < pageCount; i++)
+                    {
+                        result.Pages.Add(new MenuTextPage(reader.ReadInt16()));
+                    }
                 }
 
                 // read pages
                 foreach (var page in result.Pages)
                 {
                     // pages listed at location 0 aren't real
-                    if (page.Location == 0) continue;
+                    if (!singlePage && page.Location == 0) continue;
 
                     // enumerate string offsets
                     stream.Seek(page.Location, SeekOrigin.Begin);

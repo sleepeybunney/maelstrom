@@ -236,6 +236,9 @@
                                 <local:OptionWithDescription Title="Swap Sets" Description="Instead of randomizing each individual ability, GFs have their entire ability sets swapped around. This overrides the other options above." Checked="{Binding GfAbilitiesSwapSets, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Random Doomtrain Recipe" Checked="{Binding DoomtrainEnable, Mode=TwoWay}">
+                            <TextBlock>Three random items are required to activate the Solomon Ring. Hints are provided in-game.</TextBlock>
+                        </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

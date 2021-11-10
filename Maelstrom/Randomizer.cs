@@ -327,12 +327,21 @@ namespace Sleepey.Maelstrom
                         }
                     }
 
+                    // doomtrain
+                    if (settings.DoomtrainEnable)
+                    {
+                        var shuffle = Doomtrain.Randomise(seed);
+                        if (settings.SpoilerFile) spoilerFile.AddDoomtrain(shuffle);
+                        Doomtrain.Apply(menuSource, shuffle);
+                    }
+
+                    // magic sort fix
                     if ((!Globals.Remastered && settings.DrawPointEnable) || settings.LootDraws || settings.EmergencySpell)
                     {
                         MagicSortFix.Apply(menuSource);
                     }
 
-                    if ((settings.NameEnable && Globals.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered))
+                    if ((settings.NameEnable && Globals.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered) || settings.DoomtrainEnable)
                     {
                         menuSource.Encode();
                     }

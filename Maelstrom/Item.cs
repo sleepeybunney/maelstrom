@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Sleepey.Maelstrom
 {
-    class Item
+    public class Item
     {
         public static Dictionary<int, Item> Lookup = JsonSerializer.Deserialize<List<Item>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Items.json")).ToDictionary(i => i.ID);
 
@@ -16,5 +16,10 @@ namespace Sleepey.Maelstrom
         public bool Magazine { get; set; } = false;
         public bool SummonItem { get; set; } = false;
         public bool ChocoboWorld { get; set; } = false;
+        public bool Medicine { get; set; } = false;
+        public string MedicineName { get; set; } = string.Empty;
+        public bool MonsterItem { get; set; } = false;
+        public string MonsterName { get; set; } = string.Empty;
+        public bool FenceItem { get; set; } = false;
     }
 }

@@ -13,7 +13,7 @@ namespace Sleepey.Maelstrom
     class SpoilerFile
     {
         private readonly Section Title, Options;
-        private Section Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons;
+        private Section Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons, Doomtrain;
 
         public SpoilerFile()
         {
@@ -34,6 +34,7 @@ namespace Sleepey.Maelstrom
             Options.Bullet("Music", GeneralString(settings.MusicEnable));
             Options.Bullet("Abilities", GeneralString(settings.GfAbilitiesEnable));
             Options.Bullet("Weapons", GeneralString(settings.UpgradeEnable));
+            Options.Bullet("Doomtrain", GeneralString(settings.DoomtrainEnable));
         }
 
         public void AddBosses(Dictionary<int, int> encounterMap)
@@ -197,6 +198,17 @@ namespace Sleepey.Maelstrom
             }
         }
 
+        public void AddDoomtrain(List<Item> items)
+        {
+            Doomtrain = new Section();
+            Doomtrain.Heading("Doomtrain");
+
+            foreach (var i in items)
+            {
+                Doomtrain.Bullet(i.Name);
+            }
+        }
+
         private string ModeString(bool modeFlag)
         {
             return modeFlag ? "Free Roam" : "Normal Game";
@@ -298,6 +310,7 @@ namespace Sleepey.Maelstrom
                 if (Music != null) result.Add(Music);
                 if (Abilities != null) result.Add(Abilities);
                 if (Weapons != null) result.Add(Weapons);
+                if (Doomtrain != null) result.Add(Doomtrain);
                 return result;
             }
         }

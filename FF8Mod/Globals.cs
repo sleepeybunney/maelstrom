@@ -89,5 +89,9 @@ namespace Sleepey.FF8Mod
         public static string WeaponUpgradePath { get => Path.Combine(DataPath, @"menu\mwepon.bin"); }
 
         public static string EncounterFilePath { get => Path.Combine(DataPath, @"battle\scene.out"); }
+
+        public static string DoomtrainPath { get => Path.Combine(DataPath, @"menu\mthomas.bin"); }
+
+        public static string MngrpPath { get => Path.Combine(DataPath, @"menu\mngrp.bin"); }
     }
 }

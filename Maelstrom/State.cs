@@ -54,6 +54,9 @@ namespace Sleepey.Maelstrom
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;
 
+        // doomtrain
+        public bool DoomtrainEnable { get; set; } = false;
+
         // shops
         public bool ShopEnable { get; set; } = false;
         public bool ShopKeyItems { get; set; } = false;

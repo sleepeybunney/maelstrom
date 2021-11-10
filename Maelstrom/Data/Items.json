@@ -1,27 +1,39 @@
 [
     {
         "ID": 1,
-        "Name": "Potion"
+        "Name": "Potion",
+        "Medicine": true,
+        "MedicineName": "Minor HP Recovery"
     },
     {
         "ID": 2,
-        "Name": "Potion+"
+        "Name": "Potion+",
+        "Medicine": true,
+        "MedicineName": "Refined Minor HP Recovery"
     },
     {
         "ID": 3,
-        "Name": "Hi Potion"
+        "Name": "Hi Potion",
+        "Medicine": true,
+        "MedicineName": "Major HP Recovery"
     },
     {
         "ID": 4,
-        "Name": "Hi Potion+"
+        "Name": "Hi Potion+",
+        "Medicine": true,
+        "MedicineName": "Refined Major HP Recovery"
     },
     {
         "ID": 5,
-        "Name": "X Potion"
+        "Name": "X Potion",
+        "Medicine": true,
+        "MedicineName": "HP Full Recovery"
     },
     {
         "ID": 6,
-        "Name": "Mega Potion"
+        "Name": "Mega Potion",
+        "Medicine": true,
+        "MedicineName": "Group HP Recovery"
     },
     {
         "ID": 7,
@@ -33,39 +45,57 @@
     },
     {
         "ID": 9,
-        "Name": "Elixir"
+        "Name": "Elixir",
+        "Medicine": true,
+        "MedicineName": "HP/ST Recovery"
     },
     {
         "ID": 10,
-        "Name": "Megalixir"
+        "Name": "Megalixir",
+        "Medicine": true,
+        "MedicineName": "Group HP/ST Recovery"
     },
     {
         "ID": 11,
-        "Name": "Antidote"
+        "Name": "Antidote",
+        "Medicine": true,
+        "MedicineName": "Anti-Poison"
     },
     {
         "ID": 12,
-        "Name": "Soft"
+        "Name": "Soft",
+        "Medicine": true,
+        "MedicineName": "Anti-Petrification"
     },
     {
         "ID": 13,
-        "Name": "Eye Drops"
+        "Name": "Eye Drops",
+        "Medicine": true,
+        "MedicineName": "Anti-Darkness"
     },
     {
         "ID": 14,
-        "Name": "Echo Screen"
+        "Name": "Echo Screen",
+        "Medicine": true,
+        "MedicineName": "Anti-Silence"
     },
     {
         "ID": 15,
-        "Name": "Holy Water"
+        "Name": "Holy Water",
+        "Medicine": true,
+        "MedicineName": "Anti-Curse"
     },
     {
         "ID": 16,
-        "Name": "Remedy"
+        "Name": "Remedy",
+        "Medicine": true,
+        "MedicineName": "ST Recovery"
     },
     {
         "ID": 17,
-        "Name": "Remedy+"
+        "Name": "Remedy+",
+        "Medicine": true,
+        "MedicineName": "Refined ST Recovery"
     },
     {
         "ID": 18,
@@ -85,35 +115,43 @@
     },
     {
         "ID": 22,
-        "Name": "Shell stone"
+        "Name": "Shell Stone",
+        "FenceItem": true
     },
     {
         "ID": 23,
-        "Name": "Protect stone"
+        "Name": "Protect Stone",
+        "FenceItem": true
     },
     {
         "ID": 24,
-        "Name": "Aura stone"
+        "Name": "Aura Stone",
+        "FenceItem": true
     },
     {
         "ID": 25,
-        "Name": "Death stone"
+        "Name": "Death Stone",
+        "FenceItem": true
     },
     {
         "ID": 26,
-        "Name": "Holy stone"
+        "Name": "Holy Stone",
+        "FenceItem": true
     },
     {
         "ID": 27,
-        "Name": "Flare stone"
+        "Name": "Flare Stone",
+        "FenceItem": true
     },
     {
         "ID": 28,
-        "Name": "Meteor Stone"
+        "Name": "Meteor Stone",
+        "FenceItem": true
     },
     {
         "ID": 29,
-        "Name": "Ultima Stone"
+        "Name": "Ultima Stone",
+        "FenceItem": true
     },
     {
         "ID": 30,
@@ -142,15 +180,21 @@
     },
     {
         "ID": 36,
-        "Name": "G-Potion"
+        "Name": "G-Potion",
+        "Medicine": true,
+        "MedicineName": "Minor GF Recovery"
     },
     {
         "ID": 37,
-        "Name": "G-Hi-Potion"
+        "Name": "G-Hi-Potion",
+        "Medicine": true,
+        "MedicineName": "Major GF Recovery"
     },
     {
         "ID": 38,
-        "Name": "G-Mega-Potion"
+        "Name": "G-Mega-Potion",
+        "Medicine": true,
+        "MedicineName": "Group GF Recovery"
     },
     {
         "ID": 39,
@@ -263,15 +307,18 @@
     },
     {
         "ID": 66,
-        "Name": "Steel Pipe"
+        "Name": "Steel Pipe",
+        "FenceItem": true
     },
     {
         "ID": 67,
-        "Name": "Star Fragment"
+        "Name": "Star Fragment",
+        "FenceItem": true
     },
     {
         "ID": 68,
-        "Name": "Energy Crystal"
+        "Name": "Energy Crystal",
+        "FenceItem": true
     },
     {
         "ID": 69,
@@ -319,11 +366,13 @@
     },
     {
         "ID": 80,
-        "Name": "Turtle Shell"
+        "Name": "Turtle Shell",
+        "FenceItem": true
     },
     {
         "ID": 81,
-        "Name": "Orihalcon"
+        "Name": "Orihalcon",
+        "FenceItem": true
     },
     {
         "ID": 82,
@@ -355,7 +404,8 @@
     },
     {
         "ID": 89,
-        "Name": "Jet Engine"
+        "Name": "Jet Engine",
+        "FenceItem": true
     },
     {
         "ID": 90,
@@ -363,15 +413,18 @@
     },
     {
         "ID": 91,
-        "Name": "Moon Curtain"
+        "Name": "Moon Curtain",
+        "FenceItem": true
     },
     {
         "ID": 92,
-        "Name": "Steel Curtain"
+        "Name": "Steel Curtain",
+        "FenceItem": true
     },
     {
         "ID": 93,
-        "Name": "Glow Curtain"
+        "Name": "Glow Curtain",
+        "FenceItem": true
     },
     {
         "ID": 94,
@@ -436,19 +489,24 @@
     },
     {
         "ID": 109,
-        "Name": "M-Stone Piece"
+        "Name": "M-Stone Piece",
+        "FenceItem": true
     },
     {
         "ID": 110,
-        "Name": "Magic Stone"
+        "Name": "Magic Stone",
+        "FenceItem": true
     },
     {
         "ID": 111,
-        "Name": "Wizard Stone"
+        "Name": "Wizard Stone",
+        "FenceItem": true
     },
     {
         "ID": 112,
-        "Name": "Ochu Tentacle"
+        "Name": "Ochu Tentacle",
+        "MonsterItem": true,
+        "MonsterName": "Ochu"
     },
     {
         "ID": 113,
@@ -456,11 +514,15 @@
     },
     {
         "ID": 114,
-        "Name": "Cockatrice Pinion"
+        "Name": "Cockatrice Pinion",
+        "MonsterItem": true,
+        "MonsterName": "Cockatrice"
     },
     {
         "ID": 115,
-        "Name": "Zombie Powder"
+        "Name": "Zombie Powder",
+        "MonsterItem": true,
+        "MonsterName": "Zombie"
     },
     {
         "ID": 116,
@@ -468,31 +530,40 @@
     },
     {
         "ID": 117,
-        "Name": "Sharp Spike"
+        "Name": "Sharp Spike",
+        "FenceItem": true
     },
     {
         "ID": 118,
-        "Name": "Screw"
+        "Name": "Screw",
+        "FenceItem": true
     },
     {
         "ID": 119,
-        "Name": "Saw Blade"
+        "Name": "Saw Blade",
+        "FenceItem": true
     },
     {
         "ID": 120,
-        "Name": "Mesmerize Blade"
+        "Name": "Mesmerize Blade",
+        "MonsterItem": true,
+        "MonsterName": "Mesmerize"
     },
     {
         "ID": 121,
-        "Name": "Vampire Fang"
+        "Name": "Vampire Fang",
+        "MonsterItem": true,
+        "MonsterName": "Vampire"
     },
     {
         "ID": 122,
-        "Name": "Fury Fragment"
+        "Name": "Fury Fragment",
+        "FenceItem": true
     },
     {
         "ID": 123,
-        "Name": "Betrayal Sword"
+        "Name": "Betrayal Sword",
+        "FenceItem": true
     },
     {
         "ID": 124,
@@ -504,19 +575,24 @@
     },
     {
         "ID": 126,
-        "Name": "Dragon Fang"
+        "Name": "Dragon Fang",
+        "FenceItem": true
     },
     {
         "ID": 127,
-        "Name": "Spider Web"
+        "Name": "Spider Web",
+        "MonsterItem": true,
+        "MonsterName": "Caterchipillar"
     },
     {
         "ID": 128,
-        "Name": "Coral Fragment"
+        "Name": "Coral Fragment",
+        "FenceItem": true
     },
     {
         "ID": 129,
-        "Name": "Curse Spike"
+        "Name": "Curse Spike",
+        "FenceItem": true
     },
     {
         "ID": 130,
@@ -524,7 +600,8 @@
     },
     {
         "ID": 131,
-        "Name": "Water Crystal"
+        "Name": "Water Crystal",
+        "FenceItem": true
     },
     {
         "ID": 132,
@@ -540,11 +617,14 @@
     },
     {
         "ID": 135,
-        "Name": "Inferno Fang"
+        "Name": "Inferno Fang",
+        "FenceItem": true
     },
     {
         "ID": 136,
-        "Name": "Malboro Tentacle"
+        "Name": "Malboro Tentacle",
+        "MonsterItem": true,
+        "MonsterName": "Malboro"
     },
     {
         "ID": 137,
@@ -552,7 +632,8 @@
     },
     {
         "ID": 138,
-        "Name": "Laser Cannon"
+        "Name": "Laser Cannon",
+        "FenceItem": true
     },
     {
         "ID": 139,
@@ -560,7 +641,9 @@
     },
     {
         "ID": 140,
-        "Name": "Power Generator"
+        "Name": "Power Generator",
+        "MonsterItem": true,
+        "MonsterName": "Blitz"
     },
     {
         "ID": 141,
@@ -584,7 +667,8 @@
     },
     {
         "ID": 146,
-        "Name": "Dynamo Stone"
+        "Name": "Dynamo Stone",
+        "FenceItem": true
     },
     {
         "ID": 147,
@@ -592,23 +676,29 @@
     },
     {
         "ID": 148,
-        "Name": "Venom Fang"
+        "Name": "Venom Fang",
+        "FenceItem": true
     },
     {
         "ID": 149,
-        "Name": "Steel Orb"
+        "Name": "Steel Orb",
+        "FenceItem": true
     },
     {
         "ID": 150,
-        "Name": "Moon Stone"
+        "Name": "Moon Stone",
+        "FenceItem": true
     },
     {
         "ID": 151,
-        "Name": "Dino Bone"
+        "Name": "Dino Bone",
+        "MonsterItem": true,
+        "MonsterName": "T-Rexaur"
     },
     {
         "ID": 152,
-        "Name": "Windmill"
+        "Name": "Windmill",
+        "FenceItem": true
     },
     {
         "ID": 153,
@@ -616,7 +706,9 @@
     },
     {
         "ID": 154,
-        "Name": "Fish Skin"
+        "Name": "Fish Fin",
+        "MonsterItem": true,
+        "MonsterName": "Fastitocalon"
     },
     {
         "ID": 155,
@@ -636,11 +728,15 @@
     },
     {
         "ID": 159,
-        "Name": "Chef's Knife"
+        "Name": "Chef's Knife",
+        "MonsterItem": true,
+        "MonsterName": "Tonberry"
     },
     {
         "ID": 160,
-        "Name": "Cactus Thorn"
+        "Name": "Cactus Thorn",
+        "MonsterItem": true,
+        "MonsterName": "Cactuar"
     },
     {
         "ID": 161,
