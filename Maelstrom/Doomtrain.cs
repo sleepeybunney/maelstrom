@@ -40,7 +40,7 @@ namespace Sleepey.Maelstrom
             menuSource.ReplaceFile(Globals.DoomtrainPath, result);
 
             // load magazine text file
-            Dictionary<string, int> mngrpOffset = new Dictionary<string, int>()
+            var mngrpOffset = new Dictionary<string, int>()
             {
                 { "eng", 0x1a8000 },
                 { "fre", 0x1a8000 },
@@ -50,10 +50,18 @@ namespace Sleepey.Maelstrom
                 { "jp", 0x1a7800 }
             };
 
-            var mngrpLength = 0x3000;
+            var mngrpLength = new Dictionary<string, int>()
+            {
+                { "eng", 0x3000 },
+                { "fre", 0x3000 },
+                { "ita", 0x3800 },
+                { "ger", 0x3000 },
+                { "spa", 0x3800 },
+                { "jp", 0x2800 }
+            };
 
             var mngrp = menuSource.GetFile(Globals.MngrpPath);
-            var str00Bytes = mngrp.Skip(mngrpOffset[Globals.RegionCode]).Take(mngrpLength);
+            var str00Bytes = mngrp.Skip(mngrpOffset[Globals.RegionCode]).Take(mngrpLength[Globals.RegionCode]);
             var str00 = TextFile.FromBytes(str00Bytes, true, true);
 
             // update text for occult fan 1
@@ -98,8 +106,8 @@ namespace Sleepey.Maelstrom
             var newFile = mngrp.Take(mngrpOffset[Globals.RegionCode]).ToList();
             var newData = str00.Pages[0].Encode();
             newFile.AddRange(newData);
-            newFile.AddRange(new byte[mngrpLength - newData.Count()]);
-            newFile.AddRange(mngrp.Skip(mngrpOffset[Globals.RegionCode] + mngrpLength));
+            newFile.AddRange(new byte[mngrpLength[Globals.RegionCode] - newData.Count()]);
+            newFile.AddRange(mngrp.Skip(mngrpOffset[Globals.RegionCode] + mngrpLength[Globals.RegionCode]));
             menuSource.ReplaceFile(Globals.MngrpPath, newFile);
         }
     }
