@@ -87,7 +87,9 @@ namespace Sleepey.Maelstrom
             str00.Pages[0].Strings[medicineId] = medicineText;
 
             var newFile = mngrp.Take(mngrpOffset).ToList();
-            newFile.AddRange(str00.Pages[0].Encode());
+            var newData = str00.Pages[0].Encode();
+            newFile.AddRange(newData);
+            newFile.AddRange(new byte[mngrpLength - newData.Count()]);
             newFile.AddRange(mngrp.Skip(mngrpOffset + mngrpLength));
             menuSource.ReplaceFile(Globals.MngrpPath, newFile);
         }
