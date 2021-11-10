@@ -33,7 +33,7 @@ namespace Sleepey.FF8ModTest
             textFile.Pages[3].Strings.Add("Quezacotl");
 
             // run through the encoder & make sure everything is the same
-            textFile = TextFile.FromBytes(textFile.Encode(), false);
+            textFile = TextFile.FromBytes(textFile.Encode(), false, false);
             Assert.Equal(16, textFile.Pages.Count);
 
             // offsets per page
