@@ -95,7 +95,7 @@ namespace Sleepey.Maelstrom
             if (settings.OmegaWeapon == "normal") singlesOnly.Remove(462);
             replacementID = singlesOnly[random.Next(singlesOnly.Count)];
 
-            if (!settings.BossRandom) availableReplacements.Remove(replacementID);
+            availableReplacements.Remove(replacementID);
             encounterIDs.Remove(236);
             encounterMap.Add(236, replacementID);
             encounterMap.Add(237, replacementID);
