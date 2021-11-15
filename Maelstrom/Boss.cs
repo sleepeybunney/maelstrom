@@ -19,6 +19,7 @@ namespace Sleepey.Maelstrom
         public bool FixedField { get; set; }
         public List<int> SlotRanks { get; set; }
         public bool Disabled { get; set; } = false;
+        public int Disc { get; set; }
 
         public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();
@@ -91,6 +92,7 @@ namespace Sleepey.Maelstrom
 
             // only match tonberry king with other solo bosses
             var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && availableReplacements.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
+            if (settings.OmegaWeapon == "normal") singlesOnly.Remove(462);
             replacementID = singlesOnly[random.Next(singlesOnly.Count)];
 
             if (!settings.BossRandom) availableReplacements.Remove(replacementID);
@@ -101,7 +103,21 @@ namespace Sleepey.Maelstrom
 
             foreach (var encID in encounterIDs)
             {
-                replacementID = availableReplacements[random.Next(availableReplacements.Count)];
+                var tailoredReplacements = new List<int>(availableReplacements);
+
+                if (settings.OmegaWeapon == "normal")
+                {
+                    // only match omega weapon with itself
+                    if (encID == 462) tailoredReplacements = new List<int> { 462 };
+                    else tailoredReplacements.Remove(462);
+                }
+                else if (settings.OmegaWeapon == "afterdisc1")
+                {
+                    // don't replace bosses from disc 1 with omega weapon
+                    if (Encounters[encID].Disc == 1) tailoredReplacements.Remove(462);
+                }
+
+                replacementID = tailoredReplacements[random.Next(tailoredReplacements.Count)];
                 if (!settings.BossRandom) availableReplacements.Remove(replacementID);
                 encounterMap.Add(encID, replacementID);
 

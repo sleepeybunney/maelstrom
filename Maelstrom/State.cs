@@ -24,6 +24,7 @@ namespace Sleepey.Maelstrom
         // bosses
         public bool BossEnable { get; set; } = false;
         public bool BossRandom { get; set; } = false;
+        public string OmegaWeapon { get; set; } = "normal";
 
         // drops
         public bool LootDrops { get; set; } = false;

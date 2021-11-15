@@ -167,6 +167,13 @@
                                 <TextBlock>Wherever you would fight a boss, it is a random boss.</TextBlock>
                                 <Separator />
                                 <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
+                                <local:ComboBoxWithLabel Title="Omega Weapon" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding OmegaWeapon, Mode=TwoWay}">
+                                    <local:ComboBoxWithLabel.ComboBoxItems>
+                                        <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
+                                        <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
+                                        <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
+                                    </local:ComboBoxWithLabel.ComboBoxItems>
+                                </local:ComboBoxWithLabel>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">This does not affect the final boss (yet).</TextBlock>
                             </StackPanel>
@@ -195,22 +202,14 @@
                             <StackPanel>
                                 <TextBlock>Up to 4 random spells are available to draw from each enemy. Drawn GFs are unaffected.</TextBlock>
                                 <Separator />
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="48" />
-                                        <ColumnDefinition Width="160" />
-                                        <ColumnDefinition Width="48" />
-                                        <ColumnDefinition Width="80" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="1">Spells Per Enemy</Label>
-                                    <ComboBox Grid.Column="3" Margin="8 0" SelectedValuePath="Content" SelectedValue="{Binding LootDrawsAmount, Mode=TwoWay, Converter={StaticResource ComboBoxNumberConverter}}">
+                                <local:ComboBoxWithLabel Title="Spells Per Enemy" SelectedValue="{Binding LootDrawsAmount, Mode=TwoWay, Converter={StaticResource ComboBoxNumberConverter}}">
+                                    <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem>1</ComboBoxItem>
                                         <ComboBoxItem>2</ComboBoxItem>
                                         <ComboBoxItem>3</ComboBoxItem>
                                         <ComboBoxItem>4</ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
+                                    </local:ComboBoxWithLabel.ComboBoxItems>
+                                </local:ComboBoxWithLabel>
                                 <Separator />
                                 <local:OptionWithDescription Title="Allow Slot Spells" Description="Spells from Selphie's limit break: Wall, Full-cure, Rapture, The End." Checked="{Binding LootDrawsSlot, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Cut Spells" Description="Spells that were cut from the game: Percent, Catastrophe." Checked="{Binding LootDrawsCut, Mode=TwoWay}" />
