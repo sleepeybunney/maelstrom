@@ -14,5 +14,6 @@ namespace Sleepey.FF8Mod.Exe
         public bool CutContent { get; set; } = false;
         public SpellTarget Target { get; set; } = SpellTarget.EnemySingle;
         public int DrawResist { get; set; } = 0;
+        public int Animation { get; set; } = 0;
     }
 }

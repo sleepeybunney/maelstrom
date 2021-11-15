@@ -1,261 +1,263 @@
 [
-    {
-        "SpellID": 1,
-        "SpellName": "Fire"
-    },
-    {
-        "SpellID": 2,
-        "SpellName": "Fira"
-    },
-    {
-        "SpellID": 3,
-        "SpellName": "Firaga"
-    },
-    {
-        "SpellID": 4,
-        "SpellName": "Blizzard"
-    },
-    {
-        "SpellID": 5,
-        "SpellName": "Blizzara"
-    },
-    {
-        "SpellID": 6,
-        "SpellName": "Blizzaga"
-    },
-    {
-        "SpellID": 7,
-        "SpellName": "Thunder"
-    },
-    {
-        "SpellID": 8,
-        "SpellName": "Thundara"
-    },
-    {
-        "SpellID": 9,
-        "SpellName": "Thundaga"
-    },
-    {
-        "SpellID": 10,
-        "SpellName": "Water"
-    },
-    {
-        "SpellID": 11,
-        "SpellName": "Aero"
-    },
-    {
-        "SpellID": 12,
-        "SpellName": "Bio"
-    },
-    {
-        "SpellID": 13,
-        "SpellName": "Demi"
-    },
-    {
-        "SpellID": 14,
-        "SpellName": "Holy"
-    },
-    {
-        "SpellID": 15,
-        "SpellName": "Flare"
-    },
-    {
-        "SpellID": 16,
-        "SpellName": "Meteor",
-        "Target": 208
-    },
-    {
-        "SpellID": 17,
-        "SpellName": "Quake",
-        "Target": 204
-    },
-    {
-        "SpellID": 18,
-        "SpellName": "Tornado",
-        "Target": 204
-    },
-    {
-        "SpellID": 19,
-        "SpellName": "Ultima",
-        "Target": 204
-    },
-    {
-        "SpellID": 20,
-        "SpellName": "Apocalypse",
-        "Target": 204
-    },
-    {
-        "SpellID": 21,
-        "SpellName": "Cure",
-        "Target": 202
-    },
-    {
-        "SpellID": 22,
-        "SpellName": "Cura",
-        "Target": 202
-    },
-    {
-        "SpellID": 23,
-        "SpellName": "Curaga",
-        "Target": 202
-    },
-    {
-        "SpellID": 24,
-        "SpellName": "Life",
-        "Target": 202
-    },
-    {
-        "SpellID": 25,
-        "SpellName": "Full-life",
-        "Target": 202
-    },
-    {
-        "SpellID": 26,
-        "SpellName": "Regen",
-        "Target": 202
-    },
-    {
-        "SpellID": 27,
-        "SpellName": "Esuna",
-        "Target": 202
-    },
-    {
-        "SpellID": 28,
-        "SpellName": "Dispel"
-    },
-    {
-        "SpellID": 29,
-        "SpellName": "Protect",
-        "Target": 202
-    },
-    {
-        "SpellID": 30,
-        "SpellName": "Shell",
-        "Target": 202
-    },
-    {
-        "SpellID": 31,
-        "SpellName": "Reflect",
-        "Target": 202
-    },
-    {
-        "SpellID": 32,
-        "SpellName": "Aura",
-        "Target": 202
-    },
-    {
-        "SpellID": 33,
-        "SpellName": "Double",
-        "Target": 202
-    },
-    {
-        "SpellID": 34,
-        "SpellName": "Triple",
-        "Target": 202
-    },
-    {
-        "SpellID": 35,
-        "SpellName": "Haste",
-        "Target": 202
-    },
-    {
-        "SpellID": 36,
-        "SpellName": "Slow"
-    },
-    {
-        "SpellID": 37,
-        "SpellName": "Stop"
-    },
-    {
-        "SpellID": 38,
-        "SpellName": "Blind"
-    },
-    {
-        "SpellID": 39,
-        "SpellName": "Confuse"
-    },
-    {
-        "SpellID": 40,
-        "SpellName": "Sleep"
-    },
-    {
-        "SpellID": 41,
-        "SpellName": "Silence"
-    },
-    {
-        "SpellID": 42,
-        "SpellName": "Break"
-    },
-    {
-        "SpellID": 43,
-        "SpellName": "Death"
-    },
-    {
-        "SpellID": 44,
-        "SpellName": "Drain"
-    },
-    {
-        "SpellID": 45,
-        "SpellName": "Pain"
-    },
-    {
-        "SpellID": 46,
-        "SpellName": "Berserk"
-    },
-    {
-        "SpellID": 47,
-        "SpellName": "Float",
-        "Target": 202
-    },
-    {
-        "SpellID": 48,
-        "SpellName": "Zombie"
-    },
-    {
-        "SpellID": 49,
-        "SpellName": "Meltdown"
-    },
-    {
-        "SpellID": 50,
-        "SpellName": "Scan"
-    },
-    {
-        "SpellID": 51,
-        "SpellName": "Full-cure",
-        "SlotExclusive": true,
-        "Target": 205,
-        "DrawResist": 40
-    },
-    {
-        "SpellID": 52,
-        "SpellName": "Wall",
-        "SlotExclusive": true,
-        "Target": 205,
-        "DrawResist": 40
-    },
-    {
-        "SpellID": 53,
-        "SpellName": "Rapture",
-        "SlotExclusive": true,
-        "DrawResist": 44
-    },
-    {
-        "SpellID": 54,
-        "SpellName": "Percent",
-        "CutContent": true,
-        "DrawResist": 44
-    },
-    {
-        "SpellID": 55,
-        "SpellName": "Catastrophe",
-        "CutContent": true,
-        "DrawResist": 46
-    },
-    {
-        "SpellID": 56,
-        "SpellName": "The End",
-        "SlotExclusive": true,
-        "Target": 204,
-        "DrawResist": 50
-    }
+  {
+    "SpellID": 1,
+    "SpellName": "Fire"
+  },
+  {
+    "SpellID": 2,
+    "SpellName": "Fira"
+  },
+  {
+    "SpellID": 3,
+    "SpellName": "Firaga"
+  },
+  {
+    "SpellID": 4,
+    "SpellName": "Blizzard"
+  },
+  {
+    "SpellID": 5,
+    "SpellName": "Blizzara"
+  },
+  {
+    "SpellID": 6,
+    "SpellName": "Blizzaga"
+  },
+  {
+    "SpellID": 7,
+    "SpellName": "Thunder"
+  },
+  {
+    "SpellID": 8,
+    "SpellName": "Thundara"
+  },
+  {
+    "SpellID": 9,
+    "SpellName": "Thundaga"
+  },
+  {
+    "SpellID": 10,
+    "SpellName": "Water"
+  },
+  {
+    "SpellID": 11,
+    "SpellName": "Aero"
+  },
+  {
+    "SpellID": 12,
+    "SpellName": "Bio"
+  },
+  {
+    "SpellID": 13,
+    "SpellName": "Demi"
+  },
+  {
+    "SpellID": 14,
+    "SpellName": "Holy"
+  },
+  {
+    "SpellID": 15,
+    "SpellName": "Flare"
+  },
+  {
+    "SpellID": 16,
+    "SpellName": "Meteor",
+    "Target": 208
+  },
+  {
+    "SpellID": 17,
+    "SpellName": "Quake",
+    "Target": 204
+  },
+  {
+    "SpellID": 18,
+    "SpellName": "Tornado",
+    "Target": 204
+  },
+  {
+    "SpellID": 19,
+    "SpellName": "Ultima",
+    "Target": 204
+  },
+  {
+    "SpellID": 20,
+    "SpellName": "Apocalypse",
+    "Target": 204
+  },
+  {
+    "SpellID": 21,
+    "SpellName": "Cure",
+    "Target": 202
+  },
+  {
+    "SpellID": 22,
+    "SpellName": "Cura",
+    "Target": 202
+  },
+  {
+    "SpellID": 23,
+    "SpellName": "Curaga",
+    "Target": 202
+  },
+  {
+    "SpellID": 24,
+    "SpellName": "Life",
+    "Target": 202
+  },
+  {
+    "SpellID": 25,
+    "SpellName": "Full-life",
+    "Target": 202
+  },
+  {
+    "SpellID": 26,
+    "SpellName": "Regen",
+    "Target": 202
+  },
+  {
+    "SpellID": 27,
+    "SpellName": "Esuna",
+    "Target": 202
+  },
+  {
+    "SpellID": 28,
+    "SpellName": "Dispel"
+  },
+  {
+    "SpellID": 29,
+    "SpellName": "Protect",
+    "Target": 202
+  },
+  {
+    "SpellID": 30,
+    "SpellName": "Shell",
+    "Target": 202
+  },
+  {
+    "SpellID": 31,
+    "SpellName": "Reflect",
+    "Target": 202
+  },
+  {
+    "SpellID": 32,
+    "SpellName": "Aura",
+    "Target": 202
+  },
+  {
+    "SpellID": 33,
+    "SpellName": "Double",
+    "Target": 202
+  },
+  {
+    "SpellID": 34,
+    "SpellName": "Triple",
+    "Target": 202
+  },
+  {
+    "SpellID": 35,
+    "SpellName": "Haste",
+    "Target": 202
+  },
+  {
+    "SpellID": 36,
+    "SpellName": "Slow"
+  },
+  {
+    "SpellID": 37,
+    "SpellName": "Stop"
+  },
+  {
+    "SpellID": 38,
+    "SpellName": "Blind"
+  },
+  {
+    "SpellID": 39,
+    "SpellName": "Confuse"
+  },
+  {
+    "SpellID": 40,
+    "SpellName": "Sleep"
+  },
+  {
+    "SpellID": 41,
+    "SpellName": "Silence"
+  },
+  {
+    "SpellID": 42,
+    "SpellName": "Break"
+  },
+  {
+    "SpellID": 43,
+    "SpellName": "Death"
+  },
+  {
+    "SpellID": 44,
+    "SpellName": "Drain"
+  },
+  {
+    "SpellID": 45,
+    "SpellName": "Pain"
+  },
+  {
+    "SpellID": 46,
+    "SpellName": "Berserk"
+  },
+  {
+    "SpellID": 47,
+    "SpellName": "Float",
+    "Target": 202
+  },
+  {
+    "SpellID": 48,
+    "SpellName": "Zombie"
+  },
+  {
+    "SpellID": 49,
+    "SpellName": "Meltdown"
+  },
+  {
+    "SpellID": 50,
+    "SpellName": "Scan"
+  },
+  {
+    "SpellID": 51,
+    "SpellName": "Full-cure",
+    "SlotExclusive": true,
+    "Target": 205,
+    "DrawResist": 40
+  },
+  {
+    "SpellID": 52,
+    "SpellName": "Wall",
+    "SlotExclusive": true,
+    "Target": 205,
+    "DrawResist": 40
+  },
+  {
+    "SpellID": 53,
+    "SpellName": "Rapture",
+    "SlotExclusive": true,
+    "DrawResist": 44
+  },
+  {
+    "SpellID": 54,
+    "SpellName": "Percent",
+    "CutContent": true,
+    "DrawResist": 44,
+    "Animation": 214
+  },
+  {
+    "SpellID": 55,
+    "SpellName": "Catastrophe",
+    "CutContent": true,
+    "DrawResist": 46,
+    "Animation": 320
+  },
+  {
+    "SpellID": 56,
+    "SpellName": "The End",
+    "SlotExclusive": true,
+    "Target": 204,
+    "DrawResist": 50
+  }
 ]

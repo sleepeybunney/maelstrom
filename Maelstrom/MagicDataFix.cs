@@ -10,7 +10,7 @@ using Sleepey.FF8Mod.Main;
 
 namespace Sleepey.Maelstrom
 {
-    public static class DrawResistFix
+    public static class MagicDataFix
     {
         public static List<FF8Mod.Exe.Spell> Spells = JsonSerializer.Deserialize<List<FF8Mod.Exe.Spell>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Spells.json")).ToList();
 
@@ -21,6 +21,7 @@ namespace Sleepey.Maelstrom
             foreach (var s in Spells)
             {
                 if (s.DrawResist > 0) kernel.MagicData[s.SpellID].DrawResist = (byte)s.DrawResist;
+                if (s.Animation > 0) kernel.MagicData[s.SpellID].SpellID = (ushort)s.Animation;
             }
 
             mainSource.ReplaceFile(Globals.KernelPath, kernel.Encode());

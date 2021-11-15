@@ -388,7 +388,7 @@ namespace Sleepey.Maelstrom
                         CutNameFix.Apply(mainSource);
                     }
 
-                    DrawResistFix.Apply(mainSource);
+                    MagicDataFix.Apply(mainSource);
                     mainSource.Encode();
 
                     break;
