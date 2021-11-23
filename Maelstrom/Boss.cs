@@ -220,6 +220,119 @@ namespace Sleepey.Maelstrom
                         newInfo.Spr = sourceInfo.Vit.ToList();
                     }
 
+                    // norg
+                    if (matchedEncID == 63 && Encounters[encID].Disc == 1)
+                    {
+                        // weaken norg pod on disc 1
+                        var podInfo = Monster.ByID(battleSource, 68).Info;
+                        var newPodInfo = new MonsterInfo();
+                        newPodInfo.CopyStatsFrom(podInfo);
+
+                        // 800 hp
+                        newPodInfo.Hp[1] = 80;
+                        newPodInfo.Hp[3] = 0;
+
+                        // half(ish) vit & spr
+                        newPodInfo.Vit[2] /= 2;
+                        newPodInfo.Spr[2] /= 2;
+
+                        rebalancedStats[68] = newPodInfo;
+                    }
+
+                    // fujin & raijin (1st)
+                    if (matchedEncID == 84)
+                    {
+                        // copy raijin's new stats to fujin
+                        var newFujinInfo = new MonsterInfo();
+                        newFujinInfo.CopyStatsFrom(newInfo);
+
+                        // swap phys/mag
+                        newFujinInfo.Str = newInfo.Mag.ToList();
+                        newFujinInfo.Mag = newInfo.Str.ToList();
+                        newFujinInfo.Vit = newInfo.Spr.ToList();
+                        newFujinInfo.Spr = newInfo.Vit.ToList();
+
+                        rebalancedStats[119] = newFujinInfo;
+                    }
+
+                    // edea (2nd)
+                    if (matchedEncID == 120)
+                    {
+                        // copy edea's new stats to seifer
+                        var newSeiferInfo = new MonsterInfo();
+                        newSeiferInfo.CopyStatsFrom(newInfo);
+
+                        // copy mag to phys
+                        newSeiferInfo.Str = newInfo.Mag.ToList();
+                        newSeiferInfo.Vit = newInfo.Spr.ToList();
+
+                        // reduce hp
+                        if (newSeiferInfo.Hp[2] > 1) newSeiferInfo.Hp[2] /= 2;
+
+                        rebalancedStats[87] = newSeiferInfo;
+                    }
+
+                    // sacred & minotaur
+                    if (matchedEncID == 190)
+                    {
+                        // copy sacred's new stats to minotaur
+                        var newMinotaurInfo = new MonsterInfo();
+                        newMinotaurInfo.CopyStatsFrom(newInfo);
+
+                        // raise hp & attack stats
+                        if (newMinotaurInfo.Hp[0] < 80) newMinotaurInfo.Hp[0] = (byte)(newMinotaurInfo.Hp[0] * 1.2);
+                        if (newMinotaurInfo.Str[0] < 160) newMinotaurInfo.Str[0] = (byte)(newMinotaurInfo.Str[0] * 1.2);
+                        if (newMinotaurInfo.Mag[0] < 160) newMinotaurInfo.Mag[0] = (byte)(newMinotaurInfo.Mag[0] * 1.2);
+
+                        rebalancedStats[62] = newMinotaurInfo;
+                    }
+
+                    // sphinxara
+                    if (matchedEncID == 363)
+                    {
+                        // copy sphinxara's new stats to sphinxaur
+                        var newSphinxaurInfo = new MonsterInfo();
+                        newSphinxaurInfo.CopyStatsFrom(newInfo);
+                        rebalancedStats[11] = newSphinxaurInfo;
+                    }
+
+                    // fujin & raijin (2nd)
+                    if (matchedEncID == 810)
+                    {
+                        // copy raijin's new stats to fujin
+                        var newFujinInfo = new MonsterInfo();
+                        newFujinInfo.CopyStatsFrom(newInfo);
+
+                        // swap phys/mag
+                        newFujinInfo.Str = newInfo.Mag.ToList();
+                        newFujinInfo.Mag = newInfo.Str.ToList();
+                        newFujinInfo.Vit = newInfo.Spr.ToList();
+                        newFujinInfo.Spr = newInfo.Vit.ToList();
+
+                        rebalancedStats[136] = newFujinInfo;
+                    }
+
+                    // sorceresses
+                    if (matchedEncID == 813 && Encounters[encID].Disc == 1)
+                    {
+                        // weaken non-worm sorceresses on disc 1
+                        var sorc1Info = Monster.ByID(battleSource, 115).Info;
+                        var sorc2Info = Monster.ByID(battleSource, 116).Info;
+                        var newSorc1Info = new MonsterInfo();
+                        var newSorc2Info = new MonsterInfo();
+                        newSorc1Info.CopyStatsFrom(sorc1Info);
+                        newSorc2Info.CopyStatsFrom(sorc2Info);
+
+                        newSorc1Info.Hp[1] = 50;
+                        newSorc1Info.Hp[3] = 0;
+
+                        newSorc2Info.Hp[1] = 80;
+                        newSorc2Info.Hp[3] = 0;
+
+                        rebalancedStats[115] = newSorc1Info;
+                        rebalancedStats[116] = newSorc2Info;
+                    }
+
                     // if a boss appears multiple times, keep the weakest version to avoid difficulty spikes
                     if (!rebalancedStats.ContainsKey(destID) || rebalancedStats[destID].HpAtLevel(100) > newInfo.HpAtLevel(100))
                     {
