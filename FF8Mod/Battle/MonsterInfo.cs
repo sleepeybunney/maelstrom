@@ -254,5 +254,16 @@ namespace Sleepey.FF8Mod.Battle
         {
             return NonOffensiveStatAtLevel(level, Eva);
         }
+
+        public void CopyStatsFrom(MonsterInfo source)
+        {
+            Hp = source.Hp.ToList();
+            Str = source.Str.ToList();
+            Mag = source.Mag.ToList();
+            Vit = source.Vit.ToList();
+            Spr = source.Spr.ToList();
+            Spd = source.Spd.ToList();
+            Eva = source.Eva.ToList();
+        }
     }
 }

@@ -166,7 +166,9 @@
                             <StackPanel>
                                 <TextBlock>Wherever you would fight a boss, it is a random boss.</TextBlock>
                                 <Separator />
+                                <local:OptionWithDescription Title="Rebalance Stats" Description="Enemies' health, strength, etc. are adjusted to fit where they appear in the story." Checked="{Binding BossRebalance, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
+                                <Separator />
                                 <local:ComboBoxWithLabel Title="Omega Weapon" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding OmegaWeapon, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>

@@ -139,10 +139,11 @@ namespace Sleepey.Maelstrom
             return encounterMap;
         }
 
-        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap)
+        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, bool rebalance)
         {
             var cleanEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
             var newEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
+            var rebalancedStats = new Dictionary<int, MonsterInfo>();
 
             foreach (var encID in encounterMap.Keys)
             {
@@ -187,6 +188,45 @@ namespace Sleepey.Maelstrom
                     }
                 }
 
+                // apply rebalancing if enabled
+                if (rebalance && Encounters.ContainsKey(encID))
+                {
+                    var sourceBossSlot = Encounters[encID].SlotRanks[0];
+                    var sourceInfo = cleanEncFile.Encounters[encID].Slots[sourceBossSlot].GetMonster(battleSource).Info;
+
+                    var destBossSlot = Encounters[matchedEncID].SlotRanks[0];
+                    var destID = cleanEncFile.Encounters[matchedEncID].Slots[destBossSlot].MonsterID;
+                    var destInfo = Monster.ByID(battleSource, destID).Info;
+
+                    var newInfo = new MonsterInfo();
+                    newInfo.CopyStatsFrom(sourceInfo);
+
+                    // flip physical & magic stats where appropriate
+                    var sourcePrefersStr = sourceInfo.StrAtLevel(100) > sourceInfo.MagAtLevel(100);
+                    var destPrefersStr = destInfo.StrAtLevel(100) > destInfo.MagAtLevel(100);
+
+                    if (sourcePrefersStr ^ destPrefersStr)
+                    {
+                        newInfo.Str = sourceInfo.Mag.ToList();
+                        newInfo.Mag = sourceInfo.Str.ToList();
+                    }
+
+                    var sourcePrefersVit = sourceInfo.VitAtLevel(100) > sourceInfo.SprAtLevel(100);
+                    var destPrefersVit = destInfo.VitAtLevel(100) > destInfo.SprAtLevel(100);
+
+                    if (sourcePrefersVit ^ destPrefersVit)
+                    {
+                        newInfo.Vit = sourceInfo.Spr.ToList();
+                        newInfo.Spr = sourceInfo.Vit.ToList();
+                    }
+
+                    // if a boss appears multiple times, keep the weakest version to avoid difficulty spikes
+                    if (!rebalancedStats.ContainsKey(destID) || rebalancedStats[destID].HpAtLevel(100) > newInfo.HpAtLevel(100))
+                    {
+                        rebalancedStats[destID] = newInfo;
+                    }
+                }
+
                 // move tonberry king's death flag to allow the replacement boss to spawn
                 if (encID == 236) MoveTonberryFlag(battleSource, newEncFile, matchedEncID);
 
@@ -208,6 +248,13 @@ namespace Sleepey.Maelstrom
 
             // save changes
             battleSource.ReplaceFile(Globals.EncounterFilePath, newEncFile.Encode());
+
+            foreach (var monsterID in rebalancedStats.Keys)
+            {
+                var monster = Monster.ByID(battleSource, monsterID);
+                monster.Info.CopyStatsFrom(rebalancedStats[monsterID]);
+                battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
+            }
         }
 
         private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
