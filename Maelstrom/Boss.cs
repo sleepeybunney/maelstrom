@@ -446,7 +446,14 @@ namespace Sleepey.Maelstrom
 
             // add death flag to replacement
             var target = Monster.ByID(battleSource, targetMonsterID);
+            var newDeathScript = target.AI.Scripts.Death.Where(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]).Count() == 0;
             target.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("set-global", 82, 1));
+
+            // finish replacement's death script if it didn't exist before
+            if (newDeathScript)
+            {
+                target.AI.Scripts.Death.Insert(1, new BattleScriptInstruction("die"));
+            }
 
             battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
             battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
