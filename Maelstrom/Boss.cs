@@ -95,7 +95,7 @@ namespace Sleepey.Maelstrom
             if (settings.OmegaWeapon == "normal") singlesOnly.Remove(462);
             replacementID = singlesOnly[random.Next(singlesOnly.Count)];
 
-            availableReplacements.Remove(replacementID);
+            if (!settings.BossRandom) availableReplacements.Remove(replacementID);
             encounterIDs.Remove(236);
             encounterMap.Add(236, replacementID);
             encounterMap.Add(237, replacementID);
@@ -446,15 +446,33 @@ namespace Sleepey.Maelstrom
 
             // add death flag to replacement
             var target = Monster.ByID(battleSource, targetMonsterID);
-            var newDeathScript = target.AI.Scripts.Death.Where(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]).Count() == 0;
-            target.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("set-global", 82, 1));
-
-            // finish replacement's death script if it didn't exist before
-            if (newDeathScript)
+            var flagScript = new List<BattleScriptInstruction>()
             {
-                target.AI.Scripts.Death.Insert(1, new BattleScriptInstruction("die"));
-            }
+                // if encounter == tonberry king 1
+                new BattleScriptInstruction("if", 0x03, 0x00, 0x00, 0xec, 0x06),
 
+                // set flag
+                new BattleScriptInstruction("set-global", 82, 1),
+
+                // end if
+                new BattleScriptInstruction("jmp", 0x00),
+
+                // if encounter == tonberry king 2
+                new BattleScriptInstruction("if", 0x03, 0x00, 0x00, 0xed, 0x06),
+
+                // set flag
+                new BattleScriptInstruction("set-global", 82, 1),
+
+                // end if
+                new BattleScriptInstruction("jmp", 0x00)
+            };
+
+            // if this monster didn't have a death script before then it needs to be told to die
+            var scriptIsEmpty = !target.AI.Scripts.Death.Exists(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]);
+            if (scriptIsEmpty) flagScript.Add(new BattleScriptInstruction("die"));
+
+            // save changes
+            target.AI.Scripts.Death.InsertRange(0, flagScript);
             battleSource.ReplaceFile(Monster.GetPath(sourceMonsterID), source.Encode());
             battleSource.ReplaceFile(Monster.GetPath(targetMonsterID), target.Encode());
         }
