@@ -411,22 +411,11 @@ namespace Sleepey.Maelstrom
             // start actual final boss on phase 3
             encFile.Encounters[511].Scene = 37;
             encFile.Encounters[511].Slots[0].Enabled = false;
-            encFile.Encounters[511].Slots[1].Enabled = false;
+            encFile.Encounters[511].Slots[1].Enabled = true;
+            encFile.Encounters[511].Slots[1].Hidden = false;
+            encFile.Encounters[511].Slots[1].Untargetable = false;
+            encFile.Encounters[511].Slots[1].Unloaded = false;
             encFile.Encounters[511].Slots[3].Enabled = true;
-
-            // allow phase 3 boss to spawn itself
-            var grievermecia = encFile.Encounters[511].Slots[3].GetMonster(battleSource);
-            var initAbility = new MonsterAbility(AbilityType.Unique, 0, 352);
-            grievermecia.Info.AbilitiesLow[15] = initAbility;
-            grievermecia.Info.AbilitiesMed[15] = initAbility;
-            grievermecia.Info.AbilitiesHigh[15] = initAbility;
-
-            grievermecia.AI.Scripts.Init.InsertRange(1, new List<BattleScriptInstruction>()
-            {
-                new BattleScriptInstruction("target", 200),
-                new BattleScriptInstruction("use", 15)
-            });
-            battleSource.ReplaceFile(Monster.GetPath(encFile.Encounters[511].Slots[3].MonsterID), grievermecia.Encode());
 
             // save changes to encounter file
             battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
