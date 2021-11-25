@@ -141,6 +141,8 @@ namespace Sleepey.Maelstrom
 
         public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, bool rebalance)
         {
+            SplitFinalBoss(battleSource);
+
             var cleanEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
             var newEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
             var rebalancedStats = new Dictionary<int, MonsterInfo>();
@@ -370,6 +372,66 @@ namespace Sleepey.Maelstrom
             }
         }
 
+        private static void SplitFinalBoss(FileSource battleSource)
+        {
+            var encFile = EncounterFile.FromSource(battleSource);
+
+            // clone first phase to a new encounter
+            var phase1 = new Encounter(encFile.Encounters[511].Encode());
+            phase1.Slots[1].Enabled = false;
+            encFile.Encounters[846] = phase1;
+
+            // remove transition to phase 2 from ultimecia's death script
+            var ultimecia = phase1.Slots[0].GetMonster(battleSource);
+            ultimecia.AI.Scripts.Death.RemoveAll(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]);
+            ultimecia.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("die"));
+            battleSource.ReplaceFile(Monster.GetPath(phase1.Slots[0].MonsterID), ultimecia.Encode());
+
+            // clone second phase to a new encounter
+            var phase2 = new Encounter(encFile.Encounters[511].Encode());
+            phase2.Slots[0] = new Encounter(encFile.Encounters[511].Encode()).Slots[2];
+            phase2.Scene = 37;
+            phase2.Slots[0].Enabled = true;
+            phase2.Slots[0].Hidden = false;
+            phase2.Slots[0].Untargetable = false;
+            phase2.Slots[0].Unloaded = false;
+            phase2.Slots[1].Enabled = false;
+            encFile.Encounters[847] = phase2;
+
+            // remove phase transitions from griever's init & death scripts
+            var griever = phase2.Slots[0].GetMonster(battleSource);
+            griever.AI.Scripts.Init.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["target"]);
+            griever.AI.Scripts.Init.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["use"]);
+            var deathCheckIndex = griever.AI.Scripts.Death.FindIndex(i => i.Op == BattleScriptInstruction.OpCodesReverse["if"] && i.Args[0] == 0x06);
+            griever.AI.Scripts.Death.RemoveRange(deathCheckIndex + 1, 7);
+            griever.AI.Scripts.Death.Insert(deathCheckIndex + 1, new BattleScriptInstruction("die"));
+            griever.AI.Scripts.Death[deathCheckIndex].Args[4] = 4;
+            battleSource.ReplaceFile(Monster.GetPath(phase2.Slots[0].MonsterID), griever.Encode());
+
+            // start actual final boss on phase 3
+            encFile.Encounters[511].Scene = 37;
+            encFile.Encounters[511].Slots[0].Enabled = false;
+            encFile.Encounters[511].Slots[1].Enabled = false;
+            encFile.Encounters[511].Slots[3].Enabled = true;
+
+            // allow phase 3 boss to spawn itself
+            var grievermecia = encFile.Encounters[511].Slots[3].GetMonster(battleSource);
+            var initAbility = new MonsterAbility(AbilityType.Unique, 0, 352);
+            grievermecia.Info.AbilitiesLow[15] = initAbility;
+            grievermecia.Info.AbilitiesMed[15] = initAbility;
+            grievermecia.Info.AbilitiesHigh[15] = initAbility;
+
+            grievermecia.AI.Scripts.Init.InsertRange(1, new List<BattleScriptInstruction>()
+            {
+                new BattleScriptInstruction("target", 200),
+                new BattleScriptInstruction("use", 15)
+            });
+            battleSource.ReplaceFile(Monster.GetPath(encFile.Encounters[511].Slots[3].MonsterID), grievermecia.Encode());
+
+            // save changes to encounter file
+            battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
+        }
+
         private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
         {
             foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID && ec.EncounterID == origEncID))
@@ -516,6 +578,14 @@ namespace Sleepey.Maelstrom
             });
 
             battleSource.ReplaceFile(Monster.GetPath(monsterId), monster.Encode());
+        }
+
+        public static void UpdateFinalBossChamber(FileSource fieldSource)
+        {
+            var fieldName = "felast1";
+            var field = FF8Mod.Field.FieldScript.FromSource(fieldSource, fieldName);
+            field.ReplaceScript(10, 1, App.ReadEmbeddedFile(@"Sleepey.Maelstrom.FieldScripts.felast1.10.1.txt"));
+            field.SaveToSource(fieldSource, fieldName);
         }
 
         public static void ApplyEdeaFix(FileSource battleSource, FileSource fieldSource)

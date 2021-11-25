@@ -647,5 +647,29 @@
     "SlotRanks": [ 0 ],
     "Disabled": true,
     "Disc": 3
+  },
+  {
+    "EncounterID": 846,
+    "EncounterName": "Ultimecia",
+    "FieldID": "",
+    "FieldName": "Ultimecia Castle",
+    "FieldEntity": 0,
+    "FieldScript": 0,
+    "FixedField": false,
+    "SlotRanks": [ 0 ],
+    "Disabled": false,
+    "Disc": 4
+  },
+  {
+    "EncounterID": 847,
+    "EncounterName": "Griever",
+    "FieldID": "",
+    "FieldName": "Ultimecia Castle",
+    "FieldEntity": 0,
+    "FieldScript": 0,
+    "FixedField": false,
+    "SlotRanks": [ 0 ],
+    "Disabled": false,
+    "Disc": 4
   }
 ]

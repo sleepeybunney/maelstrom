@@ -240,15 +240,24 @@ namespace Sleepey.Maelstrom
                 {
                     CreateOrRestoreArchiveBackup(Globals.FieldPath);
                     var fieldSource = new FileSource(Globals.FieldPath);
+                    var unsavedChanges = false;
 
                     // apply free roam
                     if (settings.FreeRoam)
                     {
                         FreeRoam.Apply(fieldSource, seedString);
+                        unsavedChanges = true;
                     }
                     else
                     {
                         FreeRoam.Remove();
+                    }
+
+                    // update final boss for boss shuffle
+                    if (settings.BossEnable)
+                    {
+                        Boss.UpdateFinalBossChamber(fieldSource);
+                        unsavedChanges = true;
                     }
 
                     // apply card shuffle
@@ -257,6 +266,7 @@ namespace Sleepey.Maelstrom
                         var shuffle = CardShuffle.Shuffle(seed);
                         if (settings.SpoilerFile) spoilerFile.AddCards(shuffle);
                         CardShuffle.Apply(fieldSource, shuffle);
+                        unsavedChanges = true;
                     }
 
                     // apply music shuffle
@@ -265,10 +275,11 @@ namespace Sleepey.Maelstrom
                         var shuffle = MusicShuffle.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
                         MusicShuffle.Apply(fieldSource, shuffle);
+                        unsavedChanges = true;
                     }
 
                     // write to file
-                    if (settings.FreeRoam || settings.CardEnable || (settings.MusicEnable && Globals.RegionCode != "jp"))
+                    if (unsavedChanges)
                     {
                         fieldSource.Encode();
                     }

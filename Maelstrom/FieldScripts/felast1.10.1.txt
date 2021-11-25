@@ -1,0 +1,105 @@
+﻿pshn_l 1
+pshn_l 41
+req 8
+pshm_w 256
+pshn_l 4900
+cal 9
+jpf 97
+ucoff
+pshn_l 0
+pshn_l 90
+pshn_l 0
+musicvoltrans
+musicvolsync
+pshn_l 60
+wait
+pshn_l 0
+musicstop
+pshn_l 73
+musicload
+pshn_l 75
+effectload
+pshn_l 3
+pshn_l 1
+movieready
+movie
+pshn_l 1
+pshn_l 4
+req 0
+pshn_l 1
+pshn_l 9
+req 1
+pshn_l 1
+pshn_l 14
+req 2
+pshn_l 1
+pshn_l 19
+req 3
+pshn_l 1
+pshn_l 24
+req 4
+pshn_l 1
+pshn_l 29
+req 5
+pshm_l 80
+pshn_l 1
+cal 9
+jpf 2
+jmp -4
+pshn_l 0
+pshn_l 127
+musicvol
+musicchange
+fadenone
+pshm_l 80
+pshn_l 150
+cal 9
+jpf 2
+jmp -4
+pshn_l 0
+pshn_l 128
+pshn_l 1
+effectplay2 0
+pshn_l 1
+pshn_l 90
+pshn_l 127
+sevoltrans
+moviesync
+pshn_l 60
+wait
+pshn_l 1
+pshn_l 34
+reqew 6
+pshn_l 1
+sestop
+pshn_l 846
+pshn_l 26
+battle
+pshn_l 76
+setbattlemusic
+pshn_l 847
+pshn_l 10
+battle
+pshn_l 90
+setbattlemusic
+pshn_l 511
+pshn_l 10
+battle
+mapfadeoff
+pshn_l 974
+pshn_l 0
+mapjumpo
+pshn_l 0
+pshn_l 20
+pshn_l 0
+musicvoltrans
+musicvolsync
+pshn_l 0
+musicstop
+pshn_l 0
+pshn_l 127
+musicvol
+ucon
+jmp 2
+fadein
+halt 0

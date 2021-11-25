@@ -511,7 +511,8 @@
     },
     {
         "MonsterID": 124,
-        "MonsterName": "Ultimecia"
+        "MonsterName": "Ultimecia",
+        "SpellAnimationID": 0
     },
     {
         "MonsterID": 125,
