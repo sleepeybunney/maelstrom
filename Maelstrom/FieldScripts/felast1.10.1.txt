@@ -4,7 +4,7 @@ req 8
 pshm_w 256
 pshn_l 4900
 cal 9
-jpf 97
+jpf 102
 ucoff
 pshn_l 0
 pshn_l 90
@@ -81,6 +81,11 @@ pshn_l 847
 pshn_l 10
 battle
 pshn_l 90
+setbattlemusic
+pshn_l 848
+pshn_l 10
+battle
+pshn_l 93
 setbattlemusic
 pshn_l 511
 pshn_l 10

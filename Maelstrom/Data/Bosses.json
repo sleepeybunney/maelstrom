@@ -671,5 +671,17 @@
     "SlotRanks": [ 0 ],
     "Disabled": false,
     "Disc": 4
+  },
+  {
+    "EncounterID": 848,
+    "EncounterName": "Grievermecia",
+    "FieldID": "",
+    "FieldName": "Ultimecia Castle",
+    "FieldEntity": 0,
+    "FieldScript": 0,
+    "FixedField": false,
+    "SlotRanks": [ 3, 4, 5, 1 ],
+    "Disabled": false,
+    "Disc": 4
   }
 ]

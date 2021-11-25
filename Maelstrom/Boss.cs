@@ -381,12 +381,6 @@ namespace Sleepey.Maelstrom
             phase1.Slots[1].Enabled = false;
             encFile.Encounters[846] = phase1;
 
-            // remove transition to phase 2 from ultimecia's death script
-            var ultimecia = phase1.Slots[0].GetMonster(battleSource);
-            ultimecia.AI.Scripts.Death.RemoveAll(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]);
-            ultimecia.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("die"));
-            battleSource.ReplaceFile(Monster.GetPath(phase1.Slots[0].MonsterID), ultimecia.Encode());
-
             // clone second phase to a new encounter
             var phase2 = new Encounter(encFile.Encounters[511].Encode());
             phase2.Slots[0] = new Encounter(encFile.Encounters[511].Encode()).Slots[2];
@@ -398,6 +392,23 @@ namespace Sleepey.Maelstrom
             phase2.Slots[1].Enabled = false;
             encFile.Encounters[847] = phase2;
 
+            // clone third phase to a new encounter
+            var phase3 = new Encounter(encFile.Encounters[511].Encode());
+            phase3.Scene = 37;
+            phase3.Slots[0].Enabled = false;
+            phase3.Slots[1].Enabled = true;
+            phase3.Slots[1].Hidden = true;
+            phase3.Slots[1].Unloaded = false;
+            phase3.Slots[2].Unloaded = false;
+            phase3.Slots[3].Enabled = true;
+            encFile.Encounters[848] = phase3;
+
+            // remove transition to phase 2 from ultimecia's death script
+            var ultimecia = phase1.Slots[0].GetMonster(battleSource);
+            ultimecia.AI.Scripts.Death.RemoveAll(i => i.Op != BattleScriptInstruction.OpCodesReverse["return"]);
+            ultimecia.AI.Scripts.Death.Insert(0, new BattleScriptInstruction("die"));
+            battleSource.ReplaceFile(Monster.GetPath(phase1.Slots[0].MonsterID), ultimecia.Encode());
+
             // remove phase transitions from griever's init & death scripts
             var griever = phase2.Slots[0].GetMonster(battleSource);
             griever.AI.Scripts.Init.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["target"]);
@@ -408,14 +419,33 @@ namespace Sleepey.Maelstrom
             griever.AI.Scripts.Death[deathCheckIndex].Args[4] = 4;
             battleSource.ReplaceFile(Monster.GetPath(phase2.Slots[0].MonsterID), griever.Encode());
 
-            // start actual final boss on phase 3
-            encFile.Encounters[511].Scene = 37;
+            // remove phase transition from grievermecia's death script
+            var grievermecia = phase3.Slots[3].GetMonster(battleSource);
+            grievermecia.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["unknown-33"]);
+            grievermecia.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["friend-add-at"]);
+            var firstIfIndex = grievermecia.AI.Scripts.Death.FindIndex(i => i.Op == BattleScriptInstruction.OpCodesReverse["if"]);
+            grievermecia.AI.Scripts.Death[firstIfIndex].Args[4] -= 4;
+            battleSource.ReplaceFile(Monster.GetPath(phase3.Slots[3].MonsterID), grievermecia.Encode());
+
+            // remove phase transitions from the final form's init & death scripts
+            var ultiFinal = encFile.Encounters[511].Slots[6].GetMonster(battleSource);
+            ultiFinal.AI.Scripts.Init.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["target"]);
+            ultiFinal.AI.Scripts.Init.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["use"]);
+            ultiFinal.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["target"]);
+            ultiFinal.AI.Scripts.Death.RemoveAll(i => i.Op == BattleScriptInstruction.OpCodesReverse["use"]);
+            var firstRemoveIndex = ultiFinal.AI.Scripts.Death.FindIndex(i => i.Op == BattleScriptInstruction.OpCodesReverse["friend-remove"]);
+            ultiFinal.AI.Scripts.Death.Insert(firstRemoveIndex + 2, new BattleScriptInstruction("die"));
+            ultiFinal.AI.Scripts.Death[0].Args[4] -= 3;
+            ultiFinal.AI.Scripts.Death[1].Args[4] -= 3;
+            battleSource.ReplaceFile(Monster.GetPath(encFile.Encounters[511].Slots[6].MonsterID), ultiFinal.Encode());
+
+            // start actual final boss on phase 4
+            encFile.Encounters[511].Slots[5] = new Encounter(encFile.Encounters[511].Encode()).Slots[6];
+            encFile.Encounters[511].Scene = 38;
             encFile.Encounters[511].Slots[0].Enabled = false;
-            encFile.Encounters[511].Slots[1].Enabled = true;
-            encFile.Encounters[511].Slots[1].Hidden = false;
-            encFile.Encounters[511].Slots[1].Untargetable = false;
-            encFile.Encounters[511].Slots[1].Unloaded = false;
-            encFile.Encounters[511].Slots[3].Enabled = true;
+            encFile.Encounters[511].Slots[1].Enabled = false;
+            encFile.Encounters[511].Slots[5].Enabled = true;
+            encFile.Encounters[511].Slots[5].Hidden = false;
 
             // save changes to encounter file
             battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
