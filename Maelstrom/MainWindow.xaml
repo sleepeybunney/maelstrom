@@ -169,7 +169,14 @@
                                 <local:OptionWithDescription Title="Rebalance Stats" Description="Enemies' health, strength, etc. are adjusted to fit where they appear in the story." Checked="{Binding BossRebalance, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
                                 <Separator />
-                                <local:ComboBoxWithLabel Title="Omega Weapon" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding OmegaWeapon, Mode=TwoWay}">
+                                <local:ComboBoxWithLabel Title="Final Boss" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
+                                    <local:ComboBoxWithLabel.ComboBoxItems>
+                                        <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
+                                        <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
+                                        <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
+                                    </local:ComboBoxWithLabel.ComboBoxItems>
+                                </local:ComboBoxWithLabel>
+                                <local:ComboBoxWithLabel Title="Omega Weapon" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictOmega, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
                                         <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>

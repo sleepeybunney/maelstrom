@@ -92,7 +92,18 @@ namespace Sleepey.Maelstrom
 
             // only match tonberry king with other solo bosses
             var singlesOnly = Encounters.Values.Where(e => e.SlotRanks.Count == 1 && availableReplacements.Contains(e.EncounterID)).Select(e => e.EncounterID).ToList();
-            if (settings.OmegaWeapon == "normal") singlesOnly.Remove(462);
+
+            if (settings.RestrictOmega == "normal")
+            {
+                singlesOnly.Remove(462);
+            }
+
+            if (settings.RestrictUltimecia == "normal")
+            {
+                singlesOnly.Remove(846);
+                singlesOnly.Remove(847);
+            }
+
             replacementID = singlesOnly[random.Next(singlesOnly.Count)];
 
             if (!settings.BossRandom) availableReplacements.Remove(replacementID);
@@ -105,16 +116,28 @@ namespace Sleepey.Maelstrom
             {
                 var tailoredReplacements = new List<int>(availableReplacements);
 
-                if (settings.OmegaWeapon == "normal")
+                if (settings.RestrictOmega == "normal")
                 {
                     // only match omega weapon with itself
                     if (encID == 462) tailoredReplacements = new List<int> { 462 };
                     else tailoredReplacements.Remove(462);
                 }
-                else if (settings.OmegaWeapon == "afterdisc1")
+                else if (settings.RestrictOmega == "afterdisc1")
                 {
                     // don't replace bosses from disc 1 with omega weapon
                     if (Encounters[encID].Disc == 1) tailoredReplacements.Remove(462);
+                }
+
+                if (settings.RestrictUltimecia == "normal")
+                {
+                    // only match final boss phases with themselves
+                    if (new int[] { 846, 847, 848 }.Contains(encID)) tailoredReplacements = new List<int> { encID };
+                    else tailoredReplacements.RemoveAll(r => new int[] { 846, 847, 848 }.Contains(r));
+                }
+                else if (settings.RestrictUltimecia == "afterdisc1")
+                {
+                    // don't replace bosses from disc 1 with final boss phases
+                    if (Encounters[encID].Disc == 1) tailoredReplacements.RemoveAll(r => new int[] { 846, 847, 848 }.Contains(r));
                 }
 
                 replacementID = tailoredReplacements[random.Next(tailoredReplacements.Count)];
@@ -139,9 +162,9 @@ namespace Sleepey.Maelstrom
             return encounterMap;
         }
 
-        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, bool rebalance)
+        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, bool rebalance, bool splitFinalBoss)
         {
-            SplitFinalBoss(battleSource);
+            if (splitFinalBoss) SplitFinalBoss(battleSource);
 
             var cleanEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
             var newEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
@@ -378,29 +401,41 @@ namespace Sleepey.Maelstrom
 
             // clone first phase to a new encounter
             var phase1 = new Encounter(encFile.Encounters[511].Encode());
-            phase1.Slots[1].Enabled = false;
+            for (int i = 1; i < phase1.Slots.Count; i++)
+            {
+                phase1.Slots[i].Enabled = false;
+                phase1.Slots[i].Unloaded = true;
+            }
             encFile.Encounters[846] = phase1;
 
             // clone second phase to a new encounter
             var phase2 = new Encounter(encFile.Encounters[511].Encode());
             phase2.Slots[0] = new Encounter(encFile.Encounters[511].Encode()).Slots[2];
-            phase2.Scene = 37;
             phase2.Slots[0].Enabled = true;
             phase2.Slots[0].Hidden = false;
             phase2.Slots[0].Untargetable = false;
             phase2.Slots[0].Unloaded = false;
-            phase2.Slots[1].Enabled = false;
+            for (int i = 1; i < phase2.Slots.Count; i++)
+            {
+                phase2.Slots[i].Enabled = false;
+                phase2.Slots[i].Unloaded = true;
+            }
+            phase2.Scene = 37;
             encFile.Encounters[847] = phase2;
 
             // clone third phase to a new encounter
             var phase3 = new Encounter(encFile.Encounters[511].Encode());
-            phase3.Scene = 37;
             phase3.Slots[0].Enabled = false;
+            phase3.Slots[0].Unloaded = true;
             phase3.Slots[1].Enabled = true;
-            phase3.Slots[1].Hidden = true;
             phase3.Slots[1].Unloaded = false;
-            phase3.Slots[2].Unloaded = false;
             phase3.Slots[3].Enabled = true;
+            for (int i = 4; i < phase3.Slots.Count; i++)
+            {
+                phase3.Slots[i].Enabled = false;
+                phase3.Slots[i].Unloaded = true;
+            }
+            phase3.Scene = 37;
             encFile.Encounters[848] = phase3;
 
             // remove transition to phase 2 from ultimecia's death script
