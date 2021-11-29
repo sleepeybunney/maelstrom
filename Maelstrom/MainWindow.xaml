@@ -6,7 +6,7 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Sleepey.Maelstrom"
         mc:Ignorable="d"
-        Title="MAELSTROM v0.5" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Left" WindowTitleBrush="{StaticResource MahApps.Brushes.Accent}"
+        Title="MAELSTROM v0.6" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Left" WindowTitleBrush="{StaticResource MahApps.Brushes.Accent}"
         ShowDialogsOverTitleBar="False" Height="592" Width="800" MinHeight="584" MinWidth="800" Closing="OnClosing">
 
     <mah:MetroWindow.TitleTemplate>
