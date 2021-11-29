@@ -178,7 +178,7 @@ namespace Sleepey.Maelstrom
                 for (int i = 0; i < 8; i++)
                 {
                     var newMonsterID = cleanEncFile.Encounters[matchedEncID].Slots[i].MonsterID;
-                    newEncFile.Encounters[encID].Slots[i] = cleanEncFile.Encounters[matchedEncID].Slots[i];
+                    newEncFile.Encounters[encID].Slots[i] = new Encounter(cleanEncFile.Encounters[matchedEncID].Encode()).Slots[i];
 
                     // update any encounter ID checks in the monster's AI scripts
                     FixEncounterChecks(battleSource, newMonsterID, encID, matchedEncID);
