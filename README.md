@@ -43,11 +43,11 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 
 * The first time you run the randomiser it will make backups (.bak) of various files in the FF8 folder tree -- don't touch those!! If they get lost or corrupted you will need to restore/reinstall the game through Steam before running Maelstrom again.
 
-* If "Set Seed" is unchecked, a new seed number will be generated for each run. Checking the box will allow you to enter your own. You can find a list of your most recent seeds on the "History" tab. (There are many explanations online for what an RNG "seed" is, but basically if you use the same number twice with the same settings, you will get the same results from the randomiser both times)
+* If "Set Seed" is unchecked, a new seed number will be generated for each run. Checking the box will allow you to enter your own. You can find a list of seeds you've used on the "History" tab, most recent at the top. (There are many explanations online for what an RNG "seed" is, but basically if you use the same number twice with the same settings, you will get the same results from the randomiser both times)
 
 * Card locations in the spoiler file are currently incomplete. The field names are all there but the NPC descriptions are largely unhelpful.
 
-* The "Random Draw Points" option has no effect on the Remastered edition of the game. Hoping to get this fixed soon.
+* Some features aren't fully implemented yet for the Remastered version of the game. These are noted in *italics* beneath the relevant section.
 
 * Efforts have been made to eliminate softlocks and crashes, but this is a work in progress and certain things may be broken or simply not yet complete. If you find yourself unable to progress and do not wish to re-roll:
   
@@ -66,7 +66,6 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 ## Planned Features
 
 * Support for more versions of the game, such as PSX, PC CD-ROM, & Switch
-* More substantial rebalancing for shuffled bosses, so they are generally beatable at the point they are encountered
 * Shuffled GF locations
 * Shuffled monster locations
 

@@ -169,6 +169,7 @@
                                 <local:OptionWithDescription Title="Rebalance Stats" Description="Enemies' health, strength, etc. are adjusted to fit where they appear in the story." Checked="{Binding BossRebalance, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
                                 <Separator />
+                                <TextBlock>Restrict where certain bosses may appear:</TextBlock>
                                 <local:ComboBoxWithLabel Title="Final Boss" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
@@ -183,8 +184,6 @@
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
-                                <Separator />
-                                <TextBlock FontStyle="Italic">This does not affect the final boss (yet).</TextBlock>
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">
@@ -272,7 +271,7 @@
                                 <Separator />
                                 <local:OptionWithDescription Title="Include Non-Music Tracks" Description="Ambient sounds, chanting, etc." Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
                                 <Separator />
-                                <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, final boss after a certain point, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
+                                <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
                                 <Separator />
                                 <TextBlock FontStyle="Italic">This has no effect when the language is set to Japanese.</TextBlock>
                             </StackPanel>
