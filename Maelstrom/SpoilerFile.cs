@@ -15,7 +15,7 @@ namespace Sleepey.Maelstrom
         private readonly Section Title, Options;
         private Section Bosses, DrawPoints, Shops, Cards, Loot, Music, Abilities, Weapons, Doomtrain;
 
-        public SpoilerFile()
+        public SpoilerFile(State settings)
         {
             Title = new Section();
             Title.Heading("Maelstrom Spoiler File", '=');
@@ -23,9 +23,8 @@ namespace Sleepey.Maelstrom
             Options = new Section();
             Options.Heading("Options");
 
-            var settings = State.Current;
             Options.Bullet("Mode", ModeString(settings.FreeRoam));
-            Options.Bullet("Seed", settings.SeedValue.ToString());
+            Options.Bullet("Seed", settings.SeedValue);
             Options.Bullet("Bosses", GeneralString(settings.BossEnable));
             Options.Bullet("Draw Points", DrawPointsString(settings.DrawPointEnable, settings.DrawPointIncludeApoc, settings.DrawPointIncludeSlot, settings.DrawPointIncludeCut));
             Options.Bullet("Shops", ShopString(settings.ShopEnable, settings.ShopKeyItems, settings.ShopSummonItems, settings.ShopMagazines, settings.ShopChocoboWorld));

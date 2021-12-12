@@ -53,7 +53,7 @@ namespace Sleepey.Maelstrom
                 seed = seedString.GetHashCode();
             }
 
-            var spoilerFile = new SpoilerFile();
+            var spoilerFile = new SpoilerFile(settings);
 
             if (Globals.Remastered) UnpackOnFirstRun();
 
