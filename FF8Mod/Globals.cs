@@ -55,7 +55,7 @@ namespace Sleepey.FF8Mod
 
         public static string Af3dnPath { get => Path.Combine(GameDirectory, "af3dn.p"); }
 
-        public static string ArchivePath { get => Path.Combine(GameDirectory, "data", string.Format("lang-{0}", RegionExt)); }
+        public static string ArchivePath { get => Path.Combine(GameDirectory, "Data", string.Format("lang-{0}", RegionExt)); }
 
         public static string BattlePath { get => Path.Combine(ArchivePath, "battle"); }
 
@@ -63,7 +63,7 @@ namespace Sleepey.FF8Mod
         {
             get
             {
-                if (Remastered) return Path.Combine(GameDirectory, "data", "field");
+                if (Remastered) return Path.Combine(GameDirectory, "Data", "field");
                 else return Path.Combine(ArchivePath, "field");
             }
         }
