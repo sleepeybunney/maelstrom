@@ -81,7 +81,7 @@ namespace Sleepey.FF8Mod.Field
         public static FieldScript FromSource(FileSource fieldSource, string fieldName)
         {
             var fieldPath = GetFieldPath(fieldName);
-            var innerSource = new FileSource(fieldPath, fieldSource);
+            var innerSource = new InnerFileSource(fieldPath, fieldSource);
             return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension));
         }
 
@@ -189,7 +189,7 @@ namespace Sleepey.FF8Mod.Field
         public void SaveToSource(FileSource fieldSource, string fieldName)
         {
             var fieldPath = GetFieldPath(fieldName);
-            var innerSource = new FileSource(fieldPath, fieldSource);
+            var innerSource = new InnerFileSource(fieldPath, fieldSource);
             innerSource.ReplaceFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension, Encode());
         }
 

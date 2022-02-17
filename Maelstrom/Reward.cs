@@ -177,7 +177,7 @@ namespace Sleepey.Maelstrom
         {
             var boss = Boss.Encounters[encounterID];
             var fieldPath = FieldScript.GetFieldPath(boss.FieldID);
-            var innerSource = new FileSource(fieldPath, fieldSource);
+            var innerSource = new InnerFileSource(fieldPath, fieldSource);
 
             // add message
             var msdPath = Path.Combine(fieldPath, boss.FieldID + Globals.MessageFileExtension);

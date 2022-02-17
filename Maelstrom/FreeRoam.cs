@@ -154,7 +154,7 @@ namespace Sleepey.Maelstrom
         {
             var fieldPath = FieldScript.GetFieldPath(fieldName);
             var msdPath = Path.Combine(fieldPath, fieldName + Globals.MessageFileExtension);
-            var innerSource = new FileSource(fieldPath, fieldSource);
+            var innerSource = new InnerFileSource(fieldPath, fieldSource);
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             fieldText.Messages[messageId] = newText;
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
@@ -164,8 +164,8 @@ namespace Sleepey.Maelstrom
         {
             var srcPath = FieldScript.GetFieldPath(srcField);
             var destPath = FieldScript.GetFieldPath(destField);
-            var srcSource = new FileSource(srcPath, fieldSource);
-            var destSource = new FileSource(destPath, fieldSource);
+            var srcSource = new InnerFileSource(srcPath, fieldSource);
+            var destSource = new InnerFileSource(destPath, fieldSource);
             destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmd"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmd")));
             destSource.ReplaceFile(Path.Combine(destPath, destField + ".pmp"), srcSource.GetFile(Path.Combine(srcPath, srcField + ".pmp")));
             fieldSource.Encode();

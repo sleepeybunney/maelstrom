@@ -190,7 +190,7 @@ namespace Sleepey.Maelstrom
                 try
                 {
                     CreateOrRestoreArchiveBackup(Globals.BattlePath);
-                    var battleSource = new FileSource(Globals.BattlePath);
+                    var battleSource = new NativeFileSource(Globals.BattlePath);
 
                     // boss shuffle
                     if (settings.BossEnable)
@@ -239,7 +239,7 @@ namespace Sleepey.Maelstrom
                 try
                 {
                     CreateOrRestoreArchiveBackup(Globals.FieldPath);
-                    var fieldSource = new FileSource(Globals.FieldPath);
+                    var fieldSource = new NativeFileSource(Globals.FieldPath);
                     var unsavedChanges = false;
 
                     // apply free roam
@@ -307,7 +307,7 @@ namespace Sleepey.Maelstrom
                 try
                 {
                     CreateOrRestoreArchiveBackup(Globals.MenuPath);
-                    var menuSource = new FileSource(Globals.MenuPath);
+                    var menuSource = new NativeFileSource(Globals.MenuPath);
 
                     // preset names
                     if (settings.NameEnable && Globals.RegionCode != "jp")
@@ -379,7 +379,7 @@ namespace Sleepey.Maelstrom
                 try
                 {
                     CreateOrRestoreArchiveBackup(Globals.MainPath);
-                    var mainSource = new FileSource(Globals.MainPath);
+                    var mainSource = new NativeFileSource(Globals.MainPath);
 
                     // ability shuffle
                     if (settings.GfAbilitiesEnable)
@@ -427,8 +427,8 @@ namespace Sleepey.Maelstrom
                     // weapon shuffle
                     if (settings.UpgradeEnable)
                     {
-                        var mainSource = new FileSource(Globals.MainPath);
-                        var menuSource = new FileSource(Globals.MenuPath);
+                        var mainSource = new NativeFileSource(Globals.MainPath);
+                        var menuSource = new NativeFileSource(Globals.MenuPath);
 
                         var shuffle = WeaponShuffle.Randomise(seed);
                         if (settings.SpoilerFile) spoilerFile.AddWeapons(mainSource, shuffle);
@@ -440,8 +440,8 @@ namespace Sleepey.Maelstrom
                     // free roam rewards
                     if (settings.FreeRoam || settings.BossEnable)
                     {
-                        var battleSource = new FileSource(Globals.BattlePath);
-                        var fieldSource = new FileSource(Globals.FieldPath);
+                        var battleSource = new NativeFileSource(Globals.BattlePath);
+                        var fieldSource = new NativeFileSource(Globals.FieldPath);
 
                         if (settings.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
                         if (settings.BossEnable) Boss.ApplyEdeaFix(battleSource, fieldSource);
