@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Globalization;
 
 namespace Sleepey.FF8Mod
 {
     public static class FF8String
     {
+        // Note: there are two identical double-quote characters & Encode will always choose the first one
         private static readonly char[] readableChars = new char[]
         {
             ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '%', '/', ':', '!', '?',
@@ -19,6 +21,8 @@ namespace Sleepey.FF8Mod
 
         public static string Decode(IEnumerable<byte> bytes)
         {
+            if (bytes == null) throw new ArgumentNullException("bytes");
+
             var result = string.Empty;
 
             using (var stream = new MemoryStream(bytes.ToArray()))
@@ -76,6 +80,8 @@ namespace Sleepey.FF8Mod
 
         public static IEnumerable<byte> Encode(string str)
         {
+            if (str == null) throw new ArgumentNullException("str");
+
             var result = new List<byte>();
 
             var leftBraces = str.Where(c => c == '{').Count();
@@ -97,14 +103,21 @@ namespace Sleepey.FF8Mod
                     // handle special character codes
                     if (nextChar == '{')
                     {
-                        var code = "";
+                        var codeStr = "";
                         var nextInCode = reader.ReadChar();
+
                         while (nextInCode != '}')
                         {
-                            code += nextInCode;
+                            codeStr += nextInCode;
                             nextInCode = reader.ReadChar();
                         }
-                        result.Add(Convert.ToByte(code, 16));
+
+                        if (codeStr.Length > 2 || !int.TryParse(codeStr, NumberStyles.HexNumber, CultureInfo.CurrentCulture, out int code))
+                        {
+                            throw new InvalidDataException("Invalid character code '{" + codeStr + "}' in string: " + str);
+                        }
+
+                        result.Add((byte)code);
                         continue;
                     }
 
