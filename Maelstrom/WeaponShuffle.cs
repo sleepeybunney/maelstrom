@@ -75,7 +75,7 @@ namespace Sleepey.Maelstrom
             // write out new file
             var result = new List<byte>();
             foreach (var u in upgrades) result.AddRange(u.Encode());
-            menuSource.ReplaceFile(Globals.WeaponUpgradePath, result.ToArray());
+            menuSource.ReplaceFile(Env.WeaponUpgradePath, result.ToArray());
         }
     }
 }

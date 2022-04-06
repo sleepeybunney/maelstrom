@@ -66,7 +66,7 @@ namespace Sleepey.FF8Mod.Menu
         {
             var result = new List<WeaponUpgrade>();
 
-            using (var stream = new MemoryStream(menuSource.GetFile(Globals.WeaponUpgradePath).ToArray()))
+            using (var stream = new MemoryStream(menuSource.GetFile(Env.WeaponUpgradePath).ToArray()))
             using (var reader = new BinaryReader(stream))
             {
                 for (int i = 0; i < 33; i++)

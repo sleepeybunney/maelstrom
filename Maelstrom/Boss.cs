@@ -166,8 +166,8 @@ namespace Sleepey.Maelstrom
         {
             if (splitFinalBoss) SplitFinalBoss(battleSource);
 
-            var cleanEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
-            var newEncFile = EncounterFile.FromSource(battleSource, Globals.EncounterFilePath);
+            var cleanEncFile = EncounterFile.FromSource(battleSource, Env.EncounterFilePath);
+            var newEncFile = EncounterFile.FromSource(battleSource, Env.EncounterFilePath);
             var rebalancedStats = new Dictionary<int, MonsterInfo>();
 
             foreach (var encID in encounterMap.Keys)
@@ -385,7 +385,7 @@ namespace Sleepey.Maelstrom
             FixOdin(battleSource, cleanEncFile);
 
             // save changes
-            battleSource.ReplaceFile(Globals.EncounterFilePath, newEncFile.Encode());
+            battleSource.ReplaceFile(Env.EncounterFilePath, newEncFile.Encode());
 
             foreach (var monsterID in rebalancedStats.Keys)
             {
@@ -483,7 +483,7 @@ namespace Sleepey.Maelstrom
             encFile.Encounters[511].Slots[5].Hidden = false;
 
             // save changes to encounter file
-            battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
+            battleSource.ReplaceFile(Env.EncounterFilePath, encFile.Encode());
         }
 
         private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
@@ -492,7 +492,7 @@ namespace Sleepey.Maelstrom
             {
                 var monster = Monster.ByID(battleSource, monsterID);
                 var script = monster.AI.Scripts.EventScripts[ec.Script];
-                var instruction = (ec.InstructionJP == -1 || Globals.RegionCode != "jp") ? ec.Instruction : ec.InstructionJP;
+                var instruction = (ec.InstructionJP == -1 || Env.RegionCode != "jp") ? ec.Instruction : ec.InstructionJP;
                 script[instruction].Args[3] = (short)encID;
                 battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
             }
@@ -647,7 +647,7 @@ namespace Sleepey.Maelstrom
             // clone encounter
             var encFile = EncounterFile.FromSource(battleSource);
             encFile.Encounters[845] = encFile.Encounters[136];
-            battleSource.ReplaceFile(Globals.EncounterFilePath, encFile.Encode());
+            battleSource.ReplaceFile(Env.EncounterFilePath, encFile.Encode());
 
             // redirect field script to clone
             var fieldName = "glyagu1";

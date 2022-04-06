@@ -8,7 +8,7 @@ namespace Sleepey.FF8Mod.Archive
     {
         public static string DirectoryWildcard { get; } = "[x]";
 
-        public static List<string> DirectoryOptions { get; } = new List<string>() { "x", Globals.RegionCode };
+        public static List<string> DirectoryOptions { get; } = new List<string>() { "x", Env.RegionCode };
 
         public static bool Match(string path1, string path2)
         {

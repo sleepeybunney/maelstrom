@@ -6,7 +6,7 @@ using Sleepey.FF8Mod.Archive;
 
 namespace Sleepey.FF8Mod
 {
-    public static class Globals
+    public static class Env
     {
         public static string ExePath { get; set; }
         public static bool Remastered { get; set; }

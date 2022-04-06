@@ -45,7 +45,7 @@ namespace Sleepey.FF8Mod.Battle
 
         public static EncounterFile FromSource(FileSource source)
         {
-            return FromSource(source, Globals.EncounterFilePath);
+            return FromSource(source, Env.EncounterFilePath);
         }
 
         public IEnumerable<byte> Encode()

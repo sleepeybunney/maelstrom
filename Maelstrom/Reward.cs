@@ -180,7 +180,7 @@ namespace Sleepey.Maelstrom
             var innerSource = new InnerFileSource(fieldPath, fieldSource);
 
             // add message
-            var msdPath = Path.Combine(fieldPath, boss.FieldID + Globals.MessageFileExtension);
+            var msdPath = Path.Combine(fieldPath, boss.FieldID + Env.MessageFileExtension);
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             var msgID = fieldText.Messages.Count;
             fieldText.Messages.Add(message);
@@ -208,7 +208,7 @@ namespace Sleepey.Maelstrom
             // apply changes
             script.Instructions.InsertRange(index, awardInstructions);
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
-            innerSource.ReplaceFile(FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + Globals.ScriptFileExtension, field.Encode());
+            innerSource.ReplaceFile(FieldScript.GetFieldPath(boss.FieldID) + "\\" + boss.FieldID + Env.ScriptFileExtension, field.Encode());
         }
 
         public static void SetRewards(FileSource battleSource, FileSource fieldSource, int seed)

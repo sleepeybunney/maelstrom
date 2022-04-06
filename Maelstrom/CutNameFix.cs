@@ -15,7 +15,7 @@ namespace Sleepey.Maelstrom
 
         public static void Apply(FileSource mainSource)
         {
-            var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
+            var kernel = new Kernel(mainSource.GetFile(Env.KernelPath));
             var percentString = FF8String.Encode("Percent");
             var catString = FF8String.Encode("Catastrophe");
 
@@ -39,7 +39,7 @@ namespace Sleepey.Maelstrom
                 kernel.SectionOffsets[i] += (uint)totalChange;
             }
 
-            mainSource.ReplaceFile(Globals.KernelPath, kernel.Encode());
+            mainSource.ReplaceFile(Env.KernelPath, kernel.Encode());
         }
     }
 }

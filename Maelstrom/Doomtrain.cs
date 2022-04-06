@@ -37,7 +37,7 @@ namespace Sleepey.Maelstrom
                 result[i * 4] = (byte)items[i].ID;
                 result[(i * 4) + 1] = 6;
             }
-            menuSource.ReplaceFile(Globals.DoomtrainPath, result);
+            menuSource.ReplaceFile(Env.DoomtrainPath, result);
 
             // load magazine text file
             var mngrpOffset = new Dictionary<string, int>()
@@ -60,8 +60,8 @@ namespace Sleepey.Maelstrom
                 { "jp", 0x2800 }
             };
 
-            var mngrp = menuSource.GetFile(Globals.MngrpPath);
-            var str00Bytes = mngrp.Skip(mngrpOffset[Globals.RegionCode]).Take(mngrpLength[Globals.RegionCode]);
+            var mngrp = menuSource.GetFile(Env.MngrpPath);
+            var str00Bytes = mngrp.Skip(mngrpOffset[Env.RegionCode]).Take(mngrpLength[Env.RegionCode]);
             var str00 = TextFile.FromBytes(str00Bytes, true, true);
 
             // update text for occult fan 1
@@ -103,12 +103,12 @@ namespace Sleepey.Maelstrom
             str00.Pages[0].Strings[monsterId] = monsterText;
             str00.Pages[0].Strings[medicineId] = medicineText;
 
-            var newFile = mngrp.Take(mngrpOffset[Globals.RegionCode]).ToList();
+            var newFile = mngrp.Take(mngrpOffset[Env.RegionCode]).ToList();
             var newData = str00.Pages[0].Encode();
             newFile.AddRange(newData);
-            newFile.AddRange(new byte[mngrpLength[Globals.RegionCode] - newData.Count()]);
-            newFile.AddRange(mngrp.Skip(mngrpOffset[Globals.RegionCode] + mngrpLength[Globals.RegionCode]));
-            menuSource.ReplaceFile(Globals.MngrpPath, newFile);
+            newFile.AddRange(new byte[mngrpLength[Env.RegionCode] - newData.Count()]);
+            newFile.AddRange(mngrp.Skip(mngrpOffset[Env.RegionCode] + mngrpLength[Env.RegionCode]));
+            menuSource.ReplaceFile(Env.MngrpPath, newFile);
         }
     }
 }

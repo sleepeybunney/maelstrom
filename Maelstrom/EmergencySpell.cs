@@ -14,10 +14,10 @@ namespace Sleepey.Maelstrom
         public static void Apply(FileSource mainSource)
         {
             // add one "the end" spell to squall's starting inventory
-            var init = new Init(mainSource.GetFile(Globals.InitPath));
+            var init = new Init(mainSource.GetFile(Env.InitPath));
             init.Characters[0].Spells[0] = 56;
             init.Characters[0].Spells[1] = 1;
-            mainSource.ReplaceFile(Globals.InitPath, init.Encode());
+            mainSource.ReplaceFile(Env.InitPath, init.Encode());
         }
     }
 }

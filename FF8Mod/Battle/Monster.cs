@@ -42,7 +42,7 @@ namespace Sleepey.FF8Mod.Battle
 
         public static string GetPath(int monsterID)
         {
-            return string.Format(@"{0}\battle\c0m{1:d3}.dat", Globals.DataPath, monsterID);
+            return string.Format(@"{0}\battle\c0m{1:d3}.dat", Env.DataPath, monsterID);
         }
 
         public static Monster FromBytes(IEnumerable<byte> data)

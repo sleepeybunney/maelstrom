@@ -19,7 +19,7 @@ namespace Sleepey.Maelstrom
             // something in the steam 2013 version tracks your progress by watching for certain movie files
             // getting played - not sure exactly what it's for but if we change the intro movie we need to
             // update this as well or it gets very unstable
-            if (!Globals.Remastered) IntroPatch.Apply(Globals.Af3dnPath);
+            if (!Env.Remastered) IntroPatch.Apply(Env.Af3dnPath);
 
             // replace liberi fatali intro with quistis walking through a door
             ImportScript(fieldSource, "start0", 0, 1);
@@ -88,7 +88,7 @@ namespace Sleepey.Maelstrom
 
         public static void Remove()
         {
-            if (!Globals.Remastered) IntroPatch.Remove(Globals.Af3dnPath);
+            if (!Env.Remastered) IntroPatch.Remove(Env.Af3dnPath);
         }
 
         // overwrite a field script with one imported from an embedded text file
@@ -153,7 +153,7 @@ namespace Sleepey.Maelstrom
         public static void SetText(FileSource fieldSource, string fieldName, int messageId, string newText)
         {
             var fieldPath = FieldScript.GetFieldPath(fieldName);
-            var msdPath = Path.Combine(fieldPath, fieldName + Globals.MessageFileExtension);
+            var msdPath = Path.Combine(fieldPath, fieldName + Env.MessageFileExtension);
             var innerSource = new InnerFileSource(fieldPath, fieldSource);
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             fieldText.Messages[messageId] = newText;
