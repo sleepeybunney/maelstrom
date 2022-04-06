@@ -16,7 +16,7 @@ namespace Sleepey.Maelstrom
 
         public static void Apply(FileSource mainSource)
         {
-            var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
+            var kernel = new Kernel(mainSource.GetFile(Env.KernelPath));
 
             foreach (var s in Spells)
             {
@@ -24,7 +24,7 @@ namespace Sleepey.Maelstrom
                 if (s.Animation > 0) kernel.MagicData[s.SpellID].SpellID = (ushort)s.Animation;
             }
 
-            mainSource.ReplaceFile(Globals.KernelPath, kernel.Encode());
+            mainSource.ReplaceFile(Env.KernelPath, kernel.Encode());
         }
     }
 }

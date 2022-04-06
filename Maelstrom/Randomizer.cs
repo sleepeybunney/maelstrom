@@ -18,24 +18,24 @@ namespace Sleepey.Maelstrom
             Debug.WriteLine("randomizer start");
 
             var settings = State.Current.Clone();
-            Globals.ExePath = settings.GameLocation;
+            Env.ExePath = settings.GameLocation;
 
-            if (!File.Exists(Globals.ExePath))
+            if (!File.Exists(Env.ExePath))
             {
-                HandleExeException(Globals.ExePath);
+                HandleExeException(Env.ExePath);
                 return;
             }
 
             // update game version
-            if (!DetectVersion(Globals.ExePath))
+            if (!DetectVersion(Env.ExePath))
             {
-                HandleExeException(Globals.ExePath);
+                HandleExeException(Env.ExePath);
                 return;
             }
 
             // set region
-            if (!Globals.Remastered) settings.Language = Globals.RegionCodeFromPath(Globals.ExePath);
-            Globals.RegionCode = settings.Language;
+            if (!Env.Remastered) settings.Language = Env.RegionCodeFromPath(Env.ExePath);
+            Env.RegionCode = settings.Language;
 
             // generate new seed if not fixed
             if (!settings.SeedFixed) settings.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
@@ -55,7 +55,7 @@ namespace Sleepey.Maelstrom
 
             var spoilerFile = new SpoilerFile(settings);
 
-            if (Globals.Remastered) UnpackOnFirstRun();
+            if (Env.Remastered) UnpackOnFirstRun();
 
             Parallel.Invoke
             (
@@ -66,7 +66,7 @@ namespace Sleepey.Maelstrom
             );
 
             FinalOps(seed, seedString, spoilerFile, settings);
-            if (Globals.Remastered) RepackArchive();
+            if (Env.Remastered) RepackArchive();
 
             Debug.WriteLine("randomizer end");
         }
@@ -77,8 +77,8 @@ namespace Sleepey.Maelstrom
             if (!File.Exists(path)) return false;
             var steamNames = new string[] { "ff8_en.exe", "ff8_fr.exe", "ff8_it.exe", "ff8_de.exe", "ff8_es.exe" };
             var exeFileName = Path.GetFileName(path).ToLower();
-            if (exeFileName == "ffviii.exe") Globals.Remastered = true;
-            else if (steamNames.Contains(exeFileName)) Globals.Remastered = false;
+            if (exeFileName == "ffviii.exe") Env.Remastered = true;
+            else if (steamNames.Contains(exeFileName)) Env.Remastered = false;
             else return false;
             return true;
         }
@@ -105,7 +105,7 @@ namespace Sleepey.Maelstrom
                     "field.fl",
                 };
 
-                foreach (var region in Globals.RegionExts.Values)
+                foreach (var region in Env.RegionExts.Values)
                 {
                     foreach (var ext in new string[] { "fs", "fi", "fl" })
                     {
@@ -122,12 +122,12 @@ namespace Sleepey.Maelstrom
 
         private static string WorkspacePath
         {
-            get { return Path.Combine(Path.GetDirectoryName(Globals.MainZzzPath), "Data"); }
+            get { return Path.Combine(Path.GetDirectoryName(Env.MainZzzPath), "Data"); }
         }
 
         private static void UnpackOnFirstRun()
         {
-            Debug.WriteLine("unpack archive - " + Globals.MainZzzPath);
+            Debug.WriteLine("unpack archive - " + Env.MainZzzPath);
             Directory.CreateDirectory(WorkspacePath);
 
             foreach (var f in WorkspaceFiles)
@@ -137,7 +137,7 @@ namespace Sleepey.Maelstrom
 
                 if (!File.Exists(destPath))
                 {
-                    using (var source = new ArchiveStream(Globals.MainZzzPath + @";data\" + f))
+                    using (var source = new ArchiveStream(Env.MainZzzPath + @";data\" + f))
                     using (var dest = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
                         source.CopyTo(dest);
@@ -148,7 +148,7 @@ namespace Sleepey.Maelstrom
 
         private static void RepackArchive()
         {
-            Debug.WriteLine("repack archive - " + Globals.MainZzzPath);
+            Debug.WriteLine("repack archive - " + Env.MainZzzPath);
 
             var filesToPack = new Dictionary<string, IEnumerable<byte>>();
             foreach (var f in WorkspaceFiles)
@@ -162,7 +162,7 @@ namespace Sleepey.Maelstrom
                 }
             }
 
-            new Zzz(Globals.MainZzzPath).ReplaceFiles(filesToPack);
+            new Zzz(Env.MainZzzPath).ReplaceFiles(filesToPack);
 
         }
 
@@ -189,8 +189,8 @@ namespace Sleepey.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(Globals.BattlePath);
-                    var battleSource = new FileSource(Globals.BattlePath);
+                    CreateOrRestoreArchiveBackup(Env.BattlePath);
+                    var battleSource = new FileSource(Env.BattlePath);
 
                     // boss shuffle
                     if (settings.BossEnable)
@@ -222,7 +222,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(Globals.BattlePath) == false) break;
+                        if (HandleFileException(Env.BattlePath) == false) break;
                     }
                     else throw;
                 }
@@ -238,8 +238,8 @@ namespace Sleepey.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(Globals.FieldPath);
-                    var fieldSource = new FileSource(Globals.FieldPath);
+                    CreateOrRestoreArchiveBackup(Env.FieldPath);
+                    var fieldSource = new FileSource(Env.FieldPath);
                     var unsavedChanges = false;
 
                     // apply free roam
@@ -270,7 +270,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // apply music shuffle
-                    if (settings.MusicEnable && Globals.RegionCode != "jp")
+                    if (settings.MusicEnable && Env.RegionCode != "jp")
                     {
                         var shuffle = MusicShuffle.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
@@ -290,7 +290,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(Globals.FieldPath) == false) break;
+                        if (HandleFileException(Env.FieldPath) == false) break;
                     }
                     else throw;
                 }
@@ -306,11 +306,11 @@ namespace Sleepey.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(Globals.MenuPath);
-                    var menuSource = new FileSource(Globals.MenuPath);
+                    CreateOrRestoreArchiveBackup(Env.MenuPath);
+                    var menuSource = new FileSource(Env.MenuPath);
 
                     // preset names
-                    if (settings.NameEnable && Globals.RegionCode != "jp")
+                    if (settings.NameEnable && Env.RegionCode != "jp")
                     {
                         PresetNames.Apply(menuSource, settings);
                     }
@@ -324,7 +324,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // draw point shuffle
-                    if (!Globals.Remastered)
+                    if (!Env.Remastered)
                     {
                         if (settings.DrawPointEnable)
                         {
@@ -334,7 +334,7 @@ namespace Sleepey.Maelstrom
                         }
                         else
                         {
-                            DrawPointShuffle.RemovePatch(Globals.ExePath);
+                            DrawPointShuffle.RemovePatch(Env.ExePath);
                         }
                     }
 
@@ -347,12 +347,12 @@ namespace Sleepey.Maelstrom
                     }
 
                     // magic sort fix
-                    if ((!Globals.Remastered && settings.DrawPointEnable) || settings.LootDraws || settings.EmergencySpell)
+                    if ((!Env.Remastered && settings.DrawPointEnable) || settings.LootDraws || settings.EmergencySpell)
                     {
                         MagicSortFix.Apply(menuSource);
                     }
 
-                    if ((settings.NameEnable && Globals.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Globals.Remastered) || settings.DoomtrainEnable)
+                    if ((settings.NameEnable && Env.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Env.Remastered) || settings.DoomtrainEnable)
                     {
                         menuSource.Encode();
                     }
@@ -363,7 +363,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(Globals.MenuPath) == false) break;
+                        if (HandleFileException(Env.MenuPath) == false) break;
                     }
                     else throw;
                 }
@@ -378,8 +378,8 @@ namespace Sleepey.Maelstrom
             {
                 try
                 {
-                    CreateOrRestoreArchiveBackup(Globals.MainPath);
-                    var mainSource = new FileSource(Globals.MainPath);
+                    CreateOrRestoreArchiveBackup(Env.MainPath);
+                    var mainSource = new FileSource(Env.MainPath);
 
                     // ability shuffle
                     if (settings.GfAbilitiesEnable)
@@ -394,7 +394,7 @@ namespace Sleepey.Maelstrom
                         EmergencySpell.Apply(mainSource);
                     }
 
-                    if (CutNameFix.ApplicableRegions.Contains(Globals.RegionCode))
+                    if (CutNameFix.ApplicableRegions.Contains(Env.RegionCode))
                     {
                         CutNameFix.Apply(mainSource);
                     }
@@ -408,7 +408,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(Globals.MainPath) == false) break;
+                        if (HandleFileException(Env.MainPath) == false) break;
                     }
                     else throw;
                 }
@@ -427,8 +427,8 @@ namespace Sleepey.Maelstrom
                     // weapon shuffle
                     if (settings.UpgradeEnable)
                     {
-                        var mainSource = new FileSource(Globals.MainPath);
-                        var menuSource = new FileSource(Globals.MenuPath);
+                        var mainSource = new FileSource(Env.MainPath);
+                        var menuSource = new FileSource(Env.MenuPath);
 
                         var shuffle = WeaponShuffle.Randomise(seed);
                         if (settings.SpoilerFile) spoilerFile.AddWeapons(mainSource, shuffle);
@@ -440,8 +440,8 @@ namespace Sleepey.Maelstrom
                     // free roam rewards
                     if (settings.FreeRoam || settings.BossEnable)
                     {
-                        var battleSource = new FileSource(Globals.BattlePath);
-                        var fieldSource = new FileSource(Globals.FieldPath);
+                        var battleSource = new FileSource(Env.BattlePath);
+                        var fieldSource = new FileSource(Env.FieldPath);
 
                         if (settings.FreeRoam) Reward.SetRewards(battleSource, fieldSource, seed);
                         if (settings.BossEnable) Boss.ApplyEdeaFix(battleSource, fieldSource);
@@ -455,7 +455,7 @@ namespace Sleepey.Maelstrom
                 {
                     if (x is IOException || x is UnauthorizedAccessException || x is FileNotFoundException)
                     {
-                        if (HandleFileException(Globals.BattlePath) == false) break;
+                        if (HandleFileException(Env.BattlePath) == false) break;
                     }
                     else throw;
                 }

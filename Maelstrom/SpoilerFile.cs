@@ -184,7 +184,7 @@ namespace Sleepey.Maelstrom
             Weapons = new Section();
             Weapons.Heading("Weapons");
 
-            var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
+            var kernel = new Kernel(mainSource.GetFile(Env.KernelPath));
 
             for (var i = 0; i < upgrades.Count; i++)
             {

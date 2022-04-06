@@ -9,7 +9,7 @@ namespace Sleepey.Maelstrom
 {
     public static class PresetNames
     {
-        public static string ArchivePath = Globals.DataPath + @"\menu\mngrp.bin";
+        public static string ArchivePath = Env.DataPath + @"\menu\mngrp.bin";
         public static int FileLength = 0x2000;
         public static int NamesPage = 5;
 
@@ -49,7 +49,7 @@ namespace Sleepey.Maelstrom
         {
             // pull the relevant file out of the archive
             var file = menuSource.GetFile(ArchivePath);
-            var mes3bytes = file.Skip(NameFileOffsets[Globals.RegionCode]).Take(FileLength);
+            var mes3bytes = file.Skip(NameFileOffsets[Env.RegionCode]).Take(FileLength);
             var mes3 = TextFile.FromBytes(mes3bytes, false, true);
 
             // set names
@@ -76,9 +76,9 @@ namespace Sleepey.Maelstrom
             mes3.Pages[NamesPage].Strings[Griever] = settings.NameGriever;
 
             // apply changes
-            var newFile = file.Take(NameFileOffsets[Globals.RegionCode]).ToList();
+            var newFile = file.Take(NameFileOffsets[Env.RegionCode]).ToList();
             newFile.AddRange(mes3.Encode());
-            newFile.AddRange(file.Skip(NameFileOffsets[Globals.RegionCode] + FileLength));
+            newFile.AddRange(file.Skip(NameFileOffsets[Env.RegionCode] + FileLength));
             menuSource.ReplaceFile(ArchivePath, newFile);
         }
     }

@@ -82,13 +82,13 @@ namespace Sleepey.FF8Mod.Field
         {
             var fieldPath = GetFieldPath(fieldName);
             var innerSource = new FileSource(fieldPath, fieldSource);
-            return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension));
+            return FromBytes(innerSource.GetFile(fieldPath + "\\" + fieldName + Env.ScriptFileExtension));
         }
 
         public static string GetFieldPath(string fieldName)
         {
             var abbrev = fieldName.Substring(0, 2);
-            return string.Format(Globals.DataPath + @"\field\mapdata\{0}\{1}", abbrev, fieldName);
+            return string.Format(Env.DataPath + @"\field\mapdata\{0}\{1}", abbrev, fieldName);
         }
 
         // jsm output
@@ -190,7 +190,7 @@ namespace Sleepey.FF8Mod.Field
         {
             var fieldPath = GetFieldPath(fieldName);
             var innerSource = new FileSource(fieldPath, fieldSource);
-            innerSource.ReplaceFile(fieldPath + "\\" + fieldName + Globals.ScriptFileExtension, Encode());
+            innerSource.ReplaceFile(fieldPath + "\\" + fieldName + Env.ScriptFileExtension, Encode());
         }
 
         public static Dictionary<int, string> OpCodes { get; } = new Dictionary<int, string>()

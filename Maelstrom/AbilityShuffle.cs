@@ -17,8 +17,8 @@ namespace Sleepey.Maelstrom
         public static List<JunctionableGF> Randomise(FileSource mainSource, int seed, State settings)
         {
             var random = new Random(seed + 1);
-            var kernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
-            var init = new Init(mainSource.GetFile(Globals.InitPath));
+            var kernel = new Kernel(mainSource.GetFile(Env.KernelPath));
+            var init = new Init(mainSource.GetFile(Env.InitPath));
 
             if (settings.GfAbilitiesSwapSets)
             {
@@ -37,8 +37,8 @@ namespace Sleepey.Maelstrom
 
         private static void SaveChanges(FileSource mainSource, Kernel kernel, Init init)
         {
-            mainSource.ReplaceFile(Globals.KernelPath, kernel.Encode());
-            mainSource.ReplaceFile(Globals.InitPath, init.Encode());
+            mainSource.ReplaceFile(Env.KernelPath, kernel.Encode());
+            mainSource.ReplaceFile(Env.InitPath, init.Encode());
         }
 
         private static void ModifyAPCosts(Kernel kernel)
@@ -112,8 +112,8 @@ namespace Sleepey.Maelstrom
         private static void SwapSets(FileSource mainSource, Random random, Kernel kernel, Init init)
         {
             var unmatchedGFs = Enumerable.Range(0, 16).ToList();
-            var cleanKernel = new Kernel(mainSource.GetFile(Globals.KernelPath));
-            var cleanInit = new Init(mainSource.GetFile(Globals.InitPath));
+            var cleanKernel = new Kernel(mainSource.GetFile(Env.KernelPath));
+            var cleanInit = new Init(mainSource.GetFile(Env.InitPath));
 
             for (int i = 0; i < 16; i++)
             {
