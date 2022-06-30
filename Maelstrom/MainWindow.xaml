@@ -311,7 +311,7 @@
             </TabItem>
             <TabItem Header="History">
                 <StackPanel>
-                    <GroupBox Header="Seed History">
+                    <GroupBox Header="Seed History (Most Recent At The Top)">
                         <StackPanel>
                             <ListBox Name="HistoryList" ItemsSource="{Binding History}" SelectionMode="Single" AlternationCount="2" Height="320" />
                             <Button Click="OnLoadHistory">Use This Seed</Button>
