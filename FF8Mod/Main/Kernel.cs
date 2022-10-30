@@ -12,6 +12,7 @@ namespace Sleepey.FF8Mod.Main
         public IList<BattleCommand> BattleCommands { get; set; } = new List<BattleCommand>();
         public IList<Spell> MagicData { get; set; } = new List<Spell>();
         public IList<JunctionableGF> JunctionableGFs { get; set; } = new List<JunctionableGF>();
+        public IList<EnemyAttack> EnemyAttackData { get; set; } = new List<EnemyAttack>();
         public IList<Weapon> Weapons { get; set; } = new List<Weapon>();
         public IList<Ability> Abilities { get; set; } = new List<Ability>();
         public IList<byte> MagicText { get; set; }
@@ -19,7 +20,7 @@ namespace Sleepey.FF8Mod.Main
         public IList<byte> EnemyAttackText { get; set; }
         public IList<byte> WeaponText { get; set; }
 
-        private readonly byte[] PostGFData, PostWeaponData, PostAbilityData, PostWeaponTextData;
+        private readonly byte[] PostWeaponData, PostAbilityData, PostWeaponTextData;
 
         public Kernel(Stream stream)
         {
@@ -53,7 +54,10 @@ namespace Sleepey.FF8Mod.Main
                 }
 
                 // section 3 = enemy attacks
-                PostGFData = reader.ReadBytes((int)(SectionOffsets[4] - stream.Position));
+                for (int i = 0; i < 384; i++)
+                {
+                    EnemyAttackData.Add(new EnemyAttack(reader.ReadBytes(20)));
+                }
 
                 // section 4 = weapons
                 for (int i = 0; i < 33; i++)
@@ -82,6 +86,7 @@ namespace Sleepey.FF8Mod.Main
 
                 // section 34 = enemy attack text
                 EnemyAttackText = reader.ReadBytes((int)(SectionOffsets[35] - stream.Position));
+                foreach (var a in EnemyAttackData) a.Name = FF8String.Decode(EnemyAttackText.Skip(a.NameOffset));
 
                 // section 35 = weapon text
                 WeaponText = reader.ReadBytes((int)(SectionOffsets[36] - stream.Position));
@@ -102,7 +107,7 @@ namespace Sleepey.FF8Mod.Main
             foreach (var cmd in BattleCommands) result.AddRange(cmd.Encode());
             foreach (var mag in MagicData) result.AddRange(mag.Encode());
             foreach (var gf in JunctionableGFs) result.AddRange(gf.Encode());
-            result.AddRange(PostGFData);
+            foreach (var ea in EnemyAttackData) result.AddRange(ea.Encode());
             foreach (var w in Weapons) result.AddRange(w.Encode());
             result.AddRange(PostWeaponData);
             foreach (var a in Abilities) result.AddRange(a.Encode());
