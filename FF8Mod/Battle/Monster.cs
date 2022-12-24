@@ -8,13 +8,13 @@ namespace Sleepey.FF8Mod.Battle
 {
     public class Monster
     {
+        public MonsterMesh Mesh { get; set; }
         public MonsterAnimationData Animation { get; set; }
         public MonsterInfo Info { get; set; }
         public MonsterAI AI { get; set; }
 
         // save other sections as raw data to slot back in when rebuilding the file
         public IEnumerable<byte> SectionOne { get; set; }
-        public IEnumerable<byte> SectionTwo { get; set; }
         public IEnumerable<byte> SectionsFourToSix { get; set; }
         public IEnumerable<byte> SectionsNineToEleven { get; set; }
         public Dictionary<MonsterSectionIndex, MonsterSection> SectionInfo { get; set; }
@@ -60,7 +60,7 @@ namespace Sleepey.FF8Mod.Battle
             {
                 // 1-3
                 monster.SectionOne = data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(sections[MonsterSectionIndex.Skeleton].Length);
-                monster.SectionTwo = data.Skip(sections[MonsterSectionIndex.Mesh].Offset).Take(sections[MonsterSectionIndex.Mesh].Length);
+                monster.Mesh = new MonsterMesh(data.Skip(sections[MonsterSectionIndex.Mesh].Offset).Take(sections[MonsterSectionIndex.Mesh].Length));
                 monster.Animation = new MonsterAnimationData(data.Skip(sections[MonsterSectionIndex.Animation].Offset).Take(sections[MonsterSectionIndex.Animation].Length));
 
                 // 4-6
@@ -135,12 +135,14 @@ namespace Sleepey.FF8Mod.Battle
             var encodedAI = AI.Encode();
 
             uint totalLength = 0;
+            IEnumerable<byte> encodedMesh = new byte[0];
             IEnumerable<byte> encodedAnim = new byte[0];
 
             if (sectionCount == 11)
             {
+                encodedMesh = Mesh.Encode();
                 encodedAnim = Animation.Encode();
-                totalLength = (uint)(headerLength + SectionOne.Count() + SectionTwo.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
+                totalLength = (uint)(headerLength + SectionOne.Count() + encodedMesh.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
             }
             else
             {
@@ -183,7 +185,7 @@ namespace Sleepey.FF8Mod.Battle
                 if (sectionCount == 11)
                 {
                     writer.Write(SectionOne);
-                    writer.Write(SectionTwo);
+                    writer.Write(encodedMesh);
                     writer.Write(encodedAnim);
                     writer.Write(SectionsFourToSix);
                 }
