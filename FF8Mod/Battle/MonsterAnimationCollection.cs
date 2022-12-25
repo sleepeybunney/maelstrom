@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Sleepey.FF8Mod.Battle
 {
-    public class MonsterAnimationData
+    public class MonsterAnimationCollection
     {
         public uint AnimationCount { get; set; }
         public List<uint> AnimationLocations { get; set; } = new List<uint>();
         public List<byte> AnimationData { get; set; }
 
-        public MonsterAnimationData(IEnumerable<byte> data)
+        public MonsterAnimationCollection(IEnumerable<byte> data)
         {
             var dataArray = data.ToArray();
             AnimationCount = BitConverter.ToUInt32(dataArray, 0);

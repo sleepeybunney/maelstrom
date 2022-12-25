@@ -8,9 +8,57 @@ namespace Sleepey.FF8Mod.Battle
 {
     public class Monster
     {
-        public MonsterSkeleton Skeleton { get; set; }
-        public MonsterMesh Mesh { get; set; }
-        public MonsterAnimationData Animation { get; set; }
+        private Lazy<MonsterSkeleton> _skeleton;
+        private Lazy<MonsterMesh> _mesh;
+        private Lazy<MonsterAnimationCollection> _animations;
+
+        private IEnumerable<byte> _skeletonData;
+        private IEnumerable<byte> _meshData;
+        private IEnumerable<byte> _animationsData;
+
+        public MonsterSkeleton Skeleton { get => _skeleton.Value; }
+        public MonsterMesh Mesh { get => _mesh.Value; }
+        public MonsterAnimationCollection Animations { get => _animations.Value; }
+
+        public IEnumerable<byte> SkeletonData
+        {
+            get
+            {
+                return _skeleton.IsValueCreated ? Skeleton.Encode() : _skeletonData;
+            }
+            set
+            {
+                _skeletonData = value;
+                _skeleton = new Lazy<MonsterSkeleton>(() => new MonsterSkeleton(_skeletonData));
+            }
+        }
+
+        public IEnumerable<byte> MeshData
+        {
+            get
+            {
+                return _mesh.IsValueCreated ? Mesh.Encode() : _meshData;
+            }
+            set
+            {
+                _meshData = value;
+                _mesh = new Lazy<MonsterMesh>(() => new MonsterMesh(_meshData));
+            }
+        }
+
+        public IEnumerable<byte> AnimationsData
+        {
+            get
+            {
+                return _animations.IsValueCreated ? Animations.Encode() : _animationsData;
+            }
+            set
+            {
+                _animationsData = value;
+                _animations = new Lazy<MonsterAnimationCollection>(() => new MonsterAnimationCollection(_animationsData));
+            }
+        }
+
         public MonsterInfo Info { get; set; }
         public MonsterAI AI { get; set; }
 
@@ -59,9 +107,9 @@ namespace Sleepey.FF8Mod.Battle
             if (sections.Count == 11)
             {
                 // 1-3
-                monster.Skeleton = new MonsterSkeleton(data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(sections[MonsterSectionIndex.Skeleton].Length));
-                monster.Mesh = new MonsterMesh(data.Skip(sections[MonsterSectionIndex.Mesh].Offset).Take(sections[MonsterSectionIndex.Mesh].Length));
-                monster.Animation = new MonsterAnimationData(data.Skip(sections[MonsterSectionIndex.Animation].Offset).Take(sections[MonsterSectionIndex.Animation].Length));
+                monster.SkeletonData = data.Skip(sections[MonsterSectionIndex.Skeleton].Offset).Take(sections[MonsterSectionIndex.Skeleton].Length);
+                monster.MeshData = data.Skip(sections[MonsterSectionIndex.Mesh].Offset).Take(sections[MonsterSectionIndex.Mesh].Length);
+                monster.AnimationsData = data.Skip(sections[MonsterSectionIndex.Animation].Offset).Take(sections[MonsterSectionIndex.Animation].Length);
 
                 // 4-6
                 var fourToSixLength = sections[MonsterSectionIndex.Info].Offset - sections[MonsterSectionIndex.Section4].Offset;
@@ -141,9 +189,9 @@ namespace Sleepey.FF8Mod.Battle
 
             if (sectionCount == 11)
             {
-                encodedSkeleton = Skeleton.Encode();
-                encodedMesh = Mesh.Encode();
-                encodedAnim = Animation.Encode();
+                encodedSkeleton = SkeletonData;
+                encodedMesh = MeshData;
+                encodedAnim = AnimationsData;
                 totalLength = (uint)(headerLength + encodedSkeleton.Count() + encodedMesh.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
             }
             else
