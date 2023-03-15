@@ -116,6 +116,18 @@ namespace Sleepey.Maelstrom
             {
                 var tailoredReplacements = new List<int>(availableReplacements);
 
+                if (settings.RestrictSorcs == "normal")
+                {
+                    // only match sorceress fight with itself
+                    if (encID == 813) tailoredReplacements = new List<int> { 813 };
+                    else tailoredReplacements.Remove(813);
+                }
+                else if (settings.RestrictSorcs == "afterdisc1")
+                {
+                    // don't replace bosses from disc 1 with sorceresses
+                    if (Encounters[encID].Disc == 1) tailoredReplacements.Remove(813);
+                }
+
                 if (settings.RestrictOmega == "normal")
                 {
                     // only match omega weapon with itself

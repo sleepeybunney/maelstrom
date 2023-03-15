@@ -184,6 +184,13 @@
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
+                                <local:ComboBoxWithLabel Title="Sorceresses" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictSorcs, Mode=TwoWay}">
+                                    <local:ComboBoxWithLabel.ComboBoxItems>
+                                        <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
+                                        <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
+                                        <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
+                                    </local:ComboBoxWithLabel.ComboBoxItems>
+                                </local:ComboBoxWithLabel>
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">

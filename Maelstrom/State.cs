@@ -25,6 +25,7 @@ namespace Sleepey.Maelstrom
         public bool BossEnable { get; set; } = false;
         public bool BossRandom { get; set; } = false;
         public bool BossRebalance { get; set; } = true;
+        public string RestrictSorcs { get; set; } = "normal";
         public string RestrictOmega { get; set; } = "normal";
         public string RestrictUltimecia { get; set; } = "normal";
 
