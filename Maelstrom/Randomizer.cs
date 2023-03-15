@@ -354,6 +354,9 @@ namespace Sleepey.Maelstrom
 
                     if ((settings.NameEnable && Env.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Env.Remastered) || settings.DoomtrainEnable)
                     {
+                        // shop prices fix
+                        PriceFix.Apply(menuSource);
+
                         menuSource.Encode();
                     }
 

@@ -92,6 +92,10 @@ namespace Sleepey.FF8Mod
 
         public static string DoomtrainPath { get => Path.Combine(DataPath, @"menu\mthomas.bin"); }
 
+        public static string MagsortPath { get => Path.Combine(DataPath, @"menu\magsort.bin"); }
+
         public static string MngrpPath { get => Path.Combine(DataPath, @"menu\mngrp.bin"); }
+
+        public static string PricePath { get => Path.Combine(DataPath, @"menu\price.bin"); }
     }
 }

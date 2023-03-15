@@ -12,7 +12,7 @@ namespace Sleepey.Maelstrom
     {
         public static void Apply(FileSource menuSource)
         {
-            menuSource.ReplaceFile(Env.DataPath + @"\menu\magsort.bin", GenerateSort());
+            menuSource.ReplaceFile(Env.MagsortPath, GenerateSort());
         }
 
         public static byte[] GenerateSort()
