@@ -170,7 +170,7 @@
                                 <local:OptionWithDescription Title="Allow Duplicates" Description="Bosses may appear more than once, or not at all." Checked="{Binding BossRandom, Mode=TwoWay}" />
                                 <Separator />
                                 <TextBlock>Restrict where certain bosses may appear:</TextBlock>
-                                <local:ComboBoxWithLabel Title="Final Boss" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
+                                <local:ComboBoxWithLabel Title="Sorceresses" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictSorcs, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
                                         <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
@@ -184,13 +184,17 @@
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
-                                <local:ComboBoxWithLabel Title="Sorceresses" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictSorcs, Mode=TwoWay}">
+                                <local:ComboBoxWithLabel Title="Final Boss (all phases)" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
                                         <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
+                                <Separator />
+                                <TextBlock>Fixed-level bosses:</TextBlock>
+                                <local:OptionWithDescription Title="Sorceresses" Description="Always level 45 (default: on)" Checked="{Binding StaticSorcs, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Omega Weapon" Description="Always level 100 (default: off)" Checked="{Binding StaticOmega, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">

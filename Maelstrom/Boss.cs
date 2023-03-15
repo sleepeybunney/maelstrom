@@ -174,7 +174,7 @@ namespace Sleepey.Maelstrom
             return encounterMap;
         }
 
-        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, bool rebalance, bool splitFinalBoss)
+        public static void Apply(FileSource battleSource, Dictionary<int, int> encounterMap, State settings, bool splitFinalBoss)
         {
             if (splitFinalBoss) SplitFinalBoss(battleSource);
 
@@ -191,6 +191,18 @@ namespace Sleepey.Maelstrom
                 {
                     var newMonsterID = cleanEncFile.Encounters[matchedEncID].Slots[i].MonsterID;
                     newEncFile.Encounters[encID].Slots[i] = new Encounter(cleanEncFile.Encounters[matchedEncID].Encode()).Slots[i];
+
+                    // enable level scaling for sorceresses
+                    if (matchedEncID == 813 && !settings.StaticSorcs)
+                    {
+                        newEncFile.Encounters[encID].Slots[i].Level = 254;
+                    }
+
+                    // disable level scaling for omega weapon
+                    if (matchedEncID == 462 && settings.StaticOmega)
+                    {
+                        newEncFile.Encounters[encID].Slots[i].Level = 100;
+                    }
 
                     // update any encounter ID checks in the monster's AI scripts
                     FixEncounterChecks(battleSource, newMonsterID, encID, matchedEncID);
@@ -226,7 +238,7 @@ namespace Sleepey.Maelstrom
                 }
 
                 // apply rebalancing if enabled
-                if (rebalance && Encounters.ContainsKey(encID))
+                if (settings.BossRebalance && Encounters.ContainsKey(encID))
                 {
                     var sourceBossSlot = Encounters[encID].SlotRanks[0];
                     var sourceInfo = cleanEncFile.Encounters[encID].Slots[sourceBossSlot].GetMonster(battleSource).Info;
@@ -347,27 +359,6 @@ namespace Sleepey.Maelstrom
                         newFujinInfo.Spr = newInfo.Vit.ToList();
 
                         rebalancedStats[136] = newFujinInfo;
-                    }
-
-                    // sorceresses
-                    if (matchedEncID == 813 && Encounters[encID].Disc == 1)
-                    {
-                        // weaken non-worm sorceresses on disc 1
-                        var sorc1Info = Monster.ByID(battleSource, 115).Info;
-                        var sorc2Info = Monster.ByID(battleSource, 116).Info;
-                        var newSorc1Info = new MonsterInfo();
-                        var newSorc2Info = new MonsterInfo();
-                        newSorc1Info.CopyStatsFrom(sorc1Info);
-                        newSorc2Info.CopyStatsFrom(sorc2Info);
-
-                        newSorc1Info.Hp[1] = 50;
-                        newSorc1Info.Hp[3] = 0;
-
-                        newSorc2Info.Hp[1] = 80;
-                        newSorc2Info.Hp[3] = 0;
-
-                        rebalancedStats[115] = newSorc1Info;
-                        rebalancedStats[116] = newSorc2Info;
                     }
 
                     // if a boss appears multiple times, keep the weakest version to avoid difficulty spikes

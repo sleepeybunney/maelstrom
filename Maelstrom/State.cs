@@ -28,6 +28,8 @@ namespace Sleepey.Maelstrom
         public string RestrictSorcs { get; set; } = "normal";
         public string RestrictOmega { get; set; } = "normal";
         public string RestrictUltimecia { get; set; } = "normal";
+        public bool StaticSorcs { get; set; } = true;
+        public bool StaticOmega { get; set; } = false;
 
         // drops
         public bool LootDrops { get; set; } = false;

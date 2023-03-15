@@ -197,7 +197,7 @@ namespace Sleepey.Maelstrom
                     {
                         var bossMap = Boss.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddBosses(bossMap);
-                        Boss.Apply(battleSource, bossMap, settings.BossRebalance, settings.RestrictUltimecia != "normal");
+                        Boss.Apply(battleSource, bossMap, settings, settings.RestrictUltimecia != "normal");
                     }
 
                     // loot shuffle
