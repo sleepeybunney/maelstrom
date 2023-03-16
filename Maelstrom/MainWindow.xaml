@@ -281,6 +281,7 @@
                                 <TextBlock>Background music tracks are randomized. Changes are consistent, eg. every random encounter will play the same song, whatever it is.</TextBlock>
                                 <Separator />
                                 <local:OptionWithDescription Title="Include Non-Music Tracks" Description="Ambient sounds, chanting, etc." Checked="{Binding MusicIncludeNonMusic, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Fight Song Super Shuffle" Description="Battle and boss themes will keep changing throughout the game." Checked="{Binding MusicBattleChange, Mode=TwoWay}" />
                                 <Separator />
                                 <TextBlock FontStyle="Italic">The correct music will always play here for technical reasons: world map, card game, Shumi hotel, Julia's performance, FH concert, Ragnarok romance scene.</TextBlock>
                                 <Separator />

@@ -151,7 +151,7 @@ namespace Sleepey.Maelstrom
             Music.Heading("Music");
 
             var replacements = new List<string>();
-            foreach (var t in tracks.Keys)
+            foreach (var t in tracks.Keys.Where((k,v) => k >= 0))
             {
                 var orig = MusicShuffle.MusicTracks.Find(m => m.TrackID == t).TrackName;
                 var repl = MusicShuffle.MusicTracks.Find(m => m.TrackID == tracks[t]).TrackName;

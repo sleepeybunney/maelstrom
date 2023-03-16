@@ -85,6 +85,7 @@ namespace Sleepey.Maelstrom
         // music
         public bool MusicEnable { get; set; } = false;
         public bool MusicIncludeNonMusic { get; set; } = false;
+        public bool MusicBattleChange { get; set; } = false;
 
         // misc
         public bool EmergencySpell { get; set; } = false;

@@ -28,6 +28,9 @@ namespace Sleepey.Maelstrom
             // leave "julia" unshuffled to avoid problems in laguna scene
             result[22] = 22;
 
+            // generate seed to randomise battle music later (spoiler file won't be accurate)
+            if (settings.MusicBattleChange) result[-1] = random.Next();
+
             return result;
         }
 
@@ -43,6 +46,9 @@ namespace Sleepey.Maelstrom
 
             // remove duplicates
             scripts = scripts.Distinct().ToList();
+
+            var random = new Random(shuffle.ContainsKey(-1) ? shuffle[-1] : 0);
+            var values = shuffle.ToList().OrderBy(x => x.Key).Select(x => x.Value).ToList();
 
             // search all these scripts & replace the music IDs with random ones
             foreach (var fieldName in scripts.Select(s => s.Item1).Distinct())
@@ -60,7 +66,15 @@ namespace Sleepey.Maelstrom
                             var prevParam = script.Instructions[i - 1].Param;
                             if (shuffle.ContainsKey(prevParam))
                             {
-                                field.Entities[s.Item2].Scripts[s.Item3].Instructions[i - 1].Param = shuffle[prevParam];
+                                var newParam = shuffle[prevParam];
+
+                                if (shuffle.ContainsKey(-1) && script.Instructions[i].OpCode == FieldScript.OpCodesReverse["setbattlemusic"])
+                                {
+                                    // re-randomise battle music
+                                    newParam = values[random.Next(values.Count)];
+                                }
+
+                                field.Entities[s.Item2].Scripts[s.Item3].Instructions[i - 1].Param = newParam;
                             }
                         }
                     }
