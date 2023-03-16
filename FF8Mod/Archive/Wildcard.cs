@@ -12,12 +12,19 @@ namespace Sleepey.FF8Mod.Archive
 
         public static bool Match(string path1, string path2)
         {
-            path1 = path1.ToLower();
-            path2 = path2.ToLower();
+            if (path1 == null) throw new ArgumentNullException("path1");
+            if (path2 == null) throw new ArgumentNullException("path2");
+
+            path1 = path1.ToLower().Replace('\\', '/');
+            path2 = path2.ToLower().Replace('\\', '/');
+
             foreach (var o in DirectoryOptions)
             {
-                if (path1.Replace("\\" + DirectoryWildcard + "\\", "\\" + o + "\\") == path2) return true;
-                if (path2.Replace("\\" + DirectoryWildcard + "\\", "\\" + o + "\\") == path1) return true;
+                var pattern = string.Format("/{0}/", DirectoryWildcard);
+                var replacement = string.Format("/{0}/", o);
+
+                if (path1.Replace(pattern, replacement) == path2) return true;
+                if (path2.Replace(pattern, replacement) == path1) return true;
             }
             return false;
         }

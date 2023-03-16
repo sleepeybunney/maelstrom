@@ -25,7 +25,7 @@ namespace Sleepey.FF8Mod
 
         public static string RegionCodeFromPath(string path)
         {
-            if (path.Length < 6) return "eng";
+            if (path == null || path.Length < 6) return "eng";
             var ext = path.Substring(path.Length - 6, 2).ToLower();
             if (!RegionExts.Values.Contains(ext)) return "eng";
             return RegionExts.First(x => x.Value == ext).Key;

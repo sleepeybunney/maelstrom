@@ -40,6 +40,7 @@ namespace Sleepey.Maelstrom
             // generate new seed if not fixed
             if (!settings.SeedFixed) settings.SeedValue = (new Random().Next(-1, int.MaxValue) + 1).ToString();
             var seedString = settings.SeedValue;
+            Debug.WriteLine("SEED: {0}", new object[] { seedString });
 
             // update seed history
             if (State.Current.History == null) State.Current.History = new List<string>();
