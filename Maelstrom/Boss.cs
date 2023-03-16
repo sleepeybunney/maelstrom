@@ -35,33 +35,33 @@ namespace Sleepey.Maelstrom
         private readonly static EncounterCheck[] EncounterChecks = new EncounterCheck[]
         {
             // bgh251f2
-            new EncounterCheck(164, 71, 0, 0),
-            new EncounterCheck(164, 72, 0, 0),
-            new EncounterCheck(164, 72, 1, 0),
+            new EncounterCheck(164, 71, 0),
+            new EncounterCheck(164, 72, 0),
+            new EncounterCheck(164, 72, 1),
 
             // gargantua
-            new EncounterCheck(436, 39, 3, 2, 0),
-            new EncounterCheck(436, 40, 3, 2, 0),
-            new EncounterCheck(436, 54, 3, 2, 0),
+            new EncounterCheck(436, 39, 3),
+            new EncounterCheck(436, 40, 3),
+            new EncounterCheck(436, 54, 3),
 
             // sacred
-            new EncounterCheck(189, 63, 1, 10),
-            new EncounterCheck(189, 63, 3, 2),
+            new EncounterCheck(189, 63, 3),
+            new EncounterCheck(189, 63, 1),
 
             // granaldo
-            new EncounterCheck(62, 95, 1, 3),
-            new EncounterCheck(62, 96, 1, 3),
+            new EncounterCheck(62, 95, 1),
+            new EncounterCheck(62, 96, 1),
 
             // gim52a
-            new EncounterCheck(161, 72, 0, 4),
+            new EncounterCheck(161, 72, 0),
 
             // raijin & soldiers
-            new EncounterCheck(83, 120, 0, 5),
-            new EncounterCheck(83, 120, 1, 0),
-            new EncounterCheck(83, 120, 3, 2),
+            new EncounterCheck(83, 120, 0),
+            new EncounterCheck(83, 120, 1),
+            new EncounterCheck(83, 120, 3),
 
             // raijin & fujin
-            new EncounterCheck(84, 120, 2, 0),
+            new EncounterCheck(84, 120, 2),
         };
 
         private struct EncounterCheck
@@ -69,16 +69,12 @@ namespace Sleepey.Maelstrom
             public int EncounterID;
             public int MonsterID;
             public int Script;
-            public int Instruction;
-            public int InstructionJP;
 
-            public EncounterCheck(int encID, int monID, int script, int instruction, int instructionJP = -1)
+            public EncounterCheck(int encID, int monID, int script)
             {
                 EncounterID = encID;
                 MonsterID = monID;
                 Script = script;
-                Instruction = instruction;
-                InstructionJP = instructionJP;
             }
         }
 
@@ -495,8 +491,14 @@ namespace Sleepey.Maelstrom
             {
                 var monster = Monster.ByID(battleSource, monsterID);
                 var script = monster.AI.Scripts.EventScripts[ec.Script];
-                var instruction = (ec.InstructionJP == -1 || Env.RegionCode != "jp") ? ec.Instruction : ec.InstructionJP;
-                script[instruction].Args[3] = (short)encID;
+                for (int i = 0; i < script.Count; i++)
+                {
+                    // find encounter ID checks ("if encounter-id == origEncID") & update the ID
+                    if (script[i].Op == BattleScriptInstruction.OpCodesReverse["if"] && script[i].Args[0] == 3 && script[i].Args[3] == origEncID)
+                    {
+                        script[i].Args[3] = (short)encID;
+                    }
+                }
                 battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
             }
         }
