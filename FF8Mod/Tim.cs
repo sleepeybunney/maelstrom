@@ -192,7 +192,7 @@ namespace Sleepey.FF8Mod
             var m = new float[3, 3];
 
             m[0, 0] = 0.213f + 0.787f * cos - 0.213f * sin;
-            m[0, 1] = 0.213f - 0.213f * cos + 0.413f * sin;
+            m[0, 1] = 0.213f - 0.213f * cos + 0.143f * sin;
             m[0, 2] = 0.213f - 0.213f * cos - 0.787f * sin;
 
             m[1, 0] = 0.715f - 0.715f * cos - 0.715f * sin;
@@ -208,7 +208,7 @@ namespace Sleepey.FF8Mod
             var tb = r * m[0, 2] + g * m[1, 2] + b * m[2, 2];
 
             tr = Math.Max(0, Math.Min(31, (float)Math.Round(tr, MidpointRounding.AwayFromZero)));
-            tg = Math.Max(0, Math.Min(31, (float)Math.Round(tg * 0.9, MidpointRounding.AwayFromZero)));
+            tg = Math.Max(0, Math.Min(31, (float)Math.Round(tg, MidpointRounding.AwayFromZero)));
             tb = Math.Max(0, Math.Min(31, (float)Math.Round(tb, MidpointRounding.AwayFromZero)));
 
             r = (byte)tr;
