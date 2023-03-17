@@ -184,7 +184,7 @@
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
-                                <local:ComboBoxWithLabel Title="Final Boss (all phases)" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
+                                <local:ComboBoxWithLabel Title="Final Boss (any phase)" ComboBoxWidth="160" SelectedValuePath="Tag" SelectedValue="{Binding RestrictUltimecia, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
                                         <ComboBoxItem Tag="normal">Normal Location</ComboBoxItem>
                                         <ComboBoxItem Tag="afterdisc1">After Disc 1</ComboBoxItem>
@@ -236,6 +236,9 @@
                                 <Separator />
                                 <local:OptionWithDescription Title="Fair Play" Description="Enemies can use their randomized spells against you in battle." Checked="{Binding LootDrawsUse, Mode=TwoWay}" />
                             </StackPanel>
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Strange Creatures" Checked="{Binding StrangeCreatures, Mode=TwoWay}">
+                            <TextBlock>Enemies receive subtle visual enhancements in battle.</TextBlock>
                         </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>

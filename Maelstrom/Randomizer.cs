@@ -212,7 +212,13 @@ namespace Sleepey.Maelstrom
                         if (settings.SpoilerFile) spoilerFile.AddLoot(shuffle, drops, steals, draws);
                     }
 
-                    if (settings.BossEnable || drops || steals || draws)
+                    // strange creatures
+                    if (settings.StrangeCreatures)
+                    {
+                        StrangeCreatures.Apply(battleSource, seed);
+                    }
+
+                    if (settings.BossEnable || drops || steals || draws || settings.StrangeCreatures)
                     {
                         battleSource.Encode();
                     }

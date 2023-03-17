@@ -10,9 +10,9 @@ namespace Sleepey.FF8Mod.Battle
 {
     public class MonsterSkeleton
     {
+        public short Size { get; set; }
         public short Unknown1a { get; set; }
         public short Unknown1b { get; set; }
-        public short Unknown1c { get; set; }
         public short ScaleX { get; set; }
         public short ScaleY { get; set; }
         public short ScaleZ { get; set; }
@@ -28,9 +28,9 @@ namespace Sleepey.FF8Mod.Battle
             {
                 var boneCount = reader.ReadUInt16();
 
+                Size = reader.ReadInt16();
                 Unknown1a = reader.ReadInt16();
                 Unknown1b = reader.ReadInt16();
-                Unknown1c = reader.ReadInt16();
                 ScaleX = reader.ReadInt16();
                 ScaleZ = reader.ReadInt16();
                 ScaleY = reader.ReadInt16();
@@ -47,9 +47,9 @@ namespace Sleepey.FF8Mod.Battle
         {
             var result = new List<byte>();
             result.AddRange(BitConverter.GetBytes((ushort)Bones.Count));
+            result.AddRange(BitConverter.GetBytes(Size));
             result.AddRange(BitConverter.GetBytes(Unknown1a));
             result.AddRange(BitConverter.GetBytes(Unknown1b));
-            result.AddRange(BitConverter.GetBytes(Unknown1c));
             result.AddRange(BitConverter.GetBytes(ScaleX));
             result.AddRange(BitConverter.GetBytes(ScaleZ));
             result.AddRange(BitConverter.GetBytes(ScaleY));

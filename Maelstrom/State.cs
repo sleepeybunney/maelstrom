@@ -31,6 +31,9 @@ namespace Sleepey.Maelstrom
         public bool StaticSorcs { get; set; } = true;
         public bool StaticOmega { get; set; } = false;
 
+        // monsters
+        public bool StrangeCreatures { get; set; } = false;
+
         // drops
         public bool LootDrops { get; set; } = false;
         public bool LootDropsKeyItems { get; set; } = false;

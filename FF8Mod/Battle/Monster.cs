@@ -18,10 +18,10 @@ namespace Sleepey.FF8Mod.Battle
         private IEnumerable<byte> _animationsData;
         private IEnumerable<byte> _texturesData;
 
-        public MonsterSkeleton Skeleton { get => _skeleton.Value; }
-        public MonsterMesh Mesh { get => _mesh.Value; }
-        public MonsterAnimationCollection Animations { get => _animations.Value; }
-        public MonsterTextureCollection Textures { get => _textures.Value; }
+        public MonsterSkeleton Skeleton { get => _skeleton?.Value; }
+        public MonsterMesh Mesh { get => _mesh?.Value; }
+        public MonsterAnimationCollection Animations { get => _animations?.Value; }
+        public MonsterTextureCollection Textures { get => _textures?.Value; }
 
         public IEnumerable<byte> SkeletonData
         {
