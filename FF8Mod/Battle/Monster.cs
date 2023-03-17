@@ -11,14 +11,17 @@ namespace Sleepey.FF8Mod.Battle
         private Lazy<MonsterSkeleton> _skeleton;
         private Lazy<MonsterMesh> _mesh;
         private Lazy<MonsterAnimationCollection> _animations;
+        private Lazy<MonsterTextureCollection> _textures;
 
         private IEnumerable<byte> _skeletonData;
         private IEnumerable<byte> _meshData;
         private IEnumerable<byte> _animationsData;
+        private IEnumerable<byte> _texturesData;
 
         public MonsterSkeleton Skeleton { get => _skeleton.Value; }
         public MonsterMesh Mesh { get => _mesh.Value; }
         public MonsterAnimationCollection Animations { get => _animations.Value; }
+        public MonsterTextureCollection Textures { get => _textures.Value; }
 
         public IEnumerable<byte> SkeletonData
         {
@@ -59,12 +62,25 @@ namespace Sleepey.FF8Mod.Battle
             }
         }
 
+        public IEnumerable<byte> TexturesData
+        {
+            get
+            {
+                return _textures.IsValueCreated ? Textures.Encode() : _texturesData;
+            }
+            set
+            {
+                _texturesData = value;
+                _textures = new Lazy<MonsterTextureCollection>(() => new MonsterTextureCollection(_texturesData));
+            }
+        }
+
         public MonsterInfo Info { get; set; }
         public MonsterAI AI { get; set; }
 
         // save other sections as raw data to slot back in when rebuilding the file
         public IEnumerable<byte> SectionsFourToSix { get; set; }
-        public IEnumerable<byte> SectionsNineToEleven { get; set; }
+        public IEnumerable<byte> SectionsNineToTen { get; set; }
         public Dictionary<MonsterSectionIndex, MonsterSection> SectionInfo { get; set; }
 
         public static Monster FromFile(string path)
@@ -122,9 +138,12 @@ namespace Sleepey.FF8Mod.Battle
 
             if (sections.Count == 11)
             {
-                // 9-11
-                var nineToElevenLength = data.Count() - sections[(MonsterSectionIndex)9].Offset;
-                monster.SectionsNineToEleven = data.Skip(sections[MonsterSectionIndex.Sounds].Offset).Take(nineToElevenLength);
+                // 9-10
+                var nineToTenLength = sections[MonsterSectionIndex.Textures].Offset - sections[MonsterSectionIndex.Sounds].Offset;
+                monster.SectionsNineToTen = data.Skip(sections[MonsterSectionIndex.Sounds].Offset).Take(nineToTenLength);
+
+                // 11
+                monster.TexturesData = data.Skip(sections[MonsterSectionIndex.Textures].Offset).Take(sections[MonsterSectionIndex.Textures].Length);
             }
 
             monster.SectionInfo = sections;
@@ -186,13 +205,16 @@ namespace Sleepey.FF8Mod.Battle
             IEnumerable<byte> encodedSkeleton = new byte[0];
             IEnumerable<byte> encodedMesh = new byte[0];
             IEnumerable<byte> encodedAnim = new byte[0];
+            IEnumerable<byte> encodedTex = new byte[0];
 
             if (sectionCount == 11)
             {
                 encodedSkeleton = SkeletonData;
                 encodedMesh = MeshData;
                 encodedAnim = AnimationsData;
-                totalLength = (uint)(headerLength + encodedSkeleton.Count() + encodedMesh.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToEleven.Count());
+                encodedTex = TexturesData;
+
+                totalLength = (uint)(headerLength + encodedSkeleton.Count() + encodedMesh.Count() + encodedAnim.Count() + SectionsFourToSix.Count() + encodedInfo.Length + encodedAI.Count() + SectionsNineToTen.Count() + encodedTex.Count());
             }
             else
             {
@@ -245,7 +267,8 @@ namespace Sleepey.FF8Mod.Battle
 
                 if (sectionCount == 11)
                 {
-                    writer.Write(SectionsNineToEleven);
+                    writer.Write(SectionsNineToTen);
+                    writer.Write(encodedTex);
                 }
             }
 
