@@ -121,6 +121,8 @@ namespace Sleepey.Maelstrom
             }
         }
 
+        private static List<string> WorkspaceFolders = new List<string>() { @"textures\battle.fs\hd_new" };
+
         private static string WorkspacePath
         {
             get { return Path.Combine(Path.GetDirectoryName(Env.MainZzzPath), "Data"); }
@@ -145,6 +147,23 @@ namespace Sleepey.Maelstrom
                     }
                 }
             }
+
+            foreach (var f in WorkspaceFolders)
+            {
+                var searchPath = f.ToLower();
+                if (!searchPath.EndsWith(@"\")) searchPath += @"\";
+                var main = new Zzz(Env.MainZzzPath);
+                foreach (var srcPath in main.Index.Where(x => x.Path.ToLower().StartsWith(searchPath)).Select(x => x.Path))
+                {
+                    var destPath = Path.Combine(WorkspacePath, srcPath);
+                    Directory.CreateDirectory(Path.GetDirectoryName(destPath));
+
+                    if (!File.Exists(destPath))
+                    {
+                        File.WriteAllBytes(destPath, main.GetFile(srcPath).ToArray());
+                    }
+                }
+            }
         }
 
         private static void RepackArchive()
@@ -160,6 +179,19 @@ namespace Sleepey.Maelstrom
                     // todo: defer read so everything isn't in memory at once
                     var source = File.ReadAllBytes(sourcePath);
                     filesToPack.Add(@"data\" + f, source);
+                }
+            }
+
+            foreach (var f in WorkspaceFolders)
+            {
+                var sourcePath = Path.Combine(WorkspacePath, f);
+                if (Directory.Exists(sourcePath))
+                {
+                    foreach (var file in Directory.GetFiles(sourcePath).Where(x => !x.EndsWith(".bak")))
+                    {
+                        var destPath = Path.Combine(f, Path.GetFileName(file));
+                        filesToPack.Add(destPath, File.ReadAllBytes(file));
+                    }
                 }
             }
 
@@ -217,8 +249,12 @@ namespace Sleepey.Maelstrom
                     {
                         StrangeCreatures.Apply(battleSource, seed);
                     }
+                    else if (Env.Remastered)
+                    {
+                        StrangeCreatures.ResetTextures(battleSource);
+                    }
 
-                    if (settings.BossEnable || drops || steals || draws || settings.StrangeCreatures)
+                    if (settings.BossEnable || drops || steals || draws || settings.StrangeCreatures || Env.Remastered)
                     {
                         battleSource.Encode();
                     }

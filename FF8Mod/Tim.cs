@@ -11,7 +11,7 @@ namespace Sleepey.FF8Mod
     {
         public byte ClutMode { get; set; } = 0;
         public bool ClutPresent { get; set; } = false;
-        public Clut Clut { get; set; }
+        public TimClut Clut { get; set; }
         public IEnumerable<byte> ImageData { get; set; } = new List<byte>();
 
         public Tim(byte mode, IEnumerable<byte> data)
@@ -22,7 +22,7 @@ namespace Sleepey.FF8Mod
             ImageData = data;
         }
 
-        public Tim(byte mode, Clut clut, IEnumerable<byte> data) : this(mode, data)
+        public Tim(byte mode, TimClut clut, IEnumerable<byte> data) : this(mode, data)
         {
             ClutPresent = true;
             Clut = clut;
@@ -44,7 +44,7 @@ namespace Sleepey.FF8Mod
                 {
                     var clutLength = reader.ReadUInt32();
                     stream.Seek(-4, SeekOrigin.Current);
-                    Clut = new Clut(reader.ReadBytes((int)clutLength));
+                    Clut = new TimClut(reader.ReadBytes((int)clutLength));
                 }
 
                 var imageLength = reader.ReadUInt32();
@@ -70,25 +70,25 @@ namespace Sleepey.FF8Mod
         }
     }
 
-    public class Clut
+    public class TimClut
     {
         public ushort X { get; set; } = 0;
         public ushort Y { get; set; } = 0;
         public ushort Width { get; } = 16;
         public ushort Height { get; } = 16;
 
-        public Colour[,] Data;
+        public TimColour[,] Data;
 
-        public Clut(ushort x, ushort y, ushort width, ushort height)
+        public TimClut(ushort x, ushort y, ushort width, ushort height)
         {
             X = x;
             Y = y;
             Width = width;
             Height = height;
-            Data = new Colour[Height, Width];
+            Data = new TimColour[Height, Width];
         }
 
-        public Clut(IEnumerable<byte> data)
+        public TimClut(IEnumerable<byte> data)
         {
             using (var stream = new MemoryStream(data.ToArray()))
             using (var reader = new BinaryReader(stream))
@@ -98,13 +98,13 @@ namespace Sleepey.FF8Mod
                 Y = reader.ReadUInt16();
                 Width = reader.ReadUInt16();
                 Height = reader.ReadUInt16();
-                Data = new Colour[Height, Width];
+                Data = new TimColour[Height, Width];
 
                 for (int row = 0; row < Height; row++)
                 {
                     for (int col = 0; col < Width; col++)
                     {
-                        Data[row, col] = new Colour(reader.ReadUInt16());
+                        Data[row, col] = new TimColour(reader.ReadUInt16());
                     }
                 }
             }
@@ -134,7 +134,7 @@ namespace Sleepey.FF8Mod
         }
     }
 
-    public class Colour
+    public class TimColour
     {
         private byte r, g, b;
 
@@ -158,7 +158,7 @@ namespace Sleepey.FF8Mod
 
         public bool STP { get; set; } = false;
 
-        public Colour(byte red, byte green, byte blue, bool stp)
+        public TimColour(byte red, byte green, byte blue, bool stp)
         {
             Red = red;
             Green = green;
@@ -166,7 +166,7 @@ namespace Sleepey.FF8Mod
             STP = stp;
         }
 
-        public Colour(ushort data)
+        public TimColour(ushort data)
         {
             Red = (byte)(data & 31);
             Green = (byte)(data >> 5 & 31);
@@ -181,39 +181,6 @@ namespace Sleepey.FF8Mod
             result += (ushort)(Blue << 10);
             if (STP) result += (1 << 15);
             return result;
-        }
-
-        public void ShiftHue(float degrees)
-        {
-            var theta = degrees / 360 * 2 * Math.PI;
-            var cos = (float)Math.Cos(theta);
-            var sin = (float)Math.Sin(theta);
-
-            var m = new float[3, 3];
-
-            m[0, 0] = 0.213f + 0.787f * cos - 0.213f * sin;
-            m[0, 1] = 0.213f - 0.213f * cos + 0.143f * sin;
-            m[0, 2] = 0.213f - 0.213f * cos - 0.787f * sin;
-
-            m[1, 0] = 0.715f - 0.715f * cos - 0.715f * sin;
-            m[1, 1] = 0.715f + 0.285f * cos + 0.140f * sin;
-            m[1, 2] = 0.715f - 0.715f * cos + 0.715f * sin;
-
-            m[2, 0] = 0.072f - 0.072f * cos + 0.928f * sin;
-            m[2, 1] = 0.072f - 0.072f * cos - 0.283f * sin;
-            m[2, 2] = 0.072f + 0.928f * cos + 0.072f * sin;
-
-            var tr = r * m[0, 0] + g * m[1, 0] + b * m[2, 0];
-            var tg = r * m[0, 1] + g * m[1, 1] + b * m[2, 1];
-            var tb = r * m[0, 2] + g * m[1, 2] + b * m[2, 2];
-
-            tr = Math.Max(0, Math.Min(31, (float)Math.Round(tr, MidpointRounding.AwayFromZero)));
-            tg = Math.Max(0, Math.Min(31, (float)Math.Round(tg, MidpointRounding.AwayFromZero)));
-            tb = Math.Max(0, Math.Min(31, (float)Math.Round(tb, MidpointRounding.AwayFromZero)));
-
-            r = (byte)tr;
-            g = (byte)tg;
-            b = (byte)tb;
         }
     }
 }

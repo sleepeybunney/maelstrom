@@ -76,6 +76,8 @@ namespace Sleepey.FF8Mod
 
         public static string OtherZzzPath { get => Path.Combine(GameDirectory, "other.zzz"); }
 
+        public static string HDTexturePath { get => Path.Combine(GameDirectory, @"Data\textures\battle.fs\hd_new"); }
+
         public static ArchiveStream FieldArchive { get => new ArchiveStream(FieldPath); }
 
         public static ArchiveStream MainArchive { get => new ArchiveStream(MainPath); }

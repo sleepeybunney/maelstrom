@@ -238,7 +238,7 @@
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Strange Creatures" Checked="{Binding StrangeCreatures, Mode=TwoWay}">
-                            <TextBlock>Enemies receive subtle visual enhancements in battle.</TextBlock>
+                            <TextBlock>Enemies in battle receive subtle, tasteful visual enhancements.</TextBlock>
                         </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>
