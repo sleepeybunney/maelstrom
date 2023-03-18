@@ -67,8 +67,8 @@
     <Resource Include="maelstrom.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MahApps.Metro" Version="2.4.3" />
-    <PackageReference Include="System.Text.Json" Version="5.0.0-rc.2.20475.5" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="System.Text.Json" Version="8.0.0-preview.2.23128.3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
