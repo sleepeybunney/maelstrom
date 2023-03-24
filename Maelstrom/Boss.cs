@@ -201,7 +201,10 @@ namespace Sleepey.Maelstrom
                     }
 
                     // update any encounter ID checks in the monster's AI scripts
-                    FixEncounterChecks(battleSource, newMonsterID, encID, matchedEncID);
+                    foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == newMonsterID && ec.EncounterID == matchedEncID))
+                    {
+                        FixEncounterCheck(battleSource, ec, encID);
+                    }
 
                     // tonberry king
                     var tonberryIDs = new List<int>() { 236, 237, 238 };
@@ -485,22 +488,19 @@ namespace Sleepey.Maelstrom
             battleSource.ReplaceFile(Env.EncounterFilePath, encFile.Encode());
         }
 
-        private static void FixEncounterChecks(FileSource battleSource, int monsterID, int encID, int origEncID)
+        private static void FixEncounterCheck(FileSource battleSource, EncounterCheck encCheck, int newEncID)
         {
-            foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == monsterID && ec.EncounterID == origEncID))
+            var monster = Monster.ByID(battleSource, encCheck.MonsterID);
+            var script = monster.AI.Scripts.EventScripts[encCheck.Script];
+            for (int i = 0; i < script.Count; i++)
             {
-                var monster = Monster.ByID(battleSource, monsterID);
-                var script = monster.AI.Scripts.EventScripts[ec.Script];
-                for (int i = 0; i < script.Count; i++)
+                // find encounter ID checks ("if encounter-id == origEncID") & update the ID
+                if (script[i].Op == BattleScriptInstruction.OpCodesReverse["if"] && script[i].Args[0] == 3 && script[i].Args[3] == encCheck.EncounterID)
                 {
-                    // find encounter ID checks ("if encounter-id == origEncID") & update the ID
-                    if (script[i].Op == BattleScriptInstruction.OpCodesReverse["if"] && script[i].Args[0] == 3 && script[i].Args[3] == origEncID)
-                    {
-                        script[i].Args[3] = (short)encID;
-                    }
+                    script[i].Args[3] = (short)newEncID;
                 }
-                battleSource.ReplaceFile(Monster.GetPath(monsterID), monster.Encode());
             }
+            battleSource.ReplaceFile(Monster.GetPath(encCheck.MonsterID), monster.Encode());
         }
 
         private static void MoveGF(FileSource battleSource, EncounterFile newEncFile, int sourceMonsterID, int origEncounterID, int targetEncounterID, short gfID)
@@ -653,6 +653,15 @@ namespace Sleepey.Maelstrom
             var encFile = EncounterFile.FromSource(battleSource);
             encFile.Encounters[845] = encFile.Encounters[136];
             battleSource.ReplaceFile(Env.EncounterFilePath, encFile.Encode());
+
+            // find any encounter checks that need updating again
+            var monsters = encFile.Encounters[845].Slots.Select(s => s.MonsterID).ToHashSet();
+            var encChecks = EncounterChecks.Where(ec => monsters.Contains((byte)ec.MonsterID));
+            foreach (var ec in encChecks)
+            {
+                var newCheck = new EncounterCheck(136, ec.MonsterID, ec.Script);
+                FixEncounterCheck(battleSource, newCheck, 845);
+            }
 
             // redirect field script to clone
             var fieldName = "glyagu1";
