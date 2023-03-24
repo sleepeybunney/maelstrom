@@ -69,7 +69,7 @@ Free Roam is roughly 10% complete so far. You can fight some bosses around Balam
 * Shuffled GF locations
 * Shuffled monster locations
 
-If you have ideas for new features or improvements, feel free to message me here or on [Twitter](https://twitter.com/sleepeybunney)!
+If you have ideas for new features or improvements, feel free to message me here or on [Twitter](https://twitter.com/sleepeybunney)/[Mastodon](https://meow.social/@sleepey)!
 
 ## Credits
 

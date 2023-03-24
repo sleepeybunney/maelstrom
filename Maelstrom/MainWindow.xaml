@@ -6,7 +6,7 @@
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Sleepey.Maelstrom"
         mc:Ignorable="d"
-        Title="MAELSTROM v0.6" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Left" WindowTitleBrush="{StaticResource MahApps.Brushes.Accent}"
+        Title="MAELSTROM v0.6.5" TitleCharacterCasing="Normal" TitleBarHeight="42" TitleAlignment="Left" WindowTitleBrush="{StaticResource MahApps.Brushes.Accent}"
         ShowDialogsOverTitleBar="False" Height="592" Width="800" MinHeight="584" MinWidth="800" Closing="OnClosing">
 
     <mah:MetroWindow.TitleTemplate>
@@ -238,7 +238,7 @@
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Strange Creatures" Checked="{Binding StrangeCreatures, Mode=TwoWay}">
-                            <TextBlock>Enemies in battle receive subtle, tasteful visual enhancements.</TextBlock>
+                            <TextBlock>Enemies in battle receive tasteful visual enhancements.</TextBlock>
                         </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>

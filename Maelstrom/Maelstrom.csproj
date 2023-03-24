@@ -22,9 +22,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <AssemblyTitle>Maelstrom</AssemblyTitle>
     <Product>Maelstrom</Product>
-    <Copyright>Copyright © Sleepey Bunney 2021</Copyright>
-    <AssemblyVersion>0.6.0.0</AssemblyVersion>
-    <FileVersion>0.6.0.0</FileVersion>
+    <Copyright>Copyright © Sleepey Bunney 2023</Copyright>
+    <AssemblyVersion>0.6.5.0</AssemblyVersion>
+    <FileVersion>0.6.5.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>maelstrom.ico</ApplicationIcon>
-    <Version>0.6.0</Version>
+    <Version>0.6.5</Version>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.ComponentModel.DataAnnotations" />

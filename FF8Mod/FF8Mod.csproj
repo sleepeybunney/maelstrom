@@ -3,7 +3,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>FF8Mod</AssemblyTitle>
     <Product>FF8Mod</Product>
-    <Copyright>Copyright © Sleepey Bunney 2021</Copyright>
+    <Copyright>Copyright © Sleepey Bunney 2023</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <RootNamespace>Sleepey.FF8Mod</RootNamespace>
   </PropertyGroup>
