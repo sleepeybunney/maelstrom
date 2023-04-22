@@ -88,6 +88,7 @@
         <local:IconConverter x:Key="IconConverter" />
         <local:IconVisibilityConverter x:Key="IconVisibilityConverter" />
         <local:ComboBoxNumberConverter x:Key="ComboBoxNumberConverter" />
+        <local:NumericInputConverter x:Key="NumericInputConverter" />
         <local:LanguageVisibilityConverter x:Key="LanguageVisibilityConverter" />
         <local:State x:Key="State" />
     </mah:MetroWindow.Resources>
@@ -191,10 +192,6 @@
                                         <ComboBoxItem Tag="random">Anywhere</ComboBoxItem>
                                     </local:ComboBoxWithLabel.ComboBoxItems>
                                 </local:ComboBoxWithLabel>
-                                <Separator />
-                                <TextBlock>Fixed-level bosses:</TextBlock>
-                                <local:OptionWithDescription Title="Sorceresses" Description="Always level 45 (default: on)" Checked="{Binding StaticSorcs, Mode=TwoWay}" />
-                                <local:OptionWithDescription Title="Omega Weapon" Description="Always level 100 (default: off)" Checked="{Binding StaticOmega, Mode=TwoWay}" />
                             </StackPanel>
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Random Drops" Checked="{Binding LootDrops, Mode=TwoWay}">
@@ -239,6 +236,17 @@
                         </local:ToggleGroupBox>
                         <local:ToggleGroupBox Title="Strange Creatures" Checked="{Binding StrangeCreatures, Mode=TwoWay}">
                             <TextBlock>Enemies in battle receive tasteful visual enhancements.</TextBlock>
+                        </local:ToggleGroupBox>
+                        <local:ToggleGroupBox Title="Difficulty Tweaks" Checked="{Binding TweaksEnable, Mode=TwoWay}">
+                            <StackPanel>
+                                <TextBlock>Fixed-level bosses:</TextBlock>
+                                <local:OptionWithDescription Title="Sorceresses" Description="Always level 45 (default: on)" Checked="{Binding StaticSorcs, Mode=TwoWay}" />
+                                <local:OptionWithDescription Title="Omega Weapon" Description="Always level 100 (default: off)" Checked="{Binding StaticOmega, Mode=TwoWay}" />
+                                <Separator />
+                                <TextBlock>Kills required to encounter Tonberry King:</TextBlock>
+                                <local:NumericWithLabel Title="Minimum (default: 20)" Value="{Binding TonberryKillsMin, Mode=TwoWay, Converter={StaticResource NumericInputConverter}}" Minimum="1" Maximum="255" />
+                                <local:NumericWithLabel Title="Maximum (default: 50)" Value="{Binding TonberryKillsMax, Mode=TwoWay, Converter={StaticResource NumericInputConverter}}" Minimum="1" Maximum="255" />
+                            </StackPanel>
                         </local:ToggleGroupBox>
                     </StackPanel>
                 </ScrollViewer>

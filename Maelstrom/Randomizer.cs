@@ -225,6 +225,12 @@ namespace Sleepey.Maelstrom
                     CreateOrRestoreArchiveBackup(Env.BattlePath);
                     var battleSource = new NativeFileSource(Env.BattlePath);
 
+                    // difficulty tweaks
+                    if (settings.TweaksEnable)
+                    {
+                        Tweaks.Apply(battleSource, settings);
+                    }
+
                     // boss shuffle
                     if (settings.BossEnable)
                     {
@@ -254,7 +260,7 @@ namespace Sleepey.Maelstrom
                         StrangeCreatures.ResetTextures(battleSource);
                     }
 
-                    if (settings.BossEnable || drops || steals || draws || settings.StrangeCreatures || Env.Remastered)
+                    if (settings.TweaksEnable || settings.BossEnable || drops || steals || draws || settings.StrangeCreatures || Env.Remastered)
                     {
                         battleSource.Encode();
                     }

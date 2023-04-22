@@ -188,18 +188,6 @@ namespace Sleepey.Maelstrom
                     var newMonsterID = cleanEncFile.Encounters[matchedEncID].Slots[i].MonsterID;
                     newEncFile.Encounters[encID].Slots[i] = new Encounter(cleanEncFile.Encounters[matchedEncID].Encode()).Slots[i];
 
-                    // enable level scaling for sorceresses
-                    if (matchedEncID == 813 && !settings.StaticSorcs)
-                    {
-                        newEncFile.Encounters[encID].Slots[i].Level = 254;
-                    }
-
-                    // disable level scaling for omega weapon
-                    if (matchedEncID == 462 && settings.StaticOmega)
-                    {
-                        newEncFile.Encounters[encID].Slots[i].Level = 100;
-                    }
-
                     // update any encounter ID checks in the monster's AI scripts
                     foreach (var ec in EncounterChecks.Where(ec => ec.MonsterID == newMonsterID && ec.EncounterID == matchedEncID))
                     {

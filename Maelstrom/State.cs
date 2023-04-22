@@ -28,11 +28,16 @@ namespace Sleepey.Maelstrom
         public string RestrictSorcs { get; set; } = "normal";
         public string RestrictOmega { get; set; } = "normal";
         public string RestrictUltimecia { get; set; } = "normal";
-        public bool StaticSorcs { get; set; } = true;
-        public bool StaticOmega { get; set; } = false;
 
         // monsters
         public bool StrangeCreatures { get; set; } = false;
+
+        // tweaks
+        public bool TweaksEnable { get; set; } = false;
+        public bool StaticSorcs { get; set; } = true;
+        public bool StaticOmega { get; set; } = false;
+        public int TonberryKillsMin { get; set; } = 20;
+        public int TonberryKillsMax { get; set; } = 50;
 
         // drops
         public bool LootDrops { get; set; } = false;
