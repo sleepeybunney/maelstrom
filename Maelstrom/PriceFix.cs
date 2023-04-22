@@ -23,27 +23,35 @@ namespace Sleepey.Maelstrom
 
             // shell stone -> 1000g
             prices[22].BasePrice = 100;
+            prices[22].SellMultiplier = 5;
 
             // protect stone -> 1000g
             prices[23].BasePrice = 100;
+            prices[23].SellMultiplier = 5;
 
             // aura stone -> 2000g
             prices[24].BasePrice = 200;
+            prices[24].SellMultiplier = 5;
 
             // death stone -> 2000g
             prices[25].BasePrice = 200;
+            prices[25].SellMultiplier = 5;
 
             // holy stone -> 3500g
             prices[26].BasePrice = 350;
+            prices[26].SellMultiplier = 5;
 
             // flare stone -> 3500g
             prices[27].BasePrice = 350;
+            prices[27].SellMultiplier = 5;
 
             // meteor stone -> 5000g
             prices[28].BasePrice = 500;
+            prices[28].SellMultiplier = 5;
 
             // ultima stone -> 5000g
             prices[29].BasePrice = 500;
+            prices[29].SellMultiplier = 5;
 
             // gysahl greens -> 500g
             prices[30].BasePrice = 50;
