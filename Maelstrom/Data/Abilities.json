@@ -370,18 +370,15 @@
     },
     {
         "AbilityID": 92,
-        "AbilityName": "Haggle",
-        "MenuAbility":  true
+        "AbilityName": "Haggle"
     },
     {
         "AbilityID": 93,
-        "AbilityName": "Sell-High",
-        "MenuAbility": true
+        "AbilityName": "Sell-High"
     },
     {
         "AbilityID": 94,
-        "AbilityName": "Familiar",
-        "MenuAbility": true
+        "AbilityName": "Familiar"
     },
     {
         "AbilityID": 95,
