@@ -48,13 +48,12 @@ namespace Sleepey.Maelstrom
 
         public static void Apply(FileSource menuSource, List<Shop> shops)
         {
-            var shopBinPath = Env.DataPath + @"\menu\shop.bin";
             var newData = new List<byte>();
             foreach (var s in shops)
             {
                 newData.AddRange(s.Encode());
             }
-            menuSource.ReplaceFile(shopBinPath, newData.ToArray());
+            menuSource.ReplaceFile(Env.ShopPath, newData.ToArray());
         }
     }
 }

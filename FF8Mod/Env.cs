@@ -99,5 +99,7 @@ namespace Sleepey.FF8Mod
         public static string MngrpPath { get => Path.Combine(DataPath, @"menu\mngrp.bin"); }
 
         public static string PricePath { get => Path.Combine(DataPath, @"menu\price.bin"); }
+
+        public static string ShopPath { get => Path.Combine(DataPath, @"menu\shop.bin"); }
     }
 }

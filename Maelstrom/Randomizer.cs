@@ -372,6 +372,12 @@ namespace Sleepey.Maelstrom
                         ShopShuffle.Apply(menuSource, shuffle);
                     }
 
+                    // ability shuffle
+                    if (settings.GfAbilitiesBasicsType == "shop")
+                    {
+                        AbilityShuffle.ForceScrollsInBalambShop(menuSource);
+                    }
+
                     // draw point shuffle
                     if (!Env.Remastered)
                     {
@@ -401,7 +407,7 @@ namespace Sleepey.Maelstrom
                         MagicSortFix.Apply(menuSource);
                     }
 
-                    if ((settings.NameEnable && Env.RegionCode != "jp") || settings.ShopEnable || (settings.DrawPointEnable && !Env.Remastered) || settings.DoomtrainEnable)
+                    if (menuSource.UpdatedFiles.Count > 0)
                     {
                         // shop prices fix
                         PriceFix.Apply(menuSource);

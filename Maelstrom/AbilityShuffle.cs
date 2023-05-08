@@ -72,12 +72,13 @@ namespace Sleepey.Maelstrom
                 List<int> unusedAbilities = nonMenuAbilities.Select(a => a.AbilityID)
                     .Concat(menuAbilities.Select(a => a.AbilityID)).ToList();
 
+                var basicsEligible = settings.GfAbilitiesBasicsType == "all" || (settings.GfAbilitiesBasicsType == "first" && gfId < 3);
+
                 for (int learnSlotIndex = 0; learnSlotIndex < 21; learnSlotIndex++)
                 {
-                    if (learnSlotIndex < 4 && settings.GfAbilitiesBasics)
+                    if (learnSlotIndex < 4 && basicsEligible)
                     {
                         AddBasicAbilities(kernel.JunctionableGFs[gfId].Abilities, init, gfId, unusedAbilities);
-
                         learnSlotIndex = 3;
                     }
                     else
@@ -145,6 +146,33 @@ namespace Sleepey.Maelstrom
                 AbilityMeta menuAbility = menuAbilities.Find(a => a.AbilityID == ability);
                 menuAbilities.Remove(menuAbility);
             }
+        }
+
+        public static void ForceScrollsInBalambShop(FileSource menuSource)
+        {
+            var shopData = menuSource.GetFile(Env.ShopPath).ToArray();
+
+            // normal ammo -> magic scroll
+            shopData[54] = 55;
+            shopData[55] = 255;
+
+            // shotgun ammo -> gf scroll
+            shopData[56] = 56;
+            shopData[57] = 255;
+
+            // g-potion -> draw scroll
+            shopData[58] = 57;
+            shopData[59] = 255;
+
+            // g-hi-potion -> item scroll
+            shopData[60] = 58;
+            shopData[61] = 255;
+
+            // g-returner -> amnesia greens
+            shopData[62] = 41;
+            shopData[63] = 255;
+
+            menuSource.ReplaceFile(Env.ShopPath, shopData);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Sleepey.Maelstrom
 
         // abilities
         public bool GfAbilitiesEnable { get; set; } = false;
-        public bool GfAbilitiesBasics { get; set; } = false;
+        public string GfAbilitiesBasicsType { get; set; } = "off";
         public bool GFAbilitiesNoMenuDuplicates { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;

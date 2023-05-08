@@ -21,7 +21,7 @@
   "LootDrawsSlot": false,
   "LootDrawsCut": false,
   "GfAbilitiesEnable": true,
-  "GfAbilitiesBasics": false,
+  "GfAbilitiesBasicsType": "all",
   "GfAbilitiesIncludeItemOnly": false,
   "GfAbilitiesSwapSets": true,
   "ShopEnable": true,
