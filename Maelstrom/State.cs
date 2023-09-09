@@ -67,6 +67,7 @@ namespace Sleepey.Maelstrom
         public bool GFAbilitiesNoMenuDuplicates { get; set; } = false;
         public bool GfAbilitiesIncludeItemOnly { get; set; } = false;
         public bool GfAbilitiesSwapSets { get; set; } = false;
+        public int GfAbilitiesCount { get; set; } = 21;
 
         // doomtrain
         public bool DoomtrainEnable { get; set; } = false;

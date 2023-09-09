@@ -72,6 +72,7 @@ namespace Sleepey.Maelstrom
                 List<int> unusedAbilities = nonMenuAbilities.Select(a => a.AbilityID)
                     .Concat(menuAbilities.Select(a => a.AbilityID)).ToList();
 
+                var abilityCount = Math.Max(1, Math.Min(settings.GfAbilitiesCount, 21));
                 var basicsEligible = settings.GfAbilitiesBasicsType == "all" || (settings.GfAbilitiesBasicsType == "first" && gfId < 3);
 
                 for (int learnSlotIndex = 0; learnSlotIndex < 21; learnSlotIndex++)
@@ -81,14 +82,27 @@ namespace Sleepey.Maelstrom
                         AddBasicAbilities(kernel.JunctionableGFs[gfId].Abilities, init, gfId, unusedAbilities);
                         learnSlotIndex = 3;
                     }
-                    else
+                    else if (learnSlotIndex < abilityCount)
                     {
                         AddRandomAbility(random, kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], unusedAbilities, menuAbilities, settings.GFAbilitiesNoMenuDuplicates);
+                    }
+                    else
+                    {
+                        AddAbility(kernel.JunctionableGFs[gfId].Abilities, learnSlotIndex, init.GFs[gfId], 0);
                     }
                 }
 
                 // sort abilities
                 kernel.JunctionableGFs[gfId].Abilities = kernel.JunctionableGFs[gfId].Abilities.OrderBy(a => a.Ability == 0 ? byte.MaxValue : a.Ability).ToList();
+
+                // forget blank abilities
+                for (int i = 0; i < 21; i++)
+                {
+                    if (kernel.JunctionableGFs[gfId].Abilities[i].Ability == 0)
+                    {
+                        init.GFs[gfId].ForgottenAbilities[i] = true;
+                    }
+                }
 
                 // clear ability being learned
                 init.GFs[gfId].CurrentAbility = 0;

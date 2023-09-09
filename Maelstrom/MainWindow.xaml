@@ -261,6 +261,9 @@
                                 <local:OptionWithDescription Title="Allow Item-Exclusives" Description="GFs may learn abilities that would normally require the use of an item: MiniMog, Vit+60%, Spr+60%, Return Damage, Ribbon." Checked="{Binding GfAbilitiesIncludeItemOnly, Mode=TwoWay}" />
                                 <local:OptionWithDescription Title="No Menu Duplicates" Description="Menu abilities (Call Shop, Junk Shop, crafting) can each only appear on one GF. This does not guarantee that all menu abilities will be available." Checked="{Binding GFAbilitiesNoMenuDuplicates, Mode=TwoWay}" />
                                 <Separator />
+                                <TextBlock>Number of abilities available to be learned by each GF</TextBlock>
+                                <local:NumericWithLabel Title="Ability Count (default: 21)" Value="{Binding GfAbilitiesCount, Mode=TwoWay, Converter={StaticResource NumericInputConverter}}" Minimum="1" Maximum="21" />
+                                <Separator />
                                 <TextBlock>Ensure access to the basic command abilities: Magic, GF, Item, Draw</TextBlock>
                                 <local:ComboBoxWithLabel Title="Guarantee Basics" ComboBoxWidth="240" SelectedValuePath="Tag" SelectedValue="{Binding GfAbilitiesBasicsType, Mode=TwoWay}">
                                     <local:ComboBoxWithLabel.ComboBoxItems>
