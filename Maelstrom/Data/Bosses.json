@@ -90,7 +90,9 @@
     "FieldScript": 7,
     "FixedField": true,
     "SlotRanks": [ 0, 1, 2, 3 ],
-    "Disc": 1
+    "Disc": 1,
+    "FlagVar": 346,
+    "FlagBit": 2
   },
   {
     "EncounterID": 63,
@@ -134,7 +136,9 @@
     "FieldScript": 5,
     "FixedField": true,
     "SlotRanks": [ 0, 1 ],
-    "Disc": 2
+    "Disc": 2,
+    "FlagVar": 346,
+    "FlagBit": 4
   },
   {
     "EncounterID": 85,
@@ -168,7 +172,9 @@
     "FieldScript": 4,
     "FixedField": true,
     "SlotRanks": [ 0 ],
-    "Disc": 1
+    "Disc": 1,
+    "FlagVar": 346,
+    "FlagBit": 1
   },
   {
     "EncounterID": 104,

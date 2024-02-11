@@ -1,0 +1,431 @@
+[
+  {
+    "Field": "start0",
+    "Comment": "Change intro movie, enable party switching",
+    "UpdateScripts": [
+      {
+        "Entity": 0,
+        "Script": 1,
+        "After": "hold",
+        "Before": "movieready",
+        "Instructions": [
+          "pshn_l 1",
+          "phspower",
+          "pshn_l 1",
+          "pshn_l 1"
+        ]
+      }
+    ]
+  },
+  {
+    "Field": "bghoke_2",
+    "UpdateScripts": [
+      {
+        "Comment": "Skip preloading next map",
+        "Entity": 6,
+        "Script": 4,
+        "After": "",
+        "Before": "pshn_l 1",
+        "Instructions": []
+      },
+      {
+        "Comment": "Initial party setup - Squall and Quistis with 2 GFs",
+        "Entity": 6,
+        "Script": 4,
+        "Before": "ranimekeep 5",
+        "Instructions": [
+          "pshn_l 0",
+          "menuname",
+          "pshn_l 3",
+          "menuname",
+          "pshn_l 4",
+          "menuname",
+          "pshn_l 3",
+          "addmember",
+          "pshn_l 3",
+          "addparty",
+          "refreshparty"
+        ]
+      },
+      {
+        "Comment": "Set world state to post-space",
+        "Entity": 6,
+        "Script": 4,
+        "After": "wait",
+        "Before": "",
+        "Instructions": [
+          "pshn_l 3800",
+          "popm_w 256"
+        ]
+      },
+      {
+        "Comment": "Unlock Balamb train to Timber",
+        "Entity": 6,
+        "Script": 4,
+        "Before": "",
+        "Instructions": [
+          "pshm_b 643",
+          "pshn_l 2",
+          "cal 13",
+          "popm_b 643"
+        ]
+      },
+      {
+        "Comment": "Go to infirmary after scene",
+        "Entity": 6,
+        "Script": 4,
+        "Before": "",
+        "Instructions": [
+          "pshn_l 179",
+          "pshn_l 333",
+          "pshn_l -91",
+          "pshn_l 0",
+          "mapjump 132"
+        ]
+      },
+      {
+        "Comment": "Remove story scenes",
+        "Entity": 12,
+        "Script": 1,
+        "After": "",
+        "Before": "pshn_l 71",
+        "Instructions": []
+      },
+      {
+        "Comment": "Remove story scenes",
+        "Entity": 12,
+        "Script": 1,
+        "After": "mapfadeon",
+        "Before": "",
+        "Instructions": [
+          "pshn_l 3",
+          "pshn_l 30",
+          "reqew 4",
+          "halt 0"
+        ]
+      },
+      {
+        "Comment": "Skip map preload",
+        "Entity": 12,
+        "Script": 1,
+        "After": "musicvoltrans",
+        "Before": "pshn_l 255",
+        "Instructions": []
+      }
+    ]
+  },
+  {
+    "Field": "bghall1b",
+    "Comment": "Enable garden directory (overwrites trigger for briefing with fake Cid)",
+    "CopyEntities": [
+      {
+        "SourceField": "bghall_1",
+        "SourceEntity": 0,
+        "OverwriteEntity": 0
+      }
+    ]
+  },
+  {
+    "Field": "bggate_6",
+    "Comment": "Disable warp past the front gate",
+    "UpdateScripts": [
+      {
+        "Entity": 3,
+        "Script": 7,
+        "After": "pshn_l 570",
+        "Instructions": [ "cal 7" ],
+        "Before": "jpf 8"
+      },
+      {
+        "Entity": 4,
+        "Script": 7,
+        "After": "pshn_l 570",
+        "Instructions": [ "cal 7" ],
+        "Before": "jpf 8"
+      }
+    ]
+  },
+  {
+    "Field": "bdifrit1",
+    "Comment": "Ifrit boss fight",
+    "UpdateScripts": [
+      {
+        "Comment": "Change trigger condition to boss flag, also adjust jump to accommodate the next change",
+        "Entity": 0,
+        "Script": 5,
+        "After": "",
+        "Instructions": [
+          "pshm_b 346",
+          "cal 15",
+          "pshn_l 1",
+          "cal 12",
+          "jpf 10"
+        ],
+        "Before": "ucoff"
+      },
+      {
+        "Comment": "Skip pre-fight dialogue",
+        "Entity": 0,
+        "Script": 5,
+        "After": "setbattlemusic",
+        "Instructions": [],
+        "Before": "pshn_l 1 \n pshn_l 43"
+      },
+      {
+        "Comment": "Enable Ifrit",
+        "Entity": 14,
+        "Script": 0,
+        "After": "pshn_l 28",
+        "Instructions": [ "cal 7" ],
+        "Before": "jpf 9"
+      },
+      {
+        "Comment": "Disable timer",
+        "Entity": 14,
+        "Script": 4,
+        "After": "pshn_l 94",
+        "Instructions": [ "pshn_l 0" ],
+        "Before": "battle"
+      },
+      {
+        "Comment": "Set boss flag",
+        "Entity": 14,
+        "Script": 4,
+        "After": "battle",
+        "Instructions": [
+          "pshm_b 346",
+          "pshn_l 1",
+          "cal 13",
+          "popm_b 346"
+        ]
+      },
+      {
+        "Comment": "Don't unlock GF",
+        "Entity": 14,
+        "Script": 4,
+        "After": "particleoff",
+        "Instructions": [],
+        "Before": "hide"
+      },
+      {
+        "Comment": "Skip post-fight dialogue",
+        "Entity": 14,
+        "Script": 4,
+        "After": "hide",
+        "Instructions": [],
+        "Before": ""
+      }
+    ]
+  },
+  {
+    "Field": "bgmon_1",
+    "Comment": "Granaldo boss fight",
+    "CopyParticlesFrom": "fewor1",
+    "DeleteScripts": [
+      {
+        "Entity": 0,
+        "Script": 1,
+        "Comment": "Skip preload"
+      }
+    ],
+    "UpdateScripts": [
+      {
+        "Comment": "Turn some guy from the NORG event into a boss cloud",
+        "Entity": 16,
+        "Script": 0,
+        "After": "baseanime 0",
+        "Instructions": [
+          "hide",
+          "pshm_b 346",
+          "cal 15",
+          "pshn_l 2",
+          "cal 12",
+          "jpf 9",
+          "pshn_l -1295",
+          "pshn_l -4898",
+          "pshn_l 94",
+          "set3 43",
+          "pshn_l 0",
+          "particleon",
+          "pshn_l 0",
+          "particleset"
+        ],
+        "Before": ""
+      },
+      {
+        "Comment": "Add script to hide the cloud after battle",
+        "Entity": 16,
+        "Script": 2,
+        "After": "",
+        "Instructions": [ "pshn_l 0", "particleoff" ],
+        "Before": ""
+      },
+      {
+        "Comment": "Move Ellone scene trigger to the boss cloud for reuse",
+        "Entity": 0,
+        "Script": 0,
+        "After": "",
+        "Instructions": [
+          "pshn_l -1600",
+          "pshn_l -5000",
+          "pshn_l 94",
+          "pshn_l -1100",
+          "pshn_l -4950",
+          "pshn_l 0",
+          "setline"
+        ],
+        "Before": ""
+      },
+      {
+        "Comment": "When trigger line is touched: start fight, set flag, remove cloud",
+        "Entity": 0,
+        "Script": 7,
+        "After": "",
+        "Instructions": [
+          "pshm_b 346",
+          "cal 15",
+          "pshn_l 2",
+          "cal 12",
+          "jpf 18",
+          "ucoff",
+          "pshn_l 13",
+          "setbattlemusic",
+          "pshn_l 62",
+          "pshn_l 0",
+          "battle",
+          "pshm_b 346",
+          "pshn_l 2",
+          "cal 13",
+          "popm_b 346",
+          "pshn_l 5",
+          "setbattlemusic",
+          "pshn_l 3",
+          "pshn_l 44",
+          "reqew 10",
+          "ucon",
+          "lineoff"
+        ],
+        "Before": ""
+      }
+    ]
+  },
+  {
+    "Field": "bchtl_1",
+    "Comment": "Fujin/Raijin boss fight - copy setup from training center",
+    "CopyParticlesFrom": "fewor1",
+    "CopyEntities": [
+      {
+        "Comment": "Overwrite scene director with boss cloud",
+        "SourceField": "bgmon_1",
+        "SourceEntity": 16,
+        "OverwriteEntity": 3
+      }
+    ],
+    "CopyScripts": [
+      {
+        "Comment": "Overwrite receptionist trigger with boss trigger",
+        "SourceField": "bgmon_1",
+        "SourceEntity": 0,
+        "SourceScript": 7,
+        "TargetEntity": 0,
+        "OverwriteScript": 5
+      }
+    ],
+    "UpdateScripts": [
+      {
+        "Comment": "Change which boss flag despawns the cloud",
+        "Entity": 3,
+        "Script": 0,
+        "After": "cal 15",
+        "Instructions": [ "pshn_l 4" ],
+        "Before": "cal 12"
+      },
+      {
+        "Comment": "Move the cloud",
+        "Entity": 3,
+        "Script": 0,
+        "After": "jpf 9",
+        "Instructions": [
+          "pshn_l 950",
+          "pshn_l 2500",
+          "pshn_l 0",
+          "set3 116"
+        ],
+        "Before": "pshn_l 0 \n particleon"
+      },
+      {
+        "Comment": "Move the trigger",
+        "Entity": 0,
+        "Script": 0,
+        "After": "",
+        "Before": "",
+        "Instructions": [
+          "pshn_l 200",
+          "pshn_l 400",
+          "pshn_l 0",
+          "pshn_l 500",
+          "pshn_l 500",
+          "pshn_l 0",
+          "setline"
+        ]
+      },
+      {
+        "Comment": "Change which boss flag enables the trigger",
+        "Entity": 0,
+        "Script": 5,
+        "After": "cal 15",
+        "Instructions": [ "pshn_l 4" ],
+        "Before": "cal 12"
+      },
+      {
+        "Comment": "Change which boss appears",
+        "Entity": 0,
+        "Script": 5,
+        "After": "setbattlemusic",
+        "Instructions": [ "pshn_l 84" ],
+        "Before": "pshn_l 0"
+      },
+      {
+        "Comment": "Change which flag is set after battle",
+        "Entity": 0,
+        "Script": 5,
+        "After": "battle",
+        "Instructions": [ "pshm_b 346", "pshn_l 4" ],
+        "Before": "cal 13"
+      },
+      {
+        "Comment": "Change script called to remove the cloud",
+        "Entity": 0,
+        "Script": 5,
+        "After": "setbattlemusic \n pshn_l 3",
+        "Instructions": [
+          "pshn_l 2",
+          "reqew 0"
+        ],
+        "Before": "ucon"
+      }
+    ]
+  },
+  {
+    "Field": "glsta1",
+    "Comment": "Prevent softlock when party isn't full, waiting for everyone to use the Deling City escalators",
+    "UpdateScripts": [
+      {
+        "Comment": "Going up",
+        "Entity": 0,
+        "Script": 7,
+        "After": "ucoff",
+        "Instructions": [ "pshn_l 1" ],
+        "Before": "popm_b 1025"
+      },
+      {
+        "Comment": "Going down",
+        "Entity": 1,
+        "Script": 7,
+        "After": "ucoff",
+        "Instructions": [ "pshn_l 1" ],
+        "Before": "popm_b 1025"
+      }
+    ]
+  }
+]

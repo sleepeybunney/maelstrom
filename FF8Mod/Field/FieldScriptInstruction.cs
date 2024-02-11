@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sleepey.FF8Mod.Field
 {
-    public class FieldScriptInstruction
+    public class FieldScriptInstruction : IEquatable<FieldScriptInstruction>
     {
         public int OpCode { get; set; } = 0;
         public int Param { get; set; } = 0;
@@ -46,5 +46,28 @@ namespace Sleepey.FF8Mod.Field
         {
             return string.Format("{0}{1}", FieldScript.OpCodes[OpCode], HasParam ? " " + Param : "");
         }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as FieldScriptInstruction);
+        }
+
+        public bool Equals(FieldScriptInstruction other)
+        {
+            return !(other is null) &&
+                OpCode == other.OpCode &&
+                (!HasParam || Param == other.Param);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 823597393;
+            hashCode = hashCode * -1521134295 + OpCode.GetHashCode();
+            hashCode = hashCode * -1521134295 + (HasParam ? Param : -1).GetHashCode();
+            return hashCode;
+        }
+
+        public static bool operator ==(FieldScriptInstruction lhs, FieldScriptInstruction rhs) { return lhs.Equals(rhs); }
+        public static bool operator !=(FieldScriptInstruction lhs, FieldScriptInstruction rhs) {  return !lhs.Equals(rhs); }
     }
 }

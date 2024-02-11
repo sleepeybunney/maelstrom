@@ -10,6 +10,12 @@ namespace Sleepey.FF8Mod.Field
         public List<FieldScriptInstruction> Instructions { get; set; } = new List<FieldScriptInstruction>();
         public bool MysteryFlag { get; set; } = false;
 
+        public int Label
+        {
+            get => Instructions.First().Param;
+            set => Instructions.First().Param = value;
+        }
+
         public Script() { }
 
         public Script(IEnumerable<FieldScriptInstruction> instructions, bool flag)
@@ -18,12 +24,13 @@ namespace Sleepey.FF8Mod.Field
             MysteryFlag = flag;
         }
 
-        public Script(string instructions)
+        public Script(string instructions, bool flag)
         {
+            MysteryFlag = flag;
             var lines = instructions.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var line in lines)
             {
-                var tokens = line.Split(null, 2).Select(t => t.Trim().ToLower()).Where(t => !string.IsNullOrEmpty(t)).ToList();
+                var tokens = line.Trim().Split(null, 2).Select(t => t.Trim().ToLower()).Where(t => !string.IsNullOrEmpty(t)).ToList();
                 if (!FieldScript.OpCodesReverse.Keys.Contains(tokens[0]))
                 {
                     throw new Exception("unrecognised operation in fieldscript file (" + instructions + "): " + line);
@@ -43,6 +50,8 @@ namespace Sleepey.FF8Mod.Field
                 Instructions.Add(instruction);
             }
         }
+
+        public Script(string instructions) : this(instructions, false) { }
 
         public override string ToString()
         {

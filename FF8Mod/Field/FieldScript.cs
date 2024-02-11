@@ -121,7 +121,7 @@ namespace Sleepey.FF8Mod.Field
                 allScripts.AddRange(e.Scripts);
             }
 
-            allScripts = allScripts.OrderBy(s => s.Instructions[0].Param).ToList();
+            allScripts = allScripts.OrderBy(s => s.Label).ToList();
 
             var entityInfoLength = Entities.Count * 2;                              // 2 bytes per entity
             var scriptInfoLength = allScripts.Count * 2 + 2;                        // 2 bytes per script + an extra entry to denote EOF
@@ -179,7 +179,7 @@ namespace Sleepey.FF8Mod.Field
         // overwrite a script with interpreted instructions
         public void ReplaceScript(int entity, int script, string scriptText)
         {
-            var label = Entities[entity].Scripts[script].Instructions[0].Param;
+            var label = Entities[entity].Scripts[script].Label;
             var newScript = new Script(scriptText);
             newScript.Instructions.Insert(0, new FieldScriptInstruction(FieldScript.OpCodesReverse["lbl"], label));
             newScript.Instructions.Add(new FieldScriptInstruction(FieldScript.OpCodesReverse["ret"], 8));
