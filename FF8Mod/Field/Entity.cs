@@ -15,5 +15,7 @@ namespace Sleepey.FF8Mod.Field
             Type = type;
             Scripts = scripts.ToList();
         }
+
+        public int Label { get => Scripts.First().Label; }
     }
 }

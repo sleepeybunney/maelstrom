@@ -144,8 +144,7 @@ namespace Sleepey.FF8Mod.Field
                 writer.Write((short)scriptDataOffset);
 
                 // entity info block
-                // todo: make sure everything's still in the right order (entity types -> script labels)
-                foreach (var e in Entities)
+                foreach (var e in Entities.OrderBy(x => x.Type).ThenBy(x => x.Label))
                 {
                     writer.Write(new EntityInfo(e).Encode());
                 }
