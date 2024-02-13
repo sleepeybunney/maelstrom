@@ -20,6 +20,8 @@ namespace Sleepey.Maelstrom
         public List<int> SlotRanks { get; set; }
         public bool Disabled { get; set; } = false;
         public int Disc { get; set; }
+        public int FlagVar { get; set; } = -1;
+        public int FlagBit { get; set; } = -1;
 
         public static List<Boss> Bosses = JsonSerializer.Deserialize<List<Boss>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.Bosses.json")).Where(b => !b.Disabled).ToList();
         public static Dictionary<int, Boss> Encounters = PopulateEncounterDictionary();

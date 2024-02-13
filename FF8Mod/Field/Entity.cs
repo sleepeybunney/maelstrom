@@ -17,5 +17,7 @@ namespace Sleepey.FF8Mod.Field
         }
 
         public int Label { get => Scripts.First().Label; }
+        public bool IsModel { get => Scripts.First().Instructions.Any(i => i.OpCode == FieldScript.OpCodesReverse["setmodel"]); }
+        public bool IsDirector { get => Scripts.Any(s => s.Instructions.Any(i => i.OpCode == FieldScript.OpCodesReverse["setplace"])); }
     }
 }

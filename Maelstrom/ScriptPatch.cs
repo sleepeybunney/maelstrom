@@ -21,6 +21,7 @@ namespace Sleepey.Maelstrom
         public List<ScriptDeleteOperation> DeleteScripts { get; set; } = new List<ScriptDeleteOperation>();
         public List<int> DeleteEntities { get; set; } = new List<int>();
         public string CopyParticlesFrom { get; set; } = null;
+        public BossEntity AddBoss { get; set; } = null;
 
         public FieldScript ScriptFile;
 
@@ -35,6 +36,7 @@ namespace Sleepey.Maelstrom
             foreach (var copy in CopyEntities) CopyEntity(fieldSource, copy);
             foreach (var copy in CopyScripts) CopyScript(fieldSource, copy);
             foreach (var change in UpdateScripts) UpdateScript(change);
+            if (AddBoss != null) AddBossEntity(AddBoss);
             ScriptFile.SaveToSource(fieldSource, Field);
         }
 
@@ -252,6 +254,64 @@ namespace Sleepey.Maelstrom
             dest.ReplaceFile(destParticlePath + ".pmd", src.GetFile(srcParticlePath + ".pmd"));
             dest.ReplaceFile(destParticlePath + ".pmp", src.GetFile(srcParticlePath + ".pmp"));
         }
+
+        public void AddBossEntity(BossEntity boss)
+        {
+            var nextLabel = ScriptFile.Entities.Max(e => e.Scripts.Max(s => s.Label)) + 1;
+
+            var scripts = new List<Script>();
+            for (int i = 0; i < 4; i++)
+            {
+                var rawScript = App.ReadEmbeddedFile($"Sleepey.Maelstrom.Data.BossScript{i}.txt");
+                var formatArgs = new object[]
+                {
+                    nextLabel++,
+                    boss.PosX,
+                    boss.PosY,
+                    boss.PosZ,
+                    boss.Triangle,
+                    boss.Radius,
+                    boss.EncounterID,
+                    Boss.Encounters[boss.EncounterID].FlagVar,
+                    Boss.Encounters[boss.EncounterID].FlagBit
+                };
+                var formattedScript = string.Format(rawScript, formatArgs);
+                scripts.Add(new Script(formattedScript));
+            }
+
+            var newEntity = new Entity(FF8Mod.EntityType.Other, scripts);
+
+            // entities are re-ordered at runtime & the new one will probably end up in the middle of the
+            // pack, displacing the IDs of everything after it, so execution requests need fixing
+            var others = ScriptFile.Entities.Where(x => x.Type == FF8Mod.EntityType.Other);
+            var runtimeID = others.Where(x => x.IsModel).Count();
+
+            // director entity goes where it wants...
+            var directorLabel = others.Any(x => x.IsDirector) ? others.First(x => x.IsDirector).Label : int.MaxValue;
+            if (directorLabel <= others.ToList()[runtimeID].Label) runtimeID++;
+
+            FixReqs(runtimeID);
+
+            ScriptFile.Entities.Add(newEntity);
+        }
+
+        private void FixReqs(int fromID)
+        {
+            var reqs = new string[] { "req", "reqew", "reqsw" }.Select(x => FieldScript.OpCodesReverse[x]);
+
+            for (int i = 0; i < ScriptFile.Entities.Count; i++)
+            {
+                for (int j = 0; j < ScriptFile.Entities[i].Scripts.Count; j++)
+                {
+                    var instructions = ScriptFile.Entities[i].Scripts[j].Instructions;
+
+                    for (int k = 0; k < instructions.Count; k++)
+                    {
+                        if (reqs.Contains(instructions[k].OpCode) && instructions[k].Param >= fromID) instructions[k].Param++;
+                    }
+                }
+            }
+        }
     }
 
     internal class ScriptChangeOperation
@@ -283,5 +343,15 @@ namespace Sleepey.Maelstrom
     {
         public int Entity { get; set; }
         public int Script { get; set; }
+    }
+
+    internal class BossEntity
+    {
+        public int EncounterID { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        public int PosZ { get; set; }
+        public int Triangle { get; set; }
+        public int Radius { get; set; }
     }
 }

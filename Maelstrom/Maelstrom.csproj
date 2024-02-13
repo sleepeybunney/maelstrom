@@ -61,6 +61,7 @@
   <ItemGroup>
     <EmbeddedResource Include="FieldScripts\*.txt" />
     <EmbeddedResource Include="Data\*.json" />
+    <EmbeddedResource Include="Data\*.txt" />
     <EmbeddedResource Include="Images\*.jpg" />
   </ItemGroup>
   <ItemGroup>

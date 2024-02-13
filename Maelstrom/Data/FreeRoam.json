@@ -221,190 +221,37 @@
     "Field": "bgmon_1",
     "Comment": "Granaldo boss fight",
     "CopyParticlesFrom": "fewor1",
-    "DeleteScripts": [
-      {
-        "Entity": 0,
-        "Script": 1,
-        "Comment": "Skip preload"
-      }
-    ],
+    "AddBoss": {
+      "EncounterID": 62,
+      "PosX": -1300,
+      "PosY": -4900,
+      "PosZ": 90,
+      "Triangle": 43,
+      "Radius": 1000
+    },
     "UpdateScripts": [
       {
-        "Comment": "Turn some guy from the NORG event into a boss cloud",
-        "Entity": 16,
-        "Script": 0,
-        "After": "baseanime 0",
-        "Instructions": [
-          "hide",
-          "pshm_b 346",
-          "cal 15",
-          "pshn_l 2",
-          "cal 12",
-          "jpf 9",
-          "pshn_l -1295",
-          "pshn_l -4898",
-          "pshn_l 94",
-          "set3 43",
-          "pshn_l 0",
-          "particleon",
-          "pshn_l 0",
-          "particleset"
-        ],
-        "Before": ""
-      },
-      {
-        "Comment": "Add script to hide the cloud after battle",
-        "Entity": 16,
-        "Script": 2,
-        "After": "",
-        "Instructions": [ "pshn_l 0", "particleoff" ],
-        "Before": ""
-      },
-      {
-        "Comment": "Move Ellone scene trigger to the boss cloud for reuse",
+        "Comment": "Skip preload",
         "Entity": 0,
-        "Script": 0,
+        "Script": 1,
         "After": "",
-        "Instructions": [
-          "pshn_l -1600",
-          "pshn_l -5000",
-          "pshn_l 94",
-          "pshn_l -1100",
-          "pshn_l -4950",
-          "pshn_l 0",
-          "setline"
-        ],
-        "Before": ""
-      },
-      {
-        "Comment": "When trigger line is touched: start fight, set flag, remove cloud",
-        "Entity": 0,
-        "Script": 7,
-        "After": "",
-        "Instructions": [
-          "pshm_b 346",
-          "cal 15",
-          "pshn_l 2",
-          "cal 12",
-          "jpf 18",
-          "ucoff",
-          "pshn_l 13",
-          "setbattlemusic",
-          "pshn_l 62",
-          "pshn_l 0",
-          "battle",
-          "pshm_b 346",
-          "pshn_l 2",
-          "cal 13",
-          "popm_b 346",
-          "pshn_l 5",
-          "setbattlemusic",
-          "pshn_l 3",
-          "pshn_l 44",
-          "reqew 10",
-          "ucon",
-          "lineoff"
-        ],
-        "Before": ""
+        "Before": "",
+        "Instructions": [ "halt 0" ]
       }
     ]
   },
   {
     "Field": "bchtl_1",
-    "Comment": "Fujin/Raijin boss fight - copy setup from training center",
+    "Comment": "Fujin/Raijin boss fight",
     "CopyParticlesFrom": "fewor1",
-    "CopyEntities": [
-      {
-        "Comment": "Overwrite scene director with boss cloud",
-        "SourceField": "bgmon_1",
-        "SourceEntity": 16,
-        "OverwriteEntity": 3
-      }
-    ],
-    "CopyScripts": [
-      {
-        "Comment": "Overwrite receptionist trigger with boss trigger",
-        "SourceField": "bgmon_1",
-        "SourceEntity": 0,
-        "SourceScript": 7,
-        "TargetEntity": 0,
-        "OverwriteScript": 5
-      }
-    ],
-    "UpdateScripts": [
-      {
-        "Comment": "Change which boss flag despawns the cloud",
-        "Entity": 3,
-        "Script": 0,
-        "After": "cal 15",
-        "Instructions": [ "pshn_l 4" ],
-        "Before": "cal 12"
-      },
-      {
-        "Comment": "Move the cloud",
-        "Entity": 3,
-        "Script": 0,
-        "After": "jpf 9",
-        "Instructions": [
-          "pshn_l 950",
-          "pshn_l 2500",
-          "pshn_l 0",
-          "set3 116"
-        ],
-        "Before": "pshn_l 0 \n particleon"
-      },
-      {
-        "Comment": "Move the trigger",
-        "Entity": 0,
-        "Script": 0,
-        "After": "",
-        "Before": "",
-        "Instructions": [
-          "pshn_l 200",
-          "pshn_l 400",
-          "pshn_l 0",
-          "pshn_l 500",
-          "pshn_l 500",
-          "pshn_l 0",
-          "setline"
-        ]
-      },
-      {
-        "Comment": "Change which boss flag enables the trigger",
-        "Entity": 0,
-        "Script": 5,
-        "After": "cal 15",
-        "Instructions": [ "pshn_l 4" ],
-        "Before": "cal 12"
-      },
-      {
-        "Comment": "Change which boss appears",
-        "Entity": 0,
-        "Script": 5,
-        "After": "setbattlemusic",
-        "Instructions": [ "pshn_l 84" ],
-        "Before": "pshn_l 0"
-      },
-      {
-        "Comment": "Change which flag is set after battle",
-        "Entity": 0,
-        "Script": 5,
-        "After": "battle",
-        "Instructions": [ "pshm_b 346", "pshn_l 4" ],
-        "Before": "cal 13"
-      },
-      {
-        "Comment": "Change script called to remove the cloud",
-        "Entity": 0,
-        "Script": 5,
-        "After": "setbattlemusic \n pshn_l 3",
-        "Instructions": [
-          "pshn_l 2",
-          "reqew 0"
-        ],
-        "Before": "ucon"
-      }
-    ]
+    "AddBoss": {
+      "EncounterID": 84,
+      "PosX": 850,
+      "PosY": 400,
+      "PosZ": 0,
+      "Triangle": 19,
+      "Radius": 550
+    }
   },
   {
     "Field": "glsta1",

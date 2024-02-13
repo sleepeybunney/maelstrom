@@ -1,0 +1,23 @@
+lbl {0}
+pshm_b {7}
+cal 15
+pshn_l {8}
+cal 12
+jpf 17
+setmodel 0
+pshn_l 0
+pshn_l 0
+baseanime 0
+pshn_l {1}
+pshn_l {2}
+pshn_l {3}
+set3 {4}
+hide
+pushon
+pshn_l {5}
+pushradius
+pshn_l 0
+particleon
+pshn_l 0
+particleset
+ret 8
