@@ -287,5 +287,88 @@
       "Triangle": 34,
       "Radius": 1600
     }
+  },
+  {
+    "Field": "gnroom1",
+    "Comment": "Sacred boss fight",
+    "UpdateScripts": [
+      {
+        "Comment": "Skip pre-battle dialogue",
+        "Entity": 13,
+        "Script": 4,
+        "After": "effectplay2 0",
+        "Instructions": [],
+        "Before": "pshn_l 1 \n pshn_l 4"
+      },
+      {
+        "Comment": "Skip post-battle dialogue",
+        "Entity": 13,
+        "Script": 5,
+        "After": "ranimeloop 2",
+        "Instructions": [],
+        "Before": "ranimeloop 1"
+      }
+    ]
+  },
+  {
+    "Field": "gnroom4",
+    "Comment": "Sacred & Minotaur boss fight",
+    "UpdateScripts": [
+      {
+        "Comment": "Skip pre-battle Sacred dialogue",
+        "Entity": 11,
+        "Script": 4,
+        "After": "ranimekeep 2",
+        "Instructions": [
+          "animesync",
+          "ranimekeep 3",
+          "pshn_l 127",
+          "pshn_l 128",
+          "pshn_l 2",
+          "effectplay2 0"
+        ],
+        "Before": ""
+      },
+      {
+        "Comment": "Skip pre-battle Minotaur dialogue",
+        "Entity": 12,
+        "Script": 4,
+        "After": "ranimekeep 2",
+        "Instructions": [],
+        "Before": "animesync"
+      },
+      {
+        "Comment": "Skip more pre-battle dialogue",
+        "Entity": 0,
+        "Script": 7,
+        "After": "reqew 7",
+        "Instructions": [],
+        "Before": "pshn_l 13 \n setbattlemusic"
+      },
+      {
+        "Comment": "Don't unlock GF",
+        "Entity": 0,
+        "Script": 7,
+        "After": "pshn_l 5 \n setbattlemusic",
+        "Instructions": [],
+        "Before": "pshm_b 491"
+      },
+      {
+        "Comment": "Skip post-battle dialogue",
+        "Entity": 13,
+        "Script": 4,
+        "After": "scrollsync",
+        "Instructions": [],
+        "Before": "pshn_l 0 \n pshn_l 0 \n pshn_l 0"
+      },
+      {
+        "Comment": "Don't award card",
+        "Entity": 0,
+        "Script": 7,
+        "After": "reqew 8",
+        "Instructions": [],
+        "Before": "pshn_l 1 \n pshn_l 10"
+      }
+    ]
   }
 ]
