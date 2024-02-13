@@ -274,5 +274,18 @@
         "Before": "popm_b 1025"
       }
     ]
+  },
+  {
+    "Field": "bgmast_3",
+    "Comment": "NORG boss fight",
+    "CopyParticlesFrom": "fewor1",
+    "AddBoss": {
+      "EncounterID": 63,
+      "PosX": -1400,
+      "PosY": -2400,
+      "PosZ": 0,
+      "Triangle": 34,
+      "Radius": 1600
+    }
   }
 ]

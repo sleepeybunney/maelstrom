@@ -97,13 +97,15 @@
   {
     "EncounterID": 63,
     "EncounterName": "NORG",
-    "FieldID": "bgmast_1",
+    "FieldID": "bgmast_3",
     "FieldName": "B-Garden - Master Room",
-    "FieldEntity": 13,
-    "FieldScript": 14,
+    "FieldEntity": 19,
+    "FieldScript": 3,
     "FixedField": true,
     "SlotRanks": [ 3, 0, 1, 2 ],
-    "Disc": 2
+    "Disc": 2,
+    "FlagVar": 346,
+    "FlagBit": 8
   },
   {
     "EncounterID": 79,
