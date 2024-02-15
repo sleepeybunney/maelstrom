@@ -370,5 +370,18 @@
         "Before": "pshn_l 1 \n pshn_l 10"
       }
     ]
+  },
+  {
+    "Field": "doopen1a",
+    "Comment": "X-ATM092 boss fight",
+    "CopyParticlesFrom": "fewor1",
+    "AddBoss": {
+      "EncounterID": 9,
+      "PosX": 500,
+      "PosY": -500,
+      "PosZ": 0,
+      "Triangle": 204,
+      "Radius": 600
+    }
   }
 ]

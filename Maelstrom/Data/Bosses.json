@@ -2,14 +2,15 @@
   {
     "EncounterID": 9,
     "EncounterName": "X-ATM092",
-    "FieldID": "doopen_2",
+    "FieldID": "doopen1a",
     "FieldName": "Dollet - Town Square",
-    "FieldEntity": 13,
-    "FieldScript": 4,
+    "FieldEntity": 25,
+    "FieldScript": 3,
     "FixedField": false,
     "SlotRanks": [ 0 ],
-    "Disabled": true,
-    "Disc": 1
+    "Disc": 1,
+    "FlagVar": 346,
+    "FlagBit": 16
   },
   {
     "EncounterID": 10,
@@ -68,6 +69,7 @@
     "FieldScript": 5,
     "FixedField": false,
     "SlotRanks": [ 0 ],
+    "Disabled": true,
     "Disc": 1
   },
   {

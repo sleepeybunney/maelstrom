@@ -159,13 +159,13 @@ namespace Sleepey.Maelstrom
                 if (encID == 816) encounterMap.Add(819, replacementID);
 
                 // copy x-atm092 all over dollet
-                if (encID == 28)
+                if (encID == 9)
                 {
-                    encounterMap.Add(9, replacementID);
                     encounterMap.Add(10, replacementID);
                     encounterMap.Add(13, replacementID);
                     encounterMap.Add(26, replacementID);
                     encounterMap.Add(27, replacementID);
+                    encounterMap.Add(28, replacementID);
                 }
             }
 
