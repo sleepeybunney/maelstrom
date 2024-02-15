@@ -286,7 +286,9 @@
     "FieldScript": 4,
     "FixedField": true,
     "SlotRanks": [ 0 ],
-    "Disc": 1
+    "Disc": 1,
+    "FlagVar": 491,
+    "FlagBit": 2
   },
   {
     "EncounterID": 190,
@@ -297,7 +299,9 @@
     "FieldScript": 7,
     "FixedField": true,
     "SlotRanks": [ 1, 0 ],
-    "Disc": 1
+    "Disc": 1,
+    "FlagVar": 491,
+    "FlagBit": 16
   },
   {
     "EncounterID": 194,
