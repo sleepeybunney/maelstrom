@@ -439,6 +439,12 @@ namespace Sleepey.Maelstrom
                     CreateOrRestoreArchiveBackup(Env.MainPath);
                     var mainSource = new NativeFileSource(Env.MainPath);
 
+                    // free roam key items
+                    if (settings.FreeRoam)
+                    {
+                        FreeRoam.CreateKeys(mainSource);
+                    }
+
                     // ability shuffle
                     if (settings.GfAbilitiesEnable)
                     {

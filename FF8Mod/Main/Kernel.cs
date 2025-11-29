@@ -14,13 +14,17 @@ namespace Sleepey.FF8Mod.Main
         public IList<JunctionableGF> JunctionableGFs { get; set; } = new List<JunctionableGF>();
         public IList<EnemyAttack> EnemyAttackData { get; set; } = new List<EnemyAttack>();
         public IList<Weapon> Weapons { get; set; } = new List<Weapon>();
+        public IList<BattleItem> BattleItems { get; set; } = new List<BattleItem>();
+        public IList<NonBattleItem> NonBattleItems { get; set; } = new List<NonBattleItem>();
         public IList<Ability> Abilities { get; set; } = new List<Ability>();
         public IList<byte> MagicText { get; set; }
         public IList<byte> JunctionableGFText { get; set; }
         public IList<byte> EnemyAttackText { get; set; }
         public IList<byte> WeaponText { get; set; }
+        public IList<byte> BattleItemText { get; set; }
+        public IList<byte> NonBattleItemText { get; set; }
 
-        private readonly byte[] PostWeaponData, PostAbilityData, PostWeaponTextData;
+        private readonly byte[] PostWeaponData, PostItemData, PostAbilityData, PostWeaponTextData, PostItemTextData;
 
         public Kernel(Stream stream)
         {
@@ -65,14 +69,20 @@ namespace Sleepey.FF8Mod.Main
                     Weapons.Add(new Weapon(reader.ReadBytes(12)));
                 }
 
-                //sections 5-10
-                PostWeaponData = reader.ReadBytes((int)(SectionOffsets[11] - stream.Position));
+                // sections 5-6
+                PostWeaponData = reader.ReadBytes((int)(SectionOffsets[7] - stream.Position));
+
+                // section 7 = battle items
+                BattleItems = ReadSection(reader, SectionOffsets[7], SectionOffsets[8], 24).Select(i => new BattleItem(i)).ToList();
+
+                // section 8 = non-battle items
+                NonBattleItems = ReadSection(reader, SectionOffsets[8], SectionOffsets[9], 4).Select(i => new NonBattleItem(i)).ToList();
+
+                // sections 9-10
+                PostItemData = reader.ReadBytes((int)(SectionOffsets[11] - stream.Position));
 
                 // sections 11-17 = abilities
-                while (SectionOffsets[18] - stream.Position >= 8)
-                {
-                    Abilities.Add(new Ability(reader.ReadBytes(8)));
-                }
+                Abilities = ReadSection(reader, SectionOffsets[11], SectionOffsets[18], 8).Select(i => new Ability(i)).ToList();
 
                 // sections 18-31
                 PostAbilityData = reader.ReadBytes((int)(SectionOffsets[32] - stream.Position));
@@ -92,8 +102,27 @@ namespace Sleepey.FF8Mod.Main
                 WeaponText = reader.ReadBytes((int)(SectionOffsets[36] - stream.Position));
                 foreach (var w in Weapons) w.Name = FF8String.Decode(WeaponText.Skip(w.NameOffset));
 
-                // sections 36-55
-                PostWeaponTextData = reader.ReadBytes((int)(stream.Length - stream.Position));
+                // sections 36-37
+                PostWeaponTextData = reader.ReadBytes((int)(SectionOffsets[38] - stream.Position));
+
+                // section 38 = battle item text
+                BattleItemText = reader.ReadBytes((int)(SectionOffsets[39] - stream.Position));
+                foreach (var bi in BattleItems)
+                {
+                    bi.Name = FF8String.Decode(BattleItemText.Skip(bi.NameOffset));
+                    bi.Description = FF8String.Decode(BattleItemText.Skip(bi.DescriptionOffset));
+                }
+
+                // section 39 = non-battle item text
+                NonBattleItemText = reader.ReadBytes((int)(SectionOffsets[40] - stream.Position));
+                foreach (var nbi in NonBattleItems)
+                {
+                    nbi.Name = FF8String.Decode(NonBattleItemText.Skip(nbi.NameOffset));
+                    nbi.Description = FF8String.Decode(NonBattleItemText.Skip(nbi.DescriptionOffset));
+                }
+
+                // sections 40-55
+                PostItemTextData = reader.ReadBytes((int)(stream.Length - stream.Position));
             }
         }
 
@@ -102,6 +131,89 @@ namespace Sleepey.FF8Mod.Main
         public IEnumerable<byte> Encode()
         {
             var result = new List<byte>();
+
+            var encodedText = new List<byte>();
+            ushort currentOffset = 0;
+            foreach (var bi in BattleItems)
+            {
+                if (string.IsNullOrEmpty(bi.Name))
+                {
+                    bi.NameOffset = ushort.MaxValue;
+                }
+                else
+                {
+                    bi.NameOffset = currentOffset;
+                    var encodedName = FF8String.Encode(bi.Name);
+                    encodedText.AddRange(encodedName);
+                    currentOffset += (ushort)encodedName.Count();
+                }
+
+                if (string.IsNullOrEmpty(bi.Description))
+                {
+                    bi.DescriptionOffset = ushort.MaxValue;
+                }
+                else
+                {
+                    bi.DescriptionOffset = currentOffset;
+                    var encodedDesc = FF8String.Encode(bi.Description);
+                    encodedText.AddRange(encodedDesc);
+                    currentOffset += (ushort)encodedDesc.Count();
+                }
+            }
+            BattleItemText = encodedText;
+
+            var oldOffset = SectionOffsets[39];
+            SectionOffsets[39] = SectionOffsets[38] + (uint)BattleItemText.Count;
+            var diff = SectionOffsets[39] - oldOffset;
+            if (diff != 0)
+            {
+                for (int i = 40; i < SectionOffsets.Count; i++)
+                {
+                    SectionOffsets[i] += diff;
+                }
+            }
+
+            encodedText = new List<byte>();
+            currentOffset = 0;
+            foreach (var nbi in NonBattleItems)
+            {
+                if (string.IsNullOrEmpty(nbi.Name))
+                {
+                    nbi.NameOffset = ushort.MaxValue;
+                }
+                else
+                {
+                    nbi.NameOffset = currentOffset;
+                    var encodedName = FF8String.Encode(nbi.Name);
+                    encodedText.AddRange(encodedName);
+                    currentOffset += (ushort)encodedName.Count();
+                }
+
+                if (string.IsNullOrEmpty(nbi.Description))
+                {
+                    nbi.DescriptionOffset = ushort.MaxValue;
+                }
+                else
+                {
+                    nbi.DescriptionOffset = currentOffset;
+                    var encodedDesc = FF8String.Encode(nbi.Description);
+                    encodedText.AddRange(encodedDesc);
+                    currentOffset += (ushort)encodedDesc.Count();
+                }
+            }
+            NonBattleItemText = encodedText;
+
+            oldOffset = SectionOffsets[40];
+            SectionOffsets[40] = SectionOffsets[39] + (uint)NonBattleItemText.Count;
+            diff = SectionOffsets[40] - oldOffset;
+            if (diff != 0)
+            {
+                for (int i = 41; i < SectionOffsets.Count; i++)
+                {
+                    SectionOffsets[i] += diff;
+                }
+            }
+
             result.AddRange(BitConverter.GetBytes(SectionCount));
             foreach (var offset in SectionOffsets) result.AddRange(BitConverter.GetBytes(offset));
             foreach (var cmd in BattleCommands) result.AddRange(cmd.Encode());
@@ -110,6 +222,9 @@ namespace Sleepey.FF8Mod.Main
             foreach (var ea in EnemyAttackData) result.AddRange(ea.Encode());
             foreach (var w in Weapons) result.AddRange(w.Encode());
             result.AddRange(PostWeaponData);
+            foreach (var bi in BattleItems) result.AddRange(bi.Encode());
+            foreach (var nbi in NonBattleItems) result.AddRange(nbi.Encode());
+            result.AddRange(PostItemData);
             foreach (var a in Abilities) result.AddRange(a.Encode());
             result.AddRange(PostAbilityData);
             result.AddRange(MagicText);
@@ -117,6 +232,20 @@ namespace Sleepey.FF8Mod.Main
             result.AddRange(EnemyAttackText);
             result.AddRange(WeaponText);
             result.AddRange(PostWeaponTextData);
+            result.AddRange(BattleItemText);
+            result.AddRange(NonBattleItemText);
+            result.AddRange(PostItemTextData);
+            return result;
+        }
+
+        private List<byte[]> ReadSection(BinaryReader reader, uint sectionOffset, uint nextSectionOffset, int itemLength)
+        {
+            var result = new List<byte[]>();
+            reader.BaseStream.Seek(sectionOffset, SeekOrigin.Begin);
+            while (nextSectionOffset - reader.BaseStream.Position >= itemLength)
+            {
+                result.Add(reader.ReadBytes(itemLength));
+            }
             return result;
         }
     }

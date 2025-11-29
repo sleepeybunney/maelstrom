@@ -6,6 +6,7 @@ using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Field;
 using Sleepey.FF8Mod.Archive;
 using Sleepey.FF8Mod.Exe;
+using Sleepey.FF8Mod.Main;
 using System.Text.Json;
 
 namespace Sleepey.Maelstrom
@@ -47,6 +48,16 @@ namespace Sleepey.Maelstrom
             var fieldText = MessageFile.FromSource(innerSource, msdPath);
             fieldText.Messages[messageId] = newText;
             innerSource.ReplaceFile(msdPath, fieldText.Encode());
+        }
+
+        public static void CreateKeys(FileSource mainSource)
+        {
+            var kernel = new Kernel(mainSource.GetFile(Env.KernelPath));
+            kernel.NonBattleItems[130].Name = "Garden Key";
+            kernel.NonBattleItems[130].Description = "An oil-stained key";
+            kernel.NonBattleItems[131].Name = "Esthar Key";
+            kernel.NonBattleItems[131].Description = "A key made of blue plastic";
+            mainSource.ReplaceFile(Env.KernelPath, kernel.Encode());
         }
     }
 }
