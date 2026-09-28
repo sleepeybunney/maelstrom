@@ -97,7 +97,8 @@
     },
     {
         "TrackID": 24,
-        "TrackName": "SeeD"
+        "TrackName": "SeeD",
+        "HardCoded": true
     },
     {
         "TrackID": 25,
@@ -146,7 +147,8 @@
     },
     {
         "TrackID": 35,
-        "TrackName": "The Mission"
+        "TrackName": "The Mission",
+        "HardCoded": true
     },
     {
         "TrackID": 36,
@@ -174,7 +176,8 @@
     },
     {
         "TrackID": 41,
-        "TrackName": "Blue Fields"
+        "TrackName": "Blue Fields",
+        "HardCoded": true
     },
     {
         "TrackID": 42,
@@ -240,7 +243,8 @@
     },
     {
         "TrackID": 59,
-        "TrackName": "Only a Plank Between One and Perdition"
+        "TrackName": "Only a Plank Between One and Perdition",
+        "HardCoded": true
     },
     {
         "TrackID": 60,
@@ -284,7 +288,8 @@
     },
     {
         "TrackID": 70,
-        "TrackName": "Shuffle or Boogie"
+        "TrackName": "Shuffle or Boogie",
+        "HardCoded": true
     },
     {
         "TrackID": 71,
@@ -329,7 +334,8 @@
     },
     {
         "TrackID": 81,
-        "TrackName": "Mods de Chocobo"
+        "TrackName": "Mods de Chocobo",
+        "HardCoded": true
     },
     {
         "TrackID": 82,
@@ -362,7 +368,8 @@
     },
     {
         "TrackID": 89,
-        "TrackName": "Ride On"
+        "TrackName": "Ride On",
+        "HardCoded":  true
     },
     {
         "TrackID": 90,
@@ -401,5 +408,9 @@
     {
         "TrackID": 99,
         "TrackName": "The Landing 2"
+    },
+    {
+        "TrackID": 110,
+        "TrackName": "Chocobo World"
     }
 ]

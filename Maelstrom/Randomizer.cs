@@ -318,8 +318,8 @@ namespace Sleepey.Maelstrom
                         unsavedChanges = true;
                     }
 
-                    // apply music shuffle
-                    if (settings.MusicEnable && Env.RegionCode != "jp")
+                    // apply music shuffle (classic)
+                    if (settings.MusicEnable && Env.RegionCode != "jp" && !(Env.RegionCode == "eng" && !Env.Remastered))
                     {
                         var shuffle = MusicShuffle.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
@@ -347,7 +347,7 @@ namespace Sleepey.Maelstrom
             Debug.WriteLine("field ops end");
         }
 
-        // update menu archive
+        // update menu archive (and exe)
         private static void MenuOps(int seed, SpoilerFile spoilerFile, State settings)
         {
             Debug.WriteLine("menu ops start");
@@ -378,9 +378,9 @@ namespace Sleepey.Maelstrom
                         AbilityShuffle.ForceScrollsInBalambShop(menuSource);
                     }
 
-                    // draw point shuffle
                     if (!Env.Remastered)
                     {
+                        // draw point shuffle
                         if (settings.DrawPointEnable)
                         {
                             var shuffle = DrawPointShuffle.Randomise(seed, settings);
@@ -390,6 +390,21 @@ namespace Sleepey.Maelstrom
                         else
                         {
                             DrawPointShuffle.RemovePatch(Env.ExePath);
+                        }
+
+                        // music shuffle (new)
+                        if (Env.RegionCode == "eng")
+                        {
+                            if (settings.MusicEnable)
+                            {
+                                var shuffle = MusicShuffle.Randomise(seed, settings);
+                                if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
+                                MusicShuffle.ApplyPatch(shuffle);
+                            }
+                            else
+                            {
+                                MusicShuffle.RemovePatch();
+                            }
                         }
                     }
 

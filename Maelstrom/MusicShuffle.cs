@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.Json;
+using Sleepey.FF8Mod;
 using Sleepey.FF8Mod.Archive;
+using Sleepey.FF8Mod.Exe;
 using Sleepey.FF8Mod.Field;
-using System.Diagnostics;
 
 namespace Sleepey.Maelstrom
 {
@@ -15,15 +14,47 @@ namespace Sleepey.Maelstrom
         public static List<MusicLoad> MusicLoads = JsonSerializer.Deserialize<List<MusicLoad>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.MusicLoads.json"));
         public static List<MusicTrack> MusicTracks = JsonSerializer.Deserialize<List<MusicTrack>>(App.ReadEmbeddedFile("Sleepey.Maelstrom.Data.MusicTracks.json"));
 
+        /*
+         * jae $+15
+         * call $+0x6fc0e7
+         * ...
+         */
+
+        public static byte[] Caller = new byte[] { 0x73, 0x0D, 0xE8, 0xE2, 0xC0, 0x6F, 0x00, 0x8B, 0x04, 0x85, 0x58, 0xF7, 0xB7, 0x00, 0xC3, 0x33, 0xC0, 0xC3 };
+        public static byte[] CallerOrig = new byte[] { 0x73, 0x08, 0x8B, 0x04, 0x85, 0x58, 0xF7, 0xB7, 0x00, 0xC3, 0x33, 0xC0, 0xC3, 0x90, 0x90, 0x90, 0x90, 0x90 };
+        public const int CallerLocation = 0x06c857;
+
+        /*
+         * push ebx
+         * call $+5
+         * pop ebx
+         * add ebx, 0x1a
+         * movzx eax, byte ptr [ebx+eax]
+         * pop ebx
+         * ret
+         */
+
+        public static byte[] Mapper = new byte[] { 0x53, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x5B, 0x83, 0xC3, 0x1A, 0x0F, 0xB6, 0x04, 0x03, 0x5B, 0xC3 };
+        public const int MapperLocation = 0x768940;
+
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
             var random = new Random(seed + 10);
             var result = new Dictionary<int, int>();
 
-            var trackIds = MusicTracks.Where(t => !t.NonMusic || settings.MusicIncludeNonMusic).Select(t => t.TrackID).ToList();
-            var trackCount = trackIds.Count;
+            // hard-coded songs can't be matched with non-music tracks
+            var matchableTracks = MusicTracks.Where(t => !t.NonMusic).ToList();
+            foreach (var t in MusicTracks.Where(t => t.HardCoded))
+            {
+                result.Add(t.TrackID, matchableTracks[random.Next(matchableTracks.Count)].TrackID);
+            }
 
-            foreach (var t in trackIds) result.Add(t, trackIds[random.Next(trackCount)]);
+            // everything else depends on settings
+            matchableTracks = MusicTracks.Where(t => !t.NonMusic || settings.MusicIncludeNonMusic).ToList();
+            foreach (var t in matchableTracks.Where(t => !t.HardCoded))
+            {
+                result.Add(t.TrackID, matchableTracks[random.Next(matchableTracks.Count)].TrackID);
+            }
 
             // leave "julia" unshuffled to avoid problems in laguna scene
             result[22] = 22;
@@ -32,6 +63,32 @@ namespace Sleepey.Maelstrom
             if (settings.MusicBattleChange) result[-1] = random.Next();
 
             return result;
+        }
+
+        public static void ApplyPatch(Dictionary<int, int> shuffle)
+        {
+            var shuffler = new byte[0x95];
+            Array.Copy(Mapper, shuffler, Mapper.Length);
+            foreach (var k in shuffle.Keys) shuffler[k + 0x20] = (byte)shuffle[k];
+
+            var shufflerOrig = new byte[0x95];
+
+            var callerPatch = new BinaryPatch(CallerLocation, CallerOrig, Caller);
+            var shufflerPatch = new BinaryPatch(MapperLocation, shufflerOrig, shuffler);
+
+            callerPatch.Apply(Env.ExePath);
+            shufflerPatch.Apply(Env.ExePath);
+        }
+
+        public static void RemovePatch()
+        {
+            var shufflerOrig = new byte[0x95];
+
+            var callerPatch = new BinaryPatch(CallerLocation, CallerOrig, CallerOrig);
+            var shufflerPatch = new BinaryPatch(MapperLocation, shufflerOrig, shufflerOrig);
+
+            callerPatch.Remove(Env.ExePath);
+            shufflerPatch.Remove(Env.ExePath);
         }
 
         public static void Apply(FileSource fieldSource, Dictionary<int, int> shuffle)
@@ -100,5 +157,6 @@ namespace Sleepey.Maelstrom
         public int TrackID { get; set; }
         public string TrackName { get; set; }
         public bool NonMusic { get; set; } = false;
+        public bool HardCoded { get; set; } = false;
     }
 }
