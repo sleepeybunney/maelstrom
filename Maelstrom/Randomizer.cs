@@ -319,7 +319,7 @@ namespace Sleepey.Maelstrom
                     }
 
                     // apply music shuffle (classic)
-                    if (settings.MusicEnable && Env.RegionCode != "jp" && !(Env.RegionCode == "eng" && !Env.Remastered))
+                    if (settings.MusicEnable && (Env.Remastered || Env.RegionCode == "jp"))
                     {
                         var shuffle = MusicShuffle.Randomise(seed, settings);
                         if (settings.SpoilerFile) spoilerFile.AddMusic(shuffle);
@@ -393,7 +393,7 @@ namespace Sleepey.Maelstrom
                         }
 
                         // music shuffle (new)
-                        if (Env.RegionCode == "eng")
+                        if (Env.RegionCode != "jp")
                         {
                             if (settings.MusicEnable)
                             {

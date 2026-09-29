@@ -22,20 +22,29 @@ namespace Sleepey.Maelstrom
 
         public static byte[] Caller = new byte[] { 0x73, 0x0D, 0xE8, 0xE2, 0xC0, 0x6F, 0x00, 0x8B, 0x04, 0x85, 0x58, 0xF7, 0xB7, 0x00, 0xC3, 0x33, 0xC0, 0xC3 };
         public static byte[] CallerOrig = new byte[] { 0x73, 0x08, 0x8B, 0x04, 0x85, 0x58, 0xF7, 0xB7, 0x00, 0xC3, 0x33, 0xC0, 0xC3, 0x90, 0x90, 0x90, 0x90, 0x90 };
+        
         public const int CallerLocation = 0x06c857;
 
         /*
          * push ebx
          * call $+5
          * pop ebx
-         * add ebx, 0x1a
+         * add ebx, 0xa
          * movzx eax, byte ptr [ebx+eax]
          * pop ebx
          * ret
          */
 
-        public static byte[] Mapper = new byte[] { 0x53, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x5B, 0x83, 0xC3, 0x1A, 0x0F, 0xB6, 0x04, 0x03, 0x5B, 0xC3 };
-        public const int MapperLocation = 0x768940;
+        public static byte[] Mapper = new byte[] { 0x53, 0xE8, 0x00, 0x00, 0x00, 0x00, 0x5B, 0x83, 0xC3, 0x0A, 0x0F, 0xB6, 0x04, 0x03, 0x5B, 0xC3 };
+        
+        public static Dictionary<string, uint> MapperLocations = new Dictionary<string, uint>()
+        {
+            { "eng", 0x768940 },
+            { "fre", 0x768e70 },
+            { "ger", 0x768f70 },
+            { "ita", 0x768ef0 },
+            { "spa", 0x768f60 }
+        };
 
         public static Dictionary<int, int> Randomise(int seed, State settings)
         {
@@ -67,14 +76,18 @@ namespace Sleepey.Maelstrom
 
         public static void ApplyPatch(Dictionary<int, int> shuffle)
         {
-            var shuffler = new byte[0x95];
+            // update caller with this region's mapper location
+            var callOffset = MapperLocations[Env.RegionCode] - CallerLocation - 7;
+            Array.Copy(BitConverter.GetBytes(callOffset), 0, Caller, 3, 4);
+
+            // shuffler block = mapper function + randomised track ids
+            var shuffler = new byte[0x85];
             Array.Copy(Mapper, shuffler, Mapper.Length);
-            foreach (var k in shuffle.Keys) shuffler[k + 0x20] = (byte)shuffle[k];
+            foreach (var k in shuffle.Keys) shuffler[k + 0x10] = (byte)shuffle[k];
 
-            var shufflerOrig = new byte[0x95];
-
+            var shufflerOrig = new byte[0x85];
             var callerPatch = new BinaryPatch(CallerLocation, CallerOrig, Caller);
-            var shufflerPatch = new BinaryPatch(MapperLocation, shufflerOrig, shuffler);
+            var shufflerPatch = new BinaryPatch(MapperLocations[Env.RegionCode], shufflerOrig, shuffler);
 
             callerPatch.Apply(Env.ExePath);
             shufflerPatch.Apply(Env.ExePath);
@@ -82,10 +95,9 @@ namespace Sleepey.Maelstrom
 
         public static void RemovePatch()
         {
-            var shufflerOrig = new byte[0x95];
-
+            var shufflerOrig = new byte[0x85];
             var callerPatch = new BinaryPatch(CallerLocation, CallerOrig, CallerOrig);
-            var shufflerPatch = new BinaryPatch(MapperLocation, shufflerOrig, shufflerOrig);
+            var shufflerPatch = new BinaryPatch(MapperLocations[Env.RegionCode], shufflerOrig, shufflerOrig);
 
             callerPatch.Remove(Env.ExePath);
             shufflerPatch.Remove(Env.ExePath);
